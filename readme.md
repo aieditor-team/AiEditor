@@ -5,6 +5,11 @@ AiEditor 是一个面向 AI 的下一代富文本编辑器。
 
 > 开箱即用、支持 Layui、Vue、React、Angular、JQuery 等任意框架。
 
+## 在线演示
+
+http://aieditor.jpress.cn
+
+
 ## 已完善
 
 - [x] 基础功能：标题、正文、字体、字号、加粗、斜体、下划线、删除线、链接、行内代码、上标、下标、分割线、引用、打印、最大化编辑
