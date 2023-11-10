@@ -78,7 +78,7 @@ export type AiEditorOptions = {
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
-    placeHolder: "请输入",
+    placeHolder: "",
 }
 
 export class AiEditor {
@@ -95,14 +95,14 @@ export class AiEditor {
 
     eventComponents: AiEditorEvent[] = [];
 
-    constructor(options: AiEditorOptions) {
-        this.options = Object.assign(defaultOptions, options);
+    constructor(_: AiEditorOptions) {
+        this.options = Object.assign(defaultOptions, _);
 
         const rootEl = typeof this.options.element === "string"
             ? document.querySelector(this.options.element) as Element : this.options.element;
 
         //set the editor theme class
-        rootEl.classList.add(`aie-theme-${options.theme}`);
+        rootEl.classList.add(`aie-theme-${this.options.theme}`);
 
         this.container = document.createElement("div");
         this.container.classList.add("aie-container");
@@ -122,8 +122,8 @@ export class AiEditor {
 
         this.tiptap = new Tiptap({
             element: mainEl,
-            content: options.content,
-            extensions: getExtensions(this, options),
+            content: this.options.content,
+            extensions: getExtensions(this, this.options),
             onCreate: (props) => this.onCreate(props, mainEl),
             onTransaction: (props) => this.onTransaction(props),
             onDestroy: () => this.onDestroy,

@@ -13,13 +13,13 @@
         if (!isDark){
             document.body.style.background="#1a1b1e"
             document.querySelector("#title").style.color="#eee"
-            document.querySelector("#zEditor").classList.remove("aie-theme-light");
-            document.querySelector("#zEditor").classList.add("aie-theme-dark");
+            document.querySelector("#aiEditor").classList.remove("aie-theme-light");
+            document.querySelector("#aiEditor").classList.add("aie-theme-dark");
         }else {
             document.body.style.background=""
             document.querySelector("#title").style.color=""
-            document.querySelector("#zEditor").classList.remove("aie-theme-dark");
-            document.querySelector("#zEditor").classList.add("aie-theme-light");
+            document.querySelector("#aiEditor").classList.remove("aie-theme-dark");
+            document.querySelector("#aiEditor").classList.add("aie-theme-light");
         }
         isDark = !isDark;
     }
@@ -31,7 +31,7 @@
     <button onclick="dark()">切换主题</button>
 </div>
 
-<div id="zEditor" style="height: 650px; width: 960px; margin: 20px"></div>
+<div id="aiEditor" style="height: 550px; width: 960px; margin: 20px"></div>
 <script type="module" src="/demos/main.ts"></script>
 </body>
 </html>

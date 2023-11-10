@@ -1,3 +1,4 @@
+![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
 # AiEditor
 
 AiEditor 是一个面向 AI 的下一代富文本编辑器。
