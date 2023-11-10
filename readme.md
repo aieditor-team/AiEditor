@@ -53,7 +53,7 @@ npm run dev
 ## AI 功能配置
 
 - 1、去科大讯飞注册账号 https://xinghuo.xfyun.cn
-- 2、在科大讯飞服务管理中（https://console.xfyun.cn/services/bm2） 获取 appId、apiKey、apiSecret。
+- 2、在科大讯飞服务管理中（https://console.xfyun.cn/services/bm2 ） 获取 appId、apiKey、apiSecret。
 - 3、在配置中添加科大讯飞星火大模型配置
 
 ```javascript
