@@ -7,8 +7,8 @@ import {Plugin, PluginKey} from "@tiptap/pm/state";
 import {DecorationSet} from "prosemirror-view";
 import {TextSelection} from "prosemirror-state";
 import {uuid} from "../util/uuid.ts";
-import {uploadFile} from "../util/uploadFile.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
+import {getUploader} from "../util/getUploader.ts";
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -111,26 +111,24 @@ export const ImageExt = Image.extend<ImageOptions>({
                         pos: tr.selection.from,
                     }));
 
-                    if (this.options.uploadUrl) {
-                        const uploader = this.options.uploader || uploadFile;
-                        uploader(file, this.options.uploadUrl, this.options.uploadHeaders, "image")
-                            .then(json => {
-                                if (json.errorCode === 0 && json.data && json.data.src) {
-                                    const decorations = key.getState(this.editor.state) as DecorationSet;
-                                    let found = decorations.find(void 0, void 0, spec => spec.id == id)
-                                    view.dispatch(view.state.tr
-                                        .insert(found[0].from, schema.nodes.image.create({
-                                            src: json.data.src,
-                                            alt: json.data.alt,
-                                        }))
-                                        .setMeta(actionKey, {type: "remove", id}));
-                                } else {
-                                    view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                                }
-                            }).catch(() => {
-                            view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                        })
-                    }
+                    const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
+                    uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "image")
+                        .then(json => {
+                            if (json.errorCode === 0 && json.data && json.data.src) {
+                                const decorations = key.getState(this.editor.state) as DecorationSet;
+                                let found = decorations.find(void 0, void 0, spec => spec.id == id)
+                                view.dispatch(view.state.tr
+                                    .insert(found[0].from, schema.nodes.image.create({
+                                        src: json.data.src,
+                                        alt: json.data.alt,
+                                    }))
+                                    .setMeta(actionKey, {type: "remove", id}));
+                            } else {
+                                view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                            }
+                        }).catch(() => {
+                        view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                    })
                     return true;
                 }
             }

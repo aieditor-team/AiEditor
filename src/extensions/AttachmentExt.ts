@@ -1,9 +1,9 @@
 import {Plugin, PluginKey} from 'prosemirror-state'
 import {uuid} from "../util/uuid.ts";
-import {uploadFile} from "../util/uploadFile.ts";
 import {DecorationSet} from "prosemirror-view";
 import {createAttachmentDecoration} from "../util/decorations.ts";
 import {Extension} from "@tiptap/core";
+import {getUploader} from "../util/getUploader.ts";
 
 export interface AttachmentOptions {
     HTMLAttributes: Record<string, any>,
@@ -57,27 +57,25 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                     text: file.name,
                 }));
 
-                if (this.options.uploadUrl) {
-                    const uploader = this.options.uploader || uploadFile;
-                    uploader(file, this.options.uploadUrl, this.options.uploadHeaders, "attachment")
-                        .then(json => {
-                            if (json.errorCode === 0 && json.data && json.data.href) {
-                                const decorations = key.getState(this.editor.state) as DecorationSet;
-                                let found = decorations.find(void 0, void 0, spec => spec.id == id)
-                                const fileName = json.data.fileName || file.name;
-                                view.dispatch(view.state.tr
-                                    .insertText(` ${fileName} `, found[0].from)
-                                    .addMark(found[0].from + 1, fileName.length + found[0].from + 1, schema.marks.link.create({
-                                        href: json.href,
-                                    }))
-                                    .setMeta(actionKey, {type: "remove", id}));
-                            } else {
-                                view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                            }
-                        }).catch(() => {
-                        view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                    })
-                }
+                const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
+                uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "attachment")
+                    .then(json => {
+                        if (json.errorCode === 0 && json.data && json.data.href) {
+                            const decorations = key.getState(this.editor.state) as DecorationSet;
+                            let found = decorations.find(void 0, void 0, spec => spec.id == id)
+                            const fileName = json.data.fileName || file.name;
+                            view.dispatch(view.state.tr
+                                .insertText(` ${fileName} `, found[0].from)
+                                .addMark(found[0].from + 1, fileName.length + found[0].from + 1, schema.marks.link.create({
+                                    href: json.href,
+                                }))
+                                .setMeta(actionKey, {type: "remove", id}));
+                        } else {
+                            view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                        }
+                    }).catch(() => {
+                    view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                })
 
                 return true;
             }

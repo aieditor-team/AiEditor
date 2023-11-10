@@ -2,9 +2,9 @@ import {Node, nodeInputRule} from '@tiptap/core'
 import {Plugin, PluginKey, TextSelection} from 'prosemirror-state'
 import {resize} from "../util/resize";
 import {uuid} from "../util/uuid.ts";
-import {uploadFile} from "../util/uploadFile.ts";
 import {DecorationSet} from "prosemirror-view";
 import {createMediaDecoration} from "../util/decorations.ts";
+import {getUploader} from "../util/getUploader.ts";
 
 export interface VideoOptions {
     HTMLAttributes: Record<string, any>,
@@ -95,26 +95,24 @@ export const VideoExt = Node.create<VideoOptions>({
                     pos: tr.selection.from,
                 }));
 
-                if (this.options.uploadUrl) {
-                    const uploader = this.options.uploader || uploadFile;
-                    uploader(file, this.options.uploadUrl, this.options.uploadHeaders, "video")
-                        .then(json => {
-                            if (json.errorCode === 0 && json.data && json.data.src) {
-                                const decorations = key.getState(this.editor.state) as DecorationSet;
-                                let found = decorations.find(void 0, void 0, spec => spec.id == id)
-                                view.dispatch(view.state.tr
-                                    .insert(found[0].from, schema.nodes.video.create({
-                                        src: json.data.src,
-                                        poster: json.data.poster,
-                                    }))
-                                    .setMeta(actionKey, {type: "remove", id}));
-                            } else {
-                                view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                            }
-                        }).catch(() => {
-                        view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                    })
-                }
+                const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
+                uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "video")
+                    .then(json => {
+                        if (json.errorCode === 0 && json.data && json.data.src) {
+                            const decorations = key.getState(this.editor.state) as DecorationSet;
+                            let found = decorations.find(void 0, void 0, spec => spec.id == id)
+                            view.dispatch(view.state.tr
+                                .insert(found[0].from, schema.nodes.video.create({
+                                    src: json.data.src,
+                                    poster: json.data.poster,
+                                }))
+                                .setMeta(actionKey, {type: "remove", id}));
+                        } else {
+                            view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                        }
+                    }).catch(() => {
+                    view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                })
                 return true;
             }
         };
