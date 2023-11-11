@@ -65,10 +65,18 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                         element.innerHTML = `
                             <div class="items">
                              ${suggestionProps.items.map((item: AiCommand, index) => {
-                            return `<button class="item ${index === selectIndex ? 'item-selected' : ''}">${item.name}</button>`
+                            return `<button class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}">${item.name}</button>`
                         }).join("")}
                             </div>
                             `
+                        element.addEventListener("click",(e)=>{
+                            const closest = (e.target as HTMLElement).closest(".item");
+                            if (closest){
+                                const selectIndex = Number(closest.getAttribute("data-index"));
+                                const item = suggestionProps.items[selectIndex];
+                                if (item) suggestionProps.command(item)
+                            }
+                        })
                     }
 
                     return {
@@ -108,6 +116,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 getReferenceClientRect: props.clientRect as any,
                             })
                         },
+
 
                         onKeyDown(props) {
                             if (props.event.key === 'Escape') {
