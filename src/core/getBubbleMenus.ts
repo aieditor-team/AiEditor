@@ -8,20 +8,6 @@ import {AbstractBubbleMenu} from "../components/AbstractBubbleMenu.ts";
 import {ImageBubbleMenu} from "../components/bubbles/ImageBubbleMenu.ts";
 import {TableBubbleMenu} from "../components/bubbles/TableBubbleMenu.ts";
 
-// import { CellSelection } from '@tiptap/pm/tables';
-// export function isCellSelection(value: unknown): value is CellSelection {
-//     return value instanceof CellSelection
-// }
-
-
-// export declare function isCellSelection(value: unknown): value is CellSelection;
-
-
-// import {isCellSelection} from "@tiptap/extension-table";
-// import {Popover} from "../components/Popover";
-
-// import {Plugin} from "tippy.js"
-
 window.customElements.define('aie-bubble-link', LinkBubbleMenu);
 window.customElements.define('aie-bubble-image', ImageBubbleMenu);
 window.customElements.define('aie-bubble-table', TableBubbleMenu);
@@ -56,10 +42,10 @@ const createImageBubbleMenu = (zEditor: AiEditor) => {
             appendTo: zEditor.container,
             placement: 'top-start',
             getReferenceClientRect: (() => {
-                const {ranges} = zEditor.tiptap.state.selection
+                const {ranges} = zEditor.innerEditor.state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = zEditor.tiptap.view;
+                const view = zEditor.innerEditor.view;
 
                 let node = view.nodeDOM(from) as HTMLElement
                 const imageEl = node.querySelector("img") as HTMLImageElement;
@@ -90,15 +76,15 @@ const createTableBubbleMenu = (zEditor: AiEditor) => {
         tippyOptions: {
             placement: 'top',
             getReferenceClientRect: (() => {
-                const selection = zEditor.tiptap.state.selection;
+                const selection = zEditor.innerEditor.state.selection;
                 const {ranges} = selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = zEditor.tiptap.view;
+                const view = zEditor.innerEditor.view;
 
                 const domRect = posToDOMRect(view, from, to);
-                const tablePos = zEditor.tiptap.state.selection.$from.posAtIndex(0, 1);
-                const coordsAtPos = zEditor.tiptap.view.coordsAtPos(tablePos);
+                const tablePos = zEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
+                const coordsAtPos = zEditor.innerEditor.view.coordsAtPos(tablePos);
 
                 return {
                     ...domRect,
