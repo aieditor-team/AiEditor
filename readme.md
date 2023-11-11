@@ -39,6 +39,8 @@ http://aieditor.jpress.cn
 
 ## 构建&运行
 
+**构建**
+
 ```shell
 git clone https://gitee.com/aieditor-team/aieditor.git
 
@@ -46,10 +48,46 @@ cd aieditor
 
 # 安装依赖
 npm install
+```
 
-# 构建 packages
+**运行**
+
+修改 `demos/main.ts` 下的内容为：
+
+```javascript
+new AiEditor({
+    element: "#aiEditor",
+    placeHolder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
+    ai: {
+        model: {
+            xinghuo: {
+                appId: "***",
+                apiKey: "***",
+                apiSecret: "***",
+            }
+        }
+    }
+})
+```
+
+或者直接移除 AI 的配置，如下所示（移除后，则不能使用 AI 功能）：
+
+```javascript
+new AiEditor({
+    element: "#aiEditor",
+    placeHolder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
+})
+```
+
+然后再命令行下执行：
+
+```shell
 npm run dev
 ```
+
+
 
 ## AI 功能配置
 
