@@ -102,7 +102,6 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
         } else {
             return this.editor!.state.selection.$head.parent.textContent;
         }
-
     }
 
     onDropdownItemClick(index: number): void {

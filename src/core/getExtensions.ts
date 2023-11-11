@@ -32,6 +32,7 @@ import {Placeholder} from "@tiptap/extension-placeholder";
 // import {Collaboration} from "@tiptap/extension-collaboration";
 import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
+import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
@@ -103,6 +104,19 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             placeholder: options.placeHolder,
         }))
     }
+
+    // if (options.ai?.command){
+        ret.push(AiCommandExt.configure({
+            suggestion:{
+                items:(_)=>{
+                    const commands = options.ai?.command || defaultCommands;
+                    return commands as any;
+                    // return commands.filter(item => item.keyword.toLowerCase().startsWith(query.toLowerCase()))
+                    //     .slice(0, 10) as any;
+                }
+            }
+        }))
+    // }
 
     // if (options.cbName && options.cbUrl) {
     //     const provider = new HocuspocusProvider({

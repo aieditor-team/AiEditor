@@ -1,4 +1,4 @@
-import {Editor, Editor as Tiptap, EditorEvents} from "@tiptap/core";
+import {Editor, Editor as Tiptap, EditorEvents, EditorOptions} from "@tiptap/core";
 
 import {Header} from "../components/Header.ts";
 import {Footer} from "../components/Footer.ts";
@@ -20,6 +20,13 @@ export interface AiMenu {
     name: string,
     prompt: string,
     text: "selected" | "focusBefore",
+    model: string,
+}
+
+export interface AiCommand {
+    name: string,
+    keyword: string,
+    prompt: string,
     model: string,
 }
 
@@ -73,6 +80,7 @@ export type AiEditorOptions = {
             }
         },
         menus?: AiMenu[],
+        command?: AiCommand[],
     }
 }
 
@@ -81,9 +89,17 @@ const defaultOptions: Partial<AiEditorOptions> = {
     placeHolder: "",
 }
 
+export class InnerEditor extends Tiptap {
+    userOptions: AiEditorOptions;
+    constructor(userOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
+        super(options);
+        this.userOptions = userOptions;
+    }
+}
+
 export class AiEditor {
 
-    tiptap: Tiptap;
+    innerEditor: InnerEditor;
 
     container: HTMLDivElement;
 
@@ -120,7 +136,7 @@ export class AiEditor {
         this.eventComponents.push(this.menus);
         this.eventComponents.push(this.footer);
 
-        this.tiptap = new Tiptap({
+        this.innerEditor = new InnerEditor(this.options,{
             element: mainEl,
             content: this.options.content,
             extensions: getExtensions(this, this.options),
@@ -135,11 +151,14 @@ export class AiEditor {
         })
 
         // @ts-ignore
+        this.tiptap.useOptions = this.options;
+
+        // @ts-ignore
         window.editor = this.tiptap;
     }
 
     onCreate(props: EditorEvents['create'], mainEl: Element) {
-        this.tiptap.view.dom.style.height = "calc(100% - 20px)"
+        this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
         this.eventComponents.forEach((zEvent) => {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
         });
@@ -159,5 +178,18 @@ export class AiEditor {
         while (this.container.firstChild) {
             this.container.firstChild.remove();
         }
+    }
+
+
+    getHtml(){
+        return this.innerEditor.getHTML();
+    }
+
+    getJson(){
+        return this.innerEditor.getJSON();
+    }
+
+    getText(){
+        return this.innerEditor.getText();
     }
 }

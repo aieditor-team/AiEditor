@@ -84,7 +84,7 @@ export class XingHuoSocket extends AbstractWebSocket {
             for (let i = 0; i < text.length; i++) {
                 const c = text.charAt(i);
                 if ((i == 0 || i == text.length - 1) && c === '"') continue
-                if (c === "\n") this.editor.commands.insertContent("<br/>");
+                if (c === "\n") this.editor.commands.insertContent("<p></p>");
                 else this.editor.commands.insertContent(c);
             }
 
