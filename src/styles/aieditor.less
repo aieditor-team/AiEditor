@@ -74,26 +74,26 @@
 
 
   .suggestion {
-    background: #fff;
-    border: 1px solid #ccc;
-    height: 200px;
-    width: 200px;
+    background: var(--aie-menus-bg-color);
+    border: 1px solid var(--aie-dropdown-container-border-color);
+    height: 146px;
+    width: 110px;
 
     .items {
       .item {
         display: block;
-        width: 190px;
+        width: 100%;
         height: 30px;
-        margin: 10px 5px;
-        background: #ffffff;
-        border: 1px solid #dfdfdf;
+        margin: 0;
+        color: var(--aie-text-color);
+        background: var(--aie-menus-bg-color);
+        border: none;
         text-align: left;
         padding-left: 20px;
       }
 
       .item-selected {
-        border: 1px solid #333;
-        background: #f1f3f5;
+        background: var(--aie-suggestion-selected-bg-color);
       }
     }
   }
