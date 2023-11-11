@@ -22,7 +22,6 @@ export class Fullscreen extends AbstractMenuButton {
         if (!this.isFullscreen) {
             container.style.height = "calc(100vh - 2px)"
             container.style.width = "calc(100% - 2px)"
-            container.style.background = "#ffffff"
             container.style.position = "absolute"
             container.style.top = "0"
             container.style.left = "0"
