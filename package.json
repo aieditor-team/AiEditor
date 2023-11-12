@@ -1,17 +1,39 @@
 {
   "name": "aieditor",
-  "private": true,
+  "author": "yangfuhai",
   "version": "1.0.0-beta.1",
   "type": "module",
+  "keywords": [
+    "editor",
+    "ai",
+    "ai editor"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^20.9.0",
     "less": "^4.2.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
     "@tiptap/core": "^2.1.12",
@@ -44,5 +66,18 @@
     "lowlight": "^3.1.0",
     "node-html-parser": "^6.1.11",
     "tippy.js": "^6.3.7"
-  }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aieditor-team/aieditor"
+  },
+  "bugs": {
+    "url": "https://github.com/aieditor-team/aieditor/issues"
+  },
+  "homepage": "https://github.com/aieditor-team/aieditor#readme",
+  "license": "LGPL"
 }
