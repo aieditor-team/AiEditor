@@ -1,6 +1,6 @@
-// @ts-ignore
-import {AiEditor} from "../src/core/AiEditor.ts";
-import {config} from "./xinghuo";
+import {AiEditor} from "../../../src";
+import {config} from "./xinghuo.ts"
+
 
 new AiEditor({
     element: "#aiEditor",
@@ -13,13 +13,12 @@ new AiEditor({
             }
         }
     },
-    onMentionQuery:(query)=>{
+    onMentionQuery:(query:string)=>{
         return [
             'Michael Yang', 'Jean Zhou', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder'
             , 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John'
             , 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey'
             , 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet',
         ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
-
     }
 })

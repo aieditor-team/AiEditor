@@ -149,12 +149,6 @@ export class AiEditor {
                 },
             }
         })
-
-        // @ts-ignore
-        this.tiptap.useOptions = this.options;
-
-        // @ts-ignore
-        window.editor = this.tiptap;
     }
 
     onCreate(props: EditorEvents['create'], mainEl: Element) {

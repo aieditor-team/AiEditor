@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # ai config
-demos/xinghuo.ts
+xinghuo.ts
