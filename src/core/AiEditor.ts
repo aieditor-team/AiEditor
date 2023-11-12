@@ -39,7 +39,7 @@ export interface AiEditorEvent {
 export type AiEditorOptions = {
     element: string | Element,
     content?: string,
-    placeHolder?: string,
+    placeholder?: string,
     theme?: "light" | "dark",
     cbName?: string,
     cbUrl?: string
@@ -86,7 +86,7 @@ export type AiEditorOptions = {
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
-    placeHolder: "",
+    placeholder: "",
 }
 
 export class InnerEditor extends Tiptap {

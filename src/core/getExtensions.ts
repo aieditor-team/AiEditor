@@ -99,9 +99,9 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
         )
     }
 
-    if (options.placeHolder) {
+    if (options.placeholder) {
         ret.push(Placeholder.configure({
-            placeholder: options.placeHolder,
+            placeholder: options.placeholder,
         }))
     }
 

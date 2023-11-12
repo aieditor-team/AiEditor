@@ -59,7 +59,7 @@ npm install
 ```javascript
 new AiEditor({
     element: "#aiEditor",
-    placeHolder: "点击输入内容...",
+    placeholder: "点击输入内容...",
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
     ai: {
         model: {
@@ -78,7 +78,7 @@ new AiEditor({
 ```javascript
 new AiEditor({
     element: "#aiEditor",
-    placeHolder: "点击输入内容...",
+    placeholder: "点击输入内容...",
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
 })
 ```
@@ -100,7 +100,7 @@ npm run dev
 ```javascript
 new AiEditor({
     element: "#aiEditor",
-    placeHolder: "点击输入内容...",
+    placeholder: "点击输入内容...",
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
     ai: {
         model: {

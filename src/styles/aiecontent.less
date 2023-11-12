@@ -177,6 +177,15 @@
       border-radius: 5px;
       padding: 0 3px;
   }
+
+  p.is-editor-empty:first-child::before {
+    color: var(--aie-text-placeholder-color);
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
 }
 
 .tableWrapper {

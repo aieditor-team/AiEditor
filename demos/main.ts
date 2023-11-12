@@ -4,8 +4,8 @@ import {config} from "./xinghuo";
 
 new AiEditor({
     element: "#aiEditor",
-    placeHolder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
+    placeholder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
     ai: {
         model: {
             xinghuo: {
