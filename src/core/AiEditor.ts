@@ -44,6 +44,7 @@ export type AiEditorOptions = {
     cbName?: string,
     cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
+    onChange?: (editor: AiEditor) => void,
     toolbarKeys?: string[],
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
@@ -91,6 +92,7 @@ const defaultOptions: Partial<AiEditorOptions> = {
 
 export class InnerEditor extends Tiptap {
     userOptions: AiEditorOptions;
+
     constructor(userOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
         super(options);
         this.userOptions = userOptions;
@@ -136,7 +138,7 @@ export class AiEditor {
         this.eventComponents.push(this.menus);
         this.eventComponents.push(this.footer);
 
-        this.innerEditor = new InnerEditor(this.options,{
+        this.innerEditor = new InnerEditor(this.options, {
             element: mainEl,
             content: this.options.content,
             extensions: getExtensions(this, this.options),
@@ -166,6 +168,9 @@ export class AiEditor {
         this.eventComponents.forEach((zEvent) => {
             zEvent.onTransaction && zEvent.onTransaction(props);
         });
+        if (props.transaction.docChanged && this.options.onChange) {
+            this.options.onChange(this);
+        }
     }
 
     onDestroy() {
@@ -175,15 +180,15 @@ export class AiEditor {
     }
 
 
-    getHtml(){
+    getHtml() {
         return this.innerEditor.getHTML();
     }
 
-    getJson(){
+    getJson() {
         return this.innerEditor.getJSON();
     }
 
-    getText(){
+    getText() {
         return this.innerEditor.getText();
     }
 }
