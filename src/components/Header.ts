@@ -83,6 +83,11 @@ export type MenuButtonOptions = {
     svg: string,
 }
 
+const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "title", "font-family", "font-size", "divider", "bold", "italic", "underline"
+    , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
+    , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
+    , "image", "video", "attachment", "quote", "code-block", "table", "divider", "printer", "fullscreen", "ai"
+];
 
 export class Header extends HTMLElement implements AiEditorEvent {
     // template:string;
@@ -103,21 +108,23 @@ export class Header extends HTMLElement implements AiEditorEvent {
     }
 
     onCreate(event: EditorEvents["create"], options: AiEditorOptions): void {
-        if (!options.toolbarKeys || options.toolbarKeys.length == 0) {
-            // menuDefs.
-        }
+        let toolbarKeys = options.toolbarKeys || defaultMenus;
 
-        options.toolbarKeys = ["undo", "redo", "brush", "eraser", "divider", "title", "font-family", "font-size", "divider", "bold", "italic", "underline"
-            , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
-            , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
-            , "image", "video", "attachment", "quote", "code-block", "table", "divider", "printer", "fullscreen","ai"
-        ]
+        for (let toolbarKey of toolbarKeys) {
+            if (!toolbarKey) continue;
+            toolbarKey = toolbarKey.trim();
 
-        for (let toolbarKey of options.toolbarKeys) {
-            const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
-            menuButton.classList.add("aie-menu-item")
-            menuButton.onCreate(event, options);
-            this.menuButtons.push(menuButton);
+            if (toolbarKey === "|") {
+                toolbarKey = "divider"
+            }
+            try {
+                const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
+                menuButton.classList.add("aie-menu-item")
+                menuButton.onCreate(event, options);
+                this.menuButtons.push(menuButton);
+            } catch (e) {
+                console.error("Can not create toolbar by key: " + toolbarKey);
+            }
         }
     }
 
