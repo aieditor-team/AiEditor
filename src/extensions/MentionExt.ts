@@ -9,7 +9,7 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
         },
         suggestion: {
             items: ({query}) => {
-              return onMentionLoad(query)
+                return onMentionLoad(query)
             },
 
             render: () => {
@@ -17,33 +17,41 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                 let popup: Instance[];
                 let selectIndex: number = 0;
                 let suggestionProps: SuggestionProps;
+                const updateElement = () => {
+                    element.innerHTML = `
+                            <div class="items">
+                             ${suggestionProps.items.map((item: any, index) => {
+                                return `<button class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> @${item.name ? item.name : item}</button>`
+                            }).join("")}
+                            </div>
+                            `
+                    element.addEventListener("click", (e) => {
+                        const closest = (e.target as HTMLElement).closest(".item");
+                        if (closest) {
+                            const selectIndex = Number(closest.getAttribute("data-index"));
+                            const item = suggestionProps.items[selectIndex];
+                            if (item) suggestionProps.command(item)
+                        }
+                    })
+                }
 
                 return {
                     onStart: (props: SuggestionProps) => {
 
                         element = document.createElement("div") as HTMLDivElement;
-                        element.style.width = "200px"
-                        element.style.height = "200px"
-                        element.style.border = "solid 1px #ccc"
-                        element.style.background = "antiquewhite"
+                        element.classList.add("suggestion")
+                        suggestionProps = props;
 
-                        element.innerHTML = `
-                            <div className="items">
-                             ${props.items.map((item: any) => {
-                                    return `<button>${item}</button>`
-                                }).join("")}
-                            </div>
-                            `
-
-                        console.log("onStart: ", props)
                         if (!props.clientRect) {
                             return
                         }
 
+                        updateElement();
+
                         // @ts-ignore
                         popup = tippy('body', {
                             getReferenceClientRect: props.clientRect,
-                            appendTo: () => document.body,
+                            appendTo: () => props.editor.view.dom.closest(".aie-container"),
                             content: element,
                             showOnCreate: true,
                             interactive: true,
@@ -51,29 +59,22 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                             trigger: 'manual',
                             placement: 'bottom-start',
                         })
-
-                        suggestionProps = props;
                     },
 
                     onUpdate(props) {
                         suggestionProps = props;
 
-                        element.innerHTML = `
-                            <div className="items">
-                             ${props.items.map((item: any) => {
-                                    return `<button>${item}</button>`
-                                }).join("")}
-                            </div>
-                            `
-
                         if (!props.clientRect) {
                             return
                         }
+
+                        updateElement()
 
                         popup[0].setProps({
                             getReferenceClientRect: props.clientRect as any,
                         })
                     },
+
 
                     onKeyDown(props) {
                         if (props.event.key === 'Escape') {
@@ -81,13 +82,19 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                             return true;
                         } else if (props.event.key === "ArrowUp") {
                             selectIndex = (selectIndex + suggestionProps.items.length - 1) % suggestionProps.items.length
+                            updateElement();
                             return true;
                         } else if (props.event.key === "ArrowDown") {
                             selectIndex = (selectIndex + 1) % suggestionProps.items.length
+                            updateElement();
                             return true;
                         } else if (props.event.key === "Enter") {
                             const item = suggestionProps.items[selectIndex];
-                            if (item) suggestionProps.command({id: item})
+                            if (item && item.id) {
+                                suggestionProps.command(item)
+                            } else {
+                                suggestionProps.command({id: item})
+                            }
                             return true;
                         }
                         return false;
