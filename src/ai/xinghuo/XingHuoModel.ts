@@ -5,13 +5,15 @@ import {XingHuoSocket} from "./XingHuoSocket.ts";
 
 export class XingHuoModel implements AiModel {
 
+    protocol: string;
     appId: string;
     apiKey: string;
     apiSecret: string;
     version: string;
 
     constructor(options: AiEditorOptions) {
-        const {appId, apiKey, apiSecret, version} = options.ai?.model.xinghuo!;
+        const {protocol, appId, apiKey, apiSecret, version} = options.ai?.model.xinghuo!;
+        this.protocol = protocol || "ws";
         this.appId = appId;
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
@@ -19,7 +21,7 @@ export class XingHuoModel implements AiModel {
     }
 
     start(seletedText: string, prompt: string, editor: Editor): void {
-        const socket = new XingHuoSocket(this.appId, this.apiKey, this.apiSecret, this.version, editor);
+        const socket = new XingHuoSocket(this.protocol, this.appId, this.apiKey, this.apiSecret, this.version, editor);
         socket.start(`"${seletedText}"\n${prompt}`)
     }
 

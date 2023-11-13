@@ -14,14 +14,14 @@ export class XingHuoSocket extends AbstractWebSocket {
     editor: Editor;
 
 
-    constructor(appId: string, apiKey: string, apiSecret: string, version: string, editor: Editor) {
-        super(XingHuoSocket.createUrl(apiKey, apiSecret, version));
+    constructor(protocol:string,appId: string, apiKey: string, apiSecret: string, version: string, editor: Editor) {
+        super(XingHuoSocket.createUrl(protocol,apiKey, apiSecret, version));
         this.appId = appId;
         this.version = version;
         this.editor = editor;
     }
 
-    static createUrl(apiKey: string, apiSecret: string, version: string): string {
+    static createUrl(protocol:string,apiKey: string, apiSecret: string, version: string): string {
         const date = new Date().toUTCString().replace("GMT", "+0000");
         let header = "host: spark-api.xf-yun.com\n"
         header += "date: " + date + "\n"
@@ -30,7 +30,7 @@ export class XingHuoSocket extends AbstractWebSocket {
         const base64 = Base64.stringify(hmacSHA)
         const authorization_origin = `api_key="${apiKey}", algorithm="hmac-sha256", headers="host date request-line", signature="${base64}"`
         const authorization = btoa(authorization_origin);
-        return `ws://spark-api.xf-yun.com/${version}/chat?authorization=${authorization}&date=${encodeURIComponent(date)}&host=spark-api.xf-yun.com`
+        return `${protocol}://spark-api.xf-yun.com/${version}/chat?authorization=${authorization}&date=${encodeURIComponent(date)}&host=spark-api.xf-yun.com`
     }
 
     getDomain() {

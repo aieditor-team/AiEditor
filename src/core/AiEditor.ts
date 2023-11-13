@@ -74,6 +74,7 @@ export type AiEditorOptions = {
     ai?: {
         model: {
             xinghuo?: {
+                protocol: string,
                 appId: string,
                 apiKey: string,
                 apiSecret: string,
