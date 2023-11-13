@@ -3,27 +3,70 @@ import {EditorEvents} from "@tiptap/core";
 
 
 export class Footer extends HTMLElement implements AiEditorEvent {
+
     count: number = 0
-    // shadow:ShadowRoot;
 
     constructor() {
         super();
-        // this. shadow = this.attachShadow({
-        //     mode:"closed"
-        // });
 
+        let startX: number, startY: number, minWidth = 300, minHeight = 300, rootWith: number, rootHeight: number,
+            root: HTMLElement;
+        const onMouseUp = (e: MouseEvent) => {
+            e.preventDefault();
+            document.removeEventListener("mouseup", onMouseUp);
+            document.removeEventListener("mousemove", onMousemove);
+        }
+
+        const onMousemove = (event: MouseEvent) => {
+            const distanceX = event.clientX - startX;
+            const distanceY = event.clientY - startY;
+
+            if (distanceX == 0 && distanceY == 0) return;
+
+            const xZoomIn = distanceX > 0;
+            const yZoomIn = distanceY > 0;
+
+            let newWidth = rootWith + Math.abs(distanceX) * (xZoomIn ? 1 : -1);
+            let newHeight = rootHeight + Math.abs(distanceY) * (yZoomIn ? 1 : -1);
+
+            if (newWidth < minWidth) {
+                newWidth = minWidth;
+            }
+
+            if (newHeight < minHeight) {
+                newHeight = minHeight;
+            }
+
+            root.style.width = `${newWidth}px`;
+            root.style.height = `${newHeight}px`;
+        }
+
+        this.addEventListener("mousedown", (e) => {
+            const target = (e.target as HTMLElement).closest("svg");
+            if (target) {
+                e.preventDefault();
+                document.addEventListener("mouseup", onMouseUp);
+                document.addEventListener("mousemove", onMousemove);
+                root = (e.target as HTMLElement).closest(".aie-container")?.parentElement!;
+                rootWith = root.clientWidth;
+                rootHeight = root.clientHeight;
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+        });
+
+        this.addEventListener("mouseup", onMouseUp)
     }
 
     updateCharacters() {
         this.innerHTML = `
-        <div> 
-            Powered by AiEditor, Characters: ${this.count}
+        <div style="display: flex"> 
+            <span> Powered by AiEditor, Characters: ${this.count} </span>
+            <div style="width: 20px;height: 20px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 16L6 10H18L12 16Z"></path></svg>
+            </div>
         </div>
         `;
-        // this.querySelector("div")!
-        //     .innerHTML = `
-        //          Powered by AiEditor, Characters: ${this.count}
-        //     `;
     }
 
     onCreate(props: EditorEvents["create"], _: AiEditorOptions): void {

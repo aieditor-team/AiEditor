@@ -51,7 +51,7 @@
       display: flex;
       align-items: center;
 
-      .active{
+      .active {
         background: var(--aie-menus-item-hover-color);
       }
     }
@@ -217,10 +217,13 @@
 
     .color-panel {
       margin: 0 5px;
+
       &-title {
-        padding-top: 5px;font-size: 14px;
+        padding-top: 5px;
+        font-size: 14px;
         color: var(--aie-dropdown-color-panel-title-color);
       }
+
       &-default-button {
         text-align: center;
         border: 1px solid var(--aie-dropdown-color-panel-button-border-color);;
@@ -373,12 +376,14 @@
     overflow: auto;
     border: solid 1px var(--aie-dropdown-container-border-color);
     color: var(--aie-menus-text-color);
+
     &-item {
       padding: 5px;
       font-size: 14px;
       height: 20px;
       line-height: 20px;
       cursor: pointer;
+
       &:hover {
         background: var(--aie-dropdown-container-item-hover-color);
       }
@@ -394,18 +399,28 @@
       font-size: 14px;
       text-align: right;
       color: #666;
-      padding-right: 10px
+
+      span {
+        margin-left: auto;
+      }
+
+      svg {
+        fill: #666;
+        rotate: -45deg;
+        transform: translate(0, 5px);
+        cursor: nwse-resize;
+      }
     }
   }
 }
 
-.aie-theme-light{
+.aie-theme-light {
   @import (less)  '../../node_modules/highlight.js/styles/atom-one-light.css';
 }
-.aie-theme-dark{
+
+.aie-theme-dark {
   @import (less)  '../../node_modules/highlight.js/styles/atom-one-dark.css';
 }
-
 
 
 .aie-popover {
