@@ -30,7 +30,11 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                         if (closest) {
                             const selectIndex = Number(closest.getAttribute("data-index"));
                             const item = suggestionProps.items[selectIndex];
-                            if (item) suggestionProps.command(item)
+                            if (item && item.id) {
+                                suggestionProps.command(item)
+                            } else {
+                                suggestionProps.command({id: item})
+                            }
                         }
                     })
                 }
