@@ -6,6 +6,7 @@ import {Footer} from "../components/Footer.ts";
 import {getExtensions} from "./getExtensions.ts";
 
 import "../styles"
+import {XingHuoModel} from "../ai/xinghuo/XingHuoModel.ts";
 
 window.customElements.define('aie-menus', Header);
 window.customElements.define('aie-footer', Footer);
@@ -79,6 +80,7 @@ export type AiEditorOptions = {
                 apiKey: string,
                 apiSecret: string,
                 version?: string,
+                urlSignatureAlgorithm?:(model:XingHuoModel)=>string,
             }
         },
         menus?: AiMenu[],

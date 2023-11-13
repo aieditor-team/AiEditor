@@ -1,10 +1,7 @@
 import {AbstractWebSocket} from "../AbstractWebSocket.ts";
 import {Editor} from "@tiptap/core";
 
-// @ts-ignore
-import hmacSHA256 from 'crypto-js/hmac-sha256';
-// @ts-ignore
-import Base64 from 'crypto-js/enc-base64';
+
 import {uuid} from "../../util/uuid.ts";
 
 export class XingHuoSocket extends AbstractWebSocket {
@@ -14,24 +11,13 @@ export class XingHuoSocket extends AbstractWebSocket {
     editor: Editor;
 
 
-    constructor(protocol:string,appId: string, apiKey: string, apiSecret: string, version: string, editor: Editor) {
-        super(XingHuoSocket.createUrl(protocol,apiKey, apiSecret, version));
+    constructor(url:string,appId: string,version:string, editor: Editor) {
+        super(url);
         this.appId = appId;
         this.version = version;
         this.editor = editor;
     }
 
-    static createUrl(protocol:string,apiKey: string, apiSecret: string, version: string): string {
-        const date = new Date().toUTCString().replace("GMT", "+0000");
-        let header = "host: spark-api.xf-yun.com\n"
-        header += "date: " + date + "\n"
-        header += `GET /${version}/chat HTTP/1.1`
-        const hmacSHA = hmacSHA256(header, apiSecret);
-        const base64 = Base64.stringify(hmacSHA)
-        const authorization_origin = `api_key="${apiKey}", algorithm="hmac-sha256", headers="host date request-line", signature="${base64}"`
-        const authorization = btoa(authorization_origin);
-        return `${protocol}://spark-api.xf-yun.com/${version}/chat?authorization=${authorization}&date=${encodeURIComponent(date)}&host=spark-api.xf-yun.com`
-    }
 
     getDomain() {
         switch (this.version) {
