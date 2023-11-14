@@ -78,11 +78,10 @@ export class LinkBubbleMenu extends AbstractBubbleMenu {
             }
         })
 
-        popover.setTrigger(this.querySelector("div")!, "left");
+        popover.setTrigger(this.querySelector("#edit")!, "right");
     }
 
     onItemClick(id: string): void {
-        // alert("id:" + id)
         if (id === "unlink"){
             this.editor?.chain().focus().unsetLink().run();
         }else if (id === "visit"){

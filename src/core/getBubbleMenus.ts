@@ -22,7 +22,7 @@ const createLinkBubbleMenu = (zEditor: AiEditor) => {
         pluginKey: 'linkBubble',
         element: menuEl,
         tippyOptions: {
-            placement: 'bottom-end',
+            placement: 'bottom',
         },
         shouldShow: ({editor}) => {
             return editor.isActive("link")

@@ -61,12 +61,15 @@ export class Link extends AbstractMenuButton {
 
         popover.onShow((instance) => {
             const attrs = this.editor?.getAttributes("link");
-            console.log("onShow: ",attrs && attrs.href)
             if (attrs && attrs.href) {
                 (instance.popper.querySelector("#href") as HTMLInputElement).value = attrs.href;
+            }else {
+                (instance.popper.querySelector("#href") as HTMLInputElement).value ="";
             }
             if (attrs && attrs.target) {
                 (instance.popper.querySelector("#target") as HTMLInputElement).value = attrs.target;
+            }else {
+                (instance.popper.querySelector("#target") as HTMLInputElement).value = "";
             }
         })
 
