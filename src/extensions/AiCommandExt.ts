@@ -102,6 +102,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 allowHTML: true,
                                 trigger: 'manual',
                                 placement: 'right-start',
+                                arrow: false,
                             })
                         },
 

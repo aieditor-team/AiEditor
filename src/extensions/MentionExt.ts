@@ -62,6 +62,7 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                             allowHTML: true,
                             trigger: 'manual',
                             placement: 'bottom-start',
+                            arrow: false,
                         })
                     },
 
