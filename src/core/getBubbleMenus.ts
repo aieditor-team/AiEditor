@@ -23,6 +23,7 @@ const createLinkBubbleMenu = (zEditor: AiEditor) => {
         element: menuEl,
         tippyOptions: {
             placement: 'bottom',
+            arrow: false,
         },
         shouldShow: ({editor}) => {
             return editor.isActive("link")
@@ -41,6 +42,7 @@ const createImageBubbleMenu = (zEditor: AiEditor) => {
         tippyOptions: {
             appendTo: zEditor.container,
             placement: 'top-start',
+            arrow: false,
             getReferenceClientRect: (() => {
                 const {ranges} = zEditor.innerEditor.state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
@@ -75,6 +77,7 @@ const createTableBubbleMenu = (zEditor: AiEditor) => {
         element: menuEl,
         tippyOptions: {
             placement: 'top',
+            arrow: false,
             getReferenceClientRect: (() => {
                 const selection = zEditor.innerEditor.state.selection;
                 const {ranges} = selection

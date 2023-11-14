@@ -38,6 +38,7 @@ export class Align extends AbstractDropdownMenuButton<AlignInfo> {
         this.dropDivWith = "60px"
         this.width="36px"
         this.menuTextWidth="20px"
+        this.showItemsTip = true;
     }
 
     onDropdownActive(editor: Editor, index: number): boolean {

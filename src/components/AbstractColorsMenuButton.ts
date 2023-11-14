@@ -15,13 +15,13 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     historyColors: string[] = [];
 
-    iconSvg?:string;
+    iconSvg?: string;
 
-    menuColorEL?:HTMLDivElement;
+    menuColorEL?: HTMLDivElement;
 
-    onColorItemClick?:(color:string)=>void;
+    onColorItemClick?: (color: string) => void;
 
-    onDefaultColorClick?:()=>void;
+    onDefaultColorClick?: () => void;
 
     constructor() {
         super();
@@ -46,7 +46,7 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
 
         this.querySelector("#btn")!.addEventListener("click", () => {
-            this.onColorItemClick!(this.historyColors.length >0 ? this.historyColors[0] : '#ccc')
+            this.onColorItemClick!(this.historyColors.length > 0 ? this.historyColors[0] : '#ccc')
         });
 
         this.menuColorEL = this.querySelector("#menuColorEL")!;
@@ -56,6 +56,7 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             placement: 'bottom',
             trigger: 'click',
             interactive: true,
+            arrow: false,
         })
     }
 
@@ -69,16 +70,16 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             <div class="color-panel-default-button" id="defaultColor">默认</div>
             <div style="display: flex;flex-wrap: wrap;padding-top: 5px">
                 ${colors.map((color, index) => {
-                    return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${index == 0 ? 'efefef' : color};background: #${color}"></div>`
-                }).join(" ")
-                }
+            return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${index == 0 ? 'efefef' : color};background: #${color}"></div>`
+        }).join(" ")
+        }
             </div>
             <div class="color-panel-title">标准色</div>
             <div style="display: flex;flex-wrap: wrap;">
                 ${standardColors.map((color) => {
-                    return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${color};background: #${color}"></div>`
-                }).join(" ")
-                }
+            return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${color};background: #${color}"></div>`
+        }).join(" ")
+        }
             </div>
             <div class="color-panel-title">最近使用</div>
             <div style="display: flex;flex-wrap: wrap;" id="history-colors">
@@ -86,7 +87,7 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
         </div>
         `;
 
-        div.querySelector("#defaultColor")!.addEventListener("click",()=>{
+        div.querySelector("#defaultColor")!.addEventListener("click", () => {
             this.onDefaultColorClick!();
         })
 
@@ -94,31 +95,31 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             element.addEventListener("click", () => {
                 const color = element.getAttribute("data-color");
                 this.historyColors.unshift(color!)
-                if (this.historyColors.length > 7){
-                    this.historyColors = this.historyColors.slice(0,7);
+                if (this.historyColors.length > 7) {
+                    this.historyColors = this.historyColors.slice(0, 7);
                 }
                 div.querySelector("#history-colors")!.innerHTML = `
                 ${this.historyColors.map((color) => {
-                        return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`
-                    }).join(" ")
+                    return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`
+                }).join(" ")
                 }
                 `;
                 this.menuColorEL!.style.background = color as string;
                 this.onColorItemClick!(color!);
             })
-            element.addEventListener("mouseover",()=>{
-                (element as HTMLDivElement).style.border="solid 1px #999"
+            element.addEventListener("mouseover", () => {
+                (element as HTMLDivElement).style.border = "solid 1px #999"
             })
-            element.addEventListener("mouseout",()=>{
+            element.addEventListener("mouseout", () => {
                 let color = element.getAttribute("data-color");
-                if(color === '#ffffff') color='#efefef';
-                (element as HTMLDivElement).style.border=`solid 1px ${color}`
+                if (color === '#ffffff') color = '#efefef';
+                (element as HTMLDivElement).style.border = `solid 1px ${color}`
             })
         })
 
-        div.querySelector("#history-colors")!.addEventListener("click",(e)=>{
-            const target:HTMLDivElement = (e.target as any).closest('.history-color-item'); // Or any other selector.
-            if (target){
+        div.querySelector("#history-colors")!.addEventListener("click", (e) => {
+            const target: HTMLDivElement = (e.target as any).closest('.history-color-item'); // Or any other selector.
+            if (target) {
                 let color = target.getAttribute("data-color");
                 this.menuColorEL!.style.background = color as string;
                 this.onColorItemClick!(color!);

@@ -38,6 +38,7 @@ import {Printer} from "./menus/Printer";
 import {Emoji} from "./menus/Emoji";
 import {Painter} from "./menus/Painter";
 import {Ai} from "./menus/Ai.ts";
+import tippy from "tippy.js";
 
 window.customElements.define('aie-undo', Undo);
 window.customElements.define('aie-redo', Redo);
@@ -89,6 +90,45 @@ const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "title", "fo
     , "image", "video", "attachment", "quote", "code-block", "table", "divider", "printer", "fullscreen", "ai"
 ];
 
+const defaultMenuTips = {
+    "undo": "撤销",
+    "redo": "重做",
+    "brush": "格式刷",
+    "eraser": "清除格式",
+    "title": "正文/标题",
+    "font-family": "字体",
+    "font-size": "字号",
+    "bold": "加粗",
+    "italic": "斜体",
+    "underline": "下划线",
+    "strike": "删除线",
+    "link": "链接",
+    "code": "行内代码",
+    "subscript": "下标",
+    "superscript": "上标",
+    "hr": "分割线",
+    "todo": "任务列表",
+    "emoji": "表情",
+    "highlight": "高亮",
+    "font-color": "字体颜色",
+    "align": "对齐",
+    "line-height": "行高",
+    "bullet-list": "无序列表",
+    "ordered-list": "有序列表",
+    "indent-decrease": "减少缩进",
+    "indent-increase": "增加缩进",
+    "break": "强制换行",
+    "image": "图片",
+    "video": "视频",
+    "attachment": "附件",
+    "quote": "引用",
+    "code-block": "代码块",
+    "table": "表格",
+    "printer": "打印",
+    "fullscreen": "全屏",
+    "ai": "人工智能",
+} as any;
+
 export class Header extends HTMLElement implements AiEditorEvent {
     // template:string;
     menuButtons: AbstractMenuButton[] = [];
@@ -121,6 +161,18 @@ export class Header extends HTMLElement implements AiEditorEvent {
                 const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
                 menuButton.classList.add("aie-menu-item")
                 menuButton.onCreate(event, options);
+
+                const tip = defaultMenuTips[toolbarKey] as string;
+                if (tip) {
+                    tippy(menuButton, {
+                        appendTo: ()=>event.editor.view.dom.closest(".aie-container")!,
+                        content: tip,
+                        theme: 'aietip',
+                        arrow: true,
+                        // trigger:"click",
+                        // interactive:true,
+                    });
+                }
                 this.menuButtons.push(menuButton);
             } catch (e) {
                 console.error("Can not create toolbar by key: " + toolbarKey);

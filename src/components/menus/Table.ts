@@ -3,11 +3,12 @@ import tippy, {Instance} from "tippy.js";
 
 export class Table extends AbstractMenuButton {
 
-     instance?:Instance;
+    instance?: Instance;
+
     constructor() {
         super();
         const template = `
-        <div id="xxx">
+        <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 10H10V14H14V10ZM16 10V14H19V10H16ZM14 19V16H10V19H14ZM16 19H19V16H16V19ZM14 5H10V8H14V5ZM16 5V8H19V5H16ZM8 10H5V14H8V10ZM8 19V16H5V19H8ZM8 5H5V8H8V5ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3Z"></path></svg>
         </div>
         `;
@@ -16,23 +17,20 @@ export class Table extends AbstractMenuButton {
 
     connectedCallback() {
         super.connectedCallback();
-
-        this.instance = tippy(this.querySelector("#xxx")!, {
+        this.instance = tippy(this.querySelector("svg")!, {
             content: this.createMenuElement(),
             appendTo: this.closest(".aie-container")!,
             placement: 'bottom',
             trigger: 'click',
             interactive: true,
+            arrow: false,
         });
     }
 
 
     createMenuElement() {
         const div = document.createElement("div");
-        div.style.height = "250px"
-        div.style.width = "250px"
-        div.style.background = "#fff"
-        div.style.border = "1px solid #ccc"
+        div.classList.add("aie-dropdown-container")
         div.innerHTML = `
         <div style="margin: 5px">
             <div style="padding: 5px 0;font-size: 14px;color: #666">插入表格</div>

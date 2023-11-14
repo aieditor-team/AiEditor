@@ -9,10 +9,11 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
     menuData: T[] = [];
     menuTextWidth: string = "40px";
     defaultMenuIndex: number = 0;
-    refreshMenuText:boolean = true;
+    refreshMenuText: boolean = true;
     width: string = "48px";
     dropDivWith: string = "100px";
     dropDivHeight: string = "260px";
+    showItemsTip: boolean = false;
 
     renderTemplate() {
         this.template = `
@@ -22,7 +23,6 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
                 ${this.onMenuTextRender(this.defaultMenuIndex)}
              </span>
              <div style="width: 18px;height: 18px;display: inline-block">
-<!--                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg>-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14L8 10H16L12 14Z"></path></svg>
              </div>
          </div>
@@ -62,6 +62,18 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
                 this.onDropdownItemClick(i);
                 this.tippyInstance!.hide()
             });
+
+            if (this.showItemsTip) {
+                const itemData = this.menuData[i] as any;
+                tippy(item, {
+                    appendTo: () => this.closest(".aie-container")!,
+                    content: itemData.tip || itemData.title,
+                    theme: 'aietip',
+                    arrow: true,
+                    placement: "right"
+                });
+            }
+
             div.appendChild(item)
         }
         this.tippyEl = div;
@@ -77,7 +89,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
         for (let index = 0; index < this.menuData.length; index++) {
             if (this.onDropdownActive(event.editor, index)) {
                 this.tippyEl!.querySelector(`#item${index}`)!.children[0].classList.add("red-dot")
-                if (this.refreshMenuText){
+                if (this.refreshMenuText) {
                     const menuTextResult = this.onMenuTextRender(index);
                     if (typeof menuTextResult === "string") {
                         this.textEl!.innerHTML = menuTextResult;
