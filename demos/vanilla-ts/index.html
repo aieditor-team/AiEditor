@@ -1,41 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AiEditor Demo</title>
-</head>
-<script>
-  let isDark = false;
-  function dark(){
-    if (!isDark){
-      document.body.style.background="#1a1b1e"
-      document.querySelector("#title").style.color="#eee"
-      document.querySelector("#aiEditor").classList.remove("aie-theme-light");
-      document.querySelector("#aiEditor").classList.add("aie-theme-dark");
-    }else {
-      document.body.style.background=""
-      document.querySelector("#title").style.color=""
-      document.querySelector("#aiEditor").classList.remove("aie-theme-dark");
-      document.querySelector("#aiEditor").classList.add("aie-theme-light");
-    }
-    isDark = !isDark;
-  }
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AiEditor Demo</title>
 
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?9fd447a0f9e62a84d1b752a2cacb2c6b";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-</script>
+    <script>
+        let isDark = false;
+        function dark() {
+            if (!isDark) {
+                document.body.style.background = "#1a1b1e"
+                document.querySelector("#title").style.color = "#eee"
+                document.querySelector("#aiEditor").classList.remove("aie-theme-light");
+                document.querySelector("#aiEditor").classList.add("aie-theme-dark");
+            } else {
+                document.body.style.background = ""
+                document.querySelector("#title").style.color = ""
+                document.querySelector("#aiEditor").classList.remove("aie-theme-dark");
+                document.querySelector("#aiEditor").classList.add("aie-theme-light");
+            }
+            isDark = !isDark;
+        }
+
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9fd447a0f9e62a84d1b752a2cacb2c6b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
 <body>
 
 
 <div style="padding: 10px 20px;font-size: 30px" id="title">
-  AiEditor，一个面向 AI 的下一代富文本编辑器。 <button onclick="dark()">切换主题</button> <br />
-  开源网址：<a href="https://gitee.com/aieditor-team/aieditor" target="_blank">https://gitee.com/aieditor-team/aieditor</a>
+    AiEditor，一个面向 AI 的下一代富文本编辑器。
+    <button onclick="dark()">切换主题</button>
+    <br/>
+    开源网址：<a href="https://gitee.com/aieditor-team/aieditor"
+                target="_blank">https://gitee.com/aieditor-team/aieditor</a>
 
 </div>
 

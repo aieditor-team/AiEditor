@@ -7,6 +7,7 @@
     <link type="text/css" rel="stylesheet" href="./aieditor/style.css">
     <script type="module">
         import {AiEditor} from './aieditor/index.es.js'
+
         new AiEditor({
             element: "#aiEditor",
             placeholder: "点击输入内容...",
@@ -33,6 +34,7 @@
 
     <script>
         let isDark = false;
+
         function dark() {
             if (!isDark) {
                 document.body.style.background = "#1a1b1e"
@@ -56,7 +58,6 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-
 </head>
 <body>
 
