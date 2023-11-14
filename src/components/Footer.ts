@@ -23,11 +23,8 @@ export class Footer extends HTMLElement implements AiEditorEvent {
 
             if (distanceX == 0 && distanceY == 0) return;
 
-            const xZoomIn = distanceX > 0;
-            const yZoomIn = distanceY > 0;
-
-            let newWidth = rootWith + Math.abs(distanceX) * (xZoomIn ? 1 : -1);
-            let newHeight = rootHeight + Math.abs(distanceY) * (yZoomIn ? 1 : -1);
+            let newWidth = rootWith + distanceX;
+            let newHeight = rootHeight + distanceY;
 
             if (newWidth < minWidth) {
                 newWidth = minWidth;
