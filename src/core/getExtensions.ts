@@ -28,11 +28,10 @@ import {VideoExt} from "../extensions/VideoExt.ts";
 import {IFrameExt} from "../extensions/IFrameExt.ts";
 import {getBubbleMenus} from "./getBubbleMenus.ts";
 import {Placeholder} from "@tiptap/extension-placeholder";
-// import {HocuspocusProvider} from "@hocuspocus/provider";
-// import {Collaboration} from "@tiptap/extension-collaboration";
 import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
+import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
@@ -52,6 +51,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 uploader: options.video?.uploader || options.uploader,
             }),
             PainterExt,
+            SelectionMarkerExt,
             Highlight.configure({
                 multicolor: true
             }),
