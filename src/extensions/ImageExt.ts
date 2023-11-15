@@ -129,6 +129,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                         }).catch(() => {
                         view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
                     })
+
                     return true;
                 }
             }
@@ -168,20 +169,29 @@ export const ImageExt = Image.extend<ImageOptions>({
                     state: {
                         init: () => DecorationSet.empty,
                         apply: (tr, set) => {
-
                             const action = tr.getMeta(actionKey) as ImageAction;
+                            if (action) {
+                                // update decorations position
+                                let removed = false;
+                                const newSet = set.map(tr.mapping, tr.doc, {
+                                    onRemove: (_) => {
+                                        removed = true;
+                                    }
+                                });
 
-                            // update decorations position
-                            set = set.map(tr.mapping, tr.doc);
+                                if (!removed) {
+                                    set = newSet;
+                                }
 
-                            // add decoration
-                            if (action && action.type === "add") {
-                                set = set.add(tr.doc, [createMediaDecoration(action)]);
-                            }
-                            // remove decoration
-                            else if (action && action.type === "remove") {
-                                set = set.remove(set.find(undefined, undefined,
-                                    spec => spec.id == action.id));
+                                // add decoration
+                                if (action.type === "add") {
+                                    set = set.add(tr.doc, [createMediaDecoration(action)]);
+                                }
+                                // remove decoration
+                                else if (action.type === "remove") {
+                                    set = set.remove(set.find(void 0, void 0,
+                                        spec => spec.id == action.id));
+                                }
                             }
                             return set;
                         }
@@ -191,6 +201,19 @@ export const ImageExt = Image.extend<ImageOptions>({
                     props: {
                         decorations(state) {
                             return this.getState(state);
+                        },
+
+                        handlePaste: (_, event) => {
+                            const items = Array.from(event.clipboardData?.items || []);
+                            for (const item of items) {
+                                if (item.type.indexOf("image") === 0) {
+                                    event.preventDefault();
+                                    const file = item.getAsFile();
+                                    if (file) {
+                                        this.editor.commands.uploadImage(file);
+                                    }
+                                }
+                            }
                         },
 
                         handleDOMEvents: {

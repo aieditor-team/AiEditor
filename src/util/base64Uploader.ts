@@ -3,6 +3,6 @@ export const base64Uploader = (file: File, _uploadUrl: string, _headers: Record<
     return new Promise((accept, fail) => {
         reader.onload = () => accept({errorCode:0,data:{src:reader.result as string}});
         reader.onerror = () => fail(reader.error);
-        setTimeout(() => reader.readAsDataURL(file), 1500);
+        setTimeout(() => reader.readAsDataURL(file), 5000 * Math.random());
     })
 }

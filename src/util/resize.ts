@@ -27,7 +27,6 @@ export const resize = (container: HTMLDivElement
         const distanceX = event.clientX - startX;
         if (distanceX == 0) return;
 
-        // debugger
         const zoomIn = startPosition === "right" ? distanceX > 0 : distanceX < 0;
 
         let newWidth = imageWidth + Math.abs(distanceX) * (zoomIn ? 1 : -1);
