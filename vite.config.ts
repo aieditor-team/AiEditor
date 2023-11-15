@@ -5,6 +5,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
     define: {'process.env': {}},
     build: {
+        minify: "esbuild",
         lib: {
             entry: resolve(__dirname, './src/index.ts'),
             name: 'aieditor',
@@ -13,5 +14,9 @@ export default defineConfig({
             formats: ['es', 'cjs']
         },
     },
-    plugins: [dts({rollupTypes: true})],
+    plugins: [dts({rollupTypes: true}),
+        // legacy({
+        //     targets: ['defaults', 'not IE 11','chrome 52'],
+        // }),
+    ],
 })
