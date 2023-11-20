@@ -39,6 +39,34 @@ http://aieditor.jpress.cn
 - [ ] 类 Notion 拖拽功能
 - [ ] 更多的大模型对接：文心一言、ChatGPT
 
+## 开始开始
+
+安装：
+
+```shell
+npm i aieditor
+```
+
+使用：
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    placeholder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    ai: {
+        model: {
+            xinghuo: {
+                appId: "***",
+                apiKey: "***",
+                apiSecret: "***",
+            }
+        }
+    }
+})
+```
+
+
 ## 构建&运行
 
 **构建**
@@ -54,13 +82,13 @@ npm install
 
 **运行**
 
-修改 `demos/main.ts` 下的内容为：
+修改 `src/main.ts` 下的内容为：
 
-```javascript
+```typescript
 new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
     ai: {
         model: {
             xinghuo: {
@@ -75,11 +103,11 @@ new AiEditor({
 
 或者直接移除 AI 的配置，如下所示（移除后，则不能使用 AI 功能）：
 
-```javascript
+```typescript
 new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。输入 空格 + "/" 可以快速弹出 AI 菜单哦 ',
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
 })
 ```
 
