@@ -39,7 +39,7 @@ http://aieditor.jpress.cn
 - [ ] 类 Notion 拖拽功能
 - [ ] 更多的大模型对接：文心一言、ChatGPT
 
-## 开始开始
+## 快速开始
 
 安装：
 
@@ -66,6 +66,9 @@ new AiEditor({
 })
 ```
 
+传统方式使用，参考 layui 示例：
+
+https://gitee.com/aieditor-team/aieditor/tree/main/demos/layui
 
 ## 构建&运行
 
