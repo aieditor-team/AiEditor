@@ -5,21 +5,21 @@ layout: home
 hero:
   name: "AiEditor"
   text: "一个面向 AI 的下一代 富文本编辑器"
-  tagline: 简单智能、开箱即用、支持全平台
+  tagline: 简单智能、开箱即用、全框架支持
   actions:
     - theme: brand
+      text: 快速开始 
+      link: /zh/getting-started
+    - theme: alt
       text: 在线体验
       link: http://aieditor.jpress.cn
-    - theme: alt
-      text: 快速开始
-      link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 轻量
+    details: AiEditor 开箱即用、基于 Web Component，不依赖任何一个渲染框架，因此可以几乎和任何开发框架兼容使用。
+  - title: 智能
+    details: AiEditor 支持 AI 续写、AI 优化、AI 校对、AI 翻译以及自定义 AI 菜单及其 Prompts。支持对接星火大模型、文心一言、ChatGPT 以及私有大模型。
+  - title: 强大
+    details: 除了基本功能，AiEditor 还支持很多 “一线” 编辑器没有的功能，比如格式刷、表格的合并单元格与解除合并、亮色主题、暗色主题、手机适配等等功能。
 ---
 

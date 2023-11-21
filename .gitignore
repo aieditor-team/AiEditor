@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.ossutil_checkpoint
+ossutil_output
+deps/
 
 # Editor directories and files
 .vscode/*

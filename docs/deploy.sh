@@ -10,6 +10,6 @@ cp ../changes.md ./zh/
 npm run docs:build
 #vuepress build .
 
-ossutil rm oss://aieditor-docs/ -rf
-ossutil cp -rf assets/images  oss://aieditor-docs/assets/images
-ossutil cp -rf .vitepress/dist  oss://aieditor-docs/
+ossutil rm oss://aieditor-site/ -rf
+ossutil cp -rf assets/images  oss://aieditor-site/assets/images
+ossutil cp -rf .vitepress/dist  oss://aieditor-site/
