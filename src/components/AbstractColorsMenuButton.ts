@@ -13,6 +13,10 @@ const colors = [
 
 export class AbstractColorsMenuButton extends AbstractMenuButton {
 
+    historyColorsKey = "historyColors";
+
+    currentColorKey?: string;
+
     historyColors: string[] = [];
 
     iconSvg?: string;
@@ -25,19 +29,20 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     constructor() {
         super();
+        const localStorageColors = localStorage.getItem(this.historyColorsKey);
+        if (localStorageColors) {
+            this.historyColors = JSON.parse(localStorageColors);
+        }
     }
 
     connectedCallback() {
         this.template = `
             <div style="width: 36px;height: 18px;display: flex">
                 <div style="width: 18px;height: 18px" id="btn">
-                    <div style="height: 15px;width: 15px;padding:0 1.5px;line-height: 18px">
-                    ${this.iconSvg}
-                    </div>
+                    <div style="height: 15px;width: 15px;padding:0 1.5px;line-height: 18px">${this.iconSvg}</div>
                     <div style="width: 18px;height: 3px;background: #333" id="menuColorEL"></div>
                 </div>
                 <div style="width: 18px;height: 18px" id="dropdown">
-<!--                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg>-->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14L8 10H16L12 14Z"></path></svg>
                 </div>
             </div>
@@ -50,6 +55,9 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
         });
 
         this.menuColorEL = this.querySelector("#menuColorEL")!;
+        if (this.currentColorKey && localStorage.getItem(this.currentColorKey)) {
+            this.menuColorEL!.style.background = localStorage.getItem(this.currentColorKey)!;
+        }
 
         tippy(this.querySelector("#dropdown")!, {
             content: this.createMenuElement(),
@@ -83,6 +91,10 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             </div>
             <div class="color-panel-title">最近使用</div>
             <div style="display: flex;flex-wrap: wrap;" id="history-colors">
+               ${this.historyColors.map((color) => {
+            return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`
+        }).join(" ")
+        }
             </div>
         </div>
         `;
@@ -93,19 +105,7 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
         div.querySelectorAll(".color-item").forEach((element) => {
             element.addEventListener("click", () => {
-                const color = element.getAttribute("data-color");
-                this.historyColors.unshift(color!)
-                if (this.historyColors.length > 7) {
-                    this.historyColors = this.historyColors.slice(0, 7);
-                }
-                div.querySelector("#history-colors")!.innerHTML = `
-                ${this.historyColors.map((color) => {
-                    return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`
-                }).join(" ")
-                }
-                `;
-                this.menuColorEL!.style.background = color as string;
-                this.onColorItemClick!(color!);
+                this.invokeColorItemClick(div, element as HTMLDivElement);
             })
             element.addEventListener("mouseover", () => {
                 (element as HTMLDivElement).style.border = "solid 1px #999"
@@ -120,13 +120,32 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
         div.querySelector("#history-colors")!.addEventListener("click", (e) => {
             const target: HTMLDivElement = (e.target as any).closest('.history-color-item'); // Or any other selector.
             if (target) {
-                let color = target.getAttribute("data-color");
-                this.menuColorEL!.style.background = color as string;
-                this.onColorItemClick!(color!);
+                this.invokeColorItemClick(div, target);
             }
         });
-
         return div;
+    }
+
+
+    invokeColorItemClick(rootDiv: HTMLDivElement, item: HTMLDivElement) {
+        const color = item.getAttribute("data-color");
+        this.historyColors = this.historyColors.filter(obj => obj !== color)
+        this.historyColors.unshift(color!)
+        if (this.historyColors.length > 7) {
+            this.historyColors = this.historyColors.slice(0, 7);
+        }
+        rootDiv.querySelector("#history-colors")!.innerHTML = `
+                ${this.historyColors.map((color) => {
+            return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`
+        }).join(" ")
+        }
+                `;
+        localStorage.setItem(this.historyColorsKey, JSON.stringify(this.historyColors));
+        this.menuColorEL!.style.background = color as string;
+        if (this.currentColorKey) {
+            localStorage.setItem(this.currentColorKey, color as string);
+        }
+        this.onColorItemClick!(color!);
     }
 
 }
