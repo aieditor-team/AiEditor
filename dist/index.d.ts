@@ -38,6 +38,7 @@ export declare class AiEditor {
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
+    removeRetention(): void;
 }
 
 export declare interface AiEditorEvent {
@@ -48,6 +49,8 @@ export declare interface AiEditorEvent {
 export declare type AiEditorOptions = {
     element: string | Element;
     content?: string;
+    contentRetention?: boolean;
+    contentRetentionKey?: string;
     placeholder?: string;
     theme?: "light" | "dark";
     cbName?: string;
@@ -92,7 +95,7 @@ export declare type AiEditorOptions = {
             };
         };
         menus?: AiMenu[];
-        command?: AiCommand[];
+        commands?: AiCommand[];
     };
 };
 
