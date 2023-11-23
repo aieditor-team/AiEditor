@@ -109,10 +109,8 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
         ret.push(AiCommandExt.configure({
             suggestion:{
                 items:(_)=>{
-                    const commands = options.ai?.command || defaultCommands;
+                    const commands = options.ai?.commands || defaultCommands;
                     return commands as any;
-                    // return commands.filter(item => item.keyword.toLowerCase().startsWith(query.toLowerCase()))
-                    //     .slice(0, 10) as any;
                 }
             }
         }))

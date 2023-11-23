@@ -84,7 +84,7 @@ export type AiEditorOptions = {
             }
         },
         menus?: AiMenu[],
-        command?: AiCommand[],
+        commands?: AiCommand[],
     }
 }
 
