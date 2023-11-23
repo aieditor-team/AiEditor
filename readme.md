@@ -31,7 +31,7 @@ http://aieditor.jpress.cn
 - [ ] AI 插入图片
 - [ ] AI 图生图（AI 图片优化）
 - [ ] AI 一键排版
-- [ ] 进一步强化增贴功能
+- [ ] 进一步增强粘贴功能
 - [ ] 上传视频自动获取缩略图
 - [ ] WORD 导入、导出
 - [ ] PDF 导出、PDF 预览
@@ -41,106 +41,9 @@ http://aieditor.jpress.cn
 
 ## 快速开始
 
-安装：
+访问官网：https://aieditor.dev/zh/getting-started.html
 
-```shell
-npm i aieditor
-```
+## 交流
 
-使用：
+QQ 群：560291578
 
-```typescript
-new AiEditor({
-    element: "#aiEditor",
-    placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
-    ai: {
-        model: {
-            xinghuo: {
-                appId: "***",
-                apiKey: "***",
-                apiSecret: "***",
-            }
-        }
-    }
-})
-```
-
-传统方式使用，参考 layui 示例：
-
-https://gitee.com/aieditor-team/aieditor/tree/main/demos/layui
-
-## 构建&运行
-
-**构建**
-
-```shell
-git clone https://gitee.com/aieditor-team/aieditor.git
-
-cd aieditor
-
-# 安装依赖
-npm install
-```
-
-**运行**
-
-修改 `src/main.ts` 下的内容为：
-
-```typescript
-new AiEditor({
-    element: "#aiEditor",
-    placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
-    ai: {
-        model: {
-            xinghuo: {
-                appId: "***",
-                apiKey: "***",
-                apiSecret: "***",
-            }
-        }
-    }
-})
-```
-
-或者直接移除 AI 的配置，如下所示（移除后，则不能使用 AI 功能）：
-
-```typescript
-new AiEditor({
-    element: "#aiEditor",
-    placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
-})
-```
-
-然后再命令行下执行：
-
-```shell
-npm run dev
-```
-
-
-
-## AI 功能配置
-
-- 1、去科大讯飞注册账号 https://xinghuo.xfyun.cn
-- 2、在科大讯飞服务管理中（https://console.xfyun.cn/services/bm2 ） 获取 appId、apiKey、apiSecret。
-- 3、在配置中添加科大讯飞星火大模型配置
-
-```javascript
-new AiEditor({
-    element: "#aiEditor",
-    placeholder: "点击输入内容...",
-    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。',
-    ai: {
-        model: {
-            xinghuo: {
-                appId: "***",
-                apiKey: "***",
-                apiSecret: "***",
-            }
-        }
-    }
-})
-```
