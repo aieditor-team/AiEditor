@@ -15,8 +15,6 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     historyColorsKey = "historyColors";
 
-    currentColorKey?: string;
-
     historyColors: string[] = [];
 
     iconSvg?: string;
@@ -29,10 +27,6 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     constructor() {
         super();
-        const localStorageColors = localStorage.getItem(this.historyColorsKey);
-        if (localStorageColors) {
-            this.historyColors = JSON.parse(localStorageColors);
-        }
     }
 
     connectedCallback() {
@@ -49,14 +43,18 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             `
         super.connectedCallback();
 
+        const localStorageColors = localStorage.getItem(this.historyColorsKey);
+        if (localStorageColors) {
+            this.historyColors = JSON.parse(localStorageColors);
+        }
 
         this.querySelector("#btn")!.addEventListener("click", () => {
             this.onColorItemClick!(this.historyColors.length > 0 ? this.historyColors[0] : '#ccc')
         });
 
         this.menuColorEL = this.querySelector("#menuColorEL")!;
-        if (this.currentColorKey && localStorage.getItem(this.currentColorKey)) {
-            this.menuColorEL!.style.background = localStorage.getItem(this.currentColorKey)!;
+        if (this.historyColors && this.historyColors.length > 0) {
+            this.menuColorEL!.style.background = this.historyColors[0];
         }
 
         tippy(this.querySelector("#dropdown")!, {
@@ -142,9 +140,6 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
                 `;
         localStorage.setItem(this.historyColorsKey, JSON.stringify(this.historyColors));
         this.menuColorEL!.style.background = color as string;
-        if (this.currentColorKey) {
-            localStorage.setItem(this.currentColorKey, color as string);
-        }
         this.onColorItemClick!(color!);
     }
 
