@@ -40,6 +40,8 @@ export interface AiEditorEvent {
 export type AiEditorOptions = {
     element: string | Element,
     content?: string,
+    contentRetention?: boolean,
+    contentRetentionKey?: string,
     placeholder?: string,
     theme?: "light" | "dark",
     cbName?: string,
@@ -80,7 +82,7 @@ export type AiEditorOptions = {
                 apiKey: string,
                 apiSecret: string,
                 version?: string,
-                urlSignatureAlgorithm?:(model:XingHuoModel)=>string,
+                urlSignatureAlgorithm?: (model: XingHuoModel) => string,
             }
         },
         menus?: AiMenu[],
@@ -90,6 +92,7 @@ export type AiEditorOptions = {
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
+    contentRetentionKey: "ai-editor-content",
     placeholder: "",
 }
 
@@ -141,9 +144,17 @@ export class AiEditor {
         this.eventComponents.push(this.menus);
         this.eventComponents.push(this.footer);
 
+        let content = this.options.content;
+        if (this.options.contentRetention && this.options.contentRetentionKey) {
+            const cacheContent = localStorage.getItem(this.options.contentRetentionKey);
+            if (cacheContent) {
+                content = JSON.parse(cacheContent);
+            }
+        }
+
         this.innerEditor = new InnerEditor(this.options, {
             element: mainEl,
-            content: this.options.content,
+            content: content,
             extensions: getExtensions(this, this.options),
             onCreate: (props) => this.onCreate(props, mainEl),
             onTransaction: (props) => this.onTransaction(props),
@@ -174,6 +185,14 @@ export class AiEditor {
         if (props.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
+        if (props.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey) {
+            const html = this.innerEditor.getHTML();
+            if ("<p></p>" === html || "" === html) {
+                localStorage.removeItem(this.options.contentRetentionKey);
+            } else {
+                localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(this.innerEditor.getJSON()))
+            }
+        }
     }
 
     onDestroy() {
@@ -181,7 +200,6 @@ export class AiEditor {
             this.container.firstChild.remove();
         }
     }
-
 
     getHtml() {
         return this.innerEditor.getHTML();
@@ -193,5 +211,9 @@ export class AiEditor {
 
     getText() {
         return this.innerEditor.getText();
+    }
+
+    removeRetention() {
+        this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey);
     }
 }

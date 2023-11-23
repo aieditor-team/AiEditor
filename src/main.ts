@@ -4,6 +4,7 @@ import {config} from "./xinghuo.ts";
 new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
+    contentRetention: true,
     content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
     ai: {
         model: {
