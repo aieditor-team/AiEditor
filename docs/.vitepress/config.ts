@@ -42,7 +42,7 @@ export default defineConfig({
         text: '配置',
         items: [
           { text: '基础', link: '/zh/config/base' },
-          { text: ' A I', link: '/zh/config/ai' },
+          { text: 'A I 功能', link: '/zh/config/ai' },
           { text: '工具栏', link: '/zh/config/toolbar' },
           { text: '图片', link: '/zh/config/image' },
           { text: '视频', link: '/zh/config/video' },

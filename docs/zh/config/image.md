@@ -1,5 +1,6 @@
 # 图片配置
 
+## 示例代码
 
 ```typescript
 new AiEditor({
@@ -13,7 +14,7 @@ new AiEditor({
             "other":"xxxx",
         },
         uploader: (file, uploadUrl, headers, formName) => {
-            //图片上传
+            //可自定义图片上传逻辑
         },
     },
 })

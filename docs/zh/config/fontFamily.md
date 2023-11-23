@@ -1,9 +1,10 @@
 # 字体配置
 
-## 字体配置
+## 示例代码
 
-```javascript
-{
+```typescript
+new AiEditor({
+    element: "#aiEditor",
     fontFamily:{
         values:[
             {name: "默认字体", value: ""},
@@ -15,9 +16,10 @@
             {name: "方正仿宋简体_GBK", value: "FangSong_GB2312"},
             {name: "Arial", value: "Arial"},
         ]
-    }
-}
+    },
+})
 ```
+以上代码中，name 表示字体名称，value 表示 css 使用的字体样式。
 
 
 
