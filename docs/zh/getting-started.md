@@ -44,9 +44,9 @@ new AiEditor({
     <title>AiEditor Demo</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link type="text/css" rel="stylesheet" href="./aieditor/style.css">
+    <link type="text/css" rel="stylesheet" href="aieditor/style.css">
     <script type="module">
-        import {AiEditor} from './aieditor/index.es.js'
+        import {AiEditor} from 'aieditor/index.js'
         new AiEditor({
             element: "#aiEditor",
             placeholder: "点击输入内容...",
@@ -69,5 +69,8 @@ new AiEditor({
 
 </body>
 </html>
-
 ```
+
+::: warning 注意
+使用 `<script type="module">` 的导入方式，不支持 IE 浏览器。
+:::
