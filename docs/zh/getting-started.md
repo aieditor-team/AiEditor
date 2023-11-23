@@ -74,3 +74,50 @@ new AiEditor({
 ::: warning 注意
 使用 `<script type="module">` 的导入方式，不支持 IE 浏览器。
 :::
+
+## 与 React 集成
+
+在 React 中，我们通过使用 `useRef` Hook 得到 dom 节点，然后再通过 `new AiEditor` 进行实例化，示例代码如下：
+
+```jsx
+import { useRef } from 'react';
+const AiEditorDemo = () => {
+  //定义 ref
+  const divRef = useRef();
+  
+  //初始化 AiEditor
+  useEffect(() => {
+      new AiEditor({
+          element: divRef.current,
+          placeholder: "点击输入内容...",
+          content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+      })
+  }, [])
+
+  return (
+      <div ref={ divRef } />
+  )
+};
+```
+
+## 与 Vue 集成
+
+在 Vue 中，我们通过 `ref` 属性定义 `div` 的 `$refs` 引用，然后再通过 `new AiEditor` 进行实例化，示例代码如下：
+
+```html
+<template>
+    <div ref="divRef" />
+</template>
+
+<script>
+export default {
+    mounted(){
+        new AiEditor({
+            element: this.$refs.divRef,
+            placeholder: "点击输入内容...",
+            content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+        })
+    }
+}
+</script>
+```
