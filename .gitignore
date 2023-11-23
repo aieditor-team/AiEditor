@@ -8,12 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
 dist-ssr
 *.local
 .ossutil_checkpoint
 ossutil_output
 deps/
+/docs/.vitepress/dist/
 
 # Editor directories and files
 .vscode/*
@@ -28,3 +28,4 @@ deps/
 
 # ai config
 xinghuo.ts
+
