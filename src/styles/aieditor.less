@@ -79,6 +79,7 @@
     ::selection {
       background: none;
     }
+
     .selection-marker {
       background: #85c3ff6d;
       padding: 2px 0;
@@ -197,7 +198,7 @@
           width: 6px;
           height: 6px;
           border-radius: 50rem;
-          background: red;
+          background: var(--aie-menus-red-dot-color);
           margin: auto;
         }
       }
@@ -227,12 +228,13 @@
       }
     }
 
-    #table-cells{
-      .table-cell{
-        border:  solid 1px var(--aie-menus-table-cell-border-color);
+    #table-cells {
+      .table-cell {
+        border: solid 1px var(--aie-menus-table-cell-border-color);
       }
-      .active{
-        border:  solid 1px var(--aie-menus-table-cell-border-active-color);
+
+      .active {
+        border: solid 1px var(--aie-menus-table-cell-border-active-color);
       }
     }
 
