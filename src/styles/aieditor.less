@@ -114,8 +114,9 @@
 
   .aie-bubble-menu {
     height: 30px;
-    background: #fff;
-    border: solid 1px #ccc;
+    background: var(--aie-dropdown-container-bg-color);
+    border: solid 1px var(--aie-dropdown-container-border-color);
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     padding: 5px;
@@ -129,11 +130,12 @@
       svg {
         width: 20px;
         height: 20px;
+        fill: var(--aie-text-color);
       }
     }
 
     &-item:hover {
-      background: #efefef;
+      background: var(--aie-menus-item-hover-color);
       cursor: pointer;
     }
   }
@@ -562,10 +564,12 @@
   min-width: 100px;
   min-height: 100px;
   background: #fff;
-  border: solid 1px #cccccc;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.1);
+  background: var(--aie-dropdown-container-bg-color);
+  border: 1px solid var(--aie-aie-popover-border-color);
 
   &-header {
     height: 20px;
@@ -578,6 +582,10 @@
       margin-left: auto;
       cursor: pointer;
     }
+
+    svg {
+      fill: var(--aie-aie-popover-text-color);
+    }
   }
 
   &-content {
@@ -585,7 +593,7 @@
     padding: 0 10px 10px 10px;
 
     > div {
-      color: #333333;
+      color: var(--aie-aie-popover-text-color);
       font-size: 14px;
     }
 
