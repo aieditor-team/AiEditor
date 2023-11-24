@@ -15,9 +15,10 @@ const aiEditor = new AiEditor({
 
 AiEditor 提供的方法如下：
 
-- `getHtml() `： 获取当前编辑器的 html 内容。
-- `getJson() `： 获取当前编辑器的 json 描述数据。
-- `getText() `： 获取当前编辑器的 纯文本 内容（不包含 html）。
+- `getHtml()`： 获取当前编辑器的 html 内容。
+- `getJson()`： 获取当前编辑器的 json 描述数据。
+- `getText()`： 获取当前编辑器的 纯文本 内容（不包含 html）。
+- `removeRetention()`： 移除编辑器自动记录和保存的编辑内容。
 
 ## 内容变化监听
 
