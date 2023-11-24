@@ -15,6 +15,7 @@ export class Table extends AbstractMenuButton {
         this.template = template;
     }
 
+
     connectedCallback() {
         super.connectedCallback();
         this.instance = tippy(this.querySelector("svg")!, {
@@ -33,11 +34,11 @@ export class Table extends AbstractMenuButton {
         div.classList.add("aie-dropdown-container")
         div.innerHTML = `
         <div style="margin: 5px">
-            <div style="padding: 5px 0;font-size: 14px;color: #666">插入表格</div>
+            <div style="padding: 5px 0;font-size: 14px;">插入表格 <span style="margin-left: 60px" id="columnRows"></span></div>
             <div style="display: flex;flex-wrap: wrap;width: 240px;height: 200px" id="table-cells">
             ${[...Array(8).keys()].map((_, i) => {
             return [...Array(10).keys()].map((_, j) => {
-                return `<div data-i="${i}" data-j="${j}" class="table-cell" style="width: 20px;height: 20px;margin:1px;border: solid 1px #ccc"></div>`;
+                return `<div data-i="${i}" data-j="${j}" class="table-cell" style="width: 20px;height: 20px;margin:1px;"></div>`;
             }).join('');
         }).join('')}
             </div>
@@ -61,13 +62,15 @@ export class Table extends AbstractMenuButton {
                 let targetI = Number(target.getAttribute("data-i"));
                 let targetJ = Number(target.getAttribute("data-j"));
                 const nodeList = tableCells.querySelectorAll("div");
+                const querySelector = div.querySelector("#columnRows")!;
+                querySelector.textContent = `${targetI + 1} 行 x ${targetJ + 1} 列`
                 nodeList.forEach((element) => {
                     let i = Number(element.getAttribute("data-i"));
                     let j = Number(element.getAttribute("data-j"));
                     if (i <= targetI && j <= targetJ) {
-                        element.style.border = "solid 1px #000"
+                        element.classList.add("active")
                     } else {
-                        element.style.border = "solid 1px #ccc"
+                        element.classList.remove("active")
                     }
                 })
             }
@@ -76,10 +79,11 @@ export class Table extends AbstractMenuButton {
         tableCells.addEventListener("mouseleave", () => {
             const nodeList = tableCells.querySelectorAll("div");
             nodeList.forEach((element) => {
-                element.style.border = "solid 1px #ccc"
+                element.classList.remove("active")
             })
+            const querySelector = div.querySelector("#columnRows")!;
+            querySelector.textContent = ""
         })
-
         return div;
     }
 
