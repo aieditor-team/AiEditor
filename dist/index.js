@@ -14033,9 +14033,9 @@ let yv = class extends me {
     const n = document.createElement("div");
     n.classList.add("aie-dropdown-container"), n.innerHTML = `
         <div style="margin: 5px">
-            <div style="padding: 5px 0;font-size: 14px;color: #666">插入表格</div>
+            <div style="padding: 5px 0;font-size: 14px;">插入表格 <span style="margin-left: 60px" id="columnRows"></span></div>
             <div style="display: flex;flex-wrap: wrap;width: 240px;height: 200px" id="table-cells">
-            ${[...Array(8).keys()].map((i, s) => [...Array(10).keys()].map((o, a) => `<div data-i="${s}" data-j="${a}" class="table-cell" style="width: 20px;height: 20px;margin:1px;border: solid 1px #ccc"></div>`).join("")).join("")}
+            ${[...Array(8).keys()].map((i, s) => [...Array(10).keys()].map((o, a) => `<div data-i="${s}" data-j="${a}" class="table-cell" style="width: 20px;height: 20px;margin:1px;"></div>`).join("")).join("")}
             </div>
         </div>
         `;
@@ -14051,15 +14051,18 @@ let yv = class extends me {
       const s = i.target.closest(".table-cell");
       if (s) {
         let o = Number(s.getAttribute("data-i")), a = Number(s.getAttribute("data-j"));
-        r.querySelectorAll("div").forEach((c) => {
-          let d = Number(c.getAttribute("data-i")), u = Number(c.getAttribute("data-j"));
-          d <= o && u <= a ? c.style.border = "solid 1px #000" : c.style.border = "solid 1px #ccc";
+        const l = r.querySelectorAll("div"), c = n.querySelector("#columnRows");
+        c.textContent = `${o + 1} 行 x ${a + 1} 列`, l.forEach((d) => {
+          let u = Number(d.getAttribute("data-i")), f = Number(d.getAttribute("data-j"));
+          u <= o && f <= a ? d.classList.add("active") : d.classList.remove("active");
         });
       }
     }), r.addEventListener("mouseleave", () => {
-      r.querySelectorAll("div").forEach((s) => {
-        s.style.border = "solid 1px #ccc";
+      r.querySelectorAll("div").forEach((o) => {
+        o.classList.remove("active");
       });
+      const s = n.querySelector("#columnRows");
+      s.textContent = "";
     }), n;
   }
 };
