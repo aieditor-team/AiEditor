@@ -44,6 +44,7 @@ export default defineConfig({
                     {text: '基础', link: '/zh/config/base'},
                     {text: 'AI 功能', link: '/zh/config/ai'},
                     {text: '工具栏', link: '/zh/config/toolbar'},
+                    {text: '国际化', link: '/zh/config/i18n'},
                     {text: '图片', link: '/zh/config/image'},
                     {text: '视频', link: '/zh/config/video'},
                     {text: '附件', link: '/zh/config/attachment'},

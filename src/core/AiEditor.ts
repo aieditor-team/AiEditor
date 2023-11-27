@@ -46,7 +46,7 @@ export type AiEditorOptions = {
     content?: string,
     contentRetention?: boolean,
     contentRetentionKey?: string,
-    language?: string,
+    lang?: string,
     i18n?: Record<string, Record<string, string>>,
     placeholder?: string,
     theme?: "light" | "dark",
@@ -98,7 +98,7 @@ export type AiEditorOptions = {
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
-    language: "zh",
+    lang: "zh",
     contentRetentionKey: "ai-editor-content",
     placeholder: "",
 }
@@ -147,9 +147,7 @@ export class AiEditor {
             }
         }
         i18next.init({
-            lng: this.options.language,
-            debug: true,
-            resources,
+            lng: this.options.lang,resources,
         }, (_err, _t) => {
             this.initInnerEditor();
         })
@@ -251,7 +249,7 @@ export class AiEditor {
 
     changeLang(lang: string) {
         this.destroy();
-        this.options.language = lang;
+        this.options.lang = lang;
         i18next.changeLanguage(lang);
         this.initInnerEditor();
     }

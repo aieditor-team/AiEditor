@@ -14,6 +14,12 @@ window.aiEditor = new AiEditor({
             }
         }
     },
+    i18n:{
+        zh:{
+            "undo": "撤销(可自定义国际化内容...)",
+            "redo": "重做(可自定义国际化内容!)",
+        }
+    },
     onMentionQuery:(query)=>{
         return [
             'Michael Yang', 'Jean Zhou', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder'

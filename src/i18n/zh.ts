@@ -1,7 +1,6 @@
 export const zh  =  {
-    key:"value",
-    undo: "撤销",
-    redo: "重做",
+    "undo": "撤销",
+    "redo": "重做",
     "brush": "格式刷",
     "eraser": "清除格式",
     "title": "正文/标题",
