@@ -26,7 +26,7 @@ AiEditor 提供的方法如下：
 const aiEditor = new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
-    onChnage:(aiEditor)=>{
+    onChange:(aiEditor)=>{
         // 监听到用编辑器内容发生变化了，控制台打印编辑器的 html 内容...
         console.log(aiEditor.getHtml())
     }
