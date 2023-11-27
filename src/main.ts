@@ -1,7 +1,8 @@
 import {AiEditor} from "./core/AiEditor.ts";
 import {config} from "./xinghuo.ts";
 
-new AiEditor({
+// @ts-ignore
+window.aiEditor = new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
     contentRetention: true,

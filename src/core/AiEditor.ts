@@ -7,6 +7,10 @@ import {getExtensions} from "./getExtensions.ts";
 
 import "../styles"
 import {XingHuoModel} from "../ai/xinghuo/XingHuoModel.ts";
+import i18next from "i18next";
+import {zh} from "../i18n/zh.ts";
+import {en} from "../i18n/en.ts";
+import {Resource} from "i18next";
 
 window.customElements.define('aie-menus', Header);
 window.customElements.define('aie-footer', Footer);
@@ -42,6 +46,8 @@ export type AiEditorOptions = {
     content?: string,
     contentRetention?: boolean,
     contentRetentionKey?: string,
+    language?: string,
+    i18n?: Record<string, Record<string, string>>,
     placeholder?: string,
     theme?: "light" | "dark",
     cbName?: string,
@@ -92,6 +98,7 @@ export type AiEditorOptions = {
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
+    language: "zh",
     contentRetentionKey: "ai-editor-content",
     placeholder: "",
 }
@@ -107,13 +114,13 @@ export class InnerEditor extends Tiptap {
 
 export class AiEditor {
 
-    innerEditor: InnerEditor;
+    innerEditor!: InnerEditor;
 
-    container: HTMLDivElement;
+    container!: HTMLDivElement;
 
-    menus: Header;
+    menus!: Header;
 
-    footer: Footer;
+    footer!: Footer;
 
     options: AiEditorOptions;
 
@@ -121,7 +128,34 @@ export class AiEditor {
 
     constructor(_: AiEditorOptions) {
         this.options = Object.assign(defaultOptions, _);
+        this.initI18n();
+    }
 
+    private initI18n() {
+        const i18nConfig = this.options.i18n || {};
+        const resources = {
+            en: {translation: {...en, ...i18nConfig.en}},
+            zh: {translation: {...zh, ...i18nConfig.zh}},
+        } as Resource;
+
+        //fill the resources but en and zh
+        for (let key of Object.keys(i18nConfig)) {
+            if (key != "en" && key != "zh") {
+                resources[key] = {
+                    translation: {...i18nConfig[key]}
+                }
+            }
+        }
+        i18next.init({
+            lng: this.options.language,
+            debug: true,
+            resources,
+        }, (_err, _t) => {
+            this.initInnerEditor();
+        })
+    }
+
+    private initInnerEditor() {
         const rootEl = typeof this.options.element === "string"
             ? document.querySelector(this.options.element) as Element : this.options.element;
 
@@ -196,9 +230,7 @@ export class AiEditor {
     }
 
     onDestroy() {
-        while (this.container.firstChild) {
-            this.container.firstChild.remove();
-        }
+        console.log("AiEditor has destroyed!")
     }
 
     getHtml() {
@@ -213,7 +245,24 @@ export class AiEditor {
         return this.innerEditor.getText();
     }
 
+    getOptions() {
+        return this.options;
+    }
+
+    changeLang(lang: string) {
+        this.destroy();
+        this.options.language = lang;
+        i18next.changeLanguage(lang);
+        this.initInnerEditor();
+    }
+
     removeRetention() {
         this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey);
+    }
+
+    destroy() {
+        this.innerEditor.destroy();
+        this.container.remove();
+        this.eventComponents = [];
     }
 }

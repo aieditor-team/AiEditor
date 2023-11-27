@@ -82,20 +82,20 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
 
 
     onTransaction(event: EditorEvents["transaction"]) {
-        const redDot = this.tippyEl!.querySelector(".red-dot");
+        const redDot = this.tippyEl?.querySelector(".red-dot");
         if (redDot) {
             redDot.classList.remove("red-dot")
         }
         for (let index = 0; index < this.menuData.length; index++) {
             if (this.onDropdownActive(event.editor, index)) {
-                this.tippyEl!.querySelector(`#item${index}`)!.children[0].classList.add("red-dot")
-                if (this.refreshMenuText) {
+                this.tippyEl?.querySelector(`#item${index}`)!.children[0].classList.add("red-dot")
+                if (this.refreshMenuText && this.textEl) {
                     const menuTextResult = this.onMenuTextRender(index);
                     if (typeof menuTextResult === "string") {
-                        this.textEl!.innerHTML = menuTextResult;
+                        this.textEl.innerHTML = menuTextResult;
                     } else {
-                        this.textEl?.removeChild(this.textEl?.firstChild!);
-                        this.textEl?.appendChild(menuTextResult as Node);
+                        this.textEl.removeChild(this.textEl.firstChild!);
+                        this.textEl.appendChild(menuTextResult as Node);
                     }
                 }
             }
