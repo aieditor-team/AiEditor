@@ -1,21 +1,10 @@
 import {Editor, EditorEvents} from "@tiptap/core";
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
 import {AiEditorOptions, NameAndValue} from "../../core/AiEditor.ts";
+import {t} from "i18next";
 
 
 const fontSizes: NameAndValue[] = [
-    {name: "初号", value: 56},
-    {name: "小初", value: 48},
-    {name: "一号", value: 34.7},
-    {name: "小一", value: 32},
-    {name: "二号", value: 29.3},
-    {name: "小二", value: 24},
-    {name: "三号", value: 21.3},
-    {name: "小三", value: 20},
-    {name: "四号", value: 18.7},
-    {name: "小四", value: 16},
-    {name: "五号", value: 14},
-    {name: "小五", value: 12},
     {name: "9", value: 9},
     {name: "10", value: 10},
     {name: "11", value: 11},
@@ -39,11 +28,19 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
 
     constructor() {
         super();
+        this.dropDivWith = "134px";
     }
 
     onCreate(_: EditorEvents["create"], options: AiEditorOptions) {
         super.onCreate(_, options);
         this.menuData = options.fontSize?.values || fontSizes;
+        for (let i = 0; i < this.menuData.length; i++) {
+            if (this.menuData[i].value == 14){
+                this.defaultMenuIndex = i;
+                this.menuData[i].name = `14（${t("default")}）`
+                break
+            }
+        }
     }
 
     onDropdownActive(editor: Editor, index: number): boolean {
@@ -51,9 +48,14 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
     }
 
     onDropdownItemClick(index: number): void {
-        this.editor?.chain().focus()
-            .setFontSize(`${this.menuData[index].value}px`)
-            .run()
+        const size = this.menuData[index].value;
+        if (size == 14){
+            this.editor?.chain().focus().unsetFontSize();
+        }else {
+            this.editor?.chain().focus()
+                .setFontSize(`${size}px`)
+                .run()
+        }
     }
 
     onDropdownItemRender(index: number): Element | string {
@@ -61,7 +63,14 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
     }
 
     onMenuTextRender(index: number): Element | string {
-        return this.menuData[index].name;
+        const item = this.menuData[index];
+        if (item.value == 14){
+            return t("default-font-size")
+        }else {
+            return item.name;
+        }
+
+        // return this.menuData[index].name;
     }
 
 

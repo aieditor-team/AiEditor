@@ -32,8 +32,8 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     connectedCallback() {
         this.template = `
-            <div style="width: 36px;height: 18px;display: flex">
-                <div style="width: 18px;height: 18px" id="btn">
+            <div style="width: 36px;height: 18px;display: flex;padding-right: 0">
+                <div style="width: 18px;height: 18px" class="currentColor">
                     <div style="height: 15px;width: 15px;padding:0 1.5px;line-height: 18px">${this.iconSvg}</div>
                     <div style="width: 18px;height: 3px;background: #333" id="menuColorEL"></div>
                 </div>
@@ -49,7 +49,7 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
             this.historyColors = JSON.parse(localStorageColors);
         }
 
-        this.querySelector("#btn")!.addEventListener("click", () => {
+        this.querySelector(".currentColor")!.addEventListener("click", () => {
             this.onColorItemClick!(this.historyColors.length > 0 ? this.historyColors[0] : '#ccc')
         });
 

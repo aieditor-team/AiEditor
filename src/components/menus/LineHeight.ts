@@ -11,7 +11,7 @@ export class LineHeight extends AbstractDropdownMenuButton<string> {
         this.menuData = titles;
         this.refreshMenuText = false;
         this.dropDivHeight = "180px"
-        this.dropDivWith = "60px"
+        this.dropDivWith = "70px"
         this.width="36px"
         this.menuTextWidth="20px"
     }

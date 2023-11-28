@@ -86,4 +86,8 @@ export const zh  =  {
     "link-address":"链接地址",
     "link-open-type":"打开方式",
     "link-open-blank":"新窗口",
+
+    ////font
+    "default-font-size":"字号",
+    "default-font-family":"默认字体",
 }
