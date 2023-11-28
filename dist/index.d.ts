@@ -34,16 +34,25 @@ export declare class AiEditor {
     constructor(_: AiEditorOptions);
     private initI18n;
     private initInnerEditor;
-    onCreate(props: EditorEvents['create'], mainEl: Element): void;
-    onTransaction(props: EditorEvents['transaction']): void;
-    onDestroy(): void;
+    private onCreate;
+    private onTransaction;
+    private onDestroy;
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
     getOptions(): AiEditorOptions;
+    focus(): void;
+    focusStart(): void;
+    focusEnd(): void;
+    isFocused(): boolean;
+    blur(): void;
+    insert(html: string): void;
+    clear(): void;
+    isEmpty(): boolean;
     changeLang(lang: string): void;
     removeRetention(): void;
     destroy(): void;
+    isDestroyed(): boolean;
 }
 
 export declare interface AiEditorEvent {
