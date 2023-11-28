@@ -30,10 +30,6 @@ export const FontSizeExt = Extension.create<FontSizeOptions>({
     }
   },
 
-  onBeforeCreate(){
-    console.log("onBeforeCreate")
-  },
-
   addGlobalAttributes() {
     return [
       {
