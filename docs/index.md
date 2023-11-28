@@ -6,6 +6,9 @@ hero:
   name: "AiEditor"
   text: "一个面向 AI 的下一代 富文本编辑器"
   tagline: 简单智能、开箱即用、全框架支持
+  image:
+    src: /assets/image/logo-large.png
+    alt: AiEditor
   actions:
     - theme: brand
       text: 快速开始 
