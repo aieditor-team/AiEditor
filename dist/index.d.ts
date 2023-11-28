@@ -32,13 +32,18 @@ export declare class AiEditor {
     options: AiEditorOptions;
     eventComponents: AiEditorEvent[];
     constructor(_: AiEditorOptions);
+    private initI18n;
+    private initInnerEditor;
     onCreate(props: EditorEvents['create'], mainEl: Element): void;
     onTransaction(props: EditorEvents['transaction']): void;
     onDestroy(): void;
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
+    getOptions(): AiEditorOptions;
+    changeLang(lang: string): void;
     removeRetention(): void;
+    destroy(): void;
 }
 
 export declare interface AiEditorEvent {
@@ -51,6 +56,8 @@ export declare type AiEditorOptions = {
     content?: string;
     contentRetention?: boolean;
     contentRetentionKey?: string;
+    lang?: string;
+    i18n?: Record<string, Record<string, string>>;
     placeholder?: string;
     theme?: "light" | "dark";
     cbName?: string;

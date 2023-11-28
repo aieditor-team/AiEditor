@@ -1,7 +1,7 @@
 {
   "name": "aieditor",
   "author": "yangfuhai",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "type": "module",
   "keywords": [
     "editor",
@@ -16,6 +16,10 @@
       "require": "./dist/index.cjs",
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
     }
   },
   "files": [
