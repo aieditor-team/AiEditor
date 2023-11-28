@@ -7,6 +7,10 @@
   border-color: var(--aie-container-border);
   background: var(--aie-bg-color);
 
+  *,::before,::after {
+    box-sizing: content-box;
+  }
+
   aie-menus {
     //position: sticky;
     //top: 0;
@@ -164,7 +168,9 @@
         display: flex;
 
         h1, h2, h3, h4, h5, h6 {
+          padding: 0;
           margin: 0;
+          border: none;
         }
 
         h1 {
