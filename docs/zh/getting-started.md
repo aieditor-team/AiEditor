@@ -116,7 +116,7 @@ function App() {
 export default App
 ```
 
-更多示例请参考：https://gitee.com/aieditor-team/aieditor/tree/main/demos/react-ts 
+更多 react 集成示例请参考：https://gitee.com/aieditor-team/aieditor/tree/main/demos/react-ts 
 
 ## 与 Vue 集成
 
@@ -124,18 +124,57 @@ export default App
 
 ```html
 <template>
-    <div ref="divRef" />
+    <div>
+        <h1>AiEditor，一个面向 AI 的富文本编辑器</h1>
+    </div>
+    <div ref="divRef" style="height: 600px"/>
 </template>
 
-<script>
-export default {
-    mounted(){
-        new AiEditor({
-            element: this.$refs.divRef,
-            placeholder: "点击输入内容...",
-            content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
-        })
+<script lang="ts">
+    import {AiEditor} from "aieditor";
+    import "aieditor/dist/style.css"
+    export default {
+        mounted(){
+            new AiEditor({
+                element: this.$refs.divRef as Element,
+                placeholder: "点击输入内容...",
+                content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+            })
+        }
     }
-}
 </script>
 ```
+
+或者使用 `vue` 的 `setup` 语法：
+
+```vue
+<template>
+  <div>
+    <h1>AiEditor，一个面向 AI 的富文本编辑器</h1>
+  </div>
+  <div ref="divRef" style="height: 600px"/>
+</template>
+
+<script setup lang="ts">
+import {AiEditor} from "aieditor";
+import "aieditor/dist/style.css"
+import {onMounted, onUnmounted, ref} from "vue";
+
+const divRef = ref();
+let aiEditor: AiEditor | null = null;
+
+onMounted(() => {
+  aiEditor = new AiEditor({
+    element: divRef.value as Element,
+    placeholder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+  })
+})
+
+onUnmounted(() => {
+  aiEditor && aiEditor.destroy();
+})
+</script>
+```
+
+更多 vue 集成示例请参考：https://gitee.com/aieditor-team/aieditor/tree/main/demos/vue-ts 
