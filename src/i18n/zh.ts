@@ -1,4 +1,10 @@
 export const zh  =  {
+    ////commons
+    "default":"默认",
+    "delete": "删除",
+    "confirm": "确定",
+
+    //menu tips
     "undo": "撤销",
     "redo": "重做",
     "brush": "格式刷",
@@ -35,6 +41,7 @@ export const zh  =  {
     "printer": "打印",
     "fullscreen": "全屏",
     "ai": "人工智能",
+
     /////
     "paragraph":"正文",
     "h1":"标题 1",
@@ -43,12 +50,40 @@ export const zh  =  {
     "h4":"标题 4",
     "h5":"标题 5",
     "h6":"标题 6",
+
     ////colors panel
-    "default":"默认",
     "standardColors":"标准色",
     "historyColors":"最近使用",
+
     ////table
     "insertTable":"插入表格",
     "row":"行",
     "column":"列",
+
+    ////alignment
+    "align-left":"居左对齐",
+    "align-right":"居右对齐",
+    "align-center":"居中对齐",
+    "align-justify":"两端对齐",
+
+    ////table
+    "insert-column-left":"左侧插入列",
+    "insert-column-right":"右侧插入列",
+    "insert-row-top":"上方插入行",
+    "insert-row-bottom":"下方插入行",
+    "delete-column":"删除当前列",
+    "delete-row":"删除当前行",
+    "merge-cells-horizontal":"合并单元格",
+    "merge-cells-vertical":"合并单元格",
+    "split-cells-horizontal":"解除合并单元格",
+    "split-cells-vertical":"解除合并单元格",
+    "delete-table":"上传表格",
+
+    ////link
+    "edit-link":"编辑链接",
+    "unlink":"取消链接",
+    "visit-link":"访问链接",
+    "link-address":"链接地址",
+    "link-open-type":"打开方式",
+    "link-open-blank":"新窗口",
 }

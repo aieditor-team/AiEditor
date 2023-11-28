@@ -1,4 +1,10 @@
 export const en =  {
+    ////commons
+    "default":"Default",
+    "delete": "Delete",
+    "confirm": "Confirm",
+
+    //menu tips
     "undo": "Undo",
     "redo": "Redo",
     "brush": "Format Painter",
@@ -35,6 +41,7 @@ export const en =  {
     "printer": "Print",
     "fullscreen": "Full screen",
     "ai": "AI",
+
     /////
     "paragraph":"Paragraph",
     "h1":"H1",
@@ -43,12 +50,40 @@ export const en =  {
     "h4":"H4",
     "h5":"H5",
     "h6":"H6",
+
     ////colors panel
-    "default":"Default",
     "standardColors":"Standard colors",
     "historyColors":"Recently used colors",
+
     ////table
     "insertTable":"Insert Table",
     "row":"Row",
     "column":"Column",
+
+    ////alignment
+    "align-left":"Align left",
+    "align-right":"Align right",
+    "align-center":"Align center",
+    "align-justify":"Align justify",
+
+    ////table
+    "insert-column-left":"Insert column left",
+    "insert-column-right":"Insert column right",
+    "insert-row-top":"Insert row top",
+    "insert-row-bottom":"Insert row bottom",
+    "delete-column":"Delete column",
+    "delete-row":"Delete row",
+    "merge-cells-horizontal":"Merge cells",
+    "merge-cells-vertical":"Merge cells",
+    "split-cells-horizontal":"Split cells",
+    "split-cells-vertical":"Split cells",
+    "delete-table":"Delete table",
+
+    ///link
+    "edit-link":"Edit link",
+    "unlink":"Unlink",
+    "visit-link":"Visit link",
+    "link-address":"Link address",
+    "link-open-type":"Open type",
+    "link-open-blank":"Blank",
 }

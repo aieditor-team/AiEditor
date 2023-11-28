@@ -1,4 +1,5 @@
 import tippy, {Instance, Placement} from "tippy.js";
+import {t} from "i18next";
 
 
 export class Popover {
@@ -43,7 +44,7 @@ export class Popover {
               </div>
               <div class="aie-popover-content">${this.content}</div>
               <div class="aie-popover-footer">
-              <button class="aie-popover-footer-confirm" type="button">确定</button>
+              <button class="aie-popover-footer-confirm" type="button">${t("confirm")}</button>
               </div>
             </div>
         `;

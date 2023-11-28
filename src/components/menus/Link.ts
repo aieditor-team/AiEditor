@@ -1,5 +1,6 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import {Popover} from "../../commons/Popover.ts";
+import {t} from "i18next";
 
 export class Link extends AbstractMenuButton {
 
@@ -17,21 +18,17 @@ export class Link extends AbstractMenuButton {
         super.connectedCallback();
         const popover  = new Popover();
         popover.setContent(`
-            <div style="width: 250px">
-            链接地址
-            </div>
+            <div style="width: 250px">${t("link-address")}</div>
              <div style="width: 250px">
              <input type="text" id="href" style="width: 240px">
             </div>
             
-            <div style="margin-top: 10px">
-            打开方式
-            </div>
+            <div style="margin-top: 10px">${t("link-open-type")}</div>
             <div>
             <select id="target" style="width: 250px">
-                       <option value="">默认</option>
-                       <option value="_blank">新窗口</option>
-                    </select>
+               <option value="">${t("default")}</option>
+               <option value="_blank">${t("link-open-blank")}</option>
+            </select>
             </div>
         `);
 
