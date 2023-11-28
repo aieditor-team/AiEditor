@@ -200,13 +200,16 @@
 
       .red-dot-container {
         display: flex;
-        width: 20px;
+        width: 30px;
+        overflow: hidden;
+        padding-bottom: 5px;
 
         .red-dot {
-          width: 6px;
+          width: 10px;
           height: 6px;
-          border-radius: 50rem;
-          background: var(--aie-menus-red-dot-color);
+          border-left: 2px solid var(--aie-text-color);
+          border-bottom: 2px solid var(--aie-text-color);
+          rotate: -45deg;
           margin: auto;
         }
       }
