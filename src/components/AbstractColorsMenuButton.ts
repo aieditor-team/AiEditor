@@ -1,5 +1,6 @@
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
 import tippy from "tippy.js";
+import {t} from "i18next";
 
 
 const colors = [
@@ -73,21 +74,21 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
         div.classList.add("aie-dropdown-container")
         div.innerHTML = `
         <div class="color-panel">
-            <div class="color-panel-default-button" id="defaultColor">默认</div>
+            <div class="color-panel-default-button" id="defaultColor">${t("default")}</div>
             <div style="display: flex;flex-wrap: wrap;padding-top: 5px">
                 ${colors.map((color, index) => {
             return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${index == 0 ? 'efefef' : color};background: #${color}"></div>`
         }).join(" ")
         }
             </div>
-            <div class="color-panel-title">标准色</div>
+            <div class="color-panel-title">${t("standardColors")}</div>
             <div style="display: flex;flex-wrap: wrap;">
                 ${standardColors.map((color) => {
             return `<div class="color-item" data-color="#${color}" style="width: 18px;height:18px;margin:1px;padding:1px;border:1px solid #${color};background: #${color}"></div>`
         }).join(" ")
         }
             </div>
-            <div class="color-panel-title">最近使用</div>
+            <div class="color-panel-title">${t("historyColors")}</div>
             <div style="display: flex;flex-wrap: wrap;" id="history-colors">
                ${this.historyColors.map((color) => {
             return `<div class="history-color-item" data-color="${color}" style="width: 22px;height: 23px;margin: 1px;background: ${color}"></div>`

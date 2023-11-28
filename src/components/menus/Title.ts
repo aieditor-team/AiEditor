@@ -1,12 +1,14 @@
 import {Editor} from "@tiptap/core";
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
+import {t} from "i18next";
 
-const titles = ["正文", "标题 1", "标题 2", "标题 3", "标题 4", "标题 5", "标题 6"];
+const titles = ["paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
+
 export class Title extends AbstractDropdownMenuButton<string> {
 
     constructor() {
         super();
-        this.menuData = titles;
+        this.menuData = titles.map((v) => t(v));
         this.dropDivHeight = "265px";
         this.dropDivWith = "150px";
 

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import tippy, {Instance} from "tippy.js";
 
@@ -34,7 +35,7 @@ export class Table extends AbstractMenuButton {
         div.classList.add("aie-dropdown-container")
         div.innerHTML = `
         <div style="margin: 5px">
-            <div style="padding: 5px 0;font-size: 14px;">插入表格 <span style="margin-left: 60px" id="columnRows"></span></div>
+            <div style="padding: 5px 0;font-size: 14px;display: flex"><span>${t("insertTable")}</span><span style="margin-left: auto" id="columnRows"></span></div>
             <div style="display: flex;flex-wrap: wrap;width: 240px;height: 200px" id="table-cells">
             ${[...Array(8).keys()].map((_, i) => {
             return [...Array(10).keys()].map((_, j) => {
@@ -63,7 +64,7 @@ export class Table extends AbstractMenuButton {
                 let targetJ = Number(target.getAttribute("data-j"));
                 const nodeList = tableCells.querySelectorAll("div");
                 const querySelector = div.querySelector("#columnRows")!;
-                querySelector.textContent = `${targetI + 1} 行 x ${targetJ + 1} 列`
+                querySelector.textContent = `${targetI + 1} ${t("row")} x ${targetJ + 1} ${t("column")}`
                 nodeList.forEach((element) => {
                     let i = Number(element.getAttribute("data-i"));
                     let j = Number(element.getAttribute("data-j"));
