@@ -147,7 +147,7 @@ export class AiEditor {
             }
         }
         i18next.init({
-            lng: this.options.lang,resources,
+            lng: this.options.lang, resources,
         }, (_err, _t) => {
             this.initInnerEditor();
         })
@@ -199,7 +199,7 @@ export class AiEditor {
         })
     }
 
-    onCreate(props: EditorEvents['create'], mainEl: Element) {
+    private onCreate(props: EditorEvents['create'], mainEl: Element) {
         this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
         this.eventComponents.forEach((zEvent) => {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
@@ -210,7 +210,7 @@ export class AiEditor {
         this.container.appendChild(this.footer);
     }
 
-    onTransaction(props: EditorEvents['transaction']) {
+    private onTransaction(props: EditorEvents['transaction']) {
         this.eventComponents.forEach((zEvent) => {
             zEvent.onTransaction && zEvent.onTransaction(props);
         });
@@ -227,7 +227,7 @@ export class AiEditor {
         }
     }
 
-    onDestroy() {
+    private onDestroy() {
         console.log("AiEditor has destroyed!")
     }
 
@@ -247,6 +247,39 @@ export class AiEditor {
         return this.options;
     }
 
+
+    focus() {
+        this.innerEditor.commands.focus();
+    }
+
+    focusStart() {
+        this.innerEditor.commands.focus("start");
+    }
+
+    focusEnd() {
+        this.innerEditor.commands.focus("end");
+    }
+
+    isFocused() {
+        return this.innerEditor.isFocused;
+    }
+
+    blur() {
+        this.innerEditor.commands.blur();
+    }
+
+    insert(html: string) {
+        this.innerEditor.commands.insertContent(html);
+    }
+
+    clear() {
+        this.innerEditor.commands.clearContent(true);
+    }
+
+    isEmpty() {
+        return this.innerEditor.isEmpty;
+    }
+
     changeLang(lang: string) {
         this.destroy();
         this.options.lang = lang;
@@ -262,5 +295,9 @@ export class AiEditor {
         this.innerEditor.destroy();
         this.container.remove();
         this.eventComponents = [];
+    }
+
+    isDestroyed() {
+        return this.innerEditor.isDestroyed;
     }
 }
