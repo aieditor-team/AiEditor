@@ -21,6 +21,7 @@ export default defineConfig({
         nav: [
             {text: '首页', link: '/'},
             {text: '文档', link: 'zh/what-is-ai-editor'},
+            // {text: 'Demo', link: 'zh/demo'},
             {text: '在线 Demo', link: 'http://aieditor.jpress.cn'},
             {
                 text: '获取源码', items: [
