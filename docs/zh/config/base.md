@@ -25,4 +25,4 @@ new AiEditor({
 - **content**：编辑的内容。
 - **contentRetention**：是否自动保存（缓存）当前编辑的内容，默认为：`false`。
 - **contentRetentionKey**：自动保存（缓存）到 `localStorage` 的 key 值，默认为：`ai-editor-content`。
-- **ai**: AI 相关配置，更多参考 [AI配置](/zh/config/ai.html) 的相关文档。
+- **ai**: AI 相关配置，更多参考 [AI配置](/zh/ai/base.md) 的相关文档。

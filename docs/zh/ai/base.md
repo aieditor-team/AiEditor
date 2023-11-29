@@ -38,9 +38,9 @@ urlSignatureAlgorithm?:(model:XingHuoModel)=>string,
 
 ## 服务端签名
 
-在使用 AiEditor 中，如果是针对内部应用，我们可以通过前端配置模型的 appId、apiKey、apiSecret ，这是没问题的。
+在使用 AiEditor 中，如果是用于内部用户，我们可以通过前端配置模型的 `appId`、`apiKey`、`apiSecret` ，这是没问题的。
 
-但是 AiEditor 给普通互联网用户使用，则不应该把 appId、apiKey、apiSecret 配置在前端，而是通过后端对 Ai 请求路径进行签名，
+但是，AiEditor 给普通互联网用户使用，则不应该把 `appId`、`apiKey`、`apiSecret` 配置在前端，而是通过后端服务对 Ai 请求路径进行签名，
 需要自定义配置 `urlSignatureAlgorithm` 才行，示例代码如下：
 
 ```typescript
@@ -51,7 +51,8 @@ new AiEditor({
             xinghuo:{
                 appId: "****",
                  urlSignatureAlgorithm: async (model)=>{
-                   return await fetch("/your-path/model?appId="+model.appId)
+                    //通过后端进行 URL 签名，并返回签名完成的 URL 地址
+                    return await fetch("/your-path/model?appId="+model.appId)
                        .then(resp=>resp.josn)
                        .then(json=>json.url)
                 }

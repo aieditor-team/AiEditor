@@ -31,6 +31,7 @@ export default defineConfig({
                 text: '获取源码', items: [
                     {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
                     {text: 'Github', link: 'https://github.com/aieditor-team/aieditor'},
+                    {text: '示例代码', link: 'https://gitee.com/aieditor-team/aieditor/tree/main/demos'},
                 ]
             },
         ],
