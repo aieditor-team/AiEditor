@@ -47,7 +47,6 @@ export default defineConfig({
                 text: '配置',
                 items: [
                     {text: '基础', link: '/zh/config/base'},
-                    {text: 'AI 功能', link: '/zh/config/ai'},
                     {text: '工具栏', link: '/zh/config/toolbar'},
                     {text: '国际化', link: '/zh/config/i18n'},
                     {text: '图片', link: '/zh/config/image'},
@@ -56,6 +55,14 @@ export default defineConfig({
                     {text: '字体', link: '/zh/config/fontFamily'},
                     {text: '字号', link: '/zh/config/fontSize'},
                     {text: '提及', link: '/zh/config/mention'},
+                ]
+            },
+            {
+                text: 'AI',
+                items: [
+                    {text: 'AI 配置', link: '/zh/ai/base'},
+                    {text: 'AI 菜单', link: '/zh/ai/menu'},
+                    {text: 'AI 命令', link: '/zh/ai/command'},
                 ]
             },
             {

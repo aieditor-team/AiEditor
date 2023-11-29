@@ -1,44 +1,6 @@
-# AI 配置
+# AI 菜单配置
 
-
-## 基础配置
-
-```typescript
-new AiEditor({
-    element: "#aiEditor",
-    ai:{
-        model:{
-            xinghuo:{
-                appId:"****",
-                apiKey:"****",
-                apiSecret:"****"
-            }
-        }
-    },
-})
-```
-
-- **model**: 模型配置（目前暂时只支持科大讯飞的星火大模型）
-- **xinghuo**: 星火大模型配置，星火大模型支持配置的内容如下：
-
-```typescript
-protocol?: string,
-appId: string,
-apiKey?: string,
-apiSecret?: string,
-version?: string,
-urlSignatureAlgorithm?:(model:XingHuoModel)=>string,
-```
-- **protocol**：通信协议，支持 ws 和 wss。
-- **appId**：应用 ID。
-- **apiKey**：api Key。
-- **apiSecret**：api 秘钥。
-- **version**: 版本，默认为 v3.1。
-- **urlSignatureAlgorithm**: 自定义 URL 签名算法，一般情况下，如果编辑器涉及内容对外开放，则需要配置 urlSignatureAlgorithm，用于通过 server 端对 url 签名生成通信 url。
-
-## AI 菜单配置
-
-此处的配置，用于在编辑器顶部工具类，点击 AI 下拉的菜单内容。
+AI 菜单配置，用于在编辑器顶部工具类，点击 AI 下拉的菜单内容。
 
 ```typescript
 new AiEditor({
@@ -76,41 +38,4 @@ new AiEditor({
 - **prompt**：AI 提示语
 - **text**：文字内容，支持 `"focusBefore"` 和 `"selected"` 可选；`"focusBefore"` 表示获取当前焦点前的文字内容，`"selected"` 表示获取当前选中的文本内容。
 - **model**：使用的 AI 大模型，目前暂时只支持 xinghuo (星火大模型)，来未来会支持文心一言、ChatGPT 等多模型共存。
-
-
-## AI Command 配置
-
-AI Command，指的是在文本框中，输入 `空格 + '/'` 弹出的 AI 菜单。
-
-
-```typescript
-new AiEditor({
-    element: "#aiEditor",
-    ai:{
-        model:{
-            xinghuo:{
-                appId:"****",
-                apiKey:"****",
-                apiSecret:"****"
-            }
-        },
-        commands:[
-            {
-                name: "AI 续写",
-                prompt: "请帮我继续扩展一些这段话的内容",
-                model: "xinghuo",
-            },
-            {
-                name: "AI 提问",
-                prompt: "",
-                model: "xinghuo",
-            },
-        ]
-    },
-})
-```
-
-- name：AI 菜单的名称
-- prompt：AI 提示语
-- model：使用的 AI 大模型，目前暂时只支持 xinghuo (星火大模型)，来未来会支持文心一言、ChatGPT 等多模型共存。
 
