@@ -8,9 +8,13 @@ export default defineConfig({
     titleTemplate: ':title - AiEditor 官方网站',
     lastUpdated: true,
 
-    // logo: '/assets/images/logo02.png',
-
     themeConfig: {
+        logo: '/assets/image/logo.png',
+        editLink: {
+            // pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path'
+            pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
+            text: '编辑当前页面'
+        },
         search: {
             provider: 'local'
         },
@@ -69,7 +73,7 @@ export default defineConfig({
     },
 
     head: [
-        ['link', {rel: 'icon', href: '/assets/images/logo02.png'}],
+        ['link', {rel: 'icon', href: '/assets/image/logo.png'}],
         ["script",
             {},
             `var _hmt = _hmt || [];
