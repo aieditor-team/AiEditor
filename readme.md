@@ -1,7 +1,8 @@
-![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
+![screenshot.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
+
 # AiEditor
 
-关于 AiEditor
+关于 AiEditor（官网 https://aieditor.dev ）
 
 > AiEditor 是一个面向 AI 的下一代富文本编辑器，她基于 Web Component，因此支持 Layui、Vue、React、Angular 等几乎任何前端框架。她适配了 PC Web 端和手机端，并提供了 亮色 和 暗色 两个主题。除此之外，她还提供了灵活的配置，开发者可以方便的使用其开发任何文字编辑的应用。
 
@@ -10,6 +11,8 @@
 ## 在线演示
 
 http://aieditor.jpress.cn
+
+![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
 
 
 ## 已完善
@@ -20,12 +23,11 @@ http://aieditor.jpress.cn
 - [x] 代码：行内代码、代码块、代码语言选择
 - [x] 表格：左增右增、左减右减、上增下增、上减下减、合并单元格、解除合并
 - [x] A I：AI 续写、AI 优化、AI 校对、AI 翻译、自定义 AI 菜单及其 Prompts
-- [x] 更多：亮色主题、暗色主题、手机版适配、全屏编辑、@某某某（提及）...
+- [x] 更多：国际化、亮色主题、暗色主题、手机版适配、全屏编辑、@某某某（提及）...
 
 
 ## 待完善（计划中...）
 
-- [ ] 国际化
 - [ ] 团队协作
 - [ ] 自动化测试
 - [ ] AI 插入图片
@@ -47,3 +49,4 @@ http://aieditor.jpress.cn
 
 QQ 群：560291578
 
+![](docs%2Fassets%2Fimage%2Fqq-group.png)
