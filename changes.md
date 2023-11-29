@@ -1,5 +1,18 @@
 # AiEditor ChangeLog
 
+## v1.0.0-beta.5 20231129:
+- 新增：为 aieditor 添加全新的 logo
+- 新增：添加 1i8n 国际化支持
+- 新增：添加 vue 和 aieditor 整合的示例代码和文档
+- 新增：添加 react 和 aieditor 整合的示例代码和文档
+- 新增：AiEditor 类添加 `insert(html)`、`clear()`、`focus()`、`destroy()` 等更多方法
+- 优化：修改菜单中选择的默认样式和图标
+- 优化：移除代码中一些无用的 log 输出
+- 修复：修复工具栏中下拉菜单无法联动默认样式的问题
+- 修复：插入表格时，显示问题 #I8JMYU
+- 文档：同步更新许多文档
+
+
 
 ## v1.0.0-beta.3 20231127:
 - 新增：完善文档站点 https://aieditor.dev 并上线
