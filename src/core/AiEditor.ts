@@ -250,14 +250,17 @@ export class AiEditor {
 
     focus() {
         this.innerEditor.commands.focus();
+        return this;
     }
 
     focusStart() {
         this.innerEditor.commands.focus("start");
+        return this;
     }
 
     focusEnd() {
         this.innerEditor.commands.focus("end");
+        return this;
     }
 
     isFocused() {
@@ -266,14 +269,17 @@ export class AiEditor {
 
     blur() {
         this.innerEditor.commands.blur();
+        return this;
     }
 
     insert(html: string) {
         this.innerEditor.commands.insertContent(html);
+        return this;
     }
 
     clear() {
         this.innerEditor.commands.clearContent(true);
+        return this;
     }
 
     isEmpty() {
@@ -285,10 +291,12 @@ export class AiEditor {
         this.options.lang = lang;
         i18next.changeLanguage(lang);
         this.initInnerEditor();
+        return this;
     }
 
     removeRetention() {
         this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey);
+        return this;
     }
 
     destroy() {
