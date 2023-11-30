@@ -53,7 +53,7 @@ new AiEditor({
                  urlSignatureAlgorithm: async (model)=>{
                     //通过后端进行 URL 签名，并返回签名完成的 URL 地址
                     return await fetch("/your-path/model?appId="+model.appId)
-                       .then(resp=>resp.josn)
+                       .then(resp=>resp.json)
                        .then(json=>json.url)
                 }
             }
