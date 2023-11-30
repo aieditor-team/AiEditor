@@ -1,21 +1,21 @@
 import {AbstractWebSocket} from "../AbstractWebSocket.ts";
 import {Editor} from "@tiptap/core";
-
-
 import {uuid} from "../../util/uuid.ts";
+import {Fragment} from "@tiptap/pm/model";
+
 
 export class XingHuoSocket extends AbstractWebSocket {
-
     appId: string;
     version: string;
     editor: Editor;
+    from: number;
 
-
-    constructor(url:string,appId: string,version:string, editor: Editor) {
-        super(url);
+    constructor(url: string, appId: string, version: string, editor: Editor) {
+        super(url,editor.schema);
         this.appId = appId;
         this.version = version;
         this.editor = editor;
+        this.from = editor.view.state.selection.from;
     }
 
 
@@ -64,14 +64,18 @@ export class XingHuoSocket extends AbstractWebSocket {
         const data = e.data;
         // message data format https://www.xfyun.cn/doc/spark/Web.html#_1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E
         const message = JSON.parse(data) as any;
-        const text = message.payload.choices.text[0].content as string;
-
+        let text = message.payload.choices.text[0].content as string;
         if (text) {
-            for (let i = 0; i < text.length; i++) {
-                const c = text.charAt(i);
-                if ((i == 0 || i == text.length - 1) && c === '"') continue
-                if (c === "\n") this.editor.commands.insertContent("<p></p>");
-                else this.editor.commands.insertContent(c);
+            this.editor.commands.insertContent(text)
+
+            if (message.header.status == 2) {
+                const end = this.editor.state.selection.to;
+                let insertText = this.editor.state.doc.textBetween(this.from, end);
+                if (insertText) {
+                    const marked = this.markdownParser.parse(insertText);
+                    const {state: {tr}, view, schema} = this.editor!
+                    view.dispatch(tr.replaceWith(this.from, end, Fragment.fromJSON(schema, marked!.toJSON().content)))
+                }
             }
 
             this.editor.commands.scrollIntoView();

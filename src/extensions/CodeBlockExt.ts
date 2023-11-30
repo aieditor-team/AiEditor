@@ -3,8 +3,8 @@ import tippy from "tippy.js";
 import {isActive} from "../util/isActive.ts";
 import {TextSelection} from "prosemirror-state";
 import {textblockTypeInputRule} from "../util/textblockTypeInputRule.ts";
-import { Selection } from '@tiptap/pm/state';
-import { Node } from '@tiptap/pm/model';
+import {Selection} from '@tiptap/pm/state';
+import {Node} from '@tiptap/pm/model';
 
 
 export type LanguageItem = {
@@ -14,12 +14,13 @@ export type LanguageItem = {
 };
 
 export const languages = [
-    { name: 'Plain Text', value: 'plaintext', alias: ['text', 'txt'] },
-    { name: 'Bash', value: 'bash', alias: ['sh'] },
-    { name: 'BASIC', value: 'basic', alias: [] },
-    { name: 'C', value: 'c', alias: ['h'] },
-    { name: 'Clojure', value: 'clojure', alias: ['clj', 'edn'] },
-    { name: 'CMake', value: 'cmake', alias: ['cmake.in'] },
+    {name: 'Auto', value: ''},
+    {name: 'Plain Text', value: 'plaintext', alias: ['text', 'txt']},
+    {name: 'Bash', value: 'bash', alias: ['sh']},
+    {name: 'BASIC', value: 'basic', alias: []},
+    {name: 'C', value: 'c', alias: ['h']},
+    {name: 'Clojure', value: 'clojure', alias: ['clj', 'edn']},
+    {name: 'CMake', value: 'cmake', alias: ['cmake.in']},
     {
         name: 'CoffeeScript',
         value: 'coffeescript',
@@ -30,48 +31,48 @@ export const languages = [
         value: 'cpp',
         alias: ['cc', 'c++', 'h++', 'hpp', 'hh', 'hxx', 'cxx'],
     },
-    { name: 'C#', value: 'csharp', alias: ['cs', 'c#'] },
-    { name: 'CSS', value: 'css', alias: [] },
-    { name: 'Dart', value: 'dart', alias: [] },
-    { name: 'Delphi', value: 'delphi', alias: ['dpr', 'dfm', 'pas', 'pascal'] },
-    { name: 'Dockerfile', value: 'dockerfile', alias: ['docker'] },
-    { name: 'Erlang', value: 'erlang', alias: ['erl'] },
-    { name: 'Go', value: 'go', alias: ['golang'] },
-    { name: 'GraphQL', value: 'graphql', alias: ['gql'] },
-    { name: 'Groovy', value: 'groovy', alias: [] },
-    { name: 'Java', value: 'java', alias: ['jsp'] },
+    {name: 'C#', value: 'csharp', alias: ['cs', 'c#']},
+    {name: 'CSS', value: 'css', alias: []},
+    {name: 'Dart', value: 'dart', alias: []},
+    {name: 'Delphi', value: 'delphi', alias: ['dpr', 'dfm', 'pas', 'pascal']},
+    {name: 'Dockerfile', value: 'dockerfile', alias: ['docker']},
+    {name: 'Erlang', value: 'erlang', alias: ['erl']},
+    {name: 'Go', value: 'go', alias: ['golang']},
+    {name: 'GraphQL', value: 'graphql', alias: ['gql']},
+    {name: 'Groovy', value: 'groovy', alias: []},
+    {name: 'Java', value: 'java', alias: ['jsp']},
     {
         name: 'JavaScript',
         value: 'javascript',
         alias: ['js', 'jsx', 'mjs', 'cjs'],
     },
-    { name: 'JSON', value: 'json', alias: [] },
-    { name: 'Kotlin', value: 'kotlin', alias: ['kt', 'kts'] },
-    { name: 'Lua', value: 'lua', alias: [] },
-    { name: 'Makefile', value: 'makefile', alias: ['mk', 'mak', 'make'] },
-    { name: 'Markdown', value: 'markdown', alias: ['md', 'mkdown', 'mkd'] },
-    { name: 'Matlab', value: 'matlab', alias: [] },
+    {name: 'JSON', value: 'json', alias: []},
+    {name: 'Kotlin', value: 'kotlin', alias: ['kt', 'kts']},
+    {name: 'Lua', value: 'lua', alias: []},
+    {name: 'Makefile', value: 'makefile', alias: ['mk', 'mak', 'make']},
+    {name: 'Markdown', value: 'markdown', alias: ['md', 'mkdown', 'mkd']},
+    {name: 'Matlab', value: 'matlab', alias: []},
     {
         name: 'Objective-C',
         value: 'objectivec',
         alias: ['mm', 'objc', 'obj-c', 'obj-c++', 'objective-c++'],
     },
-    { name: 'PHP', value: 'php', alias: [] },
-    { name: 'Properties', value: 'properties', alias: [] },
-    { name: 'Python', value: 'python', alias: ['py', 'gyp', 'ipython'] },
+    {name: 'PHP', value: 'php', alias: []},
+    {name: 'Properties', value: 'properties', alias: []},
+    {name: 'Python', value: 'python', alias: ['py', 'gyp', 'ipython']},
     {
         name: 'Ruby',
         value: 'ruby',
         alias: ['rb', 'gemspec', 'podspec', 'thor', 'irb'],
     },
-    { name: 'Rust', value: 'rust', alias: ['rs'] },
-    { name: 'Scala', value: 'scala', alias: [] },
-    { name: 'SCSS', value: 'scss', alias: [] },
-    { name: 'Shell', value: 'shell', alias: ['console', 'shellsession'] },
-    { name: 'SQL', value: 'sql', alias: [] },
-    { name: 'Swift', value: 'swift', alias: [] },
-    { name: 'TypeScript', value: 'typescript', alias: ['ts', 'tsx'] },
-    { name: 'WebAssembly', value: 'wasm', alias: [] },
+    {name: 'Rust', value: 'rust', alias: ['rs']},
+    {name: 'Scala', value: 'scala', alias: []},
+    {name: 'SCSS', value: 'scss', alias: []},
+    {name: 'Shell', value: 'shell', alias: ['console', 'shellsession']},
+    {name: 'SQL', value: 'sql', alias: []},
+    {name: 'Swift', value: 'swift', alias: []},
+    {name: 'TypeScript', value: 'typescript', alias: ['ts', 'tsx']},
+    {name: 'WebAssembly', value: 'wasm', alias: []},
     {
         name: 'HTML, XML',
         value: 'xml',
@@ -88,7 +89,7 @@ export const languages = [
             'svg',
         ],
     },
-    { name: 'YAML', value: 'yaml', alias: ['yml'] },
+    {name: 'YAML', value: 'yaml', alias: ['yml']},
 ] as LanguageItem[];
 
 
@@ -100,7 +101,7 @@ export const getLanguageByValueOrAlias = (
     }
     const v = valueOrAlias.toLocaleLowerCase();
     const language = languages.find(
-        (language) => language.value === v || (language.alias  && language.alias.includes(v))
+        (language) => language.value === v || (language.alias && language.alias.includes(v))
     );
     return language!;
 };
@@ -116,7 +117,7 @@ export function getSelectedLineRange(
     selection: Selection,
     codeBlockNode: Node
 ) {
-    const { $from, from, to } = selection;
+    const {$from, from, to} = selection;
     const text = codeBlockNode.textContent || '';
     const lines = text.split('\n');
 
@@ -146,7 +147,7 @@ export const tildeInputRegex = /^[~～]{3}([a-z]+)?[\s\n]$/;
 export interface MyCodeBlockLowlightOptions extends CodeBlockLowlightOptions {
     lowlight: any,
     defaultLanguage: string | null | undefined,
-    languages:LanguageItem[]
+    languages: LanguageItem[]
 }
 
 export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>({
@@ -165,9 +166,9 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             ...this.parent?.(),
             toggleCodeBlock:
                 (attributes) =>
-                    ({ commands, editor, chain }) => {
-                        const { state } = editor;
-                        const { from, to } = state.selection;
+                    ({commands, editor, chain}) => {
+                        const {state} = editor;
+                        const {from, to} = state.selection;
 
                         // 如果选中范围是连续段落，则合并后转成一个 codeBlock
                         if (!isActive(state, this.name) && !state.selection.empty) {
@@ -198,7 +199,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                             // 仅处理选择连续多个段落的情况
                             if (isSelectConsecutiveParagraphs && textArr.length > 1) {
                                 return chain()
-                                    .command(({ state, tr }) => {
+                                    .command(({state, tr}) => {
                                         tr.replaceRangeWith(
                                             from,
                                             to,
@@ -225,23 +226,23 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
     addKeyboardShortcuts() {
         return {
             ...this.parent?.(),
-            Tab: ({ editor }) => {
-                const { state, view } = editor;
+            Tab: ({editor}) => {
+                const {state, view} = editor;
                 if (!isActive(state, this.name)) {
                     return false;
                 }
-                const { selection, tr } = state;
+                const {selection, tr} = state;
                 const tab = '  ';
                 if (selection.empty) {
                     view.dispatch(tr.insertText(tab));
                 } else {
-                    const { $from, from, to } = selection;
+                    const {$from, from, to} = selection;
                     const node = $from.node(); // code block node
                     if (node.type !== this.type) {
                         return false;
                     }
 
-                    const { start: selectedLineStart, end: selectedLineEnd } =
+                    const {start: selectedLineStart, end: selectedLineEnd} =
                         getSelectedLineRange(selection, node);
 
                     //replace tab string
@@ -320,7 +321,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 <pre class="hljs"><code></code></pre>
                 `
 
-            const createEL = ()=>{
+            const createEL = () => {
                 const div = document.createElement("div") as HTMLDivElement;
                 div.classList.add("aie-codeblock-langs")
                 div.innerHTML = `
@@ -328,7 +329,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     return `<div class="aie-codeblock-langs-item" data-item="${lang.value}">${lang.name}</div>`
                 }).join("")}`
 
-                div.addEventListener("click",(event)=>{
+                div.addEventListener("click", (event) => {
                     const target: HTMLDivElement = (event.target as HTMLElement).closest('.aie-codeblock-langs-item')!;
                     if (target) {
                         const language = target.getAttribute("data-item")!;
@@ -340,33 +341,29 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             }
 
 
-           const instance = tippy(container.querySelector(".aie-codeblock-tools-lang")!, {
+            const instance = tippy(container.querySelector(".aie-codeblock-tools-lang")!, {
                 content: createEL(),
                 appendTo: e.editor.view.dom.closest(".aie-container")!,
                 placement: 'bottom-end',
                 trigger: 'click',
                 interactive: true,
-               arrow: false,
-               aria: {
-                   content: null,
-                   expanded: false,
-               },
+                arrow: false,
+                aria: {
+                    content: null,
+                    expanded: false,
+                },
             });
-
-            console.log("addNodeView init")
 
 
             return {
                 dom: container,
                 contentDOM: container.querySelector("code")!,
                 destroy: () => {
-                    console.log("addNodeView destroy")
                     instance.destroy();
                 },
             }
         }
     },
-
 
 
 })
