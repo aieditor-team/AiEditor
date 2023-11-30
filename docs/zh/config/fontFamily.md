@@ -7,7 +7,6 @@ new AiEditor({
     element: "#aiEditor",
     fontFamily:{
         values:[
-            {name: "默认字体", value: ""},
             {name: "宋体", value: "SimSun"},
             {name: "仿宋", value: "FangSong"},
             {name: "黑体", value: "SimHei"},
