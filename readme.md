@@ -1,4 +1,4 @@
-![screenshot.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
+![banner.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
 
 # AiEditor
 
