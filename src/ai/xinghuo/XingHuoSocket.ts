@@ -1,7 +1,7 @@
 import {AbstractWebSocket} from "../AbstractWebSocket.ts";
 import {Editor} from "@tiptap/core";
 import {uuid} from "../../util/uuid.ts";
-import {Fragment} from "@tiptap/pm/model";
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 
 export class XingHuoSocket extends AbstractWebSocket {
@@ -11,7 +11,7 @@ export class XingHuoSocket extends AbstractWebSocket {
     from: number;
 
     constructor(url: string, appId: string, version: string, editor: Editor) {
-        super(url,editor.schema);
+        super(url);
         this.appId = appId;
         this.version = version;
         this.editor = editor;
@@ -72,9 +72,8 @@ export class XingHuoSocket extends AbstractWebSocket {
                 const end = this.editor.state.selection.to;
                 let insertText = this.editor.state.doc.textBetween(this.from, end);
                 if (insertText) {
-                    const marked = this.markdownParser.parse(insertText);
-                    const {state: {tr}, view, schema} = this.editor!
-                    view.dispatch(tr.replaceWith(this.from, end, Fragment.fromJSON(schema, marked!.toJSON().content)))
+                    const {state: {tr}, view} = this.editor!
+                    view.dispatch(tr.replaceWith(this.from, end, (this.editor as InnerEditor).parseMarkdown(insertText)));
                 }
             }
 
