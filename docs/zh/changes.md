@@ -1,5 +1,18 @@
 # AiEditor ChangeLog
 
+
+## v1.0.0-beta.6 20231201:
+- 新增：增强对 AI 输出自动进行 markdown 转换的功能
+- 新增：AiEditor 的相关操作方法支持链式调用的功能
+- 新增：添加 "aiEditor.insertMarkdown()" 用于插入 markdown 内容
+- 新增：支持直接粘贴 markdown 内容自动转换为可视化编辑的功能
+- 新增：增强在输入时更多的 markdown 功能转换
+- 优化：重命名 "arEditor.insert()" 方法为 "insertHtml()"
+- 文档：添加代码示例的相关链接
+- 文档：更新 AI 功能的相关文档
+
+
+
 ## v1.0.0-beta.5 20231129:
 - 新增：为 aieditor 添加全新的 logo
 - 新增：添加 1i8n 国际化支持
