@@ -22,25 +22,12 @@ export const PasteExt = Extension.create({
 
                         const text = event.clipboardData.getData('text/plain');
                         const html = event.clipboardData.getData('text/html');
-                        const markdown = event.clipboardData.getData('text/markdown');
 
-                        // const files = Array.from(event.clipboardData.files);
-                        // const vscode = event.clipboardData.getData('vscode-editor-data');
-
-
-                        // console.log("paste files: ",files)
-                        // console.log("paste text: ",text)
-                        // console.log("paste html: ",html)
-                        // console.log("paste vscode: ",vscode)
-                        // console.log("paste node: ",node)
-                        // console.log("paste markdownText: ",markdownText)
-
-                        const {state, dispatch} = view;
-
-                        if (!html && (text || markdown)) {
-                            const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text || markdown);
+                        if (!html && text) {
+                            const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text);
                             if (parseMarkdown) {
-                                dispatch(state.tr.replaceSelection(new Slice(parseMarkdown, 0, 0)).scrollIntoView());
+                                const {state: {tr}, dispatch} = view;
+                                dispatch(tr.replaceSelection(new Slice(parseMarkdown, 0, 0)).scrollIntoView());
                                 return true;
                             }
                         }

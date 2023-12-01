@@ -15,7 +15,7 @@ import {MarkdownParser} from "@tiptap/pm/markdown";
 
 // @ts-ignore
 import MarkdownIt from 'markdown-it';
-import {Fragment} from "@tiptap/pm/model";
+import {Fragment, Slice} from "@tiptap/pm/model";
 
 
 window.customElements.define('aie-menus', Header);
@@ -376,8 +376,8 @@ export class AiEditor {
     insertMarkdown(markdown: string) {
         const fragment = this.innerEditor.parseMarkdown(markdown);
         if (fragment) {
-            const {state: {tr, selection}, view} = this.innerEditor!
-            view.dispatch(tr.replaceWith(selection.from, selection.to, fragment));
+            const {state: {tr}, view: {dispatch}} = this.innerEditor!
+            dispatch(tr.replaceSelection(new Slice(fragment, 0, 0)).scrollIntoView());
         } else {
             this.insertHtml(markdown);
         }
