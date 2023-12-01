@@ -32,6 +32,7 @@ import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
+import {PasteExt} from "../extensions/PasteExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
@@ -95,6 +96,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 uploader: options.video?.uploader || options.uploader,
             }),
             IFrameExt,
+            PasteExt,
             ...getBubbleMenus(editor),
         )
     }
@@ -106,14 +108,14 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
     }
 
     // if (options.ai?.command){
-        ret.push(AiCommandExt.configure({
-            suggestion:{
-                items:(_)=>{
-                    const commands = options.ai?.commands || defaultCommands;
-                    return commands as any;
-                }
+    ret.push(AiCommandExt.configure({
+        suggestion: {
+            items: (_) => {
+                const commands = options.ai?.commands || defaultCommands;
+                return commands as any;
             }
-        }))
+        }
+    }))
     // }
 
     // if (options.cbName && options.cbUrl) {

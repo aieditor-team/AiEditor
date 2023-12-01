@@ -72,8 +72,11 @@ export class XingHuoSocket extends AbstractWebSocket {
                 const end = this.editor.state.selection.to;
                 let insertText = this.editor.state.doc.textBetween(this.from, end);
                 if (insertText) {
-                    const {state: {tr}, view} = this.editor!
-                    view.dispatch(tr.replaceWith(this.from, end, (this.editor as InnerEditor).parseMarkdown(insertText)));
+                    const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(insertText);
+                    if (parseMarkdown){
+                        const {state: {tr}, view} = this.editor!
+                        view.dispatch(tr.replaceWith(this.from, end, parseMarkdown));
+                    }
                 }
             }
 

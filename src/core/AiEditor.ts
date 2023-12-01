@@ -113,6 +113,8 @@ export class InnerEditor extends Tiptap {
 
     userOptions: AiEditorOptions;
 
+    md: MarkdownIt;
+
     markdownParser!: MarkdownParser;
 
     constructor(userOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
@@ -128,7 +130,10 @@ export class InnerEditor extends Tiptap {
             return false;
         }
 
-        this.markdownParser = new MarkdownParser(this.schema, MarkdownIt("commonmark", {html: false}), {
+        this.md = MarkdownIt("commonmark", {html: false}).enable("strikethrough");
+        // this.md = MarkdownIt("commonmark", {});
+        // debugger
+        this.markdownParser = new MarkdownParser(this.schema, this.md, {
             blockquote: {block: "blockquote"},
             paragraph: {block: "paragraph"},
             list_item: {block: "listItem"},
@@ -161,8 +166,9 @@ export class InnerEditor extends Tiptap {
                 })
             },
             hardbreak: {node: "hardBreak"},
-            em: {mark: "em"},
-            strong: {mark: "strong"},
+            em: {mark: "italic"},
+            s: {mark: "strike"},
+            strong: {mark: "bold"},
             link: {
                 mark: "link", getAttrs: tok => ({
                     href: tok.attrGet("href"),
@@ -174,8 +180,29 @@ export class InnerEditor extends Tiptap {
     }
 
     parseMarkdown(markdown: string) {
-        const marked = this.markdownParser.parse(markdown);
-        return Fragment.fromJSON(this.schema, marked!.toJSON().content);
+        try {
+            const marked = this.markdownParser.parse(markdown);
+            if (!marked) {
+                return null;
+            }
+            let isMarkdown = false;
+            marked.descendants((node) => {
+                if (isMarkdown) {
+                    return false;
+                } else if (node.type.name !== "paragraph"
+                    && node.type.name !== "text") {
+                    isMarkdown = true;
+                    return false;
+                } else if (node.marks && node.marks.length > 0) {
+                    isMarkdown = true;
+                    return false;
+                }
+            });
+            return isMarkdown ? Fragment.fromJSON(this.schema, marked!.toJSON().content) : null;
+        } catch (e) {
+            console.error("Can not parse markdown")
+            return null;
+        }
     }
 }
 
@@ -348,8 +375,12 @@ export class AiEditor {
 
     insertMarkdown(markdown: string) {
         const fragment = this.innerEditor.parseMarkdown(markdown);
-        const {state: {tr, selection}, view} = this.innerEditor!
-        view.dispatch(tr.replaceWith(selection.from, selection.to, fragment));
+        if (fragment) {
+            const {state: {tr, selection}, view} = this.innerEditor!
+            view.dispatch(tr.replaceWith(selection.from, selection.to, fragment));
+        } else {
+            this.insertHtml(markdown);
+        }
     }
 
     clear() {
