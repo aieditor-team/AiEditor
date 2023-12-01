@@ -268,6 +268,8 @@ export class AiEditor {
 
     private onCreate(props: EditorEvents['create'], mainEl: Element) {
         this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
+        this.innerEditor.initMarkdownParse()
+
         this.eventComponents.forEach((zEvent) => {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
         });
