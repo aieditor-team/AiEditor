@@ -120,13 +120,14 @@ export class InnerEditor extends Tiptap {
         this.userOptions = userOptions;
     }
 
-    initMarkdownParse(){
+    initMarkdownParse() {
         function listIsTight(tokens: any, i: any) {
             while (++i < tokens.length)
                 if (tokens[i].type != "list_item_open")
                     return tokens[i].hidden;
             return false;
         }
+
         this.markdownParser = new MarkdownParser(this.schema, MarkdownIt("commonmark", {html: false}), {
             blockquote: {block: "blockquote"},
             paragraph: {block: "paragraph"},
@@ -172,7 +173,7 @@ export class InnerEditor extends Tiptap {
         });
     }
 
-    parseMarkdown(markdown:string){
+    parseMarkdown(markdown: string) {
         const marked = this.markdownParser.parse(markdown);
         return Fragment.fromJSON(this.schema, marked!.toJSON().content);
     }
@@ -338,9 +339,15 @@ export class AiEditor {
         return this;
     }
 
-    insert(html: string) {
+    insertHtml(html: string) {
         this.innerEditor.commands.insertContent(html);
         return this;
+    }
+
+    insertMarkdown(markdown: string) {
+        const fragment = this.innerEditor.parseMarkdown(markdown);
+        const {state: {tr, selection}, view} = this.innerEditor!
+        view.dispatch(tr.replaceWith(selection.from, selection.to, fragment));
     }
 
     clear() {
