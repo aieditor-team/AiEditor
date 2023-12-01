@@ -24,7 +24,7 @@ AiEditor 提供的方法如下：
 - `focusEnd()`： 让编辑器获得焦点，并设置光标在最末尾位置。
 - `isFocused()`： 检测当前编辑器是否获得焦点。
 - `blur()`： 让编辑器失去焦点。
-- `insertHtml(string)`： 动态插入 html 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.forcus().insert(string)` 先获得焦点后，再插入内容。
+- `insertHtml(string)`： 动态插入 html 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.forcus().insertHtml(string)` 先获得焦点后，再插入内容。
 - `insertMarkdown(string)`： 动态插入 markdown 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.forcus().insertMarkdown(string)` 先获得焦点后，再插入内容。
 - `clear()`： 删除编辑器里的所有内容。
 - `isEmpty()`： 检查编辑器里是否有内容。
