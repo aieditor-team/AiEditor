@@ -8,6 +8,7 @@ export const en =  {
     "undo": "Undo",
     "redo": "Redo",
     "brush": "Format Painter",
+    "container": "Highlight container",
     "eraser": "clear format",
     "title": "Paragraph/Title",
     "font-family": "Font Family",

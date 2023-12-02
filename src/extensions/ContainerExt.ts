@@ -2,6 +2,17 @@ import {Node, mergeAttributes} from '@tiptap/core';
 // @ts-ignore
 import markdownitContainer from "markdown-it-container";
 
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        container: {
+            setContainer: (type: string) => ReturnType,
+            toggleContainer: (type: string) => ReturnType,
+            unsetContainer: () => ReturnType,
+        };
+    }
+}
+
 export interface ContainerOptions {
     classes: string[],
     HTMLAttributes: {
@@ -13,6 +24,7 @@ export const ContainerExt = Node.create<ContainerOptions>({
     name: 'container',
     group: 'block',
     content: 'block+',
+    // content: 'text*',
     defining: true,
 
     addOptions() {
@@ -70,7 +82,23 @@ export const ContainerExt = Node.create<ContainerOptions>({
         ]
     },
 
+
     renderHTML({HTMLAttributes}) {
         return ['div', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
+    },
+
+
+    addCommands() {
+        return {
+            setContainer: type => ({ commands }) => {
+                return commands.wrapIn(this.name,{containerClass:type})
+            },
+            toggleContainer: type => ({ commands }) => {
+                return commands.toggleWrap(this.name,{containerClass:type})
+            },
+            unsetContainer: () => ({ commands }) => {
+                return commands.lift(this.name)
+            },
+        }
     },
 });

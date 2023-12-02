@@ -8,6 +8,7 @@ export const zh  =  {
     "undo": "撤销",
     "redo": "重做",
     "brush": "格式刷",
+    "container": "高亮块",
     "eraser": "清除格式",
     "title": "正文/标题",
     "font-family": "字体",

@@ -40,10 +40,12 @@ import {Painter} from "./menus/Painter";
 import {Ai} from "./menus/Ai.ts";
 import tippy from "tippy.js";
 import {t} from "i18next";
+import {Container} from "./menus/Container.ts";
 
 window.customElements.define('aie-undo', Undo);
 window.customElements.define('aie-redo', Redo);
 window.customElements.define('aie-brush', Painter);
+window.customElements.define('aie-container', Container);
 window.customElements.define('aie-eraser', Eraser);
 window.customElements.define('aie-title', Title);
 window.customElements.define('aie-font-family', FontFamily);
@@ -88,7 +90,7 @@ export type MenuButtonOptions = {
 const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "title", "font-family", "font-size", "divider", "bold", "italic", "underline"
     , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
-    , "image", "video", "attachment", "quote", "code-block", "table", "divider", "printer", "fullscreen", "ai"
+    , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "printer", "fullscreen", "ai"
 ];
 
 
