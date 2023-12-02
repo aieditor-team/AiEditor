@@ -11,11 +11,10 @@ import i18next from "i18next";
 import {zh} from "../i18n/zh.ts";
 import {en} from "../i18n/en.ts";
 import {Resource} from "i18next";
-import {MarkdownParser} from "@tiptap/pm/markdown";
 
 // @ts-ignore
 import MarkdownIt from 'markdown-it';
-import {Fragment, Slice} from "@tiptap/pm/model";
+import {DOMParser} from "@tiptap/pm/model";
 
 
 window.customElements.define('aie-menus', Header);
@@ -113,96 +112,24 @@ export class InnerEditor extends Tiptap {
 
     userOptions: AiEditorOptions;
 
-    md: MarkdownIt;
-
-    markdownParser!: MarkdownParser;
-
     constructor(userOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
         super(options);
         this.userOptions = userOptions;
     }
 
-    initMarkdownParse() {
-        function listIsTight(tokens: any, i: any) {
-            while (++i < tokens.length)
-                if (tokens[i].type != "list_item_open")
-                    return tokens[i].hidden;
-            return false;
+    parseHtml(html:string){
+        function bodyElement(value: string): HTMLElement {
+            return new window.DOMParser().parseFromString( `<body>${value}</body>`, 'text/html').body
         }
-
-        this.md = MarkdownIt("commonmark", {html: false}).enable("strikethrough");
-        // this.md = MarkdownIt("commonmark", {});
-        // debugger
-        this.markdownParser = new MarkdownParser(this.schema, this.md, {
-            blockquote: {block: "blockquote"},
-            paragraph: {block: "paragraph"},
-            list_item: {block: "listItem"},
-            list_item_open: {block: "listItem"},
-            bullet_list: {block: "bulletList", getAttrs: (_, tokens, i) => ({tight: listIsTight(tokens, i)})},
-            ordered_list: {
-                block: "orderedList", getAttrs: (tok, tokens, i) => ({
-                    order: +tok.attrGet("start") || 1,
-                    tight: listIsTight(tokens, i)
-                })
-            },
-            ordered_list_open: {block: "orderedList", getAttrs: tok => ({level: +tok.tag.slice(1)})},
-            heading: {block: "heading", getAttrs: tok => ({level: +tok.tag.slice(1)})},
-            code_block: {
-                block: "codeBlock", getAttrs: tok => {
-                    return {language: tok.info || ""}
-                }, noCloseToken: true
-            },
-            fence: {
-                block: "codeBlock", getAttrs: tok => {
-                    return {language: tok.info || ""}
-                }, noCloseToken: true
-            },
-            hr: {node: "horizontalRule"},
-            image: {
-                node: "image", getAttrs: tok => ({
-                    src: tok.attrGet("src"),
-                    title: tok.attrGet("title") || null,
-                    alt: tok.children[0] && tok.children[0].content || null
-                })
-            },
-            hardbreak: {node: "hardBreak"},
-            em: {mark: "italic"},
-            s: {mark: "strike"},
-            strong: {mark: "bold"},
-            link: {
-                mark: "link", getAttrs: tok => ({
-                    href: tok.attrGet("href"),
-                    title: tok.attrGet("title") || null
-                })
-            },
-            code_inline: {mark: "code", noCloseToken: true}
-        });
+        const parser = DOMParser.fromSchema(this.schema);
+        return parser.parse(bodyElement(html), {}).content;
     }
 
     parseMarkdown(markdown: string) {
-        try {
-            const marked = this.markdownParser.parse(markdown);
-            if (!marked) {
-                return null;
-            }
-            let isMarkdown = false;
-            marked.descendants((node) => {
-                if (isMarkdown) {
-                    return false;
-                } else if (node.type.name !== "paragraph"
-                    && node.type.name !== "text") {
-                    isMarkdown = true;
-                    return false;
-                } else if (node.marks && node.marks.length > 0) {
-                    isMarkdown = true;
-                    return false;
-                }
-            });
-            return isMarkdown ? Fragment.fromJSON(this.schema, marked!.toJSON().content) : null;
-        } catch (e) {
-            console.error("Can not parse markdown")
-            return null;
-        }
+        const html = this.storage.markdown?.parser?.parse?.(markdown, {
+            inline: false,
+        });
+        return this.parseHtml(html);
     }
 }
 
@@ -295,7 +222,6 @@ export class AiEditor {
 
     private onCreate(props: EditorEvents['create'], mainEl: Element) {
         this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
-        this.innerEditor.initMarkdownParse()
 
         this.eventComponents.forEach((zEvent) => {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
@@ -339,10 +265,13 @@ export class AiEditor {
         return this.innerEditor.getText();
     }
 
+    getMarkdown(){
+        return this.innerEditor.storage.markdown.getMarkdown();
+    }
+
     getOptions() {
         return this.options;
     }
-
 
     focus() {
         this.innerEditor.commands.focus();
@@ -368,19 +297,9 @@ export class AiEditor {
         return this;
     }
 
-    insertHtml(html: string) {
-        this.innerEditor.commands.insertContent(html);
+    insert(content: string) {
+        this.innerEditor.commands.insertContent(content);
         return this;
-    }
-
-    insertMarkdown(markdown: string) {
-        const fragment = this.innerEditor.parseMarkdown(markdown);
-        if (fragment) {
-            const {state: {tr}, view: {dispatch}} = this.innerEditor!
-            dispatch(tr.replaceSelection(new Slice(fragment, 0, 0)).scrollIntoView());
-        } else {
-            this.insertHtml(markdown);
-        }
     }
 
     clear() {

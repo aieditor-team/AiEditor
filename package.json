@@ -70,8 +70,10 @@
     "i18next": "^23.7.6",
     "lowlight": "^3.1.0",
     "markdown-it": "^13.0.2",
+    "markdown-it-container": "^3.0.0",
     "node-html-parser": "^6.1.11",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "tiptap-markdown": "^0.8.7"
   },
   "publishConfig": {
     "access": "public",
