@@ -22,6 +22,7 @@ http://aieditor.jpress.cn
 - [x] 附件：支持图片、视频、文件功能，支持选择上传、粘贴上传、拖拽上传、支持拖动调整大小...
 - [x] 代码：行内代码、代码块、代码语言选择
 - [x] 表格：左增右增、左减右减、上增下增、上减下减、合并单元格、解除合并
+- [x] Markdown：标题、引用、表格、图片、代码块、**高亮块（类型 vuepress 的 :::）**、各种列表、粗体、斜体、删除线...
 - [x] A I：AI 续写、AI 优化、AI 校对、AI 翻译、自定义 AI 菜单及其 Prompts
 - [x] 更多：国际化、亮色主题、暗色主题、手机版适配、全屏编辑、@某某某（提及）...
 
@@ -49,4 +50,4 @@ http://aieditor.jpress.cn
 
 QQ 群：560291578
 
-![](docs%2Fassets%2Fimage%2Fqq-group.png)
+![qq-group.png](docs%2Fassets%2Fimage%2Fqq-group.png)

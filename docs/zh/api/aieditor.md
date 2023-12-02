@@ -18,14 +18,14 @@ AiEditor 提供的方法如下：
 - `getHtml()`： 获取当前编辑器的 html 内容。
 - `getJson()`： 获取当前编辑器的 json 描述数据。
 - `getText()`： 获取当前编辑器的 纯文本 内容（不包含 html）。
+- `getMarkdown()`： 获取当前编辑器的获取 markdown 格式内容。
 - `getOptions()`： 获取当前编辑器的配置信息。
 - `focus()`： 让编辑器获得焦点。
 - `focusStart()`： 让编辑器获得焦点，并设置光标在最开始位置。
 - `focusEnd()`： 让编辑器获得焦点，并设置光标在最末尾位置。
 - `isFocused()`： 检测当前编辑器是否获得焦点。
 - `blur()`： 让编辑器失去焦点。
-- `insertHtml(string)`： 动态插入 html 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insertHtml(string)` 先获得焦点后，再插入内容。
-- `insertMarkdown(string)`： 动态插入 markdown 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insertMarkdown(string)` 先获得焦点后，再插入内容。
+- `insert(content)`： 动态插入 html、文本、或者 Markdown 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insert(string)` 先获得焦点后，再插入内容。
 - `clear()`： 删除编辑器里的所有内容。
 - `isEmpty()`： 检查编辑器里是否有内容。
 - `removeRetention()`： 移除编辑器自动记录和保存的编辑内容。

@@ -24,7 +24,6 @@ export const ContainerExt = Node.create<ContainerOptions>({
     name: 'container',
     group: 'block',
     content: 'block+',
-    // content: 'text*',
     defining: true,
 
     addOptions() {
@@ -47,9 +46,9 @@ export const ContainerExt = Node.create<ContainerOptions>({
                     state.closeBlock(node);
                 },
                 parse: {
-                    setup: (markdownit: any) => {
+                    setup: (markdownIt: any) => {
                         this.options.classes.forEach(className => {
-                            markdownit.use(markdownitContainer, className);
+                            markdownIt.use(markdownitContainer, className);
                         });
                     },
                 }
