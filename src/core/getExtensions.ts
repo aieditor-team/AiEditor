@@ -88,7 +88,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             }),
             CodeBlockExt.configure({
                 lowlight: createLowlight(common),
-                defaultLanguage: 'Auto',
+                defaultLanguage: 'auto',
                 languageClassPrefix: 'language-',
             }),
             VideoExt.configure({
