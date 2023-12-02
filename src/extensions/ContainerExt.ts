@@ -1,4 +1,4 @@
-import {Node, mergeAttributes} from '@tiptap/core';
+import {Node, mergeAttributes, wrappingInputRule} from '@tiptap/core';
 // @ts-ignore
 import markdownitContainer from "markdown-it-container";
 
@@ -19,6 +19,9 @@ export interface ContainerOptions {
         [key: string]: any
     },
 }
+
+
+export const containerInputRegex = /^:::([a-z]+)?[\s\n]$/
 
 export const ContainerExt = Node.create<ContainerOptions>({
     name: 'container',
@@ -89,15 +92,30 @@ export const ContainerExt = Node.create<ContainerOptions>({
 
     addCommands() {
         return {
-            setContainer: type => ({ commands }) => {
-                return commands.wrapIn(this.name,{containerClass:type})
+            setContainer: type => ({commands}) => {
+                return commands.wrapIn(this.name, {containerClass: type})
             },
-            toggleContainer: type => ({ commands }) => {
-                return commands.toggleWrap(this.name,{containerClass:type})
+            toggleContainer: type => ({commands}) => {
+                return commands.toggleWrap(this.name, {containerClass: type})
             },
-            unsetContainer: () => ({ commands }) => {
+            unsetContainer: () => ({commands}) => {
                 return commands.lift(this.name)
             },
         }
     },
+
+    addInputRules() {
+        return [
+            wrappingInputRule({
+                find: containerInputRegex,
+                type: this.type,
+                getAttributes: match => {
+                    return {
+                        containerClass: match[1],
+                    }
+                },
+            }),
+        ]
+    },
+
 });
