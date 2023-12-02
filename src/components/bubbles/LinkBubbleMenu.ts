@@ -33,7 +33,7 @@ export class LinkBubbleMenu extends AbstractBubbleMenu {
         popover.setContent(`
             <div style="width: 250px">${t("link-address")} </div>
              <div style="width: 250px">
-             <input type="text" id="href" style="width: 240px">
+             <input type="text" id="href" style="width: 250px">
             </div>
             
             <div style="margin-top: 10px">${t("link-open-type")}</div>
