@@ -14,7 +14,12 @@ export class Container extends AbstractMenuButton {
 
     // @ts-ignore
     onClick(commands) {
-        commands.toggleContainer("warning")
+        if (this.editor?.isActive("container")) {
+            commands.unsetContainer()
+        } else {
+            commands.setContainer("warning")
+        }
+        commands.focus()
     }
 
 }
