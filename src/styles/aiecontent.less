@@ -187,6 +187,24 @@
     pointer-events: none;
   }
 
+  div{
+    &.container-wrapper{
+      margin: 1rem 0;
+      padding: 0 1rem;
+      border: 1px solid var(--aie-container-border);
+      border-radius: 3px;
+    }
+    &.info{
+      background: var(--aie-content-container-info-color);
+    }
+    &.warning{
+      background: var(--aie-content-container-warning-color);
+    }
+    &.danger{
+      background: var(--aie-content-container-danger-color);;
+    }
+  }
+
 }
 
 .tableWrapper {
