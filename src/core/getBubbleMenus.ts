@@ -41,13 +41,14 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
 }
 
 
-const createLinkBubbleMenu = (zEditor: AiEditor) => {
+const createLinkBubbleMenu = (aiEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-link") as AbstractBubbleMenu;
-    zEditor.eventComponents.push(menuEl);
+    aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("linkBubble", {
         pluginKey: 'linkBubble',
         element: menuEl,
         tippyOptions: {
+            appendTo: aiEditor.container,
             placement: 'bottom',
             arrow: false,
         },
@@ -58,21 +59,21 @@ const createLinkBubbleMenu = (zEditor: AiEditor) => {
 }
 
 
-const createImageBubbleMenu = (zEditor: AiEditor) => {
+const createImageBubbleMenu = (aiEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-image") as AbstractBubbleMenu;
-    zEditor.eventComponents.push(menuEl);
+    aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("imageBubble", {
         pluginKey: 'imageBubble',
         element: menuEl,
         tippyOptions: {
-            appendTo: zEditor.container,
+            appendTo: aiEditor.container,
             placement: 'top-start',
             arrow: false,
             getReferenceClientRect: (() => {
-                const {ranges} = zEditor.innerEditor.state.selection
+                const {ranges} = aiEditor.innerEditor.state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = zEditor.innerEditor.view;
+                const view = aiEditor.innerEditor.view;
 
                 let node = view.nodeDOM(from) as HTMLElement
                 const imageEl = node.querySelector("img") as HTMLImageElement;
@@ -92,25 +93,26 @@ const createImageBubbleMenu = (zEditor: AiEditor) => {
 }
 
 
-const createTableBubbleMenu = (zEditor: AiEditor) => {
+const createTableBubbleMenu = (aiEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-table") as AbstractBubbleMenu;
-    zEditor.eventComponents.push(menuEl);
+    aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("tableBubble", {
         pluginKey: 'tableBubble',
         element: menuEl,
         tippyOptions: {
             placement: 'top',
+            appendTo: aiEditor.container,
             arrow: false,
             getReferenceClientRect: (() => {
-                const selection = zEditor.innerEditor.state.selection;
+                const selection = aiEditor.innerEditor.state.selection;
                 const {ranges} = selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = zEditor.innerEditor.view;
+                const view = aiEditor.innerEditor.view;
 
                 const domRect = posToDOMRect(view, from, to);
-                const tablePos = zEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
-                const coordsAtPos = zEditor.innerEditor.view.coordsAtPos(tablePos);
+                const tablePos = aiEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
+                const coordsAtPos = aiEditor.innerEditor.view.coordsAtPos(tablePos);
 
                 return {
                     ...domRect,
@@ -125,10 +127,10 @@ const createTableBubbleMenu = (zEditor: AiEditor) => {
 }
 
 
-export const getBubbleMenus = (zEditor: AiEditor): Extensions => {
+export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
     const bubbleMenus: Extensions = [];
-    bubbleMenus.push(createLinkBubbleMenu(zEditor))
-    bubbleMenus.push(createImageBubbleMenu(zEditor))
-    bubbleMenus.push(createTableBubbleMenu(zEditor))
+    bubbleMenus.push(createLinkBubbleMenu(aiEditor))
+    bubbleMenus.push(createImageBubbleMenu(aiEditor))
+    bubbleMenus.push(createTableBubbleMenu(aiEditor))
     return bubbleMenus;
 }
