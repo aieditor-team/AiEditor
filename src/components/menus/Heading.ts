@@ -4,7 +4,7 @@ import {t} from "i18next";
 
 const titles = ["paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
 
-export class Title extends AbstractDropdownMenuButton<string> {
+export class Heading extends AbstractDropdownMenuButton<string> {
 
     constructor() {
         super();
@@ -35,7 +35,7 @@ export class Title extends AbstractDropdownMenuButton<string> {
     }
 
     onMenuTextRender(index: number): Element | string {
-        return this.menuData[index];
+        return this.menuData[index].replace(" ","");
     }
 
 }

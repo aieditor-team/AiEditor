@@ -3,7 +3,7 @@ import {EditorEvents} from "@tiptap/core";
 import {Undo} from "./menus/Undo";
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
 import {Redo} from "./menus/Redo";
-import {Title} from "./menus/Title";
+import {Heading} from "./menus/Heading.ts";
 import {FontFamily} from "./menus/FontFamily";
 import {FontSize} from "./menus/FontSize";
 import {Bold} from "./menus/Bold";
@@ -47,7 +47,7 @@ window.customElements.define('aie-redo', Redo);
 window.customElements.define('aie-brush', Painter);
 window.customElements.define('aie-container', Container);
 window.customElements.define('aie-eraser', Eraser);
-window.customElements.define('aie-title', Title);
+window.customElements.define('aie-heading', Heading);
 window.customElements.define('aie-font-family', FontFamily);
 window.customElements.define('aie-font-size', FontSize);
 window.customElements.define('aie-bold', Bold);
@@ -87,7 +87,7 @@ export type MenuButtonOptions = {
     svg: string,
 }
 
-const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "title", "font-family", "font-size", "divider", "bold", "italic", "underline"
+const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
     , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "printer", "fullscreen", "ai"

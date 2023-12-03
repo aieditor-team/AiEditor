@@ -10,7 +10,7 @@ export const zh  =  {
     "brush": "格式刷",
     "container": "高亮块",
     "eraser": "清除格式",
-    "title": "正文/标题",
+    "heading": "正文/标题",
     "font-family": "字体",
     "font-size": "字号",
     "bold": "加粗",

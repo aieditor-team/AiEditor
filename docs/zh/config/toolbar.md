@@ -4,7 +4,7 @@
 new AiEditor({
     element: "#aiEditor",
     toolbarKeys: ["undo", "redo", "brush", "eraser", 
-        "|", "title", "font-family", "font-size", 
+        "|", "heading", "font-family", "font-size", 
         "|", "bold", "italic", "underline", "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", 
         "|", "highlight", "font-color",
         "|", "align", "line-height", 
@@ -21,7 +21,7 @@ new AiEditor({
 - redo: 重做
 - brush: 格式刷
 - eraser: 清除格式
-- title: 正文/标题
+- heading: 正文/标题
 - font-family: 字体
 - font-size: 字号
 - bold: 加粗
@@ -48,6 +48,7 @@ new AiEditor({
 - video: 视频
 - attachment: 附件
 - quote: 引用
+- container: 高亮块
 - code-block: 代码块
 - table: 表格
 - printer: 打印

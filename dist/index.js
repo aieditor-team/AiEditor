@@ -37988,7 +37988,7 @@ const IA = {
   redo: "Redo",
   brush: "Format Painter",
   eraser: "clear format",
-  title: "Paragraph/Title",
+  title: "Paragraph/Heading",
   "font-family": "Font Family",
   "font-size": "Font Size",
   bold: "Bold",
