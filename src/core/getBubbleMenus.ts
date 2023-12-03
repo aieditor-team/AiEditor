@@ -1,6 +1,6 @@
-import {Extensions, posToDOMRect} from "@tiptap/core";
+import {Extension, Extensions, posToDOMRect} from "@tiptap/core";
 import {AiEditor} from "./AiEditor.ts";
-import {BubbleMenu} from "@tiptap/extension-bubble-menu";
+import {BubbleMenuOptions, BubbleMenuPlugin} from "@tiptap/extension-bubble-menu";
 
 
 import {LinkBubbleMenu} from "../components/bubbles/LinkBubbleMenu.ts";
@@ -13,12 +13,38 @@ window.customElements.define('aie-bubble-image', ImageBubbleMenu);
 window.customElements.define('aie-bubble-table', TableBubbleMenu);
 
 
-const createLinkBubbleMenu = (zEditor: AiEditor) => {
+function createBubbleMenu(name: string, options: BubbleMenuOptions) {
+    return Extension.create<BubbleMenuOptions>({
+        name: name,
+        addOptions() {
+            return {
+                ...options
+            }
+        },
+        addProseMirrorPlugins() {
+            if (!this.options.element) {
+                return []
+            }
 
+            return [
+                BubbleMenuPlugin({
+                    pluginKey: this.options.pluginKey,
+                    editor: this.editor,
+                    element: this.options.element,
+                    tippyOptions: this.options.tippyOptions,
+                    updateDelay: this.options.updateDelay,
+                    shouldShow: this.options.shouldShow,
+                }),
+            ]
+        },
+    })
+}
+
+
+const createLinkBubbleMenu = (zEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-link") as AbstractBubbleMenu;
     zEditor.eventComponents.push(menuEl);
-
-    return BubbleMenu.configure({
+    return createBubbleMenu("linkBubble", {
         pluginKey: 'linkBubble',
         element: menuEl,
         tippyOptions: {
@@ -30,13 +56,12 @@ const createLinkBubbleMenu = (zEditor: AiEditor) => {
         }
     })
 }
-const createImageBubbleMenu = (zEditor: AiEditor) => {
 
+
+const createImageBubbleMenu = (zEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-image") as AbstractBubbleMenu;
     zEditor.eventComponents.push(menuEl);
-
-
-    return BubbleMenu.configure({
+    return createBubbleMenu("imageBubble", {
         pluginKey: 'imageBubble',
         element: menuEl,
         tippyOptions: {
@@ -68,11 +93,9 @@ const createImageBubbleMenu = (zEditor: AiEditor) => {
 
 
 const createTableBubbleMenu = (zEditor: AiEditor) => {
-
     const menuEl = document.createElement("aie-bubble-table") as AbstractBubbleMenu;
     zEditor.eventComponents.push(menuEl);
-
-    return BubbleMenu.configure({
+    return createBubbleMenu("tableBubble", {
         pluginKey: 'tableBubble',
         element: menuEl,
         tippyOptions: {
@@ -104,10 +127,8 @@ const createTableBubbleMenu = (zEditor: AiEditor) => {
 
 export const getBubbleMenus = (zEditor: AiEditor): Extensions => {
     const bubbleMenus: Extensions = [];
-
     bubbleMenus.push(createLinkBubbleMenu(zEditor))
     bubbleMenus.push(createImageBubbleMenu(zEditor))
     bubbleMenus.push(createTableBubbleMenu(zEditor))
-
     return bubbleMenus;
 }
