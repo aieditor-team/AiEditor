@@ -50,11 +50,9 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
     onDropdownItemClick(index: number): void {
         const size = this.menuData[index].value;
         if (size == 14){
-            this.editor?.chain().focus().unsetFontSize();
+            this.editor?.chain().focus().unsetFontSize().run();
         }else {
-            this.editor?.chain().focus()
-                .setFontSize(`${size}px`)
-                .run()
+            this.editor?.chain().focus().setFontSize(`${size}px`).run()
         }
     }
 
@@ -69,8 +67,6 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
         }else {
             return item.name;
         }
-
-        // return this.menuData[index].name;
     }
 
 
