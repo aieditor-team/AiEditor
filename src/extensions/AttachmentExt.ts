@@ -67,13 +67,15 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                             view.dispatch(view.state.tr
                                 .insertText(` ${fileName} `, found[0].from)
                                 .addMark(found[0].from + 1, fileName.length + found[0].from + 1, schema.marks.link.create({
-                                    href: json.href,
+                                    href: json.data.href,
+                                    target:"_blank"
                                 }))
                                 .setMeta(actionKey, {type: "remove", id}));
                         } else {
                             view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
                         }
                     }).catch(() => {
+                    const {state: {tr}, view} = this.editor!
                     view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
                 })
 
