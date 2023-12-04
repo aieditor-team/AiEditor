@@ -39,7 +39,7 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
 
     constructor() {
         super();
-        this.dropDivHeight = "120px"
+        this.dropDivHeight = "auto"
         this.dropDivWith = "94px"
         this.width = "36px"
         this.menuTextWidth = "20px"
