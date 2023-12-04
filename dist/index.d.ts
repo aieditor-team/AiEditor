@@ -2,10 +2,8 @@ import { ChainedCommands } from '@tiptap/core/dist/packages/core/src/types';
 import { Editor } from '@tiptap/core';
 import { EditorEvents } from '@tiptap/core';
 import { EditorOptions } from '@tiptap/core';
-import { Fragment } from '@tiptap/pm/model';
+import { Fragment } from 'prosemirror-model';
 import { JSONContent } from '@tiptap/core';
-import MarkdownIt from 'markdown-it';
-import { MarkdownParser } from '@tiptap/pm/markdown';
 
 declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     template: string;
@@ -43,14 +41,16 @@ export declare class AiEditor {
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
+    getMarkdown(): any;
     getOptions(): AiEditorOptions;
+    getOutline(): any[];
     focus(): this;
+    focusPos(pos: number): this;
     focusStart(): this;
     focusEnd(): this;
     isFocused(): boolean;
     blur(): this;
-    insertHtml(html: string): this;
-    insertMarkdown(markdown: string): void;
+    insert(content: string): this;
     clear(): this;
     isEmpty(): boolean;
     changeLang(lang: string): this;
@@ -149,11 +149,9 @@ declare class Header extends HTMLElement implements AiEditorEvent {
 
 export declare class InnerEditor extends Editor {
     userOptions: AiEditorOptions;
-    md: MarkdownIt;
-    markdownParser: MarkdownParser;
     constructor(userOptions: AiEditorOptions, options?: Partial<EditorOptions>);
-    initMarkdownParse(): void;
-    parseMarkdown(markdown: string): Fragment | null;
+    parseHtml(html: string): Fragment;
+    parseMarkdown(markdown: string): Fragment;
 }
 
 export declare interface NameAndValue {

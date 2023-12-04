@@ -1,6 +1,26 @@
 # AiEditor ChangeLog
 
 
+## v1.0.0-beta.7 20231204:
+- 新增：AiEditor 添加 getMarkdown() 方法，用于获得 markdown 内容
+- 新增：AiEditor 添加 getOutline() 方法，用于获得文章的目录内容
+- 新增：AiEditor.focusPos(pos) 方法用于定位当前焦点到指定位置
+- 新增：添加 "高亮块" 功能，类型 vuepress 的 `:::`
+- 修复：修改附件上传时，未配置上传 url 的情况下出现错误的问题
+- 修复：字号大小设置菜单无法设置到默认字号的问题
+- 修复：自定义 AI 菜单时，添加 4 个以上菜单会出现滚动条的问题
+- 优化：AiEditor 类合并 insertHtml 和 insertMarkdown 为 insert 方法
+- 优化：优化编辑区的链接、图片、表格的浮动菜单有警告输出的问题
+- 优化：重命名工具类的 Title 为 Heading
+- 样式：优化链接弹出编辑框网址输入栏不对齐的问题
+- 样式：弹出框等元素添加 3px 圆角，使之在 UI 效果上更精致
+- 样式：修改内容编辑区的表格有一个横向滚动条的问题
+- 样式：优化菜单中插入表格的鼠标移动样式
+- 文档：更细 AiEditor 的 API 方法列表
+- 文档：readme 添加英文版本的内容
+
+
+
 ## v1.0.0-beta.6 20231201:
 - 新增：增强对 AI 输出自动进行 markdown 转换的功能
 - 新增：AiEditor 的相关操作方法支持链式调用的功能
