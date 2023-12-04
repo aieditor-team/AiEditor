@@ -1,4 +1,4 @@
-<h4 align="right"><strong>English</strong> | <a href="./readme_zh.md">简体中文</a></h4>
+<h4 align="right"><strong>English</strong> | <a href="./readme.zh.md">简体中文</a></h4>
 
 
 ![banner.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
