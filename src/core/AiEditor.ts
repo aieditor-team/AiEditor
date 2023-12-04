@@ -117,10 +117,11 @@ export class InnerEditor extends Tiptap {
         this.userOptions = userOptions;
     }
 
-    parseHtml(html:string){
+    parseHtml(html: string) {
         function bodyElement(value: string): HTMLElement {
-            return new window.DOMParser().parseFromString( `<body>${value}</body>`, 'text/html').body
+            return new window.DOMParser().parseFromString(`<body>${value}</body>`, 'text/html').body
         }
+
         const parser = DOMParser.fromSchema(this.schema);
         return parser.parse(bodyElement(html), {}).content;
     }
@@ -265,7 +266,7 @@ export class AiEditor {
         return this.innerEditor.getText();
     }
 
-    getMarkdown(){
+    getMarkdown() {
         return this.innerEditor.storage.markdown.getMarkdown();
     }
 
@@ -273,8 +274,35 @@ export class AiEditor {
         return this.options;
     }
 
+    getOutline() {
+        const doc = this.innerEditor.state.doc;
+        const headings = [] as any[];
+        doc.descendants((node, pos) => {
+            if (node.type.name === "heading") {
+                let text = "";
+                node.descendants((child) => {
+                    if (child.text) {
+                        text += child.text;
+                    }
+                })
+                headings.push({
+                    text: text,
+                    level: node.attrs.level,
+                    pos: pos,
+                    size: node.nodeSize,
+                })
+            }
+        })
+        return headings;
+    }
+
     focus() {
         this.innerEditor.commands.focus();
+        return this;
+    }
+
+    focusPos(pos: number) {
+        this.innerEditor.commands.focus(pos)
         return this;
     }
 
