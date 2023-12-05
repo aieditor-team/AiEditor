@@ -1,12 +1,15 @@
 import {AiEditor} from "../../../src";
 import {config} from "./xinghuo.ts"
 
+const content = `
+{"type":"doc","content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"AiEditor 是一个面向 AI 的下一代富文本编辑器。"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","marks":[{"type":"bold"}],"text":"提示："},{"type":"text","text":" "}]},{"type":"orderedList","attrs":{"tight":true,"start":1},"content":[{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"/\\" 可以快速弹出 AI 菜单 "}]}]},{"type":"listItem","attrs":{"indent":0},"content":[{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"输入 空格 + \\"@\\" 可以提及某人"}]}]}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0},"content":[{"type":"text","text":"请使用 Java 帮我写一个 hello world，只需要返回 java 代码内容"}]},{"type":"codeBlock","attrs":{"language":"java"},"content":[{"type":"text","text":"public class HelloWorld {\\n    public static void main(String[] args) {\\n        System.out.println(\\"Hello, World!\\");\\n    }\\n}"}]},{"type":"paragraph","attrs":{"lineHeight":"100%","textAlign":"left","indent":0}}]}
+`
 // @ts-ignore
 window.aiEditor = new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容...",
     contentRetention: true,
-    content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
+    content: JSON.parse(content),
     ai: {
         model: {
             xinghuo: {

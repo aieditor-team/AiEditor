@@ -2,6 +2,7 @@ import {AbstractWebSocket} from "../AbstractWebSocket.ts";
 import {Editor} from "@tiptap/core";
 import {uuid} from "../../util/uuid.ts";
 import {InnerEditor} from "../../core/AiEditor.ts";
+import {getText} from "../../util/getText.ts";
 
 
 export class XingHuoSocket extends AbstractWebSocket {
@@ -9,12 +10,14 @@ export class XingHuoSocket extends AbstractWebSocket {
     version: string;
     editor: Editor;
     from: number;
+    getText: boolean = false;
 
-    constructor(url: string, appId: string, version: string, editor: Editor) {
+    constructor(url: string, appId: string, version: string, editor: Editor, getText = false) {
         super(url);
         this.appId = appId;
         this.version = version;
         this.editor = editor;
+        this.getText = getText;
         this.from = editor.view.state.selection.from;
     }
 
@@ -72,9 +75,15 @@ export class XingHuoSocket extends AbstractWebSocket {
             if (message.header.status == 2) {
                 const end = this.editor.state.selection.to;
                 const insertedText = this.editor.state.doc.textBetween(this.from, end);
-                const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(insertedText);
                 const {state: {tr}, view} = this.editor!
-                view.dispatch(tr.replaceWith(this.from, end, parseMarkdown));
+                const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(insertedText);
+                if (this.getText) {
+                    const textString = getText(parseMarkdown);
+                    const textNode = this.editor.schema.text(textString);
+                    view.dispatch(tr.replaceWith(this.from, end, textNode));
+                } else {
+                    view.dispatch(tr.replaceWith(this.from, end, parseMarkdown));
+                }
             }
 
             this.editor.commands.scrollIntoView();

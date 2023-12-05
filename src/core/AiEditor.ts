@@ -98,6 +98,16 @@ export type AiEditorOptions = {
         },
         menus?: AiMenu[],
         commands?: AiCommand[],
+        codeBlock?:{
+            codeComments?:{
+                model:string,
+                prompt:string,
+            },
+            codeExplain?:{
+                model:string,
+                prompt:string,
+            }
+        }
     }
 }
 
@@ -205,6 +215,7 @@ export class AiEditor {
                 content = JSON.parse(cacheContent);
             }
         }
+
 
         this.innerEditor = new InnerEditor(this.options, {
             element: mainEl,

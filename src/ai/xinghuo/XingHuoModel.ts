@@ -26,9 +26,9 @@ export class XingHuoModel implements AiModel {
         this.urlSignatureAlgorithm = urlSignatureAlgorithm!;
     }
 
-    start(seletedText: string, prompt: string, editor: Editor): void {
+    start(seletedText: string, prompt: string, editor: Editor,getText:boolean = false): void {
         const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
-        const socket = new XingHuoSocket(url, this.appId, this.version, editor);
+        const socket = new XingHuoSocket(url, this.appId, this.version, editor,getText);
         socket.start(`"${seletedText}"\n${prompt}`)
     }
 

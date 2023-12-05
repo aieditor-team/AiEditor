@@ -3,9 +3,10 @@ import tippy from "tippy.js";
 import {isActive} from "../util/isActive.ts";
 import {TextSelection} from "prosemirror-state";
 import {textblockTypeInputRule} from "../util/textblockTypeInputRule.ts";
-import {Selection} from '@tiptap/pm/state';
+import {NodeSelection, Selection} from '@tiptap/pm/state';
 import {Node} from '@tiptap/pm/model';
-
+import {AiModelFactory} from "../ai/AiModelFactory.ts";
+import {InnerEditor} from "../core/AiEditor.ts";
 
 export type LanguageItem = {
     name: string;
@@ -141,13 +142,39 @@ export function getSelectedLineRange(
     };
 }
 
+
+declare module '@tiptap/core' {
+    interface Commands<ReturnType> {
+        CodeBlockExt: {
+            /**
+             * add comments
+             */
+            addCodeComments: (node: Node, pos: number) => ReturnType
+
+            /**
+             * add explain
+             */
+            addCodeExplain: (node: Node, pos: number) => ReturnType
+        }
+    }
+}
+
+
 export const backtickInputRegex = /^[`·]{3}([a-z]+)?[\s\n]$/;
 export const tildeInputRegex = /^[~～]{3}([a-z]+)?[\s\n]$/;
 
 export interface MyCodeBlockLowlightOptions extends CodeBlockLowlightOptions {
     lowlight: any,
     defaultLanguage: string | null | undefined,
-    languages: LanguageItem[]
+    languages: LanguageItem[],
+    codeCommentsAi?:null |{
+        model:string,
+        prompt:string,
+    },
+    codeExplainAi?:null |{
+        model:string,
+        prompt:string,
+    }
 }
 
 export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>({
@@ -164,13 +191,47 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
     addCommands() {
         return {
             ...this.parent?.(),
+
+            addCodeComments: (node, pos) => ({editor}) => {
+                const {storage, view: {dispatch}, state: {tr}} = editor;
+                dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos + 1)).deleteSelection())
+
+                const markdown = storage.markdown.serializer.serialize(node);
+                const llm = AiModelFactory.create(this.options.codeCommentsAi!.model, (editor as InnerEditor).userOptions);
+
+                llm?.start(markdown, this.options.codeCommentsAi!.prompt, editor, true);
+                return true;
+            },
+
+
+            addCodeExplain: (node, pos) => ({editor}) => {
+                const {storage, view: {dispatch}, state: {tr}} = editor;
+
+                const nodeSize = editor.state.doc.nodeSize;
+
+                //there is no content after the node
+                if (nodeSize <= pos + node.nodeSize + 2){
+                    editor.commands.insertContentAt(pos + node.nodeSize + 1, "<p></p>")
+                    dispatch(tr.setSelection(TextSelection.create(editor.state.doc, nodeSize - 2)))
+                }else {
+                    dispatch(tr.setSelection(TextSelection.create(editor.state.doc, pos + node.nodeSize + 1)))
+                }
+
+                const markdown = storage.markdown.serializer.serialize(node);
+                const llm = AiModelFactory.create(this.options.codeExplainAi!.model, (editor as InnerEditor).userOptions);
+
+                llm?.start(markdown, this.options.codeExplainAi!.prompt, editor);
+                return true;
+            },
+
+
             toggleCodeBlock:
                 (attributes) =>
                     ({commands, editor, chain}) => {
                         const {state} = editor;
                         const {from, to} = state.selection;
 
-                        // 如果选中范围是连续段落，则合并后转成一个 codeBlock
+                        // merge multi paragraph to codeBlock
                         if (!isActive(state, this.name) && !state.selection.empty) {
                             let isSelectConsecutiveParagraphs = true;
                             const textArr: string[] = [];
@@ -180,7 +241,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                                 }
                                 if (node.type.name !== 'paragraph') {
                                     if (pos + 1 <= from && pos + node.nodeSize - 1 >= to) {
-                                        // 不要返回 false, 否则会中断遍历子节点
                                         return;
                                     } else {
                                         isSelectConsecutiveParagraphs = false;
@@ -196,7 +256,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                                     textArr.push(selectedText || '');
                                 }
                             });
-                            // 仅处理选择连续多个段落的情况
                             if (isSelectConsecutiveParagraphs && textArr.length > 1) {
                                 return chain()
                                     .command(({state, tr}) => {
@@ -309,13 +368,15 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
     },
 
     addNodeView() {
-        return (e) => {
+        return (props) => {
             const container = document.createElement('div')
             container.classList.add("aie-codeblock-wrapper")
-            const {language} = e.node.attrs;
+            const {language} = props.node.attrs;
 
             container.innerHTML = `
                 <div class="aie-codeblock-tools" contenteditable="false">
+                    ${this.options.codeCommentsAi ? '<div class="aie-codeblock-tools-comments">自动注释</div>':''}
+                    ${this.options.codeExplainAi ? '<div class="aie-codeblock-tools-explain">代码解释</div>':''}
                     <div class="aie-codeblock-tools-lang" contenteditable="false"><span>${language || this.options.defaultLanguage}</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg></div>
                 </div>
                 <pre class="hljs"><code></code></pre>
@@ -333,17 +394,17 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     const target: HTMLDivElement = (event.target as HTMLElement).closest('.aie-codeblock-langs-item')!;
                     if (target) {
                         const language = target.getAttribute("data-item")!;
-                        e.editor.chain().setCodeBlock({language:language}).run();
+                        alert(language)
+                        props.editor.chain().setCodeBlock({language: language}).run();
                     }
                 });
 
                 return div;
             }
 
-
             const instance = tippy(container.querySelector(".aie-codeblock-tools-lang")!, {
                 content: createEL(),
-                appendTo: e.editor.view.dom.closest(".aie-container")!,
+                appendTo: props.editor.options.element,
                 placement: 'bottom-end',
                 trigger: 'click',
                 interactive: true,
@@ -354,6 +415,15 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 },
             });
 
+            container.querySelector(".aie-codeblock-tools-comments")
+                ?.addEventListener("click", () => {
+                    props.editor.chain().addCodeComments(props.node, (props.getPos as Function)());
+                });
+
+            container.querySelector(".aie-codeblock-tools-explain")
+                ?.addEventListener("click", () => {
+                    props.editor.chain().addCodeExplain(props.node, (props.getPos as Function)());
+                });
 
             return {
                 dom: container,
