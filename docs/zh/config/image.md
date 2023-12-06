@@ -16,6 +16,9 @@ new AiEditor({
         uploader: (file, uploadUrl, headers, formName) => {
             //可自定义图片上传逻辑
         },
+        dataProcessor:(json)=>{
+            //自定义服务器返回内容处理器
+        }
     },
 })
 ```
@@ -40,3 +43,6 @@ new AiEditor({
   }
 }
 ```
+
+若服务器返回的不是以上内容格式，我们可以通过配置 `dataProcessor` 对数据进行二次处理，并按以上格式返回。
+
