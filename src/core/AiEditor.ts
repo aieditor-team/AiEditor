@@ -66,18 +66,21 @@ export type AiEditorOptions = {
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        dataProcessor?: (data: any) => Record<string, any>
     },
     video?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        dataProcessor?: (data: any) => Record<string, any>
     },
     attachment?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        dataProcessor?: (data: any) => Record<string, any>
     },
     fontFamily?: {
         values: NameAndValue[]

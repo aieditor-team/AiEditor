@@ -48,9 +48,10 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
         //push default extensions
         ret.push(Underline, TextStyle, FontFamily,
             AttachmentExt.configure({
-                uploadUrl: options.video?.uploadUrl,
-                uploadHeaders: options.video?.uploadHeaders,
-                uploader: options.video?.uploader || options.uploader,
+                uploadUrl: options.attachment?.uploadUrl,
+                uploadHeaders: options.attachment?.uploadHeaders,
+                uploader: options.attachment?.uploader || options.uploader,
+                dataProcessor: options.attachment?.dataProcessor,
             }),
             PainterExt,
             SelectionMarkerExt,
@@ -67,6 +68,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 uploadUrl: options.image?.uploadUrl,
                 uploadHeaders: options.image?.uploadHeaders,
                 uploader: options.image?.uploader || options.uploader,
+                dataProcessor: options.image?.dataProcessor,
             }),
             Table.configure({
                 resizable: true,
@@ -104,6 +106,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 uploadUrl: options.video?.uploadUrl,
                 uploadHeaders: options.video?.uploadHeaders,
                 uploader: options.video?.uploader || options.uploader,
+                dataProcessor: options.video?.dataProcessor,
             }),
             IFrameExt,
             // PasteExt,

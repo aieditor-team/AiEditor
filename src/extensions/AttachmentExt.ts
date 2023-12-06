@@ -10,6 +10,7 @@ export interface AttachmentOptions {
     uploadUrl?: string,
     uploadHeaders: Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+    dataProcessor?:(data:any)=>Record<string, any>
 }
 
 
@@ -60,6 +61,9 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                 const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                 uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "attachment")
                     .then(json => {
+                        if (this.options.dataProcessor){
+                            json = this.options.dataProcessor(json);
+                        }
                         if (json.errorCode === 0 && json.data && json.data.href) {
                             const decorations = key.getState(this.editor.state) as DecorationSet;
                             let found = decorations.find(void 0, void 0, spec => spec.id == id)
