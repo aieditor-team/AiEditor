@@ -17,7 +17,8 @@ AiEditor 提供的方法如下：
 
 - `getHtml()`： 获取当前编辑器的 html 内容。
 - `getJson()`： 获取当前编辑器的 json 描述数据。
-- `getText()`： 获取当前编辑器的 纯文本 内容（不包含 html）。
+- `getText()`： 获取当前编辑器的 `纯文本` 内容（不包含 html）。
+- `getSelectedText()`： 获取当前编辑器选中的 `纯文本` 内容（不包含 html）。
 - `getMarkdown()`： 获取当前编辑器的获取 markdown 格式内容。
 - `getOptions()`： 获取当前编辑器的配置信息。
 - `getOutline()`： 获得内容的目录，返回一个数组，内容格式如下：
