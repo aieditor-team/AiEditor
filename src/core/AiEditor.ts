@@ -1,4 +1,4 @@
-import {Editor, Editor as Tiptap, EditorEvents, EditorOptions} from "@tiptap/core";
+import {Editor, Editor as Tiptap, EditorEvents, EditorOptions, getTextBetween} from "@tiptap/core";
 
 import {Header} from "../components/Header.ts";
 import {Footer} from "../components/Footer.ts";
@@ -98,14 +98,14 @@ export type AiEditorOptions = {
         },
         menus?: AiMenu[],
         commands?: AiCommand[],
-        codeBlock?:{
-            codeComments?:{
-                model:string,
-                prompt:string,
+        codeBlock?: {
+            codeComments?: {
+                model: string,
+                prompt: string,
             },
-            codeExplain?:{
-                model:string,
-                prompt:string,
+            codeExplain?: {
+                model: string,
+                prompt: string,
             }
         }
     }
@@ -275,6 +275,12 @@ export class AiEditor {
 
     getText() {
         return this.innerEditor.getText();
+    }
+
+    getSelectedText() {
+        const selection = this.innerEditor.state.selection;
+        if (selection.empty) return "";
+        return getTextBetween(this.innerEditor.state.doc, {from: selection.from, to: selection.to})
     }
 
     getMarkdown() {

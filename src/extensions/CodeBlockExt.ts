@@ -394,7 +394,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     const target: HTMLDivElement = (event.target as HTMLElement).closest('.aie-codeblock-langs-item')!;
                     if (target) {
                         const language = target.getAttribute("data-item")!;
-                        alert(language)
                         props.editor.chain().setCodeBlock({language: language}).run();
                     }
                 });
