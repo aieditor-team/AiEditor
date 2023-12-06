@@ -3,6 +3,7 @@ import {Editor} from "@tiptap/core";
 import {uuid} from "../../util/uuid.ts";
 import {InnerEditor} from "../../core/AiEditor.ts";
 import {getText} from "../../util/getText.ts";
+import {AiModelParseOptions} from "../AiModel.ts";
 
 
 export class XingHuoSocket extends AbstractWebSocket {
@@ -10,14 +11,16 @@ export class XingHuoSocket extends AbstractWebSocket {
     version: string;
     editor: Editor;
     from: number;
-    getText: boolean = false;
+    options: AiModelParseOptions;
 
-    constructor(url: string, appId: string, version: string, editor: Editor, getText = false) {
+    constructor(url: string, appId: string, version: string, editor: Editor, options?: AiModelParseOptions) {
         super(url);
         this.appId = appId;
         this.version = version;
         this.editor = editor;
-        this.getText = getText;
+        this.options = options || {
+            markdownParseEnable: true
+        };
         this.from = editor.view.state.selection.from;
     }
 
@@ -73,19 +76,20 @@ export class XingHuoSocket extends AbstractWebSocket {
             view.dispatch(tr.insertText(text));
 
             if (message.header.status == 2) {
-                const end = this.editor.state.selection.to;
-                const insertedText = this.editor.state.doc.textBetween(this.from, end);
-                const {state: {tr}, view} = this.editor!
-                const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(insertedText);
-                if (this.getText) {
-                    const textString = getText(parseMarkdown);
-                    const textNode = this.editor.schema.text(textString);
-                    view.dispatch(tr.replaceWith(this.from, end, textNode));
-                } else {
-                    view.dispatch(tr.replaceWith(this.from, end, parseMarkdown));
+                if (this.options.markdownParseEnable) {
+                    const end = this.editor.state.selection.to;
+                    const insertedText = this.editor.state.doc.textBetween(this.from, end);
+                    const {state: {tr}, view} = this.editor!
+                    const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(insertedText);
+                    if (this.options.useMarkdownTextOnly) {
+                        const textString = getText(parseMarkdown);
+                        const textNode = this.editor.schema.text(textString);
+                        view.dispatch(tr.replaceWith(this.from, end, textNode).scrollIntoView());
+                    } else {
+                        view.dispatch(tr.replaceWith(this.from, end, parseMarkdown).scrollIntoView());
+                    }
                 }
             }
-
             this.editor.commands.scrollIntoView();
         }
     }

@@ -1,4 +1,4 @@
-import {AiModel} from "../AiModel.ts";
+import {AiModel, AiModelParseOptions} from "../AiModel.ts";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
 import {Editor} from "@tiptap/core";
 import {XingHuoSocket} from "./XingHuoSocket.ts";
@@ -14,10 +14,10 @@ export class XingHuoModel implements AiModel {
     apiKey: string;
     apiSecret: string;
     version: string;
-    urlSignatureAlgorithm:(model:XingHuoModel)=>string;
+    urlSignatureAlgorithm: (model: XingHuoModel) => string;
 
     constructor(options: AiEditorOptions) {
-        const {protocol, appId, apiKey, apiSecret, version,urlSignatureAlgorithm} = options.ai?.model.xinghuo!;
+        const {protocol, appId, apiKey, apiSecret, version, urlSignatureAlgorithm} = options.ai?.model.xinghuo!;
         this.protocol = protocol || "ws";
         this.appId = appId;
         this.apiKey = apiKey;
@@ -26,13 +26,13 @@ export class XingHuoModel implements AiModel {
         this.urlSignatureAlgorithm = urlSignatureAlgorithm!;
     }
 
-    start(seletedText: string, prompt: string, editor: Editor,getText:boolean = false): void {
+    start(seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void {
         const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
-        const socket = new XingHuoSocket(url, this.appId, this.version, editor,getText);
+        const socket = new XingHuoSocket(url, this.appId, this.version, editor, options);
         socket.start(`"${seletedText}"\n${prompt}`)
     }
 
-     createUrl(): string {
+    createUrl(): string {
         const date = new Date().toUTCString().replace("GMT", "+0000");
         let header = "host: spark-api.xf-yun.com\n"
         header += "date: " + date + "\n"

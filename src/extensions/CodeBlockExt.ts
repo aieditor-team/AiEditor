@@ -167,13 +167,13 @@ export interface MyCodeBlockLowlightOptions extends CodeBlockLowlightOptions {
     lowlight: any,
     defaultLanguage: string | null | undefined,
     languages: LanguageItem[],
-    codeCommentsAi?:null |{
-        model:string,
-        prompt:string,
+    codeCommentsAi?: null | {
+        model: string,
+        prompt: string,
     },
-    codeExplainAi?:null |{
-        model:string,
-        prompt:string,
+    codeExplainAi?: null | {
+        model: string,
+        prompt: string,
     }
 }
 
@@ -194,12 +194,15 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
 
             addCodeComments: (node, pos) => ({editor}) => {
                 const {storage, view: {dispatch}, state: {tr}} = editor;
-                dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos + 1)).deleteSelection())
+                dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos)).deleteSelection())
 
                 const markdown = storage.markdown.serializer.serialize(node);
                 const llm = AiModelFactory.create(this.options.codeCommentsAi!.model, (editor as InnerEditor).userOptions);
 
-                llm?.start(markdown, this.options.codeCommentsAi!.prompt, editor, true);
+                llm?.start(markdown, this.options.codeCommentsAi!.prompt, editor, {
+                    markdownParseEnable: true,
+                    useMarkdownTextOnly: true,
+                });
                 return true;
             },
 
@@ -210,10 +213,10 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 const nodeSize = editor.state.doc.nodeSize;
 
                 //there is no content after the node
-                if (nodeSize <= pos + node.nodeSize + 2){
+                if (nodeSize <= pos + node.nodeSize + 2) {
                     editor.commands.insertContentAt(pos + node.nodeSize + 1, "<p></p>")
                     dispatch(tr.setSelection(TextSelection.create(editor.state.doc, nodeSize - 2)))
-                }else {
+                } else {
                     dispatch(tr.setSelection(TextSelection.create(editor.state.doc, pos + node.nodeSize + 1)))
                 }
 
@@ -375,8 +378,8 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
 
             container.innerHTML = `
                 <div class="aie-codeblock-tools" contenteditable="false">
-                    ${this.options.codeCommentsAi ? '<div class="aie-codeblock-tools-comments">自动注释</div>':''}
-                    ${this.options.codeExplainAi ? '<div class="aie-codeblock-tools-explain">代码解释</div>':''}
+                    ${this.options.codeCommentsAi ? '<div class="aie-codeblock-tools-comments">自动注释</div>' : ''}
+                    ${this.options.codeExplainAi ? '<div class="aie-codeblock-tools-explain">代码解释</div>' : ''}
                     <div class="aie-codeblock-tools-lang" contenteditable="false"><span>${language || this.options.defaultLanguage}</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16L6 10H18L12 16Z"></path></svg></div>
                 </div>
                 <pre class="hljs"><code></code></pre>
@@ -415,13 +418,23 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             });
 
             container.querySelector(".aie-codeblock-tools-comments")
-                ?.addEventListener("click", () => {
-                    props.editor.chain().addCodeComments(props.node, (props.getPos as Function)());
+                ?.addEventListener("click", (e: any) => {
+                    // can not use the props node and its getPos, because node's attr and pos will change if dispatch transaction
+                    // props.editor.chain().addCodeComments(props.node, (props.getPos as Function)());
+
+                    const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
+                    const clodeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
+                    props.editor.chain().addCodeComments(clodeBlock, coordinates!.pos);
                 });
 
             container.querySelector(".aie-codeblock-tools-explain")
-                ?.addEventListener("click", () => {
-                    props.editor.chain().addCodeExplain(props.node, (props.getPos as Function)());
+                ?.addEventListener("click", (e: any) => {
+                    // can not use the props node and its getPos, because node's attr and pos will change if dispatch transaction
+                    // props.editor.chain().addCodeExplain(props.node, (props.getPos as Function)());
+
+                    const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
+                    const clodeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
+                    props.editor.chain().addCodeExplain(clodeBlock, coordinates!.pos);
                 });
 
             return {
