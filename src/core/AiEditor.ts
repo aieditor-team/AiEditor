@@ -45,6 +45,13 @@ export interface AiEditorEvent {
     onTransaction: (props: EditorEvents['transaction']) => void
 }
 
+export interface UploaderEvent {
+    onBeforeUpload: (file: File, uploadUrl: string, headers: Record<string, any>) => void
+    onSuccess: (file: File, response: any) => any
+    onFailed: (file: File, response: any) => void
+    onError: (file: File,err:any) => void
+}
+
 
 export type AiEditorOptions = {
     element: string | Element,
@@ -66,21 +73,21 @@ export type AiEditorOptions = {
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
-        dataProcessor?: (data: any) => Record<string, any>
+        uploaderEvent?: UploaderEvent,
     },
     video?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
-        dataProcessor?: (data: any) => Record<string, any>
+        uploaderEvent?: UploaderEvent,
     },
     attachment?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
-        dataProcessor?: (data: any) => Record<string, any>
+        uploaderEvent?: UploaderEvent,
     },
     fontFamily?: {
         values: NameAndValue[]

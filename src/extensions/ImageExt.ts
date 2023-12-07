@@ -9,6 +9,7 @@ import {TextSelection} from "prosemirror-state";
 import {uuid} from "../util/uuid.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
+import {UploaderEvent} from "../core/AiEditor.ts";
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -25,7 +26,7 @@ export interface ImageOptions {
     uploadUrl?: string,
     uploadHeaders: Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
-    dataProcessor?:(data:any)=>Record<string, any>
+    uploaderEvent?: UploaderEvent,
 }
 
 export type ImageAction = {
@@ -112,12 +113,25 @@ export const ImageExt = Image.extend<ImageOptions>({
                         pos: tr.selection.from,
                     }));
 
+                    if (this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload) {
+                        this.options.uploaderEvent.onBeforeUpload(file, this.options.uploadUrl!, this.options.uploadHeaders);
+                    }
+
                     const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                     uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "image")
                         .then(json => {
-                            if (this.options.dataProcessor){
-                                json = this.options.dataProcessor(json);
+
+                            //process on success
+                            if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+                                const result = this.options.uploaderEvent.onSuccess(file, json);
+                                if (typeof result === "boolean" && !result) {
+                                    return;
+                                }
+                                if (typeof result === "object") {
+                                    json = result;
+                                }
                             }
+
                             if (json.errorCode === 0 && json.data && json.data.src) {
                                 const decorations = key.getState(this.editor.state) as DecorationSet;
                                 let found = decorations.find(void 0, void 0, spec => spec.id == id)
@@ -129,9 +143,16 @@ export const ImageExt = Image.extend<ImageOptions>({
                                     .setMeta(actionKey, {type: "remove", id}));
                             } else {
                                 view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                                if (this.options.uploaderEvent && this.options.uploaderEvent.onFailed) {
+                                    this.options.uploaderEvent.onFailed(file, json);
+                                }
                             }
-                        }).catch(() => {
+                        }).catch((err) => {
+                        const {state: {tr}, view} = this.editor!
                         view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                        if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
+                            this.options.uploaderEvent.onError(file, err);
+                        }
                     })
 
                     return true;

@@ -4,13 +4,14 @@ import {DecorationSet} from "prosemirror-view";
 import {createAttachmentDecoration} from "../util/decorations.ts";
 import {Extension} from "@tiptap/core";
 import {getUploader} from "../util/getUploader.ts";
+import {UploaderEvent} from "../core/AiEditor.ts";
 
 export interface AttachmentOptions {
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
     uploadHeaders: Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
-    dataProcessor?:(data:any)=>Record<string, any>
+    uploaderEvent?: UploaderEvent,
 }
 
 
@@ -58,12 +59,25 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                     text: file.name,
                 }));
 
+
+                if (this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload) {
+                    this.options.uploaderEvent.onBeforeUpload(file, this.options.uploadUrl!, this.options.uploadHeaders);
+                }
                 const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                 uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "attachment")
                     .then(json => {
-                        if (this.options.dataProcessor){
-                            json = this.options.dataProcessor(json);
+
+                        //process on success
+                        if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+                            const result = this.options.uploaderEvent.onSuccess(file, json);
+                            if (typeof result === "boolean" && !result) {
+                                return;
+                            }
+                            if (typeof result === "object") {
+                                json = result;
+                            }
                         }
+
                         if (json.errorCode === 0 && json.data && json.data.href) {
                             const decorations = key.getState(this.editor.state) as DecorationSet;
                             let found = decorations.find(void 0, void 0, spec => spec.id == id)
@@ -72,15 +86,21 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                                 .insertText(` ${fileName} `, found[0].from)
                                 .addMark(found[0].from + 1, fileName.length + found[0].from + 1, schema.marks.link.create({
                                     href: json.data.href,
-                                    target:"_blank"
+                                    target: "_blank"
                                 }))
                                 .setMeta(actionKey, {type: "remove", id}));
                         } else {
                             view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                            if (this.options.uploaderEvent && this.options.uploaderEvent.onFailed) {
+                                this.options.uploaderEvent.onFailed(file, json);
+                            }
                         }
-                    }).catch(() => {
+                    }).catch((err) => {
                     const {state: {tr}, view} = this.editor!
                     view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                    if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
+                        this.options.uploaderEvent.onError(file, err);
+                    }
                 })
 
                 return true;
