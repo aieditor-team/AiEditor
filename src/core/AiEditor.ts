@@ -49,7 +49,7 @@ export interface UploaderEvent {
     onBeforeUpload: (file: File, uploadUrl: string, headers: Record<string, any>) => void
     onSuccess: (file: File, response: any) => any
     onFailed: (file: File, response: any) => void
-    onError: (file: File,err:any) => void
+    onError: (file: File, err: any) => void
 }
 
 
@@ -67,7 +67,7 @@ export type AiEditorOptions = {
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onChange?: (editor: AiEditor) => void,
     toolbarKeys?: string[],
-    link?:{
+    link?: {
         autolink?: boolean,
         rel?: string,
         class?: string,
@@ -207,11 +207,14 @@ export class AiEditor {
         //set the editor theme class
         rootEl.classList.add(`aie-theme-${this.options.theme}`);
 
-        this.container = document.createElement("div");
-        this.container.classList.add("aie-container");
+
+        this.container = rootEl.querySelector(".aie-container")!;
+        if (!this.container) {
+            this.container = document.createElement("div");
+            this.container.classList.add("aie-container");
+        }
 
         rootEl.appendChild(this.container);
-
 
         const mainEl = document.createElement("div");
         mainEl.style.flexGrow = "1";
@@ -254,9 +257,14 @@ export class AiEditor {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
         });
 
-        this.container.appendChild(this.header);
-        this.container.appendChild(mainEl);
-        this.container.appendChild(this.footer);
+        const _header = this.container.querySelector(".aie-container-header") || this.container;
+        _header.appendChild(this.header);
+
+        const _main = this.container.querySelector(".aie-container-main") || this.container;
+        _main.appendChild(mainEl);
+
+        const _footer = this.container.querySelector(".aie-container-footer") || this.container;
+        _footer.appendChild(this.footer);
     }
 
     private onTransaction(props: EditorEvents['transaction']) {
