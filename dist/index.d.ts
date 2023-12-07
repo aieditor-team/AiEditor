@@ -41,6 +41,7 @@ export declare class AiEditor {
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
+    getSelectedText(): string;
     getMarkdown(): any;
     getOptions(): AiEditorOptions;
     getOutline(): any[];
@@ -84,18 +85,21 @@ export declare type AiEditorOptions = {
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        dataProcessor?: (data: any) => Record<string, any>;
     };
     video?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        dataProcessor?: (data: any) => Record<string, any>;
     };
     attachment?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        dataProcessor?: (data: any) => Record<string, any>;
     };
     fontFamily?: {
         values: NameAndValue[];
@@ -116,6 +120,16 @@ export declare type AiEditorOptions = {
         };
         menus?: AiMenu[];
         commands?: AiCommand[];
+        codeBlock?: {
+            codeComments?: {
+                model: string;
+                prompt: string;
+            };
+            codeExplain?: {
+                model: string;
+                prompt: string;
+            };
+        };
     };
 };
 
@@ -128,7 +142,12 @@ export declare interface AiMenu {
 }
 
 declare interface AiModel {
-    start: (seletedText: string, prompt: string, editor: Editor) => void;
+    start: (seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void;
+}
+
+declare interface AiModelParseOptions {
+    markdownParseEnable?: boolean;
+    useMarkdownTextOnly?: boolean;
 }
 
 declare class Footer extends HTMLElement implements AiEditorEvent {
@@ -167,7 +186,7 @@ declare class XingHuoModel implements AiModel {
     version: string;
     urlSignatureAlgorithm: (model: XingHuoModel) => string;
     constructor(options: AiEditorOptions);
-    start(seletedText: string, prompt: string, editor: Editor): void;
+    start(seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void;
     createUrl(): string;
 }
 

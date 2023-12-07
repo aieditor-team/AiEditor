@@ -1,5 +1,15 @@
 # AiEditor ChangeLog
 
+## v1.0.0-beta.8 20231207:
+- 新增：`代码块` 新增 AI 自动添加注释的功能
+- 新增：`代码块` 新增 AI 解释代码含义的功能
+- 新增：AiEditor 添加 `getSelectedText()` 用于获取选择的文字
+- 新增：图片、视频、附件上传添加 `dataProcessor` 配置用于二次处理服务器请求的功能
+- 修复：`代码块` 在第一次初始化时，无法选择代码语言的问题
+- 样式：修改 `引用`（`blockquote`）在暗色模式下的样式问题
+- 文档：添加关于 `dataProcessor` 的相关文档
+
+
 
 ## v1.0.0-beta.7 20231204:
 - 新增：AiEditor 添加 getMarkdown() 方法，用于获得 markdown 内容
