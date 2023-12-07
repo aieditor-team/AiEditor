@@ -67,6 +67,11 @@ export type AiEditorOptions = {
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onChange?: (editor: AiEditor) => void,
     toolbarKeys?: string[],
+    link?:{
+        autolink?: boolean,
+        rel?: string,
+        class?: string,
+    }
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
         customMenuInvoke?: (editor: Editor) => void;
