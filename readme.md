@@ -14,7 +14,10 @@ About AiEditor (official website https://aieditor.dev)
 
 ## Online demo
 
-http://aieditor.jpress.cn
+- Classic Style: http://aieditor.jpress.cn
+- Modern style: http://aieditor1.jpress.cn
+
+
 
 ![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
 
