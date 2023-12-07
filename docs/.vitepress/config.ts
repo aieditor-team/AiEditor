@@ -11,7 +11,6 @@ export default defineConfig({
     themeConfig: {
         logo: '/assets/image/logo.png',
         editLink: {
-            // pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path'
             pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
             text: '编辑当前页面'
         },
@@ -21,12 +20,15 @@ export default defineConfig({
         outline: {
             label: '章节',
         },
-        // https://vitepress.dev/reference/default-theme-config
         nav: [
             {text: '首页', link: '/'},
             {text: '文档', link: 'zh/what-is-ai-editor'},
-            // {text: 'Demo', link: 'zh/demo'},
-            {text: '在线 Demo', link: 'http://aieditor.jpress.cn'},
+            {
+                text: '在线 Demo', items: [
+                    {text: '经典/传统风格', link: 'http://aieditor.jpress.cn'},
+                    {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
+                ]
+            },
             {
                 text: '获取源码', items: [
                     {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
