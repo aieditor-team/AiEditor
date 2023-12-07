@@ -17,7 +17,7 @@ import MarkdownIt from 'markdown-it';
 import {DOMParser} from "@tiptap/pm/model";
 
 
-window.customElements.define('aie-menus', Header);
+window.customElements.define('aie-header', Header);
 window.customElements.define('aie-footer', Footer);
 
 export interface NameAndValue {
@@ -165,7 +165,7 @@ export class AiEditor {
 
     container!: HTMLDivElement;
 
-    menus!: Header;
+    header!: Header;
 
     footer!: Footer;
 
@@ -217,10 +217,10 @@ export class AiEditor {
         mainEl.style.flexGrow = "1";
         mainEl.style.overflow = "auto";
 
-        this.menus = document.createElement("aie-menus") as Header;
+        this.header = document.createElement("aie-header") as Header;
         this.footer = document.createElement("aie-footer") as Footer;
 
-        this.eventComponents.push(this.menus);
+        this.eventComponents.push(this.header);
         this.eventComponents.push(this.footer);
 
         let content = this.options.content;
@@ -254,7 +254,7 @@ export class AiEditor {
             zEvent.onCreate && zEvent.onCreate(props, this.options);
         });
 
-        this.container.appendChild(this.menus);
+        this.container.appendChild(this.header);
         this.container.appendChild(mainEl);
         this.container.appendChild(this.footer);
     }
