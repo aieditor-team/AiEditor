@@ -23,6 +23,8 @@
         height: 100%;
         min-height: 100vh;
         padding: 1rem;
+        z-index: 99;
+
       }
 
       .page-header {
@@ -38,6 +40,54 @@
         justify-content: center;
         padding: 10px 0;
       }
+      .aie-main{
+        position: relative;
+      }
+      .aie-directory{
+        position: absolute;
+        top:30px;
+        left:10px;
+        min-width: 260px;
+        max-width: 280px;
+        z-index: 0;
+      }
+
+      .aie-directory h5{
+        color:#000000e0;
+        font-size: 16px;
+        text-indent: 4px;
+        line-height: 32px;
+      }
+      .aie-directory a{
+        height: 30px;
+        font-size: 14px;
+        color:#000000a3;
+        text-indent: 4px;
+        line-height: 30px;
+        text-decoration: none;
+        width: 100%;
+        display: inline-block;
+        margin:0;
+        padding:0;
+        white-space: nowrap;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+
+      }
+      .aie-directory a:hover{
+        cursor: pointer;
+        background-color: #334d660f;
+        border-radius: 4px;
+      }
+      .aie-title1{
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .aie-title2,.aie-title3,.aie-title4,.aie-title5,.aie-title6{
+        font-size: 12px;
+      }
+
     </style>
 </head>
 <body style="padding: 0;margin: 0;background: #f3f4f6;">
@@ -58,8 +108,14 @@
         <div class="aie-header-panel">
             <div class="aie-container-header" style="background: #fff;"></div>
         </div>
-        <div class="aie-container-panel">
-            <div class="aie-container-main"></div>
+        <div class="aie-main">
+<!--            <div class="aie-directory">-->
+<!--                <div id="outline">-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="aie-container-panel">
+                <div class="aie-container-main"></div>
+            </div>
         </div>
         <div class="aie-container-footer"></div>
     </div>

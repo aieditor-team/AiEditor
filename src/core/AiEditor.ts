@@ -65,6 +65,7 @@ export type AiEditorOptions = {
     cbName?: string,
     cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
+    onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
     toolbarKeys?: string[],
     link?: {
@@ -265,6 +266,10 @@ export class AiEditor {
 
         const _footer = this.container.querySelector(".aie-container-footer") || this.container;
         _footer.appendChild(this.footer);
+
+        if (this.options.onCreated){
+            this.options.onCreated(this);
+        }
     }
 
     private onTransaction(props: EditorEvents['transaction']) {
@@ -342,7 +347,7 @@ export class AiEditor {
     }
 
     focusPos(pos: number) {
-        this.innerEditor.commands.focus(pos)
+        this.innerEditor.commands.focus(pos);
         return this;
     }
 
