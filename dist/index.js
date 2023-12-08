@@ -15682,7 +15682,9 @@ class ex extends me {
   }
   // @ts-ignore
   onClick(e) {
-    const t = this.closest(".aie-container").querySelector(".aie-content").innerHTML, i = Array.from(document.querySelectorAll("style, link")).map((l) => l.outerHTML).join("") + t, s = document.createElement("iframe");
+    let t = this.closest(".aie-container").querySelector(".aie-content").innerHTML;
+    t = `<div class="aie-container" style="border: none;padding: 0;margin: 0"><div class="aie-content" style="border: none;height: auto;overflow: visible">${t}</div></div>`;
+    const i = Array.from(document.querySelectorAll("style, link")).map((l) => l.outerHTML).join("") + t, s = document.createElement("iframe");
     s.id = "aie-print-iframe", s.setAttribute("style", "position: absolute; width: 0; height: 0; top: -10px; left: -10px;"), document.body.appendChild(s);
     const o = s.contentWindow, a = s.contentDocument || s.contentWindow && s.contentWindow.document;
     a && (a.open(), a.write(i), a.close()), o && (s.onload = function() {
@@ -18674,8 +18676,14 @@ const zg = (n, e) => {
           id: e,
           pos: t.selection.from,
           text: n.name
-        })), (this.options.uploader || Nc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
-          if (this.options.dataProcessor && (o = this.options.dataProcessor(o)), o.errorCode === 0 && o.data && o.data.href) {
+        })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Nc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
+          if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+            const a = this.options.uploaderEvent.onSuccess(n, o);
+            if (typeof a == "boolean" && !a)
+              return;
+            typeof a == "object" && (o = a);
+          }
+          if (o.errorCode === 0 && o.data && o.data.href) {
             let l = Qd.getState(this.editor.state).find(void 0, void 0, (u) => u.id == e);
             const c = o.data.fileName || n.name;
             r.dispatch(r.state.tr.insertText(` ${c} `, l[0].from).addMark(l[0].from + 1, c.length + l[0].from + 1, i.marks.link.create({
@@ -18683,10 +18691,10 @@ const zg = (n, e) => {
               target: "_blank"
             })).setMeta(oi, { type: "remove", id: e }));
           } else
-            r.dispatch(t.setMeta(oi, { type: "remove", id: e }));
-        }).catch(() => {
-          const { state: { tr: o }, view: a } = this.editor;
-          a.dispatch(o.setMeta(oi, { type: "remove", id: e }));
+            r.dispatch(t.setMeta(oi, { type: "remove", id: e })), this.options.uploaderEvent && this.options.uploaderEvent.onFailed && this.options.uploaderEvent.onFailed(n, o);
+        }).catch((o) => {
+          const { state: { tr: a }, view: l } = this.editor;
+          l.dispatch(a.setMeta(oi, { type: "remove", id: e })), this.options.uploaderEvent && this.options.uploaderEvent.onError && this.options.uploaderEvent.onError(n, o);
         }), !0;
       }
     };
@@ -19160,17 +19168,24 @@ const zg = (n, e) => {
             type: "add",
             id: t,
             pos: r.selection.from
-          })), (this.options.uploader || Nc(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
-            if (this.options.dataProcessor && (a = this.options.dataProcessor(a)), a.errorCode === 0 && a.data && a.data.src) {
+          })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(e, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Nc(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
+            if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+              const l = this.options.uploaderEvent.onSuccess(e, a);
+              if (typeof l == "boolean" && !l)
+                return;
+              typeof l == "object" && (a = l);
+            }
+            if (a.errorCode === 0 && a.data && a.data.src) {
               let c = ef.getState(this.editor.state).find(void 0, void 0, (u) => u.id == t);
               i.dispatch(i.state.tr.insert(c[0].from, s.nodes.image.create({
                 src: a.data.src,
                 alt: a.data.alt
               })).setMeta(ai, { type: "remove", id: t }));
             } else
-              i.dispatch(r.setMeta(ai, { type: "remove", id: t }));
-          }).catch(() => {
-            i.dispatch(r.setMeta(ai, { type: "remove", id: t }));
+              i.dispatch(r.setMeta(ai, { type: "remove", id: t })), this.options.uploaderEvent && this.options.uploaderEvent.onFailed && this.options.uploaderEvent.onFailed(e, a);
+          }).catch((a) => {
+            const { state: { tr: l }, view: c } = this.editor;
+            c.dispatch(l.setMeta(ai, { type: "remove", id: t })), this.options.uploaderEvent && this.options.uploaderEvent.onError && this.options.uploaderEvent.onError(e, a);
           }), !0;
         }
       };
@@ -36836,17 +36851,24 @@ const IA = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, Yf = new Me("aie-vid
           type: "add",
           id: e,
           pos: t.selection.from
-        })), (this.options.uploader || Nc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
-          if (this.options.dataProcessor && (o = this.options.dataProcessor(o)), o.errorCode === 0 && o.data && o.data.src) {
+        })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Nc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
+          if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+            const a = this.options.uploaderEvent.onSuccess(n, o);
+            if (typeof a == "boolean" && !a)
+              return;
+            typeof a == "object" && (o = a);
+          }
+          if (o.errorCode === 0 && o.data && o.data.src) {
             let l = Yf.getState(this.editor.state).find(void 0, void 0, (c) => c.id == e);
             r.dispatch(r.state.tr.insert(l[0].from, i.nodes.video.create({
               src: o.data.src,
               poster: o.data.poster
             })).setMeta(li, { type: "remove", id: e }));
           } else
-            r.dispatch(t.setMeta(li, { type: "remove", id: e }));
-        }).catch(() => {
-          r.dispatch(t.setMeta(li, { type: "remove", id: e }));
+            r.dispatch(t.setMeta(li, { type: "remove", id: e })), this.options.uploaderEvent && this.options.uploaderEvent.onFailed && this.options.uploaderEvent.onFailed(n, o);
+        }).catch((o) => {
+          const { state: { tr: a }, view: l } = this.editor;
+          l.dispatch(a.setMeta(li, { type: "remove", id: e })), this.options.uploaderEvent && this.options.uploaderEvent.onError && this.options.uploaderEvent.onError(n, o);
         }), !0;
       }
     };
@@ -43788,7 +43810,7 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
     ];
   }
 }), Rde = (n, e) => {
-  var r, i, s, o, a, l, c, u, d, f, p, h, g, m, v, y;
+  var r, i, s, o, a, l, c, u, d, f, p, h, g, m, v, y, k, b, x, w;
   const t = e.cbName && e.cbUrl ? [Xd.configure({
     history: !1,
     codeBlock: !1
@@ -43803,7 +43825,7 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
       uploadUrl: (r = e.attachment) == null ? void 0 : r.uploadUrl,
       uploadHeaders: (i = e.attachment) == null ? void 0 : i.uploadHeaders,
       uploader: ((s = e.attachment) == null ? void 0 : s.uploader) || e.uploader,
-      dataProcessor: (o = e.attachment) == null ? void 0 : o.dataProcessor
+      uploaderEvent: (o = e.attachment) == null ? void 0 : o.uploaderEvent
     }),
     AC,
     eT,
@@ -43822,7 +43844,7 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
       uploadUrl: (a = e.image) == null ? void 0 : a.uploadUrl,
       uploadHeaders: (l = e.image) == null ? void 0 : l.uploadHeaders,
       uploader: ((c = e.image) == null ? void 0 : c.uploader) || e.uploader,
-      dataProcessor: (u = e.image) == null ? void 0 : u.dataProcessor
+      uploaderEvent: (u = e.image) == null ? void 0 : u.uploaderEvent
     }),
     FS.configure({
       resizable: !0,
@@ -43834,7 +43856,12 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
     qS,
     US,
     p_.configure({
-      openOnClick: !1
+      openOnClick: !1,
+      autolink: typeof ((d = e.link) == null ? void 0 : d.autolink) > "u" ? !0 : (f = e.link) == null ? void 0 : f.autolink,
+      HTMLAttributes: {
+        ref: (p = e == null ? void 0 : e.link) == null ? void 0 : p.rel,
+        class: (h = e == null ? void 0 : e.link) == null ? void 0 : h.class
+      }
     }),
     h_,
     g_,
@@ -43846,20 +43873,20 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
       lowlight: RA(HM),
       defaultLanguage: "auto",
       languageClassPrefix: "language-",
-      codeExplainAi: ((f = (d = e.ai) == null ? void 0 : d.codeBlock) == null ? void 0 : f.codeExplain) || {
+      codeExplainAi: ((m = (g = e.ai) == null ? void 0 : g.codeBlock) == null ? void 0 : m.codeExplain) || {
         model: "xinghuo",
         prompt: "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释"
       },
-      codeCommentsAi: ((h = (p = e.ai) == null ? void 0 : p.codeBlock) == null ? void 0 : h.codeComments) || {
+      codeCommentsAi: ((y = (v = e.ai) == null ? void 0 : v.codeBlock) == null ? void 0 : y.codeComments) || {
         model: "xinghuo",
         prompt: "帮我对这个代码添加一些注释，并返回添加注释的代码，只返回代码"
       }
     }),
     BA.configure({
-      uploadUrl: (g = e.video) == null ? void 0 : g.uploadUrl,
-      uploadHeaders: (m = e.video) == null ? void 0 : m.uploadHeaders,
-      uploader: ((v = e.video) == null ? void 0 : v.uploader) || e.uploader,
-      dataProcessor: (y = e.video) == null ? void 0 : y.dataProcessor
+      uploadUrl: (k = e.video) == null ? void 0 : k.uploadUrl,
+      uploadHeaders: (b = e.video) == null ? void 0 : b.uploadHeaders,
+      uploader: ((x = e.video) == null ? void 0 : x.uploader) || e.uploader,
+      uploaderEvent: (w = e.video) == null ? void 0 : w.uploaderEvent
     }),
     HA,
     // PasteExt,
@@ -43887,9 +43914,9 @@ const Nde = /* @__PURE__ */ Xr(Tde), Ode = /^:::([a-z]+)?[\s\n]$/, Lde = le.crea
     placeholder: e.placeholder
   })), t.push(QA.configure({
     suggestion: {
-      items: (k) => {
-        var x;
-        return ((x = e.ai) == null ? void 0 : x.commands) || XA;
+      items: (S) => {
+        var M;
+        return ((M = e.ai) == null ? void 0 : M.commands) || XA;
       }
     }
   })), e.onMentionQuery && t.push(YA(e.onMentionQuery)), t;
@@ -44065,7 +44092,7 @@ const Dde = {
   "default-font-size": "Size",
   "default-font-family": "Default font"
 };
-window.customElements.define("aie-menus", Ex);
+window.customElements.define("aie-header", Ex);
 window.customElements.define("aie-footer", xx);
 const Bde = {
   theme: "light",
@@ -44097,7 +44124,7 @@ class ufe {
   constructor(e) {
     j(this, "innerEditor");
     j(this, "container");
-    j(this, "menus");
+    j(this, "header");
     j(this, "footer");
     j(this, "options");
     j(this, "eventComponents", []);
@@ -44121,9 +44148,9 @@ class ufe {
   }
   initInnerEditor() {
     const e = typeof this.options.element == "string" ? document.querySelector(this.options.element) : this.options.element;
-    e.classList.add(`aie-theme-${this.options.theme}`), this.container = document.createElement("div"), this.container.classList.add("aie-container"), e.appendChild(this.container);
+    e.classList.add(`aie-theme-${this.options.theme}`), this.container = e.querySelector(".aie-container"), this.container || (this.container = document.createElement("div"), this.container.classList.add("aie-container")), e.appendChild(this.container);
     const t = document.createElement("div");
-    t.style.flexGrow = "1", t.style.overflow = "auto", this.menus = document.createElement("aie-menus"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.menus), this.eventComponents.push(this.footer);
+    t.style.flexGrow = "1", t.style.overflow = "auto", this.header = document.createElement("aie-header"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.header), this.eventComponents.push(this.footer);
     let r = this.options.content;
     if (this.options.contentRetention && this.options.contentRetentionKey) {
       const i = localStorage.getItem(this.options.contentRetentionKey);
@@ -44144,9 +44171,9 @@ class ufe {
     });
   }
   onCreate(e, t) {
-    this.innerEditor.view.dom.style.height = "calc(100% - 20px)", this.eventComponents.forEach((r) => {
-      r.onCreate && r.onCreate(e, this.options);
-    }), this.container.appendChild(this.menus), this.container.appendChild(t), this.container.appendChild(this.footer);
+    this.innerEditor.view.dom.style.height = "calc(100% - 20px)", this.eventComponents.forEach((o) => {
+      o.onCreate && o.onCreate(e, this.options);
+    }), (this.container.querySelector(".aie-container-header") || this.container).appendChild(this.header), (this.container.querySelector(".aie-container-main") || this.container).appendChild(t), (this.container.querySelector(".aie-container-footer") || this.container).appendChild(this.footer), this.options.onCreated && this.options.onCreated(this);
   }
   onTransaction(e) {
     if (this.eventComponents.forEach((t) => {

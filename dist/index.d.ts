@@ -28,7 +28,7 @@ export declare interface AiCommand {
 export declare class AiEditor {
     innerEditor: InnerEditor;
     container: HTMLDivElement;
-    menus: Header;
+    header: Header;
     footer: Footer;
     options: AiEditorOptions;
     eventComponents: AiEditorEvent[];
@@ -77,29 +77,35 @@ export declare type AiEditorOptions = {
     cbName?: string;
     cbUrl?: string;
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
+    onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
     toolbarKeys?: string[];
+    link?: {
+        autolink?: boolean;
+        rel?: string;
+        class?: string;
+    };
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
     image?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        dataProcessor?: (data: any) => Record<string, any>;
+        uploaderEvent?: UploaderEvent;
     };
     video?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        dataProcessor?: (data: any) => Record<string, any>;
+        uploaderEvent?: UploaderEvent;
     };
     attachment?: {
         customMenuInvoke?: (editor: Editor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
-        dataProcessor?: (data: any) => Record<string, any>;
+        uploaderEvent?: UploaderEvent;
     };
     fontFamily?: {
         values: NameAndValue[];
@@ -176,6 +182,13 @@ export declare class InnerEditor extends Editor {
 export declare interface NameAndValue {
     name: string;
     value: any;
+}
+
+export declare interface UploaderEvent {
+    onBeforeUpload: (file: File, uploadUrl: string, headers: Record<string, any>) => void;
+    onSuccess: (file: File, response: any) => any;
+    onFailed: (file: File, response: any) => void;
+    onError: (file: File, err: any) => void;
 }
 
 declare class XingHuoModel implements AiModel {
