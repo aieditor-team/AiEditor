@@ -15,7 +15,8 @@ export class Printer extends AbstractMenuButton {
     // @ts-ignore
     onClick(commands) {
 
-        const html = this.closest(".aie-container")!.querySelector(".aie-content")!.innerHTML;
+        let html = this.closest(".aie-container")!.querySelector(".aie-content")!.innerHTML;
+        html = `<div class="aie-container" style="border: none;padding: 0;margin: 0"><div class="aie-content" style="border: none;height: auto;overflow: visible">${html}</div></div>`
 
         const style :string = Array.from(document.querySelectorAll('style, link'))
             .map((el) => el.outerHTML).join('');
