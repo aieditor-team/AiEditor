@@ -1,5 +1,7 @@
 # 工具栏配置
 
+## 示例代码
+
 ```typescript
 new AiEditor({
     element: "#aiEditor",
@@ -54,3 +56,61 @@ new AiEditor({
 - printer: 打印
 - fullscreen: 全屏
 - ai: 人工智能
+
+## 自定义工具栏
+
+在 AiEditor 中，我们可以通过在 `toolbarKeys` 配置中进行自定义工具栏的扩展，配置示例代码如下：
+
+```typescript 6-12
+new AiEditor({
+    element: "#aiEditor",
+    toolbarKeys: ["undo", "redo", "brush", "eraser",
+        "|", "heading", "font-family", "font-size",
+        "|",
+        {
+            icon: "<svg .....>",
+            html:"<div ...>",
+            onClick: (event, editor) => {
+                //点击事件
+            },
+            tip: "鼠标移动上去的提示内容",
+        },
+        "printer", "fullscreen", "ai"
+    ],
+})
+```
+自定义工具类配置项说明：
+
+- **icon**：用于菜单显示的 icon，暂时只支持 svg 配置，svg icon 建议使用 https://remixicon.com 提供的 icon，以保证和 AiEditor 的 icon 风格保持统一。
+- **html**：自定义菜单的 html 内容，这个配置会覆盖 icon 配置，导致 icon 不生效， `icon` 和 `html` 应该只需配置其中一个就可以了。
+- **onClick**：鼠标点击菜单的事件监听。
+- **tip**：鼠标移动到菜单显示的文字提示，支持国际化配置。
+
+**tip国际化配置示例代码**
+
+```ts 12,18,21
+new AiEditor({
+    element: "#aiEditor",
+    toolbarKeys: ["undo", "redo", "brush", "eraser",
+        "|", "heading", "font-family", "font-size",
+        "|",
+        {
+            icon: "<svg .....>",
+            html:"<div ...>",
+            onClick: (event, editor) => {
+                //点击事件
+            },
+            tip: "myKey",
+        },
+        "printer", "fullscreen", "ai"
+    ],
+   i18n: {
+        zh :{
+            "myKey": "自定义国际化显示中文内容",
+        },
+        en:{
+            "myKey": "Custom your i18n content",
+        }
+    }
+})
+```

@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {AiEditorOptions, AiEditorEvent, CustomMenu} from "../core/AiEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 import {Undo} from "./menus/Undo";
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
@@ -41,11 +41,13 @@ import {Ai} from "./menus/Ai.ts";
 import tippy from "tippy.js";
 import {t} from "i18next";
 import {Container} from "./menus/Container.ts";
+import {Custom} from "./menus/Custom.ts";
 
 window.customElements.define('aie-undo', Undo);
 window.customElements.define('aie-redo', Redo);
 window.customElements.define('aie-brush', Painter);
 window.customElements.define('aie-container', Container);
+window.customElements.define('aie-custom', Custom);
 window.customElements.define('aie-eraser', Eraser);
 window.customElements.define('aie-heading', Heading);
 window.customElements.define('aie-font-family', FontFamily);
@@ -117,30 +119,52 @@ export class Header extends HTMLElement implements AiEditorEvent {
 
         for (let toolbarKey of toolbarKeys) {
             if (!toolbarKey) continue;
-            toolbarKey = toolbarKey.trim();
 
-            if (toolbarKey === "|") {
-                toolbarKey = "divider"
-            }
             try {
-                const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
-                menuButton.classList.add("aie-menu-item")
-                menuButton.onCreate(event, options);
+                if (typeof toolbarKey === "string"){
+                    toolbarKey = toolbarKey.trim();
+                    if (toolbarKey === "|") {
+                        toolbarKey = "divider"
+                    }
+                    const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
+                    menuButton.classList.add("aie-menu-item")
+                    menuButton.onCreate(event, options);
 
-                if (toolbarKey !== "divider") {
-                    const tip = t(toolbarKey) as string;
-                    tip && tippy(menuButton, {
-                        appendTo: () => event.editor.view.dom.closest(".aie-container")!,
-                        content: tip,
-                        theme: 'aietip',
-                        arrow: true,
-                        // trigger:"click",
-                        // interactive:true,
-                    });
+                    if (toolbarKey !== "divider") {
+                        const tip = t(toolbarKey) as string;
+                        tip && tippy(menuButton, {
+                            appendTo: () => event.editor.view.dom.closest(".aie-container")!,
+                            content: tip,
+                            theme: 'aietip',
+                            arrow: true,
+                            // trigger:"click",
+                            // interactive:true,
+                        });
+                    }
+                    this.menuButtons.push(menuButton);
+                }else {
+                    const customMenuConfig = toolbarKey as CustomMenu;
+                    const menuButton = document.createElement("aie-custom" ) as Custom;
+                    menuButton.classList.add("aie-menu-item")
+                    menuButton.onCreate(event, options);
+                    menuButton.onConfig(customMenuConfig);
+
+                    if (customMenuConfig.tip) {
+                        const tip = t(customMenuConfig.tip) as string;
+                        tip && tippy(menuButton, {
+                            appendTo: () => event.editor.view.dom.closest(".aie-container")!,
+                            content: tip,
+                            theme: 'aietip',
+                            arrow: true,
+                            // trigger:"click",
+                            // interactive:true,
+                        });
+                    }
+
+                    this.menuButtons.push(menuButton);
                 }
 
 
-                this.menuButtons.push(menuButton);
             } catch (e) {
                 console.error("Can not create toolbar by key: " + toolbarKey);
             }

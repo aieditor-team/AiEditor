@@ -1,4 +1,4 @@
-import {Editor, Editor as Tiptap, EditorEvents, EditorOptions, getTextBetween} from "@tiptap/core";
+import {Editor as Tiptap, EditorEvents, EditorOptions, getTextBetween} from "@tiptap/core";
 
 import {Header} from "../components/Header.ts";
 import {Footer} from "../components/Footer.ts";
@@ -52,6 +52,13 @@ export interface UploaderEvent {
     onError: (file: File, err: any) => void
 }
 
+export interface CustomMenu {
+    icon?: string
+    html?: string
+    onClick?: (event:MouseEvent, editor: AiEditor) => void
+    tip?: string,
+}
+
 
 export type AiEditorOptions = {
     element: string | Element,
@@ -67,7 +74,7 @@ export type AiEditorOptions = {
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
-    toolbarKeys?: string[],
+    toolbarKeys?: (string | CustomMenu)[],
     link?: {
         autolink?: boolean,
         rel?: string,
@@ -75,21 +82,21 @@ export type AiEditorOptions = {
     }
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
     },
     video?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
     },
     attachment?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
@@ -136,11 +143,13 @@ const defaultOptions: Partial<AiEditorOptions> = {
 
 export class InnerEditor extends Tiptap {
 
+    aiEditor: AiEditor;
     userOptions: AiEditorOptions;
 
-    constructor(userOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
+    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
         super(options);
-        this.userOptions = userOptions;
+        this.aiEditor = aiEditor;
+        this.userOptions = editorOptions;
     }
 
     parseHtml(html: string) {
@@ -236,7 +245,7 @@ export class AiEditor {
         }
 
 
-        this.innerEditor = new InnerEditor(this.options, {
+        this.innerEditor = new InnerEditor(this, this.options, {
             element: mainEl,
             content: content,
             extensions: getExtensions(this, this.options),
@@ -267,7 +276,7 @@ export class AiEditor {
         const _footer = this.container.querySelector(".aie-container-footer") || this.container;
         _footer.appendChild(this.footer);
 
-        if (this.options.onCreated){
+        if (this.options.onCreated) {
             this.options.onCreated(this);
         }
     }
