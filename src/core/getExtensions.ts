@@ -34,19 +34,23 @@ import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
 import {Markdown} from "tiptap-markdown";
 import {ContainerExt} from "../extensions/ContainerExt.ts";
+import { HeadingExt } from "../extensions/HeadingExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
     const ret: Extensions = options.cbName && options.cbUrl ? [StarterKit.configure({
         history: false,
         codeBlock: false,
+        heading:false,
     })] : [StarterKit.configure({
-        codeBlock: false
+        codeBlock: false,
+        heading:false,
     })];
 
     {
         //push default extensions
         ret.push(Underline, TextStyle, FontFamily,
+            HeadingExt,
             AttachmentExt.configure({
                 uploadUrl: options.attachment?.uploadUrl,
                 uploadHeaders: options.attachment?.uploadHeaders,

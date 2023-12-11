@@ -55,7 +55,7 @@ export interface UploaderEvent {
 export interface CustomMenu {
     icon?: string
     html?: string
-    onClick?: (event:MouseEvent, editor: AiEditor) => void
+    onClick?: (event: MouseEvent, editor: AiEditor) => void
     tip?: string,
 }
 
@@ -333,13 +333,25 @@ export class AiEditor {
         const headings = [] as any[];
         doc.descendants((node, pos) => {
             if (node.type.name === "heading") {
+
+                const id = `aie-heading-${headings.length + 1}`
+                if (node.attrs.id !== id) {
+                    const {state:{tr},view:{dispatch}} = this.innerEditor
+                    dispatch(tr.setNodeMarkup(pos, void 0, {
+                        ...node.attrs,
+                        id,
+                    }))
+                }
+
                 let text = "";
                 node.descendants((child) => {
                     if (child.text) {
                         text += child.text;
                     }
                 })
+
                 headings.push({
+                    id: id,
                     text: text,
                     level: node.attrs.level,
                     pos: pos,
