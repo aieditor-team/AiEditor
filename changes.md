@@ -1,5 +1,14 @@
 # AiEditor ChangeLog
 
+
+## v1.0.0-beta.10 20231213:
+- 新增：添加自定义 menu 菜单的支持
+- 新增：图片添加 defaultSize 和 allowBase64 配置的支持
+- 优化：优化 "getOutline()" 方法的逻辑，添加获取 id 的支持
+- 优化：类腾讯文档风格的 demo 实例添加目录显示的功能
+
+
+
 ## v1.0.0-beta.9 20231208:
 - 新增：图片、视频和附件新增 uploaderEvent 监听配置的支持
 - 新增：“链接” 功能添加自定义 ref、class 等配置的支持

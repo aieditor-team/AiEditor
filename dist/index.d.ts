@@ -79,7 +79,7 @@ export declare type AiEditorOptions = {
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
-    toolbarKeys?: string[];
+    toolbarKeys?: (string | CustomMenu)[];
     link?: {
         autolink?: boolean;
         rel?: string;
@@ -87,21 +87,23 @@ export declare type AiEditorOptions = {
     };
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
     image?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
+        defaultSize?: number;
+        allowBase64: boolean;
     };
     video?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
     };
     attachment?: {
-        customMenuInvoke?: (editor: Editor) => void;
+        customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
@@ -156,6 +158,13 @@ declare interface AiModelParseOptions {
     useMarkdownTextOnly?: boolean;
 }
 
+export declare interface CustomMenu {
+    icon?: string;
+    html?: string;
+    onClick?: (event: MouseEvent, editor: AiEditor) => void;
+    tip?: string;
+}
+
 declare class Footer extends HTMLElement implements AiEditorEvent {
     count: number;
     constructor();
@@ -173,8 +182,9 @@ declare class Header extends HTMLElement implements AiEditorEvent {
 }
 
 export declare class InnerEditor extends Editor {
+    aiEditor: AiEditor;
     userOptions: AiEditorOptions;
-    constructor(userOptions: AiEditorOptions, options?: Partial<EditorOptions>);
+    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options?: Partial<EditorOptions>);
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
 }
