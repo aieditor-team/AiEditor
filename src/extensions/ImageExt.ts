@@ -22,6 +22,7 @@ declare module '@tiptap/core' {
 export interface ImageOptions {
     inline: boolean,
     allowBase64: boolean,
+    defaultSize:number,
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
     uploadHeaders: Record<string, any>,
@@ -49,6 +50,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                 uploadUrl: "",
                 uploadHeaders: {},
                 uploader: void 0,
+                defaultSize:350,
             }
         },
 
@@ -69,7 +71,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                     default: '',
                 },
                 width: {
-                    default: 350,
+                    default: this.options.defaultSize,
                 },
                 height: {
                     default: 'auto',

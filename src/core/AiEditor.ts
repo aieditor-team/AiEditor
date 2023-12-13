@@ -79,7 +79,7 @@ export type AiEditorOptions = {
         autolink?: boolean,
         rel?: string,
         class?: string,
-    }
+    },
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
         customMenuInvoke?: (editor: AiEditor) => void;
@@ -87,6 +87,8 @@ export type AiEditorOptions = {
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
+        defaultSize?:number,
+        allowBase64:boolean,
     },
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;

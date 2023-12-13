@@ -34,17 +34,17 @@ import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
 import {Markdown} from "tiptap-markdown";
 import {ContainerExt} from "../extensions/ContainerExt.ts";
-import { HeadingExt } from "../extensions/HeadingExt.ts";
+import {HeadingExt} from "../extensions/HeadingExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
     const ret: Extensions = options.cbName && options.cbUrl ? [StarterKit.configure({
         history: false,
         codeBlock: false,
-        heading:false,
+        heading: false,
     })] : [StarterKit.configure({
         codeBlock: false,
-        heading:false,
+        heading: false,
     })];
 
     {
@@ -68,7 +68,8 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             }),
             IndentExt,
             ImageExt.configure({
-                allowBase64: true,
+                allowBase64: typeof options.image?.allowBase64 === "undefined" ? true : options.image?.allowBase64,
+                defaultSize: options.image?.defaultSize || 350,
                 uploadUrl: options.image?.uploadUrl,
                 uploadHeaders: options.image?.uploadHeaders,
                 uploader: options.image?.uploader || options.uploader,
