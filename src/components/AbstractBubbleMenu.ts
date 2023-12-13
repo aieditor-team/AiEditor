@@ -5,7 +5,7 @@ import tippy from "tippy.js";
 export type BubbleMenuItem = {
     id: string,
     title?: string,
-    svg: string,
+    content: string,
 }
 
 export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
@@ -17,12 +17,11 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         super();
     }
 
-
     connectedCallback() {
         this.innerHTML = `
             <div class="aie-bubble-menu">
                ${this.items!.map((item) => {
-            return `<div class="aie-bubble-menu-item" id="${item.id}">${item.svg}</div>`
+            return `<div class="aie-bubble-menu-item" id="${item.id}">${item.content}</div>`
         }).join('')}
             </div>
         `;

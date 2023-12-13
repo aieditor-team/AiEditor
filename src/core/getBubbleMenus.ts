@@ -7,10 +7,12 @@ import {LinkBubbleMenu} from "../components/bubbles/LinkBubbleMenu.ts";
 import {AbstractBubbleMenu} from "../components/AbstractBubbleMenu.ts";
 import {ImageBubbleMenu} from "../components/bubbles/ImageBubbleMenu.ts";
 import {TableBubbleMenu} from "../components/bubbles/TableBubbleMenu.ts";
+import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubbleMenu.ts";
 
 window.customElements.define('aie-bubble-link', LinkBubbleMenu);
 window.customElements.define('aie-bubble-image', ImageBubbleMenu);
 window.customElements.define('aie-bubble-table', TableBubbleMenu);
+window.customElements.define('aie-bubble-text', TextSelectionBubbleMenu);
 
 
 function createBubbleMenu(name: string, options: BubbleMenuOptions) {
@@ -41,11 +43,29 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
 }
 
 
+const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
+    const menuEl = document.createElement("aie-bubble-text") as AbstractBubbleMenu;
+    aiEditor.eventComponents.push(menuEl);
+    return createBubbleMenu("textSelectionBubble", {
+        pluginKey: 'textSelectionBubble',
+        element: menuEl,
+        tippyOptions: {
+            appendTo: aiEditor.container,
+            placement: 'top',
+            arrow: false,
+        },
+        // shouldShow: ({editor}) => {
+        //     return editor.isActive("link")
+        // }
+    })
+}
+
+
 const createLinkBubbleMenu = (aiEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-link") as AbstractBubbleMenu;
     aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("linkBubble", {
-        pluginKey: 'linkBubble',
+        pluginKey: 'textSelectionBubble',
         element: menuEl,
         tippyOptions: {
             appendTo: aiEditor.container,
@@ -129,6 +149,7 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
 
 export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
     const bubbleMenus: Extensions = [];
+    bubbleMenus.push(createTextSelectionBubbleMenu(aiEditor))
     bubbleMenus.push(createLinkBubbleMenu(aiEditor))
     bubbleMenus.push(createImageBubbleMenu(aiEditor))
     bubbleMenus.push(createTableBubbleMenu(aiEditor))
