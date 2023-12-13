@@ -51,13 +51,14 @@ export default defineConfig({
                 items: [
                     {text: '基础', link: '/zh/config/base'},
                     {text: '工具栏', link: '/zh/config/toolbar'},
-                    {text: '国际化', link: '/zh/config/i18n'},
                     {text: '图片', link: '/zh/config/image'},
                     {text: '视频', link: '/zh/config/video'},
                     {text: '附件', link: '/zh/config/attachment'},
                     {text: '字体', link: '/zh/config/fontFamily'},
                     {text: '字号', link: '/zh/config/fontSize'},
                     {text: '提及', link: '/zh/config/mention'},
+                    {text: '超链接', link: '/zh/config/link'},
+                    {text: '国际化', link: '/zh/config/i18n'},
                 ]
             },
             {
