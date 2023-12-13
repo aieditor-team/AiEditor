@@ -6,10 +6,12 @@ const content = `
 `
 
 function updateOutLine(editor:AiEditor){
+
     const outlineContainer = document.querySelector("#outline");
     while (outlineContainer?.firstChild){
-        outlineContainer.firstChild.remove()
+        outlineContainer.removeChild(outlineContainer.firstChild)
     }
+
     const outlines = editor.getOutline();
     for (let outline of outlines) {
         const child = document.createElement("div")

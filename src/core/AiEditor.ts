@@ -87,8 +87,8 @@ export type AiEditorOptions = {
         uploadHeaders?: Record<string, any>,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
-        defaultSize?:number,
-        allowBase64:boolean,
+        defaultSize?: number,
+        allowBase64: boolean,
     },
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;
@@ -287,6 +287,11 @@ export class AiEditor {
         this.eventComponents.forEach((zEvent) => {
             zEvent.onTransaction && zEvent.onTransaction(props);
         });
+
+        if (props.transaction.getMeta("ignoreChanged")) {
+            return;
+        }
+
         if (props.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
@@ -338,11 +343,11 @@ export class AiEditor {
 
                 const id = `aie-heading-${headings.length + 1}`
                 if (node.attrs.id !== id) {
-                    const {state:{tr},view:{dispatch}} = this.innerEditor
+                    const {state: {tr}, view: {dispatch}} = this.innerEditor
                     dispatch(tr.setNodeMarkup(pos, void 0, {
                         ...node.attrs,
                         id,
-                    }))
+                    }).setMeta("ignoreChanged", true))
                 }
 
                 let text = "";
