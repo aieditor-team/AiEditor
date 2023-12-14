@@ -22,13 +22,15 @@ export default defineConfig({
         },
         nav: [
             {text: '首页', link: '/'},
-            {text: '文档', link: 'zh/what-is-ai-editor'},
+            {text: '开发文档', link: 'zh/what-is-ai-editor'},
             {
                 text: '在线 Demo', items: [
                     {text: '经典/传统风格', link: 'http://aieditor.jpress.cn'},
                     {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
                 ]
             },
+            {text: 'AiEditor Pro', link: 'zh/pro'},
+            {text: 'ChangeLog', link: 'zh/changes'},
             {
                 text: '获取源码', items: [
                     {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},

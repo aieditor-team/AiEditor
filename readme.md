@@ -14,8 +14,8 @@ About AiEditor (official website https://aieditor.dev)
 
 ## Online demo
 
-- Classic Style: http://aieditor.jpress.cn
 - Modern style: http://aieditor1.jpress.cn
+- Classic Style: http://aieditor.jpress.cn
 
 
 
@@ -29,7 +29,7 @@ About AiEditor (official website https://aieditor.dev)
 - [x] **Attachments**: Supports image, video, and file functions, supports selection upload, paste upload, drag upload, drag resize...
 - [x] **Code**: inline code, code blocks, code language selection, **AI comments**, **AI explain**...
 - [x] **Table**: increase left or right, decrease left or right, increase up or down, decrease up or down, merge cells, unmerge
-- [x] **Markdown**: heading, quotes, tables, pictures, code blocks, **custom container(lien vuepress:::)**, lists, bold, italics, strikethrough...
+- [x] **Markdown**: heading, quotes, tables, pictures, code blocks, **custom container(vuepress:::)**, lists, bold, italics, strikethrough...
 - [x] **A I**: AI continuation, AI optimization, AI proofreading, AI translation, custom AI menu and its prompts
 - [x] **More**: i18n, light theme, dark theme, mobile adaptation, full-screen, @someone (mentioned)...
 
