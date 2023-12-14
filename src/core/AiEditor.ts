@@ -1,4 +1,4 @@
-import {Editor as Tiptap, EditorEvents, EditorOptions, getTextBetween} from "@tiptap/core";
+import {Editor as Tiptap, EditorEvents, EditorOptions, Extensions, getTextBetween} from "@tiptap/core";
 
 import {Header} from "../components/Header.ts";
 import {Footer} from "../components/Footer.ts";
@@ -72,6 +72,7 @@ export type AiEditorOptions = {
     cbName?: string,
     cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
+    onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
     toolbarKeys?: (string | CustomMenu)[],
@@ -246,11 +247,16 @@ export class AiEditor {
             }
         }
 
+        let extensions = getExtensions(this, this.options);
+        if (this.options.onCreateBefore) {
+            const newExtensions = this.options.onCreateBefore(this, extensions);
+            if (!newExtensions) extensions = newExtensions!;
+        }
 
         this.innerEditor = new InnerEditor(this, this.options, {
             element: mainEl,
             content: content,
-            extensions: getExtensions(this, this.options),
+            extensions: extensions,
             onCreate: (props) => this.onCreate(props, mainEl),
             onTransaction: (props) => this.onTransaction(props),
             onDestroy: () => this.onDestroy,
