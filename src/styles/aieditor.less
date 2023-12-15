@@ -49,16 +49,17 @@
       justify-content: end;
 
       button {
-        margin-right: 5px;
+        margin-left: 5px;
         border: none;
         background: var(--aie-actions-button-bg-color);
         color: var(--aie-actions-button-color);
         border-radius: 3px;
-        padding: 2px 15px;
+        padding: 2px 12px;
       }
 
       button:hover {
         background: #dadada;
+        cursor: pointer;
       }
     }
 
@@ -81,7 +82,9 @@
         margin: 0;
         padding: 0;
         background: var(--aie-input-bg-color);;
-
+        &::-webkit-input-placeholder{
+          color: #ccc;
+        }
       }
 
       input:focus-visible {
@@ -93,10 +96,17 @@
         border-radius: 50%;
         padding: 0;
         background: var(--aie-input-button-bg-color);
+
+
+        svg{
+          fill: #666;
+          width: 18px;
+        }
       }
 
       button:hover {
         background: #ccc;
+        cursor: pointer;
       }
     }
   }

@@ -102,8 +102,8 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         <div class="aie-ai-panel-content"><textarea></textarea></div>
         <div class="aie-ai-panel-actions"><button>重试</button><button>追加</button><button>替换</button></div>
         <div class="aie-ai-panel-input"><input placeholder="告诉 ai 下一步应该怎么做" type="text" /><button style="width: 30px;height: 30px">
-<!--        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>-->
-GO
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+<!--<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 7V17C6 17.5523 6.44772 18 7 18H17C17.5523 18 18 17.5523 18 17V7C18 6.44772 17.5523 6 17 6H7C6.44772 6 6 6.44772 6 7Z"></path></svg>-->
         </button></div>
         `;
 
