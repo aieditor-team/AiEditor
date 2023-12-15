@@ -187,7 +187,7 @@ export class AiEditor {
     eventComponents: AiEditorEvent[] = [];
 
     constructor(_: AiEditorOptions) {
-        this.options = Object.assign(defaultOptions, _);
+        this.options = {...defaultOptions,..._};
         this.initI18n();
     }
 
