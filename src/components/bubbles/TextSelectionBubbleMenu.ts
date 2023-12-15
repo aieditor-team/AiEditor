@@ -1,9 +1,13 @@
 import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
-import {EditorEvents} from "@tiptap/core";
+import {EditorEvents, isNodeSelection, posToDOMRect} from "@tiptap/core";
 import {t} from "i18next";
+import tippy, {Instance} from "tippy.js";
 
 
 export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
+
+    private _instance?:Instance;
+
     constructor() {
         super();
         this.items = [
@@ -47,21 +51,64 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         ]
     }
 
+    connectedCallback() {
+        super.connectedCallback();
+        tippy(this.querySelector("#ai")!, {
+            content: this.createAiPanelElement(),
+            appendTo: this.editor!.view.dom.closest(".aie-container")!,
+            placement: "bottom",
+            trigger: 'click',
+            interactive: true,
+            arrow: false,
+            getReferenceClientRect:(() => {
+                const  {state,view} = this.editor!
+                const { ranges } = state.selection
+                const from = Math.min(...ranges.map(range => range.$from.pos))
+                const to = Math.max(...ranges.map(range => range.$to.pos))
+                if (isNodeSelection(state.selection)) {
+                    let node = view.nodeDOM(from) as HTMLElement
+                    const nodeViewWrapper = node.dataset.nodeViewWrapper ? node : node.querySelector('[data-node-view-wrapper]')
+                    if (nodeViewWrapper) {
+                        node = nodeViewWrapper.firstChild as HTMLElement
+                    }
+                    if (node) {
+                        return node.getBoundingClientRect()
+                    }
+                }
+                return posToDOMRect(view, from, to)
+            }),
+            onShow: (_) => {
+                // this.onShowFunc && this.onShowFunc(_)
+            }
+        })
+    }
+
+
+    set instance(value: Instance) {
+        this._instance = value;
+    }
 
     onItemClick(_id: string): void {
-        // if (id != "delete"){
-        //     const attrs = this.editor?.getAttributes("image")!;
-        //     attrs.align = id;
-        //     this.editor?.chain().setImage(attrs as any).run();
-        // }else {
-        //     this.editor?.commands.deleteSelection();
-        // }
-
+        this._instance?.hide();
     }
 
     onTransaction(_: EditorEvents["transaction"]): void {
     }
 
+    private createAiPanelElement() {
+        const container = document.createElement("div");
+        container.classList.add("aie-ai-panel")
+        container.innerHTML=`
+        <div class="aie-ai-panel-content"><textarea></textarea></div>
+        <div class="aie-ai-panel-actions"><button>替换</button><button>追加</button><button>重试</button></div>
+        <div class="aie-ai-panel-input"><input placeholder="告诉 ai 下一步应该怎么做" type="text" /><button style="width: 30px;height: 30px">
+<!--        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>-->
+GO
+        </button></div>
+        `;
+
+        return container;
+    }
 }
 
 

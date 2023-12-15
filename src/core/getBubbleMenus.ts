@@ -8,6 +8,7 @@ import {AbstractBubbleMenu} from "../components/AbstractBubbleMenu.ts";
 import {ImageBubbleMenu} from "../components/bubbles/ImageBubbleMenu.ts";
 import {TableBubbleMenu} from "../components/bubbles/TableBubbleMenu.ts";
 import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubbleMenu.ts";
+import {Instance} from "tippy.js";
 
 window.customElements.define('aie-bubble-link', LinkBubbleMenu);
 window.customElements.define('aie-bubble-image', ImageBubbleMenu);
@@ -44,7 +45,7 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
 
 
 const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
-    const menuEl = document.createElement("aie-bubble-text") as AbstractBubbleMenu;
+    const menuEl = document.createElement("aie-bubble-text") as TextSelectionBubbleMenu;
     aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("textSelectionBubble", {
         pluginKey: 'textSelectionBubble',
@@ -53,9 +54,14 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             appendTo: aiEditor.container,
             placement: 'top',
             arrow: false,
+            onCreate(instance: Instance) {
+                menuEl.instance = instance;
+            }
         },
         // shouldShow: ({editor}) => {
-        //     return editor.isActive("link")
+        //     console.log("aiMarker1:", editor.storage.selectionMarker.aiMarker)
+        //     return !editor.state.selection.empty && !editor.storage.selectionMarker.aiMarker
+        //     // return !editor.isActive("selection-marker",{aiMarker:true})
         // }
     })
 }

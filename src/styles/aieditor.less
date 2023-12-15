@@ -7,8 +7,98 @@
   border-color: var(--aie-container-border);
   background: var(--aie-bg-color);
 
-  *,::before,::after {
+  *, ::before, ::after {
     box-sizing: content-box;
+  }
+
+  .aie-ai-panel {
+    width: 500px;
+    height: 180px;
+    border: solid 1px;
+    border-color: var(--aie-ai-panel-border);
+    background: var(--aie-ai-panel-bg-color);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .15);
+    display: flex;
+    flex-direction: column;
+
+    &-content {
+      width: 100%;
+      height: 160px;
+
+      textarea {
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        border-color: var(--aie-textarea-border);
+        background: var(--aie-textarea-bg-color);
+        border-radius: 3px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      textarea:focus-visible {
+        outline: none;
+      }
+    }
+
+    &-actions {
+      margin: 10px 0;
+
+      button {
+
+        margin-right: 5px;
+        border: none;
+
+        background: var(--aie-actions-button-bg-color);
+        color: var(--aie-actions-button-color);
+        border-radius: 3px;
+        padding: 2px 15px;
+      }
+
+      button:hover {
+        background: #dadada;
+      }
+    }
+
+    &-input {
+
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      border: 1px solid;
+      border-color: var(--aie-input-border-color);
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 3px;
+
+      input {
+        width: 90%;
+        height: 100%;
+        border: none;
+        border-radius: 3px;
+        margin: 0;
+        padding: 0;
+        background: var(--aie-input-bg-color);;
+
+      }
+
+      input:focus-visible {
+        outline: none;
+      }
+
+      button {
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        background: var(--aie-input-button-bg-color);
+      }
+
+      button:hover {
+        background: #ccc;
+      }
+    }
   }
 
   aie-header {
@@ -269,7 +359,6 @@
         border-radius: 3px;
       }
     }
-
   }
 
   .aie-resize-wrapper {
