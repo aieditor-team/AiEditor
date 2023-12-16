@@ -1,12 +1,16 @@
+import {AiMessageProcessor} from "./AiMessageProcessor.ts";
+
 export class AbstractWebSocket {
 
     url: string;
+    processor: AiMessageProcessor;
     webSocket?: WebSocket;
     isOpen: boolean = false;
     text?: string;
 
-    constructor(url: string) {
+    constructor(url: string, processor:AiMessageProcessor) {
         this.url = url;
+        this.processor = processor;
     }
 
     start(text: string) {
@@ -37,6 +41,9 @@ export class AbstractWebSocket {
     }
 
     protected onMessage(_: MessageEvent) {
+        if (this.processor){
+            this.processor.onMessage(_.data);
+        }
     }
 
     protected onClose(_: CloseEvent) {

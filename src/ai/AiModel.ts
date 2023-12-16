@@ -1,4 +1,5 @@
 import {Editor} from "@tiptap/core";
+import {AiMessageProcessor} from "./AiMessageProcessor.ts";
 
 export interface AiModelParseOptions {
     markdownParseEnable?: boolean,
@@ -7,6 +8,8 @@ export interface AiModelParseOptions {
 
 export interface AiModel {
 
-    start: (seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void,
+    start: (selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void,
+
+    startWithProcessor: (selectedText: string, prompt: string, processor:AiMessageProcessor) => void,
 
 }

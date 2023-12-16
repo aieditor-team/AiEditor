@@ -150,7 +150,7 @@ export declare interface AiMenu {
 }
 
 declare interface AiModel {
-    start: (seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void;
+    start: (selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void;
 }
 
 declare interface AiModelParseOptions {
@@ -209,7 +209,7 @@ declare class XingHuoModel implements AiModel {
     version: string;
     urlSignatureAlgorithm: (model: XingHuoModel) => string;
     constructor(options: AiEditorOptions);
-    start(seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void;
+    start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void;
     createUrl(): string;
 }
 

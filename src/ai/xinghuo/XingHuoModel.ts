@@ -6,6 +6,8 @@ import {XingHuoSocket} from "./XingHuoSocket.ts";
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 // @ts-ignore
 import Base64 from 'crypto-js/enc-base64';
+import {XingHuoEditorMessageProcessor} from "./XingHuoEditorMessageProcessor.ts";
+import {AiMessageProcessor} from "../AiMessageProcessor.ts";
 
 export class XingHuoModel implements AiModel {
 
@@ -26,11 +28,16 @@ export class XingHuoModel implements AiModel {
         this.urlSignatureAlgorithm = urlSignatureAlgorithm!;
     }
 
-    start(seletedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void {
-        const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
-        const socket = new XingHuoSocket(url, this.appId, this.version, editor, options);
-        socket.start(`"${seletedText}"\n${prompt}`)
+    start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void {
+        this.startWithProcessor(selectedText, prompt,  new XingHuoEditorMessageProcessor(editor, options));
     }
+
+    startWithProcessor(selectedText: string, prompt: string,  processor: AiMessageProcessor): void {
+        const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
+        const socket = new XingHuoSocket(url, processor, this.appId, this.version);
+        socket.start(`${selectedText}\n${prompt}`)
+    }
+
 
     createUrl(): string {
         const date = new Date().toUTCString().replace("GMT", "+0000");
