@@ -13,13 +13,18 @@ new AiEditor({
                 apiKey:"****",
                 apiSecret:"****"
             }
-        }
+        },
+        bubblePanelEnable:true,
+        bubblePanelModel:"xinghuo"
     },
 })
 ```
 
 - **model**: 模型配置（目前暂时只支持科大讯飞的星火大模型）
+- **bubblePanelEnable**: 弹出框使用的 ai 模型名称
+- **bubblePanelModel**: 弹出框使用的 ai 模型名称
 - **xinghuo**: 星火大模型配置，星火大模型支持配置的内容如下：
+
 
 ```typescript
 protocol?: string,

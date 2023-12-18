@@ -8,6 +8,8 @@ import hmacSHA256 from 'crypto-js/hmac-sha256';
 import Base64 from 'crypto-js/enc-base64';
 import {XingHuoEditorMessageProcessor} from "./XingHuoEditorMessageProcessor.ts";
 import {AiMessageProcessor} from "../AiMessageProcessor.ts";
+import {AbstractWebSocket} from "../AbstractWebSocket.ts";
+import {AiModelListener} from "../AiModelListener.ts";
 
 export class XingHuoModel implements AiModel {
 
@@ -17,6 +19,8 @@ export class XingHuoModel implements AiModel {
     apiSecret: string;
     version: string;
     urlSignatureAlgorithm: (model: XingHuoModel) => string;
+    socket?: AbstractWebSocket;
+    listeners: AiModelListener[] = [];
 
     constructor(options: AiEditorOptions) {
         const {protocol, appId, apiKey, apiSecret, version, urlSignatureAlgorithm} = options.ai?.model.xinghuo!;
@@ -29,15 +33,29 @@ export class XingHuoModel implements AiModel {
     }
 
     start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void {
-        this.startWithProcessor(selectedText, prompt,  new XingHuoEditorMessageProcessor(editor, options));
+        this.startWithProcessor(selectedText, prompt, new XingHuoEditorMessageProcessor(editor, options));
     }
 
-    startWithProcessor(selectedText: string, prompt: string,  processor: AiMessageProcessor): void {
+    startWithProcessor(selectedText: string, prompt: string, processor: AiMessageProcessor): void {
         const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
-        const socket = new XingHuoSocket(url, processor, this.appId, this.version);
-        socket.start(`${selectedText}\n${prompt}`)
+        this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
+        for (let listener of this.listeners) {
+            this.socket.addListener(listener);
+        }
+        this.socket.start(`${selectedText}\n${prompt}`)
     }
 
+    stop() {
+        this.socket?.stop();
+    }
+
+    addListener(listener: AiModelListener) {
+        this.listeners.push(listener);
+    }
+
+    removeListener(listener: AiModelListener) {
+        this.listeners = this.listeners.filter(item => item != listener);
+    }
 
     createUrl(): string {
         const date = new Date().toUTCString().replace("GMT", "+0000");

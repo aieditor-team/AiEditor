@@ -122,6 +122,8 @@ export type AiEditorOptions = {
                 urlSignatureAlgorithm?: (model: XingHuoModel) => string,
             }
         },
+        bubblePanelEnable?:boolean,
+        bubblePanelModel?:string,
         menus?: AiMenu[],
         commands?: AiCommand[],
         codeBlock?: {

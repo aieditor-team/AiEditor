@@ -12,7 +12,9 @@ window.aiEditor = new AiEditor({
             xinghuo: {
                 ...config
             }
-        }
+        },
+        // bubblePanelEnable:false,
+        bubblePanelModel:"xinghuo",
     },
     i18n:{
         zh:{
