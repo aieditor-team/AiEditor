@@ -15,102 +15,114 @@
     </script>
     <style>
 
-      .page-header {
-        background-color: #fff;
-        height: 50px;
-        line-height: 50px;
-        padding: 0 2rem;
-        display: flex;
-        position: sticky;
-        border-bottom: 1px solid #efefef;
-        top: 0;
-        z-index: 1;
-      }
+        .page-header {
+            background-color: #fff;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 2rem;
+            display: flex;
+            position: sticky;
+            border-bottom: 1px solid #efefef;
+            top: 0;
+            z-index: 1;
+        }
 
-      .aie-header-panel {
-        position: sticky;
-        top: 51px;
-        z-index: 1;
-      }
+        .aie-header-panel {
+            position: sticky;
+            top: 51px;
+            z-index: 1;
+        }
 
-      .aie-header-panel aie-header > div {
-        align-items: center;
-        justify-content: center;
-        padding: 10px 0;
-      }
+        .aie-header-panel aie-header > div {
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
 
-      .aie-container{
-        border: none !important;
-      }
+        .aie-container {
+            border: none !important;
+        }
 
-      .aie-container-panel {
-        width: calc(100% - 2rem - 2px);
-        max-width: 800px;
-        margin: 1rem auto;
-        border: 1px solid rgb(229 231 235);
-        background-color: #fff;
-        height: 100%;
-        min-height: 100vh;
-        padding: 1rem;
-        z-index: 99;
-      }
+        .aie-container-panel {
+            width: calc(100% - 2rem - 2px);
+            max-width: 800px;
+            margin: 1rem auto;
+            border: 1px solid rgb(229 231 235);
+            background-color: #fff;
+            height: 100%;
+            min-height: 100vh;
+            padding: 1rem;
+            z-index: 99;
+        }
 
-      .aie-main {
-        position: relative;
-      }
+        .aie-main {
+            position: relative;
+        }
 
-      .aie-directory {
-        position: absolute;
-        top: 30px;
-        left: 10px;
-        min-width: 260px;
-        max-width: 280px;
-        z-index: 0;
-      }
+        .aie-directory {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            width: 260px;
+            z-index: 0;
 
-      .aie-directory h5 {
-        color: #000000c4;
-        font-size: 16px;
-        text-indent: 4px;
-        line-height: 32px;
-      }
+        }
 
-      .aie-directory a {
-        height: 30px;
-        font-size: 14px;
-        color: #000000a3;
-        text-indent: 4px;
-        line-height: 30px;
-        text-decoration: none;
-        width: 100%;
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
-      }
+        .aie-directory h5 {
+            color: #000000c4;
+            font-size: 16px;
+            text-indent: 4px;
+            line-height: 32px;
+        }
 
-      .aie-directory a:hover {
-        cursor: pointer;
-        background-color: #334d660f;
-        border-radius: 4px;
-      }
+        .aie-directory a {
+            height: 30px;
+            font-size: 14px;
+            color: #000000a3;
+            text-indent: 4px;
+            line-height: 30px;
+            text-decoration: none;
+            width: 100%;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+        }
 
-      .aie-title1 {
-        font-size: 14px;
-        font-weight: 500;
-      }
+        .aie-directory a:hover {
+            cursor: pointer;
+            background-color: #334d660f;
+            border-radius: 4px;
+        }
 
-      .aie-title2, .aie-title3, .aie-title4, .aie-title5, .aie-title6 {
-        font-size: 12px;
-      }
-      .aie-directory-content{
-        position: sticky;
-        top:108px;
-      }
+        .aie-title1 {
+            font-size: 14px;
+            font-weight: 500;
+        }
 
+        .aie-title2, .aie-title3, .aie-title4, .aie-title5, .aie-title6 {
+            font-size: 12px;
+        }
+
+        .aie-directory-content {
+            position: sticky;
+            top: 108px;
+        }
+
+        @media screen and (max-width: 1280px) {
+            .aie-directory {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 1400px) {
+            .aie-directory {
+                width: 200px;
+            }
+        }
     </style>
 </head>
 <body style="padding: 0;margin: 0;background: #f3f4f6;">
@@ -132,13 +144,13 @@
             <div class="aie-container-header" style="background: #fff;"></div>
         </div>
         <div class="aie-main">
-        <div class="aie-directory-content">
-            <div class="aie-directory">
-                <h5>文档目录</h5>
-                <div id="outline">
+            <div class="aie-directory-content">
+                <div class="aie-directory">
+                    <h5>文档目录</h5>
+                    <div id="outline">
+                    </div>
                 </div>
             </div>
-        </div>
             <div class="aie-container-panel">
                 <div class="aie-container-main"></div>
             </div>
