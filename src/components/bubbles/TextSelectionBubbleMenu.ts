@@ -164,7 +164,6 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         container.querySelector("#go")!.addEventListener("click", () => {
             if (this.aiModel) {
                 this.aiModel.stop();
-                this.aiModel = null;
             } else {
                 const textarea = container.querySelector("textarea")!;
                 textarea.value = "";
@@ -174,20 +173,24 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                 this.aiModel = AiModelFactory.create(options.ai?.bubblePanelModel || "xinghuo", options);
                 if (this.aiModel) {
                     const prompt = (container.querySelector("#prompt") as HTMLInputElement).value
-                    const model = this.aiModel;
+                    const menu = this;
                     const listener: AiModelListener = {
                         onStop() {
-                            model.removeListener(listener);
-                            container.querySelector("#go")!.innerHTML = Svgs.aiPanelStart;
-                            container.querySelector<HTMLElement>(".loader")!.style.display = "none";
+                            //onStop 可能会触发多次，在 socket 停止时，或者被关闭时都会触发
+                            if (menu.aiModel) {
+                                menu.aiModel!.removeListener(listener);
+                                menu.aiModel = null;
+                                container.querySelector("#go")!.innerHTML = Svgs.aiPanelStart;
+                                container.querySelector<HTMLElement>(".loader")!.style.display = "none";
+                            }
                         },
                         onStart() {
                             container.querySelector<HTMLElement>(".loader")!.style.display = "block";
                             container.querySelector("#go")!.innerHTML = Svgs.aiPanelStop;
                         }
                     };
-                    model.addListener(listener);
-                    model.startWithProcessor(selectedText, prompt, {
+                    this.aiModel.addListener(listener);
+                    this.aiModel.startWithProcessor(selectedText, prompt, {
                         onMessage: (data) => {
                             const message = JSON.parse(data) as any;
                             let text = message.payload.choices.text[0].content as string;
