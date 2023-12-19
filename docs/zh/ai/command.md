@@ -2,6 +2,7 @@
 
 AI Command，指的是在文本框中，输入 `空格 + '/'` 弹出的 AI 菜单。
 
+## 示例代码
 
 ```typescript
 new AiEditor({

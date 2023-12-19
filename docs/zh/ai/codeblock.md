@@ -4,9 +4,9 @@
 
 ![](../../assets/image/codeblock-ai.png)
 
-这两个功能需要进行对 AI 的进行配置， 配置代码如下：
-
 ## 示例代码
+
+以上功能需要进行对 AI 的进行配置， 配置代码如下：
 
 ```typescript
 new AiEditor({

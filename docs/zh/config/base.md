@@ -1,5 +1,7 @@
 # 基础配置
 
+## 示例代码
+
 ```typescript
 new AiEditor({
     element: "#aiEditor",
