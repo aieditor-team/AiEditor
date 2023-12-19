@@ -53,6 +53,8 @@ export interface UploaderEvent {
 }
 
 export interface CustomMenu {
+    id?: string
+    class?: string
     icon?: string
     html?: string
     onClick?: (event: MouseEvent, editor: AiEditor) => void

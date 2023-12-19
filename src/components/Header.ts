@@ -121,7 +121,7 @@ export class Header extends HTMLElement implements AiEditorEvent {
             if (!toolbarKey) continue;
 
             try {
-                if (typeof toolbarKey === "string"){
+                if (typeof toolbarKey === "string") {
                     toolbarKey = toolbarKey.trim();
                     if (toolbarKey === "|") {
                         toolbarKey = "divider"
@@ -142,10 +142,16 @@ export class Header extends HTMLElement implements AiEditorEvent {
                         });
                     }
                     this.menuButtons.push(menuButton);
-                }else {
+                } else {
                     const customMenuConfig = toolbarKey as CustomMenu;
-                    const menuButton = document.createElement("aie-custom" ) as Custom;
+                    const menuButton = document.createElement("aie-custom") as Custom;
                     menuButton.classList.add("aie-menu-item")
+                    if (customMenuConfig.id){
+                        menuButton.setAttribute("id",customMenuConfig.id);
+                    }
+                    if (customMenuConfig.class){
+                        menuButton.classList.add(customMenuConfig.class);
+                    }
                     menuButton.onCreate(event, options);
                     menuButton.onConfig(customMenuConfig);
 
