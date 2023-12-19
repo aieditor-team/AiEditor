@@ -19,7 +19,7 @@ new AiEditor({
             //可自定义图片上传逻辑
         },
         uploaderEvent: {
-            onBeforeUpload:(file, uploadUrl, headers) =>{
+            onUploadBefore:(file, uploadUrl, headers) =>{
                 //监听图片上传之前
             },
             onSuccess:(file, response) =>{

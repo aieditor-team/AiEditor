@@ -18,7 +18,7 @@ new AiEditor({
             //可自定义附件上传逻辑
         },
         uploaderEvent: {
-            onBeforeUpload:(file, uploadUrl, headers) =>{
+            onUploadBefore:(file, uploadUrl, headers) =>{
                 //监听附件上传之前
             },
             onSuccess:(file, response) =>{

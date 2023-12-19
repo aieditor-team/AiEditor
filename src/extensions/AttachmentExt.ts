@@ -60,8 +60,8 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                 }));
 
 
-                if (this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload) {
-                    this.options.uploaderEvent.onBeforeUpload(file, this.options.uploadUrl!, this.options.uploadHeaders);
+                if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
+                    this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders);
                 }
                 const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                 uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "attachment")

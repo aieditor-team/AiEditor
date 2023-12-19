@@ -46,7 +46,7 @@ export interface AiEditorEvent {
 }
 
 export interface UploaderEvent {
-    onBeforeUpload: (file: File, uploadUrl: string, headers: Record<string, any>) => void
+    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void
     onSuccess: (file: File, response: any) => any
     onFailed: (file: File, response: any) => void
     onError: (file: File, err: any) => void
