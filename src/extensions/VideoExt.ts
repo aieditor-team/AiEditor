@@ -45,7 +45,15 @@ export const VideoExt = Node.create<VideoOptions>({
         return {
             src: {
                 default: null,
-                parseHTML: (el) => el.getAttribute('src'),
+                parseHTML: (el) =>{
+                    const src = el.getAttribute('src');
+                    if (src) return src;
+                    const sourceEl = el.querySelector("source");
+                    if (sourceEl){
+                        return sourceEl.getAttribute("src");
+                    }
+                    return null;
+                },
                 renderHTML: (attrs) => ({src: attrs.src}),
             },
             poster: {
