@@ -2,6 +2,7 @@ import { ChainedCommands } from '@tiptap/core/dist/packages/core/src/types';
 import { Editor } from '@tiptap/core';
 import { EditorEvents } from '@tiptap/core';
 import { EditorOptions } from '@tiptap/core';
+import { Extensions } from '@tiptap/core';
 import { Fragment } from 'prosemirror-model';
 import { JSONContent } from '@tiptap/core';
 
@@ -16,6 +17,24 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onCreate(props: EditorEvents["create"], options: AiEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
     onActive(editor: Editor): boolean;
+}
+
+declare class AbstractWebSocket {
+    url: string;
+    processor: AiMessageProcessor;
+    webSocket?: WebSocket;
+    isOpen: boolean;
+    text?: string;
+    listeners: AiModelListener[];
+    constructor(url: string, processor: AiMessageProcessor);
+    addListener(listener: AiModelListener): void;
+    start(text: string): void;
+    stop(): void;
+    send(message: string): void;
+    protected onOpen(_: Event): void;
+    protected onMessage(_: MessageEvent): void;
+    protected onClose(_: CloseEvent): void;
+    protected onError(_: Event): void;
 }
 
 export declare interface AiCommand {
@@ -77,6 +96,7 @@ export declare type AiEditorOptions = {
     cbName?: string;
     cbUrl?: string;
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
+    onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
     toolbarKeys?: (string | CustomMenu)[];
@@ -126,6 +146,8 @@ export declare type AiEditorOptions = {
                 urlSignatureAlgorithm?: (model: XingHuoModel) => string;
             };
         };
+        bubblePanelEnable?: boolean;
+        bubblePanelModel?: string;
         menus?: AiMenu[];
         commands?: AiCommand[];
         codeBlock?: {
@@ -149,8 +171,21 @@ export declare interface AiMenu {
     model: string;
 }
 
+declare interface AiMessageProcessor {
+    onMessage: (message: string) => void;
+}
+
 declare interface AiModel {
     start: (selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void;
+    startWithProcessor: (selectedText: string, prompt: string, processor: AiMessageProcessor) => void;
+    stop: () => void;
+    addListener: (listener: AiModelListener) => void;
+    removeListener: (listener: AiModelListener) => void;
+}
+
+declare interface AiModelListener {
+    onStart: () => void;
+    onStop: () => void;
 }
 
 declare interface AiModelParseOptions {
@@ -208,8 +243,14 @@ declare class XingHuoModel implements AiModel {
     apiSecret: string;
     version: string;
     urlSignatureAlgorithm: (model: XingHuoModel) => string;
+    socket?: AbstractWebSocket;
+    listeners: AiModelListener[];
     constructor(options: AiEditorOptions);
     start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void;
+    startWithProcessor(selectedText: string, prompt: string, processor: AiMessageProcessor): void;
+    stop(): void;
+    addListener(listener: AiModelListener): void;
+    removeListener(listener: AiModelListener): void;
     createUrl(): string;
 }
 
