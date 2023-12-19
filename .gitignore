@@ -13,6 +13,7 @@ dist-ssr
 .ossutil_checkpoint
 ossutil_output
 deps/
+aimp/
 /docs/.vitepress/dist/
 /demos/vanilla-ts/dist/
 
