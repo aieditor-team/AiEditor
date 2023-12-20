@@ -453,9 +453,7 @@ export class AiEditor {
         } else {
             this.container.remove();
         }
-
     }
-
 
     isDestroyed() {
         return this.innerEditor.isDestroyed;

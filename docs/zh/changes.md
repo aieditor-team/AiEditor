@@ -1,5 +1,14 @@
 # AiEditor ChangeLog
 
+## v1.0.0-rc.2 20231220:
+- 新增：自定义菜单添加 id 和 className 类名配置的支持
+- 新增：AiEditor 添加 onDestroy 监听的配置支持
+- 优化：上传组件重命名 onBeforeUpload 为 onUploadBefore
+- 修复：在 React 的 StrictMode 下，无法使用 AiEditor 自定义布局的问题
+- 文档：添加自定义布局的相关文档内容
+
+
+
 ## v1.0.0-rc.1 20231219:
 - 新增：AI 功能添加选择文字时，对文字进行在定义 Prompt 操作的功能
 - 新增：添加选中文字内容时，弹出操作菜单的功能
