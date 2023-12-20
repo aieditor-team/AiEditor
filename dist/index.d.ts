@@ -48,6 +48,7 @@ export declare class AiEditor {
     innerEditor: InnerEditor;
     container: HTMLDivElement;
     header: Header;
+    mainEl: HTMLDivElement;
     footer: Footer;
     options: AiEditorOptions;
     eventComponents: AiEditorEvent[];
@@ -97,6 +98,7 @@ export declare type AiEditorOptions = {
     cbUrl?: string;
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions;
+    onDestroy?: (editor: AiEditor) => void;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
     toolbarKeys?: (string | CustomMenu)[];
@@ -194,6 +196,8 @@ declare interface AiModelParseOptions {
 }
 
 export declare interface CustomMenu {
+    id?: string;
+    className?: string;
     icon?: string;
     html?: string;
     onClick?: (event: MouseEvent, editor: AiEditor) => void;
@@ -230,7 +234,7 @@ export declare interface NameAndValue {
 }
 
 export declare interface UploaderEvent {
-    onBeforeUpload: (file: File, uploadUrl: string, headers: Record<string, any>) => void;
+    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void;
     onSuccess: (file: File, response: any) => any;
     onFailed: (file: File, response: any) => void;
     onError: (file: File, err: any) => void;

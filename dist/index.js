@@ -17056,7 +17056,7 @@ class _x extends HTMLElement {
             this.menuButtons.push(o);
           } else {
             const o = s, a = document.createElement("aie-custom");
-            if (a.classList.add("aie-menu-item"), a.onCreate(t, r), a.onConfig(o), o.tip) {
+            if (a.classList.add("aie-menu-item"), o.id && a.setAttribute("id", o.id), o.className && a.classList.add(o.className), a.onCreate(t, r), a.onConfig(o), o.tip) {
               const l = ie(o.tip);
               l && ze(a, {
                 appendTo: () => t.editor.view.dom.closest(".aie-container"),
@@ -18742,7 +18742,7 @@ const Ug = (n, e) => {
           id: e,
           pos: t.selection.from,
           text: n.name
-        })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
+        })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
           if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
             const a = this.options.uploaderEvent.onSuccess(n, o);
             if (typeof a == "boolean" && !a)
@@ -19235,7 +19235,7 @@ const Ug = (n, e) => {
             type: "add",
             id: t,
             pos: r.selection.from
-          })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(e, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
+          })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(e, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
             if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
               const l = this.options.uploaderEvent.onSuccess(e, a);
               if (typeof l == "boolean" && !l)
@@ -36924,7 +36924,7 @@ const PA = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, Xf = new Me("aie-vid
           type: "add",
           id: e,
           pos: t.selection.from
-        })), this.options.uploaderEvent && this.options.uploaderEvent.onBeforeUpload && this.options.uploaderEvent.onBeforeUpload(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
+        })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Rc(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
           if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
             const a = this.options.uploaderEvent.onSuccess(n, o);
             if (typeof a == "boolean" && !a)
@@ -44388,6 +44388,7 @@ class mfe {
     V(this, "innerEditor");
     V(this, "container");
     V(this, "header");
+    V(this, "mainEl");
     V(this, "footer");
     V(this, "options");
     V(this, "eventComponents", []);
@@ -44411,25 +44412,23 @@ class mfe {
   }
   initInnerEditor() {
     const e = typeof this.options.element == "string" ? document.querySelector(this.options.element) : this.options.element;
-    e.classList.add(`aie-theme-${this.options.theme}`), this.container = e.querySelector(".aie-container"), this.container || (this.container = document.createElement("div"), this.container.classList.add("aie-container")), e.appendChild(this.container);
-    const t = document.createElement("div");
-    t.style.flexGrow = "1", t.style.overflow = "auto", this.header = document.createElement("aie-header"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.header), this.eventComponents.push(this.footer);
-    let r = this.options.content;
+    e.classList.add(`aie-theme-${this.options.theme}`), this.container = e.querySelector(".aie-container"), this.container ? this.container.classList.add(".aie-container-custom") : (this.container = document.createElement("div"), this.container.classList.add("aie-container")), e.appendChild(this.container), this.mainEl = document.createElement("div"), this.mainEl.style.flexGrow = "1", this.mainEl.style.overflow = "auto", this.header = document.createElement("aie-header"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.header), this.eventComponents.push(this.footer);
+    let t = this.options.content;
     if (this.options.contentRetention && this.options.contentRetentionKey) {
-      const s = localStorage.getItem(this.options.contentRetentionKey);
-      s && (r = JSON.parse(s));
+      const i = localStorage.getItem(this.options.contentRetentionKey);
+      i && (t = JSON.parse(i));
     }
-    let i = $de(this, this.options);
+    let r = $de(this, this.options);
     if (this.options.onCreateBefore) {
-      const s = this.options.onCreateBefore(this, i);
-      s || (i = s);
+      const i = this.options.onCreateBefore(this, r);
+      i || (r = i);
     }
     this.innerEditor = new qde(this, this.options, {
-      element: t,
-      content: r,
-      extensions: i,
-      onCreate: (s) => this.onCreate(s, t),
-      onTransaction: (s) => this.onTransaction(s),
+      element: this.mainEl,
+      content: t,
+      extensions: r,
+      onCreate: (i) => this.onCreate(i),
+      onTransaction: (i) => this.onTransaction(i),
       onDestroy: () => this.onDestroy,
       editorProps: {
         attributes: {
@@ -44438,10 +44437,10 @@ class mfe {
       }
     });
   }
-  onCreate(e, t) {
-    this.innerEditor.view.dom.style.height = "calc(100% - 20px)", this.eventComponents.forEach((o) => {
-      o.onCreate && o.onCreate(e, this.options);
-    }), (this.container.querySelector(".aie-container-header") || this.container).appendChild(this.header), (this.container.querySelector(".aie-container-main") || this.container).appendChild(t), (this.container.querySelector(".aie-container-footer") || this.container).appendChild(this.footer), this.options.onCreated && this.options.onCreated(this);
+  onCreate(e) {
+    this.innerEditor.view.dom.style.height = "calc(100% - 20px)", this.eventComponents.forEach((s) => {
+      s.onCreate && s.onCreate(e, this.options);
+    }), (this.container.querySelector(".aie-container-header") || this.container).appendChild(this.header), (this.container.querySelector(".aie-container-main") || this.container).appendChild(this.mainEl), (this.container.querySelector(".aie-container-footer") || this.container).appendChild(this.footer), this.options.onCreated && this.options.onCreated(this);
   }
   onTransaction(e) {
     if (this.eventComponents.forEach((t) => {
@@ -44532,7 +44531,7 @@ class mfe {
     return this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey), this;
   }
   destroy() {
-    this.innerEditor.destroy(), this.container.remove(), this.eventComponents = [];
+    this.options.onDestroy && this.options.onDestroy(this), this.innerEditor.destroy(), this.eventComponents = [], this.container.classList.contains("aie-container-custom") ? (this.header.remove(), this.mainEl.remove(), this.footer.remove()) : this.container.remove();
   }
   isDestroyed() {
     return this.innerEditor.isDestroyed;
