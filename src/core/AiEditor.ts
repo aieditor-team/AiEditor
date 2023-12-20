@@ -54,7 +54,7 @@ export interface UploaderEvent {
 
 export interface CustomMenu {
     id?: string
-    class?: string
+    className?: string
     icon?: string
     html?: string
     onClick?: (event: MouseEvent, editor: AiEditor) => void
@@ -75,6 +75,7 @@ export type AiEditorOptions = {
     cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
+    onDestroy?: (editor: AiEditor) => void,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
     toolbarKeys?: (string | CustomMenu)[],
@@ -124,8 +125,8 @@ export type AiEditorOptions = {
                 urlSignatureAlgorithm?: (model: XingHuoModel) => string,
             }
         },
-        bubblePanelEnable?:boolean,
-        bubblePanelModel?:string,
+        bubblePanelEnable?: boolean,
+        bubblePanelModel?: string,
         menus?: AiMenu[],
         commands?: AiCommand[],
         codeBlock?: {
@@ -184,6 +185,8 @@ export class AiEditor {
 
     header!: Header;
 
+    mainEl!: HTMLDivElement;
+
     footer!: Footer;
 
     options: AiEditorOptions;
@@ -191,7 +194,7 @@ export class AiEditor {
     eventComponents: AiEditorEvent[] = [];
 
     constructor(_: AiEditorOptions) {
-        this.options = {...defaultOptions,..._};
+        this.options = {...defaultOptions, ..._};
         this.initI18n();
     }
 
@@ -229,13 +232,15 @@ export class AiEditor {
         if (!this.container) {
             this.container = document.createElement("div");
             this.container.classList.add("aie-container");
+        } else {
+            this.container.classList.add(".aie-container-custom")
         }
 
         rootEl.appendChild(this.container);
 
-        const mainEl = document.createElement("div");
-        mainEl.style.flexGrow = "1";
-        mainEl.style.overflow = "auto";
+        this.mainEl = document.createElement("div");
+        this.mainEl.style.flexGrow = "1";
+        this.mainEl.style.overflow = "auto";
 
         this.header = document.createElement("aie-header") as Header;
         this.footer = document.createElement("aie-footer") as Footer;
@@ -258,10 +263,10 @@ export class AiEditor {
         }
 
         this.innerEditor = new InnerEditor(this, this.options, {
-            element: mainEl,
+            element: this.mainEl,
             content: content,
             extensions: extensions,
-            onCreate: (props) => this.onCreate(props, mainEl),
+            onCreate: (props) => this.onCreate(props),
             onTransaction: (props) => this.onTransaction(props),
             onDestroy: () => this.onDestroy,
             editorProps: {
@@ -272,7 +277,7 @@ export class AiEditor {
         })
     }
 
-    private onCreate(props: EditorEvents['create'], mainEl: Element) {
+    private onCreate(props: EditorEvents['create']) {
         this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
 
         this.eventComponents.forEach((zEvent) => {
@@ -283,7 +288,7 @@ export class AiEditor {
         _header.appendChild(this.header);
 
         const _main = this.container.querySelector(".aie-container-main") || this.container;
-        _main.appendChild(mainEl);
+        _main.appendChild(this.mainEl);
 
         const _footer = this.container.querySelector(".aie-container-footer") || this.container;
         _footer.appendChild(this.footer);
@@ -436,10 +441,21 @@ export class AiEditor {
     }
 
     destroy() {
+        this.options.onDestroy && this.options.onDestroy(this);
         this.innerEditor.destroy();
-        this.container.remove();
         this.eventComponents = [];
+
+        //custom layout
+        if (this.container.classList.contains("aie-container-custom")) {
+            this.header.remove();
+            this.mainEl.remove();
+            this.footer.remove();
+        } else {
+            this.container.remove();
+        }
+
     }
+
 
     isDestroyed() {
         return this.innerEditor.isDestroyed;
