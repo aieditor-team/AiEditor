@@ -149,8 +149,8 @@ export class Header extends HTMLElement implements AiEditorEvent {
                     if (customMenuConfig.id){
                         menuButton.setAttribute("id",customMenuConfig.id);
                     }
-                    if (customMenuConfig.class){
-                        menuButton.classList.add(customMenuConfig.class);
+                    if (customMenuConfig.className){
+                        menuButton.classList.add(customMenuConfig.className);
                     }
                     menuButton.onCreate(event, options);
                     menuButton.onConfig(customMenuConfig);
