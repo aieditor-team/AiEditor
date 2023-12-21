@@ -1,4 +1,4 @@
-import {Extension, Extensions, posToDOMRect} from "@tiptap/core";
+import {Extension, Extensions, getTextBetween, posToDOMRect} from "@tiptap/core";
 import {AiEditor} from "./AiEditor.ts";
 import {BubbleMenuOptions, BubbleMenuPlugin} from "@tiptap/extension-bubble-menu";
 
@@ -58,11 +58,15 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
                 menuEl.instance = instance;
             }
         },
-        // shouldShow: ({editor}) => {
-        //     console.log("aiMarker1:", editor.storage.selectionMarker.aiMarker)
-        //     return !editor.state.selection.empty && !editor.storage.selectionMarker.aiMarker
-        //     // return !editor.isActive("selection-marker",{aiMarker:true})
-        // }
+        shouldShow: ({editor}) => {
+            const {state: {selection}} = editor;
+            return !selection.empty && getTextBetween(editor.state.doc, {
+                    from: selection.from,
+                    to: selection.to
+                }).length > 0
+                && !editor.isActive("link")
+                && !editor.isActive("image")
+        }
     })
 }
 
@@ -147,7 +151,8 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
             })
         },
         shouldShow: ({editor}) => {
-            return editor.isActive("table")
+            const {state: {selection}} = editor;
+            return editor.isActive("table") && selection.empty
         }
     })
 }
