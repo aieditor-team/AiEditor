@@ -45,6 +45,7 @@ export declare interface AiCommand {
 }
 
 export declare class AiEditor {
+    private customLayout;
     innerEditor: InnerEditor;
     container: HTMLDivElement;
     header: Header;
@@ -53,7 +54,7 @@ export declare class AiEditor {
     options: AiEditorOptions;
     eventComponents: AiEditorEvent[];
     constructor(_: AiEditorOptions);
-    private initI18n;
+    private initI18nAndInnerEditor;
     private initInnerEditor;
     private onCreate;
     private onTransaction;

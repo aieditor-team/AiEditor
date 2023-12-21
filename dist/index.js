@@ -37546,9 +37546,9 @@ class KA extends Zo {
     const t = document.createElement("div");
     return t.classList.add("aie-ai-panel"), t.innerHTML = `
         <div class="aie-ai-panel-content"><div class="loader">${Cs.refresh}</div><textarea readonly></textarea></div>
-        <div class="aie-ai-panel-actions"><button id="insert">追加</button><button id="replace">替换</button></div>
-        <div class="aie-ai-panel-input"><input id="prompt" placeholder="告诉 AI 下一步应该如何？比如：帮我翻译成英语" type="text" />
-        <button id="go" style="width: 30px;height: 30px">${Cs.aiPanelStart}</button></div>
+        <div class="aie-ai-panel-actions"><button type="button" id="insert">追加</button><button type="button" id="replace">替换</button></div>
+        <div class="aie-ai-panel-input"><input type="button" id="prompt" placeholder="告诉 AI 下一步应该如何？比如：帮我翻译成英语" type="text" />
+        <button type="button" id="go" style="width: 30px;height: 30px">${Cs.aiPanelStart}</button></div>
         `, t.querySelector("#replace").addEventListener("click", () => {
       const r = t.querySelector("textarea");
       if (r.value) {
@@ -37964,7 +37964,7 @@ const eT = new Me("mention"), tT = le.create({
       const s = () => {
         e.innerHTML = `
                             <div class="items">
-                             ${i.items.map((o, a) => `<button class="item ${a === r ? "item-selected" : ""}" data-index="${a}"> @${o.name ? o.name : o}</button>`).join("")}
+                             ${i.items.map((o, a) => `<button type="button" class="item ${a === r ? "item-selected" : ""}" data-index="${a}"> @${o.name ? o.name : o}</button>`).join("")}
                             </div>
                             `, e.addEventListener("click", (o) => {
           const a = o.target.closest(".item");
@@ -38051,7 +38051,7 @@ const eT = new Me("mention"), tT = le.create({
           const i = () => {
             n.innerHTML = `
                             <div class="items">
-                             ${r.items.map((s, o) => `<button class="item ${o === t ? "item-selected" : ""}" data-index="${o}">${s.name}</button>`).join("")}
+                             ${r.items.map((s, o) => `<button type="button" class="item ${o === t ? "item-selected" : ""}" data-index="${o}">${s.name}</button>`).join("")}
                             </div>
                             `, n.addEventListener("click", (s) => {
               const o = s.target.closest(".item");
@@ -44385,6 +44385,7 @@ class qde extends gw {
 }
 class mfe {
   constructor(e) {
+    V(this, "customLayout", !1);
     V(this, "innerEditor");
     V(this, "container");
     V(this, "header");
@@ -44392,9 +44393,9 @@ class mfe {
     V(this, "footer");
     V(this, "options");
     V(this, "eventComponents", []);
-    this.options = { ...Vde, ...e }, this.initI18n();
+    this.options = { ...Vde, ...e }, this.initI18nAndInnerEditor();
   }
-  initI18n() {
+  initI18nAndInnerEditor() {
     const e = this.options.i18n || {}, t = {
       en: { translation: { ...zde, ...e.en } },
       zh: { translation: { ...Fde, ...e.zh } }
@@ -44412,7 +44413,7 @@ class mfe {
   }
   initInnerEditor() {
     const e = typeof this.options.element == "string" ? document.querySelector(this.options.element) : this.options.element;
-    e.classList.add(`aie-theme-${this.options.theme}`), this.container = e.querySelector(".aie-container"), this.container ? this.container.classList.add(".aie-container-custom") : (this.container = document.createElement("div"), this.container.classList.add("aie-container")), e.appendChild(this.container), this.mainEl = document.createElement("div"), this.mainEl.style.flexGrow = "1", this.mainEl.style.overflow = "auto", this.header = document.createElement("aie-header"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.header), this.eventComponents.push(this.footer);
+    e.classList.add(`aie-theme-${this.options.theme}`), this.container = e.querySelector(".aie-container"), this.container ? this.customLayout = !0 : (this.container = document.createElement("div"), this.container.classList.add("aie-container")), e.appendChild(this.container), this.mainEl = document.createElement("div"), this.mainEl.style.flexGrow = "1", this.mainEl.style.overflow = "auto", this.header = document.createElement("aie-header"), this.footer = document.createElement("aie-footer"), this.eventComponents.push(this.header), this.eventComponents.push(this.footer);
     let t = this.options.content;
     if (this.options.contentRetention && this.options.contentRetentionKey) {
       const i = localStorage.getItem(this.options.contentRetentionKey);
@@ -44531,7 +44532,7 @@ class mfe {
     return this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey), this;
   }
   destroy() {
-    this.options.onDestroy && this.options.onDestroy(this), this.innerEditor.destroy(), this.eventComponents = [], this.container.classList.contains("aie-container-custom") ? (this.header.remove(), this.mainEl.remove(), this.footer.remove()) : this.container.remove();
+    this.options.onDestroy && this.options.onDestroy(this), this.innerEditor.destroy(), this.eventComponents = [], this.customLayout ? (this.header.remove(), this.mainEl.remove(), this.footer.remove()) : this.container.remove();
   }
   isDestroyed() {
     return this.innerEditor.isDestroyed;
