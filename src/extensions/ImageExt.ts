@@ -22,7 +22,7 @@ declare module '@tiptap/core' {
 export interface ImageOptions {
     inline: boolean,
     allowBase64: boolean,
-    defaultSize:number,
+    defaultSize: number,
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
     uploadHeaders: Record<string, any>,
@@ -50,7 +50,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                 uploadUrl: "",
                 uploadHeaders: {},
                 uploader: void 0,
-                defaultSize:350,
+                defaultSize: 350,
             }
         },
 
@@ -269,7 +269,25 @@ export const ImageExt = Image.extend<ImageOptions>({
 
                                 return true
                             }
-                        }
+                        },
+
+
+                        transformPastedHTML(html) {
+                            const parser = new DOMParser();
+                            const document = parser.parseFromString(html, 'text/html');
+                            const workspace = document.documentElement.querySelector('body');
+                            if (workspace?.children) {
+                                const imgNodes = document.documentElement.querySelectorAll('p > img');
+                                for (const image of imgNodes) {
+                                    const imageParent = image.parentNode;
+                                    const position = Array.prototype.indexOf.call(workspace.children, imageParent);
+                                    image.parentElement!.prepend(image);
+                                    workspace.insertBefore(image, workspace.children[position]);
+                                }
+                                return workspace.innerHTML;
+                            }
+                            return html;
+                        },
                     }
                 }),
             ]
