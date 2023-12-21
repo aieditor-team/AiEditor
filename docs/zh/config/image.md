@@ -62,7 +62,7 @@ new AiEditor({
 }
 ```
 
-若服务器返回的不是以上内容格式，我们可以通过配置 `dataProcessor` 对数据进行二次处理，并按以上格式返回。
+若服务器返回的不是以上内容格式，我们可以通过配置 `uploaderEvent` 的 `onSuccess` 对数据进行二次处理，并按以上格式返回新的 `json` 内容。
 
 ## 自定义 uploader 代码示例
 
