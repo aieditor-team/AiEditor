@@ -139,9 +139,9 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         container.classList.add("aie-ai-panel")
         container.innerHTML = `
         <div class="aie-ai-panel-content"><div class="loader">${Svgs.refresh}</div><textarea readonly></textarea></div>
-        <div class="aie-ai-panel-actions"><button id="insert">追加</button><button id="replace">替换</button></div>
-        <div class="aie-ai-panel-input"><input id="prompt" placeholder="告诉 AI 下一步应该如何？比如：帮我翻译成英语" type="text" />
-        <button id="go" style="width: 30px;height: 30px">${Svgs.aiPanelStart}</button></div>
+        <div class="aie-ai-panel-actions"><button type="button" id="insert">追加</button><button type="button" id="replace">替换</button></div>
+        <div class="aie-ai-panel-input"><input type="button" id="prompt" placeholder="告诉 AI 下一步应该如何？比如：帮我翻译成英语" type="text" />
+        <button type="button" id="go" style="width: 30px;height: 30px">${Svgs.aiPanelStart}</button></div>
         `;
 
         container.querySelector("#replace")!.addEventListener("click", () => {

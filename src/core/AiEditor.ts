@@ -179,6 +179,8 @@ export class InnerEditor extends Tiptap {
 
 export class AiEditor {
 
+    private customLayout: boolean = false;
+
     innerEditor!: InnerEditor;
 
     container!: HTMLDivElement;
@@ -195,10 +197,10 @@ export class AiEditor {
 
     constructor(_: AiEditorOptions) {
         this.options = {...defaultOptions, ..._};
-        this.initI18n();
+        this.initI18nAndInnerEditor();
     }
 
-    private initI18n() {
+    private initI18nAndInnerEditor() {
         const i18nConfig = this.options.i18n || {};
         const resources = {
             en: {translation: {...en, ...i18nConfig.en}},
@@ -233,7 +235,7 @@ export class AiEditor {
             this.container = document.createElement("div");
             this.container.classList.add("aie-container");
         } else {
-            this.container.classList.add(".aie-container-custom")
+            this.customLayout = true;
         }
 
         rootEl.appendChild(this.container);
@@ -446,7 +448,7 @@ export class AiEditor {
         this.eventComponents = [];
 
         //custom layout
-        if (this.container.classList.contains("aie-container-custom")) {
+        if (this.customLayout) {
             this.header.remove();
             this.mainEl.remove();
             this.footer.remove();

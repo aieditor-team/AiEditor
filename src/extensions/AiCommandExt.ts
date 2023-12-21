@@ -65,7 +65,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                         element.innerHTML = `
                             <div class="items">
                              ${suggestionProps.items.map((item: AiCommand, index) => {
-                            return `<button class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}">${item.name}</button>`
+                            return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}">${item.name}</button>`
                         }).join("")}
                             </div>
                             `
