@@ -57,8 +57,9 @@ export interface CustomMenu {
     className?: string
     icon?: string
     html?: string
+    tip?: string
     onClick?: (event: MouseEvent, editor: AiEditor) => void
-    tip?: string,
+    onCreate?: (button: HTMLElement, editor: AiEditor) => void
 }
 
 

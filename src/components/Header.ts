@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEvent, CustomMenu} from "../core/AiEditor.ts";
+import {AiEditorOptions, AiEditorEvent, CustomMenu, InnerEditor} from "../core/AiEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 import {Undo} from "./menus/Undo";
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
@@ -146,10 +146,10 @@ export class Header extends HTMLElement implements AiEditorEvent {
                     const customMenuConfig = toolbarKey as CustomMenu;
                     const menuButton = document.createElement("aie-custom") as Custom;
                     menuButton.classList.add("aie-menu-item")
-                    if (customMenuConfig.id){
-                        menuButton.setAttribute("id",customMenuConfig.id);
+                    if (customMenuConfig.id) {
+                        menuButton.setAttribute("id", customMenuConfig.id);
                     }
-                    if (customMenuConfig.className){
+                    if (customMenuConfig.className) {
                         menuButton.classList.add(customMenuConfig.className);
                     }
                     menuButton.onCreate(event, options);
@@ -167,10 +167,12 @@ export class Header extends HTMLElement implements AiEditorEvent {
                         });
                     }
 
+                    if (customMenuConfig.onCreate) {
+                        customMenuConfig.onCreate(menuButton, (event.editor as InnerEditor).aiEditor);
+                    }
+
                     this.menuButtons.push(menuButton);
                 }
-
-
             } catch (e) {
                 console.error("Can not create toolbar by key: " + toolbarKey);
             }
