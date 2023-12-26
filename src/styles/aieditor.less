@@ -11,31 +11,47 @@
     box-sizing: content-box;
   }
 
-  .aie-ai-panel {
+  .aie-ai-panel-body {
     width: 500px;
-    height: 180px;
+    // height: 180px;
     border: solid 1px;
     border-color: var(--aie-ai-panel-border);
     background: var(--aie-ai-panel-bg-color);
     border-radius: 5px;
-    padding: 10px;
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, .15);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    &-tips {
+      width: 100%;
+      padding:10px;
+      color:#999;
+      background-color: #fafafa;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+
+      svg{
+        width: 16px;
+        height: 16px;
+        margin-right:5px;
+      }
+    }
 
     &-content {
       width: 100%;
-      height: 160px;
+      // height: 160px;
       position: relative;
-
+      
       .loader {
         position: absolute;
-        top: 2px;
-        right: 2px;
+        top: 10px;
+        right: 10px;
         display: none;
 
         svg {
           width: 16px;
+          color:#999;
           animation: rotate 2s linear infinite;
           @keyframes rotate {
             from {
@@ -51,23 +67,27 @@
       textarea {
         width: 100%;
         height: 100%;
-        border: 1px solid;
-        border-color: var(--aie-textarea-border);
-        background: var(--aie-textarea-bg-color);
-        border-radius: 3px;
-        padding: 5px;
+        padding: 15px;
         box-sizing: border-box;
+        font-size: 16px;
+        line-height: 1.6em;
+        font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        border:none;
+        resize:none;
+        
       }
 
       textarea:focus-visible {
         outline: none;
       }
+     
     }
 
     &-actions {
       margin: 10px 0;
       display: flex;
       justify-content: end;
+      display: none;
 
       button {
         margin-left: 5px;
@@ -89,23 +109,29 @@
       display: flex;
       justify-content: space-between;
       box-sizing: border-box;
-      border: 1px solid;
-      border-color: var(--aie-input-border-color);
+      border-bottom: 1px solid;
+      border-bottom-color: var(--aie-input-border-color);
       align-items: center;
-      padding: 6px 10px;
-      border-radius: 3px;
+      padding: 10px 20px 10px 10px;
+     
+    
 
       input {
-        width: 90%;
+        width: 92%;
         height: 100%;
         border: none;
-        border-radius: 3px;
         margin: 0;
         padding: 0;
         background: var(--aie-input-bg-color);;
-
+        font-size: 16px;
+        font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+        background-color: #edf0f5;
+        padding:10px;
+        box-sizing: border-box;
+        border-radius: 4px;
         &::-webkit-input-placeholder {
           color: #ccc;
+          font-size: 16px;
         }
       }
 
@@ -117,19 +143,75 @@
         border: none;
         border-radius: 50%;
         padding: 0;
-        background: var(--aie-input-button-bg-color);
+        background: #609eec;
+
 
 
         svg {
-          fill: #666;
+          fill: #fff;
           width: 18px;
+          margin-left:2px;
+          margin-top:2px;
         }
       }
 
       button:hover {
-        background: #ccc;
+        background: #3c77c0;
         cursor: pointer;
       }
+    }
+  }
+  .aie-ai-panel-footer {
+    width: 200px;
+    // height: 180px;
+    border: solid 1px;
+    border-color: var(--aie-ai-panel-border);
+    background: var(--aie-ai-panel-bg-color);
+    border-radius: 5px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .15);
+    display: flex;
+    padding:10px 0;
+    flex-direction: column;
+    margin-top:5px;
+    &-tips{
+      // background-color: #fafafa;
+      padding:5px 10px;
+      color:#999;
+      margin-bottom:5px;
+    }
+    hr{
+      height: 1px;
+      width: 100%;
+      margin:5px 0;
+      background-color: #eaeaea;
+      border:none;
+    }
+    p{
+      width: 100%;
+      margin:0;
+    }
+    p a{
+      display: inline-block;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+      height: 40px;
+      line-height: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      padding:0 20px;
+      color:#666;
+      text-decoration: none;
+      font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    }
+    a:hover{
+      background-color: #fafafa;
+    }
+    svg{
+      width: 20px;
+      height: 20px;
+      margin-right:10px;
     }
   }
 
