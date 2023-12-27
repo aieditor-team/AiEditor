@@ -37,13 +37,6 @@ export class XingHuoModel implements AiModel {
     }
 
     startWithProcessor(selectedText: string, prompt: string, processor: AiMessageProcessor): void {
-        // const url = this.onCreateURL ? this.onCreateURL(this) : this.createUrl();
-        // this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
-        // for (let listener of this.listeners) {
-        //     this.socket.addListener(listener);
-        // }
-        // this.socket.start(`${selectedText}\n${prompt}`)
-
         const startFn = (url: string) => {
             this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
             for (let listener of this.listeners) {
@@ -51,6 +44,7 @@ export class XingHuoModel implements AiModel {
             }
             this.socket.start(`${selectedText}\n${prompt}`)
         }
+        
         this.onCreateURL ? this.onCreateURL(this, startFn) : startFn(this.createUrl());
     }
 
