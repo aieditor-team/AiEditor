@@ -146,7 +146,7 @@ export declare type AiEditorOptions = {
                 apiKey: string;
                 apiSecret: string;
                 version?: string;
-                urlSignatureAlgorithm?: (model: XingHuoModel) => string;
+                onCreateURL?: (model: XingHuoModel, startFn: (url: string) => void) => void;
             };
         };
         bubblePanelEnable?: boolean;
@@ -201,8 +201,9 @@ export declare interface CustomMenu {
     className?: string;
     icon?: string;
     html?: string;
-    onClick?: (event: MouseEvent, editor: AiEditor) => void;
     tip?: string;
+    onClick?: (event: MouseEvent, editor: AiEditor) => void;
+    onCreate?: (button: HTMLElement, editor: AiEditor) => void;
 }
 
 declare class Footer extends HTMLElement implements AiEditorEvent {
@@ -247,7 +248,7 @@ declare class XingHuoModel implements AiModel {
     apiKey: string;
     apiSecret: string;
     version: string;
-    urlSignatureAlgorithm: (model: XingHuoModel) => string;
+    onCreateURL: (model: XingHuoModel, startFn: (url: string) => void) => void;
     socket?: AbstractWebSocket;
     listeners: AiModelListener[];
     constructor(options: AiEditorOptions);

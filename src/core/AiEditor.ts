@@ -123,7 +123,7 @@ export type AiEditorOptions = {
                 apiKey: string,
                 apiSecret: string,
                 version?: string,
-                urlSignatureAlgorithm?: (model: XingHuoModel) => string,
+                onCreateURL?: (model: XingHuoModel, startFn: (url: string) => void) => void;
             }
         },
         bubblePanelEnable?: boolean,

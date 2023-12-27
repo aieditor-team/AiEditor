@@ -18,18 +18,18 @@ export class XingHuoModel implements AiModel {
     apiKey: string;
     apiSecret: string;
     version: string;
-    urlSignatureAlgorithm: (model: XingHuoModel) => string;
+    onCreateURL: (model: XingHuoModel, startFn: (url: string) => void) => void;
     socket?: AbstractWebSocket;
     listeners: AiModelListener[] = [];
 
     constructor(options: AiEditorOptions) {
-        const {protocol, appId, apiKey, apiSecret, version, urlSignatureAlgorithm} = options.ai?.model.xinghuo!;
+        const {protocol, appId, apiKey, apiSecret, version, onCreateURL} = options.ai?.model.xinghuo!;
         this.protocol = protocol || "ws";
         this.appId = appId;
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
         this.version = version || "v3.1";
-        this.urlSignatureAlgorithm = urlSignatureAlgorithm!;
+        this.onCreateURL = onCreateURL!;
     }
 
     start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void {
@@ -37,12 +37,21 @@ export class XingHuoModel implements AiModel {
     }
 
     startWithProcessor(selectedText: string, prompt: string, processor: AiMessageProcessor): void {
-        const url = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
-        this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
-        for (let listener of this.listeners) {
-            this.socket.addListener(listener);
+        // const url = this.onCreateURL ? this.onCreateURL(this) : this.createUrl();
+        // this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
+        // for (let listener of this.listeners) {
+        //     this.socket.addListener(listener);
+        // }
+        // this.socket.start(`${selectedText}\n${prompt}`)
+
+        const startFn = (url: string) => {
+            this.socket = new XingHuoSocket(url, processor, this.appId, this.version);
+            for (let listener of this.listeners) {
+                this.socket.addListener(listener);
+            }
+            this.socket.start(`${selectedText}\n${prompt}`)
         }
-        this.socket.start(`${selectedText}\n${prompt}`)
+        this.onCreateURL ? this.onCreateURL(this, startFn) : startFn(this.createUrl());
     }
 
     stop() {

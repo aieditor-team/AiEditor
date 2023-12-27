@@ -15180,13 +15180,13 @@ class $v {
     q(this, "apiKey");
     q(this, "apiSecret");
     q(this, "version");
-    q(this, "urlSignatureAlgorithm");
+    q(this, "onCreateURL");
     var l;
-    const { protocol: n, appId: r, apiKey: i, apiSecret: s, version: o, urlSignatureAlgorithm: a } = (l = e.ai) == null ? void 0 : l.model.xinghuo;
-    this.protocol = n || "ws", this.appId = r, this.apiKey = i, this.apiSecret = s, this.version = o || "v3.1", this.urlSignatureAlgorithm = a;
+    const { protocol: n, appId: r, apiKey: i, apiSecret: s, version: o, onCreateURL: a } = (l = e.ai) == null ? void 0 : l.model.xinghuo;
+    this.protocol = n || "ws", this.appId = r, this.apiKey = i, this.apiSecret = s, this.version = o || "v3.1", this.onCreateURL = a;
   }
   start(e, n, r) {
-    const i = this.urlSignatureAlgorithm ? this.urlSignatureAlgorithm(this) : this.createUrl();
+    const i = this.onCreateURL ? this.onCreateURL(this) : this.createUrl();
     new Tv(i, this.appId, this.version, r).start(`"${e}"
 ${n}`);
   }
