@@ -15,7 +15,7 @@ new AiEditor({
             }
         },
         bubblePanelEnable:true,
-        bubblePanelModel:"xinghuo"
+        bubblePanelModel:"spark"
     },
 })
 ```

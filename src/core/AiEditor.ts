@@ -6,15 +6,14 @@ import {Footer} from "../components/Footer.ts";
 import {getExtensions} from "./getExtensions.ts";
 
 import "../styles"
-import {XingHuoModel} from "../ai/xinghuo/XingHuoModel.ts";
 import i18next from "i18next";
 import {zh} from "../i18n/zh.ts";
 import {en} from "../i18n/en.ts";
 import {Resource} from "i18next";
 
-// @ts-ignore
-import MarkdownIt from 'markdown-it';
 import {DOMParser} from "@tiptap/pm/model";
+import {AiGlobalConfig} from "../ai/core/AiGlobalConfig.ts";
+import {AiModelFactory} from "../ai/AiModelFactory.ts";
 
 
 window.customElements.define('aie-header', Header);
@@ -23,21 +22,6 @@ window.customElements.define('aie-footer', Footer);
 export interface NameAndValue {
     name: string,
     value: any;
-}
-
-export interface AiMenu {
-    icon: string,
-    name: string,
-    prompt: string,
-    text: "selected" | "focusBefore",
-    model: string,
-}
-
-export interface AiCommand {
-    name: string,
-    keyword: string,
-    prompt: string,
-    model: string,
 }
 
 export interface AiEditorEvent {
@@ -115,32 +99,7 @@ export type AiEditorOptions = {
     fontSize?: {
         values: NameAndValue[]
     },
-    ai?: {
-        model: {
-            xinghuo?: {
-                protocol?: string,
-                appId: string,
-                apiKey: string,
-                apiSecret: string,
-                version?: string,
-                onCreateURL?: (model: XingHuoModel, startFn: (url: string) => void) => void;
-            }
-        },
-        bubblePanelEnable?: boolean,
-        bubblePanelModel?: string,
-        menus?: AiMenu[],
-        commands?: AiCommand[],
-        codeBlock?: {
-            codeComments?: {
-                model: string,
-                prompt: string,
-            },
-            codeExplain?: {
-                model: string,
-                prompt: string,
-            }
-        }
-    }
+    ai?: AiGlobalConfig,
 }
 
 const defaultOptions: Partial<AiEditorOptions> = {
@@ -295,6 +254,10 @@ export class AiEditor {
 
         const _footer = this.container.querySelector(".aie-container-footer") || this.container;
         _footer.appendChild(this.footer);
+
+        if (this.options.ai){
+            AiModelFactory.init(this.innerEditor, this.options.ai);
+        }
 
         if (this.options.onCreated) {
             this.options.onCreated(this);

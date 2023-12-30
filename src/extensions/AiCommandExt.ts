@@ -5,7 +5,9 @@ import Suggestion, {SuggestionOptions, SuggestionProps} from '@tiptap/suggestion
 
 import tippy, {Instance} from "tippy.js";
 import {AiModelFactory} from "../ai/AiModelFactory.ts";
-import {AiCommand, AiEditorOptions, InnerEditor} from "../core/AiEditor.ts";
+import {AiEditorOptions} from "../core/AiEditor.ts";
+import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
+import {AiMenu} from "../ai/core/AiGlobalConfig.ts";
 
 export type AiCommandOptions = {
     HTMLAttributes?: Record<string, any>
@@ -17,24 +19,24 @@ export const defaultCommands = [
     {
         name: "AI 续写",
         prompt: "请帮我继续扩展一些这段话的内容",
-        model: "xinghuo",
+        model: "spark",
     },
     {
         name: "AI 提问",
         prompt: "",
-        model: "xinghuo",
+        model: "spark",
     },
     {
         name: "AI 翻译",
         prompt: "请帮我把这段内容翻译为英语，直接返回英语结果",
-        model: "xinghuo",
+        model: "spark",
     },
     {
         name: "AI 生图",
         prompt: "请根据以上的内容，生成一张图片，并把图片返回给我",
-        model: "xinghuo",
+        model: "spark",
     },
-] as AiCommand[];
+] as AiMenu[];
 
 export const AiCommandExt = Extension.create<AiCommandOptions>({
     name: 'aiCommand',
@@ -45,12 +47,11 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                 char: '/',
                 command: ({editor, range, props}) => {
                     editor.chain().focus().deleteRange(range).run();
-                    let aiCommand = props as AiCommand;
+                    let aiCommand = props as AiMenu;
                     const selectedText = editor.state.selection.$head.parent.textContent;
-                    const userOptions = (editor as InnerEditor).userOptions;
-                    const aiModel = AiModelFactory.create(aiCommand.model, userOptions);
+                    const aiModel = AiModelFactory.get(aiCommand.model!);
                     if (aiModel) {
-                        aiModel?.start(selectedText, aiCommand.prompt, editor);
+                        aiModel?.chat(selectedText, aiCommand.prompt!, new DefaultAiMessageListener(editor));
                     } else {
                         console.error("Ai model config error.")
                     }

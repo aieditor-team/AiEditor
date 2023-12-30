@@ -6,7 +6,7 @@ import {textblockTypeInputRule} from "../util/textblockTypeInputRule.ts";
 import {NodeSelection, Selection} from '@tiptap/pm/state';
 import {Node} from '@tiptap/pm/model';
 import {AiModelFactory} from "../ai/AiModelFactory.ts";
-import {InnerEditor} from "../core/AiEditor.ts";
+import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
 
 export type LanguageItem = {
     name: string;
@@ -197,12 +197,11 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos)).deleteSelection())
 
                 const markdown = storage.markdown.serializer.serialize(node);
-                const llm = AiModelFactory.create(this.options.codeCommentsAi!.model, (editor as InnerEditor).userOptions);
-
-                llm?.start(markdown, this.options.codeCommentsAi!.prompt, editor, {
+                const aiModel = AiModelFactory.get(this.options.codeCommentsAi!.model);
+                aiModel.chat(markdown, this.options.codeCommentsAi!.prompt, new DefaultAiMessageListener(editor, {
                     markdownParseEnable: true,
                     useMarkdownTextOnly: true,
-                });
+                }))
                 return true;
             },
 
@@ -221,9 +220,9 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 }
 
                 const markdown = storage.markdown.serializer.serialize(node);
-                const llm = AiModelFactory.create(this.options.codeExplainAi!.model, (editor as InnerEditor).userOptions);
+                const aiModel = AiModelFactory.get(this.options.codeExplainAi!.model);
 
-                llm?.start(markdown, this.options.codeExplainAi!.prompt, editor);
+                aiModel?.chat(markdown, this.options.codeExplainAi!.prompt, new DefaultAiMessageListener(editor));
                 return true;
             },
 
@@ -279,7 +278,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                                     .run();
                             }
                         }
-
                         return commands.toggleNode(this.name, 'paragraph', attributes);
                     },
         };

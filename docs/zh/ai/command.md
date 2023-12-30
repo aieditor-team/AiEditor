@@ -19,12 +19,12 @@ new AiEditor({
             {
                 name: "AI 续写",
                 prompt: "请帮我继续扩展一些这段话的内容",
-                model: "xinghuo",
+                model: "spark",
             },
             {
                 name: "AI 提问",
                 prompt: "",
-                model: "xinghuo",
+                model: "spark",
             },
         ]
     },

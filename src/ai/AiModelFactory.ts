@@ -1,22 +1,24 @@
-import {AiEditorOptions} from "../core/AiEditor.ts";
-import {AiModel} from "./AiModel.ts";
-import {XingHuoModel} from "./xinghuo/XingHuoModel.ts";
+import {AiModel} from "./core/AiModel.ts";
+import {AiGlobalConfig} from "./core/AiGlobalConfig.ts";
+import {SparkAiModel} from "./spark/SparkAiModel.ts";
+import {Editor} from "@tiptap/core";
 
 export class AiModelFactory {
 
-    static models: Record<string, AiModel> = {};
+    private static models: Record<string, AiModel> = {};
 
-    static create(modelName: string, options: AiEditorOptions): AiModel | null {
-        let model = this.models[modelName];
-        if (model) return model;
-
-        if (modelName === "xinghuo") {
-            model = new XingHuoModel(options);
+    static init(editor: Editor, globalConfig: AiGlobalConfig) {
+        if (globalConfig && globalConfig.models) {
+            for (let key of Object.keys(globalConfig.models)) {
+                switch (key) {
+                    case "spark":
+                        this.models[key] = new SparkAiModel(editor, globalConfig)
+                }
+            }
         }
+    }
 
-        if (model) {
-            this.models[modelName] = model;
-        }
-        return model;
+    static get(modelName: string): AiModel {
+        return this.models[modelName];
     }
 }

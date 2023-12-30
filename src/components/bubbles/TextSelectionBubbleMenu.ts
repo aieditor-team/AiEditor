@@ -5,15 +5,14 @@ import tippy, {Instance} from "tippy.js";
 import {AiModelFactory} from "../../ai/AiModelFactory.ts";
 import {AiEditorOptions, InnerEditor} from "../../core/AiEditor.ts";
 import {Svgs} from "../../commons/Svgs.ts";
-import {AiModelListener} from "../../ai/AiModelListener.ts";
-import {AiModel} from "../../ai/AiModel.ts";
+import {AiClient} from "../../ai/core/AiClient.ts";
 
 
 export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
 
     private _instance?: Instance;
     private bubblePanelEnable = true;
-    private aiModel?: AiModel | null;
+    private aiClient?: AiClient | null;
 
     constructor() {
         super();
@@ -172,45 +171,36 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         });
 
         container.querySelector("#go")!.addEventListener("click", () => {
-            if (this.aiModel) {
-                this.aiModel.stop();
+            if (this.aiClient) {
+                this.aiClient.stop();
             } else {
                 const textarea = container.querySelector("textarea")!;
                 textarea.value = "";
                 const {selection, doc} = this.editor!.state
                 const selectedText = doc.textBetween(selection.from, selection.to);
                 const options = (this.editor as InnerEditor).userOptions;
-                this.aiModel = AiModelFactory.create(options.ai?.bubblePanelModel || "xinghuo", options);
-                if (this.aiModel) {
+                const aiModel = AiModelFactory.get(options.ai?.bubblePanelModel || "spark");
+                if (aiModel) {
                     const prompt = (container.querySelector("#prompt") as HTMLInputElement).value
                     const menu = this;
-                    const listener: AiModelListener = {
-                        onStop() {
-                            //onStop 可能会触发多次，在 socket 停止时，或者被关闭时都会触发
-                            if (menu.aiModel) {
-                                menu.aiModel!.removeListener(listener);
-                                menu.aiModel = null;
-                                container.querySelector("#go")!.innerHTML = Svgs.aiPanelStart;
-                                container.querySelector<HTMLElement>(".loader")!.style.display = "none";
-                            }
-                        },
-                        onStart() {
+
+                    aiModel.chat(selectedText, prompt, {
+                        onStart(aiClient) {
+                            menu.aiClient = aiClient;
                             container.querySelector<HTMLElement>(".loader")!.style.display = "block";
                             container.querySelector<HTMLElement>(".aie-ai-panel-body-content")!.style.display = "block";
                             container.querySelector("#go")!.innerHTML = Svgs.aiPanelStop;
-
-                        }
-                    };
-                    this.aiModel.addListener(listener);
-                    this.aiModel.startWithProcessor(selectedText, prompt, {
-                        onMessage: (data) => {
-                            const message = JSON.parse(data) as any;
-                            let text = message.payload.choices.text[0].content as string;
-                            if (text) {
-                                textarea!.value = textarea?.value + text;
-                            }
+                        },
+                        onStop() {
+                            menu.aiClient = null;
+                            container.querySelector("#go")!.innerHTML = Svgs.aiPanelStart;
+                            container.querySelector<HTMLElement>(".loader")!.style.display = "none";
+                        },
+                        onMessage(message) {
+                            textarea!.value = textarea?.value + message.content;
                         }
                     })
+
                 } else {
                     console.error("Ai model config error.")
                 }
