@@ -1,5 +1,16 @@
 # AiEditor ChangeLog
 
+
+## v1.0.0-rc.5 20231231:
+- 新增：CustomMenu 添加 onCreate 方法，方便对自定义菜单进行初始化
+- 新增：添加 setContent() 以及 setEditable() 方法
+- 重构：重构 AI 菜单功能及其 UI 样式
+- 重构：重构 / 弹出 UI 菜单样式以及交互方式
+- 重构：重写 AI 模块，重构 AI 抽象菜单
+- 样式：优化 taskList 的 ui 样式
+
+
+
 ## v1.0.0-rc.4 20231222:
 - 修复：当 AiEditor 嵌入到 Form 时，点击某些按钮会触发 Form 提交的问题
 - 修复：从网页复制的内容粘贴到编辑器，图片无法被粘贴进来的问题
