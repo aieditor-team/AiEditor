@@ -53,6 +53,7 @@ export type AiEditorOptions = {
     contentRetention?: boolean,
     contentRetentionKey?: string,
     lang?: string,
+    editable: boolean,
     i18n?: Record<string, Record<string, string>>,
     placeholder?: string,
     theme?: "light" | "dark",
@@ -106,6 +107,7 @@ const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
     lang: "zh",
     contentRetentionKey: "ai-editor-content",
+    editable: true,
     placeholder: "",
 }
 
@@ -227,6 +229,7 @@ export class AiEditor {
         this.innerEditor = new InnerEditor(this, this.options, {
             element: this.mainEl,
             content: content,
+            editable: this.options.editable,
             extensions: extensions,
             onCreate: (props) => this.onCreate(props),
             onTransaction: (props) => this.onTransaction(props),
@@ -255,7 +258,7 @@ export class AiEditor {
         const _footer = this.container.querySelector(".aie-container-footer") || this.container;
         _footer.appendChild(this.footer);
 
-        if (this.options.ai){
+        if (this.options.ai) {
             AiModelFactory.init(this.innerEditor, this.options.ai);
         }
 
@@ -382,6 +385,10 @@ export class AiEditor {
     insert(content: string) {
         this.innerEditor.commands.insertContent(content);
         return this;
+    }
+
+    setEditable(editable: boolean) {
+        this.innerEditor.setEditable(editable, true);
     }
 
     clear() {

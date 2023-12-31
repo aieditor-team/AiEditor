@@ -59,6 +59,9 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             }
         },
         shouldShow: ({editor}) => {
+            if (!editor.isEditable) {
+                return false;
+            }
             const {state: {selection}} = editor;
             return !selection.empty && getTextBetween(editor.state.doc, {
                     from: selection.from,
@@ -83,6 +86,9 @@ const createLinkBubbleMenu = (aiEditor: AiEditor) => {
             arrow: false,
         },
         shouldShow: ({editor}) => {
+            if (!editor.isEditable) {
+                return false;
+            }
             return editor.isActive("link")
         }
     })
@@ -117,6 +123,9 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
             })
         },
         shouldShow: ({editor}) => {
+            if (!editor.isEditable) {
+                return false;
+            }
             return editor.isActive("image")
         }
     })
