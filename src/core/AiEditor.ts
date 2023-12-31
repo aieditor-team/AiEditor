@@ -389,6 +389,12 @@ export class AiEditor {
 
     setEditable(editable: boolean) {
         this.innerEditor.setEditable(editable, true);
+        return this;
+    }
+
+    setContent(content: string) {
+        this.focus().clear().insert(content);
+        return this;
     }
 
     clear() {
