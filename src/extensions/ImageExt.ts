@@ -165,19 +165,22 @@ export const ImageExt = Image.extend<ImageOptions>({
 
         addNodeView() {
             return (e) => {
+                if (!this.editor.isEditable) {
+                    return {}
+                }
                 const container = document.createElement('div')
                 const {src, width, height, align} = e.node.attrs;
                 container.classList.add(`align-${align}`)
                 container.innerHTML = `
-                    <div class="aie-resize-wrapper">
-                        <div class="aie-resize">
-                            <div class="aie-resize-btn-top-left" data-position="left" draggable="true"></div>
-                            <div class="aie-resize-btn-top-right" data-position="right" draggable="true"></div>
-                            <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
-                            <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
-                        </div>
-                        <img src="${src}" style="width: ${width}px; height: ${height}" class="align-${align} resize-obj">
+                <div class="aie-resize-wrapper">
+                    <div class="aie-resize">
+                        <div class="aie-resize-btn-top-left" data-position="left" draggable="true"></div>
+                        <div class="aie-resize-btn-top-right" data-position="right" draggable="true"></div>
+                        <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
+                        <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
+                    <img src="${src}" style="width: ${width}px; height: ${height}" class="align-${align} resize-obj">
+                </div>
                 `
                 resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("image", attrs));
 
