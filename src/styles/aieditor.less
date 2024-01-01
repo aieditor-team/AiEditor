@@ -842,6 +842,10 @@
   padding: 10px 0;
   flex-direction: column;
 
+  .active{
+    background: #eee;
+  }
+
   &-title {
     width: 100%;
     height: 1px;
@@ -858,23 +862,23 @@
     margin: 5px 0;
   }
 
-  &-fast {
+  &-header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding: 0 10px;
 
-    &-icon {
+    &-item {
       width: 30px;
       height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    &-icon:hover {
-      background-color: #fafafa;
       cursor: pointer;
+
+      &:hover {
+        background-color: #eee;
+      }
     }
 
     svg {
@@ -884,25 +888,27 @@
     }
   }
 
-  &-list {
+  &-item {
     padding: 10px 20px;
     font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
     font-size: 14px;
     color: #333;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     svg {
       width: 16px;
       height: 16px;
       margin-right: 10px;
     }
+
+    &:hover{
+      background-color: #eee;
+    }
+
   }
 
-  &-list:hover {
-    background-color: #fafafa;
-    cursor: pointer;
-  }
 }
 
 
