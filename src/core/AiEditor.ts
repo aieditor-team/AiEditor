@@ -53,7 +53,7 @@ export type AiEditorOptions = {
     contentRetention?: boolean,
     contentRetentionKey?: string,
     lang?: string,
-    editable: boolean,
+    editable?: boolean,
     i18n?: Record<string, Record<string, string>>,
     placeholder?: string,
     theme?: "light" | "dark",
