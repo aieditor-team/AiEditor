@@ -37,8 +37,8 @@ window.aiEditor = new AiEditor({
     contentRetention: true,
     content: JSON.parse(content),
     ai: {
-        model: {
-            xinghuo: {
+        models: {
+            spark: {
                 ...config
             }
         }

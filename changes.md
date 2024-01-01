@@ -1,12 +1,13 @@
 # AiEditor ChangeLog
 
 
-## v1.0.0-rc.5 20231231:
+## v1.0.0-rc.5 20240101:
 - 新增：CustomMenu 添加 onCreate 方法，方便对自定义菜单进行初始化
 - 新增：添加 setContent() 以及 setEditable() 方法
 - 重构：重构 AI 菜单功能及其 UI 样式
 - 重构：重构 / 弹出 UI 菜单样式以及交互方式
 - 重构：重写 AI 模块，重构 AI 抽象菜单
+- 样式：@某某某 弹出的 UI 样式
 - 样式：优化 taskList 的 ui 样式
 
 

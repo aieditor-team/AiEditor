@@ -19,31 +19,6 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onActive(editor: Editor): boolean;
 }
 
-declare class AbstractWebSocket {
-    url: string;
-    processor: AiMessageProcessor;
-    webSocket?: WebSocket;
-    isOpen: boolean;
-    text?: string;
-    listeners: AiModelListener[];
-    constructor(url: string, processor: AiMessageProcessor);
-    addListener(listener: AiModelListener): void;
-    start(text: string): void;
-    stop(): void;
-    send(message: string): void;
-    protected onOpen(_: Event): void;
-    protected onMessage(_: MessageEvent): void;
-    protected onClose(_: CloseEvent): void;
-    protected onError(_: Event): void;
-}
-
-export declare interface AiCommand {
-    name: string;
-    keyword: string;
-    prompt: string;
-    model: string;
-}
-
 export declare class AiEditor {
     private customLayout;
     innerEditor: InnerEditor;
@@ -73,6 +48,8 @@ export declare class AiEditor {
     isFocused(): boolean;
     blur(): this;
     insert(content: string): this;
+    setEditable(editable: boolean): this;
+    setContent(content: string): this;
     clear(): this;
     isEmpty(): boolean;
     changeLang(lang: string): this;
@@ -92,6 +69,7 @@ export declare type AiEditorOptions = {
     contentRetention?: boolean;
     contentRetentionKey?: string;
     lang?: string;
+    editable: boolean;
     i18n?: Record<string, Record<string, string>>;
     placeholder?: string;
     theme?: "light" | "dark";
@@ -138,62 +116,39 @@ export declare type AiEditorOptions = {
     fontSize?: {
         values: NameAndValue[];
     };
-    ai?: {
-        model: {
-            xinghuo?: {
-                protocol?: string;
-                appId: string;
-                apiKey: string;
-                apiSecret: string;
-                version?: string;
-                onCreateURL?: (model: XingHuoModel, startFn: (url: string) => void) => void;
-            };
-        };
-        bubblePanelEnable?: boolean;
-        bubblePanelModel?: string;
-        menus?: AiMenu[];
-        commands?: AiCommand[];
-        codeBlock?: {
-            codeComments?: {
-                model: string;
-                prompt: string;
-            };
-            codeExplain?: {
-                model: string;
-                prompt: string;
-            };
-        };
-    };
+    ai?: AiGlobalConfig;
 };
 
-export declare interface AiMenu {
+declare interface AiGlobalConfig {
+    models: Record<string, AiModelConfig>;
+    onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void;
+    onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onFinished: (url: string) => void) => void;
+    bubblePanelEnable?: boolean;
+    bubblePanelModel?: string;
+    menus?: AiMenu[];
+    commands?: AiMenu[];
+    codeBlock?: {
+        codeComments?: {
+            model: string;
+            prompt: string;
+        };
+        codeExplain?: {
+            model: string;
+            prompt: string;
+        };
+    };
+}
+
+declare interface AiMenu {
     icon: string;
     name: string;
-    prompt: string;
-    text: "selected" | "focusBefore";
-    model: string;
+    prompt?: string;
+    text?: "selected" | "focusBefore";
+    model?: string;
+    children?: AiMenu[];
 }
 
-declare interface AiMessageProcessor {
-    onMessage: (message: string) => void;
-}
-
-declare interface AiModel {
-    start: (selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions) => void;
-    startWithProcessor: (selectedText: string, prompt: string, processor: AiMessageProcessor) => void;
-    stop: () => void;
-    addListener: (listener: AiModelListener) => void;
-    removeListener: (listener: AiModelListener) => void;
-}
-
-declare interface AiModelListener {
-    onStart: () => void;
-    onStop: () => void;
-}
-
-declare interface AiModelParseOptions {
-    markdownParseEnable?: boolean;
-    useMarkdownTextOnly?: boolean;
+declare interface AiModelConfig {
 }
 
 export declare interface CustomMenu {
@@ -240,24 +195,6 @@ export declare interface UploaderEvent {
     onSuccess: (file: File, response: any) => any;
     onFailed: (file: File, response: any) => void;
     onError: (file: File, err: any) => void;
-}
-
-declare class XingHuoModel implements AiModel {
-    protocol: string;
-    appId: string;
-    apiKey: string;
-    apiSecret: string;
-    version: string;
-    onCreateURL: (model: XingHuoModel, startFn: (url: string) => void) => void;
-    socket?: AbstractWebSocket;
-    listeners: AiModelListener[];
-    constructor(options: AiEditorOptions);
-    start(selectedText: string, prompt: string, editor: Editor, options?: AiModelParseOptions): void;
-    startWithProcessor(selectedText: string, prompt: string, processor: AiMessageProcessor): void;
-    stop(): void;
-    addListener(listener: AiModelListener): void;
-    removeListener(listener: AiModelListener): void;
-    createUrl(): string;
 }
 
 export { }
