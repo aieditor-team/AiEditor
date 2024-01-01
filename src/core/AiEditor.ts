@@ -64,6 +64,7 @@ export type AiEditorOptions = {
     onDestroy?: (editor: AiEditor) => void,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
+    onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
     link?: {
         autolink?: boolean,

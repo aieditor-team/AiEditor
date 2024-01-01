@@ -44653,5 +44653,6 @@ class bpe {
 }
 export {
   bpe as AiEditor,
+  ar as AiModelFactory,
   Ude as InnerEditor
 };

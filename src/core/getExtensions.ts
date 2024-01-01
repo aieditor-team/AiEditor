@@ -35,6 +35,7 @@ import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
 import {Markdown} from "tiptap-markdown";
 import {ContainerExt} from "../extensions/ContainerExt.ts";
 import {HeadingExt} from "../extensions/HeadingExt.ts";
+import {SaveExt} from "../extensions/SaveExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
@@ -119,6 +120,9 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 uploaderEvent: options.video?.uploaderEvent,
             }),
             IFrameExt,
+            SaveExt.configure({
+                onSave: options.onSave,
+            }),
             // PasteExt,
             Markdown.configure({
                 html: true,                  // Allow HTML input/output

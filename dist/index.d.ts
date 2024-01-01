@@ -19,6 +19,11 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onActive(editor: Editor): boolean;
 }
 
+declare interface AiClient {
+    start: (message: string) => void;
+    stop: () => void;
+}
+
 export declare class AiEditor {
     private customLayout;
     innerEditor: InnerEditor;
@@ -69,7 +74,7 @@ export declare type AiEditorOptions = {
     contentRetention?: boolean;
     contentRetentionKey?: string;
     lang?: string;
-    editable: boolean;
+    editable?: boolean;
     i18n?: Record<string, Record<string, string>>;
     placeholder?: string;
     theme?: "light" | "dark";
@@ -148,7 +153,48 @@ declare interface AiMenu {
     children?: AiMenu[];
 }
 
+declare interface AiMessage {
+    role: string;
+    content: string;
+    index: number;
+    status: 0 | 1 | 2;
+}
+
+declare interface AiMessageListener {
+    onStart: (aiClient: AiClient) => void;
+    onStop: () => void;
+    onMessage: (message: AiMessage) => void;
+}
+
+declare abstract class AiModel {
+    editor: Editor;
+    globalConfig: AiGlobalConfig;
+    aiModelName: string;
+    aiModelConfig: AiModelConfig;
+    constructor(editor: Editor, globalConfig: AiGlobalConfig, aiModelName: string);
+    chat(selectedText: string, prompt: string, listener: AiMessageListener): void;
+    /**
+     * 创建客户端链接 URL
+     */
+    abstract createAiClientUrl(): string;
+    /**
+     * 创建客户端
+     */
+    abstract createAiClient(url: string, listener: AiMessageListener): AiClient;
+    /**
+     * 封装消息，把 prompt 转换为协议需要的格式
+     * @param promptMessage
+     */
+    abstract wrapMessage(promptMessage: string): any;
+}
+
 declare interface AiModelConfig {
+}
+
+export declare class AiModelFactory {
+    private static models;
+    static init(editor: Editor, globalConfig: AiGlobalConfig): void;
+    static get(modelName: string): AiModel;
 }
 
 export declare interface CustomMenu {
