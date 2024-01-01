@@ -8,8 +8,8 @@ AI 菜单配置，用于在编辑器顶部工具类，点击 AI 下拉的菜单�
 new AiEditor({
     element: "#aiEditor",
     ai:{
-        model:{
-            xinghuo:{
+        models:{
+            spark:{
                 appId:"****",
                 apiKey:"****",
                 apiSecret:"****"

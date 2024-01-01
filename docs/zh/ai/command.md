@@ -8,8 +8,8 @@ AI Command，指的是在文本框中，输入 `空格 + '/'` 弹出的 AI 菜�
 new AiEditor({
     element: "#aiEditor",
     ai:{
-        model:{
-            xinghuo:{
+        models:{
+            spark:{
                 appId:"****",
                 apiKey:"****",
                 apiSecret:"****"

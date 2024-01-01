@@ -61,6 +61,7 @@ export default defineConfig({
                     {text: '提及', link: '/zh/config/mention'},
                     {text: '超链接', link: '/zh/config/link'},
                     {text: '国际化', link: '/zh/config/i18n'},
+                    {text: '只读模式', link: '/zh/config/editable'},
                     {text: '自定义布局', link: '/zh/config/layout'},
                 ]
             },

@@ -59,6 +59,9 @@ AiEditor 提供的方法如下：
 - `blur()`： 让编辑器失去焦点。
 - `insert(content)`： 动态插入 html、文本、或者 Markdown 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insert(string)` 先获得焦点后，再插入内容。
 - `clear()`： 删除编辑器里的所有内容。
+- `setEditable(value)`：设置编辑器的编辑模式：value 的值为 true 或者 false。
+- `setContent(value)`：动态设置编辑器的内容。
+- `clear()`： 删除编辑器里的所有内容。
 - `isEmpty()`： 检查编辑器里是否有内容。
 - `removeRetention()`： 移除编辑器自动记录和保存的编辑内容。
 - `destroy()`： 销毁当前实例，常用于 react 或者 vue 中，当组件卸载时调用。
