@@ -1,12 +1,20 @@
 # AiEditor ChangeLog
 
+## v1.0.0-rc.6 20240102:
+- 新增：添加 onSave 的配置，可以用于监听用户按 ctrl + s 的保存操作
+- 优化：修改 editable 配置为可选
+- 优化：添加 AiModelFactory 以及 SparkAiModel 导出
+- 修复：修改在 editable 为 false 下，代码块的 ai 功能依然可用的问题
+- 文档：修正 onCreateClientUrl
+
+
 
 ## v1.0.0-rc.5 20240101:
 - 新增：CustomMenu 添加 onCreate 方法，方便对自定义菜单进行初始化
 - 新增：添加 setContent() 以及 setEditable() 方法
-- 重构：重构 AI 菜单功能及其 UI 样式
-- 重构：重构 / 弹出 UI 菜单样式以及交互方式
-- 重构：重写 AI 模块，重构 AI 抽象菜单
+- 优化：重构 AI 菜单功能及其 UI 样式
+- 优化：重构 / 弹出 UI 菜单样式以及交互方式
+- 优化：重写 AI 模块，重构 AI 抽象菜单
 - 样式：@某某某 弹出的 UI 样式
 - 样式：优化 taskList 的 ui 样式
 - 文档：添加只读模式的相关文档
