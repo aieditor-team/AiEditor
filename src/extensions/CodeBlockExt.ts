@@ -374,6 +374,20 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             container.classList.add("aie-codeblock-wrapper")
             const {language} = props.node.attrs;
 
+            if (!this.editor.isEditable){
+                container.innerHTML = `
+                <div class="aie-codeblock-tools" contenteditable="false">
+                    <div class="aie-codeblock-tools-lang" contenteditable="false" style="margin-right: 10px">${language || this.options.defaultLanguage}</div>
+                </div>
+                <pre class="hljs"><code></code></pre>
+                `
+                return {
+                    dom: container,
+                    contentDOM: container.querySelector("code")!,
+                }
+            }
+
+
             container.innerHTML = `
                 <div class="aie-codeblock-tools" contenteditable="false">
                     ${this.options.codeCommentsAi ? '<div class="aie-codeblock-tools-comments">自动注释</div>' : ''}
