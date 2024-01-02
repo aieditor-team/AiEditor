@@ -49,7 +49,6 @@ export abstract class AiModel {
      */
     abstract createAiClient(url: string, listener: AiMessageListener): AiClient;
 
-
     /**
      * 封装消息，把 prompt 转换为协议需要的格式
      * @param promptMessage
