@@ -59,15 +59,15 @@ new AiEditor({
         models:{
             spark:{
                 appId: "****",
-            },
-            onCreateClientUrl: async (model, startFn)=>{
-                //通过后端获取到 签名 url 后，执行 startFn 并传入 url。
-                fetch("/your-path/model?appId="+model.appId)
-                    .then(resp=>resp.json)
-                    .then(json=> {
-                        startFn(json.url)
-                    })
             }
+        },
+        onCreateClientUrl: (modelName, modelConfig, startFn)=>{
+            //通过后端获取到 签名 url 后，执行 startFn 并传入 url。
+            fetch("/your-path/getUrl?appId="+modelConfig.appId)
+                .then(resp=>resp.json)
+                .then(json=> {
+                    startFn(json.url)
+                })
         }
     },
 })
