@@ -85,6 +85,7 @@ export declare type AiEditorOptions = {
     onDestroy?: (editor: AiEditor) => void;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
+    onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu)[];
     link?: {
         autolink?: boolean;
@@ -234,6 +235,14 @@ export declare class InnerEditor extends Editor {
 export declare interface NameAndValue {
     name: string;
     value: any;
+}
+
+export declare class SparkAiModel extends AiModel {
+    constructor(editor: Editor, globalConfig: AiGlobalConfig);
+    createAiClient(url: string, listener: AiMessageListener): AiClient;
+    wrapMessage(promptMessage: string): string;
+    private getDomain;
+    createAiClientUrl(): string;
 }
 
 export declare interface UploaderEvent {

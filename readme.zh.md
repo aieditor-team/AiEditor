@@ -15,6 +15,7 @@
 
 - 现代风格（类腾讯文档）: http://aieditor1.jpress.cn
 - 经典/传统风格: http://aieditor.jpress.cn
+- 基于 AiEditor 二开的商业产品：https://aimp.cc
 
 
 ![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
