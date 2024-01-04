@@ -45,11 +45,11 @@ export const VideoExt = Node.create<VideoOptions>({
         return {
             src: {
                 default: null,
-                parseHTML: (el) =>{
+                parseHTML: (el) => {
                     const src = el.getAttribute('src');
                     if (src) return src;
                     const sourceEl = el.querySelector("source");
-                    if (sourceEl){
+                    if (sourceEl) {
                         return sourceEl.getAttribute("src");
                     }
                     return null;
@@ -95,6 +95,12 @@ export const VideoExt = Node.create<VideoOptions>({
             setVideo: (src: string) => ({commands}) => commands.insertContent(`<video controls="true" style="width: 100%" src="${src}" />`),
             toggleVideo: () => ({commands}) => commands.toggleNode(this.name, 'paragraph'),
             uploadVideo: (file: File) => () => {
+                if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
+                    if (this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders) === false) {
+                        return false;
+                    }
+                }
+
                 const id = uuid();
                 const {state: {tr}, view, schema} = this.editor!
                 if (!tr.selection.empty) tr.deleteSelection();
@@ -105,9 +111,6 @@ export const VideoExt = Node.create<VideoOptions>({
                     pos: tr.selection.from,
                 }));
 
-                if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
-                    this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders);
-                }
 
                 const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                 uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "video")

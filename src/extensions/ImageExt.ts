@@ -105,6 +105,12 @@ export const ImageExt = Image.extend<ImageOptions>({
                 ...this.parent?.(),
 
                 uploadImage: (file: File) => () => {
+                    if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
+                        if (this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders) === false) {
+                            return false;
+                        }
+                    }
+
                     const id = uuid();
                     const {state: {tr}, view, schema} = this.editor!
                     if (!tr.selection.empty) tr.deleteSelection();
@@ -115,9 +121,6 @@ export const ImageExt = Image.extend<ImageOptions>({
                         pos: tr.selection.from,
                     }));
 
-                    if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
-                        this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders);
-                    }
 
                     const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                     uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "image")
