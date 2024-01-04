@@ -19,7 +19,7 @@ new AiEditor({
         },
         uploaderEvent: {
             onUploadBefore:(file, uploadUrl, headers) =>{
-                //监听附件上传之前
+                //监听附件上传之前，此方法可以不用回任何内容，但若返回 false，则终止上传
             },
             onSuccess:(file, response) =>{
                 //监听附件上传成功
