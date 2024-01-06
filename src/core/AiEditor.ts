@@ -383,7 +383,7 @@ export class AiEditor {
         return this;
     }
 
-    insert(content: string) {
+    insert(content: any) {
         this.innerEditor.commands.insertContent(content);
         return this;
     }
