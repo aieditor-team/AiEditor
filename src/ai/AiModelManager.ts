@@ -13,6 +13,10 @@ export class AiModelManager {
                 switch (key) {
                     case "spark":
                         this.set(key, new SparkAiModel(editor, globalConfig))
+                        break;
+                    default:
+                        const aiModel = globalConfig.modelFactory?.create(key, editor, globalConfig);
+                        if (aiModel) this.set(key, aiModel);
                 }
             }
         }
