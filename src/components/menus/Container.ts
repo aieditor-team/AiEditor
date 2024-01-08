@@ -1,4 +1,5 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
+import {Editor} from "@tiptap/core";
 
 export class Container extends AbstractMenuButton {
     constructor() {
@@ -22,6 +23,10 @@ export class Container extends AbstractMenuButton {
         commands.focus()
     }
 
+
+    onActive(editor: Editor): boolean {
+        return editor.isActive("container")
+    }
 }
 
 

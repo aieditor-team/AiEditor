@@ -1,6 +1,7 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import {Popover} from "../../commons/Popover.ts";
 import {t} from "i18next";
+import {Editor} from "@tiptap/core";
 
 export class Link extends AbstractMenuButton {
 
@@ -74,6 +75,9 @@ export class Link extends AbstractMenuButton {
         popover.setTrigger(this.querySelector("div")!, "bottom");
     }
 
+    onActive(editor: Editor): boolean {
+        return editor.isActive("link")
+    }
 
 
 }

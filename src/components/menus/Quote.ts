@@ -1,4 +1,5 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
+import {Editor} from "@tiptap/core";
 
 export class Quote extends AbstractMenuButton {
     constructor() {
@@ -17,6 +18,9 @@ export class Quote extends AbstractMenuButton {
         commands.toggleBlockquote();
     }
 
+    onActive(editor: Editor): boolean {
+        return editor.isActive("blockquote")
+    }
 }
 
 
