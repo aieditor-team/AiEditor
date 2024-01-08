@@ -12,7 +12,7 @@ export class AiModelFactory {
             for (let key of Object.keys(globalConfig.models)) {
                 switch (key) {
                     case "spark":
-                        this.models[key] = new SparkAiModel(editor, globalConfig)
+                        this.set(key, new SparkAiModel(editor, globalConfig))
                 }
             }
         }
@@ -21,4 +21,9 @@ export class AiModelFactory {
     static get(modelName: string): AiModel {
         return this.models[modelName];
     }
+
+    static set(modelName: string, aiModel: AiModel) {
+        this.models[modelName] = aiModel;
+    }
+
 }
