@@ -17,11 +17,16 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         super();
     }
 
+    isActive(id: string) {
+        return this.editor?.isActive(id);
+    }
+
     connectedCallback() {
+
         this.innerHTML = `
             <div class="aie-bubble-menu">
                ${this.items!.map((item) => {
-            return `<div class="aie-bubble-menu-item" id="${item.id}">${item.content}</div>`
+            return `<div class="aie-bubble-menu-item ${this.isActive(item.id) ? 'active' : ''}" id="${item.id}">${item.content}</div>`
         }).join('')}
             </div>
         `;
@@ -29,7 +34,10 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         this.querySelector("div")!.addEventListener("click", (e) => {
             this.items.forEach((item) => {
                 const target = (e.target as any).closest(`#${item.id}`);
-                if (target) this.onItemClick(item.id);
+                if (target) {
+                    target.classList.contains("active") ? target.classList.remove("active") : target.classList.add("active")
+                    this.onItemClick(item.id);
+                }
             })
         })
 

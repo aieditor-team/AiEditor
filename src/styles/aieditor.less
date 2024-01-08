@@ -315,11 +315,15 @@
     align-items: center;
     padding: 5px;
 
+    .active {
+      background: var(--aie-menus-item-hover-color);
+    }
+
     &-item {
-      //width: 20px;
       height: 20px;
       margin: 3px;
       padding: 5px;
+      cursor: pointer;
 
       svg {
         width: 20px;
@@ -330,7 +334,7 @@
 
     &-item:hover {
       background: var(--aie-menus-item-hover-color);
-      cursor: pointer;
+
     }
   }
 
