@@ -1,8 +1,8 @@
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
-import {AiModelFactory} from "../../ai/AiModelFactory.ts";
-import {AiMenu} from "../../ai/core/AiGlobalConfig.ts";
+import {AiModelManager} from "../../ai/AiModelManager.ts";
+import {AiMenu} from "../../ai/AiGlobalConfig.ts";
 import {DefaultAiMessageListener} from "../../ai/core/DefaultAiMessageListener.ts";
 
 
@@ -111,7 +111,7 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
         const selectedText = this.getSelectedText(aiMenu.text!);
 
         if (selectedText) {
-            const aiModel = AiModelFactory.get(aiMenu.model!);
+            const aiModel = AiModelManager.get(aiMenu.model!);
             if (aiModel) {
                 aiModel?.chat(selectedText, aiMenu.prompt!, new DefaultAiMessageListener(this.editor!));
             } else {

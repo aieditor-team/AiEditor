@@ -4,10 +4,10 @@ import Suggestion, {SuggestionOptions, SuggestionProps} from '@tiptap/suggestion
 
 
 import tippy, {Instance} from "tippy.js";
-import {AiModelFactory} from "../ai/AiModelFactory.ts";
+import {AiModelManager} from "../ai/AiModelManager.ts";
 import {AiEditorOptions} from "../core/AiEditor.ts";
 import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
-import {AiMenu} from "../ai/core/AiGlobalConfig.ts";
+import {AiMenu} from "../ai/AiGlobalConfig.ts";
 
 export type AiCommandOptions = {
     HTMLAttributes?: Record<string, any>
@@ -55,7 +55,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                     if (props && props.aiItem) {
                         let aiCommand = props.aiItem as AiMenu;
                         const selectedText = editor.state.selection.$head.parent.textContent;
-                        const aiModel = AiModelFactory.get(aiCommand.model!);
+                        const aiModel = AiModelManager.get(aiCommand.model!);
                         if (aiModel) {
                             aiModel?.chat(selectedText, aiCommand.prompt!, new DefaultAiMessageListener(editor));
                         } else {

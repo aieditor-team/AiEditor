@@ -1,4 +1,4 @@
-import {AiModelConfig} from "./AiModelConfig.ts";
+import {AiModelConfig} from "./core/AiModelConfig.ts";
 
 export interface AiMenu {
     icon: string,

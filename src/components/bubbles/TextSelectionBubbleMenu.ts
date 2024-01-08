@@ -2,7 +2,7 @@ import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
 import {EditorEvents, isNodeSelection, posToDOMRect} from "@tiptap/core";
 import {t} from "i18next";
 import tippy, {Instance} from "tippy.js";
-import {AiModelFactory} from "../../ai/AiModelFactory.ts";
+import {AiModelManager} from "../../ai/AiModelManager.ts";
 import {AiEditorOptions, InnerEditor} from "../../core/AiEditor.ts";
 import {Svgs} from "../../commons/Svgs.ts";
 import {AiClient} from "../../ai/core/AiClient.ts";
@@ -185,7 +185,7 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                 const {selection, doc} = this.editor!.state
                 const selectedText = doc.textBetween(selection.from, selection.to);
                 const options = (this.editor as InnerEditor).userOptions;
-                const aiModel = AiModelFactory.get(options.ai?.bubblePanelModel || "spark");
+                const aiModel = AiModelManager.get(options.ai?.bubblePanelModel || "spark");
                 if (aiModel) {
                     const prompt = (container.querySelector("#prompt") as HTMLInputElement).value
                     const menu = this;

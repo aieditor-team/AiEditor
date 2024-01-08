@@ -1,7 +1,7 @@
 import {AiMessageListener} from "./AiMessageListener.ts";
 import {AiClient} from "./AiClient.ts";
 import {Editor} from "@tiptap/core";
-import {AiGlobalConfig} from "./AiGlobalConfig.ts";
+import {AiGlobalConfig} from "../AiGlobalConfig.ts";
 import {AiModelConfig} from "./AiModelConfig.ts";
 
 export interface ChatController {

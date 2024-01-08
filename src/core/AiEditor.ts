@@ -12,8 +12,8 @@ import {en} from "../i18n/en.ts";
 import {Resource} from "i18next";
 
 import {DOMParser} from "@tiptap/pm/model";
-import {AiGlobalConfig} from "../ai/core/AiGlobalConfig.ts";
-import {AiModelFactory} from "../ai/AiModelFactory.ts";
+import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
+import {AiModelManager} from "../ai/AiModelManager.ts";
 
 
 window.customElements.define('aie-header', Header);
@@ -260,7 +260,7 @@ export class AiEditor {
         _footer.appendChild(this.footer);
 
         if (this.options.ai) {
-            AiModelFactory.init(this.innerEditor, this.options.ai);
+            AiModelManager.init(this.innerEditor, this.options.ai);
         }
 
         if (this.options.onCreated) {

@@ -3,7 +3,7 @@
 ## v1.0.0-rc.6 20240102:
 - 新增：添加 onSave 的配置，可以用于监听用户按 ctrl + s 的保存操作
 - 优化：修改 editable 配置为可选
-- 优化：添加 AiModelFactory 以及 SparkAiModel 导出
+- 优化：添加 AiModelManager 以及 SparkAiModel 导出
 - 修复：修改在 editable 为 false 下，代码块的 ai 功能依然可用的问题
 - 文档：修正 onCreateClientUrl
 

@@ -2,7 +2,7 @@ import {AiClient} from "../core/AiClient.ts";
 import {AiMessageListener} from "../core/AiMessageListener.ts";
 import {AiModel} from "../core/AiModel.ts";
 import {WebSocketClient} from "../core/client/ws/WebSocketClient.ts";
-import {AiGlobalConfig} from "../core/AiGlobalConfig.ts";
+import {AiGlobalConfig} from "../AiGlobalConfig.ts";
 import {Editor} from "@tiptap/core";
 import {SparkAiModelConfig} from "./SparkAiModelConfig.ts";
 

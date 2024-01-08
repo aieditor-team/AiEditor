@@ -5,7 +5,7 @@ import {TextSelection} from "prosemirror-state";
 import {textblockTypeInputRule} from "../util/textblockTypeInputRule.ts";
 import {NodeSelection, Selection} from '@tiptap/pm/state';
 import {Node} from '@tiptap/pm/model';
-import {AiModelFactory} from "../ai/AiModelFactory.ts";
+import {AiModelManager} from "../ai/AiModelManager.ts";
 import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
 
 export type LanguageItem = {
@@ -197,7 +197,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos)).deleteSelection())
 
                 const markdown = storage.markdown.serializer.serialize(node);
-                const aiModel = AiModelFactory.get(this.options.codeCommentsAi!.model);
+                const aiModel = AiModelManager.get(this.options.codeCommentsAi!.model);
                 aiModel.chat(markdown, this.options.codeCommentsAi!.prompt, new DefaultAiMessageListener(editor, {
                     markdownParseEnable: true,
                     useMarkdownTextOnly: true,
@@ -220,7 +220,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 }
 
                 const markdown = storage.markdown.serializer.serialize(node);
-                const aiModel = AiModelFactory.get(this.options.codeExplainAi!.model);
+                const aiModel = AiModelManager.get(this.options.codeExplainAi!.model);
 
                 aiModel?.chat(markdown, this.options.codeExplainAi!.prompt, new DefaultAiMessageListener(editor));
                 return true;
