@@ -52,7 +52,7 @@ export declare class AiEditor {
     focusEnd(): this;
     isFocused(): boolean;
     blur(): this;
-    insert(content: string): this;
+    insert(content: any): this;
     setEditable(editable: boolean): this;
     setContent(content: string): this;
     clear(): this;
@@ -127,6 +127,7 @@ export declare type AiEditorOptions = {
 
 declare interface AiGlobalConfig {
     models: Record<string, AiModelConfig>;
+    modelFactory?: AiModelFactory;
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void;
     onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onFinished: (url: string) => void) => void;
     bubblePanelEnable?: boolean;
@@ -192,10 +193,15 @@ declare abstract class AiModel {
 declare interface AiModelConfig {
 }
 
-export declare class AiModelFactory {
+declare interface AiModelFactory {
+    create: (name: string, editor: Editor, globalConfig: AiGlobalConfig) => AiModel;
+}
+
+export declare class AiModelManager {
     private static models;
     static init(editor: Editor, globalConfig: AiGlobalConfig): void;
     static get(modelName: string): AiModel;
+    static set(modelName: string, aiModel: AiModel): void;
 }
 
 export declare interface CustomMenu {
@@ -246,7 +252,7 @@ export declare class SparkAiModel extends AiModel {
 }
 
 export declare interface UploaderEvent {
-    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void;
+    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
     onSuccess: (file: File, response: any) => any;
     onFailed: (file: File, response: any) => void;
     onError: (file: File, err: any) => void;

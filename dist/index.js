@@ -15369,6 +15369,9 @@ let qE = class extends me {
       r && r.href ? t.popper.querySelector("#href").value = r.href : t.popper.querySelector("#href").value = "", r && r.target ? t.popper.querySelector("#target").value = r.target : t.popper.querySelector("#target").value = "";
     }), e.setTrigger(this.querySelector("div"), "bottom");
   }
+  onActive(e) {
+    return e.isActive("link");
+  }
 };
 class UE extends me {
   constructor() {
@@ -15424,6 +15427,9 @@ class WE extends me {
   // @ts-ignore
   onClick(e) {
     e.toggleBlockquote();
+  }
+  onActive(e) {
+    return e.isActive("blockquote");
   }
 }
 let GE = class extends me {
@@ -15667,7 +15673,7 @@ class rx extends me {
   // @ts-ignore
   onClick(t) {
     const r = this.closest(".aie-container");
-    this.isFullscreen ? (r.style.height = "100%", r.style.width = "", r.style.background = "", r.style.position = "", r.style.top = "", r.style.left = "", r.style.zIndex = "") : (r.style.height = "calc(100vh - 2px)", r.style.width = "calc(100% - 2px)", r.style.position = "absolute", r.style.top = "0", r.style.left = "0", r.style.zIndex = "9999"), this.isFullscreen = !this.isFullscreen, this.querySelector("div").innerHTML = this.isFullscreen ? this.fullscreenExitSvg : this.fullscreenSvg;
+    this.isFullscreen ? (r.style.height = "100%", r.style.width = "", r.style.background = "", r.style.position = "", r.style.top = "", r.style.left = "", r.style.zIndex = "") : (r.style.height = "calc(100vh - 2px)", r.style.width = "calc(100% - 2px)", r.style.position = "fixed", r.style.top = "0", r.style.left = "0", r.style.zIndex = "9999"), this.isFullscreen = !this.isFullscreen, this.querySelector("div").innerHTML = this.isFullscreen ? this.fullscreenExitSvg : this.fullscreenSvg;
   }
 }
 class ix extends me {
@@ -16769,15 +16775,23 @@ class wx extends lx {
 }
 class ar {
   static init(e, t) {
+    var r;
     if (t && t.models)
-      for (let r of Object.keys(t.models))
-        switch (r) {
+      for (let i of Object.keys(t.models))
+        switch (i) {
           case "spark":
-            this.models[r] = new wx(e, t);
+            this.set(i, new wx(e, t));
+            break;
+          default:
+            const s = (r = t.modelFactory) == null ? void 0 : r.create(i, e, t);
+            s && this.set(i, s);
         }
   }
   static get(e) {
     return this.models[e];
+  }
+  static set(e, t) {
+    this.models[e] = t;
   }
 }
 q(ar, "models", {});
@@ -16917,6 +16931,9 @@ class Cx extends me {
   onClick(e) {
     var t;
     (t = this.editor) != null && t.isActive("container") ? e.unsetContainer() : e.setContainer("warning"), e.focus();
+  }
+  onActive(e) {
+    return e.isActive("container");
   }
 }
 class Sx extends me {
@@ -18729,13 +18746,15 @@ const Zg = (n, e) => {
   addCommands() {
     return {
       uploadAttachment: (n) => () => {
+        if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders) === !1)
+          return !1;
         const e = Uo(), { state: { tr: t }, view: r, schema: i } = this.editor;
         return t.selection.empty || t.deleteSelection(), r.dispatch(t.setMeta(oi, {
           type: "add",
           id: e,
           pos: t.selection.from,
           text: n.name
-        })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Ic(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
+        })), (this.options.uploader || Ic(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "attachment").then((o) => {
           if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
             const a = this.options.uploaderEvent.onSuccess(n, o);
             if (typeof a == "boolean" && !a)
@@ -19223,12 +19242,14 @@ const Zg = (n, e) => {
       return {
         ...(n = this.parent) == null ? void 0 : n.call(this),
         uploadImage: (e) => () => {
+          if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(e, this.options.uploadUrl, this.options.uploadHeaders) === !1)
+            return !1;
           const t = Uo(), { state: { tr: r }, view: i, schema: s } = this.editor;
           return r.selection.empty || r.deleteSelection(), i.dispatch(r.setMeta(ai, {
             type: "add",
             id: t,
             pos: r.selection.from
-          })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(e, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Ic(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
+          })), (this.options.uploader || Ic(this.options.uploadUrl))(e, this.options.uploadUrl, this.options.uploadHeaders, "image").then((a) => {
             if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
               const l = this.options.uploaderEvent.onSuccess(e, a);
               if (typeof l == "boolean" && !l)
@@ -36936,12 +36957,14 @@ const $A = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, ep = new Me("aie-vid
       setVideo: (n) => ({ commands: e }) => e.insertContent(`<video controls="true" style="width: 100%" src="${n}" />`),
       toggleVideo: () => ({ commands: n }) => n.toggleNode(this.name, "paragraph"),
       uploadVideo: (n) => () => {
+        if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders) === !1)
+          return !1;
         const e = Uo(), { state: { tr: t }, view: r, schema: i } = this.editor;
         return t.selection.empty || t.deleteSelection(), r.dispatch(t.setMeta(li, {
           type: "add",
           id: e,
           pos: t.selection.from
-        })), this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore && this.options.uploaderEvent.onUploadBefore(n, this.options.uploadUrl, this.options.uploadHeaders), (this.options.uploader || Ic(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
+        })), (this.options.uploader || Ic(this.options.uploadUrl))(n, this.options.uploadUrl, this.options.uploadHeaders, "video").then((o) => {
           if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
             const a = this.options.uploaderEvent.onSuccess(n, o);
             if (typeof a == "boolean" && !a)
@@ -37206,14 +37229,19 @@ class jo extends HTMLElement {
     q(this, "editor");
     q(this, "items", []);
   }
+  isActive(t) {
+    var r;
+    return (r = this.editor) == null ? void 0 : r.isActive(t);
+  }
   connectedCallback() {
     this.innerHTML = `
             <div class="aie-bubble-menu">
-               ${this.items.map((t) => `<div class="aie-bubble-menu-item" id="${t.id}">${t.content}</div>`).join("")}
+               ${this.items.map((t) => `<div class="aie-bubble-menu-item ${this.isActive(t.id) ? "active" : ""}" id="${t.id}">${t.content}</div>`).join("")}
             </div>
         `, this.querySelector("div").addEventListener("click", (t) => {
       this.items.forEach((r) => {
-        t.target.closest(`#${r.id}`) && this.onItemClick(r.id);
+        const i = t.target.closest(`#${r.id}`);
+        i && (i.classList.contains("active") ? i.classList.remove("active") : i.classList.add("active"), this.onItemClick(r.id));
       });
     }), this.querySelectorAll(".aie-bubble-menu-item").forEach((t, r) => {
       const i = this.items[r].title;
@@ -44673,7 +44701,7 @@ class yfe {
 }
 export {
   yfe as AiEditor,
-  ar as AiModelFactory,
+  ar as AiModelManager,
   Kde as InnerEditor,
   wx as SparkAiModel
 };
