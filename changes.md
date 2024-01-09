@@ -1,5 +1,17 @@
 # AiEditor ChangeLog
 
+
+## v1.0.0-rc.7 20240109:
+- 新增：添加当 uploader 的 onUploadBefore 返回 false 时，中断文件上传
+- 新增：Ai 模块添加自定义 AiModelFactory 的配置，方便引用第三方 Ai 大模型
+- 优化：修改  AiEditor.insert 的参数为 any 类型
+- 优化：重命名 AiModelFactory 为 AiModelManager
+- 修复：修改全屏按钮在某些情况下不起作用的问题，感谢 @ashuicoder
+- 修复：高亮块、链接、引用获得焦点时，菜单没有被激活的问题
+- 修复：选中文字弹出菜单，菜单内的操作没有根据选择内容激活的问题
+
+
+
 ## v1.0.0-rc.6 20240102:
 - 新增：添加 onSave 的配置，可以用于监听用户按 ctrl + s 的保存操作
 - 优化：修改 editable 配置为可选

@@ -1,5 +1,39 @@
 # AiEditor ChangeLog
 
+
+## v1.0.0-rc.7 20240109:
+- 新增：添加当 uploader 的 onUploadBefore 返回 false 时，中断文件上传
+- 新增：Ai 模块添加自定义 AiModelFactory 的配置，方便引用第三方 Ai 大模型
+- 优化：修改  AiEditor.insert 的参数为 any 类型
+- 优化：重命名 AiModelFactory 为 AiModelManager
+- 修复：修改全屏按钮在某些情况下不起作用的问题，感谢 @ashuicoder
+- 修复：高亮块、链接、引用获得焦点时，菜单没有被激活的问题
+- 修复：选中文字弹出菜单，菜单内的操作没有根据选择内容激活的问题
+
+
+
+## v1.0.0-rc.6 20240102:
+- 新增：添加 onSave 的配置，可以用于监听用户按 ctrl + s 的保存操作
+- 优化：修改 editable 配置为可选
+- 优化：添加 AiModelManager 以及 SparkAiModel 导出
+- 修复：修改在 editable 为 false 下，代码块的 ai 功能依然可用的问题
+- 文档：修正 onCreateClientUrl
+
+
+
+## v1.0.0-rc.5 20240101:
+- 新增：CustomMenu 添加 onCreate 方法，方便对自定义菜单进行初始化
+- 新增：添加 setContent() 以及 setEditable() 方法
+- 优化：重构 AI 菜单功能及其 UI 样式
+- 优化：重构 / 弹出 UI 菜单样式以及交互方式
+- 优化：重写 AI 模块，重构 AI 抽象菜单
+- 样式：@某某某 弹出的 UI 样式
+- 样式：优化 taskList 的 ui 样式
+- 文档：添加只读模式的相关文档
+- 文档：更新 ai 配置的相关文档
+
+
+
 ## v1.0.0-rc.4 20231222:
 - 修复：当 AiEditor 嵌入到 Form 时，点击某些按钮会触发 Form 提交的问题
 - 修复：从网页复制的内容粘贴到编辑器，图片无法被粘贴进来的问题
