@@ -9,11 +9,12 @@ import {ImageBubbleMenu} from "../components/bubbles/ImageBubbleMenu.ts";
 import {TableBubbleMenu} from "../components/bubbles/TableBubbleMenu.ts";
 import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubbleMenu.ts";
 import {Instance} from "tippy.js";
+import {defineCustomElement} from "../commons/defineCustomElement.ts";
 
-window.customElements.define('aie-bubble-link', LinkBubbleMenu);
-window.customElements.define('aie-bubble-image', ImageBubbleMenu);
-window.customElements.define('aie-bubble-table', TableBubbleMenu);
-window.customElements.define('aie-bubble-text', TextSelectionBubbleMenu);
+defineCustomElement('aie-bubble-link', LinkBubbleMenu);
+defineCustomElement('aie-bubble-image', ImageBubbleMenu);
+defineCustomElement('aie-bubble-table', TableBubbleMenu);
+defineCustomElement('aie-bubble-text', TextSelectionBubbleMenu);
 
 
 function createBubbleMenu(name: string, options: BubbleMenuOptions) {

@@ -14,10 +14,11 @@ import {Resource} from "i18next";
 import {DOMParser} from "@tiptap/pm/model";
 import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
 import {AiModelManager} from "../ai/AiModelManager.ts";
+import {defineCustomElement} from "../commons/defineCustomElement.ts";
 
 
-window.customElements.define('aie-header', Header);
-window.customElements.define('aie-footer', Footer);
+defineCustomElement('aie-header', Header);
+defineCustomElement('aie-footer', Footer);
 
 export interface NameAndValue {
     name: string,
