@@ -17,7 +17,7 @@ new AiEditor({
     placeholder: "点击输入内容...",
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
     ai: {
-        model: {
+        models: {
             xinghuo: {
                 appId: "***",
                 apiKey: "***",
@@ -52,7 +52,7 @@ new AiEditor({
             placeholder: "点击输入内容...",
             content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
             ai: {
-                model: {
+                models: {
                     xinghuo: {
                         appId: "***",
                         apiKey: "***",

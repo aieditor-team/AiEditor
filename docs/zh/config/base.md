@@ -10,7 +10,7 @@ new AiEditor({
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
     contentRetention: true,
     ai: {
-        model: {
+        models: {
             xinghuo: {
                 appId: "***",
                 apiKey: "***",
