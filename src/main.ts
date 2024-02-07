@@ -1,6 +1,7 @@
-import {AiEditor} from "./core/AiEditor.ts";
-import {config} from "./xinghuo.ts";
-
+import { AiEditor } from "./core/AiEditor.ts";
+import { config } from "./xinghuo.ts";
+import { wenxinConfig } from "./wenxin.ts";
+// wenxinConfig导出 { access_token: "****", }
 // @ts-ignore
 window.aiEditor = new AiEditor({
     element: "#aiEditor",
@@ -16,6 +17,9 @@ window.aiEditor = new AiEditor({
         models: {
             spark: {
                 ...config
+            },
+            wenxin: {
+                ...wenxinConfig
             }
         },
         // bubblePanelEnable:false,
