@@ -109,7 +109,7 @@ new AiEditor({
             "jwt":"xxxxx",
             "other":"xxxx",
         },
-        uploader: (file:  uploadUrl, headers, formName) => {
+        uploader: (file, uploadUrl, headers, formName) => {
             const formData = new FormData();
             formData.append(formName, file);
             return new Promise((resolve, reject) => {
