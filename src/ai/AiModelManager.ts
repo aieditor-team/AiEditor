@@ -1,6 +1,7 @@
 import {AiModel} from "./core/AiModel.ts";
 import {AiGlobalConfig} from "./AiGlobalConfig.ts";
 import {SparkAiModel} from "./spark/SparkAiModel.ts";
+import {WenXinAiModel} from "./wenxin/WenXinAiModel.ts";
 import {Editor} from "@tiptap/core";
 
 export class AiModelManager {
@@ -13,6 +14,9 @@ export class AiModelManager {
                 switch (key) {
                     case "spark":
                         this.set(key, new SparkAiModel(editor, globalConfig))
+                        break;
+                    case "wenxin":
+                        this.set(key, new WenXinAiModel(editor, globalConfig))
                         break;
                     default:
                         const aiModel = globalConfig.modelFactory?.create(key, editor, globalConfig);
