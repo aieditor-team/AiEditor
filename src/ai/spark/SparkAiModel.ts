@@ -85,6 +85,8 @@ export class SparkAiModel extends AiModel {
 
     private getDomain(sparkAiModelConfig: SparkAiModelConfig) {
         switch (sparkAiModelConfig.version) {
+            case "v3.5":
+                return "generalv3.5"
             case "v3.1":
                 return "generalv3"
             case "v2.1":
