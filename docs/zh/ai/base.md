@@ -68,6 +68,34 @@ new AiEditor({
                 .then(json=> {
                     startFn(json.url)
                 })
+        },
+        onTokenConsume(_, __, count) {
+            axios.post("/api/v1/resource/doTokenCounting", {
+                count
+            })
+        }
+    },
+})
+```
+
+## 记录 Token 消耗情况
+
+示例代码如下：
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            spark: {
+                appId: "****",
+            }
+        },
+        onTokenConsume(modelName, modelConfig, count) {
+            //当有 token 消耗时，会回调此方法
+            axios.post("/api/v1/resource/doTokenCounting", {
+                count
+            })
         }
     },
 })

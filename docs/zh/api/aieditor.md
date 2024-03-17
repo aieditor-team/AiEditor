@@ -13,6 +13,19 @@ const aiEditor = new AiEditor({
 
 ## 方法
 
+方法调用示例代码：
+
+```typescript
+const aiEditor = new AiEditor({
+    element: "#aiEditor",
+    placeholder: "点击输入内容...",
+})
+
+//获得编辑内容，并已 html 字符串的方式读取
+const html = aiEditor.getHtml();
+console.log(html)
+```
+
 AiEditor 提供的方法如下：
 
 - `getHtml()`： 获取当前编辑器的 html 内容。

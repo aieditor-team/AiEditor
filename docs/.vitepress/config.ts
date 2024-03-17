@@ -68,12 +68,13 @@ export default defineConfig({
                 ]
             },
             {
-                text: 'AI',
+                text: 'AI 配置',
                 items: [
                     {text: 'AI 配置', link: '/zh/ai/base'},
                     {text: 'AI 菜单', link: '/zh/ai/menu'},
                     {text: 'AI 命令', link: '/zh/ai/command'},
                     {text: '代码块 AI', link: '/zh/ai/codeblock'},
+                    {text: '大语言模型', link: '/zh/ai/llm'},
                 ]
             },
             {
