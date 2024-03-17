@@ -40,6 +40,7 @@
     "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@tiptap/core": "^2.1.16",
     "@tiptap/extension-bubble-menu": "^2.1.16",
     "@tiptap/extension-character-count": "^2.1.16",
