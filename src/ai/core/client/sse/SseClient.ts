@@ -1,6 +1,5 @@
 import {AiClientListener} from "../../AiClientListener.ts";
 import {AiClient} from "../../AiClient.ts";
-import {fetchEventSource} from "@microsoft/fetch-event-source";
 
 type configType = { url: string, method: string }
 
@@ -40,23 +39,51 @@ export class SseClient implements AiClient {
     async send(message: string) {
         if (this.isOpen) {
             try {
-                fetchEventSource(this.config.url, {
-                    method: this.config.method,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: message,
-                    signal: this.ctrl.signal,
-                    onclose: this.onClose,
-                    onerror: this.onError,
-                    onmessage: (msg) => {
-                        if (msg.event === 'FatalError') {
-                            this.onError();
-                        } else {
-                            this.onMessage(msg.data)
-                        }
+                const response = await fetch(this.config.url, {method: "POST", body: message});
+                if (!response.ok) {
+                    this.onError();
+                    return
+                }
+                const reader = response.body?.getReader();
+                if (!reader) {
+                    this.onError();
+                    return
+                }
+                const decoder = new TextDecoder("utf-8");
+                while (true) {
+                    let {value, done} = await reader.read();
+                    if (done) {
+                        this.onClose();
+                        break;
                     }
-                });
+                    let responseText = decoder.decode(value);
+                    if (!responseText) {
+                        return;
+                    }
+
+                    const lines = responseText.split("\n\n");
+                    let fullMessage = "";
+                    let index = 0;
+                    for (let line of lines) {
+                        if (line.indexOf("data:") == 0) {
+                            if (fullMessage) {
+                                console.log(fullMessage)
+                                this.onMessage(fullMessage);
+                            }
+                            fullMessage = line.substring(5);
+                        } else {
+                            if (index != lines.length - 1) {
+                                fullMessage += "\n\n";
+                            }
+                            fullMessage += line;
+                        }
+                        index++
+                    }
+                    if (fullMessage) {
+                        console.log(fullMessage)
+                        this.onMessage(fullMessage);
+                    }
+                }
             } catch {
                 this.onError()
             }
