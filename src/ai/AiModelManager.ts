@@ -31,6 +31,9 @@ export class AiModelManager {
     }
 
     static get(modelName: string): AiModel {
+        if (!modelName || modelName === "auto") {
+            modelName = Object.keys(this.models)[0];
+        }
         return this.models[modelName];
     }
 

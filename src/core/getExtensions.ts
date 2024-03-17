@@ -105,11 +105,11 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 defaultLanguage: 'auto',
                 languageClassPrefix: 'language-',
                 codeExplainAi: options.ai?.codeBlock?.codeExplain || {
-                    model: "spark",
+                    model: "auto",
                     prompt: "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释",
                 },
                 codeCommentsAi: options.ai?.codeBlock?.codeComments || {
-                    model: "spark",
+                    model: "auto",
                     prompt: "帮我对这个代码添加一些注释，并返回添加注释的代码，只返回代码",
                 },
             }),
