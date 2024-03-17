@@ -6,11 +6,6 @@ import { AiGlobalConfig } from "../AiGlobalConfig.ts";
 import { Editor } from "@tiptap/core";
 import { WenXinAiModelConfig } from "./WenXinAiModelConfig.ts";
 
-// @ts-ignore
-import hmacSHA256 from 'crypto-js/hmac-sha256';
-// @ts-ignore
-import Base64 from 'crypto-js/enc-base64';
-
 
 export class WenXinAiModel extends AiModel {
 
@@ -47,9 +42,7 @@ export class WenXinAiModel extends AiModel {
             "stream": true
         }
 
-
         object.messages.push({ role: "user", content: promptMessage })
-
         return JSON.stringify(object);
     }
 
