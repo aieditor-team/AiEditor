@@ -1,5 +1,5 @@
 import {AiEditor} from "../../../src";
-// import {config} from "./xinghuo.ts"
+import {config} from "./xinghuo.ts"
 // import {AiMessage} from "../../../src/ai/core/AiMessage.ts";
 
 const content = `
@@ -13,25 +13,25 @@ window.aiEditor = new AiEditor({
     content: JSON.parse(content),
     ai: {
         models: {
-            // spark: {
-            //     ...config
-            // }
-            custom: {
-                url: "http://127.0.0.1:8080/api/v1/ai/chat",
-                messageWrapper: (message: string) => {
-                    return JSON.stringify({prompt: message})
-                },
-                messageParser: (message: string) => {
-                    return {
-                        role: "assistant",
-                        content: message,
-                        // index: number,
-                        // //0 代表首个文本结果；1 代表中间文本结果；2 代表最后一个文本结果。
-                        // status: 0|1|2,
-                    }
-                },
-                // protocol: "sse" | "websocket"
+            spark: {
+                ...config
             }
+            // custom: {
+            //     url: "http://127.0.0.1:8080/api/v1/ai/chat",
+            //     messageWrapper: (message: string) => {
+            //         return JSON.stringify({prompt: message})
+            //     },
+            //     messageParser: (message: string) => {
+            //         return {
+            //             role: "assistant",
+            //             content: message,
+            //             // index: number,
+            //             // //0 代表首个文本结果；1 代表中间文本结果；2 代表最后一个文本结果。
+            //             // status: 0|1|2,
+            //         }
+            //     },
+                // protocol: "sse" | "websocket"
+            // }
         },
     },
     onMentionQuery: (query: string) => {
