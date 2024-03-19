@@ -11,7 +11,7 @@ new AiEditor({
     contentRetention: true,
     ai: {
         models: {
-            xinghuo: {
+            spark: {
                 appId: "***",
                 apiKey: "***",
                 apiSecret: "***",

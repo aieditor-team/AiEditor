@@ -18,7 +18,7 @@ new AiEditor({
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
     ai: {
         models: {
-            xinghuo: {
+            spark: {
                 appId: "***",
                 apiKey: "***",
                 apiSecret: "***",
@@ -53,7 +53,7 @@ new AiEditor({
             content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
             ai: {
                 models: {
-                    xinghuo: {
+                    spark: {
                         appId: "***",
                         apiKey: "***",
                         apiSecret: "***",
