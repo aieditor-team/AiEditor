@@ -25,16 +25,16 @@ export abstract class AiModel {
     }
 
     chat(selectedText: string, prompt: string, listener: AiMessageListener): void {
-        const onFinished = (url: string) => {
+        const startFunc = (url: string) => {
             const aiClient = this.createAiClient(url, listener);
             const promptMessage = this.wrapMessage(`${selectedText}\n${prompt}`);
             aiClient.start(promptMessage)
         }
 
         if (this.globalConfig.onCreateClientUrl) {
-            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, onFinished)
+            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, startFunc)
         } else {
-            onFinished(this.createAiClientUrl())
+            startFunc(this.createAiClientUrl())
         }
     }
 

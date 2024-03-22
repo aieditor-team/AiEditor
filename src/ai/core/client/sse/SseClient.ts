@@ -1,7 +1,7 @@
 import {AiClientListener} from "../../AiClientListener.ts";
 import {AiClient} from "../../AiClient.ts";
 
-type configType = { url: string, method: string }
+type configType = { url: string, method: string, headers?: Record<string, any> }
 
 export class SseClient implements AiClient {
     isStop: boolean = false
@@ -39,7 +39,13 @@ export class SseClient implements AiClient {
     async send(message: string) {
         if (this.isOpen) {
             try {
-                const response = await fetch(this.config.url, {method: "POST", body: message});
+                const response = await fetch(this.config.url,
+                    {
+                        method: this.config.method || "POST",
+                        headers: this.config.headers,
+                        body: message
+                    }
+                );
                 if (!response.ok) {
                     this.onError();
                     return

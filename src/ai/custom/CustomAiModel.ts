@@ -30,7 +30,11 @@ export class CustomAiModel extends AiModel {
                 if (aiMessage) listener.onMessage(aiMessage);
             }
         };
-        return config.protocol === "sse" ? new SseClient({url, method: "post"}, aiClientListener)
+        return config.protocol === "sse" ? new SseClient({
+                url,
+                method: "post",
+                headers: config.headers?.()
+            }, aiClientListener)
             : new WebSocketClient(url, aiClientListener)
     }
 
