@@ -10,6 +10,7 @@ import {TableBubbleMenu} from "../components/bubbles/TableBubbleMenu.ts";
 import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubbleMenu.ts";
 import {Instance} from "tippy.js";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
+import {CellSelection} from "@tiptap/pm/tables";
 
 defineCustomElement('aie-bubble-link', LinkBubbleMenu);
 defineCustomElement('aie-bubble-image', ImageBubbleMenu);
@@ -70,6 +71,8 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
                 }).length > 0
                 && !editor.isActive("link")
                 && !editor.isActive("image")
+                // 选中表格的时候取消 文本的弹出
+                && !(selection instanceof CellSelection)
         }
     })
 }
@@ -162,7 +165,7 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
         },
         shouldShow: ({editor}) => {
             const {state: {selection}} = editor;
-            return editor.isActive("table") && selection.empty
+            return editor.isActive("table") && selection instanceof CellSelection
         }
     })
 }

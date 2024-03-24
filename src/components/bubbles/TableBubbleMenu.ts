@@ -66,6 +66,11 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
         ]
     }
 
+    connectedCallback() {
+        this.style.display = "none"
+        super.connectedCallback();
+    }
+
 
     onItemClick(id: string): void {
         if (id === "insert-column-left") {
@@ -101,7 +106,7 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
 
         ids.forEach((id) => {
             const div = this.querySelector(`#${id}`) as HTMLElement;
-            div.style.display = "";
+            if (div) div.style.display = "";
         })
 
     }
@@ -111,6 +116,7 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
             return;
         }
         const {state: {selection}, view} = props.editor;
+        console.log("selection", selection)
         if (selection instanceof CellSelection) {
             if (this.isOneCellSelected(selection)) {
                 const showIds = ["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"];
