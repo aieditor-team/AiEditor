@@ -9303,7 +9303,7 @@ function Fe(n, e) {
   }
   return n;
 }
-function fe(...n) {
+function he(...n) {
   return n.filter((e) => !!e).reduce((e, t) => {
     const r = { ...e };
     return Object.entries(t).forEach(([i, s]) => {
@@ -9322,7 +9322,7 @@ function fe(...n) {
 function Ll(n, e) {
   return e.filter((t) => t.attribute.rendered).map((t) => t.attribute.renderHTML ? t.attribute.renderHTML(n.attrs) || {} : {
     [t.name]: n.attrs[t.name]
-  }).reduce((t, r) => fe(t, r), {});
+  }).reduce((t, r) => he(t, r), {});
 }
 function cg(n) {
   return typeof n == "function";
@@ -16886,7 +16886,14 @@ class SE {
     var t;
     if (this.isOpen)
       try {
-        const r = await fetch(this.config.url, { method: "POST", body: e });
+        const r = await fetch(
+          this.config.url,
+          {
+            method: this.config.method || "POST",
+            headers: this.config.headers,
+            body: e
+          }
+        );
         if (!r.ok) {
           this.onError();
           return;
@@ -16911,10 +16918,10 @@ class SE {
 `);
           let u = "", d = 0;
           for (let p of c)
-            p.indexOf("data:") == 0 ? (u && (console.log(u), this.onMessage(u)), u = p.substring(5)) : (d != c.length - 1 && (u += `
+            p.indexOf("data:") == 0 ? (u && this.onMessage(u), u = p.substring(5)) : (d != c.length - 1 && (u += `
 
 `), u += p), d++;
-          u && (console.log(u), this.onMessage(u));
+          u && this.onMessage(u);
         }
       } catch {
         this.onError();
@@ -16941,16 +16948,21 @@ class _E extends Bc {
     };
   }
   createAiClient(e, t) {
+    var s;
     const r = this.aiModelConfig, i = {
       onStart: t.onStart,
       onStop: t.onStop,
-      onMessage: (s) => {
-        var l;
-        const o = this.aiModelConfig, a = (l = o.messageParser) == null ? void 0 : l.call(o, s);
-        a && t.onMessage(a);
+      onMessage: (o) => {
+        var c;
+        const a = this.aiModelConfig, l = (c = a.messageParser) == null ? void 0 : c.call(a, o);
+        l && t.onMessage(l);
       }
     };
-    return r.protocol === "sse" ? new SE({ url: e, method: "post" }, i) : new qg(e, i);
+    return r.protocol === "sse" ? new SE({
+      url: e,
+      method: "post",
+      headers: (s = r.headers) == null ? void 0 : s.call(r)
+    }, i) : new qg(e, i);
   }
   wrapMessage(e) {
     var r;
@@ -17048,7 +17060,7 @@ const AE = [
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M5 15V17C5 18.0544 5.81588 18.9182 6.85074 18.9945L7 19H10V21H7C4.79086 21 3 19.2091 3 17V15H5ZM18 10L22.4 21H20.245L19.044 18H14.954L13.755 21H11.601L16 10H18ZM17 12.8852L15.753 16H18.245L17 12.8852ZM8 2V4H12V11H8V14H6V11H2V4H6V2H8ZM17 3C19.2091 3 21 4.79086 21 7V9H19V7C19 5.89543 18.1046 5 17 5H14V3H17ZM6 6H4V9H6V6ZM10 6H8V9H10V6Z"></path></svg>',
     name: "AI 翻译",
-    prompt: "请帮我把这段内容翻译为英语，直接返回英语结果",
+    prompt: "请帮我翻译以上内容，在翻译之前，想先判断一下这个内容是不是中文，如果是中文，则翻译问英文，如果是其他语言，则需要翻译为中文，注意，你只需要返回翻译的结果，不需要对此进行任何解释，不需要除了翻译结果以外的其他任何内容。",
     text: "selected",
     model: "auto"
   }
@@ -17341,7 +17353,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["blockquote", fe(this.options.HTMLAttributes, n), 0];
+    return ["blockquote", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -17386,7 +17398,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["strong", fe(this.options.HTMLAttributes, n), 0];
+    return ["strong", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -17444,7 +17456,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["li", fe(this.options.HTMLAttributes, n), 0];
+    return ["li", he(this.options.HTMLAttributes, n), 0];
   },
   addKeyboardShortcuts() {
     return {
@@ -17469,7 +17481,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["span", fe(this.options.HTMLAttributes, n), 0];
+    return ["span", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -17499,7 +17511,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["ul", fe(this.options.HTMLAttributes, n), 0];
+    return ["ul", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -17543,7 +17555,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["code", fe(this.options.HTMLAttributes, n), 0];
+    return ["code", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -17612,7 +17624,7 @@ const IE = /^\s*>\s$/, HE = ce.create({
   renderHTML({ node: n, HTMLAttributes: e }) {
     return [
       "pre",
-      fe(this.options.HTMLAttributes, e),
+      he(this.options.HTMLAttributes, e),
       [
         "code",
         {
@@ -18027,7 +18039,7 @@ const o2 = we.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["br", fe(this.options.HTMLAttributes, n)];
+    return ["br", he(this.options.HTMLAttributes, n)];
   },
   renderText() {
     return `
@@ -18085,7 +18097,7 @@ const o2 = we.create({
     }));
   },
   renderHTML({ node: n, HTMLAttributes: e }) {
-    return [`h${this.options.levels.includes(n.attrs.level) ? n.attrs.level : this.options.levels[0]}`, fe(this.options.HTMLAttributes, e), 0];
+    return [`h${this.options.levels.includes(n.attrs.level) ? n.attrs.level : this.options.levels[0]}`, he(this.options.HTMLAttributes, e), 0];
   },
   addCommands() {
     return {
@@ -18483,7 +18495,7 @@ const Yg = (n, e) => {
     return [{ tag: "hr" }];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["hr", fe(this.options.HTMLAttributes, n)];
+    return ["hr", he(this.options.HTMLAttributes, n)];
   },
   addCommands() {
     return {
@@ -18536,7 +18548,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["em", fe(this.options.HTMLAttributes, n), 0];
+    return ["em", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18594,7 +18606,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["li", fe(this.options.HTMLAttributes, n), 0];
+    return ["li", he(this.options.HTMLAttributes, n), 0];
   },
   addKeyboardShortcuts() {
     return {
@@ -18622,7 +18634,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["li", fe(this.options.HTMLAttributes, n), 0];
+    return ["li", he(this.options.HTMLAttributes, n), 0];
   },
   addKeyboardShortcuts() {
     return {
@@ -18647,7 +18659,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["span", fe(this.options.HTMLAttributes, n), 0];
+    return ["span", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18688,7 +18700,7 @@ const Yg = (n, e) => {
   },
   renderHTML({ HTMLAttributes: n }) {
     const { start: e, ...t } = n;
-    return e === 1 ? ["ol", fe(this.options.HTMLAttributes, t), 0] : ["ol", fe(this.options.HTMLAttributes, n), 0];
+    return e === 1 ? ["ol", he(this.options.HTMLAttributes, t), 0] : ["ol", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18735,7 +18747,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["p", fe(this.options.HTMLAttributes, n), 0];
+    return ["p", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18773,7 +18785,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["s", fe(this.options.HTMLAttributes, n), 0];
+    return ["s", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18832,7 +18844,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["u", fe(this.options.HTMLAttributes, n), 0];
+    return ["u", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -18863,7 +18875,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["span", fe(this.options.HTMLAttributes, n), 0];
+    return ["span", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -19078,7 +19090,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["mark", fe(this.options.HTMLAttributes, n), 0];
+    return ["mark", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -19342,7 +19354,7 @@ const Yg = (n, e) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["img", fe(this.options.HTMLAttributes, n)];
+    return ["img", he(this.options.HTMLAttributes, n)];
   },
   addCommands() {
     return {
@@ -19434,7 +19446,7 @@ const Yg = (n, e) => {
     renderHTML({ HTMLAttributes: n }) {
       return [
         "img",
-        fe(this.options.HTMLAttributes, n)
+        he(this.options.HTMLAttributes, n)
       ];
     },
     addCommands() {
@@ -19856,7 +19868,7 @@ function rC(n, e, t) {
       return !1;
   return !0;
 }
-var he = class extends ne {
+var fe = class extends ne {
   // A table selection is identified by its anchor and head cells. The
   // positions given to this constructor should point _before_ two
   // cells in the same table. They may be the same, to select a single
@@ -19883,7 +19895,7 @@ var he = class extends ne {
     const t = n.resolve(e.map(this.$anchorCell.pos)), r = n.resolve(e.map(this.$headCell.pos));
     if (Zl(t) && Zl(r) && Vc(t, r)) {
       const i = this.$anchorCell.node(-1) != t.node(-1);
-      return i && this.isRowSelection() ? he.rowSelection(t, r) : i && this.isColSelection() ? he.colSelection(t, r) : new he(t, r);
+      return i && this.isRowSelection() ? fe.rowSelection(t, r) : i && this.isColSelection() ? fe.colSelection(t, r) : new fe(t, r);
     }
     return X.between(t, r);
   }
@@ -19980,7 +19992,7 @@ var he = class extends ne {
       i + r.map[r.width * (r.height - 1) + o.right - 1]
     ))) : (o.top > 0 && (e = a.resolve(i + r.map[o.left])), s.bottom < r.height && (n = a.resolve(
       i + r.map[r.width * (r.height - 1) + s.right - 1]
-    ))), new he(n, e);
+    ))), new fe(n, e);
   }
   // True if this selection goes all the way from the left to the
   // right of the table.
@@ -19992,7 +20004,7 @@ var he = class extends ne {
     return Math.max(s, o) == e.width;
   }
   eq(n) {
-    return n instanceof he && n.$anchorCell.pos == this.$anchorCell.pos && n.$headCell.pos == this.$headCell.pos;
+    return n instanceof fe && n.$anchorCell.pos == this.$anchorCell.pos && n.$headCell.pos == this.$headCell.pos;
   }
   // Returns the smallest row selection that covers the given anchor
   // and head cell.
@@ -20004,7 +20016,7 @@ var he = class extends ne {
       i + r.map[r.width * (o.top + 1) - 1]
     ))) : (o.left > 0 && (e = a.resolve(i + r.map[o.top * r.width])), s.right < r.width && (n = a.resolve(
       i + r.map[r.width * (s.top + 1) - 1]
-    ))), new he(n, e);
+    ))), new fe(n, e);
   }
   toJSON() {
     return {
@@ -20014,17 +20026,17 @@ var he = class extends ne {
     };
   }
   static fromJSON(n, e) {
-    return new he(n.resolve(e.anchor), n.resolve(e.head));
+    return new fe(n.resolve(e.anchor), n.resolve(e.head));
   }
   static create(n, e, t = e) {
-    return new he(n.resolve(e), n.resolve(t));
+    return new fe(n.resolve(e), n.resolve(t));
   }
   getBookmark() {
     return new rm(this.$anchorCell.pos, this.$headCell.pos);
   }
 };
-he.prototype.visible = !1;
-ne.jsonID("cell", he);
+fe.prototype.visible = !1;
+ne.jsonID("cell", fe);
 var rm = class {
   constructor(n, e) {
     this.anchor = n, this.head = e;
@@ -20034,11 +20046,11 @@ var rm = class {
   }
   resolve(n) {
     const e = n.resolve(this.anchor), t = n.resolve(this.head);
-    return e.parent.type.spec.tableRole == "row" && t.parent.type.spec.tableRole == "row" && e.index() < e.parent.childCount && t.index() < t.parent.childCount && Vc(e, t) ? new he(e, t) : ne.near(t, 1);
+    return e.parent.type.spec.tableRole == "row" && t.parent.type.spec.tableRole == "row" && e.index() < e.parent.childCount && t.index() < t.parent.childCount && Vc(e, t) ? new fe(e, t) : ne.near(t, 1);
   }
 };
 function iC(n) {
-  if (!(n.selection instanceof he))
+  if (!(n.selection instanceof fe))
     return null;
   const e = [];
   return n.selection.forEachCell((t, r) => {
@@ -20080,13 +20092,13 @@ function aC(n, e, t) {
   let s, o;
   if (r instanceof Q && (o = r.node.type.spec.tableRole)) {
     if (o == "cell" || o == "header_cell")
-      s = he.create(i, r.from);
+      s = fe.create(i, r.from);
     else if (o == "row") {
       const a = i.resolve(r.from + 1);
-      s = he.rowSelection(a, a);
+      s = fe.rowSelection(a, a);
     } else if (!t) {
       const a = Oe.get(r.node), l = r.from + 1, c = l + a.map[a.width * a.height - 1];
-      s = he.create(i, l + 1, c);
+      s = fe.create(i, l + 1, c);
     }
   } else
     r instanceof X && sC(r) ? s = X.create(i, r.from) : r instanceof X && oC(r) && (s = X.create(i, r.$from.start(), r.$from.end()));
@@ -20371,7 +20383,7 @@ function cp(n, e, t, r, i) {
     );
   }
   f(), d.setSelection(
-    new he(
+    new fe(
       d.doc.resolve(t + o.positionAt(a, l, s)),
       d.doc.resolve(t + o.positionAt(u - 1, c - 1, s))
     )
@@ -20399,7 +20411,7 @@ function ds(n, e) {
     if (!i)
       return !1;
     const s = t.selection;
-    if (s instanceof he)
+    if (s instanceof fe)
       return Rs(
         t,
         r,
@@ -20429,25 +20441,25 @@ function ps(n, e) {
       return !1;
     const s = t.selection;
     let o;
-    if (s instanceof he)
+    if (s instanceof fe)
       o = s;
     else {
       const l = om(i, n, e);
       if (l == null)
         return !1;
-      o = new he(t.doc.resolve(l));
+      o = new fe(t.doc.resolve(l));
     }
     const a = tm(o.$headCell, n, e);
     return a ? Rs(
       t,
       r,
-      new he(o.$anchorCell, a)
+      new fe(o.$anchorCell, a)
     ) : !1;
   };
 }
 function fs(n, e) {
   const t = n.selection;
-  if (!(t instanceof he))
+  if (!(t instanceof fe))
     return !1;
   if (e) {
     const r = n.tr, i = Xe(n.schema).cell.createAndFill().content;
@@ -20463,14 +20475,14 @@ function fs(n, e) {
 }
 function gC(n, e) {
   const t = n.state.doc, r = ei(t.resolve(e));
-  return r ? (n.dispatch(n.state.tr.setSelection(new he(r))), !0) : !1;
+  return r ? (n.dispatch(n.state.tr.setSelection(new fe(r))), !0) : !1;
 }
 function mC(n, e, t) {
   if (!It(n.state))
     return !1;
   let r = uC(t);
   const i = n.state.selection;
-  if (i instanceof he) {
+  if (i instanceof fe) {
     r || (r = {
       width: 1,
       height: 1,
@@ -20503,7 +20515,7 @@ function bC(n, e) {
     return;
   const r = up(n, e.target);
   let i;
-  if (e.shiftKey && n.state.selection instanceof he)
+  if (e.shiftKey && n.state.selection instanceof fe)
     s(n.state.selection.$anchorCell, e), e.preventDefault();
   else if (e.shiftKey && r && (i = ei(n.state.selection.$anchor)) != null && ((t = qa(n, e)) == null ? void 0 : t.pos) != i.pos)
     s(i, e), e.preventDefault();
@@ -20517,7 +20529,7 @@ function bC(n, e) {
         u = l;
       else
         return;
-    const p = new he(l, u);
+    const p = new fe(l, u);
     if (d || !n.state.selection.eq(p)) {
       const f = n.state.tr.setSelection(p);
       d && f.setMeta(vn, l.pos), n.dispatch(f);
@@ -20805,7 +20817,7 @@ function AC(n, e) {
 }
 function Xt(n) {
   const e = n.selection, t = Wo(n), r = t.node(-1), i = t.start(-1), s = Oe.get(r);
-  return { ...e instanceof he ? s.rectBetween(
+  return { ...e instanceof fe ? s.rectBetween(
     e.$anchorCell.pos - i,
     e.$headCell.pos - i
   ) : s.findCell(t.pos - i), tableStart: i, map: s, table: r };
@@ -20988,7 +21000,7 @@ function PC({ width: n, height: e, map: t }, r) {
 }
 function hp(n, e) {
   const t = n.selection;
-  if (!(t instanceof he) || t.$anchorCell.pos == t.$headCell.pos)
+  if (!(t instanceof fe) || t.$anchorCell.pos == t.$headCell.pos)
     return !1;
   const r = Xt(n), { map: i } = r;
   if (PC(i, r))
@@ -21022,7 +21034,7 @@ function hp(n, e) {
       s.replaceWith(d + r.tableStart, u + r.tableStart, a);
     }
     s.setSelection(
-      new he(s.doc.resolve(l + r.tableStart))
+      new fe(s.doc.resolve(l + r.tableStart))
     ), e(s);
   }
   return !0;
@@ -21036,7 +21048,7 @@ function $C(n) {
     var r;
     const i = e.selection;
     let s, o;
-    if (i instanceof he) {
+    if (i instanceof fe) {
       if (i.$anchorCell.pos != i.$headCell.pos)
         return !1;
       s = i.$anchorCell.nodeAfter, o = i.$anchorCell.pos;
@@ -21073,8 +21085,8 @@ function $C(n) {
         o,
         n({ node: s, row: u.top, col: u.left }),
         l[0]
-      ), i instanceof he && d.setSelection(
-        new he(
+      ), i instanceof fe && d.setSelection(
+        new fe(
           d.doc.resolve(i.$anchorCell.pos),
           p ? d.doc.resolve(p) : void 0
         )
@@ -21092,7 +21104,7 @@ function VC(n, e) {
       return !1;
     if (r) {
       const s = t.tr;
-      t.selection instanceof he ? t.selection.forEachCell((o, a) => {
+      t.selection instanceof fe ? t.selection.forEachCell((o, a) => {
         o.attrs[n] !== e && s.setNodeMarkup(a, null, {
           ...o.attrs,
           [n]: e
@@ -21338,7 +21350,7 @@ function GC(n, e, t, r, i) {
   return s.table.createChecked(null, l);
 }
 function jC(n) {
-  return n instanceof he;
+  return n instanceof fe;
 }
 const hs = ({ editor: n }) => {
   const { selection: e } = n.state;
@@ -21374,7 +21386,7 @@ const hs = ({ editor: n }) => {
     return [{ tag: "table" }];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["table", fe(this.options.HTMLAttributes, n), ["tbody", 0]];
+    return ["table", he(this.options.HTMLAttributes, n), ["tbody", 0]];
   },
   addCommands() {
     return {
@@ -21405,7 +21417,7 @@ const hs = ({ editor: n }) => {
       fixTables: () => ({ state: n, dispatch: e }) => (e && sm(n), !0),
       setCellSelection: (n) => ({ tr: e, dispatch: t }) => {
         if (t) {
-          const r = he.create(e.doc, n.anchorCell, n.headCell);
+          const r = fe.create(e.doc, n.anchorCell, n.headCell);
           e.setSelection(r);
         }
         return !0;
@@ -21465,7 +21477,7 @@ const hs = ({ editor: n }) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["tr", fe(this.options.HTMLAttributes, n), 0];
+    return ["tr", he(this.options.HTMLAttributes, n), 0];
   }
 }), XC = ce.create({
   name: "tableHeader",
@@ -21500,7 +21512,7 @@ const hs = ({ editor: n }) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["th", fe(this.options.HTMLAttributes, n), 0];
+    return ["th", he(this.options.HTMLAttributes, n), 0];
   }
 }), QC = ce.create({
   name: "tableCell",
@@ -21535,7 +21547,7 @@ const hs = ({ editor: n }) => {
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["td", fe(this.options.HTMLAttributes, n), 0];
+    return ["td", he(this.options.HTMLAttributes, n), 0];
   }
 }), eS = we.create({
   name: "characterCount",
@@ -22364,7 +22376,7 @@ const ES = De.create({
   },
   renderHTML({ HTMLAttributes: n }) {
     var e;
-    return !((e = n.href) === null || e === void 0) && e.startsWith("javascript:") ? ["a", fe(this.options.HTMLAttributes, { ...n, href: "" }), 0] : ["a", fe(this.options.HTMLAttributes, n), 0];
+    return !((e = n.href) === null || e === void 0) && e.startsWith("javascript:") ? ["a", he(this.options.HTMLAttributes, { ...n, href: "" }), 0] : ["a", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -22446,7 +22458,7 @@ const ES = De.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["sup", fe(this.options.HTMLAttributes, n), 0];
+    return ["sup", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -22481,7 +22493,7 @@ const ES = De.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["sub", fe(this.options.HTMLAttributes, n), 0];
+    return ["sub", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -22516,7 +22528,7 @@ const ES = De.create({
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["ul", fe(this.options.HTMLAttributes, n, { "data-type": this.name }), 0];
+    return ["ul", he(this.options.HTMLAttributes, n, { "data-type": this.name }), 0];
   },
   addCommands() {
     return {
@@ -22564,7 +22576,7 @@ const ES = De.create({
   renderHTML({ node: n, HTMLAttributes: e }) {
     return [
       "li",
-      fe(this.options.HTMLAttributes, e, {
+      he(this.options.HTMLAttributes, e, {
         "data-type": this.name
       }),
       [
@@ -37633,6 +37645,9 @@ class YA extends Yo {
       }
     ];
   }
+  connectedCallback() {
+    this.style.display = "none", super.connectedCallback();
+  }
   onItemClick(e) {
     var t, r, i, s, o, a, l, c, u;
     e === "insert-column-left" ? (t = this.editor) == null || t.chain().focus().addColumnBefore().run() : e === "insert-column-right" ? (r = this.editor) == null || r.chain().focus().addColumnAfter().run() : e === "insert-row-top" ? (i = this.editor) == null || i.chain().focus().addRowBefore().run() : e === "insert-row-bottom" ? (s = this.editor) == null || s.chain().focus().addRowAfter().run() : e === "delete-column" ? (o = this.editor) == null || o.chain().focus().deleteColumn().run() : e === "delete-row" ? (a = this.editor) == null || a.chain().focus().deleteRow().run() : e === "merge-cells-horizontal" || e === "merge-cells-vertical" ? (l = this.editor) == null || l.chain().focus().mergeCells().run() : e === "split-cells-horizontal" || e === "split-cells-vertical" ? (c = this.editor) == null || c.chain().focus().splitCell().run() : e === "delete" && ((u = this.editor) == null || u.chain().focus().deleteTable().run());
@@ -37642,14 +37657,14 @@ class YA extends Yo {
       t.style.display = "none";
     }), e.forEach((t) => {
       const r = this.querySelector(`#${t}`);
-      r.style.display = "";
+      r && (r.style.display = "");
     });
   }
   onTransaction(e) {
     if (!e.editor.isActive("table"))
       return;
     const { state: { selection: t }, view: r } = e.editor;
-    if (t instanceof he)
+    if (t instanceof fe)
       if (this.isOneCellSelected(t)) {
         const i = ["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"];
         if (e.editor.can().splitCell()) {
@@ -37910,7 +37925,7 @@ const QA = (n) => {
       return !r.empty && $o(t.state.doc, {
         from: r.from,
         to: r.to
-      }).length > 0 && !t.isActive("link") && !t.isActive("image");
+      }).length > 0 && !t.isActive("link") && !t.isActive("image") && !(r instanceof fe);
     }
   });
 }, eT = (n) => {
@@ -37963,7 +37978,7 @@ const QA = (n) => {
     },
     shouldShow: ({ editor: t }) => {
       const { state: { selection: r } } = t;
-      return t.isActive("table") && r.empty;
+      return t.isActive("table") && r instanceof fe;
     }
   });
 }, rT = (n) => {
@@ -38201,7 +38216,7 @@ const aT = new Ae("mention"), lT = ce.create({
   renderHTML({ node: n, HTMLAttributes: e }) {
     return [
       "span",
-      fe({ "data-type": this.name }, this.options.HTMLAttributes, e),
+      he({ "data-type": this.name }, this.options.HTMLAttributes, e),
       this.options.renderLabel({
         options: this.options,
         node: n
@@ -38309,7 +38324,7 @@ const aT = new Ae("mention"), lT = ce.create({
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15V17C5 18.0544 5.81588 18.9182 6.85074 18.9945L7 19H10V21H7C4.79086 21 3 19.2091 3 17V15H5ZM18 10L22.4 21H20.245L19.044 18H14.954L13.755 21H11.601L16 10H18ZM17 12.8852L15.753 16H18.245L17 12.8852ZM8 2V4H12V11H8V14H6V11H2V4H6V2H8ZM17 3C19.2091 3 21 4.79086 21 7V9H19V7C19 5.89543 18.1046 5 17 5H14V3H17ZM6 6H4V9H6V6ZM10 6H8V9H10V6Z" fill="currentColor"></path></svg>',
     name: "AI 翻译",
-    prompt: "请帮我把这段内容翻译为英语，直接返回英语结果",
+    prompt: "请帮我翻译以上内容，在翻译之前，想先判断一下这个内容是不是中文，如果是中文，则翻译问英文，如果是其他语言，则需要翻译为中文，注意，你只需要返回翻译的结果，不需要对此进行任何解释，不需要除了翻译结果以外的其他任何内容。",
     model: "auto"
   },
   {
@@ -44412,7 +44427,7 @@ const qde = /* @__PURE__ */ Qr(zde), Ude = /^:::([a-z]+)?[\s\n]$/, Kde = ce.crea
     ];
   },
   renderHTML({ HTMLAttributes: n }) {
-    return ["div", fe(this.options.HTMLAttributes, n), 0];
+    return ["div", he(this.options.HTMLAttributes, n), 0];
   },
   addCommands() {
     return {
@@ -44839,7 +44854,6 @@ class Spe {
     }
   }
   onDestroy() {
-    console.log("AiEditor has destroyed!");
   }
   getHtml() {
     return this.innerEditor.getHTML();
