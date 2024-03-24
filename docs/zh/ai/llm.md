@@ -48,6 +48,11 @@ new AiEditor({
         models: {
             custom: {
                 url: "http://127.0.0.1:8080/api/v1/ai/chat",
+                headers: () => {
+                    return {
+                        "jwt": "xxxx"
+                    }
+                },
                 messageWrapper: (message: string) => {
                     return JSON.stringify({prompt: message})
                 },
@@ -69,6 +74,7 @@ new AiEditor({
 参数说明：
 
 - `url`: 字符串，或者返回一个字符串的方法
+- `headers`: 自定义 sse 请求的 http 头信息
 - `messageWrapper`: 把用户的 `prompt` 字符串，转换为 `url` 接口所需要的 `json` 格式（亦或者其他格式）。
 - `messageParser`：把后端响应的 `body` 内容，转换为 `AiMessage` 格式。
 
