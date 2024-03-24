@@ -73,7 +73,6 @@ export class SseClient implements AiClient {
                     for (let line of lines) {
                         if (line.indexOf("data:") == 0) {
                             if (fullMessage) {
-                                console.log(fullMessage)
                                 this.onMessage(fullMessage);
                             }
                             fullMessage = line.substring(5);
@@ -86,7 +85,6 @@ export class SseClient implements AiClient {
                         index++
                     }
                     if (fullMessage) {
-                        console.log(fullMessage)
                         this.onMessage(fullMessage);
                     }
                 }

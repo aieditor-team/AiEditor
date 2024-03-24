@@ -53,20 +53,6 @@ export class HttpStreamSocketClient implements AiClient {
                 const reader = response.body.getReader();
                 const decoder = new TextDecoder('utf-8');
                 reader.read().then(({ done, value }) => processText({ done, value }));
-
-
-
-                //  = await axios({ method: this.config.method, url: this.config.url, responseType: 'stream', cancelToken: this.cancelToken.token, data: message })
-
-                // response.data.on('data', (chunk: any) => {
-                //     // 处理流数据的逻辑
-                //     console.log(chunk)
-                //     this.onMessage(chunk)
-                // });
-
-                // response.data.on('end', () => {
-                //     this.onClose()
-                // });
             } catch {
                 this.onError()
             }

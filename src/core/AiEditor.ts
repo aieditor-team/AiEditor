@@ -292,7 +292,6 @@ export class AiEditor {
     }
 
     private onDestroy() {
-        console.log("AiEditor has destroyed!")
     }
 
     getHtml() {

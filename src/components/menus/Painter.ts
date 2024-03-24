@@ -18,7 +18,6 @@ export class Painter extends AbstractMenuButton {
     // @ts-ignore
     onClick(commands) {
         commands.setPainter(this.editor?.state.selection.$head.marks())
-        // console.log( htmlElement.style.cursor)
     }
 
 }

@@ -56,7 +56,6 @@ window.aiEditor = new AiEditor({
         updateOutLine(editor)
     },
     onChange:(editor)=>{
-        // console.log(editor.getOutline())
         updateOutLine(editor)
     },
 })
