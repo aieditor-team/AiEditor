@@ -9,27 +9,28 @@ new AiEditor({
         customMenuInvoke: (editor: Editor) => {
         },
         uploadUrl: "https://your-domain/video/upload",
+        uploadFormName: "video", //上传时的文件表单名称
         uploadHeaders: {
-            "jwt":"xxxxx",
-            "other":"xxxx",
+            "jwt": "xxxxx",
+            "other": "xxxx",
         },
         uploader: (file, uploadUrl, headers, formName) => {
             //可自定义视频上传逻辑
         },
         uploaderEvent: {
-            onUploadBefore:(file, uploadUrl, headers) =>{
+            onUploadBefore: (file, uploadUrl, headers) => {
                 //监听视频上传之前，此方法可以不用回任何内容，但若返回 false，则终止上传
             },
-            onSuccess:(file, response) =>{
+            onSuccess: (file, response) => {
                 //监听视频上传成功
                 //注意：
                 // 1、如果此方法返回 false，则视频不会被插入到编辑器
                 // 2、可以在这里返回一个新的 json 给编辑器
             },
-            onFailed:(file, response) =>{
+            onFailed: (file, response) => {
                 //监听视频上传失败，或者返回的 json 信息不正确
             },
-            onError:(file, error) =>{
+            onError: (file, error) => {
                 //监听视频上传错误，比如网络超时等
             },
         }

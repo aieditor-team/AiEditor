@@ -28,7 +28,7 @@ export interface ImageOptions {
     uploadHeaders: Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     uploaderEvent?: UploaderEvent,
-    uploaderFormName?: string,
+    uploadFormName?: string,
 }
 
 export type ImageAction = {
@@ -124,8 +124,8 @@ export const ImageExt = Image.extend<ImageOptions>({
 
 
                     const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
-                    const uploaderFormName = this.options.uploaderFormName || "image";
-                    uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, uploaderFormName)
+                    const uploadFormName = this.options.uploadFormName || "image";
+                    uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, uploadFormName)
                         .then(json => {
 
                             //process on success
