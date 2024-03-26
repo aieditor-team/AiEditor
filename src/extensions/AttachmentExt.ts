@@ -12,6 +12,7 @@ export interface AttachmentOptions {
     uploadHeaders: Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     uploaderEvent?: UploaderEvent,
+    uploaderFormName?: string,
 }
 
 
@@ -67,13 +68,13 @@ export const AttachmentExt = Extension.create<AttachmentOptions>({
                 }));
 
 
-
                 const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
-                uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, "attachment")
+                const uploaderFormName = this.options.uploaderFormName || "attachment";
+                uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, uploaderFormName)
                     .then(json => {
 
                         //process on success
-                        if (this.options.uploaderEvent && this.options.uploaderEvent.onSuccess) {
+                        if (this.options.uploaderEvent?.onSuccess) {
                             const result = this.options.uploaderEvent.onSuccess(file, json);
                             if (typeof result === "boolean" && !result) {
                                 return;
