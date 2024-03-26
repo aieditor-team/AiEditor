@@ -1,10 +1,10 @@
 <template>
-<!--  <div style="padding: 20px 10px">-->
-<!--    <div style="margin-bottom: 20px">-->
-<!--      由于当前未进行 ai 配置，因此 ai 功能暂时不可用。ai 功能体验地址：<a href="http://aieditor.jpress.cn" target="_blank">http://aieditor.jpress.cn</a>-->
-<!--    </div>-->
-    <div ref="divRef" class="aiEditor" style="height: 350px"/>
-<!--  </div>-->
+  <div style="padding: 20px 10px">
+    <div style="margin-bottom: 20px">
+      由于当前未进行 ai 配置，因此 ai 功能暂时不可用。ai 功能体验地址：<a href="http://aieditor.jpress.cn" target="_blank">http://aieditor.jpress.cn</a>
+    </div>
+    <div ref="divRef" class="aiEditor" style="height: 850px"/>
+  </div>
 
 </template>
 

@@ -3,10 +3,13 @@ import {defineConfig} from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: 'zh-CN',
-    title: "AiEditor",
-    description: "一个面向 AI 的下一代富文本编辑器",
-    titleTemplate: ':title - AiEditor 官方网站',
+    title: "AiEditor 富文本编辑器",
+    description: "一个面向 AI 的下一代富文本编辑器，开源富文本编辑器，现代富文本编辑器",
+    titleTemplate: ':title - AiEditor 富文本编辑器',
     lastUpdated: true,
+    sitemap: {
+        hostname: "https://aieditor.dev"
+    },
 
     themeConfig: {
         logo: '/assets/image/logo.png',
