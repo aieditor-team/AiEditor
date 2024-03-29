@@ -25,7 +25,7 @@ export interface ImageOptions {
     defaultSize: number,
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
-    uploadHeaders: Record<string, any>,
+    uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     uploaderEvent?: UploaderEvent,
     uploadFormName?: string,
@@ -106,8 +106,11 @@ export const ImageExt = Image.extend<ImageOptions>({
                 ...this.parent?.(),
 
                 uploadImage: (file: File) => () => {
+                    const headers = (typeof this.options.uploadHeaders === "object") ? this.options.uploadHeaders :
+                        ((typeof this.options.uploadHeaders === "function") ? this.options.uploadHeaders() : {});
+
                     if (this.options.uploaderEvent && this.options.uploaderEvent.onUploadBefore) {
-                        if (this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, this.options.uploadHeaders) === false) {
+                        if (this.options.uploaderEvent.onUploadBefore(file, this.options.uploadUrl!, headers) === false) {
                             return false;
                         }
                     }
@@ -125,7 +128,7 @@ export const ImageExt = Image.extend<ImageOptions>({
 
                     const uploader = this.options.uploader || getUploader(this.options.uploadUrl!);
                     const uploadFormName = this.options.uploadFormName || "image";
-                    uploader(file, this.options.uploadUrl!, this.options.uploadHeaders, uploadFormName)
+                    uploader(file, this.options.uploadUrl!, headers, uploadFormName)
                         .then(json => {
 
                             //process on success
