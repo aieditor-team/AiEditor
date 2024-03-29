@@ -11,9 +11,15 @@ new AiEditor({
         },
         uploadUrl: "https://your-domain/attachment/upload",
         uploadFormName: "attachment", //上传时的文件表单名称
-        uploadHeaders: {
-            "jwt": "xxxxx",
-            "other": "xxxx",
+        // uploadHeaders: {
+        //     "jwt": "xxxxx",
+        //     "other": "xxxx",
+        // },
+        uploadHeaders: ()=>{
+           return {
+               "jwt": "xxxxx",
+               "other": "xxxx"
+           }
         },
         uploader: (file, uploadUrl, headers, formName) => {
             //可自定义附件上传逻辑
@@ -42,7 +48,7 @@ new AiEditor({
 
 - **customMenuInvoke**：自定义工具栏的 “附件” 按钮的点击行为，比如点击不是选择本地文件，而是弹出一个对话框等自定义行为。
 - **uploadUrl**：附件上传的 URL 地址。
-- **uploadHeaders**：附件上传自定义 Http 头信息。
+- **uploadHeaders**：附件上传自定义 Http 头信息，数据类型为 `Object` 或者 返回一个 `Object` 的方法（ `Function` ）。
 - **uploader**：自定义上传逻辑，默认是通过 `fetch` 进行上传。
 - **uploaderEvent**：配置附件上传事件监听
 

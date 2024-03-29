@@ -44,7 +44,7 @@ new AiEditor({
 - **defaultSize**：默认图片大小，当不配置时，默认值为 350（即：350 像素）。
 - **customMenuInvoke**：自定义工具栏的 “图片” 按钮的点击行为，比如点击不是选择本地文件，而是弹出一个对话框等自定义行为。
 - **uploadUrl**：图片上传的 URL 地址。
-- **uploadHeaders**：图片上传自定义 Http 头信息。
+- **uploadHeaders**：图片上传自定义 Http 头信息，数据类型为 `Object` 或者 返回一个 `Object` 的方法（ `Function` ）。
 - **uploader**：自定义上传逻辑，默认是通过 `fetch` 进行上传。
 - **uploaderEvent**：配置图片上传事件监听
 

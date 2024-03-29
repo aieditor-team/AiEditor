@@ -38,18 +38,15 @@ new AiEditor({
 })
 ```
 
-
 - **customMenuInvoke**：自定义工具栏的 “视频” 按钮的点击行为，比如点击不是选择本地文件，而是弹出一个对话框等自定义行为。
 - **uploadUrl**：视频上传的 URL 地址。
-- **uploadHeaders**：视频上传自定义 Http 头信息。
+- **uploadHeaders**：视频上传自定义 Http 头信息，数据类型为 `Object` 或者 返回一个 `Object` 的方法（ `Function` ）。
 - **uploader**：自定义上传逻辑，默认是通过 `fetch` 进行上传。
 - **uploaderEvent**：配置视频上传事件监听
-
 
 ## 服务器响应
 
 视频上传成功后，要求服务器必须返回如下内容，其中 errorCode 必须为 0；
-
 
 ```json
 {
@@ -63,7 +60,6 @@ new AiEditor({
 
 - src： 视频播放地址
 - poster： 视频封面地址
-
 
 若服务器返回的不是以上内容格式，我们可以通过配置 `dataProcessor` 对数据进行二次处理，并按以上格式返回。
 
