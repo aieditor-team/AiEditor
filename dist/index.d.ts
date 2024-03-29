@@ -96,7 +96,7 @@ export declare type AiEditorOptions = {
     image?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
-        uploadHeaders?: Record<string, any>;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
@@ -105,14 +105,14 @@ export declare type AiEditorOptions = {
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
-        uploadHeaders?: Record<string, any>;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
     };
     attachment?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
-        uploadHeaders?: Record<string, any>;
+        uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
     };
