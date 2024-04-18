@@ -50,7 +50,11 @@ export default defineConfig({
                 text: '简介',
                 items: [
                     {text: 'AiEditor 是什么', link: '/zh/what-is-ai-editor'},
-                    {text: '快速开始', link: '/zh/getting-started'}
+                    {text: '快速开始', link: '/zh/getting-started'},
+                    {text: '与 React 整合', link: '/zh/aieditor-with-react'},
+                    {text: '与 Vue3 整合', link: '/zh/aieditor-with-vue3'},
+                    {text: '与 Vue2 整合', link: '/zh/aieditor-with-vue2'},
+                    {text: '与 Layui 整合', link: '/zh/aieditor-with-layui'},
                 ]
             },
             {
