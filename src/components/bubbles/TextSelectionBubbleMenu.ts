@@ -198,6 +198,14 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         container.querySelector("#insert")!.addEventListener("click", () => {
             const textarea = container.querySelector("textarea")!;
             if (textarea.value) {
+
+                // const {state: {selection, tr}, view: {dispatch}, schema} = this.editor!
+                // const node = schema.node("paragraph", null, schema.text(textarea.value));
+                // dispatch(tr.setSelection(TextSelection.create(tr.doc, selection.to))
+                //     .insert(selection.to, node)
+                //     .setSelection(TextSelection.create(tr.doc, selection.to + textarea.value.length + 2))
+                // )
+
                 const {state: {selection, tr}, view: {dispatch}} = this.editor!
                 dispatch(tr.insertText(textarea.value, selection.to))
                 this.aiBubbleInstance?.hide();
