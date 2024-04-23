@@ -55,6 +55,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             AttachmentExt.configure({
                 uploadUrl: options.attachment?.uploadUrl,
                 uploadHeaders: options.attachment?.uploadHeaders,
+                uploadFormName:options.attachment?.uploadFormName,
                 uploader: options.attachment?.uploader || options.uploader,
                 uploaderEvent: options.attachment?.uploaderEvent,
             }),
@@ -73,6 +74,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 defaultSize: options.image?.defaultSize || 350,
                 uploadUrl: options.image?.uploadUrl,
                 uploadHeaders: options.image?.uploadHeaders,
+                uploadFormName:options.image?.uploadFormName,
                 uploader: options.image?.uploader || options.uploader,
                 uploaderEvent: options.image?.uploaderEvent,
             }),
@@ -116,6 +118,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             VideoExt.configure({
                 uploadUrl: options.video?.uploadUrl,
                 uploadHeaders: options.video?.uploadHeaders,
+                uploadFormName:options.video?.uploadFormName,
                 uploader: options.video?.uploader || options.uploader,
                 uploaderEvent: options.video?.uploaderEvent,
             }),

@@ -31,10 +31,10 @@ export interface AiEditorEvent {
 }
 
 export interface UploaderEvent {
-    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean
-    onSuccess: (file: File, response: any) => any
-    onFailed: (file: File, response: any) => void
-    onError: (file: File, err: any) => void
+    onUploadBefore?: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean
+    onSuccess?: (file: File, response: any) => any
+    onFailed?: (file: File, response: any) => void
+    onError?: (file: File, err: any) => void
 }
 
 export interface CustomMenu {
@@ -77,15 +77,17 @@ export type AiEditorOptions = {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
+        uploadFormName?: string,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
         defaultSize?: number,
-        allowBase64: boolean,
+        allowBase64?: boolean,
     },
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
+        uploadFormName?: string,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
     },
@@ -93,6 +95,7 @@ export type AiEditorOptions = {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
+        uploadFormName?: string,
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
         uploaderEvent?: UploaderEvent,
     },
