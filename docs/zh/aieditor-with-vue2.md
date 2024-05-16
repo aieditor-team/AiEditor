@@ -34,7 +34,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "target": "es2018"
+    "module": "es2018"
     // 其他配置...
   }
   // 其他配置...
