@@ -121,11 +121,11 @@ export default defineConfig({
         },
         nav: [
             {text: 'Home', link: '/'},
-            {text: '开发文档', link: 'zh/what-is-ai-editor'},
+            {text: 'Development Documentation', link: 'zh/what-is-ai-editor'},
             {
                 text: '在线 Demo', items: [
-                    {text: '经典/传统风格', link: 'http://aieditor.jpress.cn'},
-                    {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
+                    {text: 'Classic/Traditional Style', link: 'http://aieditor.jpress.cn'},
+                    {text: 'Tencent Document Style', link: 'http://aieditor1.jpress.cn'},
                 ]
             },
             {text: 'AiEditor Pro', link: 'zh/pro'},
@@ -134,7 +134,7 @@ export default defineConfig({
                 text: '获取源码', items: [
                     {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
                     {text: 'Github', link: 'https://github.com/aieditor-team/aieditor'},
-                    {text: '示例代码', link: 'https://gitee.com/aieditor-team/aieditor/tree/main/demos'},
+                    {text: 'Sample Code', link: 'https://gitee.com/aieditor-team/aieditor/tree/main/demos'},
                     {text: 'ChangeLog', link: 'zh/changes'},
                 ]
             },
