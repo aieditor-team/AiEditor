@@ -91,4 +91,8 @@ export const en =  {
     ////font
     "default-font-size":"Size",
     "default-font-family":"Default font",
+
+    ////code block
+    "codeblock-ai-auto-comment":"auto comment",
+    "codeblock-ai-code-explain":"code explain",
 }

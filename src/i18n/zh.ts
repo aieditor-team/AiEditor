@@ -91,4 +91,9 @@ export const zh  =  {
     ////font
     "default-font-size":"字号",
     "default-font-family":"默认字体",
+
+    ////code block
+    "codeblock-ai-auto-comment":"自动注释",
+    "codeblock-ai-code-explain":"代码解释",
+
 }
