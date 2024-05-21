@@ -1,10 +1,10 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
-layout: 首页
+layout: home
 
 hero:
-  name: "AiEditor"
-  text: "一个面向 AI 的<br/>下一代富文本编辑器12"
+  name: AiEditor
+  text: 一个面向 AI 的<br/>下一代富文本编辑器
   tagline: 开箱即用、全框架支持、Markdown 友好
   image:
     src: /assets/image/logo-large.png
