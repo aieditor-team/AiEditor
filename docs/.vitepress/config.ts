@@ -123,9 +123,9 @@ export default defineConfig({
             {text: 'Home', link: '/'},
             {text: 'Document', link: '/what-is-ai-editor'},
             {
-                text: 'Demos', items: [
-                    {text: 'Classic/Traditional Style', link: 'http://aieditor.jpress.cn'},
-                    {text: 'Tencent Document Style', link: 'http://aieditor1.jpress.cn'},
+                text: 'Live Demo', items: [
+                    {text: 'Classic Style', link: 'http://aieditor.jpress.cn'},
+                    {text: 'Modern style', link: 'http://aieditor1.jpress.cn'},
                 ]
             },
         ],

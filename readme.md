@@ -12,7 +12,7 @@ About AiEditor (official website https://aieditor.dev)
 > such as Vue, React, Angular and Svelte. It is adapted to PC Web and mobile, and provides two themes: light and dark. 
 > In addition, it also provides flexible configuration, developers can easily use it to develop any text editing application.
 
-## Online demo
+## Live Demo
 
 - Modern style: http://aieditor1.jpress.cn
 - Classic Style: http://aieditor.jpress.cn
