@@ -2,7 +2,7 @@
 
 In the code editor component, there are two AI functionalities related to  `"AI automatic comment insertion" ` and `"AI code interpretation" `. As shown in the following image:
 
-![](../../assets/image/codeblock-ai.png)
+![](../assets/image/codeblock-ai.png)
 
 ## Sample
 

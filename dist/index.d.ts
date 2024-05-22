@@ -1,12 +1,61 @@
+import { CellSelection } from '@tiptap/pm/tables';
 import { ChainedCommands } from '@tiptap/core/dist/packages/core/src/types';
 import { Editor } from '@tiptap/core';
 import { EditorEvents } from '@tiptap/core';
 import { EditorOptions } from '@tiptap/core';
+import { EditorView } from '@tiptap/pm/view';
 import { Extensions } from '@tiptap/core';
 import { Fragment } from 'prosemirror-model';
+import { Instance } from 'tippy.js';
 import { JSONContent } from '@tiptap/core';
 
-declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
+export declare abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
+    editor?: Editor;
+    items: BubbleMenuItem[];
+    protected constructor();
+    isActive(id: string): boolean | undefined;
+    connectedCallback(): void;
+    onCreate(props: EditorEvents['create'], _: AiEditorOptions): void;
+    abstract onItemClick(id: string): void;
+    abstract onTransaction(props: EditorEvents['transaction']): void;
+}
+
+export declare class AbstractColorsMenuButton extends AbstractMenuButton {
+    historyColorsKey: string;
+    historyColors: string[];
+    iconSvg?: string;
+    menuColorEL?: HTMLDivElement;
+    onColorItemClick?: (color: string) => void;
+    onDefaultColorClick?: () => void;
+    constructor();
+    connectedCallback(): void;
+    createMenuElement(): HTMLDivElement;
+    invokeColorItemClick(rootDiv: HTMLDivElement, item: HTMLDivElement): void;
+}
+
+export declare abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
+    tippyInstance?: Instance;
+    tippyEl?: HTMLDivElement;
+    textEl?: HTMLDivElement;
+    menuData: T[];
+    menuTextWidth: string;
+    defaultMenuIndex: number;
+    refreshMenuText: boolean;
+    width: string;
+    dropDivWith: string;
+    dropDivHeight: string;
+    showItemsTip: boolean;
+    renderTemplate(): void;
+    connectedCallback(): void;
+    createMenuElement(): HTMLDivElement;
+    onTransaction(event: EditorEvents["transaction"]): void;
+    abstract onDropdownActive(editor: Editor, index: number): boolean;
+    abstract onMenuTextRender(index: number): Element | string;
+    abstract onDropdownItemRender(index: number): Element | string;
+    abstract onDropdownItemClick(index: number): void;
+}
+
+export declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     template: string;
     editor?: Editor;
     options?: AiEditorOptions;
@@ -97,15 +146,17 @@ export declare type AiEditorOptions = {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
-        allowBase64: boolean;
+        allowBase64?: boolean;
     };
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
     };
@@ -113,6 +164,7 @@ export declare type AiEditorOptions = {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
+        uploadFormName?: string;
         uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
         uploaderEvent?: UploaderEvent;
     };
@@ -204,6 +256,12 @@ export declare class AiModelManager {
     static set(modelName: string, aiModel: AiModel): void;
 }
 
+export declare type BubbleMenuItem = {
+    id: string;
+    title?: string;
+    content: string;
+};
+
 export declare interface CustomMenu {
     id?: string;
     className?: string;
@@ -213,6 +271,8 @@ export declare interface CustomMenu {
     onClick?: (event: MouseEvent, editor: AiEditor) => void;
     onCreate?: (button: HTMLElement, editor: AiEditor) => void;
 }
+
+export declare const defineCustomElement: (name: string, element: CustomElementConstructor) => void;
 
 declare class Footer extends HTMLElement implements AiEditorEvent {
     count: number;
@@ -230,12 +290,25 @@ declare class Header extends HTMLElement implements AiEditorEvent {
     onTransaction(event: EditorEvents["transaction"]): void;
 }
 
+export declare class ImageBubbleMenu extends AbstractBubbleMenu {
+    constructor();
+    onItemClick(id: string): void;
+    onTransaction(_: EditorEvents["transaction"]): void;
+}
+
 export declare class InnerEditor extends Editor {
     aiEditor: AiEditor;
     userOptions: AiEditorOptions;
     constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options?: Partial<EditorOptions>);
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
+}
+
+export declare class LinkBubbleMenu extends AbstractBubbleMenu {
+    constructor();
+    connectedCallback(): void;
+    onItemClick(id: string): void;
+    onTransaction(_: EditorEvents["transaction"]): void;
 }
 
 export declare interface NameAndValue {
@@ -251,11 +324,38 @@ export declare class SparkAiModel extends AiModel {
     createAiClientUrl(): string;
 }
 
+export declare class TableBubbleMenu extends AbstractBubbleMenu {
+    constructor();
+    connectedCallback(): void;
+    onItemClick(id: string): void;
+    show(ids: string[]): void;
+    onTransaction(props: EditorEvents["transaction"]): void;
+    isAllTableSelected(selection: CellSelection): boolean;
+    isOneCellSelected(selection: CellSelection): boolean;
+    isColumnSelected(selection: CellSelection, view: EditorView): boolean;
+    isRowSelected(selection: CellSelection, view: EditorView): boolean;
+}
+
+export declare class TextSelectionBubbleMenu extends AbstractBubbleMenu {
+    private _instance?;
+    private aiBubbleInstance?;
+    private bubblePanelEnable;
+    private aiClient?;
+    constructor();
+    connectedCallback(): void;
+    onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;
+    set instance(value: Instance);
+    onItemClick(_id: string): void;
+    onTransaction(_: EditorEvents["transaction"]): void;
+    private createAiPanelElement;
+    private startChat;
+}
+
 export declare interface UploaderEvent {
-    onUploadBefore: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
-    onSuccess: (file: File, response: any) => any;
-    onFailed: (file: File, response: any) => void;
-    onError: (file: File, err: any) => void;
+    onUploadBefore?: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
+    onSuccess?: (file: File, response: any) => any;
+    onFailed?: (file: File, response: any) => void;
+    onError?: (file: File, err: any) => void;
 }
 
 export { }
