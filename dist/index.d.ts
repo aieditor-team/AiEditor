@@ -136,6 +136,10 @@ export declare type AiEditorOptions = {
     onChange?: (editor: AiEditor) => void;
     onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu)[];
+    textSelectionBubbleMenu?: {
+        enable?: boolean;
+        elementTagName?: string;
+    };
     link?: {
         autolink?: boolean;
         rel?: string;
@@ -357,5 +361,8 @@ export declare interface UploaderEvent {
     onFailed?: (file: File, response: any) => void;
     onError?: (file: File, err: any) => void;
 }
+
+
+export * from "i18next";
 
 export { }

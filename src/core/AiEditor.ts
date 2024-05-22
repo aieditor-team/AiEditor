@@ -67,6 +67,10 @@ export type AiEditorOptions = {
     onChange?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
+    textSelectionBubbleMenu?: {
+        enable?: boolean,
+        elementTagName?:string,
+    },
     link?: {
         autolink?: boolean,
         rel?: string,

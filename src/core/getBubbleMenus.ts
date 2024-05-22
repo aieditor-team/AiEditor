@@ -47,8 +47,10 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
 
 
 const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
-    const menuEl = document.createElement("aie-bubble-text") as TextSelectionBubbleMenu;
+    const elementTagName = aiEditor.options.textSelectionBubbleMenu?.elementTagName || "aie-bubble-text";
+    const menuEl = document.createElement(elementTagName) as TextSelectionBubbleMenu;
     aiEditor.eventComponents.push(menuEl);
+
     return createBubbleMenu("textSelectionBubble", {
         pluginKey: 'textSelectionBubble',
         element: menuEl,
@@ -173,7 +175,13 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
 
 export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
     const bubbleMenus: Extensions = [];
-    bubbleMenus.push(createTextSelectionBubbleMenu(aiEditor))
+    aiEditor.options.image
+    const textSelectionEnable = typeof aiEditor?.options.textSelectionBubbleMenu?.enable === "undefined" ? true : aiEditor?.options.textSelectionBubbleMenu?.enable;
+
+    if (textSelectionEnable) {
+        bubbleMenus.push(createTextSelectionBubbleMenu(aiEditor))
+    }
+
     bubbleMenus.push(createLinkBubbleMenu(aiEditor))
     bubbleMenus.push(createImageBubbleMenu(aiEditor))
     bubbleMenus.push(createTableBubbleMenu(aiEditor))

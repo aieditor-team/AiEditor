@@ -15021,21 +15021,7 @@ class Yi extends _a {
 }
 const Xe = Yi.createInstance();
 Xe.createInstance = Yi.createInstance;
-Xe.createInstance;
-Xe.dir;
-Xe.init;
-Xe.loadResources;
-Xe.reloadResources;
-Xe.use;
-Xe.changeLanguage;
-Xe.getFixedT;
-const re = Xe.t;
-Xe.exists;
-Xe.setDefaultNamespace;
-Xe.hasLoadedNamespace;
-Xe.loadNamespaces;
-Xe.loadLanguages;
-const Mv = ["paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
+const nD = Xe.createInstance, rD = Xe.dir, iD = Xe.init, sD = Xe.loadResources, oD = Xe.reloadResources, aD = Xe.use, lD = Xe.changeLanguage, uD = Xe.getFixedT, re = Xe.t, cD = Xe.exists, dD = Xe.setDefaultNamespace, fD = Xe.hasLoadedNamespace, hD = Xe.loadNamespaces, pD = Xe.loadLanguages, Mv = ["paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
 let Tv = class extends gi {
   constructor() {
     super(), this.menuData = Mv.map((e) => re(e)), this.dropDivHeight = "265px", this.dropDivWith = "150px";
@@ -38208,26 +38194,27 @@ function Oa(t, e) {
   });
 }
 const aS = (t) => {
-  const e = document.createElement("aie-bubble-text");
-  return t.eventComponents.push(e), Oa("textSelectionBubble", {
+  var r;
+  const e = ((r = t.options.textSelectionBubbleMenu) == null ? void 0 : r.elementTagName) || "aie-bubble-text", n = document.createElement(e);
+  return t.eventComponents.push(n), Oa("textSelectionBubble", {
     pluginKey: "textSelectionBubble",
-    element: e,
+    element: n,
     tippyOptions: {
       appendTo: t.container,
       placement: "top",
       arrow: !1,
-      onCreate(n) {
-        e.instance = n;
+      onCreate(i) {
+        n.instance = i;
       }
     },
-    shouldShow: ({ editor: n }) => {
-      if (!n.isEditable)
+    shouldShow: ({ editor: i }) => {
+      if (!i.isEditable)
         return !1;
-      const { state: { selection: r } } = n;
-      return !r.empty && ya(n.state.doc, {
-        from: r.from,
-        to: r.to
-      }).length > 0 && !n.isActive("link") && !n.isActive("image") && !(r instanceof _e);
+      const { state: { selection: s } } = i;
+      return !s.empty && ya(i.state.doc, {
+        from: s.from,
+        to: s.to
+      }).length > 0 && !i.isActive("link") && !i.isActive("image") && !(s instanceof _e);
     }
   });
 }, lS = (t) => {
@@ -38284,8 +38271,9 @@ const aS = (t) => {
     }
   });
 }, dS = (t) => {
+  var r, i;
   const e = [];
-  return e.push(aS(t)), e.push(lS(t)), e.push(uS(t)), e.push(cS(t)), e;
+  return t.options.image, (typeof ((r = t == null ? void 0 : t.options.textSelectionBubbleMenu) == null ? void 0 : r.enable) > "u" ? !0 : (i = t == null ? void 0 : t.options.textSelectionBubbleMenu) == null ? void 0 : i.enable) && e.push(aS(t)), e.push(lS(t)), e.push(uS(t)), e.push(cS(t)), e;
 }, fS = xe.create({
   name: "placeholder",
   addOptions() {
@@ -46555,7 +46543,7 @@ class QT extends S3 {
     return this.parseHtml(r);
   }
 }
-class SD {
+class PD {
   constructor(e) {
     B(this, "customLayout", !1);
     B(this, "innerEditor");
@@ -46721,7 +46709,7 @@ export {
   w1 as AbstractColorsMenuButton,
   gi as AbstractDropdownMenuButton,
   ge as AbstractMenuButton,
-  SD as AiEditor,
+  PD as AiEditor,
   Er as AiModelManager,
   iS as ImageBubbleMenu,
   QT as InnerEditor,
@@ -46729,5 +46717,19 @@ export {
   AE as SparkAiModel,
   sS as TableBubbleMenu,
   oS as TextSelectionBubbleMenu,
-  se as defineCustomElement
+  lD as changeLanguage,
+  nD as createInstance,
+  se as defineCustomElement,
+  rD as dir,
+  cD as exists,
+  uD as getFixedT,
+  fD as hasLoadedNamespace,
+  iD as init,
+  pD as loadLanguages,
+  hD as loadNamespaces,
+  sD as loadResources,
+  oD as reloadResources,
+  dD as setDefaultNamespace,
+  re as t,
+  aD as use
 };

@@ -11,3 +11,4 @@ export * from './components/bubbles/TextSelectionBubbleMenu.ts';
 export * from './components/bubbles/ImageBubbleMenu.ts';
 export * from './components/bubbles/LinkBubbleMenu.ts';
 export * from './components/bubbles/TableBubbleMenu.ts';
+export * from 'i18next';
