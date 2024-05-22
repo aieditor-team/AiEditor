@@ -4,39 +4,38 @@
 ## Preface
 
 
-In the age of AI, AIGC is booming. As a CMS vendor, we are also actively seeking the iterative direction of the next generation of CMS to adapt to the upcoming new era. One of the core competencies of the CMS is the ability to edit C (Content), which is embodied through the "editor". So for us, the editor is indispensable.
+In the era of AI, AIGC (AI-generated content) is flourishing. As a CMS (Content Management System) provider, we are actively seeking the next-generation CMS to adapt to this new era. One core capability of CMS is content editing, which is implemented through an "editor." Thus, an editor is indispensable for us.
 
+Unfortunately, many excellent open-source editors such as UEditor, KingEditor, and WangEditor have either ceased or paused updates. This is primarily due to two reasons: 
 
-However, it is unfortunate that many good open source editors such as UEditor, KingEditor, WangEditor, etc., without exception, have stopped or paused updates. The reason for this is nothing more than two points:
+- the high development difficulty (editor development has long been considered a massive challenge) .
+- the lack of a good business model. 
 
-- Difficult to develop (editor development has always been referred to as the Ancient Crater).
-- Lack of a good business model.
+Recently, WangEditor’s author announced a pause in updates, which deeply moved me. Their contributions have left an indelible mark on the path of open-source editors, making them pioneers and role models. We salute the author!
 
-Recently, I was very emotional to see the news that the authors of WangEditor announced the suspension of updates. They have left an indelible mark on the path of open source editors, they are predecessors and role models on this path, salute to the author!
 
 
 ## Decision
 
-**Editor** is the cornerstone of almost all text editing applications, in almost all domestic open source editors have stopped updating today, we decided to carry this banner, spend 5 ~ 10 years, to create a AI-oriented next-generation rich text editor, which not only helps us to build our own market barriers, but also a thing that benefits the country and the people.
+Editors are the cornerstone of nearly all text editing applications. With almost all domestic open-source editors ceasing updates, we have decided to take up this mantle. We plan to spend the next 5 to 10 years developing a next-generation rich text editor aimed at AI. This effort will not only help us build market barriers but also benefit society as a whole.
 
+So, what defines the "next generation"? I believe it should have the following characteristics:
 
-So, `'Next Generation'` what does the definition look like? I think there should be these characteristics:
+1. Comprehensive and stable data structures and algorithm support
+2. Compatibility with formats such as Word, WPS, and PDF for import and export
+3. Comprehensive team collaboration capabilities
+4. Comprehensive AI assistance capabilities
+5. Most importantly: a good business model
 
-- 1. Complete and stable data structure and algorithm support
-- 2. Compatible with Word, WPS, PDF and other formats for import and export
-- 3. Perfect teamwork ability
-- 4. Complete AI assistance capabilities
-- 5. **The most important thing is** : there is a good business model support
+For the first point (comprehensive and stable data structures and algorithm support), after extensive technical research, we chose the open-source ProseMirror as the editor's core. Its stable data structure, rich algorithm API, good reputation, and community support make it a suitable choice. Many commercial products using ProseMirror as their core have already achieved market success (e.g., Confluence).
 
-For `Point 1` (perfect and stable data structure and algorithm support), we finally chose the open source ProseMirror as the editor kernel after a lot of technical research, it is designed with a stable data structure, and has a rich algorithm API, and more importantly: it has a good reputation and community, and there are many commercial products that use it as a kernel for secondary development, and have been successful in the market (such as Confluence).
-
-`In the business model` , we have an already profitable CMS to support and complement each other. In the future, we will launch more CMS-related products, so the business model is valid: the more we invest in AiEditor, the more it will feed back to our commercial products, and there is a high probability that AiEditor will not be interrupted.
+Regarding the business model, we have a profitable CMS to support and complement this project. In the future, we will launch more CMS-related products, making our business model viable. The more we invest in AiEditor, the more it will benefit our commercial products, reducing the likelihood of AiEditor discontinuation.
 
 
 
 ## Open Source
 
-After a period of development, AiEditor has finally released its first open source version, and it already has the basic features that an editor should have, such as:
+After a period of development, AiEditor has released its first open-source version, featuring basic functionalities expected of an editor. 
 
 
 
@@ -50,21 +49,23 @@ After a period of development, AiEditor has finally released its first open sour
 | **AI capabilities**     | AI Resume, AI Optimization, AI Proofreading, AI Translation, Custom AI Menus and their Prompts                          |
 | **More features**      | Internationalization, Light Theme, Dark Theme, Mobile Version Adaptation, Full Screen Editing, @XXX (Mention)...                               |
 
-Next, we will also launch a series of functions that are more suitable for localization, such as:
 
-* Teamwork
-* AI Insert Image
-* AI Image Optimization
-* AI One-Click Formatting
-* The paste function has been further enhanced
-* Upload a video to get thumbnails automatically
-* WORD import, export
-* PDF export, PDF preview
-* Similar to Tencent Docs UI style
-* Notion-like drag-and-drop function
-* More large-scale model docking: Wenxin Yiyan, ChatGPT
 
- Let's witness together, a better text editor.
+ Next, we will introduce a series of features that are more suited for localization, such as:
+
+- Team Collaboration
+- AI Image Insertion
+- AI Image-to-Image Optimization
+- One-Click AI Formatting
+- Enhanced Paste Functionality
+- Automatic Video Thumbnail Generation
+- WORD Import and Export
+- PDF Export and Preview
+- Tencent Docs-like UI Style
+- Notion-like Drag-and-Drop Functionality
+- Integration with More Large Language Models
+
+Let’s witness together the development of a better text editor.
 
 ### Open source address
 - Gitee: https://gitee.com/aieditor-team/aieditor
