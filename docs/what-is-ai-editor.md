@@ -1,72 +1,62 @@
 # What is AiEditor
 
 
-## Preface
 
+## Introduction
 
-In the era of AI, AIGC (AI-generated content) is flourishing. As a CMS (Content Management System) provider, we are actively seeking the next-generation CMS to adapt to this new era. One core capability of CMS is content editing, which is implemented through an "editor." Thus, an editor is indispensable for us.
-
-Unfortunately, many excellent open-source editors such as UEditor, KingEditor, and WangEditor have either ceased or paused updates. This is primarily due to two reasons: 
-
-- the high development difficulty (editor development has long been considered a massive challenge) .
-- the lack of a good business model. 
-
-Recently, WangEditor’s author announced a pause in updates, which deeply moved me. Their contributions have left an indelible mark on the path of open-source editors, making them pioneers and role models. We salute the author!
+> AiEditor is a next-generation rich text editor for AI. It is developed based on Web Component and therefore supports almost any front-end framework such as  Vue, React, Angular, Svelte, etc. It is adapted to PC Web and mobile terminals, and provides two themes: light and dark. In addition, it also provides flexible configuration, and developers can easily use it to develop any text editing application.
 
 
 
-## Decision
+## Why develop AiEditor
 
-Editors are the cornerstone of nearly all text editing applications. With almost all domestic open-source editors ceasing updates, we have decided to take up this mantle. We plan to spend the next 5 to 10 years developing a next-generation rich text editor aimed at AI. This effort will not only help us build market barriers but also benefit society as a whole.
+Now, the AI era has arrived, and AIGC is booming.
 
-So, what defines the "next generation"? I believe it should have the following characteristics:
+In 2023, we started to choose a suitable AI rich text editor for our products, and we found excellent products such as CKEditor, TinyMCE, and Tiptap. However, they have more or less the following problems:
 
-1. Comprehensive and stable data structures and algorithm support
-2. Compatibility with formats such as Word, WPS, and PDF for import and export
-3. Comprehensive team collaboration capabilities
-4. Comprehensive AI assistance capabilities
-5. Most importantly: a good business model
+- CKEditor and TinyMCE are both based on the GPL open source agreement, and the open source agreement is not friendly.
+- Tiptap is a headless editor, and a lot of additional development work needs to be done based on it when using it.
 
-For the first point (comprehensive and stable data structures and algorithm support), after extensive technical research, we chose the open-source ProseMirror as the editor's core. Its stable data structure, rich algorithm API, good reputation, and community support make it a suitable choice. Many commercial products using ProseMirror as their core have already achieved market success (e.g., Confluence).
+**The most important thing is:**
+> When using the AI functions of editors such as CKEditor, TinyMCE, and Tiptap, you must use their **_paid_** plug-ins and AI cloud services. In this case, the applications will face many limitations if we develop based on it.
+> For example: we cannot be deployed privately and not use private LLM apiKey, etc.
 
-Regarding the business model, we have a profitable CMS to support and complement this project. In the future, we will launch more CMS-related products, making our business model viable. The more we invest in AiEditor, the more it will benefit our commercial products, reducing the likelihood of AiEditor discontinuation.
+Therefore, I decided to develop AiEditor to solve the above problems.
 
+## Positioning of AiEditor
 
-
-## Open Source
-
-After a period of development, AiEditor has released its first open-source version, featuring basic functionalities expected of an editor. 
-
-
-
-| function            | description                                                                    |
-|---------------|-----------------------------------------------------------------------|
-| **Basic features**      |Heading, body, font, font size, bold, italic, underline, strikethrough, link, inline code, superscript, subscript, divider, citation, print                    |
-| **Enhanced Features**      | Undo, Redo, Format Painter, Eraser (Clear Formatting), To-Do Items, Font Color, Background Color, Emoji, Alignment, Line Height, With (Without) Sequence List, Paragraph Indentation, Force Line Break |
-| **Attachment function**      | Support picture, video, file function, support selective upload, paste upload, drag and drop upload, support drag and resize...                          |
-| **Code functionality**      | Inline code, code blocks, language type selection, **AI auto-annotation**, **AI code interpretation**...                           |
-| **Markdown**  | Titles, citations, tables, images, code blocks, **highlight blocks (similar to vuepress ::: )**, various lists, bold, italics, strikethrough...          |
-| **AI capabilities**     | AI Resume, AI Optimization, AI Proofreading, AI Translation, Custom AI Menus and their Prompts                          |
-| **More features**      | Internationalization, Light Theme, Dark Theme, Mobile Version Adaptation, Full Screen Editing, @XXX (Mention)...                               |
+1. Our original intention in developing AiEditor was to solve AI editing problems. Therefore, in terms of AI, AiEditor supports the use of private apiKey to connect to any LLMs, including ChatGPT, iFlytek Spark and any privatized LLM.
+2. We hope that AiEditor has more usage scenarios and is not limited to any UI rendering framework, such as Vue, React, Angular, Svelte, etc.  Therefore, we developed it based on Web Component, which can be well integrated with any framework.
+3. We provide a friendly UI, support two themes, light and dark, support the writing habit of using Markdown, support flexible function configuration and custom layout, and use the open source protocol LGPL, which is more friendly than CKEditor and TinyMCE.
+4. In addition, we will continue to learn from excellent products, such as Notion, etc., to provide a series of useful AI functions... Of course, AiEditor is still evolving, and we need your support.
 
 
+## Open source
 
- Next, we will introduce a series of features that are more suited for localization, such as:
+After a period of development, AiEditor finally released its first open source version, and it already has the basic functions that an editor should have, such as:
 
-- Team Collaboration
-- AI Image Insertion
-- AI Image-to-Image Optimization
-- One-Click AI Formatting
-- Enhanced Paste Functionality
-- Automatic Video Thumbnail Generation
-- WORD Import and Export
-- PDF Export and Preview
-- Tencent Docs-like UI Style
-- Notion-like Drag-and-Drop Functionality
-- Integration with More Large Language Models
+| Function | Description                                                                                                                                                                                           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Basic functions** | Title, text, font, font size, bold, italics, underline, strikethrough, link, inline code, superscript, subscript, dividing line, quote, print                                                         |
+| **Enhanced Features** | Undo, Redo, Format Painter, Eraser (clear format), To-Do List, Font Color, Background Color, Emoji, Alignment, Line Height, With (or without) Sequence List, Paragraph Indentation, forced line breaks |
+| **Attachment function** | Supports pictures, videos, and file functions, supports selection upload, paste upload, drag and drop upload, and drag resize...                                                                      |
+| **Code function** | Inline code, code block, language type selection, **AI automatic annotation**, **AI code explanation**...                                                                                             |
+| **Markdown** | Titles, quotes, tables, pictures, code blocks, **highlight blocks (similar to vuepress's `:::` )**, various lists, bold, italics, strikethrough...                                                    |
+| **AI Function** | AI continuation, AI optimization, AI proofreading, AI translation, customized AI menu and its Prompts                                                                                                 |
+| **More features** | Internationalization, light theme, dark theme, mobile adaptation, full-screen editing, @someone (mentioned)...                                                                                 |
 
-Let’s witness together the development of a better text editor.
 
-### Open source address
-- Gitee: https://gitee.com/aieditor-team/aieditor
-- Github: https://github.com/aieditor-team/aieditor
+Next, we will also launch a series of features, such as:
+
+* Collaboration
+* insert image by AI
+* image-generating by AI
+* one-click layout by AI
+* Automatically obtain thumbnails for uploaded videos
+* WORD import and export
+* PDF export, and preview
+* Notion-like drag and drop features
+* etc
+
+### Github
+-  https://github.com/aieditor-team/aieditor

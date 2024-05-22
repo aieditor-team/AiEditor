@@ -144,7 +144,7 @@ export default defineConfig({
             {
                 text: 'Configuration',
                 items: [
-                    {text: 'Base', link: '/config/base'},
+                    {text: 'Basic', link: '/config/base'},
                     {text: 'ToolBar', link: '/config/toolbar'},
                     {text: 'Image', link: '/config/image'},
                     {text: 'Video', link: '/config/video'},
