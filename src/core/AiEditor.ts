@@ -276,19 +276,19 @@ export class AiEditor {
         }
     }
 
-    private onTransaction(props: EditorEvents['transaction']) {
-        this.eventComponents.forEach((zEvent) => {
-            zEvent.onTransaction && zEvent.onTransaction(props);
+    private onTransaction(transEvent: EditorEvents['transaction']) {
+        this.eventComponents.forEach((component) => {
+            component.onTransaction && component.onTransaction(transEvent);
         });
 
-        if (props.transaction.getMeta("ignoreChanged")) {
+        if (transEvent.transaction.getMeta("ignoreChanged")) {
             return;
         }
 
-        if (props.transaction.docChanged && this.options.onChange) {
+        if (transEvent.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
-        if (props.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey) {
+        if (transEvent.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey) {
             const html = this.innerEditor.getHTML();
             if ("<p></p>" === html || "" === html) {
                 localStorage.removeItem(this.options.contentRetentionKey);
@@ -428,7 +428,7 @@ export class AiEditor {
     }
 
     destroy() {
-        this.options.onDestroy && this.options.onDestroy(this);
+        this.options.onDestroy?.(this);
         this.innerEditor.destroy();
         this.eventComponents = [];
 
