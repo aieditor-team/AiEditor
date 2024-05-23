@@ -10,10 +10,10 @@ import {AiClient} from "../../ai/core/AiClient.ts";
 
 export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
 
-    private _instance?: Instance;
-    private aiBubbleInstance?: Instance;
-    private bubblePanelEnable = true;
-    private aiClient?: AiClient | null;
+    tippyInstance?: Instance;
+    aiBubbleInstance?: Instance;
+    bubblePanelEnable = true;
+    aiClient?: AiClient | null;
 
     constructor() {
         super();
@@ -104,13 +104,13 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
 
 
     set instance(value: Instance) {
-        this._instance = value;
+        this.tippyInstance = value;
     }
 
     onItemClick(_id: string): void {
         switch (_id) {
             case "ai":
-                this._instance?.hide();
+                this.tippyInstance?.hide();
                 break
             case "bold":
                 this.editor?.chain().toggleBold().run();
@@ -191,7 +191,7 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                 const textNode = schema.text(textarea.value);
                 dispatch(tr.replaceRangeWith(selection.from, selection.to, textNode))
                 this.aiBubbleInstance?.hide();
-                this._instance?.show();
+                this.tippyInstance?.show();
             }
         });
 
@@ -209,13 +209,13 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                 const {state: {selection, tr}, view: {dispatch}} = this.editor!
                 dispatch(tr.insertText(textarea.value, selection.to))
                 this.aiBubbleInstance?.hide();
-                this._instance?.show();
+                this.tippyInstance?.show();
             }
         });
 
         container.querySelector("#hide")!.addEventListener("click", () => {
             this.aiBubbleInstance?.hide();
-            this._instance?.show();
+            this.tippyInstance?.show();
         });
 
         container.querySelector("#go")!.addEventListener("click", () => {
@@ -266,7 +266,7 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                     }
                 })
             } else {
-                console.error("Ai model config error.")
+                console.error("AI model name config error. can not get AI model by name: \"" + options.ai?.bubblePanelModel+"\", please check config \"options.ai.bubblePanelModel\"")
             }
         }
     }
