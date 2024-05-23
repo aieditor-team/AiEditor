@@ -14,7 +14,7 @@ hero:
       text: Quick Start  
       link: /getting-started
     - theme: alt
-      text: Online Experience
+      text: Live Preview
       link: http://aieditor.jpress.cn
 
 
