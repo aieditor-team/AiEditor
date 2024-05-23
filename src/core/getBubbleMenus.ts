@@ -175,9 +175,11 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
 
 export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
     const bubbleMenus: Extensions = [];
-    aiEditor.options.image
-    const textSelectionEnable = typeof aiEditor?.options.textSelectionBubbleMenu?.enable === "undefined" ? true : aiEditor?.options.textSelectionBubbleMenu?.enable;
+    if (aiEditor.options.editable === false) {
+        return bubbleMenus;
+    }
 
+    const textSelectionEnable = !(aiEditor?.options.textSelectionBubbleMenu?.enable === false)
     if (textSelectionEnable) {
         bubbleMenus.push(createTextSelectionBubbleMenu(aiEditor))
     }
