@@ -341,10 +341,10 @@ export declare class TableBubbleMenu extends AbstractBubbleMenu {
 }
 
 export declare class TextSelectionBubbleMenu extends AbstractBubbleMenu {
-    private _instance?;
-    private aiBubbleInstance?;
-    private bubblePanelEnable;
-    private aiClient?;
+    tippyInstance?: Instance;
+    aiBubbleInstance?: Instance;
+    bubblePanelEnable: boolean;
+    aiClient?: AiClient | null;
     constructor();
     connectedCallback(): void;
     onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;
@@ -364,5 +364,6 @@ export declare interface UploaderEvent {
 
 
 export * from "i18next";
+export * from "tippy.js";
 
 export { }
