@@ -92,10 +92,7 @@ const createLinkBubbleMenu = (aiEditor: AiEditor) => {
             arrow: false,
         },
         shouldShow: ({editor}) => {
-            if (!editor.isEditable) {
-                return false;
-            }
-            return editor.isActive("link")
+            return editor.isEditable && editor.isActive("link")
         }
     })
 }
@@ -115,7 +112,7 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
                 const {ranges} = aiEditor.innerEditor.state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = aiEditor.innerEditor.view;
+                const {view} = aiEditor.innerEditor;
 
                 let node = view.nodeDOM(from) as HTMLElement
                 const imageEl = node.querySelector("img") as HTMLImageElement;
@@ -129,10 +126,7 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
             })
         },
         shouldShow: ({editor}) => {
-            if (!editor.isEditable) {
-                return false;
-            }
-            return editor.isActive("image")
+            return editor.isEditable && editor.isActive("image")
         }
     })
 }
@@ -153,11 +147,11 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
                 const {ranges} = selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                const view = aiEditor.innerEditor.view;
+                const {view, state} = aiEditor.innerEditor;
 
                 const domRect = posToDOMRect(view, from, to);
-                const tablePos = aiEditor.innerEditor.state.selection.$from.posAtIndex(0, 1);
-                const coordsAtPos = aiEditor.innerEditor.view.coordsAtPos(tablePos);
+                const tablePos = state.selection.$from.posAtIndex(0, 1);
+                const coordsAtPos = view.coordsAtPos(tablePos);
 
                 return {
                     ...domRect,
@@ -167,7 +161,7 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
         },
         shouldShow: ({editor}) => {
             const {state: {selection}} = editor;
-            return editor.isActive("table") && selection instanceof CellSelection
+            return editor.isEditable && editor.isActive("table") && selection instanceof CellSelection
         }
     })
 }
