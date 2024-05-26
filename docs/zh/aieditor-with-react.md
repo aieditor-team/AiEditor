@@ -42,7 +42,9 @@ export default App
 ## React 组件
 
 ```jsx
-import { AiEditor } from "aieditor";
+// "use client"; // Next.JS
+
+import { AiEditor, AiEditorOptions } from "aieditor";
 import "aieditor/dist/style.css";
 
 import { HTMLAttributes, forwardRef, useEffect, useRef } from "react";
@@ -52,10 +54,18 @@ type AIEditorProps = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> & {
   defaultValue?: string;
   value?: string;
   onChange?: (val: string) => void;
+  options?: AiEditorOptions;
 };
 
 export default forwardRef<HTMLDivElement, AIEditorProps>(function AIEditor(
-  { placeholder, defaultValue, value, onChange, ...props }: AIEditorProps,
+  {
+    placeholder,
+    defaultValue,
+    value,
+    onChange,
+    options,
+    ...props
+  }: AIEditorProps,
   ref
 ) {
   const divRef = useRef<HTMLDivElement>(null);
@@ -74,6 +84,7 @@ export default forwardRef<HTMLDivElement, AIEditorProps>(function AIEditor(
             onChange(ed.getMarkdown());
           }
         },
+        ...options,
       });
 
       aiEditorRef.current = aiEditor;
@@ -106,6 +117,7 @@ export default forwardRef<HTMLDivElement, AIEditorProps>(function AIEditor(
 
   return <div ref={divRef} {...props} />;
 });
+
 ```
 
 ### 使用
@@ -119,6 +131,26 @@ const [value, setValue] = useState("");
     value={value}
     onChange={(val) => setValue(val)}
 />
+```
+
+**在 `Next.JS` 中使用：**
+
+```jsx
+const AIEditor = dynamic(() => import("./AIEditor"), {
+  ssr: false,
+  loading: () => <Spin style={{ margin: "0 0 0 10px" }} />,
+});
+
+function App(){
+    const [value, setValue] = useState("");
+
+    return (<AIEditor
+        placeholder="描述代码的作用，支持 Markdown 语法.."
+        style={{ height: 220 }}
+        value={value}
+        onChange={(val) => setValue(val)}
+    />);
+}
 ```
 
 更多 react 集成示例请参考：https://gitee.com/aieditor-team/aieditor/tree/main/demos/react-ts 
