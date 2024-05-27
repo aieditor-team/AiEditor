@@ -88,7 +88,7 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             return !selection.empty && getTextBetween(editor.state.doc, {
                     from: selection.from,
                     to: selection.to
-                }).length > 0
+                }).trim().length > 0
                 && !editor.isActive("link")
                 && !editor.isActive("image")
                 // 选中表格的时候取消 文本的弹出
