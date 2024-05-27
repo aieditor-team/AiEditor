@@ -54,7 +54,7 @@ type AIEditorProps = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> & {
   defaultValue?: string;
   value?: string;
   onChange?: (val: string) => void;
-  options?: AiEditorOptions;
+  options?: Omit<AiEditorOptions, "element">;
 };
 
 export default forwardRef<HTMLDivElement, AIEditorProps>(function AIEditor(
