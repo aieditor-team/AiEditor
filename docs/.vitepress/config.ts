@@ -35,7 +35,6 @@ export default defineConfig({
                 },
 
                 nav: [
-                    {text: '首页', link: '/'},
                     {text: '开发文档', link: 'zh/what-is-ai-editor'},
                     {
                         text: '在线 Demo', items: [
@@ -44,7 +43,6 @@ export default defineConfig({
                         ]
                     },
                     {text: 'AiEditor Pro', link: 'zh/pro'},
-        
                     {
                         text: '获取源码', items: [
                             {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
@@ -80,6 +78,7 @@ export default defineConfig({
                             {text: '字号', link: '/zh/config/fontSize'},
                             {text: '提及', link: '/zh/config/mention'},
                             {text: '超链接', link: '/zh/config/link'},
+                            {text: '标注💪', link: '/zh/config/comment'},
                             {text: '国际化', link: '/zh/config/i18n'},
                             {text: '只读模式', link: '/zh/config/editable'},
                             {text: '自定义布局', link: '/zh/config/layout'},
