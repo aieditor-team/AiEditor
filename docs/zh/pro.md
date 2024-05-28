@@ -2,6 +2,8 @@
 
 很高兴，我们终于推出了 AiEditor Pro 商业版了！
 
+> 版预览地址：http://aieditor-pro.jpress.cn
+
 AiEditor Pro 的推出，有几个重大的意义：
 
 - 1、AiEditor 有了自己的商业模式，不用担心用着用着不更新了。
