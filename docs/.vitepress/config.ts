@@ -82,6 +82,7 @@ export default defineConfig({
                             {text: '国际化', link: '/zh/config/i18n'},
                             {text: '只读模式', link: '/zh/config/editable'},
                             {text: '自定义布局', link: '/zh/config/layout'},
+                            {text: '快捷键', link: '/zh/config/shortcut'},
                         ]
                     },
                     {
@@ -155,6 +156,7 @@ export default defineConfig({
                     {text: 'I18N', link: '/config/i18n'},
                     {text: 'Readonly Mode', link: '/config/editable'},
                     {text: 'Custom Layout', link: '/config/layout'},
+                    {text: 'Shortcut key', link: '/config/shortcut'},
                 ]
             },
             {

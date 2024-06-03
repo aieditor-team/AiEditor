@@ -16,23 +16,54 @@
 
 <!--.vitepress/theme/MyLayout.vue-->
 
+<style>
+.banner-home {
+  display: flex;
+  align-items: center;
+  margin: 60px auto;
+  width: 50%;
+  justify-content: center;
+}
+
+.banner-home img {
+  max-width: 100%;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 800px) {
+  .banner-home {
+    width: 90%;
+    margin: 30px auto;
+  }
+}
+</style>
+
 <script setup>
 import DefaultTheme from 'vitepress/theme'
+
 const {Layout} = DefaultTheme
 </script>
 
 
 <template>
-    <Layout>
+  <Layout>
 
-        <!--docs: https://vitepress.dev/guide/extending-default-theme#layout-slots-->
-<!--        <template #doc-before>-->
-<!--            <div style="margin-bottom: 30px">-->
-<!--                <a href="https://mp.weixin.qq.com/s/V34VkARgBCBKdytSlKhosg" target="_blank">-->
-<!--                    <img src="/assets/image/admin-banner.jpg">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </template>-->
+    <!--docs: https://vitepress.dev/guide/extending-default-theme#layout-slots-->
+    <template #doc-before>
+      <div style="margin-bottom: 30px">
+        <a href="https://aiadmin.cc" target="_blank">
+          <img src="/assets/image/admin-banner.jpg">
+        </a>
+      </div>
+    </template>
 
-    </Layout>
+    <template #home-features-after>
+      <div class="banner-home">
+        <a href="https://aiadmin.cc" target="_blank">
+          <img src="/assets/image/admin-banner.jpg">
+        </a>
+      </div>
+    </template>
+
+  </Layout>
 </template>
