@@ -15,7 +15,7 @@ new AiEditor({
         url: "ws://127.0.0.1:8080?somekey=value",
         documentName: "my document",
         token: "your-token",
-        userName: cnNames[Math.floor(Math.random() * cnNames.length)],
+        userName: "Michael Yang",
         userColor: "#abcdef",
         onAuthenticated: () => {
         },
@@ -29,7 +29,7 @@ new AiEditor({
 
 - **url**: 多人协作的后台服务，后台服务（SDK）由 AIEditor 官方提供。
 - **documentName**: 文档名称（或文档 ID），
-- **token**:  用户校验的 Token，用于后台对当前用户进行校验
+- **token**:  用户校验的 Token（或 JWT 等），用于后台对当前用户进行校验
 - **userName**:  用户的昵称
 - **userColor**:  用户的颜色（用户在编辑器显示鼠标颜色、选中文字的背景颜色等），当未配置时，系统自动生成。
 - **onAuthenticated**:  监听用户的 token 授权成功。

@@ -15,7 +15,7 @@ new AiEditor({
         url: "ws://127.0.0.1:8080?somekey=value",
         documentName: "my document",
         token: "your-token",
-        userName: cnNames[Math.floor(Math.random() * cnNames.length)],
+        userName: "Michael Yang",
         userColor: "#abcdef",
         onAuthenticated: () => {
         },
@@ -29,7 +29,7 @@ new AiEditor({
 
 - **url**: Backend service for multi-person collaboration, provided by AIEditor official.
 - **documentName**: document name (or document ID),
-- **token**: user verification token, used to verify the current user in backend service
+- **token**: user verification token（or user JWT）, used to verify the current user in backend service
 - **userName**: user nickname
 - **userColor**: user color (the color of the mouse displayed in the editor, the background color of the selected text, etc.), when not configured, the system automatically generates it.
 - **onAuthenticated**: Monitors the user's token authorization success.
