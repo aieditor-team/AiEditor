@@ -55,3 +55,6 @@ Visit: https://aieditor.dev/zh/getting-started.html
 ## Communication
 
 QQ group: 560291578
+
+## Attention
+All Tiptap Pro extensions require access to Tiptap's private registry[https://cloud.tiptap.dev/pro-extensions], set this up first.

@@ -40,6 +40,9 @@
     "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
+    "@tiptap-pro/extension-details": "^2.8.9",
+    "@tiptap-pro/extension-details-content": "^2.8.9",
+    "@tiptap-pro/extension-details-summary": "^2.8.9",
     "@tiptap/core": "^2.4.0",
     "@tiptap/extension-bubble-menu": "^2.4.0",
     "@tiptap/extension-character-count": "^2.4.0",

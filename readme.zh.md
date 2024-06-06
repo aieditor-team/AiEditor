@@ -57,3 +57,7 @@
 QQ 群：560291578
 
 ![qq-group.png](docs%2Fassets%2Fimage%2Fqq-group.png)
+
+## 注意
+
+所有 Tiptap Pro 扩展都需要访问 Tiptap 的私人注册表[https://cloud.tiptap.dev/pro-extensions]，请先进行设置。

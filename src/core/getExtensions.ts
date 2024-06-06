@@ -22,6 +22,9 @@ import {Superscript} from "@tiptap/extension-superscript";
 import {Subscript} from "@tiptap/extension-subscript";
 import {TaskList} from "@tiptap/extension-task-list";
 import {TaskItem} from "@tiptap/extension-task-item";
+import {Details} from '@tiptap-pro/extension-details';
+import {DetailsSummary} from '@tiptap-pro/extension-details-summary';
+import {DetailsContent} from '@tiptap-pro/extension-details-content';
 import {CodeBlockExt} from "../extensions/CodeBlockExt.ts";
 import {common, createLowlight} from "lowlight";
 import {VideoExt} from "../extensions/VideoExt.ts";
@@ -136,6 +139,22 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 breaks: true,               // New lines (\n) in markdown input are converted to <br>
                 transformPastedText: true,  // Allow to paste markdown text in the editor
                 transformCopiedText: false,  // Copied text is transformed to markdown
+            }),
+            Details.configure({
+              persist: true,
+              HTMLAttributes: {
+                class: 'details',
+              },
+            }),
+            DetailsContent.configure({
+              HTMLAttributes: {
+                class: 'details-content',
+              },
+            }),
+            DetailsSummary.configure({
+              HTMLAttributes: {
+                class: 'details-summary',
+              },
             }),
             ContainerExt,
             ...getBubbleMenus(editor),

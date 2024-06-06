@@ -16,6 +16,7 @@ deps/
 aimp/
 /docs/.vitepress/dist/
 /demos/vanilla-ts/dist/
+.history
 
 # Editor directories and files
 .vscode/*
