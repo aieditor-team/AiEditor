@@ -16,7 +16,13 @@ new AiEditor({
         documentName: "my document",
         token: "your-token",
         userName: cnNames[Math.floor(Math.random() * cnNames.length)],
-        userColor: "#abcdef"
+        userColor: "#abcdef",
+        onAuthenticated: () => {
+        },
+        onAuthenticationFailed: (reason: string) => {
+        },
+        onUsersUpdate: (users: any[]) => {
+        },
     },
 })
 ```
@@ -26,3 +32,6 @@ new AiEditor({
 - **token**:  用户校验的 Token，用于后台对当前用户进行校验
 - **userName**:  用户的昵称
 - **userColor**:  用户的颜色（用户在编辑器显示鼠标颜色、选中文字的背景颜色等），当未配置时，系统自动生成。
+- **onAuthenticated**:  监听用户的 token 授权成功。
+- **onAuthenticationFailed**:  监听用户的 token 授权失败。
+- **onUsersUpdate**:  监听用户发生变化，比如有新用户加入文档编辑，或者有用户离开等。

@@ -16,7 +16,13 @@ new AiEditor({
         documentName: "my document",
         token: "your-token",
         userName: cnNames[Math.floor(Math.random() * cnNames.length)],
-        userColor: "#abcdef"
+        userColor: "#abcdef",
+        onAuthenticated: () => {
+        },
+        onAuthenticationFailed: (reason: string) => {
+        },
+        onUsersUpdate: (users: any[]) => {
+        },
     },
 })
 ```
@@ -26,3 +32,6 @@ new AiEditor({
 - **token**: user verification token, used to verify the current user in backend service
 - **userName**: user nickname
 - **userColor**: user color (the color of the mouse displayed in the editor, the background color of the selected text, etc.), when not configured, the system automatically generates it.
+- **onAuthenticated**: Monitors the user's token authorization success.
+- **onAuthenticationFailed**: Monitors the user's token authorization failure.
+- **onUsersUpdate**: Monitors user changes, such as new users joining the document editing, or users leaving.
