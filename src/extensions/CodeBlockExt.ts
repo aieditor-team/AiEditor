@@ -436,8 +436,8 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     // props.editor.chain().addCodeComments(props.node, (props.getPos as Function)());
 
                     const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
-                    const clodeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
-                    props.editor.chain().addCodeComments(clodeBlock, coordinates!.pos);
+                    const codeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
+                    props.editor.chain().addCodeComments(codeBlock, coordinates!.pos);
                 });
 
             container.querySelector(".aie-codeblock-tools-explain")
@@ -446,8 +446,8 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     // props.editor.chain().addCodeExplain(props.node, (props.getPos as Function)());
 
                     const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
-                    const clodeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
-                    props.editor.chain().addCodeExplain(clodeBlock, coordinates!.pos);
+                    const codeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
+                    props.editor.chain().addCodeExplain(codeBlock, coordinates!.pos);
                 });
 
             return {
