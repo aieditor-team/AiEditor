@@ -2,6 +2,22 @@
 
 
 ## 代码示例
+使用 ChatGPT
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                apiKey:"sk-alQ96zbDn*****"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
+
+或者星火大模型
 
 ```typescript
 new AiEditor({
@@ -11,11 +27,11 @@ new AiEditor({
             spark:{
                 appId:"****",
                 apiKey:"****",
-                apiSecret:"****"
+                apiSecret:"****",
+                version:"v3.5" //支持 v2.1 v3.1 v3.5
             }
         },
         bubblePanelEnable: true,
-        bubblePanelModel: "spark",
         onCreateClientUrl: "...."
     },
 })
@@ -39,7 +55,7 @@ version?: string,
 - **appId**：应用 ID。
 - **apiKey**：api Key。
 - **apiSecret**：api 秘钥。
-- **version**: 版本，默认为 v3.1。
+- **version**: 版本，默认为 v3.5  支持 v2.1、 3.1、  3.5。
 
 
 ## 服务端签名

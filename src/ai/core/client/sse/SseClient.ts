@@ -1,18 +1,18 @@
 import {AiClientListener} from "../../AiClientListener.ts";
 import {AiClient} from "../../AiClient.ts";
 
-type configType = { url: string, method: string, headers?: Record<string, any> }
+type SSEConfig = { url: string, method: string, headers?: Record<string, any> }
 
 export class SseClient implements AiClient {
     isStop: boolean = false
-    config: configType;
+    config: SSEConfig;
     fetch?: Response;
     isOpen: boolean = false;
     payload?: string;
     listener: AiClientListener;
     ctrl = new AbortController();
 
-    constructor(config: configType, listener: AiClientListener) {
+    constructor(config: SSEConfig, listener: AiClientListener) {
         this.config = config;
         this.listener = listener;
     }

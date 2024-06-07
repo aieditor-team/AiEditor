@@ -28,8 +28,8 @@ export class WenXinAiModel extends AiModel {
 
                 listener.onMessage({
                     status: message.is_end ? 2 : 1,
-                    role: "",
-                    content: message.result,
+                    role: "assistant",
+                    content: message.result || "",
                     index: message.sentence_id
                 })
             }
@@ -47,8 +47,8 @@ export class WenXinAiModel extends AiModel {
     }
 
     createAiClientUrl(): string {
-        const wenxinAiModelConfig = this.aiModelConfig as WenXinAiModelConfig;
-        return `https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token=${wenxinAiModelConfig.access_token}`
+        const config = this.aiModelConfig as WenXinAiModelConfig;
+        return `https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions_pro?access_token=${config.access_token}`
     }
 
 

@@ -1,6 +1,38 @@
 # 大语言模型
 
-目前，AiEditor 支持 `星火大模型`、`文心一言`以及 `自定义后端` 类型的大语言模型。
+目前，AiEditor 支持 `Openai（ChatGPT）`、`星火大模型`、`文心一言`以及 `自定义后端` 类型的大语言模型。
+
+## Openai（ChatGPT）
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                apiKey:"sk-alQ96zbDn*****"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
+或者通过 Openai 的接口使用 暗月之面
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                endpoint:"https://api.moonshot.cn",
+                model:"moonshot-v1-8k",
+                apiKey:"sk-alQ96zb******"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
+
+
 
 ## 星火大模型
 

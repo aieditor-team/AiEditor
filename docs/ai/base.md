@@ -1,7 +1,23 @@
-# AI Infrastructure
+# AI Configuration
 
 
 ## Samples
+
+use ChatGPT
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                apiKey:"sk-alQ96zbDn*****"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
+OR other LLMs
 
 ```typescript
 new AiEditor({
@@ -11,11 +27,11 @@ new AiEditor({
             spark:{
                 appId:"****",
                 apiKey:"****",
-                apiSecret:"****"
+                apiSecret:"****",
+                version:"v3.5" //support v2.1 v3.1 v3.5
             }
         },
         bubblePanelEnable: true,
-        bubblePanelModel: "spark",
         onCreateClientUrl: "...."
     },
 })

@@ -1,6 +1,37 @@
 # Large language models
 
-Currently, AiEditor supports the `Spark large model`, `Wenxin Yiyuan`, and `custom backend types of large language models`.
+Currently, AiEditor supports the `Openai（ChatGPT`, `Spark large model`, `Wenxin Yiyuan`  and `custom LLMs`.
+
+##
+
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                apiKey:"sk-alQ96zbDn*****"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
+Or use `moonshot` through Openai's config
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                endpoint:"https://api.moonshot.cn",
+                model:"moonshot-v1-8k",
+                apiKey:"sk-alQ96zb******"
+            } as OpenaiModelConfig
+        }
+    },
+})
+```
 
 ## Spark large
 
