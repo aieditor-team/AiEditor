@@ -1,5 +1,16 @@
 # AiEditor ChangeLog
 
+## v1.0.6 20240607:
+- 新增：AI 大模型新增对 Openai 和 暗月之面 的支持
+- 新增：编辑元素新增对 Figure 和 Figcaption 元素的支持
+- 新增：AI Prompt 提示词自定义添加对 {content} 占位符的支持
+- 优化：修改星火大模型默认版本为 v3.5
+- 优化：重构自定义大模型 CustomAiModelConfig 的方法名称和参数
+- 优化：重命名 AI 模块里的某些方法和参数，使之更加通俗易懂
+- 优化：优化代码里的一些单词平行错误
+- 优化：优化 AIEditor 内部的一些样式名称，防止产生可能的冲突
+
+
 
 ## v1.0.4 20240528:
 - 新增：textSelectionBubbleMenu 添加开关配置的支持

@@ -20,7 +20,7 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
 }
 
 declare interface AiClient {
-    start: (message: string) => void;
+    start: (payload: string) => void;
     stop: () => void;
 }
 
@@ -192,9 +192,9 @@ declare abstract class AiModel {
     abstract createAiClient(url: string, listener: AiMessageListener): AiClient;
     /**
      * 封装消息，把 prompt 转换为协议需要的格式
-     * @param promptMessage
+     * @param prompt
      */
-    abstract wrapMessage(promptMessage: string): any;
+    abstract wrapPayload(prompt: string): any;
 }
 
 declare interface AiModelConfig {
@@ -253,7 +253,7 @@ export declare interface NameAndValue {
 export declare class SparkAiModel extends AiModel {
     constructor(editor: Editor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
-    wrapMessage(promptMessage: string): string;
+    wrapPayload(promptMessage: string): string;
     private getDomain;
     createAiClientUrl(): string;
 }
