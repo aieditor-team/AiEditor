@@ -7,7 +7,7 @@ export class HttpStreamSocketClient implements AiClient {
     config: configType;
     fetch?: Response;
     isOpen: boolean = false;
-    message?: string;
+    payload?: string;
     listener: AiClientListener;
 
     constructor(config: configType, listener: AiClientListener) {
@@ -16,8 +16,8 @@ export class HttpStreamSocketClient implements AiClient {
     }
 
 
-    start(message: string) {
-        this.message = message;
+    start(payload: string) {
+        this.payload = payload;
         this.onOpen()
         this.listener.onStart(this);
     }
@@ -34,10 +34,10 @@ export class HttpStreamSocketClient implements AiClient {
         }
     }
 
-    async send(message: string) {
+    async send(payload: string) {
         if (this.isOpen) {
             try {
-                this.fetch = await fetch(this.config.url, { method: this.config.method, body: message })
+                this.fetch = await fetch(this.config.url, { method: this.config.method, body: payload })
                 const response = this.fetch
                 if (!response.body) throw new Error("response.body is none")
 
@@ -61,7 +61,7 @@ export class HttpStreamSocketClient implements AiClient {
 
     protected onOpen() {
         this.isOpen = true;
-        this.send(this.message!);
+        this.send(this.payload!);
     }
 
     protected onMessage(answer: string) {

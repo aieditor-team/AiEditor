@@ -1,10 +1,10 @@
-import { AiClient } from "../core/AiClient.ts";
-import { AiMessageListener } from "../core/AiMessageListener.ts";
-import { AiModel } from "../core/AiModel.ts";
-import { HttpStreamSocketClient } from "../core/client/http/HttpSocketClient.ts";
-import { AiGlobalConfig } from "../AiGlobalConfig.ts";
-import { Editor } from "@tiptap/core";
-import { WenXinAiModelConfig } from "./WenXinAiModelConfig.ts";
+import {AiClient} from "../core/AiClient.ts";
+import {AiMessageListener} from "../core/AiMessageListener.ts";
+import {AiModel} from "../core/AiModel.ts";
+import {HttpStreamSocketClient} from "../core/client/http/HttpSocketClient.ts";
+import {AiGlobalConfig} from "../AiGlobalConfig.ts";
+import {Editor} from "@tiptap/core";
+import {WenXinAiModelConfig} from "./WenXinAiModelConfig.ts";
 
 
 export class WenXinAiModel extends AiModel {
@@ -17,12 +17,12 @@ export class WenXinAiModel extends AiModel {
     }
 
     createAiClient(url: string, listener: AiMessageListener): AiClient {
-        return new HttpStreamSocketClient({ url, method: "POST" }, {
+        return new HttpStreamSocketClient({url, method: "POST"}, {
             onStart: listener.onStart,
             onStop: listener.onStop,
 
-            onMessage: (messageData: any) => {
-                const dataMatch = messageData.match(/data:([\s\S]*)$/)
+            onMessage: (bodyString: string) => {
+                const dataMatch = bodyString.match(/data:([\s\S]*)$/)
                 if (!dataMatch) return
                 const message = JSON.parse(dataMatch[1]) as any;
 
@@ -36,13 +36,13 @@ export class WenXinAiModel extends AiModel {
         })
     }
 
-    wrapMessage(promptMessage: string) {
+    wrapPayload(prompt: string) {
         const object = {
             messages: [] as any[],
             "stream": true
         }
 
-        object.messages.push({ role: "user", content: promptMessage })
+        object.messages.push({role: "user", content: prompt})
         return JSON.stringify(object);
     }
 

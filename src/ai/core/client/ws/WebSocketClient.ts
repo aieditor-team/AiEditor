@@ -7,7 +7,7 @@ export class WebSocketClient implements AiClient {
     url: string;
     webSocket?: WebSocket;
     isOpen: boolean = false;
-    message?: string;
+    payload?: string;
     listener: AiClientListener;
 
     constructor(url: string, listener: AiClientListener) {
@@ -16,9 +16,9 @@ export class WebSocketClient implements AiClient {
     }
 
 
-    start(message: string) {
+    start(payload: string) {
         this.listener.onStart(this);
-        this.message = message;
+        this.payload = payload;
         this.webSocket = new WebSocket(this.url);
         this.webSocket.onopen = (e) => this.onOpen(e)
         this.webSocket.onmessage = (e) => this.onMessage(e)
@@ -46,7 +46,7 @@ export class WebSocketClient implements AiClient {
 
     protected onOpen(_: Event) {
         this.isOpen = true;
-        this.send(this.message!);
+        this.send(this.payload!);
     }
 
     protected onMessage(event: MessageEvent) {

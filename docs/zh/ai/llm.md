@@ -53,10 +53,10 @@ new AiEditor({
                         "jwt": "xxxx"
                     }
                 },
-                messageWrapper: (message: string) => {
+                wrapPayload: (message: string) => {
                     return JSON.stringify({prompt: message})
                 },
-                messageParser: (message: string) => {
+                parseMessage: (message: string) => {
                     return {
                         role: "assistant",
                         content: message,
@@ -75,8 +75,8 @@ new AiEditor({
 
 - `url`: 字符串，或者返回一个字符串的方法
 - `headers`: 自定义 sse 请求的 http 头信息
-- `messageWrapper`: 把用户的 `prompt` 字符串，转换为 `url` 接口所需要的 `json` 格式（亦或者其他格式）。
-- `messageParser`：把后端响应的 `body` 内容，转换为 `AiMessage` 格式。
+- `wrapPayload`: 把用户的 `prompt` 字符串，转换为 `url` 接口所需要的 `json` 格式（亦或者其他格式）。
+- `parseMessage`：把后端响应的 `body` 内容，转换为 `AiMessage` 格式。
 
 `AiMessage` 定义如下：
 

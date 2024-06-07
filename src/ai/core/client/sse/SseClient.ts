@@ -8,7 +8,7 @@ export class SseClient implements AiClient {
     config: configType;
     fetch?: Response;
     isOpen: boolean = false;
-    message?: string;
+    payload?: string;
     listener: AiClientListener;
     ctrl = new AbortController();
 
@@ -18,8 +18,8 @@ export class SseClient implements AiClient {
     }
 
 
-    start(message: string) {
-        this.message = message;
+    start(payload: string) {
+        this.payload = payload;
         this.onOpen()
         this.listener.onStart(this);
     }
@@ -36,14 +36,14 @@ export class SseClient implements AiClient {
         }
     }
 
-    async send(message: string) {
+    async send(payload: string) {
         if (this.isOpen) {
             try {
                 const response = await fetch(this.config.url,
                     {
                         method: this.config.method || "POST",
                         headers: this.config.headers,
-                        body: message
+                        body: payload
                     }
                 );
                 if (!response.ok) {
@@ -96,7 +96,7 @@ export class SseClient implements AiClient {
 
     protected onOpen() {
         this.isOpen = true;
-        this.send(this.message!);
+        this.send(this.payload!);
     }
 
     protected onMessage(answer: string) {

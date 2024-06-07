@@ -17,7 +17,7 @@ export class SparkAiModel extends AiModel {
     constructor(editor: Editor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "spark");
         this.aiModelConfig = {
-            version: "v3.1",
+            version: "v3.5",
             protocol: "wss",
             ...globalConfig.models["spark"]
         } as SparkAiModelConfig;
@@ -28,8 +28,8 @@ export class SparkAiModel extends AiModel {
             onStart: listener.onStart,
             onStop: listener.onStop,
             // 星火内容解析 https://www.xfyun.cn/doc/spark/Web.html#_1-%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E
-            onMessage: (messageData: any) => {
-                const message = JSON.parse(messageData) as any;
+            onMessage: (bodyString: string) => {
+                const message = JSON.parse(bodyString) as any;
                 if (message.payload) {
                     //通知 ai 消费情况
                     if (message.payload.usage?.text?.total_tokens) {
@@ -52,7 +52,7 @@ export class SparkAiModel extends AiModel {
         })
     }
 
-    wrapMessage(promptMessage: string) {
+    wrapPayload(promptMessage: string) {
         const sparkAiModelConfig = this.aiModelConfig as SparkAiModelConfig;
         const object = {
             "header": {

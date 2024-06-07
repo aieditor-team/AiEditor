@@ -24,9 +24,9 @@ export class CustomAiModel extends AiModel {
         const aiClientListener: AiClientListener = {
             onStart: listener.onStart,
             onStop: listener.onStop,
-            onMessage: (messageResp) => {
+            onMessage: (bodyString) => {
                 const config = this.aiModelConfig as CustomAiModelConfig;
-                const aiMessage = config.messageParser?.(messageResp);
+                const aiMessage = config.parseMessage?.(bodyString);
                 if (aiMessage) listener.onMessage(aiMessage);
             }
         };
@@ -38,9 +38,9 @@ export class CustomAiModel extends AiModel {
             : new WebSocketClient(url, aiClientListener)
     }
 
-    wrapMessage(promptMessage: string) {
+    wrapPayload(promptMessage: string) {
         const config = this.aiModelConfig as CustomAiModelConfig;
-        return config.messageWrapper?.(promptMessage);
+        return config.wrapPayload?.(promptMessage);
     }
 
 
