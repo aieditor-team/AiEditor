@@ -18,6 +18,7 @@ export const zh  =  {
     "underline": "下划线",
     "strike": "删除线",
     "link": "链接",
+    "source-code": "源代码",
     "code": "行内代码",
     "subscript": "下标",
     "superscript": "上标",
