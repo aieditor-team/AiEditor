@@ -6,12 +6,11 @@ export class Painter extends AbstractMenuButton {
 
     constructor() {
         super();
-        const template = `
+        this.template = `
         <div style="height: 16px">
         ${this.svg}
         </div>
         `;
-        this.template = template;
         this.registerClickListener();
     }
 

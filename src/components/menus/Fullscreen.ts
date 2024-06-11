@@ -1,4 +1,4 @@
-import { AbstractMenuButton } from "../AbstractMenuButton.ts";
+import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 
 export class Fullscreen extends AbstractMenuButton {
   fullscreenSvg =
@@ -9,12 +9,11 @@ export class Fullscreen extends AbstractMenuButton {
 
   constructor() {
     super();
-    const template = `
+    this.template = `
         <div>
         ${this.fullscreenSvg}
         </div>
         `;
-    this.template = template;
     this.registerClickListener();
   }
 
