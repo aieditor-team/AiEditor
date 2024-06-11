@@ -18,6 +18,7 @@ export const en =  {
     "underline": "Underline",
     "strike": "Strikethrough",
     "link": "Link",
+    "source-code": "Source code",
     "code": "Inline code",
     "subscript": "Subscript",
     "superscript": "Superscript",

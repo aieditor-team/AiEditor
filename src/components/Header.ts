@@ -21,6 +21,7 @@ import {IndentDecrease} from "./menus/IndentDecrease";
 import {IndentIncrease} from "./menus/IndentIncrease";
 import {Align} from "./menus/Align";
 import {Link} from "./menus/Link";
+import {SourceCode} from "./menus/SourceCode";
 import {Todo} from "./menus/Todo";
 import {LineHeight} from "./menus/LineHeight";
 import {Quote} from "./menus/Quote";
@@ -59,6 +60,7 @@ defineCustomElement('aie-italic', Italic);
 defineCustomElement('aie-underline', Underline);
 defineCustomElement('aie-strike', Strike);
 defineCustomElement('aie-link', Link);
+defineCustomElement('aie-source-code', SourceCode);
 defineCustomElement('aie-code', Code);
 defineCustomElement('aie-subscript', Subscript);
 defineCustomElement('aie-superscript', Superscript);
@@ -92,7 +94,7 @@ export type MenuButtonOptions = {
 }
 
 const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
-    , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
+    , "strike", "link","source-code", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "printer", "fullscreen", "ai"
 ];
