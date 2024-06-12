@@ -1,28 +1,37 @@
 import {AiMessageListener} from "./AiMessageListener.ts";
 import {AiClient} from "./AiClient.ts";
-import {Editor} from "@tiptap/core";
 import {AiGlobalConfig} from "../AiGlobalConfig.ts";
 import {AiModelConfig} from "./AiModelConfig.ts";
-
-export interface ChatController {
-    stop: () => void
-}
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 
 export abstract class AiModel {
 
-    editor: Editor;
-    globalConfig: AiGlobalConfig;
-    aiModelName: string;
-    aiModelConfig: AiModelConfig;
+    public editor: InnerEditor;
+    public globalConfig: AiGlobalConfig;
+    public aiModelName: string;
+    public aiModelConfig: AiModelConfig;
 
-
-    constructor(editor: Editor, globalConfig: AiGlobalConfig, aiModelName: string) {
+    protected constructor(editor: InnerEditor, globalConfig: AiGlobalConfig, aiModelName: string) {
         this.editor = editor;
         this.globalConfig = globalConfig;
         this.aiModelName = aiModelName;
         this.aiModelConfig = globalConfig.models[aiModelName];
     }
+
+    chatWithPayload(payload: any, listener: AiMessageListener): void {
+        const startFunc = (url: string) => {
+            const aiClient = this.createAiClient(url, listener);
+            aiClient.start(typeof payload === "string" ? payload : JSON.stringify(payload))
+        }
+
+        if (this.globalConfig.onCreateClientUrl) {
+            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, startFunc)
+        } else {
+            startFunc(this.createAiClientUrl())
+        }
+    }
+
 
     chat(selectedText: string, prompt: string, listener: AiMessageListener): void {
         const startFunc = (url: string) => {

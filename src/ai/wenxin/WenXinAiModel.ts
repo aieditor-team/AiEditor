@@ -3,13 +3,13 @@ import {AiMessageListener} from "../core/AiMessageListener.ts";
 import {AiModel} from "../core/AiModel.ts";
 import {HttpStreamSocketClient} from "../core/client/http/HttpSocketClient.ts";
 import {AiGlobalConfig} from "../AiGlobalConfig.ts";
-import {Editor} from "@tiptap/core";
 import {WenXinAiModelConfig} from "./WenXinAiModelConfig.ts";
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 
 export class WenXinAiModel extends AiModel {
 
-    constructor(editor: Editor, globalConfig: AiGlobalConfig) {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "wenxin");
         this.aiModelConfig = {
             ...globalConfig.models["wenxin"]

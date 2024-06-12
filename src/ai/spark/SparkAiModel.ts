@@ -3,7 +3,6 @@ import {AiMessageListener} from "../core/AiMessageListener.ts";
 import {AiModel} from "../core/AiModel.ts";
 import {WebSocketClient} from "../core/client/ws/WebSocketClient.ts";
 import {AiGlobalConfig} from "../AiGlobalConfig.ts";
-import {Editor} from "@tiptap/core";
 import {SparkAiModelConfig} from "./SparkAiModelConfig.ts";
 
 // @ts-ignore
@@ -11,10 +10,11 @@ import hmacSHA256 from 'crypto-js/hmac-sha256';
 // @ts-ignore
 import Base64 from 'crypto-js/enc-base64';
 import {uuid} from "../../util/uuid.ts";
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 export class SparkAiModel extends AiModel {
 
-    constructor(editor: Editor, globalConfig: AiGlobalConfig) {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "spark");
         this.aiModelConfig = {
             version: "v3.5",
@@ -69,15 +69,11 @@ export class SparkAiModel extends AiModel {
             "payload": {
                 "message": {
                     "text": [
-                        // {"role": "user", "content": "你会做什么"}
+                        {"role": "user", "content": promptMessage}
                     ] as any[]
                 }
             }
         }
-
-        object.payload.message.text.push(
-            {role: "user", content: promptMessage}
-        )
 
         return JSON.stringify(object);
     }

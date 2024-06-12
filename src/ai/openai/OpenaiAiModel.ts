@@ -2,14 +2,14 @@ import {AiClient} from "../core/AiClient.ts";
 import {AiMessageListener} from "../core/AiMessageListener.ts";
 import {AiModel} from "../core/AiModel.ts";
 import {AiGlobalConfig} from "../AiGlobalConfig.ts";
-import {Editor} from "@tiptap/core";
 import {OpenaiModelConfig} from "./OpenaiModelConfig.ts";
 import {SseClient} from "../core/client/sse/SseClient.ts";
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 
 export class OpenaiAiModel extends AiModel {
 
-    constructor(editor: Editor, globalConfig: AiGlobalConfig) {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "openai");
         this.aiModelConfig = {
             endpoint: "https://api.openai.com",

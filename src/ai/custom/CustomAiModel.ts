@@ -2,16 +2,15 @@ import {AiClient} from "../core/AiClient.ts";
 import {AiMessageListener} from "../core/AiMessageListener.ts";
 import {AiModel} from "../core/AiModel.ts";
 import {AiGlobalConfig} from "../AiGlobalConfig.ts";
-import {Editor} from "@tiptap/core";
-
 import {CustomAiModelConfig} from "./CustomAiModelConfig.ts";
 import {SseClient} from "../core/client/sse/SseClient.ts";
 import {AiClientListener} from "../core/AiClientListener.ts";
 import {WebSocketClient} from "../core/client/ws/WebSocketClient.ts";
+import {InnerEditor} from "../../core/AiEditor.ts";
 
 export class CustomAiModel extends AiModel {
 
-    constructor(editor: Editor, globalConfig: AiGlobalConfig) {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "custom");
         this.aiModelConfig = {
             protocol: "sse",

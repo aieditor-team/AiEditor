@@ -2,15 +2,15 @@ import {AiModel} from "./core/AiModel.ts";
 import {AiGlobalConfig} from "./AiGlobalConfig.ts";
 import {SparkAiModel} from "./spark/SparkAiModel.ts";
 import {WenXinAiModel} from "./wenxin/WenXinAiModel.ts";
-import {Editor} from "@tiptap/core";
 import {CustomAiModel} from "./custom/CustomAiModel.ts";
 import {OpenaiAiModel} from "./openai/OpenaiAiModel.ts";
+import {InnerEditor} from "../core/AiEditor.ts";
 
 export class AiModelManager {
 
     private static models: Record<string, AiModel> = {};
 
-    static init(editor: Editor, globalConfig: AiGlobalConfig) {
+    static init(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         if (globalConfig && globalConfig.models) {
             for (let key of Object.keys(globalConfig.models)) {
                 switch (key) {
