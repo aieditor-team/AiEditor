@@ -215,8 +215,8 @@ export class AiEditor {
         this.mainEl.style.flexGrow = "1";
         this.mainEl.style.overflow = "auto";
 
-        this.header = document.createElement("aie-header") as Header;
-        this.footer = document.createElement("aie-footer") as Footer;
+        this.header = new Header();
+        this.footer = new Footer();
         this.footer.initDraggable(this.options.draggable)
 
         this.eventComponents.push(this.header);

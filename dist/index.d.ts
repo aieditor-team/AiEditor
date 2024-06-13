@@ -224,6 +224,7 @@ export declare interface CustomMenu {
 declare class Footer extends HTMLElement implements AiEditorEvent {
     count: number;
     draggable: boolean;
+    constructor();
     initDraggable(draggable?: boolean): void;
     updateCharacters(): void;
     onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;

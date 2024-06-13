@@ -7,6 +7,10 @@ export class Footer extends HTMLElement implements AiEditorEvent {
     count: number = 0
     draggable: boolean = true;
 
+    constructor() {
+        super();
+    }
+
     initDraggable(draggable?: boolean) {
         this.draggable = !!draggable;
 
