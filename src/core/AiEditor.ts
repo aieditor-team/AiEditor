@@ -58,8 +58,6 @@ export type AiEditorOptions = {
     i18n?: Record<string, Record<string, string>>,
     placeholder?: string,
     theme?: "light" | "dark",
-    cbName?: string,
-    cbUrl?: string
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
     onDestroy?: (editor: AiEditor) => void,
