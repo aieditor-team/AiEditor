@@ -5,9 +5,14 @@ import {EditorEvents} from "@tiptap/core";
 export class Footer extends HTMLElement implements AiEditorEvent {
 
     count: number = 0
+    draggable: boolean = true;
 
-    constructor() {
-        super();
+    initDraggable(draggable?: boolean) {
+        this.draggable = !!draggable;
+
+        if (!this.draggable) {
+            return;
+        }
 
         let startX: number, startY: number, minWidth = 300, minHeight = 300, rootWith: number, rootHeight: number,
             root: HTMLElement;
@@ -56,14 +61,20 @@ export class Footer extends HTMLElement implements AiEditorEvent {
     }
 
     updateCharacters() {
-        this.innerHTML = `
-        <div style="display: flex"> 
-            <span> Powered by AiEditor, Characters: ${this.count} </span>
-            <div style="width: 20px;height: 20px;overflow: hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 16L6 10H18L12 16Z"></path></svg>
-            </div>
-        </div>
-        `;
+        if (!this.draggable) {
+            this.innerHTML = `<div style="display: flex;"> 
+                                <span style="margin-right: 10px"> Powered by AiEditor, Characters: ${this.count} </span>
+                            </div>
+                            `;
+        } else {
+            this.innerHTML = `<div style="display: flex"> 
+                                <span> Powered by AiEditor, Characters: ${this.count} </span>
+                                <div style="width: 20px;height: 20px;overflow: hidden">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 16L6 10H18L12 16Z"></path></svg>
+                                </div>
+                            </div>
+                            `;
+        }
     }
 
     onCreate(props: EditorEvents["create"], _: AiEditorOptions): void {

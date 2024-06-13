@@ -65,6 +65,7 @@ export type AiEditorOptions = {
     onChange?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
+    draggable?:boolean,
     textSelectionBubbleMenu?: {
         enable?: boolean,
         elementTagName?:string,
@@ -115,6 +116,7 @@ const defaultOptions: Partial<AiEditorOptions> = {
     lang: "zh",
     contentRetentionKey: "ai-editor-content",
     editable: true,
+    draggable: true,
     placeholder: "",
 }
 
@@ -215,6 +217,7 @@ export class AiEditor {
 
         this.header = document.createElement("aie-header") as Header;
         this.footer = document.createElement("aie-footer") as Footer;
+        this.footer.initDraggable(this.options.draggable)
 
         this.eventComponents.push(this.header);
         this.eventComponents.push(this.footer);
