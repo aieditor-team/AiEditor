@@ -20,31 +20,38 @@ export abstract class AiModel {
     }
 
     chatWithPayload(payload: any, listener: AiMessageListener): void {
-        const startFunc = (url: string) => {
+        const onSuccess = (url: string) => {
             const aiClient = this.createAiClient(url, listener);
             aiClient.start(typeof payload === "string" ? payload : JSON.stringify(payload))
         }
+        const onFailure = () => {
+            listener?.onStop();
+        }
 
         if (this.globalConfig.onCreateClientUrl) {
-            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, startFunc)
+            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, onSuccess, onFailure)
         } else {
-            startFunc(this.createAiClientUrl())
+            onSuccess(this.createAiClientUrl())
         }
     }
 
 
     chat(selectedText: string, prompt: string, listener: AiMessageListener): void {
-        const startFunc = (url: string) => {
+        const onSuccess = (url: string) => {
             const aiClient = this.createAiClient(url, listener);
             const finalPrompt = prompt.includes("{content}") ? prompt.split('{content}').join(selectedText) : `${selectedText}\n${prompt}`
             const payload = this.wrapPayload(finalPrompt);
             aiClient.start(typeof payload === "string" ? payload : JSON.stringify(payload))
         }
 
+        const onFailure = () => {
+            listener?.onStop();
+        }
+
         if (this.globalConfig.onCreateClientUrl) {
-            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, startFunc)
+            this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, onSuccess, onFailure)
         } else {
-            startFunc(this.createAiClientUrl())
+            onSuccess(this.createAiClientUrl())
         }
     }
 
