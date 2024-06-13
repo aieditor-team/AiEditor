@@ -41,11 +41,7 @@ import {FigcaptionExt} from "../extensions/FigcaptionExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
-    const ret: Extensions = options.cbName && options.cbUrl ? [StarterKit.configure({
-        history: false,
-        codeBlock: false,
-        heading: false,
-    })] : [StarterKit.configure({
+    const ret: Extensions = [StarterKit.configure({
         codeBlock: false,
         heading: false,
     })];

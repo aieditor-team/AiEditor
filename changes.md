@@ -1,5 +1,15 @@
 # AiEditor ChangeLog
 
+## v1.0.7 20240613:
+- 新增：AiModel 添加 chatWithPayload 方法用于传入自定义的 ai 参数信息
+- 新增：源码编辑的功能菜单，及其配置。感谢 @jx
+- 新增：添加是否可以对整个编辑器拖拽放大缩小的开关配置
+- 优化：优化 a 标签在暗色主题下的样式问题，感谢 @lwleen
+- 优化：编辑的滚动条样式，感谢 @lwleen
+- 优化：移除无用的配置 cbName 和 cbUrl 
+
+
+
 ## v1.0.6 20240607:
 - 新增：AI 大模型新增对 Openai 和 暗月之面 的支持
 - 新增：编辑元素新增对 Figure 和 Figcaption 元素的支持
