@@ -1,6 +1,6 @@
 import { AiEditor } from "./core/AiEditor.ts";
 // import { config } from "./spark.ts";
-import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
+// import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
 // @ts-ignore
 window.aiEditor = new AiEditor({
     element: "#aiEditor",
@@ -25,7 +25,7 @@ window.aiEditor = new AiEditor({
                 endpoint:"https://api.moonshot.cn",
                 model:"moonshot-v1-8k",
                 apiKey:"sk-alQ96zb******"
-            } as OpenaiModelConfig
+            }
         },
         // bubblePanelEnable:false,
         // bubblePanelModel: "spark",

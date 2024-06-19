@@ -22,18 +22,26 @@ export class Popover {
         this.onShowFunc = onShow;
     }
 
-    setTrigger(triggerEl: HTMLElement, placement: Placement = "bottom") {
+    setTrigger(triggerEl: HTMLElement, placement: Placement = "bottom", triggerType: 'mouseenter focus' | 'click' | 'focusin' | 'mouseenter click' | 'manual' = "click") {
         this.tippyInstance = tippy(triggerEl, {
             content: this.createContentElement(),
             appendTo: triggerEl.closest(".aie-container")!,
             placement: placement,
-            trigger: 'click',
+            trigger: triggerType,
             interactive: true,
             arrow: false,
             onShow: (_) => {
                 this.onShowFunc && this.onShowFunc(_)
             }
         })
+    }
+
+    show() {
+        this.tippyInstance?.show();
+    }
+
+    hide() {
+        this.tippyInstance?.hide();
     }
 
     createContentElement() {

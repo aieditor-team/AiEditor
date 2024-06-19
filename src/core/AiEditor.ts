@@ -65,15 +65,17 @@ export type AiEditorOptions = {
     onChange?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
-    draggable?:boolean,
+    draggable?: boolean,
     textSelectionBubbleMenu?: {
         enable?: boolean,
-        elementTagName?:string,
+        elementTagName?: string,
+        items?:(string)[],
     },
     link?: {
         autolink?: boolean,
         rel?: string,
         class?: string,
+        bubbleMenuItems?: (string)[],
     },
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {

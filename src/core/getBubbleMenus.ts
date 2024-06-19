@@ -108,6 +108,9 @@ const createLinkBubbleMenu = (aiEditor: AiEditor) => {
             appendTo: aiEditor.container,
             placement: 'bottom',
             arrow: false,
+            onCreate(instance: Instance) {
+                menuEl.instance = instance;
+            },
         },
         shouldShow: ({editor}) => {
             return editor.isEditable && editor.isActive("link")
@@ -141,7 +144,10 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
                     ...domRect,
                     left: imgRect.left + imgRect.width * 0.25
                 }
-            })
+            }),
+            onCreate(instance: Instance) {
+                menuEl.instance = instance;
+            },
         },
         shouldShow: ({editor}) => {
             return editor.isEditable && editor.isActive("image")
