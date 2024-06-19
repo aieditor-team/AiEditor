@@ -16202,18 +16202,22 @@ class wa {
     this.editor = e, this.globalConfig = n, this.aiModelName = r, this.aiModelConfig = n.models[r];
   }
   chatWithPayload(e, n) {
-    const r = (i) => {
-      this.createAiClient(i, n).start(typeof e == "string" ? e : JSON.stringify(e));
+    const r = (s) => {
+      this.createAiClient(s, n).start(typeof e == "string" ? e : JSON.stringify(e));
+    }, i = () => {
+      n == null || n.onStop();
     };
-    this.globalConfig.onCreateClientUrl ? this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, r) : r(this.createAiClientUrl());
+    this.globalConfig.onCreateClientUrl ? this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, r, i) : r(this.createAiClientUrl());
   }
   chat(e, n, r) {
-    const i = (s) => {
-      const o = this.createAiClient(s, r), a = n.includes("{content}") ? n.split("{content}").join(e) : `${e}
-${n}`, l = this.wrapPayload(a);
-      o.start(typeof l == "string" ? l : JSON.stringify(l));
+    const i = (o) => {
+      const a = this.createAiClient(o, r), l = n.includes("{content}") ? n.split("{content}").join(e) : `${e}
+${n}`, u = this.wrapPayload(l);
+      a.start(typeof u == "string" ? u : JSON.stringify(u));
+    }, s = () => {
+      r == null || r.onStop();
     };
-    this.globalConfig.onCreateClientUrl ? this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, i) : i(this.createAiClientUrl());
+    this.globalConfig.onCreateClientUrl ? this.globalConfig.onCreateClientUrl(this.aiModelName, this.aiModelConfig, i, s) : i(this.createAiClientUrl());
   }
 }
 class D1 {
@@ -46889,6 +46893,9 @@ class ND {
 export {
   ND as AiEditor,
   Er as AiModelManager,
+  IE as CustomAiModel,
   sD as InnerEditor,
-  NE as SparkAiModel
+  FE as OpenaiAiModel,
+  NE as SparkAiModel,
+  RE as WenXinAiModel
 };

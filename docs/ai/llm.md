@@ -18,6 +18,7 @@ new AiEditor({
 })
 ```
 Or use `moonshot` through Openai's config
+
 ```ts
 new AiEditor({
     element: "#aiEditor",

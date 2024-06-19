@@ -19,7 +19,7 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onActive(editor: Editor): boolean;
 }
 
-declare interface AiClient {
+export declare interface AiClient {
     start: (payload: string) => void;
     stop: () => void;
 }
@@ -135,7 +135,7 @@ declare interface AiGlobalConfig {
     models: Record<string, AiModelConfig>;
     modelFactory?: AiModelFactory;
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void;
-    onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onFinished: (url: string) => void) => void;
+    onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void;
     bubblePanelEnable?: boolean;
     bubblePanelModel?: string;
     menus?: AiMenu[];
@@ -161,7 +161,7 @@ declare interface AiMenu {
     children?: AiMenu[];
 }
 
-declare interface AiMessage {
+export declare interface AiMessage {
     role: string;
     content: string;
     index: number;
@@ -211,6 +211,13 @@ export declare class AiModelManager {
     static set(modelName: string, aiModel: AiModel): void;
 }
 
+export declare class CustomAiModel extends AiModel {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
+    createAiClient(url: string, listener: AiMessageListener): AiClient;
+    wrapPayload(promptMessage: string): string;
+    createAiClientUrl(): string;
+}
+
 export declare interface CustomMenu {
     id?: string;
     className?: string;
@@ -252,6 +259,13 @@ export declare interface NameAndValue {
     value: any;
 }
 
+export declare class OpenaiAiModel extends AiModel {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
+    createAiClient(url: string, listener: AiMessageListener): AiClient;
+    wrapPayload(prompt: string): string;
+    createAiClientUrl(): string;
+}
+
 export declare class SparkAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
@@ -265,6 +279,13 @@ export declare interface UploaderEvent {
     onSuccess?: (file: File, response: any) => any;
     onFailed?: (file: File, response: any) => void;
     onError?: (file: File, err: any) => void;
+}
+
+export declare class WenXinAiModel extends AiModel {
+    constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
+    createAiClient(url: string, listener: AiMessageListener): AiClient;
+    wrapPayload(prompt: string): string;
+    createAiClientUrl(): string;
 }
 
 export { }

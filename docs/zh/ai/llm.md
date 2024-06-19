@@ -10,23 +10,23 @@ new AiEditor({
     ai: {
         models: {
             openai: {
-                apiKey:"sk-alQ96zbDn*****"
-            } as OpenaiModelConfig
+                apiKey: "sk-alQ96zbDn*****"
+            }
         }
     },
 })
 ```
-或者通过 Openai 的接口使用 暗月之面
+或者通过 Openai 的接口使用 `月之暗面` 或者其他和 Openai API 兼容的模型。
 ```ts
 new AiEditor({
     element: "#aiEditor",
     ai: {
         models: {
             openai: {
-                endpoint:"https://api.moonshot.cn",
-                model:"moonshot-v1-8k",
-                apiKey:"sk-alQ96zb******"
-            } as OpenaiModelConfig
+                endpoint: "https://api.moonshot.cn",
+                model: "moonshot-v1-8k",
+                apiKey: "sk-alQ96zb******"
+            }
         }
     },
 })

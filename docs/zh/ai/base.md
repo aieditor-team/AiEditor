@@ -37,7 +37,7 @@ new AiEditor({
 })
 ```
 
-- **models**: 模型配置（目前暂时只支持科大讯飞的星火大模型）
+- **models**: 模型配置，支持 `openai`, `spark`, `wenxin`, `custom`，具体参考：[这里](./llm.md)
 - **bubblePanelEnable**: 弹出框使用的 ai 模型名称
 - **bubblePanelModel**: 弹出框使用的 ai 模型名称
 - **onCreateClientUrl**: 自定义 URL 签名算法，一般情况下，如果编辑器涉及内容对外开放，则需要配置 onCreateURL，用于通过 server 端对 url 签名生成通信 url。

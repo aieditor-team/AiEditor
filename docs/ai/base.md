@@ -37,7 +37,7 @@ new AiEditor({
 })
 ```
 
-- **models**: Model configuration (currently only supports Xunfei's Spark large model)
+- **models**: Model configuration, supports `openai`, `spark`, `wenxin`, `custom`, for details, please refer to: [here](./llm.md)
 - **bubblePanelEnable**: Name of the AI model used for the pop-up panel
 - **bubblePanelModel**: Name of the AI model used for the pop-up panel
 - **onCreateClientUrl**: Custom URL signing algorithm. Generally, if the editor involves content open to the public, onCreateURL needs to be configured to sign the URL through the server to generate a communication URL.
