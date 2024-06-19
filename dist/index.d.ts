@@ -24,6 +24,12 @@ export declare interface AiClient {
     stop: () => void;
 }
 
+export declare interface AiClientListener {
+    onStart: (aiClient: AiClient) => void;
+    onStop: () => void;
+    onMessage: (bodyString: string) => void;
+}
+
 export declare class AiEditor {
     private customLayout;
     innerEditor: InnerEditor;
@@ -89,11 +95,13 @@ export declare type AiEditorOptions = {
     textSelectionBubbleMenu?: {
         enable?: boolean;
         elementTagName?: string;
+        items?: (string)[];
     };
     link?: {
         autolink?: boolean;
         rel?: string;
         class?: string;
+        bubbleMenuItems?: (string)[];
     };
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
     image?: {
@@ -131,7 +139,7 @@ export declare type AiEditorOptions = {
     ai?: AiGlobalConfig;
 };
 
-declare interface AiGlobalConfig {
+export declare interface AiGlobalConfig {
     models: Record<string, AiModelConfig>;
     modelFactory?: AiModelFactory;
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void;
@@ -152,7 +160,7 @@ declare interface AiGlobalConfig {
     };
 }
 
-declare interface AiMenu {
+export declare interface AiMenu {
     icon: string;
     name: string;
     prompt?: string;
@@ -168,7 +176,7 @@ export declare interface AiMessage {
     status: 0 | 1 | 2;
 }
 
-declare interface AiMessageListener {
+export declare interface AiMessageListener {
     onStart: (aiClient: AiClient) => void;
     onStop: () => void;
     onMessage: (message: AiMessage) => void;
@@ -200,7 +208,7 @@ declare abstract class AiModel {
 declare interface AiModelConfig {
 }
 
-declare interface AiModelFactory {
+export declare interface AiModelFactory {
     create: (name: string, editor: Editor, globalConfig: AiGlobalConfig) => AiModel;
 }
 
@@ -216,6 +224,14 @@ export declare class CustomAiModel extends AiModel {
     createAiClient(url: string, listener: AiMessageListener): AiClient;
     wrapPayload(promptMessage: string): string;
     createAiClientUrl(): string;
+}
+
+export declare interface CustomAiModelConfig extends AiModelConfig {
+    url: (() => string) | string;
+    headers?: () => Record<string, any> | undefined;
+    wrapPayload: (prompt: string) => string;
+    parseMessage: (bodyString: string) => AiMessage | undefined;
+    protocol: "sse" | "websocket";
 }
 
 export declare interface CustomMenu {
@@ -266,12 +282,26 @@ export declare class OpenaiAiModel extends AiModel {
     createAiClientUrl(): string;
 }
 
+export declare interface OpenaiModelConfig extends AiModelConfig {
+    endpoint?: string;
+    apiKey: string;
+    model?: string;
+}
+
 export declare class SparkAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
     wrapPayload(promptMessage: string): string;
     private getDomain;
     createAiClientUrl(): string;
+}
+
+export declare interface SparkAiModelConfig extends AiModelConfig {
+    appId: string;
+    apiKey: string;
+    apiSecret: string;
+    protocol?: string;
+    version?: string;
 }
 
 export declare interface UploaderEvent {
@@ -286,6 +316,12 @@ export declare class WenXinAiModel extends AiModel {
     createAiClient(url: string, listener: AiMessageListener): AiClient;
     wrapPayload(prompt: string): string;
     createAiClientUrl(): string;
+}
+
+export declare interface WenXinAiModelConfig extends AiModelConfig {
+    access_token: string;
+    protocol?: string;
+    version?: string;
 }
 
 export { }

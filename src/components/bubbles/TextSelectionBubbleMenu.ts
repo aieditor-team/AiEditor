@@ -2,6 +2,7 @@ import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
 import {EditorEvents} from "@tiptap/core";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
 import {AllSelectionMenuItems} from "./items/selection/AllSelectionMenuItems.ts";
+import {BubbleMenuItem} from "./types.ts";
 import {removeIf} from "../../util/removeIf.ts";
 
 
@@ -22,13 +23,8 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
                 ...Object.values(AllSelectionMenuItems)
             ]
             if (options.ai?.bubblePanelEnable === false) {
-                removeIf(this.items, (item) => item.id === "ai")
+                removeIf(this.items, (item: BubbleMenuItem) => item.id === "ai")
             }
         }
     }
-
-
 }
-
-
-

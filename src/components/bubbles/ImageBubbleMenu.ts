@@ -1,6 +1,7 @@
 import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
 import {EditorEvents} from "@tiptap/core";
 import {t} from "i18next";
+import {BubbleMenuItem} from "./types.ts";
 
 export class ImageBubbleMenu extends AbstractBubbleMenu {
     constructor() {
@@ -30,15 +31,14 @@ export class ImageBubbleMenu extends AbstractBubbleMenu {
     }
 
 
-    onItemClick(id: string): void {
-        if (id != "delete") {
+    onItemClick(item: BubbleMenuItem): void {
+        if (item.id != "delete") {
             const attrs = this.editor?.getAttributes("image")!;
-            attrs.align = id;
+            attrs.align = item.id;
             this.editor?.chain().setImage(attrs as any).run();
         } else {
             this.editor?.commands.deleteSelection();
         }
-
     }
 
     onTransaction(_: EditorEvents["transaction"]): void {
