@@ -5,7 +5,6 @@ import {AllLinkMenuItems} from "./items/link/AllLinkMenuItems.ts";
 
 
 export class LinkBubbleMenu extends AbstractBubbleMenu {
-
     constructor() {
         super();
     }

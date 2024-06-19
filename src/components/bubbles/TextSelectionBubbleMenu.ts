@@ -6,7 +6,9 @@ import {removeIf} from "../../util/removeIf.ts";
 
 
 export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
-
+    constructor() {
+        super();
+    }
 
     onCreate(props: EditorEvents["create"], options: AiEditorOptions) {
         super.onCreate(props, options);
