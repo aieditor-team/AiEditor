@@ -27,7 +27,7 @@ new AiEditor({
 })
 ```
 
-- **url**: 多人协作的后台服务，后台服务（SDK）由 AIEditor 官方提供。
+- **url**: 多人协作的后台服务，由 AIEditor 官方提供运行 SDK，部署在客户（购买 AIEditor 的用户）自己的服务器里。
 - **documentName**: 文档名称（或文档 ID），
 - **token**:  用户校验的 Token（或 JWT 等），用于后台对当前用户进行校验
 - **userName**:  用户的昵称
