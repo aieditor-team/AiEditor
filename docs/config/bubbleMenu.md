@@ -1,7 +1,7 @@
 # Bubble menu
 
 The bubble menu refers to the UI menu that pops up when the user selects a piece of text, as shown in the figure below:
-![](../../assets/image/bubble-menu.png)
+![](../assets/image/bubble-menu.png)
 
 ## Menu configuration
 
