@@ -57,13 +57,13 @@ const {Layout} = DefaultTheme
       </div>
     </template>
 
-    <template #home-features-after>
-      <div class="banner-home">
-        <a href="https://aiadmin.cc" target="_blank">
-          <img src="/assets/image/admin-banner.jpg">
-        </a>
-      </div>
-    </template>
+<!--    <template #home-features-after>-->
+<!--      <div class="banner-home">-->
+<!--        <a href="https://aiadmin.cc" target="_blank">-->
+<!--          <img src="/assets/image/admin-banner.jpg">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </template>-->
 
   </Layout>
 </template>

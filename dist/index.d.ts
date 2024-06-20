@@ -113,6 +113,7 @@ export declare type AiEditorOptions = {
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
         allowBase64?: boolean;
+        bubbleMenuItems?: (string)[];
     };
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;

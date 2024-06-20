@@ -50,7 +50,7 @@ About AiEditor (official website https://aieditor.dev)
 
 ## Quick start
 
-Visit: https://aieditor.dev/zh/getting-started.html
+Visit: https://aieditor.dev/getting-started.html
 
 ## Communication
 
