@@ -11,20 +11,13 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
         super();
     }
 
-    onCreate(props: EditorEvents["create"], options: AiEditorOptions) {
-        super.onCreate(props, options);
-        if (options?.textSelectionBubbleMenu?.items && options?.textSelectionBubbleMenu?.items.length > 0) {
-            for (let key of options.textSelectionBubbleMenu.items) {
-                const linkMenuItem = AllSelectionMenuItems[key];
-                if (linkMenuItem) this.items.push(linkMenuItem);
-            }
-        } else {
-            this.items = [
-                ...Object.values(AllSelectionMenuItems)
-            ]
-            if (options.ai?.bubblePanelEnable === false) {
-                removeIf(this.items, (item: BubbleMenuItem) => item.id === "ai")
-            }
+    onCreate(event: EditorEvents["create"], options: AiEditorOptions) {
+        super.onCreate(event, options);
+        this.initItemsByOptions(AllSelectionMenuItems, options?.textSelectionBubbleMenu?.items);
+
+        if (options.ai?.bubblePanelEnable === false) {
+            removeIf(this.items, (item: BubbleMenuItem) => item.id === "ai")
         }
     }
+
 }

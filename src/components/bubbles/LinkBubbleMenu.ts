@@ -9,18 +9,9 @@ export class LinkBubbleMenu extends AbstractBubbleMenu {
         super();
     }
 
-    onCreate(props: EditorEvents["create"], options: AiEditorOptions) {
-        super.onCreate(props, options);
-        if (options?.link?.bubbleMenuItems && options?.link?.bubbleMenuItems.length > 0) {
-            for (let key of options.link.bubbleMenuItems) {
-                const linkMenuItem = AllLinkMenuItems[key];
-                if (linkMenuItem) this.items.push(linkMenuItem);
-            }
-        } else {
-            this.items = [
-                ...Object.values(AllLinkMenuItems)
-            ]
-        }
+    onCreate(event: EditorEvents["create"], options: AiEditorOptions) {
+        super.onCreate(event, options);
+        this.initItemsByOptions(AllLinkMenuItems, options?.link?.bubbleMenuItems);
     }
 
 }

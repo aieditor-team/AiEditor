@@ -2,6 +2,7 @@ import {AiEditorOptions, AiEditorEvent, InnerEditor} from "../core/AiEditor.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
 import tippy, {Instance} from "tippy.js";
 import {BubbleMenuItem} from "./bubbles/types.ts";
+import {MenuRecord} from "./bubbles/items/MenuRecord.ts";
 
 
 export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
@@ -58,6 +59,17 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
 
     set instance(value: Instance) {
         this.tippyInstance = value;
+    }
+
+    protected initItemsByOptions(allMenuItems: MenuRecord, optionItems?: (string)[]) {
+        if (optionItems && optionItems.length > 0) {
+            for (let key of optionItems) {
+                const linkMenuItem = allMenuItems.getItem(key);
+                if (linkMenuItem) this.items.push(linkMenuItem);
+            }
+        } else {
+            this.items = allMenuItems.getAllItem()
+        }
     }
 
     onCreate(createEvent: EditorEvents['create'], _: AiEditorOptions) {
