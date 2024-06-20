@@ -84,6 +84,7 @@ export default defineConfig({
                             {text: '只读模式', link: '/zh/config/editable'},
                             {text: '自定义布局', link: '/zh/config/layout'},
                             {text: '快捷键', link: '/zh/config/shortcut'},
+                            {text: '浮动菜单', link: '/zh/config/bubbleMenu'},
                         ]
                     },
                     {
@@ -159,6 +160,7 @@ export default defineConfig({
                     {text: 'Readonly Mode', link: '/config/editable'},
                     {text: 'Custom Layout', link: '/config/layout'},
                     {text: 'Shortcut key', link: '/config/shortcut'},
+                    {text: 'Bubble Menu', link: '/config/bubbleMenu'},
                 ]
             },
             {

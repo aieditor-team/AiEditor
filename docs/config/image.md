@@ -35,7 +35,8 @@ new AiEditor({
             onError: (file, error) => {
                 //Listen for Image Upload Errors, such as network timeouts, etc.
             },
-        }
+        },
+        bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
     },
 })
 ```
@@ -48,6 +49,7 @@ new AiEditor({
 - **uploadHeaders**: Custom HTTP header information for image upload, the data type is `Object` or a method ( `Function` ) that returns an `Object`.
 - **uploader**: Custom upload logic, by default, it is uploaded through `fetch`.
 - **uploaderEvent**: Configure event listeners for image uploads.
+- **bubbleMenuItems**: bubble menu configuration when an image is selected (configuration is not case sensitive)
 
 
 ## Server response

@@ -35,7 +35,8 @@ new AiEditor({
             onError: (file, error) => {
                 //监听图片上传错误，比如网络超时等
             },
-        }
+        },
+        bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
     },
 })
 ```
@@ -47,6 +48,7 @@ new AiEditor({
 - **uploadHeaders**：图片上传自定义 Http 头信息，数据类型为 `Object` 或者 返回一个 `Object` 的方法（ `Function` ）。
 - **uploader**：自定义上传逻辑，默认是通过 `fetch` 进行上传。
 - **uploaderEvent**：配置图片上传事件监听
+- **bubbleMenuItems**：选中图片时的浮动菜单配置（配置不区分大小写）
 
 
 ## 服务器响应
