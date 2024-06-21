@@ -96,4 +96,21 @@ export const en =  {
     ////code block
     "codeblock-ai-auto-comment":"auto comment",
     "codeblock-ai-code-explain":"code explain",
+
+
+    //// ai
+    "placeholder-tell-ai-what-to-do-next":"Tell AI what to do next? e.g., help me translate into English",
+    "tip-you-can-enter-text-above-or-select-the-operation-below":"Tip: You can enter text above or select the operation below",
+    "you-can-do-the-following":"You can do the following:",
+    "improve-writing":"Improve your writing",
+    "check-spelling-and-grammar":"Check spelling and grammar",
+    "make-shorter":"Make shorter",
+    "make-longer":"Make longer",
+    "translate":"Translate",
+    "summarize":"Summarize",
+    "ai-Append":"Append",
+    "ai-replace":"Replace",
+    "ai-cancel":"Cancel",
+
+
 }

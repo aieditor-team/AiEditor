@@ -97,4 +97,18 @@ export const zh  =  {
     "codeblock-ai-auto-comment":"自动注释",
     "codeblock-ai-code-explain":"代码解释",
 
+    //// ai
+    "placeholder-tell-ai-what-to-do-next":"告诉 AI 下一步应该如何？比如：帮我翻译成英语",
+    "tip-you-can-enter-text-above-or-select-the-operation-below":"提示：您可以在上面输入文字或者选择下方的操作",
+    "you-can-do-the-following":"您可以进行以下操作:",
+    "improve-writing":"改进写作",
+    "check-spelling-and-grammar":"检查拼写和语法",
+    "make-shorter":"简化内容",
+    "make-longer":"丰富内容",
+    "translate":"翻译",
+    "summarize":"总结",
+    "ai-append":"追加",
+    "ai-replace":"替换",
+    "ai-cancel":"舍弃",
+
 }
