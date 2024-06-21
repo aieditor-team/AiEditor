@@ -60,16 +60,18 @@ export type AiEditorOptions = {
     theme?: "light" | "dark",
     onMentionQuery?: (query: string) => any[] | Promise<any[]>,
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
-    onDestroy?: (editor: AiEditor) => void,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
+    onFocus?: (editor: AiEditor) => void,
+    onBlur?: (editor: AiEditor) => void,
+    onDestroy?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
     draggable?: boolean,
     textSelectionBubbleMenu?: {
         enable?: boolean,
         elementTagName?: string,
-        items?:(string)[],
+        items?: (string)[],
     },
     link?: {
         autolink?: boolean,
@@ -246,7 +248,9 @@ export class AiEditor {
             extensions: extensions,
             onCreate: (props) => this.onCreate(props),
             onTransaction: (props) => this.onTransaction(props),
-            onDestroy: () => this.onDestroy,
+            onFocus: () => this.options?.onFocus?.(this),
+            onBlur: () => this.options?.onBlur?.(this),
+            onDestroy: () => this.options?.onDestroy?.(this),
             editorProps: {
                 attributes: {
                     class: "aie-content"
@@ -300,9 +304,6 @@ export class AiEditor {
                 localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(this.innerEditor.getJSON()))
             }
         }
-    }
-
-    private onDestroy() {
     }
 
     getHtml() {
