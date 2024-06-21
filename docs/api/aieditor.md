@@ -11,7 +11,7 @@ const aiEditor = new AiEditor({
 })
 ```
 
-## 方法
+## Methods
 
 Sample：
 
@@ -86,8 +86,10 @@ In the above outline content, each field's meaning is as follows:
 - `changeLang(lang)`: Switch the internationalization language of the current editor. For more information, refer to the 《[Internationalized](../config/i18n.md)》 section in the documentation.
 
 
-## Content change listening
+## Listening
 
+
+## content change
 ```typescript
 const aiEditor = new AiEditor({
     element: "#aiEditor",
@@ -95,6 +97,56 @@ const aiEditor = new AiEditor({
     onChange:(aiEditor)=>{
         // When the editor content changes, console.log the editor's HTML content...
         console.log(aiEditor.getHtml())
+    }
+})
+```
+
+
+### AIEditor get focus
+
+```typescript
+const aiEditor = new AiEditor({
+    element: "#aiEditor",
+    placeholder: "Click to Input Content...",
+    onFocus:(aiEditor)=>{
+        console.log("get the focus....")
+    }
+})
+```
+
+### AIEditor Instance Destroy On Blur
+
+```typescript
+const aiEditor = new AiEditor({
+    element: "#aiEditor",
+    placeholder: "Click to Input Content...",
+    onBlur:(aiEditor)=>{
+        console.log("blur....")
+    }
+})
+```
+
+
+### AIEditor Instance Created
+
+```typescript
+const aiEditor = new AiEditor({
+    element: "#aiEditor",
+    placeholder: "Click to Input Content...",
+    onCreated:(aiEditor)=>{
+        console.log("AIEditor instance created....")
+    }
+})
+```
+
+### AIEditor Instance Destroy
+
+```typescript
+const aiEditor = new AiEditor({
+    element: "#aiEditor",
+    placeholder: "Click to Input Content...",
+    onDestroy:(aiEditor)=>{
+        console.log("AIEditor instance destory....")
     }
 })
 ```
