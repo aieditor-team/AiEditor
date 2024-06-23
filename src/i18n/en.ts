@@ -108,7 +108,7 @@ export const en =  {
     "make-longer":"Make longer",
     "translate":"Translate",
     "summarize":"Summarize",
-    "ai-Append":"Append",
+    "ai-append":"Append",
     "ai-replace":"Replace",
     "ai-cancel":"Cancel",
 
