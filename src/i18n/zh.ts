@@ -111,4 +111,10 @@ export const zh  =  {
     "ai-replace":"替换",
     "ai-cancel":"舍弃",
 
+    ///ai menus
+    "ai-continuation":"AI 续写",
+    "ai-optimization":"AI 优化",
+    "ai-proofreading":"AI 校对",
+    "ai-translation":"AI 翻译",
+
 }

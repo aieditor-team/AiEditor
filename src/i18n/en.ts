@@ -112,5 +112,11 @@ export const en =  {
     "ai-replace":"Replace",
     "ai-cancel":"Cancel",
 
+    ///ai menus
+    "ai-continuation":"Continuation",
+    "ai-optimization":"Optimization",
+    "ai-proofreading":"Proofreading",
+    "ai-translation":"Translation",
+
 
 }
