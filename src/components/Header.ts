@@ -109,6 +109,7 @@ export class Header extends HTMLElement implements AiEditorEvent {
     }
 
     connectedCallback() {
+        if (this.children.length) return
         const divElement = document.createElement("div");
         for (let menuButton of this.menuButtons) {
             divElement.appendChild(menuButton);
