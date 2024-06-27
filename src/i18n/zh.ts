@@ -3,6 +3,7 @@ export const zh  =  {
     "default":"默认",
     "delete": "删除",
     "confirm": "确定",
+    "cancel": "取消",
 
     //menu tips
     "undo": "撤销",

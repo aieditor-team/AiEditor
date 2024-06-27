@@ -3,6 +3,7 @@ import {Editor, EditorEvents} from "@tiptap/core";
 import tippy, {Instance} from "tippy.js";
 import {BubbleMenuItem} from "./bubbles/types.ts";
 import {MenuRecord} from "./bubbles/items/MenuRecord.ts";
+import { t } from "i18next";
 
 
 export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
@@ -47,7 +48,7 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
             if (title) {
                 tippy(el, {
                     appendTo: this.closest(".aie-container")!,
-                    content: title,
+                    content: t(title),
                     theme: 'aietip',
                     arrow: true,
                     // trigger:"click",

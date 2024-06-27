@@ -3,6 +3,8 @@ export const en =  {
     "default":"Default",
     "delete": "Delete",
     "confirm": "Confirm",
+    "cancel": "Cancel",
+
 
     //menu tips
     "undo": "Undo",
