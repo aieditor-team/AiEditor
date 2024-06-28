@@ -57,6 +57,12 @@ const {Layout} = DefaultTheme
       </div>
     </template>
 
+    <template #home-hero-image>
+      <div style="z-index: 9999" >
+          <img src="/assets/image/index-banner.png">
+      </div>
+    </template>
+
 <!--    <template #home-features-after>-->
 <!--      <div class="banner-home">-->
 <!--        <a href="https://aiadmin.cc" target="_blank">-->
