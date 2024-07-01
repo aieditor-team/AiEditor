@@ -34,6 +34,7 @@ AiEditor provides the following methods:
 - `getSelectedText()`: Get the plain text content (excluding HTML) of the currently selected text in the editor.
 - `getMarkdown()`: Get the markdown-formatted content of the current editor.
 - `getOptions()`: Get the configuration information of the current editor.
+- `getAttributes(name)`： get the properties of the node or mark at the current focus position.
 - `getOutline()`: Get the outline of the content, returning an array with the following format:
 
 ```json
