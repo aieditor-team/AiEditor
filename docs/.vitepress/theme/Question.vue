@@ -11,8 +11,6 @@
       </button>
     </div>
     <div v-if="open" class="content">
-      <!-- {{ content }} -->
-
        <slot />
     </div>
   </div>

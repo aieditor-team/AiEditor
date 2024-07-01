@@ -253,9 +253,7 @@ More AI capabilities are on the way...
 
 <h1>Collaboration</h1>
 
-Collaboration allows multiple users to work on the same document at the same time,
-
-Team members can see other people's input and changes in real time.
+Collaboration allows multiple users to work on the same document at the same time, Team members can see other people's input and changes in real time.
 
 It is suitable for software development, marketing, legal document review, project management, teaching, news reporting, medical research and other scenarios.
 
@@ -281,7 +279,7 @@ It is suitable for software development, marketing, legal document review, proje
 
 <div class="feature-content">
 
-<h1 > Annotate</h1>
+<h1 >Comment Function</h1>
 
 Allow reviewers to add comments or suggestions to specific sections of the document, and users can use comments to flag questions, errors, or areas that need improvement in the document for subsequent revisions.
 
@@ -302,18 +300,19 @@ Allow reviewers to add comments or suggestions to specific sections of the docum
 <div style="margin: 30px 0 40px;color: #999">
 Next, whether you use the open source version or the pro version, you will be surprised!
 </div>
-<button style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0"> Experience online</button>
+<button style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0">Live Preview</button>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
 <span style="font-weight:700;">open source version</span><br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">Download now</button>
+<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">
+Download now</button>
 <div style="font-size: 14px;color:#666;">
 AiEditor is open source under the more liberal LGPL license<br />
-No limit on the number of users<br />
-No limit on the number of applications
+Unlimited amount of users<br />
+Unlimited amount of applications
 </div>
 </div>
 
@@ -323,8 +322,8 @@ No limit on the number of applications
 <button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">Contact us</button>
 <div style="font-size: 14px;color:#666;">
 Low price<br />
-No limit on the number of users<br />
-No limit on the number of applications
+Unlimited amount of users<br />
+Unlimited amount of applications
 </div>
 </div>
 
