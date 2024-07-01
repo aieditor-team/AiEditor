@@ -11,7 +11,9 @@
       </button>
     </div>
     <div v-if="open" class="content">
-      {{ content }}
+      <!-- {{ content }} -->
+
+       <slot />
     </div>
   </div>
 </template>
@@ -20,7 +22,7 @@
 <script lang="ts" setup>
 import {ref} from 'vue';
 
-defineProps(['title', 'content'])
+defineProps(['title'])
 const open = ref(false);
 
 const onClick = () => {

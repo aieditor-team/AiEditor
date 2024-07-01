@@ -37,27 +37,32 @@ layout: home
     width: 100%;
    table-layout: fixed;
    overflow-wrap: break-word;
+   
 }
 
 .VPContent> .VPHome> .vp-doc  table th{
      background: none;
      border: none;
+  
+
 }
 
 .VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
      margin: 10px;
      font-weight: bold;
-     font-size: 16px;
+     font-size: 18px;
+     
 }
 
 .VPContent> .VPHome> .vp-doc  table tr{
      background: none;
      border: none;
      border-bottom: 1px solid #eee;
+     
 }
 
 .VPContent> .VPHome> .vp-doc  table tr{
-     height: 40px;
+     height: 50px;
 }
 
 .VPContent> .VPHome> .vp-doc  table  tbody tr:first-child{
@@ -67,15 +72,17 @@ layout: home
 .VPContent> .VPHome> .vp-doc  table td{
     background: none;
     border: none;
+    font-size:16px;
 }
 
 .VPContent> .VPHome> .vp-doc  table  td:first-child{
     color: #999;
+    font-size:16px;
 }
 
 .VPContent> .VPHome> .vp-doc  table  td:first-child strong{
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .VPContent> .VPHome> .vp-doc  table td svg{
@@ -89,9 +96,11 @@ layout: home
 
 <div class="feature" style="margin-top: 80px">
 
-# 商业许可证和商业插件
+# Commercial license
 
-当你的企业在商业模式和技术支持等方面有更高要求时，可以选择商业许可证。
+AiEditor Business Edition has more powerful and practical features to help you build a professional product that requires text editing.
+<br />
+In addition, providing you with more professional and higher-level services can quickly solve problems and help your products get on track faster.
 </div>
 
 
@@ -100,25 +109,43 @@ layout: home
 
 
 
-|               |    社区版    |     专业版     | 企业版  |
+|               |    Open Source version    |     Licensed Version     |  Business Version  |
 |---------------|:---------:|:-----------:|:------:|
-| 价格            |    免费     |    联系我们     | 联系我们 |
-| **许可证**       |
-| 许可证类型         |   LGPL    |    商业许可证    |   商业许可证   |
-| 永久授权          | <Check /> |  <Check />  |   <Check />   |
-| 授权版本          |    全部     |    一个根版本    |  一个根版本   |
-| **使用限制**      |
-| 授权版本          |    全部     |    一个根版本    |  一个根版本   |
-| 不限制用户数量       |     <Check />     |  <Check />  |   <Check />   |
-| 不限制应用数量       |     <Check />     |  <Check />  |   <Check />   |
-| 不限制数据量        |     <Check />     |  <Check />  |   <Check />   |
-| 开发商业应用        | <Close /> |  <Check />  |   <Check />   |
-| 保持你自己的代码不开源   | <Close /> |  <Check />  |   <Check />   |
-| 在界面上使用自己的品牌信息 | <Close /> |  <Check />  |   <Check />   |
-| **支持**        |
-| 社区支持          |    <Check />     |  <Check />  |   <Check />   |
-| 专属和及时的 bug 修复          |    <Close />     |  <Check />  |   <Check />   |
-
+| Price            |    Free     |    Contact us     | Contact us |
+| **License**       |
+| License types         |   LGPL    |    Commercial license    |   Commercial license   |
+| Perpetual License         | <Check /> |  <Check />  |   <Check />   |
+| Licensed version          |    All     |    A root version    |  A root version   |
+| **Use limit**      |
+| Unlimited amount of users       |     <Check />     |  <Check />  |   <Check />   |
+| Unlimited amount of applications       |     <Check />     |  <Check />  |   <Check />   |
+| Unlimited amount of data        |     <Check />     |  <Check />  |   <Check />   |
+| Develop commercial applications        | <Close /> |  <Check />  |   <Check />   |
+| Use your own brand | <Close /> |  <Check />  |   <Check />   |
+| **Feature**        |
+| Basic functions: Title, text, font, size, bold, italics, underline, striker, link, in-line code, superscript, subscript, divider, reference, print | <Check /> |  <Check />  |   <Check />   |
+| Enhancements: Undo, Redo, Format brush, Eraser (clear formatting), To-do, Font color, Background color, Emoji, Alignment, line height, with (without) sequence table, paragraph indent, forced line wrap, full screen editing, @so-and-so (mention)... | <Check /> |  <Check />  |   <Check />   |
+| Attachment : Support picture, video, file function, support to select upload, paste upload, drag and drop upload, support drag to adjust the size... | <Check /> |  <Check />  |   <Check />   |
+| Code functions: inline code, code blocks, language type selection, AI automatic annotation, AI code interpretation... | <Check /> |  <Check />  |   <Check />   |
+|Markdown writing: headings, quotes, tables, images, code blocks, highlighted blocks (like vuepress ::), various lists, bold, italics, strikedown... | <Check /> |  <Check />  |   <Check />   |
+| 	Export function: markdown format, HTML, json format | <Check /> |  <Check />  |   <Check />   |
+| AI functions: AI continuation, AI optimization, AI proofreading, AI translation, custom AI menu and Prompts...| <Check /> |  <Check />  |   <Check />   |
+| Common LLMs: IFlytek, Wenxinyiyan, ChatGPT | <Check /> |  <Check />  |   <Check />   |
+| Other LLMs: ChatGLM, Private big model | <Close />  |  <Close />   |   <Check />   |
+|  Internationalization: Chinese and English are supported by default, and other multi-language configurations are supported| <Check /> |  <Check />  |   <Check />   |
+| Theme switch: bright theme, dark theme, similar to Tencent document UI style | <Check /> |  <Check />  |   <Check />   |
+| Teamwork: Multiple people work on the same document at the same time | <Close />  | <Close />  |   <Check />   |
+| AI insert picture: Generate picture by AI, or optimize the current picture by AI | <Close /> |  <Close />   |   <Check />   |
+| word function: Support WORD, WPS import and export |<Close />  |  <Close />   |   <Check />   |
+| PDF function: Insert PDF preview, export content to PDF... | <Close />  |  <Close />   |   <Check />   |
+| Signature function: Supports handwritten signatures | <Close />  |  <Close />   |   <Check />   |
+| Comment function: Similar to Word (or WPS) comment function |<Close />  | <Close />   |   <Check />   |
+| More: developing... | - | -  |   -   |
+| **Support**        |
+| Dedicated architect support          |    <Close />    | <Close /> |   <Check />   |
+| Software using VIP consulting          |    <Close />     |  <Close />   |   <Check />   |
+| Software extension development consulting          |    <Close />     | <Close />   |   <Check />   |
+| New features are scheduled first         |    <Close />     |  <Close />   |   <Check />   |
 
 
 </div>
@@ -129,41 +156,83 @@ layout: home
 
 <div class="feature">
 
-# 常见问题
+# Q&A
 
 </div>
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px;width: 100vw">
+<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+
 <div style="width: 50%;margin-right: 15px">
-
-
-<Question title="AlAdmin 包含了哪些权利?" content="不是。AiEditor 的内核是LGPL协议，只要你遵循协议，并且保留界面上的 AiEditor 版权信息和版本信息，就可以免费使用。" />
-
+<Question title="Do I have to buy a commercial license for commercial use?">
+Not really.The kernel of AiEditor is LGPL license, if your business does not involve the secondary development of AiEditor, and retain AiEditor copyright information and version information, you can use it for free.
+</Question>
 </div>
 
 <div style="width: 50%; margin-left: 15px">
+<Question title="The benefits of buying commercial license?" >
+1. You can embed AiEditor into your products or applications, and you can freely develop AiEditor again; <br />
+2. Developed products or programs can remove the copyright and version information of AiEditor; <br />
+3. More Powerful features: AiEditor Business has more powerful and useful features to help you build a professional text editing product. <br />
+4. Priority support and service: AiEditor Pro provides you with more professional and higher level services, which can solve problems quickly and help your products get on the right track faster.
+</Question>
 
-<Question title="什么情况下需要购买商业许可证?" content="当你的企业在商业模式和技术支持等方面有更高要求时，可以选择商业许可证。当你的企业在商业模式和技术支持等方面有更高要求时，可以选择商业许可证。当你的企业在商业模式和技术支持等方面有更高要求时，可以选择商业许可证。" />
+</div>
 
+</div>
+
+</div>
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+
+<div style="width: 50%;margin-right: 15px">
+<Question title="What is 'perpetual authorization'?">
+Once a commercial license is purchased, the purchased version can be licensed and used in perpetuity without an annual fee.
+
+</Question>
+</div>
+
+<div style="width: 50%; margin-left: 15px">
+<Question title="What is a 'root version'?">
+When you purchase a commercial license, you can get a range of licenses, for example, from 1.0 to 1.x.If you need to upgrade, such as from 1.x to 2.x or 3.x, you can buy the upgrade at a low price. For details, contact the co-founder Jenny.
+</Question>
+</div>
+
+</div>
+
+</div>
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+
+<div style="width: 50%;margin-right: 15px">
+<Question title="How long is technical support valid?" >
+For six months, according to the experience, you can master AiEditor use in 6 months.
+</Question>
+</div>
+<div style="width: 50%;margin-left: 15px">
+<Question title="The difference between licensed and commercial versions?" >
+The licensed version is based on the open source version. By purchasing the license, you can develop AiEditor twice, or directly integrate it into your products for commercial use. At the same time, you can remove the copyright and logo information of AiEditor.<br/>
+The commercial version is based on the licensed version and needs more powerful support, such as collaboration, annotations, word import and export, and so on. At the same time, there is also a need for more professional, higher-level services that can solve problems quickly.
+</Question>
 </div>
 
 
 </div>
-
 
 </div>
 
 
 <div class="feature">
 
-# 购买
+# Buy
 
-通过邮件或微信联系我们，与我们的核心团队探讨方案，获得独家支持。
+Contact Jenny, our co-founder, via email or wechat and she will provide support staff for each team.
 
 <button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">
-联系我们
+Contact Us
 </button>
 
 </div>
