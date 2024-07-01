@@ -14,10 +14,12 @@ new AiEditor({
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
     textSelectionBubbleMenu: {
         enable: true,
-        items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
+        items: ["ai", "Bold", "Italic", "Underline", "Strike", "code", "comment"],
     },
 })
 ```
 
 - **enable**： 是否启用
 - **items**： 浮动菜单的菜单项（配置不区分大小写）
+
+> 注意：以上 **items** 的 "comment" 的配置，只有 Pro 版本支持（开源版暂不支持）。

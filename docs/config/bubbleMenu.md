@@ -13,10 +13,13 @@ new AiEditor({
     content: 'AiEditor is an open source rich text editor for AI.',
     textSelectionBubbleMenu: {
         enable: true,
-        items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
+        items: ["ai", "Bold", "Italic", "Underline", "Strike", "code", "comment"],
     },
 })
 ```
 
 - **enable**: Whether to enable the bubble menu
 - **items**: Menu items of the bubble menu (configuration is not case-sensitive)
+
+
+>Note: The configuration of "comments" for the above ** items ** is only supported in the Pro version (not currently supported in the open source version).
