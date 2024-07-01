@@ -4,6 +4,7 @@ import { EditorEvents } from '@tiptap/core';
 import { EditorOptions } from '@tiptap/core';
 import { Extensions } from '@tiptap/core';
 import { Fragment } from 'prosemirror-model';
+import { Instance } from 'tippy.js';
 import { JSONContent } from '@tiptap/core';
 
 declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
@@ -44,7 +45,6 @@ export declare class AiEditor {
     private initInnerEditor;
     private onCreate;
     private onTransaction;
-    private onDestroy;
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
@@ -86,22 +86,24 @@ export declare type AiEditorOptions = {
     theme?: "light" | "dark";
     onMentionQuery?: (query: string) => any[] | Promise<any[]>;
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions;
-    onDestroy?: (editor: AiEditor) => void;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
+    onFocus?: (editor: AiEditor) => void;
+    onBlur?: (editor: AiEditor) => void;
+    onDestroy?: (editor: AiEditor) => void;
     onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu)[];
     draggable?: boolean;
     textSelectionBubbleMenu?: {
         enable?: boolean;
         elementTagName?: string;
-        items?: (string)[];
+        items?: (string | BubbleMenuItem)[];
     };
     link?: {
         autolink?: boolean;
         rel?: string;
         class?: string;
-        bubbleMenuItems?: (string)[];
+        bubbleMenuItems?: (string | BubbleMenuItem)[];
     };
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
     image?: {
@@ -113,7 +115,7 @@ export declare type AiEditorOptions = {
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
         allowBase64?: boolean;
-        bubbleMenuItems?: (string)[];
+        bubbleMenuItems?: (string | BubbleMenuItem)[];
     };
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;
@@ -220,6 +222,15 @@ export declare class AiModelManager {
     static set(modelName: string, aiModel: AiModel): void;
 }
 
+declare type BubbleMenuItem = {
+    id: string;
+    title?: string;
+    icon: string;
+    holder?: any;
+    onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
+    onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
+};
+
 export declare class CustomAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
@@ -265,8 +276,7 @@ declare class Header extends HTMLElement implements AiEditorEvent {
 
 export declare class InnerEditor extends Editor {
     aiEditor: AiEditor;
-    userOptions: AiEditorOptions;
-    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options?: Partial<EditorOptions>);
+    constructor(aiEditor: AiEditor, options?: Partial<EditorOptions>);
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
 }

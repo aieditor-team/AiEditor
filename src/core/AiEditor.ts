@@ -129,12 +129,10 @@ const defaultOptions: Partial<AiEditorOptions> = {
 export class InnerEditor extends Tiptap {
 
     aiEditor: AiEditor;
-    userOptions: AiEditorOptions;
 
-    constructor(aiEditor: AiEditor, editorOptions: AiEditorOptions, options: Partial<EditorOptions> = {}) {
+    constructor(aiEditor: AiEditor,  options: Partial<EditorOptions> = {}) {
         super(options);
         this.aiEditor = aiEditor;
-        this.userOptions = editorOptions;
     }
 
     parseHtml(html: string) {
@@ -242,7 +240,7 @@ export class AiEditor {
             if (!newExtensions) extensions = newExtensions!;
         }
 
-        this.innerEditor = new InnerEditor(this, this.options, {
+        this.innerEditor = new InnerEditor(this,  {
             element: this.mainEl,
             content: content,
             editable: this.options.editable,

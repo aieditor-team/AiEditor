@@ -24,13 +24,13 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         this.innerHTML = `
             <div class="aie-bubble-menu">
                ${this.items!.map((item) => {
-            return `<div class="aie-bubble-menu-item ${this.isActive(item.id) ? 'active' : ''}" id="${item.id}">${item.content}</div>`
+            return `<div class="aie-bubble-menu-item ${this.isActive(item.id) ? 'active' : ''}" id="${item.id}">${item.icon}</div>`
         }).join('')}
             </div>
         `;
 
         for (let item of this.items) {
-            item.holder = item.onInit?.(this.editor as InnerEditor, this.tippyInstance!, this);
+            item.holder = item.onInit?.((this.editor as InnerEditor).aiEditor, this.tippyInstance!, this);
         }
 
         this.querySelector("div")!.addEventListener("click", (e) => {
@@ -78,7 +78,7 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
     }
 
     onItemClick(item: BubbleMenuItem) {
-        item.onClick?.(this.editor as InnerEditor, this.tippyInstance!, this, item.holder);
+        item.onClick?.((this.editor as InnerEditor).aiEditor, this.tippyInstance!, this, item.holder);
     }
 
     onTransaction(_transEvent: EditorEvents['transaction']) {

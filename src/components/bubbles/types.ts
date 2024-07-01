@@ -1,11 +1,11 @@
-import {InnerEditor} from "../../core/AiEditor.ts";
+import {AiEditor} from "../../core/AiEditor.ts";
 import {Instance} from "tippy.js";
 
 export type BubbleMenuItem = {
     id: string,
     title?: string,
-    content: string,
+    icon: string,
     holder?: any,
-    onInit?: (editor: InnerEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
-    onClick?: (editor: InnerEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
+    onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
+    onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 }
