@@ -130,7 +130,7 @@ export class InnerEditor extends Tiptap {
 
     aiEditor: AiEditor;
 
-    constructor(aiEditor: AiEditor,  options: Partial<EditorOptions> = {}) {
+    constructor(aiEditor: AiEditor, options: Partial<EditorOptions> = {}) {
         super(options);
         this.aiEditor = aiEditor;
     }
@@ -240,7 +240,7 @@ export class AiEditor {
             if (!newExtensions) extensions = newExtensions!;
         }
 
-        this.innerEditor = new InnerEditor(this,  {
+        this.innerEditor = new InnerEditor(this, {
             element: this.mainEl,
             content: content,
             editable: this.options.editable,
@@ -329,6 +329,10 @@ export class AiEditor {
 
     getOptions() {
         return this.options;
+    }
+
+    getAttributes(name: string) {
+        return this.innerEditor.getAttributes(name);
     }
 
     getOutline() {
