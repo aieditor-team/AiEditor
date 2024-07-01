@@ -15,6 +15,7 @@ import {DOMParser} from "@tiptap/pm/model";
 import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
 import {AiModelManager} from "../ai/AiModelManager.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
+import {BubbleMenuItem} from "../components/bubbles/types.ts";
 
 
 defineCustomElement('aie-header', Header);
@@ -71,13 +72,13 @@ export type AiEditorOptions = {
     textSelectionBubbleMenu?: {
         enable?: boolean,
         elementTagName?: string,
-        items?: (string)[],
+        items?: (string | BubbleMenuItem)[],
     },
     link?: {
         autolink?: boolean,
         rel?: string,
         class?: string,
-        bubbleMenuItems?: (string)[],
+        bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
     uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
     image?: {
@@ -89,7 +90,7 @@ export type AiEditorOptions = {
         uploaderEvent?: UploaderEvent,
         defaultSize?: number,
         allowBase64?: boolean,
-        bubbleMenuItems?: (string)[],
+        bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
     video?: {
         customMenuInvoke?: (editor: AiEditor) => void;

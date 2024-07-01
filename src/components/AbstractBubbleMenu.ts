@@ -3,7 +3,7 @@ import {Editor, EditorEvents} from "@tiptap/core";
 import tippy, {Instance} from "tippy.js";
 import {BubbleMenuItem} from "./bubbles/types.ts";
 import {MenuRecord} from "./bubbles/items/MenuRecord.ts";
-import { t } from "i18next";
+import {t} from "i18next";
 
 
 export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditorEvent {
@@ -62,10 +62,10 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
         this.tippyInstance = value;
     }
 
-    protected initItemsByOptions(allMenuItems: MenuRecord, optionItems?: (string)[]) {
+    protected initItemsByOptions(allMenuItems: MenuRecord, optionItems?: (string | BubbleMenuItem)[]) {
         if (optionItems && optionItems.length > 0) {
             for (let key of optionItems) {
-                const linkMenuItem = allMenuItems.getItem(key);
+                const linkMenuItem = typeof key === "string" ? allMenuItems.getItem(key) : key;
                 if (linkMenuItem) this.items.push(linkMenuItem);
             }
         } else {
