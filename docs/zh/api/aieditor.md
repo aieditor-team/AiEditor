@@ -34,6 +34,7 @@ AiEditor 提供的方法如下：
 - `getSelectedText()`： 获取当前编辑器选中的 `纯文本` 内容（不包含 html）。
 - `getMarkdown()`： 获取当前编辑器的获取 markdown 格式内容。
 - `getOptions()`： 获取当前编辑器的配置信息。
+- `getAttributes(name)`： 获取当前编辑器节点位置的节点（Node）或者标识（Mark）的属性，传入节点的名称。
 - `getOutline()`： 获得内容的目录，返回一个数组，内容格式如下：
 
 ```json
