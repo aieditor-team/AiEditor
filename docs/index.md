@@ -59,6 +59,9 @@ hero:
 .VPContent> .VPHome> .vp-doc  table{
     display: inline-block;
     background: none;
+    border-collapse: separate;
+    border-spacing: 30px 10px;
+    max-width:980px;
 }
 
 .VPContent> .VPHome> .vp-doc  table th{
@@ -67,7 +70,7 @@ hero:
 }
 
 .VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
-     border-bottom: solid 1px #ccc;
+     border-bottom: solid 1px #ddd;
      margin: 10px;
      font-weight: bold;
      font-size: 16px;
@@ -95,31 +98,57 @@ hero:
     margin: -7px 0;
 }
 
+.VPContent> .VPHome> .vp-doc table td:nth-of-type(1){
+    color: #999;
+}
+
+
 .VPContent> .VPHome> .vp-doc table td:nth-of-type(2) svg{
-    fill: red;
+    fill: #8C8C8C;
+    margin-right:10px;
+    width: 20px;
+    margin:-4px 0;
+   
+    /* padding: 0px; */
 }
 
 .VPContent> .VPHome> .vp-doc table td:nth-of-type(3) svg{
     fill: #646cff;
 }
+.feature-content{
+    width: 50%;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+}
+
+.feature-content>h1{
+  margin-bottom:30px;
+}
+
+.feature-content>p{
+  color:#666;
+}
+
 
 </style>
 
 <div style="text-align: center;background-color: #f8f9fa;padding: 80px">
 
-# 为什么选择 `AIEditor`
+# Why choose AiEditor
 
 <div style="margin: 30px 0 40px;color: #999">
-相较于使用其他，只有选择 AiEditor，您才会拥有一款真正属于自己的富文本编辑器。
+By choosing AiEditor, you will have a rich text editor that is truly your own.
 </div>
 
-|         | 其他编辑器(没有源码，按量付费) | AiEditor(真正属于自己)                               |
+|         | Other editors |  AiEditor                            |
 | ------------- |:-----------------|:-----------------------------------------------|
 |      |
-| 私有化部署      | ☹️  不支持或需要高昂费用   | <Check />  开源版和商业版都支持私有化部署，保证数据和隐私安全           |
-| 大模型支持      | ☹️ 只支持 2/3 种     | <Check /> 支持接入市面上任意大模型，包括私有大模型                 |
-| 私有 APlkey | ☹️ 不支持           | <Check /> 支持，保证数据隐私安全，把控自己的消费                  |
-| 数据绑架 | ☹️ 按用户数量和应用收费    | <Check /> 无论开源版还是商业版，不限制用户数量，不限制应用数量           |
+| Private deployment       | <Unhappy /> Not support   | <Check />  Both the open source and pro versions support private deployment, ensuring data and privacy security           |
+| LLMs support      | <Unhappy />  few types supported     | <Check /> Supports access to any LLMs on the market, including private LLMs                 |
+| Private APlkey | <Unhappy />   Not support            | <Check /> Support, Keep your data private and in control of your spending                |
+| Data kidnapping | <Unhappy />  users and applications limit   | <Check /> No matter the open source version or the pro version, there is no limit to the number of users, no limit to the number of applications           |
 
 </div>
 
@@ -127,9 +156,10 @@ hero:
 
 <div class="feature">
 
-# 特性
+#  Features
 
-相较于使用其他，只有选择 AiEditor，您才会拥有一款真正属于自己的富文本编辑器。
+
+Make AiEditor the foundation of your application and it won't let you down
 
 </div>
 
@@ -139,15 +169,15 @@ hero:
 
 <div style="width: 50%">
 
-![](/assets/image/feature1.png)
+![](/assets/image/install-en.png)
 
 </div>
 
-<div style="width: 50%;padding: 50px">
+<div class="feature-content">
 
-<h1>多人协作</h1>
+<h1>Out of the box</h1>
 
-多人协作允许多个用户同时在同一文档上工作，团队成员能实时看到其他人的输入和更改。适用于软件开发、市场营销、法律文件审查、项目管理、教学、新闻报道、医疗研究等等场景。
+Without a lot of preparation,Just a few lines of code to run.
 
 </div>
 </div>
@@ -162,17 +192,19 @@ hero:
 
 
 
-<div style="width: 50%;padding: 50px">
+<div class="feature-content">
 
-<h1>多人协作</h1>
+<h1>Markdown Friendly</h1>
 
-多人协作允许多个用户同时在同一文档上工作，团队成员能实时看到其他人的输入和更改。适用于软件开发、市场营销、法律文件审查、项目管理、教学、新闻报道、医疗研究等等场景。
+Be able to recognize and correctly render the basic syntax of Markdown,
+What you see is what you get,
+See results in real time.
 
 </div>
 
 <div style="width: 50%">
 
-![](/assets/image/feature1.png)
+![](/assets/image/markdown-en.png)
 
 </div>
 
@@ -180,6 +212,82 @@ hero:
 </div>
 
 
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 20px 0;max-width: 1280px">
+
+<div style="width: 50%">
+
+![](/assets/image/ai-en.png)
+
+</div>
+
+<div class="feature-content">
+
+<h1>Powerful AI capabilities</h1>
+
+You can have AI check for spelling and grammar errors;
+You can expand 10 words to 200 words;
+Or condense 200 words into 50 words;
+You can translate Chinese into English, or do the reverse;
+You can also let the AI help summarize the core content of the article...
+
+All this is done without leaving the editor.
+
+More AI capabilities are on the way...
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 20px 0;max-width: 1280px">
+
+
+
+<div class="feature-content">
+
+<h1>Collaboration</h1>
+
+Collaboration allows multiple users to work on the same document at the same time,
+
+Team members can see other people's input and changes in real time.
+
+It is suitable for software development, marketing, legal document review, project management, teaching, news reporting, medical research and other scenarios.
+
+</div>
+
+<div style="width: 50%">
+
+![](/assets/image/feature1-en.png)
+
+</div>
+
+</div>
+</div>
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 20px 0;max-width: 1280px">
+
+<div style="width: 50%">
+
+![](/assets/image/comment-en.png)
+
+</div>
+
+<div class="feature-content">
+
+<h1 > Annotate</h1>
+
+Allow reviewers to add comments or suggestions to specific sections of the document, and users can use comments to flag questions, errors, or areas that need improvement in the document for subsequent revisions.
+
+</div>
+</div>
+</div>
 
 
 
@@ -189,33 +297,34 @@ hero:
 
 <div style="text-align: center;background-color: #f8f9fa;padding: 80px">
 
-# 你准备好了吗？
+# Are you ready?
 
 <div style="margin: 30px 0 40px;color: #999">
-接下来，无论你使用开源版，还是商业版，都会收获惊喜!
+Next, whether you use the open source version or the pro version, you will be surprised!
 </div>
+<button style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0"> Experience online</button>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">
 
-<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px">
-开源版<br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">试用一下</button>
-<div style="font-size: 12px">
-AiEditor 基于更为宽松的 LGPL 协议开源<br />
-不限制用户数量<br />
-不限制应用数量
+<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
+<span style="font-weight:700;">open source version</span><br />
+<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">Download now</button>
+<div style="font-size: 14px;color:#666;">
+AiEditor is open source under the more liberal LGPL license<br />
+No limit on the number of users<br />
+No limit on the number of applications
 </div>
 </div>
 
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
-开源版<br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">试用一下</button>
-<div style="font-size: 12px">
-AiEditor 基于更为宽松的 LGPL 协议开源<br />
-不限制用户数量<br />
-不限制应用数量
+<span style="font-weight:700;">pro version</span><br />
+<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">Contact us</button>
+<div style="font-size: 14px;color:#666;">
+Low price<br />
+No limit on the number of users<br />
+No limit on the number of applications
 </div>
 </div>
 
