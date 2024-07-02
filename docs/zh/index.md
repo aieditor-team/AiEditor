@@ -127,16 +127,16 @@ hero:
 # 为什么选择 AiEditor
 
 <div style="margin: 30px 0 40px;color: #999">
-相较于使用其他，只有选择 AiEditor，您才会拥有一款真正属于自己的富文本编辑器。
+一款真正属于自己的富文本编辑器。
 </div>
 
-|         | 其他编辑器(没有源码，按量付费) | AiEditor(真正属于自己)                               |
+|         | 其他编辑器 | AiEditor                           |
 | ------------- |:-----------------|:-----------------------------------------------|
 |      |
-| 私有化部署      | <Unhappy /> 不支持或需要高昂费用   | <Check />  开源版和商业版都支持私有化部署，保证数据和隐私安全           |
-| 大模型支持      | <Unhappy />  支持 2/3 种     | <Check /> 支持接入市面上任意大模型，包括私有大模型                 |
+| 私有化部署      | <Unhappy /> 不支持   | <Check />  开源版和商业版都支持私有化部署，保证数据和隐私安全           |
+| 大模型支持      | <Unhappy />  支持少量几种     | <Check /> 支持接入市面上任意大模型，包括私有大模型                 |
 | 私有 APlkey | <Unhappy />  不支持           | <Check /> 支持，保证数据隐私安全，把控自己的消费                  |
-| 数据绑架 | <Unhappy />  按用户数量和应用收费    | <Check /> 无论开源版还是商业版，不限制用户数量，不限制应用数量           |
+| 数据绑架 | <Unhappy />  按用户和应用数量收费    | <Check /> 不限制用户数量，不限制应用数量           |
 
 </div>
 
@@ -146,7 +146,7 @@ hero:
 
 # 特性
 
-除了不做数据绑定，AiEditor 的体验也得舒适
+一款 AI 驱动的富文本编辑器，助你快速构建知识写作类产品。
 
 </div>
 
@@ -164,7 +164,7 @@ hero:
 
 <h1>开箱即用</h1>
 
-不需要一堆准备工作，几行代码立马运行起来
+无需一堆准备工作，几行代码立马运行起来。
 
 </div>
 </div>
@@ -183,7 +183,7 @@ hero:
 
 <h1>Markdown 友好</h1>
 
-能够识别并正确渲染 Markdown 的基本语法，可见即所得，实时查看文章效果。
+能够识别并正确渲染 Markdown 的基本语法，实时查看文章效果。
 
 </div>
 
@@ -211,11 +211,11 @@ hero:
 
 <h1>强大的 AI 能力</h1>
 
-你可以让 AI 帮你检查拼写与语法错误；也可以将10个字扩写成200字；也能将500字提炼成100字；如果有多语言要求，可以一键将文章翻译成中文或者英语，如果懒得阅读，还可以让 AI 帮忙总结文章的核心内容...
+AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能将 500 字提炼成 100 字；可以一键翻译；还可以让 AI 总结核心内容...
 
 而这一切完成都不需要离开编辑器。
 
-更多AI能力研发中
+更多AI能力研发中...
 
 </div>
 </div>
@@ -234,7 +234,7 @@ hero:
 
 <h1>多人协作</h1>
 
-多人协作允许多个用户同时在同一文档上工作，团队成员能实时看到其他人的输入和更改。适用于软件开发、市场营销、法律文件审查、项目管理、教学、新闻报道、医疗研究等等场景。
+允许多个用户同时在同一文档上工作，每个操作人能实时看到彼此的输入和更改。适用于软件开发、市场营销、法律文件审查、项目管理、教学、新闻报道、医疗研究等等行业的协作场景。
 
 </div>
 
@@ -260,22 +260,46 @@ hero:
 
 <h1 >批注功能</h1>
 
-允许审稿人，在文档的特定部分添加评论或建议，用户可以通过批注来标记文档中的疑问、错误或需要改进的地方，方便后续的修订。
+允许审稿人，在文档的特定部分添加评论或建议，也可以标记文档中的疑问、错误或需要改进的地方，方便后续的修订。
 
 </div>
 </div>
 </div>
-
 
 
 <div class="feature">
 
 #  集成优秀产品
 
-
-Make AiEditor the foundation of your application and it won't let you down
+我们将优秀的开源作品集成到 AiEditor，比如虚拟白板，手绘草图，图表编辑器等。
 
 </div>
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 20px 0;max-width: 1280px">
+
+<div style="width: 46%;background: #f8f9fa;margin: 2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<span style="font-weight:700;font-size: 24px;">drawio</span>
+<div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px">
+一个用于常规图表的 JavaScript 客户端编辑器。
+</div>
+<img src="/assets/image/drawio.jpg" />
+</div>
+
+
+<div style="width: 46%;background: #f8f9fa;margin:  2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<span style="font-weight:700;font-size: 24px">excalidraw</span>
+<div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px;">
+一个虚拟手绘风格的白板，创建如图表、线框图或任何您喜欢的东西。
+</div>
+<img src="/assets/image/excalidraw.jpg" />
+</div>
+
+
+
+</div>
+</div>
+
 
 
 
@@ -286,16 +310,16 @@ Make AiEditor the foundation of your application and it won't let you down
 <div style="margin: 30px 0 40px;color: #999">
 接下来，无论你使用开源版，还是商业版，都会收获惊喜!
 </div>
-<button style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0">在线体验</button>
+<a href="" style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0;text-decoration:none;display:inline-block">在线体验</a>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
 <span style="font-weight:700;">开源版</span><br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">立马下载</button>
+<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">立马下载</a>
 <div style="font-size: 14px;color:#666;">
-AiEditor 基于更为宽松的 LGPL 协议开源<br />
+基于更为宽松的 LGPL 协议开源<br />
 不限制用户数量<br />
 不限制应用数量
 </div>
@@ -304,7 +328,7 @@ AiEditor 基于更为宽松的 LGPL 协议开源<br />
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
 <span style="font-weight:700;">商业版</span><br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">联系我们</button>
+<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
 <div style="font-size: 14px;color:#666;">
 价格超低<br />
 不限制用户数量<br />

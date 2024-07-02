@@ -97,10 +97,10 @@ layout: home
 <div class="feature" style="margin-top: 80px">
 
 # Commercial license
-
-AiEditor Business Edition has more powerful and practical features to help you build a professional product that requires text editing.
-<br />
-In addition, providing you with more professional and higher-level services can quickly solve problems and help your products get on track faster.
+AiEditor Business Version has more powerful and practical features,
+Help you build a professional product.<br />
+In addition, It provide you with more professional, higher level of service.<br />
+Help you solve problems and your product get on track quickly.
 </div>
 
 

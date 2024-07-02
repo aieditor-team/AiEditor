@@ -139,7 +139,7 @@ hero:
 # Why choose AiEditor
 
 <div style="margin: 30px 0 40px;color: #999">
-By choosing AiEditor, you will have a rich text editor that is truly your own.
+A rich text editor that is truly its own.
 </div>
 
 |         | Other editors |  AiEditor                            |
@@ -148,7 +148,7 @@ By choosing AiEditor, you will have a rich text editor that is truly your own.
 | Private deployment       | <Unhappy /> Not support   | <Check />  Both the open source and pro versions support private deployment, ensuring data and privacy security           |
 | LLMs support      | <Unhappy />  few types supported     | <Check /> Supports access to any LLMs on the market, including private LLMs                 |
 | Private APlkey | <Unhappy />   Not support            | <Check /> Support, Keep your data private and in control of your spending                |
-| Data kidnapping | <Unhappy />  users and applications limit   | <Check /> No matter the open source version or the pro version, there is no limit to the number of users, no limit to the number of applications           |
+| Data kidnapping | <Unhappy />  users and applications limit   | <Check /> No limit to the number of users and applications           |
 
 </div>
 
@@ -159,7 +159,8 @@ By choosing AiEditor, you will have a rich text editor that is truly your own.
 #  Features
 
 
-Make AiEditor the foundation of your application and it won't let you down
+An AI-powered rich text editor,<br/>
+Help you build knowledge products quickly.
 
 </div>
 
@@ -197,8 +198,7 @@ Without a lot of preparation,Just a few lines of code to run.
 <h1>Markdown Friendly</h1>
 
 Be able to recognize and correctly render the basic syntax of Markdown,
-What you see is what you get,
-See results in real time.
+see results in real time.
 
 </div>
 
@@ -226,11 +226,11 @@ See results in real time.
 
 <h1>Powerful AI capabilities</h1>
 
-You can have AI check for spelling and grammar errors;
-You can expand 10 words to 200 words;
-Or condense 200 words into 50 words;
-You can translate Chinese into English, or do the reverse;
-You can also let the AI help summarize the core content of the article...
+You can have AI check for spelling and grammar errors;<br/>
+Can expand 10 words to 200 words;<br/>
+Or condense 200 words into 50 words;<br/>
+You can One-click translation;<br/>
+Can let the AI summarize the core content...
 
 All this is done without leaving the editor.
 
@@ -253,7 +253,8 @@ More AI capabilities are on the way...
 
 <h1>Collaboration</h1>
 
-Collaboration allows multiple users to work on the same document at the same time, Team members can see other people's input and changes in real time.
+Allows multiple users to work on the same document at the same time. <br/>
+You can see other people's input and changes in real time.
 
 It is suitable for software development, marketing, legal document review, project management, teaching, news reporting, medical research and other scenarios.
 
@@ -279,31 +280,24 @@ It is suitable for software development, marketing, legal document review, proje
 
 <div class="feature-content">
 
-<h1 >Comment Function</h1>
+<h1 >Annotation</h1>
 
-Allow reviewers to add comments or suggestions to specific sections of the document, and users can use comments to flag questions, errors, or areas that need improvement in the document for subsequent revisions.
-
-</div>
-</div>
-</div>
-
-
-<div class="feature">
-
-#  Features
-
-
-Make AiEditor the foundation of your application and it won't let you down
+Allow reviewers to add comments or suggestions to specific sections of the document, as well as flag questions, errors, or areas for improvement in the document for subsequent revision.
 
 </div>
+</div>
+</div>
+
+
+
 
 
 
 <div class="feature">
 
-#  集成优秀产品
+#  Integrate excellent products
 
-我们将优秀的开源作品集成到 AiEditor，比如虚拟白板，手绘草图，图标编辑器等。
+We integrate great open source works into AiEditor, such as virtual whiteboard, hand-drawn sketches, chart editor, and more.
 
 </div>
 
@@ -312,8 +306,8 @@ Make AiEditor the foundation of your application and it won't let you down
 
 <div style="width: 46%;background: #f8f9fa;margin: 2%; padding:30px;border-radius: 15px;margin-right: 15px;">
 <span style="font-weight:700;font-size: 24px;">drawio</span>
-<div style="font-size: 14px;color:#666;height: 60px;padding-top: 10px">
-一个用于常规图表的 JavaScript 客户端编辑器。
+<div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px">
+draw.io is a JavaScript, client-side editor for general diagramming.
 </div>
 <img src="/assets/image/drawio.jpg" />
 </div>
@@ -321,8 +315,8 @@ Make AiEditor the foundation of your application and it won't let you down
 
 <div style="width: 46%;background: #f8f9fa;margin:  2%; padding:30px;border-radius: 15px;margin-right: 15px;">
 <span style="font-weight:700;font-size: 24px">excalidraw</span>
-<div style="font-size: 14px;color:#666;height: 60px;padding-top: 10px;">
-一个虚拟手绘风格的白板，创建精美的手绘，如图表、线框图或任何您喜欢的东西。
+<div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px;">
+Virtual whiteboard for sketching hand-drawn like diagrams.
 </div>
 <img src="/assets/image/excalidraw.jpg" />
 </div>
@@ -343,15 +337,16 @@ Make AiEditor the foundation of your application and it won't let you down
 <div style="margin: 30px 0 40px;color: #999">
 Next, whether you use the open source version or the pro version, you will be surprised!
 </div>
-<button style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0">Live Preview</button>
+
+<a href="" style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0;text-decoration:none;display:inline-block">Live Preview</a>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
 <span style="font-weight:700;">open source version</span><br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">
-Download now</button>
+
+<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Download now</a>
 <div style="font-size: 14px;color:#666;">
 AiEditor is open source under the more liberal LGPL license<br />
 Unlimited amount of users<br />
@@ -362,7 +357,8 @@ Unlimited amount of applications
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
 <span style="font-weight:700;">pro version</span><br />
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">Contact us</button>
+
+<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
 <div style="font-size: 14px;color:#666;">
 Low price<br />
 Unlimited amount of users<br />
