@@ -288,7 +288,14 @@ Allow reviewers to add comments or suggestions to specific sections of the docum
 </div>
 
 
+<div class="feature">
 
+#  Features
+
+
+Make AiEditor the foundation of your application and it won't let you down
+
+</div>
 
 
 
