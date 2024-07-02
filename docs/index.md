@@ -292,6 +292,42 @@ Allow reviewers to add comments or suggestions to specific sections of the docum
 
 
 
+<div class="feature">
+
+#  集成优秀产品
+
+我们将优秀的开源作品集成到 AiEditor，比如虚拟白板，手绘草图，图标编辑器等。
+
+</div>
+
+<div style="display: flex;justify-content: center">
+<div style="display: flex;padding: 20px 0;max-width: 1280px">
+
+<div style="width: 46%;background: #f8f9fa;margin: 2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<span style="font-weight:700;font-size: 24px;">drawio</span>
+<div style="font-size: 14px;color:#666;height: 60px;padding-top: 10px">
+一个用于常规图表的 JavaScript 客户端编辑器。
+</div>
+<img src="/assets/image/drawio.jpg" />
+</div>
+
+
+<div style="width: 46%;background: #f8f9fa;margin:  2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<span style="font-weight:700;font-size: 24px">excalidraw</span>
+<div style="font-size: 14px;color:#666;height: 60px;padding-top: 10px;">
+一个虚拟手绘风格的白板，创建精美的手绘，如图表、线框图或任何您喜欢的东西。
+</div>
+<img src="/assets/image/excalidraw.jpg" />
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
 
 <div style="text-align: center;background-color: #f8f9fa;padding: 80px">
 
@@ -331,3 +367,4 @@ Unlimited amount of applications
 </div>
 </div>
 </div>
+

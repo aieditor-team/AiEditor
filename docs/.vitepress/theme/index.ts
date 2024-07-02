@@ -7,14 +7,29 @@ import Check from "./Check.vue";
 import Question from "./Question.vue";
 import Close from "./Close.vue";
 import Unhappy from "./Unhappy.vue";
+import MyEditor from "./MyEditor.vue";
+
 
 export default {
     ...Theme,
     Layout: MyLayout,
-    enhanceApp({app, router, siteData}) {
+    async enhanceApp({app, router, siteData}) {
         app.component('Check', Check)
         app.component('Close', Close)
         app.component('Question', Question)
         app.component('Unhappy', Unhappy)
+        app.component('MyEditor.', MyEditor)
+
+
+        // if (!import.meta.env.SSR) {
+        //     const plugin = await import('aieditor')
+        //     app.use(plugin.default)
+        // }
+
+
+        // if (!import.meta.env.SSR) {
+        //     const plugin = await import('./AiEditor.vue')
+        //     app.use(plugin.default)
+        // }
     }
 }
