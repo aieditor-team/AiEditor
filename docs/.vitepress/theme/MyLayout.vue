@@ -49,13 +49,13 @@ const {Layout} = DefaultTheme
   <Layout>
 
     <!--docs: https://vitepress.dev/guide/extending-default-theme#layout-slots-->
-    <template #doc-before>
-      <div style="margin-bottom: 30px">
-        <a href="https://aiadmin.cc" target="_blank">
-          <img src="/assets/image/admin-banner.jpg">
-        </a>
-      </div>
-    </template>
+<!--    <template #doc-before>-->
+<!--      <div style="margin-bottom: 30px">-->
+<!--        <a href="https://aiadmin.cc" target="_blank">-->
+<!--          <img src="/assets/image/admin-banner.jpg">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </template>-->
 
     <template #home-hero-image>
       <div style="z-index: 9999" >

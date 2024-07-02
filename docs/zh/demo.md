@@ -28,104 +28,16 @@ layout: home
 #    details: In addition to basic functions, AiEditor also supports features that many top editors do not have, such as format painting, merging and unmerging of cells, light and dark themes, mobile adaptation, and more.
 ---
 
-<style >
-
-
-.VPContent> .VPHome {
-    margin-bottom: 0;
-}
-
+<style>
 .VPContent> .VPHome> .container{
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100%;
 }
+</style>
 
-.VPContent> .VPHome> .container .feature{
-   text-align: center;
-   margin: 40px;
-}
-
-.VPContent> .VPHome> .container .feature p{
-   color: #999;
-}
-
-.VPContent> .VPHome> .vp-doc  table{
-    display: inline-block;
-    background: none;
-    border-collapse: separate;
-    border-spacing: 30px 10px;
-    max-width:980px;
-}
-
-.VPContent> .VPHome> .vp-doc  table th{
-     background: none;
-     border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
-     border-bottom: solid 1px #ddd;
-     margin: 10px;
-     font-weight: bold;
-     font-size: 16px;
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     background: none;
-     border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     height: 40px;
-}
-
-.VPContent> .VPHome> .vp-doc  table  tbody tr:first-child{
-     height: 20px;
-}
-
-.VPContent> .VPHome> .vp-doc  table td{
-    background: none;
-    border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  table td svg{
-    margin: -7px 0;
-}
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(1){
-    color: #999;
-}
-
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(2) svg{
-    fill: #8C8C8C;
-    margin-right:10px;
-    width: 20px;
-    margin:-4px 0;
-   
-    /* padding: 0px; */
-}
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(3) svg{
-    fill: #646cff;
-}
-.feature-content{
-    width: 50%;    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 50px;
-}
-
-.feature-content>h1{
-  margin-bottom:30px;
-}
-
-.feature-content>p{
-  color:#666;
-}
-
+<style scoped>
 .aie-menu-item{
   margin: 0 2px;
 }
@@ -146,7 +58,7 @@ By choosing AiEditor, you will have a rich text editor that is truly your own.
 
 
 <div style="display: flex;justify-content: center;">
-<MyEditor lang="en" />
+<MyEditor lang="zh" />
 </div>
 
 </div>

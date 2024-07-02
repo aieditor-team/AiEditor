@@ -120,7 +120,7 @@ export default defineConfig({
             // {text: 'Home', link: '/'},
             {text: 'Document', link: '/what-is-ai-editor'},
             {
-                text: 'Live Preview', items: [
+                text: 'Demos', items: [
                     {text: 'Classic Style', link: '/demo'},
                     {text: 'Modern style', link: 'http://aieditor1.jpress.cn'},
                 ]
