@@ -1,11 +1,10 @@
-#  Annotate(or comment)
+#  Comment
 
 The annotate function is similar to the annotate function of Word, you can select a text alignment to comment, as shown in the following figure:
 
 ![](../../assets/image/comment-en.png)
 
-> PS：此功能在 Pro 版本（商业版）才有，开源版没有这个功能。 Pro 版预览地址：http://aieditor-pro.jpress.cn 
-
+>PS: This feature is only available in the Pro version (commercial version) and not in the open source version. Pro version preview address: http://aieditor-pro.jpress.cn
 ## How to Use
 
 ```typescript

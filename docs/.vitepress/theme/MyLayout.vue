@@ -40,8 +40,15 @@
 
 <script setup>
 import DefaultTheme from 'vitepress/theme'
+import {useData} from "vitepress";
 
 const {Layout} = DefaultTheme
+
+const {lang} = useData()
+
+
+// console.log(">>>data",data)
+
 </script>
 
 
@@ -59,7 +66,8 @@ const {Layout} = DefaultTheme
 
     <template #home-hero-image>
       <div style="z-index: 9999" >
-          <img src="/assets/image/index-banner.png">
+          <img v-if="lang === 'en'" src="/assets/image/ai-en.png">
+          <img v-else src="/assets/image/ai.png">
       </div>
     </template>
 

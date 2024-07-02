@@ -4,12 +4,9 @@ layout: home
 title: 面向 AI 的下一代富文本编辑器
 
 hero:
-  name: AiEditor
+  name: AIEditor
   text: 一个面向 AI 的下一代           富文本编辑器
   tagline: 开箱即用、全框架支持、Markdown 友好
-  image:
-    src: /assets/image/logo-large.png
-    alt: AiEditor
   actions:
     - theme: brand
       text: 快速开始 
@@ -17,8 +14,6 @@ hero:
     - theme: alt
       text: 在线体验
       link: /zh/demo
-
-
 ---
 
 <style>

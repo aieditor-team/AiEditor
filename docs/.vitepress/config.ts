@@ -151,6 +151,8 @@ export default defineConfig({
                     {text: 'FontSize', link: '/config/fontSize'},
                     {text: 'Mention', link: '/config/mention'},
                     {text: 'Link', link: '/config/link'},
+                    {text: 'Comment 💪', link: '/config/comment'},
+                    {text: 'Collaboration 💪', link: '/config/collaboration'},
                     {text: 'I18N', link: '/config/i18n'},
                     {text: 'Readonly Mode', link: '/config/editable'},
                     {text: 'Custom Layout', link: '/config/layout'},

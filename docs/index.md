@@ -7,9 +7,6 @@ hero:
   name: "AIEditor"
   text: a next-gen rich text editor for AI
   tagline: Out-of-the-box, Fully Framework Supported, Markdown Friendly
-  image:
-    src: /assets/image/index-banner.png
-    alt: AiEditor
   actions:
     - theme: brand
       text: Quick Start
