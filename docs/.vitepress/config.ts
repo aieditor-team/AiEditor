@@ -10,6 +10,7 @@ export default defineConfig({
     sitemap: {
         hostname: "https://aieditor.dev"
     },
+    appearance:false,
 
 
     locales:{
@@ -38,20 +39,12 @@ export default defineConfig({
                     {text: '开发文档', link: 'zh/what-is-ai-editor'},
                     {
                         text: '在线 Demo', items: [
-                            {text: '经典/传统风格', link: 'http://aieditor.jpress.cn'},
+                            {text: '经典/传统风格', link: 'zh/demo'},
                             {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
                         ]
                     },
-                    {text: 'AiEditor Pro', link: 'zh/pro'},
-                    {
-                        text: '获取源码', items: [
-                            {text: 'Gitee', link: 'https://gitee.com/aieditor-team/aieditor'},
-                            {text: 'Github', link: 'https://github.com/aieditor-team/aieditor'},
-                            {text: '示例代码', link: 'https://gitee.com/aieditor-team/aieditor/tree/main/demos'},
-                            {text: 'ChangeLog', link: 'zh/changes'},
-                        ]
-                    },
-                    {text: 'AiMP', link: 'https://aimp.cc'},
+                    {text: 'AiEditor Pro', link: 'zh/versions'},
+                    {text: '联系我们', link: 'zh/contact-us'},
                 ],
         
                 sidebar: [
@@ -112,6 +105,7 @@ export default defineConfig({
 
     themeConfig: {
         logo: '/assets/image/logo.png',
+
         editLink: {
             pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
         },
@@ -123,14 +117,16 @@ export default defineConfig({
             provider: 'local'
         },
         nav: [
-            {text: 'Home', link: '/'},
+            // {text: 'Home', link: '/'},
             {text: 'Document', link: '/what-is-ai-editor'},
             {
                 text: 'Live Preview', items: [
-                    {text: 'Classic Style', link: 'http://aieditor.jpress.cn'},
+                    {text: 'Classic Style', link: '/demo'},
                     {text: 'Modern style', link: 'http://aieditor1.jpress.cn'},
                 ]
             },
+            {text: 'AiEditor Pro', link: '/versions'},
+            {text: 'Contact Us', link: '/contact-us'},
         ],
 
         sidebar: [

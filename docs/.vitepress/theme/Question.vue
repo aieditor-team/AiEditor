@@ -56,7 +56,7 @@ button {
 }
 
 .active {
-  background: #3e63dd;
+  background: #000;
 }
 
 .active svg {

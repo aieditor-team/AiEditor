@@ -14,22 +14,12 @@ export default {
     ...Theme,
     Layout: MyLayout,
     async enhanceApp({app, router, siteData}) {
+
         app.component('Check', Check)
         app.component('Close', Close)
         app.component('Question', Question)
         app.component('Unhappy', Unhappy)
-        app.component('MyEditor.', MyEditor)
+        app.component('MyEditor', MyEditor)
 
-
-        // if (!import.meta.env.SSR) {
-        //     const plugin = await import('aieditor')
-        //     app.use(plugin.default)
-        // }
-
-
-        // if (!import.meta.env.SSR) {
-        //     const plugin = await import('./AiEditor.vue')
-        //     app.use(plugin.default)
-        // }
     }
 }

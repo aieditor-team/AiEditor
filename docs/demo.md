@@ -30,11 +30,6 @@ layout: home
 
 <style >
 
-.VPHome svg{
-    width: 24px;
-    display: inline-block;
-    margin: 0 5px;
-}
 
 .VPContent> .VPHome {
     margin-bottom: 0;
@@ -131,8 +126,14 @@ layout: home
   color:#666;
 }
 
-
+.aie-menu-item{
+  margin: 0 2px;
+}
 </style>
+
+
+
+
 
 <div style="text-align: center;background-color: #f8f9fa;padding: 80px">
 
@@ -145,7 +146,7 @@ By choosing AiEditor, you will have a rich text editor that is truly your own.
 
 
 <div style="display: flex;justify-content: center;">
-<MyEditor  />
+<MyEditor lang="en" />
 </div>
 
 </div>
