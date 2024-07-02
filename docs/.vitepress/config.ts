@@ -117,7 +117,6 @@ export default defineConfig({
             provider: 'local'
         },
         nav: [
-            // {text: 'Home', link: '/'},
             {text: 'Document', link: '/what-is-ai-editor'},
             {
                 text: 'Demos', items: [
