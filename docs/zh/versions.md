@@ -114,43 +114,45 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 
 
 
-|               |    开源版    |     授权版     |  商业版  |
-|---------------|:---------:|:-----------:|:------:|
-| 价格            |    免费     |    联系我们     | 联系我们 |
-| **许可证**       |
-| 许可证类型         |   LGPL    |    商业许可证    |   商业许可证   |
-| 永久授权          | <Check /> |  <Check />  |   <Check />   |
-| 授权版本          |    全部     |    一个根版本    |  一个根版本   |
-| **使用限制**      |
-| 不限制用户数量       |     <Check />     |  <Check />  |   <Check />   |
-| 不限制应用数量       |     <Check />     |  <Check />  |   <Check />   |
-| 不限制数据量        |     <Check />     |  <Check />  |   <Check />   |
-| 开发商业应用        | <Close /> |  <Check />  |   <Check />   |
-| 使用自己的品牌信息 | <Close /> |  <Check />  |   <Check />   |
-| **功能**        |
-| 基本功能：	标题、正文、字体、字号、加粗、斜体、下划线、删除线、链接、行内代码、上标、下标、分割线、引用、打印 | <Check /> |  <Check />  |   <Check />   |
+|                                                                                               |    开源版    |     授权版     |  商业版  |
+|-----------------------------------------------------------------------------------------------|:---------:|:-----------:|:------:|
+| 价格                                                                                            |    免费     |    联系我们     | 联系我们 |
+| **许可证**                                                                                       |
+| 许可证类型                                                                                         |   LGPL    |    商业许可证    |   商业许可证   |
+| 永久授权                                                                                          | <Check /> |  <Check />  |   <Check />   |
+| 授权版本                                                                                          |    全部     |    一个根版本    |  一个根版本   |
+| **使用限制**                                                                                      |
+| 不限制用户数量                                                                                       |     <Check />     |  <Check />  |   <Check />   |
+| 不限制应用数量                                                                                       |     <Check />     |  <Check />  |   <Check />   |
+| 不限制数据量                                                                                        |     <Check />     |  <Check />  |   <Check />   |
+| 通过 NPM 方式开发商业应用                                                                               |  <Check /> |  <Check />  |   <Check />   |
+| 通过源码方式开发商业应用                                                                                  | <Close /> |  <Check />  |   <Check />   |
+| 对 AIEditor 源码进行修改（添加、删减功能等）                                                                   | <Close /> |  <Check />  |   <Check />   |
+| 使用自己的品牌信息                                                                                     | <Close /> |  <Check />  |   <Check />   |
+| **功能**                                                                                        |
+| 基本功能：	标题、正文、字体、字号、加粗、斜体、下划线、删除线、链接、行内代码、上标、下标、分割线、引用、打印                                       | <Check /> |  <Check />  |   <Check />   |
 | 增强功能：	撤回、重做、格式刷、橡皮擦（清除格式）、待办事项、字体颜色、背景颜色、Emoji 表情、对齐方式、行高、有（无）序列表、段落缩进、强制换行、、全屏编辑、@某某某（提及）... | <Check /> |  <Check />  |   <Check />   |
-| 附件功能：		支持图片、视频、文件功能，支持选择上传、粘贴上传、拖拽上传、支持拖动调整大小... | <Check /> |  <Check />  |   <Check />   |
-| 代码功能：行内代码、代码块、语言类型选择、AI 自动注释、AI 代码解释... | <Check /> |  <Check />  |   <Check />   |
-| Markdown 写作：标题、引用、表格、图片、代码块、高亮块（类似 vuepress 的 :::）、各种列表、粗体、斜体、删除线... | <Check /> |  <Check />  |   <Check />   |
-| 	导出功能：markdown 格式、html 格式、json 格式 | <Check /> |  <Check />  |   <Check />   |
-| AI功能：AI 续写、AI 优化、AI 校对、AI 翻译、自定义 AI 菜单及其 Prompts... | <Check /> |  <Check />  |   <Check />   |
-| 常见大模型：科大讯飞、文心一言、ChatGPT | <Check /> |  <Check />  |   <Check />   |
-| 其他 AI 大模型：ChatGLM、私有大模型 | <Close />  |  <Close />   |   <Check />   |
-|  国际化：默认支持中文和英文，支持其他多语言配置| <Check /> |  <Check />  |   <Check />   |
-| 主题切换：亮色主题、暗色主题、类腾讯文档 UI 风格 | <Check /> |  <Check />  |   <Check />   |
-| 团队协作：	多人同时编辑同一个文档 | <Close />  | <Close />  |   <Check />   |
-| AI 插图：	通过 AI 生成图片、或者对现在的图片进行 AI 优化 | <Close /> |  <Close />   |   <Check />   |
-| word 功能：	支持 WORD、WPS 的 导入 和 导出 等 |<Close />  |  <Close />   |   <Check />   |
-| PDF 功能：插入 PDF 预览、内容导出为 PDF... | <Close />  |  <Close />   |   <Check />   |
-| 签名功能：	支持手写签名 | <Close />  |  <Close />   |   <Check />   |
-| 批注功能：类似 Word （或者 WPS）的批注功能 |<Close />  | <Close />   |   <Check />   |
-| 更多：开发中... | - | -  |   -   |
-| **支持**        |
-| 专属架构师支持          |    <Close />    | <Close /> |   <Check />   |
-| 软件使用 VIP 咨询          |    <Close />     |  <Close />   |   <Check />   |
-| 软件扩展开发咨询          |    <Close />     | <Close />   |   <Check />   |
-| 新功能优先排期         |    <Close />     |  <Close />   |   <Check />   |
+| 附件功能：		支持图片、视频、文件功能，支持选择上传、粘贴上传、拖拽上传、支持拖动调整大小...                                              | <Check /> |  <Check />  |   <Check />   |
+| 代码功能：行内代码、代码块、语言类型选择、AI 自动注释、AI 代码解释...                                                       | <Check /> |  <Check />  |   <Check />   |
+| Markdown 写作：标题、引用、表格、图片、代码块、高亮块（类似 vuepress 的 :::）、各种列表、粗体、斜体、删除线...                          | <Check /> |  <Check />  |   <Check />   |
+| 	导出功能：markdown 格式、html 格式、json 格式                                                             | <Check /> |  <Check />  |   <Check />   |
+| AI 基础功能：AI 续写、AI 优化、AI 校对、AI 翻译、自定义 AI 菜单及其 Prompts...                                        | <Check /> |  <Check />  |   <Check />   |
+| 常见大模型：科大讯飞、文心一言、ChatGPT                                                                       | <Check /> |  <Check />  |   <Check />   |
+| 其他 AI 大模型：ChatGLM、私有大模型                                                                       | <Close />  |  <Close />   |   <Check />   |
+| 国际化：默认支持中文和英文，支持其他多语言配置                                                                       | <Check /> |  <Check />  |   <Check />   |
+| 主题切换：亮色主题、暗色主题、类腾讯文档 UI 风格                                                                    | <Check /> |  <Check />  |   <Check />   |
+| 团队协作：	多人同时编辑同一个文档                                                                             | <Close />  | <Close />  |   <Check />   |
+| AI 插图：	通过 AI 生成图片、或者对现在的图片进行 AI 优化                                                            | <Close /> |  <Close />   |   <Check />   |
+| word 功能：	支持 WORD、WPS 的 导入 和 导出 等                                                              |<Close />  |  <Close />   |   <Check />   |
+| PDF 功能：插入 PDF 预览、内容导出为 PDF...                                                                 | <Close />  |  <Close />   |   <Check />   |
+| 批注功能：类似 Word （或者 WPS）的批注功能                                                                    |<Close />  | <Close />   |   <Check />   |
+| 更多：开发中...                                                                                     | - | -  |   -   |
+| **支持**                                                                                        |
+| 社区支持                                                                                          |    <Check />     |  <Check />  |   <Check />   |
+| 专属架构师支持                                                                                       |    <Close />    | <Check /> |   <Check />   |
+| 软件使用 VIP 咨询                                                                                   |    <Close />     |  <Check />   |   <Check />   |
+| 软件扩展开发咨询                                                                                      |    <Close />     | <Check />   |   <Check />   |
+| 新功能优先排期                                                                                       |    <Close />     |  <Check />   |   <Check />   |
 
 
 </div>

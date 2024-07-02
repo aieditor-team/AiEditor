@@ -155,8 +155,8 @@ Simple, easy to use, open source licence friendly, no limit count of users and a
 | Server side supports private deployment | <Unhappy /> Not supported                  | <Check /> Both the open source version and the commercial version support private deployment to ensure data and privacy security |
 | LLMs type                               | <Unhappy /> few support                    | <Check /> Supports access to LLMs, including private LLM                                                                         |
 | Private Apikey                          | <Unhappy /> Not supported                  | <Check /> Support, ensure data privacy and control your own consumption                                                          |
-| Limit count of users                    | <Unhappy /> Limit                          | <Check /> No limit                                                                                                               |
-| Limit count of apps                     | <Unhappy /> Limit                          | <Check /> No limit                                                                                                               |
+| Limit count of users                    | <Unhappy /> Limit                          | <Check /> Unlimited                                                                                                           |
+| Limit count of apps                     | <Unhappy /> Limit                          | <Check /> Unlimited                                                                                                          |
 
 </div>
 
