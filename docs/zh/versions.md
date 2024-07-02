@@ -219,8 +219,8 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 </div>
 <div style="width: 50%;margin-left: 15px">
 <Question title="授权版和商业版的区别?" >
-授权版是在开源版的基础上，购买授权，您可以对 AiEditor进行二开，或者直接集成到您的产品中商用，同时，可以去掉 AiEditor 的版权和logo信息。
-商业版是在授权版的基础上，需要更强大的功能支持，比如协同、批注、word导入导出等等。同时，也需要更专业、更高级别的的服务，可以快速地解决问题。
+授权版是在开源版的基础上，购买授权，您可以对 AiEditor进行二开，或者直接集成到您的产品中商用，同时，可以去掉 AiEditor 的版权和logo信息。<br/>
+商业版是在授权版的基础上，提供更强大的功能支持，比如协同、批注、word导入导出等等。同时，也提供更专业、更高级别的的服务，可以快速地解决问题。
 </Question>
 </div>
 
@@ -235,7 +235,7 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 # 购买
 
 通过邮件或微信联系 AiEditor 联合创始人 Jenny
-<p><a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
+<p><a href="contact-us" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 联系我们
 </a></p>
 

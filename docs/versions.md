@@ -222,7 +222,8 @@ For six months, according to the experience, you can master AiEditor use in 6 mo
 <div style="width: 50%;margin-left: 15px">
 <Question title="The difference between licensed and commercial versions?" >
 The licensed version is based on the open source version. By purchasing the license, you can develop AiEditor twice, or directly integrate it into your products for commercial use. At the same time, you can remove the copyright and logo information of AiEditor.<br/>
-The commercial version is based on the licensed version and needs more powerful support, such as collaboration, annotations, word import and export, and so on. At the same time, there is also a need for more professional, higher-level services that can solve problems quickly.
+
+The commercial version is based on the licensed version, providing more powerful support, such as collaboration, annotation, word import and export, and so on. At the same time, provide more professional, higher level of service, can quickly solve the problem.
 </Question>
 </div>
 
@@ -239,7 +240,7 @@ The commercial version is based on the licensed version and needs more powerful 
 Contact Jenny, co-founder of AiEditor, via email or wechat
 
 
-<p><a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
+<p><a href="contact-us" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 Contact Us
 </a></p>
 </div>
