@@ -49,10 +49,12 @@ layout: home
 
 <div style="text-align: center;background-color: #f8f9fa;padding: 80px">
 
-# AIEditor 在线体验
+# AIEditor Demo
 
 <div style="margin: 30px 0 40px;color: #999">
-By choosing AiEditor, you will have a rich text editor that is truly your own.
+
+The current version is open source. For a pro version demo, please contact AiEditor co-founder Jenny for more information.
+
 </div>
 
 
