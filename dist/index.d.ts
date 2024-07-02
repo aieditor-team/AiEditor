@@ -51,6 +51,7 @@ export declare class AiEditor {
     getSelectedText(): string;
     getMarkdown(): any;
     getOptions(): AiEditorOptions;
+    getAttributes(name: string): Record<string, any>;
     getOutline(): any[];
     focus(): this;
     focusPos(pos: number): this;
@@ -222,7 +223,7 @@ export declare class AiModelManager {
     static set(modelName: string, aiModel: AiModel): void;
 }
 
-declare type BubbleMenuItem = {
+export declare type BubbleMenuItem = {
     id: string;
     title?: string;
     icon: string;

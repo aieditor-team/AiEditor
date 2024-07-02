@@ -46961,6 +46961,9 @@ class YD {
   getOptions() {
     return this.options;
   }
+  getAttributes(e) {
+    return this.innerEditor.getAttributes(e);
+  }
   getOutline() {
     const e = this.innerEditor.state.doc, n = [];
     return e.descendants((r, i) => {
