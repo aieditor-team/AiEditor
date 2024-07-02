@@ -3,8 +3,13 @@
 layout: home
 ---
 
-<style scoped>
+<style>
+.VPHome{
+    border-top: 1px solid #eee !important;
+}
+</style>
 
+<style scoped>
 .VPHome svg{
     width: 24px;
     display: inline-block;
@@ -13,6 +18,7 @@ layout: home
 
 .VPContent> .VPHome {
     margin-bottom: 0;
+    border-top: 1px solid #eee;
 }
 
 .VPContent> .VPHome> .container{

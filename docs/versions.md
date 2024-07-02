@@ -3,6 +3,12 @@
 layout: home
 ---
 
+<style>
+.VPHome{
+    border-top: 1px solid #eee !important;
+}
+</style>
+
 <style scoped>
 
 .VPHome svg{
