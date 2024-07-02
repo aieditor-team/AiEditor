@@ -4,10 +4,7 @@ layout: home
 #aside: false
 ---
 
-<style>
-.VPHome{
-    border-top: 1px solid #eee;
-}
+<style scoped>
 
 .VPHome svg{
     width: 24px;
@@ -15,8 +12,8 @@ layout: home
     margin: 0 5px;
 }
 
-.h1,h2,h3,h4{
-    display: flex;
+h1,h2,h3,h4{
+   display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -42,10 +39,7 @@ layout: home
 
 <div style="text-align: center;padding: 60px 0 30px;">
 
-
 # Contact us
-
-
 
 <div style="color: #999;margin: 40px;">
 

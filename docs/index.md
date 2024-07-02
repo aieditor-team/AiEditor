@@ -15,7 +15,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: Live Preview
-      link: http://aieditor.jpress.cn
+      link: /demo
 
 
 
@@ -28,7 +28,17 @@ hero:
 #    details: In addition to basic functions, AiEditor also supports features that many top editors do not have, such as format painting, merging and unmerging of cells, light and dark themes, mobile adaptation, and more.
 ---
 
-<style >
+
+<style>
+.VPContent> .VPHome> .container{
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100%;
+}
+</style>
+
+<style scoped>
 
 .VPHome svg{
     width: 24px;
@@ -38,13 +48,6 @@ hero:
 
 .VPContent> .VPHome {
     margin-bottom: 0;
-}
-
-.VPContent> .VPHome> .container{
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
 }
 
 .VPContent> .VPHome> .container .feature{
@@ -280,7 +283,7 @@ It is suitable for software development, marketing, legal document review, proje
 
 <div class="feature-content">
 
-<h1 >Annotation</h1>
+<h1> Comment</h1>
 
 Allow reviewers to add comments or suggestions to specific sections of the document, as well as flag questions, errors, or areas for improvement in the document for subsequent revision.
 
@@ -337,8 +340,6 @@ Virtual whiteboard for sketching hand-drawn like diagrams.
 <div style="margin: 30px 0 40px;color: #999">
 Next, whether you use the open source version or the pro version, you will be surprised!
 </div>
-
-<a href="" style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0;text-decoration:none;display:inline-block">Live Preview</a>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">

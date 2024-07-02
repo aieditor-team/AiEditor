@@ -4,7 +4,7 @@ layout: home
 #aside: false
 ---
 
-<style>
+<style scoped>
 .VPHome{
     border-top: 1px solid #eee;
 }
@@ -23,7 +23,6 @@ layout: home
 
 .wechat {
     text-align: center;
-
 }
 .wechat img{
     width: 200px;

@@ -15,12 +15,21 @@ hero:
       link: /zh/getting-started
     - theme: alt
       text: 在线体验
-      link: http://aieditor.jpress.cn
+      link: /zh/demo
 
 
 ---
 
-<style >
+<style>
+.VPContent> .VPHome> .container{
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100%;
+}
+</style>
+
+<style scoped>
 
 .VPHome svg{
     width: 24px;
@@ -32,12 +41,6 @@ hero:
     margin-bottom: 0;
 }
 
-.VPContent> .VPHome> .container{
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
-}
 
 .VPContent> .VPHome> .container .feature{
    text-align: center;
@@ -310,7 +313,6 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 <div style="margin: 30px 0 40px;color: #999">
 接下来，无论你使用开源版，还是商业版，都会收获惊喜!
 </div>
-<a href="" style="background: #fff;border:1px solid #1b1b1f;color: #1b1b1f;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0;text-decoration:none;display:inline-block">在线体验</a>
 
 <div style="display: flex;justify-content: center">
 <div style="display: flex;padding: 20px 0;max-width: 1280px">
