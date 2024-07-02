@@ -127,11 +127,11 @@ Help you solve problems and your product get on track quickly.
 | Enhancements: Undo, Redo, Format brush, Eraser (clear formatting), To-do, Font color, Background color, Emoji, Alignment, line height, with (without) sequence table, paragraph indent, forced line wrap, full screen editing, @so-and-so (mention)... | <Check /> |  <Check />  |   <Check />   |
 | Attachment : Support picture, video, file function, support to select upload, paste upload, drag and drop upload, support drag to adjust the size... | <Check /> |  <Check />  |   <Check />   |
 | Code functions: inline code, code blocks, language type selection, AI automatic annotation, AI code interpretation... | <Check /> |  <Check />  |   <Check />   |
-|Markdown writing: headings, quotes, tables, images, code blocks, highlighted blocks (like vuepress ::), various lists, bold, italics, strikedown... | <Check /> |  <Check />  |   <Check />   |
+|Markdown writing: headings, quotes, tables, images, code blocks, highlighted blocks (Similar to vuepress ::: ), various lists, bold, italics, strikedown... | <Check /> |  <Check />  |   <Check />   |
 | 	Export function: markdown format, HTML, json format | <Check /> |  <Check />  |   <Check />   |
 | AI functions: AI continuation, AI optimization, AI proofreading, AI translation, custom AI menu and Prompts...| <Check /> |  <Check />  |   <Check />   |
 | Common LLMs: IFlytek, Wenxinyiyan, ChatGPT | <Check /> |  <Check />  |   <Check />   |
-| Other LLMs: ChatGLM, Private big model | <Close />  |  <Close />   |   <Check />   |
+| Other LLMs: ChatGLM, Private LLM | <Close />  |  <Close />   |   <Check />   |
 |  Internationalization: Chinese and English are supported by default, and other multi-language configurations are supported| <Check /> |  <Check />  |   <Check />   |
 | Theme switch: bright theme, dark theme, similar to Tencent document UI style | <Check /> |  <Check />  |   <Check />   |
 | Teamwork: Multiple people work on the same document at the same time | <Close />  | <Close />  |   <Check />   |
@@ -140,7 +140,7 @@ Help you solve problems and your product get on track quickly.
 | PDF function: Insert PDF preview, export content to PDF... | <Close />  |  <Close />   |   <Check />   |
 | Signature function: Supports handwritten signatures | <Close />  |  <Close />   |   <Check />   |
 | Comment function: Similar to Word (or WPS) comment function |<Close />  | <Close />   |   <Check />   |
-| More: developing... | - | -  |   -   |
+| More: on the way... | - | -  |   -   |
 | **Support**        |
 | Dedicated architect support          |    <Close />    | <Close /> |   <Check />   |
 | Software using VIP consulting          |    <Close />     |  <Close />   |   <Check />   |
@@ -166,16 +166,17 @@ Help you solve problems and your product get on track quickly.
 
 <div style="width: 50%;margin-right: 15px">
 <Question title="Do I have to buy a commercial license for commercial use?">
-Not really.The kernel of AiEditor is LGPL license, if your business does not involve the secondary development of AiEditor, and retain AiEditor copyright information and version information, you can use it for free.
+Not really.<br/>
+The kernel of AiEditor is LGPL license. If you don't develop AiEditor again and keep the copyright and version information of AiEditor, you can use it for free.
 </Question>
 </div>
 
 <div style="width: 50%; margin-left: 15px">
 <Question title="The benefits of buying commercial license?" >
-1. You can embed AiEditor into your products or applications, and you can freely develop AiEditor again; <br />
-2. Developed products or programs can remove the copyright and version information of AiEditor; <br />
-3. More Powerful features: AiEditor Business has more powerful and useful features to help you build a professional text editing product. <br />
-4. Priority support and service: AiEditor Pro provides you with more professional and higher level services, which can solve problems quickly and help your products get on the right track faster.
+1. You can embed AiEditor into your products or applications and develop AiEditor again.<br/>
+2. Developed products or programs can remove the copyright and version information of AiEditor;<br/>
+3. More powerful functions: AiEditor Commercial edition has more powerful and practical functions to help you build a professional knowledge product.<br/>
+4. Priority support and service: AiEditor Commercial edition provides you with more professional and higher level services, which can quickly respond to problems and help your products get on track faster.
 </Question>
 
 </div>
@@ -229,12 +230,12 @@ The commercial version is based on the licensed version and needs more powerful 
 
 # Buy
 
-Contact Jenny, our co-founder, via email or wechat and she will provide support staff for each team.
+Contact Jenny, co-founder of AiEditor, via email or wechat
 
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">
+
+<p><a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 Contact Us
-</button>
-
+</a></p>
 </div>
 
 

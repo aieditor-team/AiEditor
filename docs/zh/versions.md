@@ -98,8 +98,8 @@ layout: home
 
 # 商业许可证
 
-AiEditor 商业版拥有更加强大和实用的功能，能够帮助您构建一个专业的需要文字编辑类的产品。<br />
-另外，为您提供更专业、更高级别的的服务，可以快速地解决问题，帮助您的产品更快地走上正轨。
+AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一个专业的知识类产品。<br />
+另外，为您提供更专业、更高级别的的服务，可以快速地响应问题，帮您的产品更快地走上正轨。
 </div>
 
 
@@ -165,16 +165,16 @@ AiEditor 商业版拥有更加强大和实用的功能，能够帮助您构建�
 
 <div style="width: 50%;margin-right: 15px">
 <Question title="用在商业环境，必须要购买商业许可证吗？">
-不是。AiEditor 的内核是 LGPL 协议，如果您的业务不涉及对 AiEditor 的二次开发，并且保留 AiEditor 版权信息和版本信息，就可以免费使用。
+不是。AiEditor 的内核是 LGPL 协议，如果不对 AiEditor 二次开发，并且保留 AiEditor 版权信息和版本信息，就可以免费使用。
 </Question>
 </div>
 
 <div style="width: 50%; margin-left: 15px">
 <Question title="购买商业许可证的好处?" >
-1、您可以在将 AiEditor 构建嵌入到您的产品或应用程序中,并可以自由对 AiEditor 进行二次开发；<br />
+1、可以将 AiEditor 构建嵌入到您的产品或应用程序中,并可以对 AiEditor 二次开发；<br />
 2、开发的产品或者程序可以去掉 AiEditor 的版权和版本信息；<br />
-3、更加强大的功能：AiEditor 商业版 拥有更加强大和实用的功能，能够帮助您构建一个专业的需要文字编辑类的产品。<br />
-4、优先的支持和服务：AiEditor Pro 为您提供更专业、更高级别的的服务，可以快速地解决问题，帮助您的产品更快地走上正轨。
+3、更加强大的功能：AiEditor 商业版拥有更强大和实用的功能，能帮助您构建一个专业的知识类产品。<br />
+4、优先的支持和服务：AiEditor 商业版为您提供更专业、更高级别的的服务，可以快速地响应问题，帮助您的产品更快地走上正轨。
 </Question>
 
 </div>
@@ -188,7 +188,7 @@ AiEditor 商业版拥有更加强大和实用的功能，能够帮助您构建�
 
 <div style="width: 50%;margin-right: 15px">
 <Question title="什么是“永久授权”？">
-一旦购买了商业许可证，就可以永久授权和使用购买的版本，无需按年付费。
+一旦购买了商业许可证，就可以永久使用购买的版本，无需按年付费。
 
 </Question>
 </div>
@@ -228,11 +228,11 @@ AiEditor 商业版拥有更加强大和实用的功能，能够帮助您构建�
 
 # 购买
 
-通过邮件或微信联系我们的联合创始人 Jenny，她会根据每个团队的情况，配备相应的支持人员。
-
-<button style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0">
+通过邮件或微信联系 AiEditor 联合创始人 Jenny
+<p><a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 联系我们
-</button>
+</a></p>
+
 
 </div>
 
