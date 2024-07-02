@@ -2,7 +2,7 @@
 
 By default, when AiEditor is initialized, it will create the editor's head menu, editing area, and bottom word count display area. As shown in the figure below:
 
-![](../assets/image/aieditor-areas.png)
+![](../assets/image/aieditor-areas-en.png)
 
 ## Default sample
 
