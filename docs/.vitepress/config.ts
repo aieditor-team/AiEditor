@@ -3,7 +3,7 @@ import {defineConfig} from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: 'zh-CN',
-    title: "AiEditor",
+    title: "AIEditor",
     description: "A next-generation rich text editor for AI, open-source rich text editor, modern rich text editor",
     titleTemplate: ':title - AiEditor',
     lastUpdated: true,
@@ -19,13 +19,11 @@ export default defineConfig({
             lang: 'en'
         },
         zh:{
-            title: "AiEditor 富文本编辑器",
+            title: "AIEditor",
             description: "一个面向 AI 的下一代富文本编辑器，开源富文本编辑器，现代富文本编辑器",
             titleTemplate: ':title - AiEditor 富文本编辑器',
             label: '简体中文',
             lang: 'zh', // 可选，将作为 `lang` 属性添加到 `html` 标签中
-
-
             themeConfig: {
                 outline: {
                     label: "章节"
@@ -112,7 +110,6 @@ export default defineConfig({
         socialLinks: [
             { icon: 'github', link: 'https://github.com/aieditor-team/aieditor' },
         ],
-
         search: {
             provider: 'local'
         },
