@@ -348,7 +348,7 @@ Next, whether you use the open source version or the pro version, you will be su
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
 <span style="font-weight:700;">open source version</span><br />
 
-<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Download now</a>
+<a href="https://github.com/aieditor-team/aieditor" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Download now</a>
 <div style="font-size: 14px;color:#666;">
 AiEditor is open source under the more liberal LGPL license<br />
 Unlimited amount of users<br />
@@ -360,7 +360,7 @@ Unlimited amount of applications
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
 <span style="font-weight:700;">pro version</span><br />
 
-<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
+<a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
 <div style="font-size: 14px;color:#666;">
 Low price<br />
 Unlimited amount of users<br />

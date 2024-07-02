@@ -1,7 +1,7 @@
 # 批注（或评论）
 批注功能和 Word 的批注评论功能类似，可以选择一段文字对齐进行批注，如下图所示：
 
-![](../../assets/image/comment.png)
+![](../../assets/image/comment1.png)
 
 > PS：此功能在 Pro 版本（商业版）才有，开源版没有这个功能。 Pro 版预览地址：http://aieditor-pro.jpress.cn 
 

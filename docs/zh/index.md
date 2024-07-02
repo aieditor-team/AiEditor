@@ -160,7 +160,7 @@ hero:
 
 <div style="width: 50%">
 
-![](/assets/image/install-en.png)
+![](/assets/image/install.png)
 
 </div>
 
@@ -193,7 +193,7 @@ hero:
 
 <div style="width: 50%">
 
-![](/assets/image/markdown-en.png)
+![](/assets/image/markdown.png)
 
 </div>
 
@@ -207,7 +207,7 @@ hero:
 
 <div style="width: 50%">
 
-![](/assets/image/ai-en.png)
+![](/assets/image/ai.png)
 
 </div>
 
@@ -244,7 +244,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 <div style="width: 50%">
 
-![](/assets/image/feature1-en.png)
+![](/assets/image/feature1.png)
 
 </div>
 
@@ -256,7 +256,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 <div style="width: 50%">
 
-![](/assets/image/comment-en.png)
+![](/assets/image/comment1.png)
 
 </div>
 
@@ -320,7 +320,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
 <span style="font-weight:700;">开源版</span><br />
-<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">立马下载</a>
+<a href="https://github.com/aieditor-team/aieditor" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">立马下载</a>
 <div style="font-size: 14px;color:#666;">
 基于更为宽松的 LGPL 协议开源<br />
 不限制用户数量<br />
@@ -331,7 +331,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 <div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
 <span style="font-weight:700;">商业版</span><br />
-<a href="" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
+<a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
 <div style="font-size: 14px;color:#666;">
 价格超低<br />
 不限制用户数量<br />

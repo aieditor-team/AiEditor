@@ -115,7 +115,7 @@ Help you solve problems and your product get on track quickly.
 
 
 
-|               |    Open Source version    |     Licensed Version     |  Business Version  |
+|               |    Open Source Version    |     Licensed Version     |  Business Version  |
 |---------------|:---------:|:-----------:|:------:|
 | Price            |    Free     |    Contact us     | Contact us |
 | **License**       |
@@ -240,7 +240,7 @@ The commercial version is based on the licensed version, providing more powerful
 Contact Jenny, co-founder of AiEditor, via email or wechat
 
 
-<p><a href="contact-us" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
+<p><a target="_blank" href="contact-us" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 Contact Us
 </a></p>
 </div>
