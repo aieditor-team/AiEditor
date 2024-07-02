@@ -1,6 +1,24 @@
 # AiEditor ChangeLog
 
 
+## v1.0.11 20240702:
+- Added: Added onBlur and onFocus configurations for AIEditor #39
+- Added: Added the function of customizing the selected floating menu
+- Added: Added the function of AIEditor.getAttributes() method
+- Optimization: Refactored the international display of AI panel
+- Optimization: Refactored AbstractBubbleMenu.ts to make it simpler and easier to use
+- Fixed: Fixed the problem of multiple additions of Header under KeepAlive of Vue #37
+
+
+- 新增：新增 AIEditor 的 onBlur 和 onFocus 配置 #39
+- 新增：新增自定义选中的浮动菜单的功能
+- 新增：新增 AIEditor.getAttributes() 方法的功能
+- 优化：重构 AI 面板的国际化显示
+- 优化：重构 AbstractBubbleMenu.ts 使之更加简单易用
+- 修复：修复 Vue 的 KeepAlive 下 Header 多次添加的问题 #37
+
+
+
 ## v1.0.10 20240620:
 - 新增：新增浮动菜单的开关和菜单项配置功能
 - 新增：新增链接的浮动菜单项配置功能

@@ -9,6 +9,6 @@
     "vitepress": "^1.2.2"
   },
   "dependencies": {
-    "aieditor": "^1.0.10"
+    "aieditor": "^1.0.11"
   }
 }
