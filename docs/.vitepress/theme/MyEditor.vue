@@ -4,35 +4,33 @@
   </div>
 </template>
 
-<script lang="ts" >
-import {AiEditor} from "aieditor";
+<script setup lang="ts">
+// import {AiEditor} from "aieditor";
 import "aieditor/dist/style.css"
-// import {onMounted, ref} from 'vue'
-//
-// const divRef = ref();
+import {onMounted, onUnmounted, ref} from "vue";
 
 
-// onMounted(() => {
-//   // import('aieditor').then(({AiEditor}) => {
-//     new AiEditor({
-//       element: divRef.value as Element,
-//       placeholder: "点击输入内容...",
-//       content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
-//     })
-//   // })
-// })
+const {lang} = defineProps(['lang'])
+const divRef = ref();
+let aiEditor: any = null;
 
+onMounted(() => {
+  //for ssr
+  import('aieditor').then(({AiEditor}) => {
+    aiEditor = new AiEditor({
+      element: divRef.value as Element,
+      placeholder: "Click to Input Content...",
+      content: 'AiEditor is an Open Source Rich Text Editor Designed for AI.  ',
+      lang,
+    })
+  })
+})
 
-export default {
-  mounted() {
-      new AiEditor({
-        element: this.$refs.divRef as Element,
-        placeholder: "点击输入内容...",
-        content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
-      })
-  }
-}
+onUnmounted(() => {
+  aiEditor && aiEditor.destroy();
+})
 </script>
+
 
 <style lang="less">
 .aiEditor {
