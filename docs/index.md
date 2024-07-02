@@ -140,16 +140,23 @@ hero:
 # Why choose AiEditor
 
 <div style="margin: 30px 0 40px;color: #999">
-A rich text editor that is truly its own.
+
+
+Simple, easy to use, open source licence friendly, no limit count of users and apps, rich documentation.
+
 </div>
 
-|         | Other editors |  AiEditor                            |
-| ------------- |:-----------------|:-----------------------------------------------|
-|      |
-| Private deployment       | <Unhappy /> Not support   | <Check />  Both the open source and pro versions support private deployment, ensuring data and privacy security           |
-| LLMs support      | <Unhappy />  few types supported     | <Check /> Supports access to any LLMs on the market, including private LLMs                 |
-| Private APlkey | <Unhappy />   Not support            | <Check /> Support, Keep your data private and in control of your spending                |
-| Data kidnapping | <Unhappy />  users and applications limit   | <Check /> No limit to the number of users and applications           |
+|                                         | Other editors                              | AIEditor                                                                                                                         |
+|-----------------------------------------|:-------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|
+|                                         |
+| Open source agreement                   | <Unhappy /> GPL, contagious                | <Check /> LGPL, not contagious when installed via NPM                                                                            |
+| Out of the box                          | <Unhappy /> Complex and troublesome to use | <Check /> Can be used via `npm install aieditor`                                                                                 |
+| Framework support                       | <Unhappy /> Specific few frameworks        | <Check /> AIEditor is developed based on Web Component and supports any framework                                                |
+| Server side supports private deployment | <Unhappy /> Not supported                  | <Check /> Both the open source version and the commercial version support private deployment to ensure data and privacy security |
+| LLMs type                               | <Unhappy /> few support                    | <Check /> Supports access to LLMs, including private LLM                                                                         |
+| Private Apikey                          | <Unhappy /> Not supported                  | <Check /> Support, ensure data privacy and control your own consumption                                                          |
+| Limit count of users                    | <Unhappy /> Limit                          | <Check /> No limit                                                                                                               |
+| Limit count of apps                     | <Unhappy /> Limit                          | <Check /> No limit                                                                                                               |
 
 </div>
 
