@@ -10,9 +10,11 @@
         </svg>
       </button>
     </div>
-    <div v-if="open" class="content">
-       <slot />
-    </div>
+    <transition name="fade">
+      <div v-if="open" class="content">
+        <slot/>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -29,6 +31,15 @@ const onClick = () => {
 </script>
 
 <style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .2s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: translateY(-3%);
+}
 
 .question {
   background: #f8f9fa;
@@ -53,6 +64,7 @@ button {
   width: 26px;
   height: 26px;
   border-radius: 6px;
+  transition: all .3s;
 }
 
 .active {
