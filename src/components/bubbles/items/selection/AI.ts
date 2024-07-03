@@ -160,7 +160,7 @@ export const AI = {
                  </div>
                 `,
     onInit: ({innerEditor}, tippyInstance, parentEle) => {
-        const holder = {innerEditor, tippyInstance} as Holder
+        const holder: Holder = {editor: innerEditor, tippyInstance};
         holder.aiPanelInstance = tippy(parentEle.querySelector("#ai")!, {
             content: createAiPanelElement(holder),
             appendTo: innerEditor!.view.dom.closest(".aie-container")!,

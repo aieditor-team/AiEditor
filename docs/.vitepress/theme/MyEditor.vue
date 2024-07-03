@@ -8,6 +8,7 @@
 // import {AiEditor} from "aieditor";
 import "aieditor/dist/style.css"
 import {onMounted, onUnmounted, ref} from "vue";
+import {config} from "./spark";
 
 
 const {lang} = defineProps(['lang'])
@@ -21,6 +22,13 @@ onMounted(() => {
       element: divRef.value as Element,
       placeholder: "Click to Input Content...",
       content: 'AiEditor is an Open Source Rich Text Editor Designed for AI.  ',
+      ai: {
+        models: {
+          spark: {
+            ...config
+          }
+        }
+      },
       lang,
     })
   })

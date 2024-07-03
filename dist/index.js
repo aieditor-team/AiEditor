@@ -38313,7 +38313,7 @@ const ea = {
                  </div>
                 `,
   onInit: ({ innerEditor: t }, e, n) => {
-    const r = { innerEditor: t, tippyInstance: e };
+    const r = { editor: t, tippyInstance: e };
     return r.aiPanelInstance = Ke(n.querySelector("#ai"), {
       content: kS(r),
       appendTo: t.view.dom.closest(".aie-container"),

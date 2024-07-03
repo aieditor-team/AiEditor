@@ -1,4 +1,5 @@
 import {AiEditor} from "./core/AiEditor.ts";
+import { config } from "./spark.ts";
 // import { config } from "./spark.ts";
 // import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
 // @ts-ignore
@@ -32,14 +33,14 @@ window.aiEditor = new AiEditor({
     // },
     ai: {
         models: {
-            // spark: {
-            //     ...config
-            // },
-            openai: {
-                endpoint: "https://api.moonshot.cn",
-                model: "moonshot-v1-8k",
-                apiKey: "sk-alQ96zb******"
-            }
+            spark: {
+                ...config
+            },
+            // openai: {
+            //     endpoint: "https://api.moonshot.cn",
+            //     model: "moonshot-v1-8k",
+            //     apiKey: "sk-alQ96zb******"
+            // }
         },
         // bubblePanelEnable:false,
         // bubblePanelModel: "spark",
