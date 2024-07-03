@@ -18,7 +18,7 @@ hero:
 
 
 
-<div class="aieditor-content">
+<div class="aieditor-home">
 
 # 为什么选择 AiEditor
 
@@ -203,7 +203,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 
 
-<div class="aieditor-content">
+<div class="feature">
 
 # 准备好了吗？
 

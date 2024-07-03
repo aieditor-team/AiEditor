@@ -3,99 +3,7 @@
 layout: home
 ---
 
-<style>
-.VPHome{
-    border-top: 1px solid #eee !important;
-}
-</style>
 
-<style scoped>
-
-.VPHome svg{
-    width: 24px;
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.VPContent> .VPHome {
-    margin-bottom: 0;
-}
-
-.VPContent> .VPHome> .container{
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
-}
-
-.VPContent> .VPHome> .container .feature{
-   text-align: center;
-   margin: 40px;
-}
-
-.VPContent> .VPHome> .container .feature p{
-   color: #999;
-}
-
-.VPContent> .VPHome> .vp-doc  table{
-    display: table;
-    background: none;
-    width: 100%;
-   table-layout: fixed;
-   overflow-wrap: break-word;
-   
-}
-
-.VPContent> .VPHome> .vp-doc  table th{
-     background: none;
-     border: none;
-  
-
-}
-
-.VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
-     margin: 10px;
-     font-weight: bold;
-     font-size: 18px;
-     
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     background: none;
-     border: none;
-     border-bottom: 1px solid #eee;
-     
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     height: 50px;
-}
-
-.VPContent> .VPHome> .vp-doc  table  tbody tr:first-child{
-     height: 20px;
-}
-
-.VPContent> .VPHome> .vp-doc  table td{
-    background: none;
-    border: none;
-    font-size:16px;
-}
-
-.VPContent> .VPHome> .vp-doc  table  td:first-child{
-    color: #999;
-    font-size:16px;
-}
-
-.VPContent> .VPHome> .vp-doc  table  td:first-child strong{
-    color: #333;
-    font-size: 16px;
-}
-
-.VPContent> .VPHome> .vp-doc  table td svg{
-    margin: -7px 0;
-}
-
-</style>
 
 
 
@@ -111,7 +19,7 @@ Help you solve problems and your product get on track quickly.
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="versions">
 
 
 

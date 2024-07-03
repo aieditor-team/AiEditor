@@ -149,53 +149,55 @@
  color: #999;
 }
 
-.VPContent> .VPHome> .vp-doc  table{
-  display: inline-block;
+.aieditor-home table{
+  display: inline-table;
   background: none;
   border-collapse: separate;
   border-spacing: 30px 0px;
+  max-width:1280px;
 }
 
-.VPContent> .VPHome> .vp-doc  table th{
+.aieditor-home table th{
    background: none;
    border: none;
 }
 
-.VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
+.aieditor-home thead tr :not(:first-child){
    border-bottom: solid 1px #ddd;
    margin: 10px;
    font-weight: bold;
    font-size: 16px;
 }
 
-.VPContent> .VPHome> .vp-doc  table tr{
+.aieditor-home table tr{
    background: none;
    border: none;
 }
 
-.VPContent> .VPHome> .vp-doc  table tr{
+.aieditor-home table tr{
    height: 40px;
 }
 
-.VPContent> .VPHome> .vp-doc  table  tbody tr:first-child{
+.aieditor-home table  tbody tr:first-child{
    height: 20px;
 }
 
-.VPContent> .VPHome> .vp-doc  table td{
+.aieditor-home table td{
   background: none;
   border: none;
 }
 
-.VPContent> .VPHome> .vp-doc  table td svg{
+.aieditor-home table td svg{
   margin: -7px 0;
 }
 
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(1){
+.aieditor-home table td:nth-of-type(1){
   color: #999;
+  text-align: right;
 }
 
 
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(2) svg{
+.aieditor-home table td:nth-of-type(2) svg{
   fill: #8C8C8C;
   margin-right:10px;
   width: 20px;
@@ -203,11 +205,84 @@
   /* padding: 0px; */
 }
 
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(3) svg{
+.aieditor-home table td:nth-of-type(3) svg{
   fill: #646cff;
 }
+
+
+/* versions table start */
+
+.vp-doc .versions table{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}
+
+
+
+.versions table th{
+   background: none;
+   border-width:0 0 1px 0;
+   border-style: solid;
+   border-color:#eee;
+}
+
+
+.versions thead tr :not(:first-child){
+   margin: 10px;
+   font-weight: bold;
+   font-size: 18px;
+   
+}
+
+
+.vp-doc .versions table tr{
+   background: none;
+   border-width:0 0 1px 0;
+   border-style: solid;
+   border-color:#eee;
+}
+
+.versions table tr{
+   height: 50px;
+}
+
+.versions table  tbody tr:first-child{
+   height: 20px;
+}
+
+.versions table td{
+  background: none;
+  border: none;
+  font-size:16px;
+}
+
+.versions table  td:first-child{
+  color: #999;
+  font-size:16px;
+}
+
+.versions table  td:first-child strong{
+  color: #333;
+  font-size: 16px;
+}
+
+.versions table td svg{
+  margin: -7px 0;
+}
+/* versions table end */
+
+.versions{
+  display: flex;
+  padding: 20px 0;
+  max-width: 1280px;
+}
+
+
+
 .feature-content{
-  width: 50%;    
+  width: 70%;    
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -224,12 +299,7 @@ color:#666;
   padding: 20px 0;
   max-width: 1280px;
 }
-.feature-right{
-  width:50%;
-}
-.feature-left{
-  width:50%;
-}
+
 .excellent{
   display: flex;
   padding: 20px 0;
@@ -259,7 +329,8 @@ color:#666;
   margin: 30px 0 40px;
   color: #999;
 }
-.aieditor-content{
+
+.aieditor-home{
   text-align: center;
   background-color: #f8f9fa;
   padding: 80px;
@@ -351,7 +422,7 @@ color:#666;
   margin: 10px 0 20px;
   color: #999;
 }
-.aieditor-content{
+.home{
 
   padding:50px 20px;
 }
