@@ -64,6 +64,10 @@
     --vp-home-hero-image-filter: blur(72px);
   }
 }
+@media screen and (max-width: 800px) {
+ 
+
+}
 
 /**
  * Component: Custom Block

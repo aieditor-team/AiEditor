@@ -117,15 +117,132 @@ hero:
 .feature-content>p{
   color:#666;
 }
+.feature-list{
+    display: flex;
+    padding: 20px 0;
+    max-width: 1280px;
+}
+.feature-right{
+    width:50%;
+}
+.feature-left{
+    width:50%;
+}
+.excellent{
+    display: flex;
+    padding: 20px 0;
+    max-width: 1280px;
+}
+.excellent-list{
+    width: 46%;
+    background: #f8f9fa;
+    margin: 2%; 
+    padding:30px;
+    border-radius: 15px;
+    margin-right: 15px;
+}
+.version{
+    display: flex;
+    padding: 20px 0;
+    max-width: 1280px
+}
+.version-list{
+    width: 440px;
+    background: #eeeff0;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+.subtitle{
+    margin: 30px 0 40px;
+    color: #999;
+}
+.aieditor-content{
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 80px;
+}
+
+@media only screen and (max-width: 750px){ 
+.feature-list{
+    display:flex;
+    flex-direction: column;
+    padding: 20px 0;
+    max-width:100%;
+}
+
+.feature-image{
+    width:96%;
+    padding:0 2%;
+    order:2;
+   
+}
+
+.feature-content{
+    width:96%;
+    padding:0 2%;
+    text-align:center;
+    order:1;
+}
+.feature-content>h1{
+    margin-bottom:10px;
+    font-size:22px;
+    line-height:20px;
+
+}
+.feature-content>p{
+    margin:6px 0;
+
+}
+.excellent{
+    display: block;
+    padding: 20px 0;
+    max-width:100%;
+}
+.excellent-list{
+    width: 90%;   
+    margin: 5%; 
+    padding:30px;
+    border-radius: 15px;
+    margin-right: 15px;
+}
+.version{
+    display: block;
+    padding: 20px 0;
+    width: 100%;
+}
+.version-list{
+    width: 90%;   
+    margin: 5%; 
+    padding: 20px;
+}
+.subtitle{
+    margin: 10px 0 20px;
+    color: #999;
+}
+.aieditor-content{
+
+    padding: 20px;
+}
+.VPContent> .VPHome> .vp-doc table{
+    width: 100%; 
+    border-collapse: collapse; 
+    border-spacing:0;
+  }
+  th, td {
+    text-align: left; 
+  }
+  
+}
 
 
 </style>
 
-<div style="text-align: center;background-color: #f8f9fa;padding: 80px">
+<div class="aieditor-content">
 
 # 为什么选择 AiEditor
 
-<div style="margin: 30px 0 40px;color: #999">
+<div class="subtitle">
 简单、好用、开源协议友好，无用户数量和应用数量限制，文档丰富。
 </div>
 
@@ -148,16 +265,16 @@ hero:
 <div class="feature">
 
 # 特性
-
+<div class="subtitle">
 一款 AI 驱动的富文本编辑器，助你快速构建知识写作类产品。
-
+</div>
 </div>
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/install.png)
 
@@ -178,7 +295,7 @@ hero:
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
 
 
@@ -190,7 +307,7 @@ hero:
 
 </div>
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/markdown.png)
 
@@ -202,9 +319,9 @@ hero:
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/ai.png)
 
@@ -229,7 +346,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
 
 
@@ -241,7 +358,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 </div>
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/feature1.png)
 
@@ -251,9 +368,9 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/comment1.png)
 
@@ -273,15 +390,15 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 <div class="feature">
 
 #  集成优秀产品
-
+<div class="subtitle">
 我们将优秀的开源作品集成到 AiEditor，比如虚拟白板，手绘草图，图表编辑器等。
-
+</div>
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="excellent">
 
-<div style="width: 46%;background: #f8f9fa;margin: 2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<div class="excellent-list">
 <span style="font-weight:700;font-size: 24px;">drawio</span>
 <div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px">
 一个用于常规图表的 JavaScript 客户端编辑器。
@@ -290,7 +407,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 </div>
 
 
-<div style="width: 46%;background: #f8f9fa;margin:  2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<div class="excellent-list">
 <span style="font-weight:700;font-size: 24px">excalidraw</span>
 <div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px;">
 一个虚拟手绘风格的白板，创建如图表、线框图或任何您喜欢的东西。
@@ -306,18 +423,18 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 
 
-<div style="text-align: center;background-color: #f8f9fa;padding: 80px">
+<div class="aieditor-content">
 
 # 准备好了吗？
 
-<div style="margin: 30px 0 40px;color: #999">
+<div class="subtitle">
 接下来，无论你使用开源版，还是商业版，都会收获惊喜!
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="version">
 
-<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
+<div class="version-list">
 <span style="font-weight:700;">开源版</span><br />
 <a href="https://github.com/aieditor-team/aieditor" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">立马下载</a>
 <div style="font-size: 14px;color:#666;">
@@ -328,7 +445,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 </div>
 
 
-<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
+<div class="version-list">
 <span style="font-weight:700;">商业版</span><br />
 <a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
 <div style="font-size: 14px;color:#666;">

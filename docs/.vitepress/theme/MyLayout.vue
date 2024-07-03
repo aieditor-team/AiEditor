@@ -34,6 +34,15 @@
   .banner-home {
     width: 90%;
     margin: 30px auto;
+    
+  }
+  .image-bg{
+    z-index:-1;
+  }
+ .VPHome .image-container{
+    margin: 50px auto;
+    width: 90%;
+    height: 320px;
   }
 }
 </style>
