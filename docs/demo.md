@@ -47,7 +47,7 @@ layout: home
 
 
 
-<div style="text-align: center;background-color: #f8f9fa;padding: 80px">
+<div class="demo-content">
 
 # AIEditor Demo
 

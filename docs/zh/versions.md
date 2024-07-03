@@ -169,15 +169,15 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="用在商业环境，必须要购买商业许可证吗？">
 不是。AiEditor 的内核是 LGPL 协议，如果不对 AiEditor 二次开发，并且保留 AiEditor 版权信息和版本信息，就可以免费使用。
 </Question>
 </div>
 
-<div style="width: 50%; margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="购买商业许可证的好处?" >
 1、可以将 AiEditor 构建嵌入到您的产品或应用程序中,并可以对 AiEditor 二次开发；<br />
 2、开发的产品或者程序可以去掉 AiEditor 的版权和版本信息；<br />
@@ -192,16 +192,16 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="什么是“永久授权”？">
 一旦购买了商业许可证，就可以永久使用购买的版本，无需按年付费。
 
 </Question>
 </div>
 
-<div style="width: 50%; margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="什么是“根版本”？">
 购买商业授权后，可以获得比如从 1.0 至 1.x 这一系列版本的授权。如果需要升级，比如从 1.x 升级到 2.x 或者 3.x，可以低价购买升级，具体联系联合创始人 Jenny咨询。
 </Question>
@@ -212,14 +212,14 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="技术支持有效期是多久?" >
 6个月，根据经验，您完全可以在6个月内掌握 AiEditor 的使用。 
 </Question>
 </div>
-<div style="width: 50%;margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="授权版和商业版的区别?" >
 授权版是在开源版的基础上，购买授权，您可以对 AiEditor进行二开，或者直接集成到您的产品中商用，同时，可以去掉 AiEditor 的版权和logo信息。<br/>
 商业版是在授权版的基础上，提供更强大的功能支持，比如协同、批注、word导入导出等等。同时，也提供更专业、更高级别的的服务，可以快速地解决问题。

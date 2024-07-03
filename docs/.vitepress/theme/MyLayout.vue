@@ -16,36 +16,7 @@
 
 <!--.vitepress/theme/MyLayout.vue-->
 
-<style>
-.banner-home {
-  display: flex;
-  align-items: center;
-  margin: 60px auto;
-  width: 50%;
-  justify-content: center;
-}
 
-.banner-home img {
-  max-width: 100%;
-  border-radius: 3px;
-}
-
-@media screen and (max-width: 800px) {
-  .banner-home {
-    width: 90%;
-    margin: 30px auto;
-    
-  }
-  .image-bg{
-    z-index:-1;
-  }
- .VPHome .image-container{
-    margin: 50px auto;
-    width: 90%;
-    height: 320px;
-  }
-}
-</style>
 
 <script setup>
 import DefaultTheme from 'vitepress/theme'

@@ -170,16 +170,16 @@ Help you solve problems and your product get on track quickly.
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="Do I have to buy a commercial license for commercial use?">
 Not really.<br/>
 The kernel of AiEditor is LGPL license. If you don't develop AiEditor again and keep the copyright and version information of AiEditor, you can use it for free.
 </Question>
 </div>
 
-<div style="width: 50%; margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="The benefits of buying commercial license?" >
 1. You can embed AiEditor into your products or applications and develop AiEditor again.<br/>
 2. Developed products or programs can remove the copyright and version information of AiEditor;<br/>
@@ -194,16 +194,16 @@ The kernel of AiEditor is LGPL license. If you don't develop AiEditor again and 
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="What is 'perpetual authorization'?">
 Once a commercial license is purchased, the purchased version can be licensed and used in perpetuity without an annual fee.
 
 </Question>
 </div>
 
-<div style="width: 50%; margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="What is a 'root version'?">
 When you purchase a commercial license, you can get a range of licenses, for example, from 1.0 to 1.x.If you need to upgrade, such as from 1.x to 2.x or 3.x, you can buy the upgrade at a low price. For details, contact the co-founder Jenny.
 </Question>
@@ -214,14 +214,14 @@ When you purchase a commercial license, you can get a range of licenses, for exa
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 5px 0;max-width: 1280px;width: 100vw">
+<div class="versions-qa">
 
-<div style="width: 50%;margin-right: 15px">
+<div class="versions-qa-list">
 <Question title="How long is technical support valid?" >
 For six months, according to the experience, you can master AiEditor use in 6 months.
 </Question>
 </div>
-<div style="width: 50%;margin-left: 15px">
+<div class="versions-qa-list">
 <Question title="The difference between licensed and commercial versions?" >
 The licensed version is based on the open source version. By purchasing the license, you can develop AiEditor twice, or directly integrate it into your products for commercial use. At the same time, you can remove the copyright and logo information of AiEditor.<br/>
 

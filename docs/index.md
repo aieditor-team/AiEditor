@@ -27,119 +27,12 @@ hero:
 ---
 
 
-<style>
-.VPContent> .VPHome> .container{
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
-}
-</style>
 
-<style scoped>
-
-.VPHome svg{
-    width: 24px;
-    display: inline-block;
-    margin: 0 5px;
-}
-
-.VPContent> .VPHome {
-    margin-bottom: 0;
-}
-
-.VPContent> .VPHome> .container .feature{
-   text-align: center;
-   margin: 40px;
-}
-
-.VPContent> .VPHome> .container .feature p{
-   color: #999;
-}
-
-.VPContent> .VPHome> .vp-doc  table{
-    display: inline-block;
-    background: none;
-    border-collapse: separate;
-    border-spacing: 30px 10px;
-    max-width:980px;
-}
-
-.VPContent> .VPHome> .vp-doc  table th{
-     background: none;
-     border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  thead tr :not(:first-child){
-     border-bottom: solid 1px #ddd;
-     margin: 10px;
-     font-weight: bold;
-     font-size: 16px;
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     background: none;
-     border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  table tr{
-     height: 40px;
-}
-
-.VPContent> .VPHome> .vp-doc  table  tbody tr:first-child{
-     height: 20px;
-}
-
-.VPContent> .VPHome> .vp-doc  table td{
-    background: none;
-    border: none;
-}
-
-.VPContent> .VPHome> .vp-doc  table td svg{
-    margin: -7px 0;
-}
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(1){
-    color: #999;
-}
-
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(2) svg{
-    fill: #8C8C8C;
-    margin-right:10px;
-    width: 20px;
-    margin:-4px 0;
-   
-    /* padding: 0px; */
-}
-
-.VPContent> .VPHome> .vp-doc table td:nth-of-type(3) svg{
-    fill: #646cff;
-}
-.feature-content{
-    width: 50%;    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 50px;
-}
-
-.feature-content>h1{
-  margin-bottom:30px;
-}
-
-.feature-content>p{
-  color:#666;
-}
-
-
-</style>
-
-<div style="text-align: center;background-color: #f8f9fa;padding: 80px">
+<div class="aieditor-content">
 
 # Why choose AiEditor
 
-<div style="margin: 30px 0 40px;color: #999">
+<div class="subtitle">
 
 
 Simple, easy to use, open source licence friendly, no limit count of users and apps, rich documentation.
@@ -174,9 +67,9 @@ Help you build knowledge products quickly.
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/install-en.png)
 
@@ -197,7 +90,7 @@ Without a lot of preparation,Just a few lines of code to run.
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
 
 
@@ -210,7 +103,7 @@ see results in real time.
 
 </div>
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/markdown-en.png)
 
@@ -222,9 +115,9 @@ see results in real time.
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/ai-en.png)
 
@@ -253,7 +146,7 @@ More AI capabilities are on the way...
 
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
 
 
@@ -268,7 +161,7 @@ It is suitable for software development, marketing, legal document review, proje
 
 </div>
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/feature1-en.png)
 
@@ -278,9 +171,9 @@ It is suitable for software development, marketing, legal document review, proje
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="feature-list">
 
-<div style="width: 50%">
+<div class="feature-image">
 
 ![](/assets/image/comment-en.png)
 
@@ -304,15 +197,15 @@ Allow reviewers to add comments or suggestions to specific sections of the docum
 <div class="feature">
 
 #  Integrate excellent products
-
+<div class="subtitle">
 We integrate great open source works into AiEditor, such as virtual whiteboard, hand-drawn sketches, chart editor, and more.
-
+</div>
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="excellent">
 
-<div style="width: 46%;background: #f8f9fa;margin: 2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<div class="excellent-list">
 <span style="font-weight:700;font-size: 24px;">drawio</span>
 <div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px">
 draw.io is a JavaScript, client-side editor for general diagramming.
@@ -321,7 +214,7 @@ draw.io is a JavaScript, client-side editor for general diagramming.
 </div>
 
 
-<div style="width: 46%;background: #f8f9fa;margin:  2%; padding:30px;border-radius: 15px;margin-right: 15px;">
+<div class="excellent-list">
 <span style="font-weight:700;font-size: 24px">excalidraw</span>
 <div style="font-size: 16px;color:#666;height: 60px;padding-top: 10px;">
 Virtual whiteboard for sketching hand-drawn like diagrams.
@@ -338,18 +231,18 @@ Virtual whiteboard for sketching hand-drawn like diagrams.
 
 
 
-<div style="text-align: center;background-color: #f8f9fa;padding: 80px">
+<div class="aieditor-content">
 
 # Are you ready?
 
-<div style="margin: 30px 0 40px;color: #999">
+<div class="subtitle">
 Next, whether you use the open source version or the pro version, you will be surprised!
 </div>
 
 <div style="display: flex;justify-content: center">
-<div style="display: flex;padding: 20px 0;max-width: 1280px">
+<div class="version">
 
-<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-right: 15px;">
+<div class="version-list">
 <span style="font-weight:700;">open source version</span><br />
 
 <a href="https://github.com/aieditor-team/aieditor" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Download now</a>
@@ -361,7 +254,7 @@ Unlimited amount of applications
 </div>
 
 
-<div style="width: 440px;background: #eeeff0;padding: 20px;border-radius: 5px;margin-left: 15px">
+<div class="version-list">
 <span style="font-weight:700;">pro version</span><br />
 
 <a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
