@@ -248,7 +248,7 @@
    height: 50px;
 }
 
-.versions table  tbody tr:first-child{
+.versions table tbody tr:first-child{
    height: 20px;
 }
 
@@ -422,8 +422,7 @@ color:#666;
   margin: 10px 0 20px;
   color: #999;
 }
-.home{
-
+.aieditor-home{
   padding:50px 20px;
 }
 .VPContent> .VPHome> .vp-doc table{

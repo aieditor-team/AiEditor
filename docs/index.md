@@ -223,7 +223,7 @@ Virtual whiteboard for sketching hand-drawn like diagrams.
 
 
 
-<div class="aieditor-content">
+<div class="feature">
 
 # Are you ready?
 
