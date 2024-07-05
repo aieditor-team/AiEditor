@@ -6,11 +6,6 @@ layout: home
 
 <style scoped>
 
-.VPHome svg{
-    width: 24px;
-    display: inline-block;
-    margin: 0 5px;
-}
 
 h1,h2,h3,h4{
    display: flex;

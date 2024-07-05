@@ -129,7 +129,7 @@
   max-width: 100%;
 }
 
-.VPHome svg{
+.VPHome table svg{
   width: 24px;
   display: inline-block;
   margin: 0 5px;
@@ -364,6 +364,11 @@ color:#666;
   background-color: #f8f9fa;
   padding: 80px;
 }
+
+.aie-menu-item{
+  margin: 0 3px;
+}
+
 @media only screen and (max-width: 750px){ 
 .feature-list{
   display:flex;

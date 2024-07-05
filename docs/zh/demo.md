@@ -28,24 +28,6 @@ layout: home
 #    details: In addition to basic functions, AiEditor also supports features that many top editors do not have, such as format painting, merging and unmerging of cells, light and dark themes, mobile adaptation, and more.
 ---
 
-<style>
-.VPContent> .VPHome> .container{
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: 100%;
-}
-</style>
-
-<style scoped>
-.aie-menu-item{
-  margin: 0 2px;
-}
-</style>
-
-
-
-
 
 <div class="demo-content">
 
