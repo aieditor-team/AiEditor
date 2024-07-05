@@ -1,57 +1,85 @@
 <h4 align="right"><strong>English</strong> | <a href="./readme.zh.md">简体中文</a></h4>
+<h4 align="right"><a href="./readme.md">English</a> | <strong>简体中文</strong></h4>
 
 
-![banner.png](docs%2Fassets%2Fimage%2Flogo-banner.png)
+[//]: # (![banner.png]&#40;docs%2Fassets%2Fimage%2Flogo-banner.png&#41;)
 
-# AiEditor
+<div style="text-align: center">
 
-About AiEditor (official website https://aieditor.dev)
+<img src="./docs/assets/image/logo.png" style="width: 100px">
 
-> AiEditor is a next-generation rich text editor for AI. 
-> It is based on Web Component and therefore supports almost any front-end framework 
-> such as Vue, React, Angular and Svelte. It is adapted to PC Web and mobile, and provides two themes: light and dark. 
-> In addition, it also provides flexible configuration, developers can easily use it to develop any text editing application.
+# AIEditor.dev
 
-## Live Demo
+## An AI-Powered rich text editor
 
+Out-of-the-box, Fully Framework Supported, Markdown Friendly
+
+<img src="./docs/assets/image/index-banner.png" style="width: 90%">
+
+</div>
+
+## Start following and using AIEditor
+
+Give us a star so that you can be notified in time when we release new versions.
+
+<img src="./docs/assets/image/star.gif" style="width: 90%">
+
+
+## What is AIEditor
+
+AiEditor is a next-generation rich text editor for AI. It is based on Web Component and supports almost any front-end framework such as Vue, React, Angular, etc. It is compatible with PC Web
+and mobiles, and provides two themes: light and dark. In addition, it also provides flexible configuration, and developers can easily use it to develop any text editing application.
+
+For more information about AiEditor, please visit the official website: https://aieditor.dev
+
+
+## What makes AIEditor different
+
+### 1. AI-Powered editor
+The goal of AIEditor is to create a rich text editor that is completely driven by AI, and supports docking with any large model, including private large models. Allow users to use their own private large model ApiKey.
+Not only that, all AI functions of AIEditor allow users to customize their own prompts and extended AI menus.
+
+### 2. Simple, friendly, and easy to use
+
+AIEditor is developed based on Web Component and supports integration with any mainstream front-end framework. AIEditor uses the more friendly LGPL open source protocol and is used through `npm i aieditor`,
+without worrying about the GPL infection problem that may be caused by the GPL protocol.
+
+### 3. In addition to the open source version, a commercial version is also available
+In addition to the open source version, we also provide a more powerful commercial version, which does not limit the number of users or the number of applications. For more comparisons of commercial versions,
+please refer to here: https://aieditor.dev/versions.html
+
+
+## Online Demo
+
+- Classic/traditional style: https://aieditor.dev/demo.html
 - Modern style: http://aieditor1.jpress.cn
-- Classic Style: http://aieditor.jpress.cn
-
-
-
-![screenshot.png](docs%2Fassets%2Fimage%2Fscreenshot.png)
 
 
 ## Completed
 
-- [x] **Basics**: Heading, Paragraph, Font, FontSize, FontColor, bold, italics, underline, strikethrough, link, inline code, superscript, subscript, dividing line, quotation, printing
-- [x] **Enhancements**: undo, redo, format painter, eraser(clear format), to-do list, background color, Emoji, alignment, line height, (un)ordered list, paragraph indent, force break
-- [x] **Attachments**: Supports image, video, and file functions, supports selection upload, paste upload, drag upload, drag resize...
-- [x] **Code**: inline code, code blocks, code language selection, **AI comments**, **AI explain**...
-- [x] **Table**: increase left or right, decrease left or right, increase up or down, decrease up or down, merge cells, unmerge
-- [x] **Markdown**: heading, quotes, tables, pictures, code blocks, **custom container(vuepress:::)**, lists, bold, italics, strikethrough...
-- [x] **A I**: AI continuation, AI optimization, AI proofreading, AI translation, custom AI menu and its prompts
-- [x] **More**: i18n, light theme, dark theme, mobile adaptation, full-screen, @someone (mentioned)...
+- [x] **Basics**: Title, body, font, font size, bold, italic, underline, strikethrough, link, inline code, superscript, subscript, dividing line, quote, print
+- [x] **Enhanced**: Undo, Redo, Format brush, Eraser, To-do list, font color, background color, Emoji expression, alignment, line height, ordered (unordered) list, paragraph indent, forced line break
+- [x] **Attachment**: Supports image, video, file functions, supports select upload, paste upload, drag upload, support drag resize...
+- [x] **Code**: Inline code, code block, language type selection, **AI automatic comment**, **AI code explanation**...
+- [x] **Table**: Left increase right increase, left decrease right decrease, top increase and bottom increase, top decrease and bottom decrease, merge cells, unmerge
+- [x] **Markdown**: Title, quote, table, image, code block, **Highlight block (similar to vuepress :::)**, various lists, bold, italic, strikethrough...
+- [x] **AI**: AI continuation, AI optimization, AI proofreading, AI translation, custom AI menu and prompts
+- [x] **More**: internationalization, light theme, dark theme, mobile phone adaptation, full screen editing, @XXX (mention)...
+- [x] Modern UI style similar to Tencent Documents
 
 
-## To be improved (under planning...)
+## Under development...
 
-- [ ] Collaboration
-- [ ] Automated test
-- [ ] insert AI picture
-- [ ] AI drawing (AI picture optimization)
-- [ ] AI typesetting
-- [ ] Enhance the paste features
-- [ ] Automatically obtain thumbnails for upload videos
-- [ ] WORD import, export
-- [ ] PDF export, preview
-- [ ] Notion-like operation
-- [ ] More llm integrated: ChatGPT
+- [ ] Team collaboration
+- [ ] AI image insertion (AI text-to-image)
+- [ ] AI image generation (AI image-to-image)
+- [ ] AI one-click typesetting
+- [ ] Further enhance the paste function
+- [ ] Automatically obtain thumbnails when uploading videos
+- [ ] WORD import and export
+- [ ] PDF export, PDF preview
+- [ ] Notion-like drag and drop features
 
 ## Quick start
 
-Visit: https://aieditor.dev/getting-started.html
-
-## Communication
-
-QQ group: 560291578
+Visit the official website: https://aieditor.dev/getting-started.html
