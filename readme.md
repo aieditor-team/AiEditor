@@ -1,18 +1,13 @@
 <h4 align="right"><strong>English</strong> | <a href="./readme.zh.md">简体中文</a></h4>
-<h4 align="right"><a href="./readme.md">English</a> | <strong>简体中文</strong></h4>
-
 
 ![](./docs/assets/image/readme-banner.png)
 
-<div style="text-align: center">
 
-<h1><a href="https://aieditor.dev" target="_blank">AIEditor.dev</a> </h1>
 
-<h2>An AI-Powered rich text editor</h2>
+<h1 align="center"><a href="https://aieditor.dev" target="_blank">AIEditor.dev</a></h1>
+<h2 align="center">An AI-Powered rich text editor</h2>
+<h4 align="center">Out-of-the-box, Fully Framework Supported, Markdown Friendly</h4>
 
-Out-of-the-box, Fully Framework Supported, Markdown Friendly
-
-</div>
 
 ![](./docs/assets/image/index-banner.png)
 

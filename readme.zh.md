@@ -4,14 +4,11 @@
 ![](./docs/assets/image/readme-banner.png)
 
 
-<div style="text-align: center">
 
-<h1><a href="https://aieditor.dev/zh" target="_blank">AIEditor.dev</a></h1>
+<h1 align="center"><a href="https://aieditor.dev/zh/" target="_blank">AIEditor.dev</a></h1>
+<h2 align="center">AI 驱动的开源富文本编辑器</h2>
+<h4 align="center">开箱即用、支持所有前端框架、支持 Markdown 书写模式</h4>
 
-<h2>AI 驱动的开源富文本编辑器</h2>
-
-开箱即用、支持所有前端框架、支持 Markdown 书写模式
-</div>
 
 ![](./docs/assets/image/index-banner1.png)
 
