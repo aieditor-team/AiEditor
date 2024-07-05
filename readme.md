@@ -2,27 +2,26 @@
 <h4 align="right"><a href="./readme.md">English</a> | <strong>简体中文</strong></h4>
 
 
-[//]: # (![banner.png]&#40;docs%2Fassets%2Fimage%2Flogo-banner.png&#41;)
+![](./docs/assets/image/readme-banner.png)
 
 <div style="text-align: center">
 
-<img src="./docs/assets/image/logo.png" style="width: 100px">
+<h1><a href="https://aieditor.dev" target="_blank">AIEditor.dev</a> </h1>
 
-# AIEditor.dev
-
-## An AI-Powered rich text editor
+<h2>An AI-Powered rich text editor</h2>
 
 Out-of-the-box, Fully Framework Supported, Markdown Friendly
 
-<img src="./docs/assets/image/index-banner.png" style="width: 90%">
-
 </div>
+
+![](./docs/assets/image/index-banner.png)
+
 
 ## Start following and using AIEditor
 
 Give us a star so that you can be notified in time when we release new versions.
 
-<img src="./docs/assets/image/star.gif" style="width: 90%">
+![](./docs/assets/image/star.gif)
 
 
 ## What is AIEditor

@@ -1,26 +1,26 @@
 <h4 align="right"><a href="./readme.md">English</a> | <strong>简体中文</strong></h4>
 
 
+![](./docs/assets/image/readme-banner.png)
+
 
 <div style="text-align: center">
 
-<img src="./docs/assets/image/logo.png" style="width: 100px">
+<h1><a href="https://aieditor.dev/zh" target="_blank">AIEditor.dev</a></h1>
 
-# <a href="https://aieditor.dev" tar>AIEditor.dev</a>
-
-## AI 驱动的开源富文本编辑器
+<h2>AI 驱动的开源富文本编辑器</h2>
 
 开箱即用、支持所有前端框架、支持 Markdown 书写模式
-
-<img src="./docs/assets/image/index-banner1.png" style="width: 90%">
-
 </div>
+
+![](./docs/assets/image/index-banner1.png)
 
 ## 开始关注并使用 AIEditor
 
 给我们 star，这样，在我们发布新的版本时，您可以及时获得通知。
 
-<img src="./docs/assets/image/star.gif" style="width: 90%">
+
+![](./docs/assets/image/star.gif)
 
 
 ## 什么是 AIEditor
