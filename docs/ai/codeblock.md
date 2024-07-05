@@ -1,6 +1,6 @@
 # Code Block AI Configuration
 
-In the code editor component, there are two AI functionalities related to  `"AI automatic comment insertion" ` and `"AI code interpretation" `. As shown in the following image:
+In the code component, there are two AI functionalities related to  `"AI comment" ` and `"AI code explain" `. As shown in the following image:
 
 ![](../assets/image/codeblock-ai-en.png)
 
@@ -14,11 +14,11 @@ new AiEditor({
     ai:{
         codeBlock: {
             codeComments: {
-                model:"spark",
+                model:"auto",
                 prompt:"Help me add some comments to this code, and return the code with comments added. Only return the code.",
             },
             codeExplain: {
-                model:"spark",
+                model:"auto",
                 prompt:"Help me explain this code, providing an explanation of what the code does. Note that there's no need to explain the comments in the code.",
             }
         }

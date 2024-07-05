@@ -64,7 +64,6 @@ please refer to here: https://aieditor.dev/versions.html
 
 ## Under development...
 
-- [ ] Team collaboration
 - [ ] AI image insertion (AI text-to-image)
 - [ ] AI image generation (AI image-to-image)
 - [ ] AI one-click typesetting
