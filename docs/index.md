@@ -249,7 +249,7 @@ Unlimited amount of applications
 <div class="version-list">
 <span style="font-weight:700;">pro version</span><br />
 
-<a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
+<a href="contact-us" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">Contact us</a>
 <div style="font-size: 14px;color:#666;">
 Low price<br />
 Unlimited amount of users<br />

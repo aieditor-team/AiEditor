@@ -5,17 +5,24 @@ layout: home
 ---
 
 <style scoped>
+.VPHome{
+    border-top: 1px solid #eee;
+}
 
+.VPHome svg{
+    width: 24px;
+    display: inline-block;
+    margin: 0 5px;
+}
 
-h1,h2,h3,h4{
-   display: flex;
+.h1,h2,h3,h4{
+    display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .wechat {
     text-align: center;
-
 }
 .wechat img{
     width: 200px;

@@ -227,7 +227,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 <div class="version-list">
 <span style="font-weight:700;">商业版</span><br />
-<a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
+<a href="/zh/contact-us.html" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
 <div style="font-size: 14px;color:#666;">
 价格超低<br />
 不限制用户数量<br />
