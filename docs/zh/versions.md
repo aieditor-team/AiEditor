@@ -144,7 +144,7 @@ AiEditor 商业版拥有更强大和实用的功能，能够帮助您构建一�
 # 购买
 
 通过邮件或微信联系 AiEditor 联合创始人 Jenny
-<p><a href="contact-us" target="_blank" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
+<p><a href="/zh/contact-us.html"  style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block;">
 联系我们
 </a></p>
 
