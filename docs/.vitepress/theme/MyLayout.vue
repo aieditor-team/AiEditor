@@ -35,14 +35,16 @@ const {lang} = useData()
 <template>
   <Layout>
 
-    <!--docs: https://vitepress.dev/guide/extending-default-theme#layout-slots-->
-<!--    <template #doc-before>-->
-<!--      <div style="margin-bottom: 30px">-->
-<!--        <a href="https://aiadmin.cc" target="_blank">-->
-<!--          <img src="/assets/image/admin-banner.jpg">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </template>-->
+    <template #nav-bar-content-after>
+      <div style="padding-left: 10px;">
+        <a href="https://www.producthunt.com/posts/aieditor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-aieditor" target="_blank">
+          <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=469676&theme=light"
+               alt="AiEditor - An&#0032;open&#0032;source&#0032;AI&#0045;powered&#0032;rich&#0032;text&#0032;editor&#0046; | Product Hunt"
+               style="width: 250px; height: 54px;" width="250" height="54" />
+        </a>
+      </div>
+    </template>
+
 
     <template #home-hero-image>
       <div style="z-index: 9999" >
