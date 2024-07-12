@@ -177,7 +177,7 @@ export const VideoExt = Node.create<VideoOptions>({
                           <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                           <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                       </div>
-                      <video controls="true" width="${width}" class="resize-obj">
+                      <video controls="controls" width="${width}" class="resize-obj">
                           <source src="${src}">
                       </video>
                   </div>
