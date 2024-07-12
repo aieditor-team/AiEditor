@@ -36,7 +36,7 @@ const {lang} = useData()
   <Layout>
 
     <template #nav-bar-content-after>
-      <div style="padding-left: 10px;">
+      <div style="padding-left: 20px;">
         <a href="https://www.producthunt.com/posts/aieditor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-aieditor" target="_blank">
           <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=469676&theme=light"
                alt="AiEditor - An&#0032;open&#0032;source&#0032;AI&#0045;powered&#0032;rich&#0032;text&#0032;editor&#0046; | Product Hunt"
