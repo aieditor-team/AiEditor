@@ -9,3 +9,9 @@ export type BubbleMenuItem = {
     onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
     onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 }
+
+export type AIBubbleMenuItem = {
+    prompt: string,
+    icon: string,
+    title: string,
+} | string;

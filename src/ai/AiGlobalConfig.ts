@@ -1,5 +1,6 @@
 import {AiModelConfig} from "./core/AiModelConfig.ts";
 import {AiModelFactory} from "./AiModelFactory.ts";
+import {AIBubbleMenuItem} from "../components/bubbles/types.ts";
 
 export interface AiMenu {
     icon: string,
@@ -18,6 +19,7 @@ export interface AiGlobalConfig {
     onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void
     bubblePanelEnable?: boolean,
     bubblePanelModel?: string,
+    bubblePanelMenus?: AIBubbleMenuItem[],
     menus?: AiMenu[],
     commands?: AiMenu[],
     codeBlock?: {
