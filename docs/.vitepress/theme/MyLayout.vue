@@ -17,7 +17,6 @@
 <!--.vitepress/theme/MyLayout.vue-->
 
 
-
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import {useData} from "vitepress";
@@ -37,29 +36,29 @@ const {lang} = useData()
 
     <template #nav-bar-content-after>
       <div style="padding-left: 20px;">
-        <a href="https://www.producthunt.com/posts/aieditor?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-aieditor" target="_blank">
-          <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=469676&theme=light"
-               alt="AiEditor - An&#0032;open&#0032;source&#0032;AI&#0045;powered&#0032;rich&#0032;text&#0032;editor&#0046; | Product Hunt"
-               style="width: 250px; height: 54px;" width="250" height="54" />
-        </a>
+        <a href="https://www.producthunt.com/posts/aieditor?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-aieditor"
+           target="_blank"><img
+            src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=469676&theme=light&period=daily"
+            alt="AiEditor - An&#0032;open&#0032;source&#0032;AI&#0045;powered&#0032;rich&#0032;text&#0032;editor | Product Hunt"
+            style="width: 250px; height: 54px;" width="250" height="54"/></a>
       </div>
     </template>
 
 
     <template #home-hero-image>
-      <div style="z-index: 9999" >
-          <img v-if="lang === 'en'" src="/assets/image/ai-en.png">
-          <img v-else src="/assets/image/ai.png">
+      <div style="z-index: 9999">
+        <img v-if="lang === 'en'" src="/assets/image/ai-en.png">
+        <img v-else src="/assets/image/ai.png">
       </div>
     </template>
 
-<!--    <template #home-features-after>-->
-<!--      <div class="banner-home">-->
-<!--        <a href="https://aiadmin.cc" target="_blank">-->
-<!--          <img src="/assets/image/admin-banner.jpg">-->
-<!--        </a>-->
-<!--      </div>-->
-<!--    </template>-->
+    <!--    <template #home-features-after>-->
+    <!--      <div class="banner-home">-->
+    <!--        <a href="https://aiadmin.cc" target="_blank">-->
+    <!--          <img src="/assets/image/admin-banner.jpg">-->
+    <!--        </a>-->
+    <!--      </div>-->
+    <!--    </template>-->
 
   </Layout>
 </template>
