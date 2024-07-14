@@ -12,13 +12,7 @@ AI 菜单配置，用于在编辑器顶部工具栏，点击 AI 下拉的菜单�
 new AiEditor({
     element: "#aiEditor",
     ai:{
-        models:{
-            spark:{
-                appId:"****",
-                apiKey:"****",
-                apiSecret:"****"
-            }
-        },
+        // models:{...] 等其他配置
         menus:[
             {
                 icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M4 18.9997H20V13.9997H22V19.9997C22 20.552 21.5523 20.9997 21 20.9997H3C2.44772 20.9997 2 20.552 2 19.9997V13.9997H4V18.9997ZM16.1716 6.9997L12.2218 3.04996L13.636 1.63574L20 7.9997L13.636 14.3637L12.2218 12.9495L16.1716 8.9997H5V6.9997H16.1716Z"></path></svg>`,
@@ -60,13 +54,7 @@ new AiEditor({
 new AiEditor({
     element: "#aiEditor",
     ai:{
-        models:{
-            spark:{
-                appId:"****",
-                apiKey:"****",
-                apiSecret:"****"
-            }
-        },
+        // models:{...] 等其他配置
         bubblePanelMenus:[
             {
                 prompt: `<content>{content}</content>\n请帮我优化一下这段内容，并直接返回优化后的结果。\n注意：你应该先判断一下这句话是中文还是英文，如果是中文，请给我返回中文的内容，如果是英文，请给我返回英文内容，只需要返回内容即可，不需要告知我是中文还是英文。`,
