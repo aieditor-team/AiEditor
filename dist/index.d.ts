@@ -20,6 +20,12 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onActive(editor: Editor): boolean;
 }
 
+export declare type AIBubbleMenuItem = {
+    prompt: string;
+    icon: string;
+    title: string;
+} | string;
+
 export declare interface AiClient {
     start: (payload: string) => void;
     stop: () => void;
@@ -150,6 +156,7 @@ export declare interface AiGlobalConfig {
     onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void;
     bubblePanelEnable?: boolean;
     bubblePanelModel?: string;
+    bubblePanelMenus?: AIBubbleMenuItem[];
     menus?: AiMenu[];
     commands?: AiMenu[];
     codeBlock?: {

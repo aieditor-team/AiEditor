@@ -12,7 +12,7 @@ new AiEditor({
         "|", "align", "line-height", 
         "|", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", 
         "|", "image", "video", "attachment", "quote", "code-block", "table", 
-        "|", "printer", "fullscreen", "ai"
+        "|", "source-code", "printer", "fullscreen", "ai"
     ],
 })
 ```

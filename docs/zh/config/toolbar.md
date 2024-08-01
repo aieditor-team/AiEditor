@@ -12,7 +12,7 @@ new AiEditor({
         "|", "align", "line-height", 
         "|", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", 
         "|", "image", "video", "attachment", "quote", "code-block", "table", 
-        "|", "printer", "fullscreen", "ai"
+        "|", "source-code", "printer", "fullscreen", "ai"
     ],
 })
 ```
@@ -53,6 +53,7 @@ new AiEditor({
 - container: 高亮块
 - code-block: 代码块
 - table: 表格
+- source-code: 源代码
 - printer: 打印
 - fullscreen: 全屏
 - ai: 人工智能

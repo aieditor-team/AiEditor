@@ -23,7 +23,8 @@ hero:
 # 为什么选择 AiEditor
 
 <div class="subtitle">
-简单、好用、开源协议友好，无用户数量和应用数量限制，文档丰富。
+简单、好用、开源协议友好，无用户数量和应用数量限制，文档丰富。<br />
+Gitee GVP 项目（最有价值开源项目）https://gitee.com/aieditor-team/aieditor
 </div>
 
 |           | 其他编辑器                  | AiEditor                                       |
