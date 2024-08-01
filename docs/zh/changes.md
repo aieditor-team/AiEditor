@@ -1,13 +1,26 @@
 # AiEditor ChangeLog
 
 
+## v1.0.13 20240714:
+- feat: add AIPanelMenus config support
+- optimize: update video attribute controls
+- fix: AI Menus init error
+- docs: add Japanese README
+
+- 新增：新增 AIPanelMenus 配置的支持，用于配置 AI 泡泡菜单
+- 优化：优化视频节点的控制属性
+- 修复：修复 AI 菜单初始化错误的问题
+- 文档：新增日文的 readme
+
+
+
 ## v1.0.11 20240702:
-- Added: Added onBlur and onFocus configurations for AIEditor #39
-- Added: Added the function of customizing the selected floating menu
-- Added: Added the function of AIEditor.getAttributes() method
-- Optimization: Refactored the international display of AI panel
-- Optimization: Refactored AbstractBubbleMenu.ts to make it simpler and easier to use
-- Fixed: Fixed the problem of multiple additions of Header under KeepAlive of Vue #37
+- feat: Added onBlur and onFocus configurations for AIEditor #39
+- feat: Added the function of customizing the selected floating menu
+- feat: Added the function of AIEditor.getAttributes() method
+- optimize: Refactored the international display of AI panel
+- optimize: Refactored AbstractBubbleMenu.ts to make it simpler and easier to use
+- fix: Fixed the problem of multiple additions of Header under KeepAlive of Vue #37
 
 
 - 新增：新增 AIEditor 的 onBlur 和 onFocus 配置 #39
