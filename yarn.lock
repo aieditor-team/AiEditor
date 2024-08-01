@@ -151,214 +151,214 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
-"@tiptap/core@^2.0.3", "@tiptap/core@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/core/-/core-2.5.6.tgz"
-  integrity sha512-sE6UgY4TChKbtKATZuEhfFdvDHxsBZ2u7+0W4IYvBP/ldlE+2Pq2tUjgekUZElhnr2Qmy7TlSNjbHkUeOTJjew==
+"@tiptap/core@^2.0.3", "@tiptap/core@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/core/-/core-2.5.8.tgz"
+  integrity sha512-lkWCKyoAoMTxM137MoEsorG7tZ5MZU6O3wMRuZ0P9fcTRY5vd1NWncWuPzuGSJIpL20gwBQOsS6PaQSfR3xjlA==
 
-"@tiptap/extension-blockquote@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-blockquote/-/extension-blockquote-2.5.6.tgz"
-  integrity sha512-nrGWCo/EMDFhViZB7LKW2oS+CmFezHGr3+CFbsl5tkK/Ro682kT0TQCfy9S1RGyGhUhZC6VkVaAmDpeppanDGA==
+"@tiptap/extension-blockquote@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-blockquote/-/extension-blockquote-2.5.8.tgz"
+  integrity sha512-P8vDiagtRrUfIewfCKrJe0ddDSjPgOTKzqoM1UXKS+MenT8C/wT4bjiwopAoWP6zMoV0TfHWXah9emllmCfXFA==
 
-"@tiptap/extension-bold@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-bold/-/extension-bold-2.5.6.tgz"
-  integrity sha512-LevDq/SCCO0xQKIjcFGYedokmKSaBjPS3yrNS/MZepzbDCzY7JQb+DIywRDq2XRymdp/Gs7GT5ItSvWlDIBj+w==
+"@tiptap/extension-bold@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-bold/-/extension-bold-2.5.8.tgz"
+  integrity sha512-4vEn+U7Y8B4e8izcL7QuEKYJ9thCSdo+UF1K3TOqQWuJTzTrJLPMwTZ4vYOHzvuq5uIXyPLnWzLgnRLgy5mJRg==
 
-"@tiptap/extension-bubble-menu@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.5.6.tgz"
-  integrity sha512-jFfMyaVkA7gSqS8CZyzdAUhMw5lMhBCoNOZE9oOIttWoE2wssSsGnprmIzTOR+g65kF8yxxzAdNOYjfv/xQ1pw==
+"@tiptap/extension-bubble-menu@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.5.8.tgz"
+  integrity sha512-COmd1Azudu7i281emZFIESECe7FnvWiRoBoQBVjjWSyq5PVzwJaA3PAlnU7GyNZKtVXMZ4xbrckdyNQfDeVQDA==
   dependencies:
     tippy.js "^6.3.7"
 
-"@tiptap/extension-bullet-list@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-bullet-list/-/extension-bullet-list-2.5.6.tgz"
-  integrity sha512-D5YRc5jeT38T7TaJQvsBwGzQRpXY+Evr5Ql8US67sORAc29DNR9afdsYfyn/L1WMwLgP8AzYjkAPB5wb8EKdZg==
+"@tiptap/extension-bullet-list@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-bullet-list/-/extension-bullet-list-2.5.8.tgz"
+  integrity sha512-Wvf0HWBI0ulssoCsCOguxJB1Ntmj9PtE8b/ieFwFvrNptP+sf25XiWgjMs7H1KQrtmpngBu/Bhh5jJRgAmAgeQ==
 
-"@tiptap/extension-character-count@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-character-count/-/extension-character-count-2.5.6.tgz"
-  integrity sha512-3k2q/6BVc906dpN1jU5tofgtSdXXJCMyvDkr9YSkzNE7YMEnW0tx70zeNYzorynK7Sq0efPlh8i6mRJ1xKByTA==
+"@tiptap/extension-character-count@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-character-count/-/extension-character-count-2.5.8.tgz"
+  integrity sha512-uu9FNY9yUMkXEVMfBdTovEyPHOJCZWtEdTVuU+nbOIOpaggNFBG6YcVU4W1NC99USSFnbr45SbCsxP3gySmPIA==
 
-"@tiptap/extension-code-block-lowlight@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-code-block-lowlight/-/extension-code-block-lowlight-2.5.6.tgz"
-  integrity sha512-WpTog6tF55FT/8HMp1Z5SA68rSgDtJROiEaMyWK35VwlsvbJMW0obZZ8aPaXUVd0eQF2+O4VP07OkJV/bPiLyw==
+"@tiptap/extension-code-block-lowlight@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-code-block-lowlight/-/extension-code-block-lowlight-2.5.8.tgz"
+  integrity sha512-ga5iYzVeX7pQ6P44ZkW+Sf+sTcAjD8gjkz6szQ4qKZbJNKWhUPbWyhp41mlhwBq+QzvqcGNWiGcOe6ZwPR01sA==
 
-"@tiptap/extension-code-block@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-code-block/-/extension-code-block-2.5.6.tgz"
-  integrity sha512-mXIMvkRzGxND7PI58DNeDCYqotL2QKYwkFnU3v0G3rKSQOOgfv5RWBU3f8po+nq7Zu7IfpnFWoOr0zqSo2Twig==
+"@tiptap/extension-code-block@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-code-block/-/extension-code-block-2.5.8.tgz"
+  integrity sha512-atMtT1Ddc4hv9+OiH/UCLfQ6Ooo45xpPaaOhqs1Ab509YyqxoyEbfNSOth/yx9DFb8VOenRWE1WV3Z3C0ial0Q==
 
-"@tiptap/extension-code@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-code/-/extension-code-2.5.6.tgz"
-  integrity sha512-2V57H7w0po4Wweo9TunQuFnAeN5pOJmcS5Yyw0AuWRotlX3x2K9W2E8yltO5bwFWFv+JDB2GKTVUOZcllgtSjA==
+"@tiptap/extension-code@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-code/-/extension-code-2.5.8.tgz"
+  integrity sha512-56lb4NnaYAbIkqBTCIg4ZoITrw86Dj8C2HSi6DrU7f5q9cfvGuH+2057I5n8eEEfASu1AeDN6tSnCz3NR+yiHw==
 
-"@tiptap/extension-color@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-color/-/extension-color-2.5.6.tgz"
-  integrity sha512-nWgJ2YZHT/0DnShmjMZLmELKUMnCn12s2IFtpjxU/cox9bU6oUIuT0zOr6eXTf6jkaaCr90PGxTdpVHyfcVBZg==
+"@tiptap/extension-color@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-color/-/extension-color-2.5.8.tgz"
+  integrity sha512-XId+CbRqkgyvbeJunnL3E0EF4/dpolj6gy6AITk9CyghLNBHegOaz+AmECO9+i1Zbpituv00Nh8KUrGlVI6aOA==
 
-"@tiptap/extension-document@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-document/-/extension-document-2.5.6.tgz"
-  integrity sha512-0XNAFpCKHtTd0WCEhkg4zFCII2HV5/L7lQniHlVW/EaDsibkDtIZklSGKIRn+/xaS1bVrzcIq4Z/2hE52a9H0A==
+"@tiptap/extension-document@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-document/-/extension-document-2.5.8.tgz"
+  integrity sha512-r3rP4ihCJAdp3VRIeqd80etHx7jttzZaKNFX8hkQShHK6eTHwrR92VL0jDE4K+NOE3bxjMsOlYizJYWV042BtA==
 
-"@tiptap/extension-dropcursor@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-dropcursor/-/extension-dropcursor-2.5.6.tgz"
-  integrity sha512-XEW5RQQvqzYCtP7FZbSvF2xq1OvT9X5FXi+/9q22gCetuc8fmr/Mh6vmgAe9q+yo+nb8Tjwnykzdi7lo+YCKRw==
+"@tiptap/extension-dropcursor@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-dropcursor/-/extension-dropcursor-2.5.8.tgz"
+  integrity sha512-xPmIfTYqurFF8RukCPlHd8mT8I7hDinWrgq7CQTRROxcJ3DNw8PooWrKWaBYs9HXHe1pbiQ5EK0uOsNvQ1bcDg==
 
-"@tiptap/extension-font-family@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-font-family/-/extension-font-family-2.5.6.tgz"
-  integrity sha512-8/ElBAyzijzj+f7vCQdkC3DlM+Sd1KBdCZEsrf0ovWs+7/E7mpxmoGS9k7CJYK0NMeOKpm8b7WrwJbDKJqtmMw==
+"@tiptap/extension-font-family@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-font-family/-/extension-font-family-2.5.8.tgz"
+  integrity sha512-wn47r0Qo2LoezFTfV2cZAxDdAUveZghQyaFIYwzct38IgKEJHgii00fJn1IgN+uWfbEJdnGcZJVjqW57HHA7QQ==
 
-"@tiptap/extension-gapcursor@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-gapcursor/-/extension-gapcursor-2.5.6.tgz"
-  integrity sha512-JueLDAgisNJotXFA4AEZe3VhJtwQAZOKT/f5zJtGilrr/plsmh2e9SVxcBwl+BkhmvRjy9bs/OxtqV+kHFsORA==
+"@tiptap/extension-gapcursor@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-gapcursor/-/extension-gapcursor-2.5.8.tgz"
+  integrity sha512-nR7AUOE4xWdp0sDbLbe4uwAhQ/xq+MTLVafvffMLT81U/Hl9R+w0Ap2XF0+c6/JTQwVjZiOalAmg4dobx7rJUQ==
 
-"@tiptap/extension-hard-break@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-hard-break/-/extension-hard-break-2.5.6.tgz"
-  integrity sha512-pBKRIziToH/0OB0Q6jOyCZcBLa1OdY8UrwRPWXOWIXSQOSgxHpzYhpwuN+s341c8U8l13mqgo0Ths5IS7/vp3g==
+"@tiptap/extension-hard-break@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-hard-break/-/extension-hard-break-2.5.8.tgz"
+  integrity sha512-samZEL0EXzHSmMQ7KyLnfSxdDv3qSjia0JzelfCnFZS6LLcbwjrIjV8ZPxEhJ7UlZqroQdFxPegllkLHZj/MdQ==
 
-"@tiptap/extension-heading@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-heading/-/extension-heading-2.5.6.tgz"
-  integrity sha512-HPQw6asyiJZCYpIWJRdYJxh9EMLiuo88Nh9jEIs8XeRrNjSOVRLfiiO8g6uc0vKiHnI6nrqV8KfpNO+XyKIIeA==
+"@tiptap/extension-heading@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-heading/-/extension-heading-2.5.8.tgz"
+  integrity sha512-fDQoUkTLN+U8MNQ8PI+syKyshS9qFHlKihxzMLf/+tRisJvP47gzHDur99nffTSbXFDnASDqhavhKjI/2xTWlQ==
 
-"@tiptap/extension-highlight@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-highlight/-/extension-highlight-2.5.6.tgz"
-  integrity sha512-CXnptiLvpfUriy7ODiipCmKGiF0Q7snnO0FGehGQd9l5YPawL7SW04ulI0vIrYsMMEMP8L6NKt+dJ4ruxjbPUQ==
+"@tiptap/extension-highlight@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-highlight/-/extension-highlight-2.5.8.tgz"
+  integrity sha512-Auli6YBdUjF8mo0beEYw6Eh1hySukoQVjq+Yz6RKpaRzrrvXjoZUciQ6RoGXS4BHT7sfp8fMw9OIVo9Ifx8d8w==
 
-"@tiptap/extension-history@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-history/-/extension-history-2.5.6.tgz"
-  integrity sha512-7QXuFF11JH5vH4n8lubrtpA/c0f9PuCruaRrqeHGeMi4ukjoTu7S46mmbIPc+BkmMwVRjW6wNhQMm2bny+UlOg==
+"@tiptap/extension-history@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-history/-/extension-history-2.5.8.tgz"
+  integrity sha512-5IrZZfp2Rg9Tov/08aYTKhwoiqdun8v3j3vleuqyW5RB7LU/NKLR19EtSSMh9mVkFZVbhab2zDOFmn5ilsEOhw==
 
-"@tiptap/extension-horizontal-rule@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-horizontal-rule/-/extension-horizontal-rule-2.5.6.tgz"
-  integrity sha512-8+PPDQRqpMyPwaRmkFqgfym8faml27w91OHs7cMmkMrK18M731mRE7JOqbEdFk029jwju41d/J/HdjtYqm0lkw==
+"@tiptap/extension-horizontal-rule@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-horizontal-rule/-/extension-horizontal-rule-2.5.8.tgz"
+  integrity sha512-L8Is73WGaP6VNdKrIry+lCIM9W1KaL/Tw2Z6DGMVMU5mr1lLx0xq7nWEStqD7e4zh+n4+3PV15cZSA2F34DZrg==
 
-"@tiptap/extension-image@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-image/-/extension-image-2.5.6.tgz"
-  integrity sha512-kQbnGcgfJ42NuuzGYxV+an8rHNMJrXsuv+WOsT9WyFZ7zcrhMp6wAdl77SIZ5tViZbk5dM0Ita8UF56fKWUYsw==
+"@tiptap/extension-image@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-image/-/extension-image-2.5.8.tgz"
+  integrity sha512-xlF3dqzXSN/6vWdmGOaIz0YVUO/B69mPw9vUITg7bQdc4X2pc52tvTGhpAzAc/kbwSVrW33icxAsXx8XH9Bkkg==
 
-"@tiptap/extension-italic@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-italic/-/extension-italic-2.5.6.tgz"
-  integrity sha512-AwGIIIr3JFj1K4nQfZ1rMFVof0H8zJ2/XYHo4uPxP30S142LRa4mvhfiW51lpJxPSeO6T/dGd3x9nLhkLXT5sw==
+"@tiptap/extension-italic@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-italic/-/extension-italic-2.5.8.tgz"
+  integrity sha512-Kh35a7slBai+Qr/tiF9XFXmuWMgUQz4Nt51hmzqVGVuG+QsdWzQE8IZBGypKm8aAzxTGSY0d0QA0rys+YRNq1Q==
 
-"@tiptap/extension-link@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-link/-/extension-link-2.5.6.tgz"
-  integrity sha512-sLcrVKB6qfnRQ66YQ48/hX8/69fvHgcPjq+k3dpqvi8CohmcYn8CuTbIh4+x/fgmIb6esqUkamDsGdU+70bTwg==
+"@tiptap/extension-link@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-link/-/extension-link-2.5.8.tgz"
+  integrity sha512-qfeWR7sG2V7bn8z0f3HMyoR68pFlxYJmLs9cbW30diE9/zKClYEd3zTMPCgJ9yMSagCj4PWkqksIuktAhyRqOQ==
   dependencies:
     linkifyjs "^4.1.0"
 
-"@tiptap/extension-list-item@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-list-item/-/extension-list-item-2.5.6.tgz"
-  integrity sha512-DgCgHTJf4RjZoefIha4rUhxa98NnQMQDmEc2uEp38OKAOg5v//UpyE3F9Wkgns2gUgOPbNpwGVv5F5cHVFtHnA==
+"@tiptap/extension-list-item@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-list-item/-/extension-list-item-2.5.8.tgz"
+  integrity sha512-RFIIzHxxXdPmdf7BL0zhE4VPHoR6BTWtfi3JCTftmNqKoH7o+mLKT0RHMGvF1CGNn2HewHzXAF0iXfKCwmEgHQ==
 
-"@tiptap/extension-mention@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-mention/-/extension-mention-2.5.6.tgz"
-  integrity sha512-C+YMzuFhrJD1NqHOwzwJXjy6eFu6gTj3Cs2gvYIT+jyRFK7eBvupqCUX0Vg71QMkLu211ijo32UG3AgfeEsDNQ==
+"@tiptap/extension-mention@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-mention/-/extension-mention-2.5.8.tgz"
+  integrity sha512-dDLoKi22YIYC0lpsGYOBLwMOW5vudlmUBjKDvoy+DAncazTo6rBhZMeANuHypFBu/bqco+Q4dGVy06PkolUyIQ==
 
-"@tiptap/extension-ordered-list@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-ordered-list/-/extension-ordered-list-2.5.6.tgz"
-  integrity sha512-bquU/K5hesNOwAFxeWEOG3YqWOPgxhWPHOr8E5Y/tI/yGovpkmkpPX9+SbhWySp/vWIGzxMWtX8E9Yt8Ad5pXw==
+"@tiptap/extension-ordered-list@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-ordered-list/-/extension-ordered-list-2.5.8.tgz"
+  integrity sha512-84gWdWhc8rUCCssn8+6Z1rFKdG7/yIe+gwYkU6WqAtDrcluJdt5jRHrcMOLxb2dbY8ww9pa72EYV/bwOisZlFQ==
 
-"@tiptap/extension-paragraph@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-paragraph/-/extension-paragraph-2.5.6.tgz"
-  integrity sha512-ZPoerYEZLHlOCsfEfagX38ahXwegZaAB/ZUlcff9ehp5v8uO4L64mWyQRoTDF74A9cGnKxE3enokz8tOA47fkA==
+"@tiptap/extension-paragraph@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-paragraph/-/extension-paragraph-2.5.8.tgz"
+  integrity sha512-AMfD3lfGSiomfkSE2tUourUjVahLtIfWUQew13NTPuWoxAXaSyoCGO0ULkiou/lO3JVUUUmF9+KJrAHWGIARdA==
 
-"@tiptap/extension-placeholder@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-placeholder/-/extension-placeholder-2.5.6.tgz"
-  integrity sha512-ULmR146/l1zGTkzyda/9Y7yDSz3Pr6hE+ccBDiJ0OMgf7ukL+iwAuZJz3R1EbDz6x2FfrspVnt2/ieCYDKe7Hw==
+"@tiptap/extension-placeholder@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-placeholder/-/extension-placeholder-2.5.8.tgz"
+  integrity sha512-mvRl73OM5jBXVtDRLSTvp8/4+0mS2J2+ZcuiAHjABwEsZRCfJsiqty5NisOxSuy/AQtm8TK2kyt6ZCXQ2VRGig==
 
-"@tiptap/extension-strike@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-strike/-/extension-strike-2.5.6.tgz"
-  integrity sha512-dh3E/6ex1VSfpdautCyody+J4FuLmOZVcJbOMAEUNRBRMMKQmJZIXgBJrKOJuqnWoWWL00LlvbHnNUDzWYAQoA==
+"@tiptap/extension-strike@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-strike/-/extension-strike-2.5.8.tgz"
+  integrity sha512-uiHhBIEqawX9Up2ofklotVQ5XpGIjwRL6wprZF38s1le3XpsgyhVV7oDnqDkC7ujCsGkOJJfXZtv3LsO3R2nzQ==
 
-"@tiptap/extension-subscript@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-subscript/-/extension-subscript-2.5.6.tgz"
-  integrity sha512-QlJNcAD5mbZC+CMxZht3rFAl/15ezP+QTyWaau9LIxm5SH1O7fGbSbkJlPIGqNgzTbqIJAu9pDenFA0d7WMPfA==
+"@tiptap/extension-subscript@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-subscript/-/extension-subscript-2.5.8.tgz"
+  integrity sha512-pEajsdr/NtTjRiCJZC6XH3JsZCo7z/UO/iQKZbNb/44fsnBMlQoih4jYsIBJmk62j/0dzCJR8AmzfqXJX8qxlA==
 
-"@tiptap/extension-superscript@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-superscript/-/extension-superscript-2.5.6.tgz"
-  integrity sha512-0jA5K3bOYNFzhizFOd2n+bvnNJfq+i34Drj8UpJIJV9jpkVO71fI0DsEIEWYoLPbLzZCEJYYH/W7BcSIAk6FUg==
+"@tiptap/extension-superscript@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-superscript/-/extension-superscript-2.5.8.tgz"
+  integrity sha512-NFQD2m11C7w1vHmwzPPDG80PDh+rd98OCEszlc8ZgDFkTFWQMg0TfDZQMTsVsQtxVxMkuy4hl+wdye9xVUh1LA==
 
-"@tiptap/extension-table-cell@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-table-cell/-/extension-table-cell-2.5.6.tgz"
-  integrity sha512-0vf0J+cc11pc2tbvpdTQYCEatgXoMB222asX2Gsnse/D/MPFiwU6kpVnRP+tVQWCIbIrOKgm8wJb8XIdYKQdXA==
+"@tiptap/extension-table-cell@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-table-cell/-/extension-table-cell-2.5.8.tgz"
+  integrity sha512-t3fITH/sefWiOMSrqn34fhLRDSIZxTCwWvwvlrXnV0J5zaIjjJyP499JM3gAfB6Kb9+7Hd1VvdyDCeJbgEIgWQ==
 
-"@tiptap/extension-table-header@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-table-header/-/extension-table-header-2.5.6.tgz"
-  integrity sha512-fSEUX6MinH9uku/oYkStVhHNTihd5PAAINeeCNYeLOgNaz6f4T+doFlW5zojrrIqkBtntBllgr1TNmq+Bn3sqw==
+"@tiptap/extension-table-header@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-table-header/-/extension-table-header-2.5.8.tgz"
+  integrity sha512-ehR/8IZpeAq8nRfkVMOlrClzTN9ZosGPz48SdhqN0V7aRaHe7MZcVOGbxrAXo9P6/3UTjh21qXFgatBVx8xoTA==
 
-"@tiptap/extension-table-row@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-table-row/-/extension-table-row-2.5.6.tgz"
-  integrity sha512-n2gntx0xhQ+D8abIImdbdb5ARhz5NXjc4K+TZ3ueA3JAQ3WpM8oxFAm/+o2u7N0a5Mg6ni3uF+DCSZ3DTAhEkg==
+"@tiptap/extension-table-row@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-table-row/-/extension-table-row-2.5.8.tgz"
+  integrity sha512-AESSqAB2XI1X/V8nlJhcNMmzCUmXKM6K0suZPiwdK9LlhPcTrLe8q7V09fPB23ZNL5dEVxVGIREyrdKiZnshIA==
 
-"@tiptap/extension-table@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-table/-/extension-table-2.5.6.tgz"
-  integrity sha512-RYZB15dUs0hAqrlZ+zkh8cnDE6rb7vazh5TewvLtGHJtb+wsqwhtCJTiiB93CfpgYgDTljm19SFTmWFlYPEJ3A==
+"@tiptap/extension-table@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-table/-/extension-table-2.5.8.tgz"
+  integrity sha512-91LTBn0tVfXYJsTcl8sOeqaoz3XNb2FUmyyQJmaLAoW8XbjnBLMk8V+BnSJdo9/RdhnujL9p9PfUvMdeUMIMJg==
 
-"@tiptap/extension-task-item@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-task-item/-/extension-task-item-2.5.6.tgz"
-  integrity sha512-7MYJ4yZDWrV9ns5rAurXVljSq9vYBRjTnoXgNfg3FCXO0nIvJVvj/35eA+1IOuRQOfnM61ChD68dzHI5GKdWCA==
+"@tiptap/extension-task-item@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-task-item/-/extension-task-item-2.5.8.tgz"
+  integrity sha512-l20/6ieSs1J658Lj/gfLQZV9HMKp7TS6I+weJSoo+S2Cfm2VUCPp20/TXpdvhFMCF1Sma7Xpxn53289Ae6SHBg==
 
-"@tiptap/extension-task-list@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-task-list/-/extension-task-list-2.5.6.tgz"
-  integrity sha512-XFYq18aliezoVaIFIrhjDmR55ulKoNn6iPyBpogx8YIVqCKQj5J8BvThKAdvR+UqF8F3CfjgOG7DMvBG82UyCw==
+"@tiptap/extension-task-list@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-task-list/-/extension-task-list-2.5.8.tgz"
+  integrity sha512-rKM/n7Zzmu0CZ0xhqiwFFY2ZrdhPDtK7KQS0U1XPZzQ8vIl/LPA9wxVYibUsAF3kJLqhAfUYUp3yDYM7ST6/EA==
 
-"@tiptap/extension-text-align@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-text-align/-/extension-text-align-2.5.6.tgz"
-  integrity sha512-GJ5OJt1NEO9G6I++b3yU6Vs0wYa/AiKWtB32w4CktVo1LqIRJIvDOACVwFl33CjP9mDhkoZrjdkPA3FJkMhSCA==
+"@tiptap/extension-text-align@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-text-align/-/extension-text-align-2.5.8.tgz"
+  integrity sha512-TtkEUkgHkV6nYwcvx0+vVIpgXkawZhG55IQ9CZI5PnD6tbzHTK8qFnuhnTgmX+ZQkqz4qEg5erFY/fC1gVvQ4g==
 
-"@tiptap/extension-text-style@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-text-style/-/extension-text-style-2.5.6.tgz"
-  integrity sha512-rztXENp9Usyerl2qaknmbwNRqShAR+vm5syBTy6P+L7/u9j5TpZMYgLku7WGIf0gz6EhVhdc1Dnbfif3qi2l6g==
+"@tiptap/extension-text-style@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-text-style/-/extension-text-style-2.5.8.tgz"
+  integrity sha512-E3bE85/rG3NxNr0D/c24zfDgkLF1jMn5UTF1cmrSB5Z3I+fWW/QvnIlb5Jfp4yTfLTaMWr1Eg+8UKXWVCjss8g==
 
-"@tiptap/extension-text@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-text/-/extension-text-2.5.6.tgz"
-  integrity sha512-dJFARnhuxaLrUP/3PhSE7Wfq/OBRKKW73ZMVrIFhGbVxOdmTZxA12d95U0e+5q6mbPSQFNx8ZYhqnStztRAjBw==
+"@tiptap/extension-text@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-text/-/extension-text-2.5.8.tgz"
+  integrity sha512-CNkD51jRMdcYCqFVOkrnebqBQ6pCD3ZD5z9kO5bOC5UPZKZBkLsWdlrHGAVwosxcGxdJACbqJ0Nj+fMgIw4tNA==
 
-"@tiptap/extension-underline@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/extension-underline/-/extension-underline-2.5.6.tgz"
-  integrity sha512-1Bhi/iC3WTKXgUx4ha9cp7Vhds1hHrKnKGuiEWP02yUkwq+iGKPHWGBW/qoXyXSnvt6fXPYdeNIsaBJVtk4c/A==
+"@tiptap/extension-underline@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/extension-underline/-/extension-underline-2.5.8.tgz"
+  integrity sha512-MxtOcYXVSpiYWNE1hzmBNUJELyH70Y/fFNbOyI5VPOoCZT7a3XjtWIbiZhBvN1lIzXYMHDj8Wacxzt6whK5KJw==
 
-"@tiptap/pm@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/pm/-/pm-2.5.6.tgz"
-  integrity sha512-0ysx5eXyF5XXfBmo/krMWKvZh6iBnqJ0YVPO/NsGzZcdjBix9lYYDh6nswLvv2mjhPbMEmcMW1ctj3myOwoUbw==
+"@tiptap/pm@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/pm/-/pm-2.5.8.tgz"
+  integrity sha512-CVhHaTG4QNHSkvuh6HHsUR4hE+nbUnk7z+VMUedaqPU8tNqkTwWGCMbiyTc+PCsz0T9Mni7vvBR+EXgEQ3+w4g==
   dependencies:
     prosemirror-changeset "^2.2.1"
     prosemirror-collab "^1.3.1"
@@ -379,35 +379,35 @@
     prosemirror-transform "^1.9.0"
     prosemirror-view "^1.33.9"
 
-"@tiptap/starter-kit@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/starter-kit/-/starter-kit-2.5.6.tgz"
-  integrity sha512-yrCMFrnGtpEH0KsJZ383LT+faQfg5JqgvwS9yy1snNmT6mesg0tj+Joyxz4OxPf8TrFgtG8VysgP9MrZKTZk9w==
+"@tiptap/starter-kit@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/starter-kit/-/starter-kit-2.5.8.tgz"
+  integrity sha512-Beb6Q3cFmJ1pE22WlFrG3wj8XAGXqaGkbqtsGAJDnoyWL4uoSs4vLt5I/UJshK/nQlNqTWFdpd9SxRFsxBYpqg==
   dependencies:
-    "@tiptap/core" "^2.5.6"
-    "@tiptap/extension-blockquote" "^2.5.6"
-    "@tiptap/extension-bold" "^2.5.6"
-    "@tiptap/extension-bullet-list" "^2.5.6"
-    "@tiptap/extension-code" "^2.5.6"
-    "@tiptap/extension-code-block" "^2.5.6"
-    "@tiptap/extension-document" "^2.5.6"
-    "@tiptap/extension-dropcursor" "^2.5.6"
-    "@tiptap/extension-gapcursor" "^2.5.6"
-    "@tiptap/extension-hard-break" "^2.5.6"
-    "@tiptap/extension-heading" "^2.5.6"
-    "@tiptap/extension-history" "^2.5.6"
-    "@tiptap/extension-horizontal-rule" "^2.5.6"
-    "@tiptap/extension-italic" "^2.5.6"
-    "@tiptap/extension-list-item" "^2.5.6"
-    "@tiptap/extension-ordered-list" "^2.5.6"
-    "@tiptap/extension-paragraph" "^2.5.6"
-    "@tiptap/extension-strike" "^2.5.6"
-    "@tiptap/extension-text" "^2.5.6"
+    "@tiptap/core" "^2.5.8"
+    "@tiptap/extension-blockquote" "^2.5.8"
+    "@tiptap/extension-bold" "^2.5.8"
+    "@tiptap/extension-bullet-list" "^2.5.8"
+    "@tiptap/extension-code" "^2.5.8"
+    "@tiptap/extension-code-block" "^2.5.8"
+    "@tiptap/extension-document" "^2.5.8"
+    "@tiptap/extension-dropcursor" "^2.5.8"
+    "@tiptap/extension-gapcursor" "^2.5.8"
+    "@tiptap/extension-hard-break" "^2.5.8"
+    "@tiptap/extension-heading" "^2.5.8"
+    "@tiptap/extension-history" "^2.5.8"
+    "@tiptap/extension-horizontal-rule" "^2.5.8"
+    "@tiptap/extension-italic" "^2.5.8"
+    "@tiptap/extension-list-item" "^2.5.8"
+    "@tiptap/extension-ordered-list" "^2.5.8"
+    "@tiptap/extension-paragraph" "^2.5.8"
+    "@tiptap/extension-strike" "^2.5.8"
+    "@tiptap/extension-text" "^2.5.8"
 
-"@tiptap/suggestion@^2.5.6":
-  version "2.5.6"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/@tiptap/suggestion/-/suggestion-2.5.6.tgz"
-  integrity sha512-Al/iRURUMPc5LnZO4Qn6iPr05qfTW9Xo6qaw0XqKjPg6dabDQ0Gdx7gs28jC6CXxlphrgEpkMmmIGU7o7ovLJw==
+"@tiptap/suggestion@^2.5.8":
+  version "2.5.8"
+  resolved "https://registry.npmmirror.com/@tiptap/suggestion/-/suggestion-2.5.8.tgz"
+  integrity sha512-u0emCyGpzSshKR5mIJVwPwycKikP05137fnD0RFI3+nftO6n/2h54rs2yU6BYA8dc01VZRB00cJ/zHO6DsZWEA==
 
 "@types/argparse@1.0.38":
   version "1.0.38"
