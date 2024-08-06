@@ -22,7 +22,7 @@ import {Superscript} from "@tiptap/extension-superscript";
 import {Subscript} from "@tiptap/extension-subscript";
 import {TaskList} from "@tiptap/extension-task-list";
 import {TaskItem} from "@tiptap/extension-task-item";
-import {CodeBlockExt} from "../extensions/CodeBlockExt.ts";
+import {CodeBlockExt, languages} from "../extensions/CodeBlockExt.ts";
 import {common, createLowlight} from "lowlight";
 import {VideoExt} from "../extensions/VideoExt.ts";
 import {IFrameExt} from "../extensions/IFrameExt.ts";
@@ -103,13 +103,14 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 lowlight: createLowlight(common),
                 defaultLanguage: 'auto',
                 languageClassPrefix: 'language-',
+                languages: options.codeBlock?.languages || languages,
                 codeExplainAi: options.ai?.codeBlock?.codeExplain || {
                     model: "auto",
-                    prompt: "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释",
+                    prompt: options.codeBlock?.codeExplainPrompt || "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释",
                 },
                 codeCommentsAi: options.ai?.codeBlock?.codeComments || {
                     model: "auto",
-                    prompt: "帮我对这个代码添加一些注释，并返回添加注释的代码，只返回代码",
+                    prompt: options.codeBlock?.codeCommentsPrompt || "帮我对这个代码添加一些注释，并返回添加注释的代码，只返回代码",
                 },
             }),
             VideoExt.configure({

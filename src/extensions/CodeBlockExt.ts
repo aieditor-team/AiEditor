@@ -184,7 +184,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             ...this.parent?.(),
             lowlight: {},
             defaultLanguage: null,
-            languages,
+            languages:[],
         }
     },
 

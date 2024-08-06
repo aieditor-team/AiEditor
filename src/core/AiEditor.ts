@@ -16,6 +16,7 @@ import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
 import {AiModelManager} from "../ai/AiModelManager.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {BubbleMenuItem} from "../components/bubbles/types.ts";
+import {LanguageItem} from "../extensions/CodeBlockExt.ts";
 
 
 defineCustomElement('aie-header', Header);
@@ -69,6 +70,11 @@ export type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
     draggable?: boolean,
+    codeBlock?:{
+        languages?:LanguageItem[],
+        codeExplainPrompt?:string,
+        codeCommentsPrompt?:string,
+    },
     textSelectionBubbleMenu?: {
         enable?: boolean,
         elementTagName?: string,
