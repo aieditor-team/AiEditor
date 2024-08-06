@@ -70,10 +70,10 @@ export type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu)[],
     draggable?: boolean,
-    codeBlock?:{
-        languages?:LanguageItem[],
-        codeExplainPrompt?:string,
-        codeCommentsPrompt?:string,
+    codeBlock?: {
+        languages?: LanguageItem[],
+        codeExplainPrompt?: string,
+        codeCommentsPrompt?: string,
     },
     textSelectionBubbleMenu?: {
         enable?: boolean,
