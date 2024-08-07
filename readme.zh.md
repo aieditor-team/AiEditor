@@ -6,8 +6,10 @@
 
 
 <h1 align="center"><a href="https://aieditor.dev/zh/" target="_blank">AIEditor.dev</a></h1>
+<h4 align="center"><a href='https://gitee.com/aieditor-team/aieditor/stargazers'><img src='https://gitee.com/aieditor-team/aieditor/badge/star.svg?theme=gvp' alt='star' /></a></h4>
+
 <h2 align="center">AI 驱动的开源富文本编辑器</h2>
-<h4 align="center">开箱即用、支持所有前端框架、支持 Markdown 书写模式</h4>
+<h3 align="center">开箱即用、支持所有前端框架、支持 Markdown 书写模式</h4>
 
 
 ![](./docs/assets/image/index-banner1.png)
@@ -64,6 +66,15 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 - [x] **更多**：国际化、亮色主题、暗色主题、手机适配、全屏编辑、@某某某（提及）...
 - [x] 类腾讯文档现代 UI 风格
 
+## 商业版
+- [x] 类 Notion 内容块拖拽功能
+- [x] Word 导入、Word 导出
+- [x] PDF 导出
+- [x] Latex 数学公式编辑
+- [x] 团队协作（多个人同时编辑一份文档）
+- [x] 批注功能，类似 word 选择一段文字进行批注评论的功能
+
+商业版演示：http://aieditor-pro.jpress.cn/
 
 ## 开发中...
 
@@ -72,9 +83,7 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 - [ ] AI 一键排版
 - [ ] 进一步增强粘贴功能
 - [ ] 上传视频自动获取缩略图
-- [ ] WORD 导入、导出
-- [ ] PDF 导出、PDF 预览
-- [ ] 类 Notion 拖拽功能
+
 
 ## 快速开始
 
