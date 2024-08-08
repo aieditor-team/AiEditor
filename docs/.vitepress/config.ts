@@ -55,6 +55,7 @@ export default defineConfig({
                             {text: '与 React 整合', link: '/zh/aieditor-with-react'},
                             {text: '与 Vue3 整合', link: '/zh/aieditor-with-vue3'},
                             {text: '与 Vue2 整合', link: '/zh/aieditor-with-vue2'},
+                            {text: '与 Svelte 整合', link: '/zh/aieditor-with-svelte'},
                             {text: '与 Layui 整合', link: '/zh/aieditor-with-layui'},
                         ]
                     },
@@ -137,6 +138,7 @@ export default defineConfig({
                     {text: 'Integrate with React', link: '/aieditor-with-react'},
                     {text: 'Integrate with Vue3', link: '/aieditor-with-vue3'},
                     {text: 'Integrate with Vue2', link: '/aieditor-with-vue2'},
+                    {text: 'Integrate with Svelte', link: '/aieditor-with-svelte'},
                 ]
             },
             {
