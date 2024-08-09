@@ -94,9 +94,10 @@ export const ImageExt = Image.extend<ImageOptions>({
         },
 
         renderHTML({HTMLAttributes}) {
-            return [
-                'img',
-                mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
+            const imgAttrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
+            return ["div",
+                {style: `text-align:${imgAttrs.align}`},
+                ['img', imgAttrs, ]
             ];
         },
 
