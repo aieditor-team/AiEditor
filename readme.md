@@ -68,6 +68,15 @@ please refer to here: https://aieditor.dev/versions.html
 - [x] **More**: internationalization, light theme, dark theme, mobile phone adaptation, full screen editing, @XXX (mention)...
 - [x] Modern UI style similar to Tencent Documents
 
+## Commercial version
+- [x] Notion-like content block dragging function
+- [x] Word import, Word export
+- [x] PDF export
+- [x] Latex mathematical formula editing
+- [x] Team collaboration (multiple people editing a document at the same time)
+- [x] Annotation function, similar to the function of selecting a paragraph of text to annotate and comment on it in Word
+
+
 
 ## Under development...
 
@@ -76,9 +85,7 @@ please refer to here: https://aieditor.dev/versions.html
 - [ ] AI one-click typesetting
 - [ ] Further enhance the paste function
 - [ ] Automatically obtain thumbnails when uploading videos
-- [ ] WORD import and export
-- [ ] PDF export, PDF preview
-- [ ] Notion-like drag and drop features
+
 
 ## Quick start
 

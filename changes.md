@@ -1,6 +1,21 @@
 # AiEditor ChangeLog
 
 
+## v1.0.14 20240812:
+- feat: codeBlock add languages and prompts config
+- feat: add demos for svelte
+- fix: img align not effective if export to html
+- chore: upgrade dependencies
+- doc: update source-code document
+- doc: add svelte docs
+
+- 新增：codeBlock 代码块添加自定义代码语言和 prompt 提示词的功能
+- 新增：添加 svelte 框架使用的 demo 示例
+- 修复：图片对其方式导出为 html 时不生效的问题
+- 文档：添加和 svelte 框架集成的相关文档
+
+
+
 ## v1.0.13 20240714:
 - feat: add AIPanelMenus config support
 - optimize: update video attribute controls

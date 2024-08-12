@@ -101,6 +101,11 @@ export declare type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu)[];
     draggable?: boolean;
+    codeBlock?: {
+        languages?: LanguageItem[];
+        codeExplainPrompt?: string;
+        codeCommentsPrompt?: string;
+    };
     textSelectionBubbleMenu?: {
         enable?: boolean;
         elementTagName?: string;
@@ -288,6 +293,12 @@ export declare class InnerEditor extends Editor {
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
 }
+
+declare type LanguageItem = {
+    name: string;
+    value: string;
+    alias?: string[];
+};
 
 export declare interface NameAndValue {
     name: string;
