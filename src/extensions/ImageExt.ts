@@ -80,6 +80,12 @@ export const ImageExt = Image.extend<ImageOptions>({
                 align: {
                     default: 'left',
                 },
+                'data-src': {
+                    default: ''
+                },
+                loading: {
+                    default: null
+                }
             };
         },
 
@@ -150,6 +156,8 @@ export const ImageExt = Image.extend<ImageOptions>({
                                     .insert(found[0].from, schema.nodes.image.create({
                                         src: json.data.src,
                                         alt: json.data.alt,
+                                        'data-src': json.data['data-src'],
+                                        loading: json.data.loading
                                     }))
                                     .setMeta(actionKey, {type: "remove", id}));
                             } else {
