@@ -81,7 +81,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                     default: 'left',
                 },
                 'data-src': {
-                    default: ''
+                    default: null
                 },
                 loading: {
                     default: null
