@@ -67,24 +67,31 @@ export const ImageExt = Image.extend<ImageOptions>({
                 },
                 alt: {
                     default: '',
+                    parseHTML: (element) => `${element.getAttribute('alt') ?? ''}`,
                 },
                 title: {
                     default: '',
+                    parseHTML: (element) => `${element.getAttribute('title') ?? ''}`,
                 },
                 width: {
                     default: this.options.defaultSize,
+                    parseHTML: (element) => `${element.getAttribute('width') ?? ''}`,
                 },
                 height: {
                     default: 'auto',
+                    parseHTML: (element) => `${element.getAttribute('height') ?? ''}`,
                 },
                 align: {
                     default: 'left',
+                    parseHTML: (element) => `${element.getAttribute('align') ?? ''}`,
                 },
                 'data-src': {
-                    default: null
+                    default: null,
+                    parseHTML: (element) => `${element.getAttribute('data-src') ?? ''}`,
                 },
                 loading: {
-                    default: null
+                    default: null,
+                    parseHTML: (element) => `${element.getAttribute('loading') ?? ''}`,
                 }
             };
         },
@@ -103,7 +110,7 @@ export const ImageExt = Image.extend<ImageOptions>({
             const imgAttrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
             return ["div",
                 {style: `text-align:${imgAttrs.align}`},
-                ['img', imgAttrs, ]
+                ['img', imgAttrs,]
             ];
         },
 
