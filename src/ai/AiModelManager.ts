@@ -5,6 +5,7 @@ import {WenXinAiModel} from "./wenxin/WenXinAiModel.ts";
 import {CustomAiModel} from "./custom/CustomAiModel.ts";
 import {OpenaiAiModel} from "./openai/OpenaiAiModel.ts";
 import {InnerEditor} from "../core/AiEditor.ts";
+import {GiteeAiModel} from "./gitee/GiteeAiModel.ts";
 
 export class AiModelManager {
 
@@ -22,6 +23,9 @@ export class AiModelManager {
                         break;
                     case "openai":
                         this.set(key, new OpenaiAiModel(editor, globalConfig))
+                        break;
+                    case "gitee":
+                        this.set(key, new GiteeAiModel(editor, globalConfig))
                         break;
                     case "custom":
                         this.set(key, new CustomAiModel(editor, globalConfig))

@@ -51,6 +51,10 @@ window.aiEditor = new AiEditor({
             //     endpoint: "https://api.moonshot.cn",
             //     model: "moonshot-v1-8k",
             //     apiKey: "sk-alQ96zb******"
+            // },
+            // gitee:{
+            //     endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
+            //     apiKey:"***",
             // }
         },
         // bubblePanelEnable:false,
