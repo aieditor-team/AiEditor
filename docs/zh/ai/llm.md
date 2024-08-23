@@ -70,6 +70,44 @@ new AiEditor({
 })
 ```
 
+## Gitee Ai 
+
+当前是使用 Gitee AI 的 serverless api 来进行支持。
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            gitee:{
+                endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
+                apiKey:"***",
+            }
+        }
+    },
+})
+```
+
+更多的 Gitee AI 配置，例如：
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            gitee:{
+                endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
+                apiKey:"***",
+                max_tokens: 512,
+                temperature: 0.7,
+                top_p: 0.7,
+                top_k: 50,
+            }
+        }
+    },
+})
+```
+
 
 ## 自定义大语言模型
 

@@ -1,6 +1,6 @@
 # Large language models
 
-Currently, AiEditor supports the `Openai（ChatGPT`, `Spark large model`, `Wenxin Yiyuan`  and `custom LLMs`.
+Currently, AiEditor supports the `Openai（ChatGPT)`, `Spark large model`, `Wenxin Yiyuan`  and `custom LLMs`.
 
 ##
 
@@ -64,6 +64,44 @@ new AiEditor({
                 access_token: "****",
                 protocol: "****",
                 version: "****"
+            }
+        }
+    },
+})
+```
+
+## Gitee Ai
+
+ Gitee AI's serverless API is used for support currently.
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            gitee:{
+                endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
+                apiKey:"***",
+            }
+        }
+    },
+})
+```
+
+More Gitee AI configurations, such as:
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            gitee:{
+                endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
+                apiKey:"***",
+                max_tokens: 512,
+                temperature: 0.7,
+                top_p: 0.7,
+                top_k: 50,
             }
         }
     },
