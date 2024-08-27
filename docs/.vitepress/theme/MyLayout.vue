@@ -45,10 +45,18 @@ const {lang} = useData()
     </template>
 
 
-    <template #home-hero-image>
-      <div style="z-index: 9999">
-        <img v-if="lang === 'en'" src="/assets/image/ai-en.png">
-        <img v-else src="/assets/image/ai.png">
+<!--    <template #home-hero-image>-->
+<!--      <div style="z-index: 9999">-->
+<!--        <img v-if="lang === 'en'" src="/assets/image/ai-en.png">-->
+<!--        <img v-else src="/assets/image/ai.png">-->
+<!--      </div>-->
+<!--    </template>-->
+
+    <template #doc-before>
+      <div v-if="lang === 'zh'"  style="z-index: 9999;margin-bottom: 40px">
+        <a href="https://ai.gitee.com/events/iluvatar-ai-app-contest/detail?app=6" target="_blank">
+          <img src="/assets/image/gitee-ai.png">
+        </a>
       </div>
     </template>
 
