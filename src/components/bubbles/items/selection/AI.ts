@@ -61,6 +61,10 @@ const startChat = (holder: Holder, container: HTMLDivElement, prompt: string) =>
         const options = holder.editor!.aiEditor.options;
         const aiModel = AiModelManager.get(options.ai?.bubblePanelModel!);
         if (aiModel) {
+            if (!prompt && aiModel.globalConfig.onBubbleMenuError) {
+                aiModel.globalConfig.onBubbleMenuError(new Error('请输入指令！'))
+                return
+            }
             aiModel.chat(selectedText, prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;

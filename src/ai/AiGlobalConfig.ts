@@ -16,7 +16,8 @@ export interface AiGlobalConfig {
     models: Record<string, AiModelConfig>,
     modelFactory?: AiModelFactory,
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void,
-    onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void
+    onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void,
+    onBubbleMenuError?: (e: Error) => void,
     bubblePanelEnable?: boolean,
     bubblePanelModel?: string,
     bubblePanelMenus?: AIBubbleMenuItem[],
