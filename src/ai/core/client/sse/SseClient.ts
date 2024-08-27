@@ -56,6 +56,8 @@ export class SseClient implements AiClient {
                     return
                 }
                 const decoder = new TextDecoder("utf-8");
+                let buffer = '';
+
                 while (true) {
                     let {value, done} = await reader.read();
                     if (done) {
@@ -64,25 +66,40 @@ export class SseClient implements AiClient {
                     }
                     let responseText = decoder.decode(value);
                     if (!responseText) {
-                        return;
+                        continue;
                     }
+                    
+                    buffer += responseText;
+                    let messages = buffer.split("\n\n");
+                    buffer = messages.pop() || '';
 
-                    const lines = responseText.split("\n\n");
-                    let fullMessage = "";
-                    let index = 0;
-                    for (let line of lines) {
-                        if (line.indexOf("data:") == 0) {
-                            if (fullMessage) {
-                                this.onMessage(fullMessage);
+                    for (let message of messages) {
+                        let fullMessage = '';
+                        let lines = message.split('\n');
+                        for (let line of lines) {
+                            if (line.startsWith('data:')) {
+                                let data = line.slice(5).trim();
+                                if (data) {
+                                    fullMessage += data + '\n';
+                                }
                             }
-                            fullMessage = line.substring(5);
-                        } else {
-                            if (index != lines.length - 1) {
-                                fullMessage += "\n\n";
-                            }
-                            fullMessage += line;
                         }
-                        index++
+                        if (fullMessage) {
+                            this.onMessage(fullMessage.trim());
+                        }
+                    }
+                }
+
+                if (buffer) {
+                    let fullMessage = '';
+                    let lines = buffer.split('\n');
+                    for (let line of lines) {
+                        if (line.startsWith('data:')) {
+                            let data = line.slice(5).trim();
+                            if (data) {
+                                fullMessage += data + '\n';
+                            }
+                        }
                     }
                     if (fullMessage) {
                         this.onMessage(fullMessage);
