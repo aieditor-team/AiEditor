@@ -45,12 +45,13 @@ const {lang} = useData()
     </template>
 
 
-<!--    <template #home-hero-image>-->
-<!--      <div style="z-index: 9999">-->
-<!--        <img v-if="lang === 'en'" src="/assets/image/ai-en.png">-->
-<!--        <img v-else src="/assets/image/ai.png">-->
-<!--      </div>-->
-<!--    </template>-->
+    <template #home-hero-image>
+      <div style="z-index: 9999">
+        <img v-if="lang === 'en'" src="/assets/image/ai-en.png">
+        <img v-else src="/assets/image/ai.png">
+      </div>
+    </template>
+
 
     <template #doc-before>
       <div v-if="lang === 'zh'"  style="z-index: 9999;margin-bottom: 40px">
