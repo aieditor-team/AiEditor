@@ -27,6 +27,10 @@ export class CustomAiModel extends AiModel {
                 const config = this.aiModelConfig as CustomAiModelConfig;
                 const aiMessage = config.parseMessage?.(bodyString);
                 if (aiMessage) listener.onMessage(aiMessage);
+
+                if (aiMessage?.status === 2 && this.globalConfig.onTokenConsume) {
+                    this.globalConfig.onTokenConsume(this.aiModelName, this.aiModelConfig, 1)
+                }
             }
         };
         return config.protocol === "sse" ? new SseClient({
