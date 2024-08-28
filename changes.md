@@ -1,6 +1,21 @@
 # AiEditor ChangeLog
 
 
+## v1.0.15 20240828:
+- feat: Image custom properties and lazy loading
+- feat: add gitee ai model support, use the serverless api
+- refactor: optimize ImageExt.ts
+- chore: upgrade dependencies
+
+---
+
+- 新增：新增自定义图片属性的支持
+- 新增：新增使用 Gitee AI 大模型的支持
+- 优化：优化 图片 插件
+- 优化：升级相关依赖到最新版本
+
+
+
 ## v1.0.14 20240812:
 - feat: codeBlock add languages and prompts config
 - feat: add demos for svelte
