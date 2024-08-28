@@ -48,7 +48,8 @@ layout: home
 
 <div style="color: #999;margin: 40px;">
 
-<p style="margin:5px 0;">嗨，我是 Jenny，AiEditor 联合创始人。 </p>
+<p style="margin:5px 0;">嗨，这里是贵州小码科技有限公司，</p>
+<p style="margin:5px 0;">我是 Jenny，AiEditor 联合创始人。 </p>
 <p style="margin:5px 0;">您可以跟我聊聊：您如何使用 AiEditor ; </p>
 <p style="margin:5px 0;">也可以向我了解：更多关于商业版本; </p>
 <p style="margin:5px 0;">也可以跟我讨论：双方如何合作... </p>
