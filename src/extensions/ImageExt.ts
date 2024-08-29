@@ -92,6 +92,10 @@ export const ImageExt = Image.extend<ImageOptions>({
                 loading: {
                     default: null,
                     parseHTML: (element) => `${element.getAttribute('loading') ?? ''}`,
+                },
+                class: {
+                    default: null,
+                    parseHTML: (element) => `${element.getAttribute('class') ?? ''}`,
                 }
             };
         },
@@ -164,7 +168,8 @@ export const ImageExt = Image.extend<ImageOptions>({
                                         src: json.data.src,
                                         alt: json.data.alt,
                                         'data-src': json.data['data-src'],
-                                        loading: json.data.loading
+                                        loading: json.data.loading,
+                                        class: json.data.class
                                     }))
                                     .setMeta(actionKey, {type: "remove", id}));
                             } else {
@@ -203,7 +208,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img src="${src}" style="width: ${width}px; height: ${height}" class="align-${align} resize-obj">
+                    <img src="${e.node.attrs['data-src'] || src}" style="width: ${width || 350}px; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
                 resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("image", attrs));
