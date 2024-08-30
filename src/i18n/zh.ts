@@ -80,7 +80,7 @@ export const zh  =  {
     "merge-cells-vertical":"合并单元格",
     "split-cells-horizontal":"解除合并单元格",
     "split-cells-vertical":"解除合并单元格",
-    "delete-table":"上传表格",
+    "delete-table":"删除表格",
 
     ////link
     "edit-link":"编辑链接",
