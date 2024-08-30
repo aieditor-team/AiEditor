@@ -28,15 +28,15 @@ export default defineConfig({
     sitemap: {
         hostname: "https://aieditor.dev"
     },
-    appearance:false,
+    appearance: false,
 
 
-    locales:{
+    locales: {
         root: {
             label: 'English',
             lang: 'en'
         },
-        zh:{
+        zh: {
             title: "AIEditor",
             description: "一个面向 AI 的下一代富文本编辑器，开源富文本编辑器，现代富文本编辑器",
             titleTemplate: ':title - AiEditor 富文本编辑器',
@@ -63,7 +63,7 @@ export default defineConfig({
                     {text: 'AiEditor Pro', link: 'zh/versions'},
                     {text: '联系我们', link: 'zh/contact-us'},
                 ],
-        
+
                 sidebar: [
                     {
                         text: '简介',
@@ -129,8 +129,8 @@ export default defineConfig({
             pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
         },
         socialLinks: [
-            { icon: {svg:gitee_icon_svg}, link: 'https://gitee.com/aieditor-team/aieditor' },
-            { icon: 'github', link: 'https://github.com/aieditor-team/aieditor' },
+            {icon: {svg: gitee_icon_svg}, link: 'https://gitee.com/aieditor-team/aieditor'},
+            {icon: 'github', link: 'https://github.com/aieditor-team/aieditor'},
         ],
         search: {
             provider: 'local'
@@ -218,6 +218,16 @@ export default defineConfig({
               var s = document.getElementsByTagName("script")[0];
               s.parentNode.insertBefore(hm, s);
             })();`
+        ],
+        ["script",
+            {},
+            `var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5fb9d3f8ef572a950d35d5a595d85494";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();`
         ],
     ],
 })
