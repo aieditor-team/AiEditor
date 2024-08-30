@@ -12,15 +12,25 @@ export class LineHeight extends AbstractDropdownMenuButton<string> {
         this.refreshMenuText = false;
         this.dropDivHeight = "180px"
         this.dropDivWith = "70px"
-        this.width="36px"
-        this.menuTextWidth="20px"
+        this.width = "36px"
+        this.menuTextWidth = "20px"
     }
 
     onDropdownActive(editor: Editor, index: number): boolean {
-        if (index == 0) {
-            return editor.isActive("paragraph")
+        let lineHeight = null;
+        if (editor.isActive("paragraph")) {
+            const attrs = editor.getAttributes("paragraph")
+            lineHeight = attrs.lineHeight;
+        } else if (editor.isActive("heading")) {
+            const attrs = editor.getAttributes("heading")
+            lineHeight = attrs.lineHeight;
         }
-        return editor.isActive("heading", {level: index});
+
+        if (lineHeight && lineHeight === `${(Number(this.menuData[index]) * 100).toFixed(0)}%`) {
+            return true;
+        }
+
+        return false
     }
 
     onDropdownItemClick(index: number): void {
