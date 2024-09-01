@@ -264,16 +264,20 @@ export const ImageExt = Image.extend<ImageOptions>({
 
                         handlePaste: (_, event) => {
                             const items = Array.from(event.clipboardData?.items || []);
+                            let isImagePasted = false;
                             for (const item of items) {
                                 if (item.type.indexOf("image") === 0) {
-                                    event.preventDefault();
                                     const file = item.getAsFile();
                                     if (file) {
+                                        event.preventDefault();
+                                        isImagePasted = true;
                                         this.editor.commands.uploadImage(file);
                                     }
                                 }
                             }
+                            return isImagePasted;
                         },
+
 
                         handleDOMEvents: {
                             drop(view, event) {
