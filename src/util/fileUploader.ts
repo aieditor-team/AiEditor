@@ -1,4 +1,4 @@
-export const uploadFile = (file: File, uploadUrl: string, headers: Record<string, any>, formName: string): Promise<Record<string, any>> => {
+export const fileUploader = (file: File, uploadUrl: string, headers: Record<string, any>, formName: string): Promise<Record<string, any>> => {
     const formData = new FormData();
     formData.append(formName, file);
     return new Promise((resolve, reject) => {
