@@ -32,6 +32,9 @@ export interface AiEditorEvent {
     onTransaction: (props: EditorEvents['transaction']) => void
 }
 
+
+export type Uploader = (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+
 export interface UploaderEvent {
     onUploadBefore?: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean
     onSuccess?: (file: File, response: any) => any
@@ -86,13 +89,13 @@ export type AiEditorOptions = {
         class?: string,
         bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
-    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+    uploader?: Uploader,
     image?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        uploader?: Uploader,
         uploaderEvent?: UploaderEvent,
         defaultSize?: number,
         allowBase64?: boolean,
@@ -103,7 +106,7 @@ export type AiEditorOptions = {
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        uploader?: Uploader,
         uploaderEvent?: UploaderEvent,
     },
     attachment?: {
@@ -111,7 +114,7 @@ export type AiEditorOptions = {
         uploadUrl?: string,
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
         uploadFormName?: string,
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+        uploader?: Uploader,
         uploaderEvent?: UploaderEvent,
     },
     fontFamily?: {

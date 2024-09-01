@@ -4,13 +4,13 @@ import {DecorationSet} from "prosemirror-view";
 import {createAttachmentDecoration} from "../util/decorations.ts";
 import {Extension} from "@tiptap/core";
 import {getUploader} from "../util/getUploader.ts";
-import {UploaderEvent} from "../core/AiEditor.ts";
+import {Uploader, UploaderEvent} from "../core/AiEditor.ts";
 
 export interface AttachmentOptions {
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
     uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
-    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+    uploader?: Uploader,
     uploaderEvent?: UploaderEvent,
     uploadFormName?: string,
 }

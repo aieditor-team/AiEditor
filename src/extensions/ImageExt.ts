@@ -9,7 +9,7 @@ import {TextSelection} from "prosemirror-state";
 import {uuid} from "../util/uuid.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
-import {UploaderEvent} from "../core/AiEditor.ts";
+import {Uploader, UploaderEvent} from "../core/AiEditor.ts";
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -26,7 +26,7 @@ export interface ImageOptions {
     HTMLAttributes: Record<string, any>,
     uploadUrl?: string,
     uploadHeaders?: (() => Record<string, any>) | Record<string, any>,
-    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>,
+    uploader?: Uploader,
     uploaderEvent?: UploaderEvent,
     uploadFormName?: string,
 }
