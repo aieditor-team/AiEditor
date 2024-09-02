@@ -44,7 +44,7 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     const menuButton = document.createElement("aie-group") as Group;
                     menuButton.classList.add("aie-menu-item")
                     menuButton.onCreate(event, options);
-                    menuButton.initToolbarKeys(event, options, mg.toolbarKeys);
+                    menuButton.init(event, options, mg);
 
                     const tip = t(mg.title || "menu-group") as string;
                     tip && tippy(menuButton, {

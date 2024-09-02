@@ -54,6 +54,7 @@ export interface CustomMenu {
 
 export interface MenuGroup {
     title?: string,
+    icon?: string,
     toolbarKeys: (string | CustomMenu | MenuGroup)[],
 }
 
