@@ -115,3 +115,74 @@ new AiEditor({
     }
 })
 ```
+
+## 工具栏分组
+
+工具栏分组指的是可以把一部分工具，归类到一个分组里，通过点击分组的按钮，弹出菜单内容。如下图所示：
+
+![](../../assets/image/menu-group.png)
+
+配置代码如下：
+
+```typescript 11-15
+new AiEditor({
+    element: "#aiEditor",
+    toolbarKeys: ["undo", "redo", "brush", "eraser", 
+        "|", "heading", "font-family", "font-size", 
+        "|", "bold", "italic", "underline", "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", 
+        "|", "highlight", "font-color",
+        "|", "align", "line-height", 
+        "|", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", 
+        "|", "image", "video", "attachment", "quote", "code-block", "table", 
+        "|", "source-code", "printer", "fullscreen", "ai",
+        {
+            // title:"menu group",
+            // icon:`<svg.... />`,
+            toolbarKeys:["undo", "redo", "brush" ]
+        }
+    ],
+})
+```
+
+如上所示，通过在 `toolbarKeys` 配置一个 `MenuGroup` 对象，即可对菜单进行分组。
+
+`MenuGroup` 支持的配置如下：
+
+- **title**: （非必填）鼠标移动上去默认显示的内容
+- **icon**: （非必填）分组按钮的 icon
+- **toolbarKeys**: （必填）分组的菜单 keys
+
+**高级用法：在工具栏分组中自定义菜单**
+
+在菜单分组中，添加自定义的菜单按钮，示例代码如下：
+
+```typescript 15-22
+new AiEditor({
+    element: "#aiEditor",
+    toolbarKeys: ["undo", "redo", "brush", "eraser", 
+        "|", "heading", "font-family", "font-size", 
+        "|", "bold", "italic", "underline", "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", 
+        "|", "highlight", "font-color",
+        "|", "align", "line-height", 
+        "|", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", 
+        "|", "image", "video", "attachment", "quote", "code-block", "table", 
+        "|", "source-code", "printer", "fullscreen", "ai",
+        {
+            // title:"menu group",
+            // icon:`<svg.... />`,
+            toolbarKeys:["undo", "redo", "brush",
+                {
+                    icon: "<svg .....>",
+                    html:"<div ...>",
+                    onClick: (event, editor) => {
+                        //点击事件
+                    },
+                    tip: "myKey",
+                },
+            ]
+        }
+    ],
+})
+```
+
+其具体含义参考：[#自定义工具栏](#自定义工具栏)
