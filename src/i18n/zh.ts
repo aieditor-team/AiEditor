@@ -44,6 +44,7 @@ export const zh  =  {
     "printer": "打印",
     "fullscreen": "全屏",
     "ai": "人工智能",
+    "menu-group": "菜单组",
 
     /////
     "paragraph":"正文",

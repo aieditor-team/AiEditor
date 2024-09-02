@@ -52,6 +52,11 @@ export interface CustomMenu {
     onCreate?: (button: HTMLElement, editor: AiEditor) => void
 }
 
+export interface MenuGroup {
+    title?: string,
+    toolbarKeys: (string | CustomMenu | MenuGroup)[],
+}
+
 
 export type AiEditorOptions = {
     element: string | Element,
@@ -71,7 +76,7 @@ export type AiEditorOptions = {
     onBlur?: (editor: AiEditor) => void,
     onDestroy?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
-    toolbarKeys?: (string | CustomMenu)[],
+    toolbarKeys?: (string | CustomMenu | MenuGroup)[],
     draggable?: boolean,
     codeBlock?: {
         languages?: LanguageItem[],

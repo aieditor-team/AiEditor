@@ -45,6 +45,7 @@ export const en =  {
     "printer": "Print",
     "fullscreen": "Full screen",
     "ai": "AI",
+    "menu-group": "Menu Group",
 
     /////
     "paragraph":"Paragraph",
