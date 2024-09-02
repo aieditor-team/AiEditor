@@ -53,6 +53,14 @@ new AiEditor({
 })
 ```
 
+在 version 配置中，注意一下星火产品和 version 的对应关系：
+
+- Spark Lite ---> v1.1
+- Spark V2.0 ---> v2.1
+- Spark Pro ---> v3.1 （注意：pro-128k 产品暂不支持）
+- Spark Max ---> v3.5
+- Spark4.0 Ultra ---> v4.0
+
 ## 文心一言
 
 ```typescript
