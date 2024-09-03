@@ -99,7 +99,7 @@ export declare type AiEditorOptions = {
     onBlur?: (editor: AiEditor) => void;
     onDestroy?: (editor: AiEditor) => void;
     onSave?: (editor: AiEditor) => boolean;
-    toolbarKeys?: (string | CustomMenu)[];
+    toolbarKeys?: (string | CustomMenu | MenuGroup)[];
     draggable?: boolean;
     codeBlock?: {
         languages?: LanguageItem[];
@@ -117,13 +117,13 @@ export declare type AiEditorOptions = {
         class?: string;
         bubbleMenuItems?: (string | BubbleMenuItem)[];
     };
-    uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+    uploader?: Uploader;
     image?: {
         customMenuInvoke?: (editor: AiEditor) => void;
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploadFormName?: string;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploader?: Uploader;
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
         allowBase64?: boolean;
@@ -134,7 +134,7 @@ export declare type AiEditorOptions = {
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploadFormName?: string;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploader?: Uploader;
         uploaderEvent?: UploaderEvent;
     };
     attachment?: {
@@ -142,7 +142,7 @@ export declare type AiEditorOptions = {
         uploadUrl?: string;
         uploadHeaders?: (() => Record<string, any>) | Record<string, any>;
         uploadFormName?: string;
-        uploader?: (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
+        uploader?: Uploader;
         uploaderEvent?: UploaderEvent;
     };
     fontFamily?: {
@@ -300,6 +300,12 @@ declare type LanguageItem = {
     alias?: string[];
 };
 
+export declare interface MenuGroup {
+    title?: string;
+    icon?: string;
+    toolbarKeys: (string | CustomMenu | MenuGroup)[];
+}
+
 export declare interface NameAndValue {
     name: string;
     value: any;
@@ -333,6 +339,8 @@ export declare interface SparkAiModelConfig extends AiModelConfig {
     protocol?: string;
     version?: string;
 }
+
+export declare type Uploader = (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
 
 export declare interface UploaderEvent {
     onUploadBefore?: (file: File, uploadUrl: string, headers: Record<string, any>) => void | boolean;
