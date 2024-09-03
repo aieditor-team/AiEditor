@@ -1,6 +1,29 @@
 # AiEditor ChangeLog
 
 
+## v1.0.16 20240903:
+- feat: add menu group config support
+- refactor: optimize image export wrapper in "p" tag
+- refactor: rename "uploadFile" to "fileUploader"
+- refactor: define a "Uploader" type and refactor extensions
+- fix: fix spark ai can not support v4.0
+- fix: image pasted from web will insert two images
+- fix: lineHeight active is not correct.
+- fix: i18n config error：delete-table -> 删除表格
+
+---
+
+- 新增: 工具栏菜单自定义分组的功能
+- 优化: 重构导出图片被 p 标签包裹
+- 优化: 重命名 "uploadFile" 为 "fileUploader"
+- 优化: 定义 "Uploader" 类型并重构相关插件
+- fix: 修复星火大模型无法使用 v4.0 的问题
+- fix: 修复粘贴从网络复制的图片会出现显示 2 张的问题
+- fix: 修复行高回显不正确的问题
+- fix: 修复国际化配置不正确的问题 delete-table -> 删除表格
+
+
+
 ## v1.0.15 20240828:
 - feat: Image custom properties and lazy loading
 - feat: add gitee ai model support, use the serverless api
