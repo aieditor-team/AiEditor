@@ -68,11 +68,28 @@ export class Group extends AbstractMenuButton {
             const itemTextWrapper = document.createElement("div");
             itemTextWrapper.innerText = button.getAttribute("data-title")!
             itemTextWrapper.style.marginLeft = "5px";
+
             item.appendChild(itemTextWrapper);
 
-            item.addEventListener("click", () => {
+            item.addEventListener("click", (evt) => {
+                const target: HTMLDivElement = (evt.target as any).closest('.aie-menu-item');
+                if (target) {
+                    return;
+                }
+
+                const tippy = item.querySelector("#tippy");
+                if (tippy) {
+                    (tippy as HTMLElement).click();
+                    return;
+                }
+
+                const dropdown = item.querySelector("#dropdown");
+                if (dropdown) {
+                    (dropdown as HTMLElement).click();
+                    return;
+                }
+
                 button.click();
-                this.tippyInstance!.hide()
             });
 
             div.appendChild(item)
