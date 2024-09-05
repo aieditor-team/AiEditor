@@ -252,7 +252,7 @@ export class AiEditor {
         let extensions = getExtensions(this, this.options);
         if (this.options.onCreateBefore) {
             const newExtensions = this.options.onCreateBefore(this, extensions);
-            if (!newExtensions) extensions = newExtensions!;
+            if (newExtensions) extensions = newExtensions;
         }
 
         this.innerEditor = new InnerEditor(this, {
