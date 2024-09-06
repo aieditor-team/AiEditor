@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "aieditor": "^1.0.0-beta.4",
+    "aieditor": "^1.0.16",
     "vue": "^3.3.8"
   },
   "devDependencies": {
