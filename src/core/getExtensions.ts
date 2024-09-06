@@ -32,7 +32,7 @@ import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
-import {Markdown} from "tiptap-markdown";
+import {Markdown} from "@codeflex/tiptap-markdown";
 import {ContainerExt} from "../extensions/ContainerExt.ts";
 import {HeadingExt} from "../extensions/HeadingExt.ts";
 import {SaveExt} from "../extensions/SaveExt.ts";

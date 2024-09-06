@@ -14,6 +14,16 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@codeflex/tiptap-markdown@^0.8.10":
+  version "0.8.10"
+  resolved "https://registry.npmjs.org/@codeflex/tiptap-markdown/-/tiptap-markdown-0.8.10.tgz"
+  integrity sha512-akD0Fk8paeACKEx4RB8dS7fvJTC89sdUwt+EhOPr1J9F2GPzzMdu1N4rJaIHuCbv28PKVKMs4ajEZNYBH7w9EQ==
+  dependencies:
+    "@types/markdown-it" "^13.0.7"
+    markdown-it "^14.1.0"
+    markdown-it-task-lists "^2.1.1"
+    prosemirror-markdown "^1.13.0"
+
 "@esbuild/darwin-x64@0.18.20":
   version "0.18.20"
   resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.18.20.tgz"
@@ -151,7 +161,7 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
-"@tiptap/core@^2.0.3", "@tiptap/core@^2.6.6":
+"@tiptap/core@^2.6.6":
   version "2.6.6"
   resolved "https://registry.npmmirror.com/@tiptap/core/-/core-2.6.6.tgz"
   integrity sha512-VO5qTsjt6rwworkuo0s5AqYMfDA0ZwiTiH6FHKFSu2G/6sS7HKcc/LjPq+5Legzps4QYdBDl3W28wGsGuS1GdQ==
@@ -1096,7 +1106,7 @@ prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.1.2, prosemirror-keymap@^1.2.2:
     prosemirror-state "^1.0.0"
     w3c-keyname "^2.2.0"
 
-prosemirror-markdown@^1.11.1, prosemirror-markdown@^1.13.0:
+prosemirror-markdown@^1.13.0:
   version "1.13.0"
   resolved "https://mirrors.huaweicloud.com/repository/npm/prosemirror-markdown/-/prosemirror-markdown-1.13.0.tgz"
   integrity sha512-UziddX3ZYSYibgx8042hfGKmukq5Aljp2qoBiJRejD/8MH70siQNz5RB1TrdTPheqLMy4aCe4GYNF10/3lQS5g==
@@ -1313,16 +1323,6 @@ tippy.js@^6.3.7:
   integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
   dependencies:
     "@popperjs/core" "^2.9.0"
-
-tiptap-markdown@^0.8.10:
-  version "0.8.10"
-  resolved "https://registry.npmjs.org/tiptap-markdown/-/tiptap-markdown-0.8.10.tgz"
-  integrity sha512-iDVkR2BjAqkTDtFX0h94yVvE2AihCXlF0Q7RIXSJPRSR5I0PA1TMuAg6FHFpmqTn4tPxJ0by0CK7PUMlnFLGEQ==
-  dependencies:
-    "@types/markdown-it" "^13.0.7"
-    markdown-it "^14.1.0"
-    markdown-it-task-lists "^2.1.1"
-    prosemirror-markdown "^1.11.1"
 
 tslib@^2.3.0:
   version "2.6.2"
