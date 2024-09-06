@@ -33,10 +33,7 @@ export class GiteeAiModel extends AiModel {
             onStart: listener.onStart,
             onStop: listener.onStop,
             onMessage: (bodyString: string) => {
-                console.log("onMessage: ",bodyString)
-
                 const message = JSON.parse(bodyString) as any;
-
                 listener.onMessage({
                     status: message.choices[0].finish_reason === "stop" ? 2 : 1,
                     role: "assistant",
