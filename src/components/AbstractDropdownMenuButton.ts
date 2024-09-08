@@ -58,9 +58,15 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
             <div class="red-dot-container" id="item${i}"><div class="${i == 0 ? "red-dot" : ""}"></div></div>
             <div class="text">${this.onDropdownItemRender(i)}</div>
             `
-            item.addEventListener("click", () => {
-                this.onDropdownItemClick(i);
-                this.tippyInstance!.hide()
+            item.addEventListener("click", (event) => {
+                const menuItem = this.menuData[i] as any;
+                if (menuItem.onClick) {
+                    const result = menuItem.onClick(event)
+                    if (result) this.tippyInstance!.hide()
+                } else {
+                    this.onDropdownItemClick(i);
+                    this.tippyInstance!.hide()
+                }
             });
 
             if (this.showItemsTip) {

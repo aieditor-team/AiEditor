@@ -17586,7 +17586,6 @@ class Iw extends us {
       onStop: n.onStop,
       onMessage: (i) => {
         var o, a;
-        console.log("onMessage: ", i);
         const s = JSON.parse(i);
         n.onMessage({
           status: s.choices[0].finish_reason === "stop" ? 2 : 1,
@@ -43370,12 +43369,11 @@ const QM = be.create({
             commands: i
           } = n;
           function s(o) {
-            if (!r.isActive(o))
-              return !1;
-            const a = r.getAttributes(o);
-            return i.updateAttributes(o, {
-              tight: e ?? !(a != null && a.tight)
-            });
+            var a;
+            return r.isActive(o) ? i.updateAttributes(o, {
+              // tight: tight ?? !attrs?.tight,
+              tight: e || !((a = attrs) !== null && a !== void 0 && a.tight)
+            }) : !1;
           }
           return t.options.listTypes.some((o) => s(o));
         };
@@ -44735,7 +44733,7 @@ class HA {
     let r = sA(this, this.options);
     if (this.options.onCreateBefore) {
       const i = this.options.onCreateBefore(this, r);
-      i || (r = i);
+      i && (r = i);
     }
     this.innerEditor = new uA(this, {
       element: this.mainEl,

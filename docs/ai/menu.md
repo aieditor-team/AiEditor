@@ -39,6 +39,7 @@ new AiEditor({
 - **prompt**: AI prompt message.
 - **text**: Text content, supports `"focusBefore"` and `"selected"` options; `"focusBefore"` indicates getting the text content before the current focus, `"selected"` indicates getting the currently selected text content.
 - **model**: AI large model used, currently supports `spark` (Spark large model), `wenxin` (Wenxin Yiyuan), and `custom` (custom type). In the future, it will support multiple models such as Wenxin Yiyuan, ChatGPT, etc.
+- **onClick**: Customize the click event of the current menu item.
 
 **Note:** When `model` is not configured or configured as "`auto`", the first configured large language model will be automatically selected.
 
