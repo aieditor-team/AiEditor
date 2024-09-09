@@ -1,4 +1,12 @@
-import {Editor as Tiptap, EditorEvents, EditorOptions, Extensions, getTextBetween} from "@tiptap/core";
+import {
+    Editor as Tiptap,
+    EditorEvents,
+    EditorOptions,
+    Extensions,
+    getTextBetween,
+    SingleCommands,
+    ChainedCommands
+} from "@tiptap/core";
 
 import {Header} from "../components/Header.ts";
 import {Footer} from "../components/Footer.ts";
@@ -17,6 +25,7 @@ import {AiModelManager} from "../ai/AiModelManager.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {BubbleMenuItem} from "../components/bubbles/types.ts";
 import {LanguageItem} from "../extensions/CodeBlockExt.ts";
+import {Transaction} from "@tiptap/pm/state";
 
 
 defineCustomElement('aie-header', Header);
@@ -73,6 +82,7 @@ export type AiEditorOptions = {
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions,
     onCreated?: (editor: AiEditor) => void,
     onChange?: (editor: AiEditor) => void,
+    onTransaction?: (editor: AiEditor, transaction: Transaction) => void,
     onFocus?: (editor: AiEditor) => void,
     onBlur?: (editor: AiEditor) => void,
     onDestroy?: (editor: AiEditor) => void,
@@ -307,6 +317,8 @@ export class AiEditor {
             return;
         }
 
+        this.options.onTransaction?.(this, transEvent.transaction);
+
         if (transEvent.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
@@ -348,6 +360,22 @@ export class AiEditor {
 
     getAttributes(name: string) {
         return this.innerEditor.getAttributes(name);
+    }
+
+    isActive(nameOrAttrs: any, attrs?: {}) {
+        if (typeof nameOrAttrs === "object" || !attrs) {
+            return this.innerEditor.isActive(nameOrAttrs);
+        } else {
+            return this.innerEditor.isActive(nameOrAttrs, attrs);
+        }
+    }
+
+    commands(): SingleCommands {
+        return this.innerEditor.commands;
+    }
+
+    commandsChain(): ChainedCommands {
+        return this.innerEditor.chain()
     }
 
     getOutline() {

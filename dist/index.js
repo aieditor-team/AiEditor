@@ -13772,8 +13772,9 @@ class ai extends he {
       if (i.classList.add("aie-dropdown-item"), i.innerHTML = `
             <div class="red-dot-container" id="item${r}"><div class="${r == 0 ? "red-dot" : ""}"></div></div>
             <div class="text">${this.onDropdownItemRender(r)}</div>
-            `, i.addEventListener("click", () => {
-        this.onDropdownItemClick(r), this.tippyInstance.hide();
+            `, i.addEventListener("click", (s) => {
+        const o = this.menuData[r];
+        o.onClick ? o.onClick(s) && this.tippyInstance.hide() : (this.onDropdownItemClick(r), this.tippyInstance.hide());
       }), this.showItemsTip) {
         const s = this.menuData[r];
         Ie(i, {
@@ -17747,8 +17748,9 @@ class Bw extends ai {
       const i = document.createElement("div");
       i.classList.add("aie-dropdown-item"), i.innerHTML = `
             <div class="text" style="display: flex;padding: 5px">${this.onDropdownItemRender(r)}</div>
-            `, i.addEventListener("click", () => {
-        this.onDropdownItemClick(r), this.tippyInstance.hide();
+            `, i.addEventListener("click", (s) => {
+        const o = this.menuData[r];
+        o.onClick ? o.onClick(s) && this.tippyInstance.hide() : (this.onDropdownItemClick(r), this.tippyInstance.hide());
       }), n.appendChild(i);
     }
     return this.tippyEl = n, n;
@@ -44767,11 +44769,12 @@ class HA {
     }), (this.container.querySelector(".aie-container-header") || this.container).appendChild(this.header), (this.container.querySelector(".aie-container-main") || this.container).appendChild(this.mainEl), (this.container.querySelector(".aie-container-footer") || this.container).appendChild(this.footer), this.options.ai && pr.init(this.innerEditor, this.options.ai), this.options.onCreated && this.options.onCreated(this);
   }
   onTransaction(e) {
-    if (this.eventComponents.forEach((n) => {
-      n.onTransaction && n.onTransaction(e);
-    }), !e.transaction.getMeta("ignoreChanged") && (e.transaction.docChanged && this.options.onChange && this.options.onChange(this), e.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey)) {
-      const n = this.innerEditor.getHTML();
-      n === "<p></p>" || n === "" ? localStorage.removeItem(this.options.contentRetentionKey) : localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(this.innerEditor.getJSON()));
+    var n, r;
+    if (this.eventComponents.forEach((i) => {
+      i.onTransaction && i.onTransaction(e);
+    }), !e.transaction.getMeta("ignoreChanged") && ((r = (n = this.options).onTransaction) == null || r.call(n, this, e.transaction), e.transaction.docChanged && this.options.onChange && this.options.onChange(this), e.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey)) {
+      const i = this.innerEditor.getHTML();
+      i === "<p></p>" || i === "" ? localStorage.removeItem(this.options.contentRetentionKey) : localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(this.innerEditor.getJSON()));
     }
   }
   getHtml() {
@@ -44795,6 +44798,15 @@ class HA {
   }
   getAttributes(e) {
     return this.innerEditor.getAttributes(e);
+  }
+  isActive(e, n) {
+    return typeof e == "object" || !n ? this.innerEditor.isActive(e) : this.innerEditor.isActive(e, n);
+  }
+  commands() {
+    return this.innerEditor.commands;
+  }
+  commandsChain() {
+    return this.innerEditor.chain();
   }
   getOutline() {
     const e = this.innerEditor.state.doc, n = [];

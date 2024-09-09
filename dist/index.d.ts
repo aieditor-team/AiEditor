@@ -1,4 +1,5 @@
 import { ChainedCommands } from '@tiptap/core/dist/packages/core/src/types';
+import { ChainedCommands as ChainedCommands_2 } from '@tiptap/core';
 import { Editor } from '@tiptap/core';
 import { EditorEvents } from '@tiptap/core';
 import { EditorOptions } from '@tiptap/core';
@@ -6,6 +7,8 @@ import { Extensions } from '@tiptap/core';
 import { Fragment } from 'prosemirror-model';
 import { Instance } from 'tippy.js';
 import { JSONContent } from '@tiptap/core';
+import { SingleCommands } from '@tiptap/core';
+import { Transaction } from '@tiptap/pm/state';
 
 declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     template: string;
@@ -58,6 +61,9 @@ export declare class AiEditor {
     getMarkdown(): any;
     getOptions(): AiEditorOptions;
     getAttributes(name: string): Record<string, any>;
+    isActive(nameOrAttrs: any, attrs?: {}): boolean;
+    commands(): SingleCommands;
+    commandsChain(): ChainedCommands_2;
     getOutline(): any[];
     focus(): this;
     focusPos(pos: number): this;
@@ -95,6 +101,7 @@ export declare type AiEditorOptions = {
     onCreateBefore?: (editor: AiEditor, extensions: Extensions) => void | Extensions;
     onCreated?: (editor: AiEditor) => void;
     onChange?: (editor: AiEditor) => void;
+    onTransaction?: (editor: AiEditor, transaction: Transaction) => void;
     onFocus?: (editor: AiEditor) => void;
     onBlur?: (editor: AiEditor) => void;
     onDestroy?: (editor: AiEditor) => void;

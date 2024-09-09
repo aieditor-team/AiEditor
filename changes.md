@@ -1,6 +1,22 @@
 # AiEditor ChangeLog
 
 
+## v1.1.0 20240909:
+- feat: add "onClick" config support for ai menu to custom menu item click event.
+- feat: add commands() method for aieditor
+- fix: onCreateBefore for custom extensions
+- fix: remove console.log in gitee ai
+
+---
+
+- 新增: 自定义 AI 菜单添加 "onClick" 配置的支持
+- 新增: AIEditor 对象添加 commands() 方法
+- 修复: onCreateBefore 自定义扩展不生效的问题
+- 修复: Gitee AI 有 console.log 打印的问题
+
+
+
+
 ## v1.0.16 20240903:
 - feat: add menu group config support
 - refactor: optimize image export wrapper in "p" tag
