@@ -62,6 +62,7 @@ export default defineConfig({
                     },
                     {text: 'AiEditor Pro', link: 'zh/versions'},
                     {text: '联系我们', link: 'zh/contact-us'},
+                    {text: '更新记录', link: '/zh/changes.html'},
                 ],
 
                 sidebar: [

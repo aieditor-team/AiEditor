@@ -53,13 +53,13 @@ const {lang} = useData()
     </template>
 
 
-    <template #doc-before>
-      <div v-if="lang === 'zh'"  style="z-index: 9999;margin-bottom: 40px">
-        <a href="https://ai.gitee.com/events/iluvatar-ai-app-contest/detail?app=6" target="_blank">
-          <img src="/assets/image/gitee-ai.png">
-        </a>
-      </div>
-    </template>
+<!--    <template #doc-before>-->
+<!--      <div v-if="lang === 'zh'"  style="z-index: 9999;margin-bottom: 40px">-->
+<!--        <a href="https://ai.gitee.com/events/iluvatar-ai-app-contest/detail?app=6" target="_blank">-->
+<!--          <img src="/assets/image/gitee-ai.png">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </template>-->
 
     <!--    <template #home-features-after>-->
     <!--      <div class="banner-home">-->

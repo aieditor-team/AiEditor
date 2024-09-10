@@ -1,6 +1,22 @@
 # AiEditor ChangeLog
 
 
+## v1.1.0 20240909:
+- feat: add "onClick" config support for ai menu to custom menu item click event.
+- feat: add commands() method for aieditor
+- fix: onCreateBefore for custom extensions
+- fix: remove console.log in gitee ai
+
+---
+
+- 新增: 自定义 AI 菜单添加 "onClick" 配置的支持
+- 新增: AIEditor 对象添加 commands() 方法
+- 修复: onCreateBefore 自定义扩展不生效的问题
+- 修复: Gitee AI 有 console.log 打印的问题
+
+
+
+
 ## v1.0.16 20240903:
 - feat: add menu group config support
 - refactor: optimize image export wrapper in "p" tag
@@ -47,6 +63,8 @@
 - doc: update source-code document
 - doc: add svelte docs
 
+---
+
 - 新增：codeBlock 代码块添加自定义代码语言和 prompt 提示词的功能
 - 新增：添加 svelte 框架使用的 demo 示例
 - 修复：图片对其方式导出为 html 时不生效的问题
@@ -59,6 +77,8 @@
 - optimize: update video attribute controls
 - fix: AI Menus init error
 - docs: add Japanese README
+
+---
 
 - 新增：新增 AIPanelMenus 配置的支持，用于配置 AI 泡泡菜单
 - 优化：优化视频节点的控制属性
@@ -75,6 +95,7 @@
 - optimize: Refactored AbstractBubbleMenu.ts to make it simpler and easier to use
 - fix: Fixed the problem of multiple additions of Header under KeepAlive of Vue #37
 
+---
 
 - 新增：新增 AIEditor 的 onBlur 和 onFocus 配置 #39
 - 新增：新增自定义选中的浮动菜单的功能
