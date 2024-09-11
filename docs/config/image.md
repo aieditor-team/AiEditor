@@ -68,6 +68,23 @@ After the image is successfully uploaded, the server must return the following c
 
 If the server returns a content format other than the above, we can reprocess the data through `uploaderEvent` the configuration and `onSuccess` return a new `json` content in the above format.
 
+In data, in addition to returning src and alt, you can also return the following content to further specify the style of the image:
+
+```json
+{
+  "errorCode": 0,
+  "data": {
+    "src": "http://your-domain.com/image.jpg",
+    "alt": "image alt",
+    "align": "center",
+    "class": "image-class",
+    "loading": true,
+    "data-src": "http://your-domain.com/image.jpg"
+  }
+}
+```
+
+
 ## Custom Uploader Code Example
 
 Typescript:

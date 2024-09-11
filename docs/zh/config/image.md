@@ -67,6 +67,22 @@ new AiEditor({
 
 若服务器返回的不是以上内容格式，我们可以通过配置 `uploaderEvent` 的 `onSuccess` 对数据进行二次处理，并按以上格式返回新的 `json` 内容。
 
+在 data 中，除了可以返回 src、alt 以外，还可以返回如下内容，进一步指定图片的样式：
+
+```json
+{
+  "errorCode": 0,
+  "data": {
+    "src": "http://your-domain.com/image.jpg",
+    "alt": "图片 alt",
+    "align": "center",
+    "class": "image-class",
+    "loading": true,
+    "data-src": "http://your-domain.com/image.jpg"
+  }
+}
+```
+
 ## 自定义 uploader 代码示例
 
 Typescript:

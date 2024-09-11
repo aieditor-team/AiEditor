@@ -26,4 +26,26 @@ new AiEditor({
 ```
 以上代码中，name 表示字号名称，value 表示字号大小，单位为：px。
 
+## 设置默认的字号
+
+在 AIEditor 中，默认的字号大小为 14px，若想修改默认字号大小。需要添加如下配置：
+
+```ts 5
+new AiEditor({
+    element: "#aiEditor",
+    placeholder: "点击输入内容...",
+    fontSize: {
+        defaultValue: 18
+    },
+})
+```
+
+与此同时，需要修改 `aie-content` 的 class 样式，代码如下：
+
+```css
+.aie-content {
+    font-size: 18px;
+}
+```
+
 

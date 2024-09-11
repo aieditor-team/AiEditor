@@ -27,3 +27,23 @@ new AiEditor({
 In the above code, "name" represents the font size name, and "value" represents the font size in pixels (px).
 
 
+## Set the default font size
+
+In AIEditor, the default font size is 14px. If you want to change the default font size, you need to add the following configuration:
+
+```ts 5
+new AiEditor({
+    element: "#aiEditor",
+    fontSize: {
+        defaultValue: 18
+    },
+})
+```
+
+At the same time, you need to modify the class style of `aie-content`. The code is as follows:
+
+```css
+.aie-content {
+    font-size: 18px;
+}
+```
