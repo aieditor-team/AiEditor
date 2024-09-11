@@ -11,6 +11,7 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
     editor?: Editor;
     items: BubbleMenuItem[] = [];
     tippyInstance?: Instance;
+    activeOnClick: boolean = true;
 
     protected constructor() {
         super();
@@ -37,8 +38,11 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
             this.items.forEach((item) => {
                 const target = (e.target as any).closest(`#${item.id}`);
                 if (target) {
-                    target.classList.contains("active") ? target.classList.remove("active") : target.classList.add("active")
+
                     this.onItemClick(item);
+                    if (this.activeOnClick) {
+                        target.classList.contains("active") ? target.classList.remove("active") : target.classList.add("active")
+                    }
                 }
             })
         })

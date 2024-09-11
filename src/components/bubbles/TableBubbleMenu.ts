@@ -2,6 +2,7 @@ import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
 import {EditorEvents} from "@tiptap/core";
 import {CellSelection, TableMap} from '@tiptap/pm/tables';
 import {EditorView} from "@tiptap/pm/view";
+import {AiEditorOptions} from "../../core/AiEditor.ts";
 
 export class TableBubbleMenu extends AbstractBubbleMenu {
     constructor() {
@@ -96,6 +97,11 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                 }
             }
         ]
+    }
+
+    onCreate(createEvent: EditorEvents["create"], _: AiEditorOptions) {
+        super.onCreate(createEvent, _);
+        this.activeOnClick = false;
     }
 
     connectedCallback() {

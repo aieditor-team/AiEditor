@@ -12,6 +12,7 @@ export class LinkBubbleMenu extends AbstractBubbleMenu {
     onCreate(event: EditorEvents["create"], options: AiEditorOptions) {
         super.onCreate(event, options);
         this.initItemsByOptions(AllLinkMenuItems, options?.link?.bubbleMenuItems);
+        this.activeOnClick = false;
     }
 
 }

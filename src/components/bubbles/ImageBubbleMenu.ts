@@ -11,6 +11,7 @@ export class ImageBubbleMenu extends AbstractBubbleMenu {
     onCreate(event: EditorEvents["create"], options: AiEditorOptions) {
         super.onCreate(event, options);
         this.initItemsByOptions(AllImageMenuItems, options?.image?.bubbleMenuItems);
+        this.activeOnClick = false;
     }
 
 }
