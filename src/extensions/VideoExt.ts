@@ -64,9 +64,11 @@ export const VideoExt = Node.create<VideoOptions>({
             },
             width: {
                 default: 350,
+                parseHTML: (element) => `${element.getAttribute('width') ?? ''}`,
             },
             controls: {
                 default: true,
+                parseHTML: (element) => `${element.getAttribute('controls') ?? 'true'}`,
             },
         };
     },
@@ -140,6 +142,8 @@ export const VideoExt = Node.create<VideoOptions>({
                                 .insert(found[0].from, schema.nodes.video.create({
                                     src: json.data.src,
                                     poster: json.data.poster,
+                                    width: json.data.width || 350,
+                                    controls: json.data.controls || "true",
                                 }))
                                 .setMeta(actionKey, {type: "remove", id}));
                         } else {

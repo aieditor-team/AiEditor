@@ -10,6 +10,7 @@ import {uuid} from "../util/uuid.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
 import {Uploader, UploaderEvent} from "../core/AiEditor.ts";
+import { getWidthUnit } from '../util/getWidthUnit.ts';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -168,6 +169,8 @@ export const ImageExt = Image.extend<ImageOptions>({
                                         src: json.data.src,
                                         alt: json.data.alt,
                                         align: json.data.align || "left",
+                                        width: json.data.width || this.options.defaultSize,
+                                        height: json.data.height || "auto",
                                         'data-src': json.data['data-src'],
                                         loading: json.data.loading,
                                         class: json.data.class
@@ -209,7 +212,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img src="${e.node.attrs['data-src'] || src}" style="width: ${width || 350}px; height: ${height || 'auto'}" class="align-${align} resize-obj">
+                    <img src="${e.node.attrs['data-src'] || src}" style="width: ${getWidthUnit(width || 350)}; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
                 resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("image", attrs));
