@@ -63,3 +63,16 @@ new AiEditor({
 
 若服务器返回的不是以上内容格式，我们可以通过配置 `dataProcessor` 对数据进行二次处理，并按以上格式返回。
 
+在 data 中，除了可以返回 src、poster 以外，还可以返回如下内容，进一步指定视频的内容：
+
+```json
+{
+  "errorCode": 0,
+  "data": {
+    "src": "http://your-domain.com/video.mp4",
+    "poster": "http://your-domain.com/poster.jpg",
+    "width": "100%",
+    "controls": "true"
+  }
+}
+```

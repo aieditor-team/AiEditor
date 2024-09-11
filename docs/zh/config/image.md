@@ -76,6 +76,8 @@ new AiEditor({
     "src": "http://your-domain.com/image.jpg",
     "alt": "图片 alt",
     "align": "center",
+    "width": "100%",
+    "height": "auto",
     "class": "image-class",
     "loading": true,
     "data-src": "http://your-domain.com/image.jpg"

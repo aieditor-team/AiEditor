@@ -77,6 +77,8 @@ In data, in addition to returning src and alt, you can also return the following
     "src": "http://your-domain.com/image.jpg",
     "alt": "image alt",
     "align": "center",
+    "width": "100%",
+    "height": "auto",
     "class": "image-class",
     "loading": true,
     "data-src": "http://your-domain.com/image.jpg"

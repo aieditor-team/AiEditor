@@ -63,3 +63,16 @@ After the video is successfully uploaded, the server must return the following c
 
 If the server returns a content format other than the above, we can configure `dataProcessor` the data to reprocess and return it in the above format.
 
+In data, in addition to src and poster, you can also return the following content to further specify the content of the video:
+
+```json
+{
+  "errorCode": 0,
+  "data": {
+    "src": "http://your-domain.com/video.mp4",
+    "poster": "http://your-domain.com/poster.jpg",
+    "width": "100%",
+    "controls": "true"
+  }
+}
+```
