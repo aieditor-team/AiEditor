@@ -167,6 +167,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                                     .insert(found[0].from, schema.nodes.image.create({
                                         src: json.data.src,
                                         alt: json.data.alt,
+                                        align: json.data.align || "left",
                                         'data-src': json.data['data-src'],
                                         loading: json.data.loading,
                                         class: json.data.class
