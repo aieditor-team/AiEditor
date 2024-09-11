@@ -55,7 +55,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
             const item = document.createElement("div");
             item.classList.add("aie-dropdown-item");
             item.innerHTML = `
-            <div class="red-dot-container" id="item${i}"><div class="${i == 0 ? "red-dot" : ""}"></div></div>
+            <div class="red-dot-container" id="item${i}"><div class="${i == this.defaultMenuIndex ? "red-dot" : ""}"></div></div>
             <div class="text">${this.onDropdownItemRender(i)}</div>
             `
             item.addEventListener("click", (event) => {
