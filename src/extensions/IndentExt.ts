@@ -46,7 +46,7 @@ export const IndentExt = Extension.create<IndentOptions>({
                             }
 
                             return {
-                                style: `text-indent: ${attributes?.indent * 10}px`,
+                                style: `text-indent: ${attributes?.indent * 2}em`,
                                 "data-indent":attributes?.indent,
                             }
                         },
@@ -91,6 +91,7 @@ export const IndentExt = Extension.create<IndentOptions>({
 
             return tr;
         };
+
         const applyIndent: (direction: number) => () => Command =
             direction =>
                 () =>
