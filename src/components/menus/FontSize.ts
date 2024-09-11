@@ -26,6 +26,8 @@ const fontSizes: NameAndValue[] = [
 
 export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
 
+    defaultValue: number = 14;
+
     constructor() {
         super();
         this.dropDivWith = "134px";
@@ -34,10 +36,11 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
     onCreate(_: EditorEvents["create"], options: AiEditorOptions) {
         super.onCreate(_, options);
         this.menuData = options.fontSize?.values || fontSizes;
+        this.defaultValue = options.fontSize?.defaultValue || this.defaultValue;
         for (let i = 0; i < this.menuData.length; i++) {
-            if (this.menuData[i].value == 14){
+            if (this.menuData[i].value == this.defaultValue){
                 this.defaultMenuIndex = i;
-                this.menuData[i].name = `14（${t("default")}）`
+                this.menuData[i].name = `${this.defaultValue}（${t("default")}）`
                 break
             }
         }
@@ -49,7 +52,7 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
 
     onDropdownItemClick(index: number): void {
         const size = this.menuData[index].value;
-        if (size == 14){
+        if (size == this.defaultValue){
             this.editor?.chain().focus().unsetFontSize().run();
         }else {
             this.editor?.chain().focus().setFontSize(`${size}px`).run()
@@ -62,7 +65,7 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
 
     onMenuTextRender(index: number): Element | string {
         const item = this.menuData[index];
-        if (item.value == 14){
+        if (item.value == this.defaultValue){
             return t("default-font-size")
         }else {
             return item.name;

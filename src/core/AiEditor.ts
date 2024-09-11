@@ -137,7 +137,8 @@ export type AiEditorOptions = {
         values: NameAndValue[]
     },
     fontSize?: {
-        values: NameAndValue[]
+        defaultValue?: number,
+        values?: NameAndValue[]
     },
     ai?: AiGlobalConfig,
 }
