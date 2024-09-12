@@ -2,7 +2,6 @@ import {Extension} from "@tiptap/core";
 
 export interface LineHeightOptions {
     types: string[];
-    heights: string[];
     defaultHeight: string;
 }
 
@@ -27,7 +26,6 @@ export const LineHeightExt = Extension.create<LineHeightOptions>({
     addOptions() {
         return {
             types: ["heading", "paragraph"],
-            heights: ["100%", "125%", "150%", "200%", "250%", "300%"],
             defaultHeight: "100%",
         };
     },
@@ -59,10 +57,6 @@ export const LineHeightExt = Extension.create<LineHeightOptions>({
             setLineHeight:
                 (height: string) =>
                     ({commands}) => {
-                        if (!this.options.heights.includes(height)) {
-                            return false;
-                        }
-
                         return this.options.types.every((type) =>
                             commands.updateAttributes(type, {lineHeight: height})
                         );

@@ -1,5 +1,6 @@
-import {Editor} from "@tiptap/core";
+import {Editor, EditorEvents} from "@tiptap/core";
 import {AbstractDropdownMenuButton} from "../AbstractDropdownMenuButton.ts";
+import {AiEditorOptions} from "../../core/AiEditor.ts";
 
 
 const titles = ["1.0", "1.25", "1.5", "2.0", "2.5", "3.0"];
@@ -8,12 +9,15 @@ export class LineHeight extends AbstractDropdownMenuButton<string> {
 
     constructor() {
         super();
-        this.menuData = titles;
         this.refreshMenuText = false;
-        this.dropDivHeight = "180px"
         this.dropDivWith = "70px"
         this.width = "36px"
         this.menuTextWidth = "20px"
+    }
+
+    onCreate(props: EditorEvents["create"], options: AiEditorOptions) {
+        super.onCreate(props, options);
+        this.menuData = options.lineHeight?.values || titles;
     }
 
     onDropdownActive(editor: Editor, index: number): boolean {

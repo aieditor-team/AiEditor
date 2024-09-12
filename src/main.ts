@@ -26,6 +26,9 @@ window.aiEditor = new AiEditor({
         }
     ],
 
+    // fontSize:{
+    //     defaultValue:18
+    // },
     image: {
         //[AlignLeft, AlignCenter, AlignRight, Delete]
         bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
@@ -44,6 +47,9 @@ window.aiEditor = new AiEditor({
             {name: 'Clojure', value: 'clojure', alias: ['clj', 'edn']},
             {name: 'CMake', value: 'cmake', alias: ['cmake.in']},
         ]
+    },
+    lineHeight:{
+        values:["1.0","1.1"],
     },
     // onSave:()=>{
     //     alert("保存")

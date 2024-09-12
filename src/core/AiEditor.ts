@@ -140,6 +140,9 @@ export type AiEditorOptions = {
         defaultValue?: number,
         values?: NameAndValue[]
     },
+    lineHeight?: {
+        values?: string[]
+    },
     ai?: AiGlobalConfig,
 }
 
