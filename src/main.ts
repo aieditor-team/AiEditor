@@ -48,9 +48,9 @@ window.aiEditor = new AiEditor({
             {name: 'CMake', value: 'cmake', alias: ['cmake.in']},
         ]
     },
-    lineHeight:{
-        values:["1.0","1.1"],
-    },
+    // lineHeight:{
+    //     values:["1.0","1.1"],
+    // },
     // onSave:()=>{
     //     alert("保存")
     //     return true;
