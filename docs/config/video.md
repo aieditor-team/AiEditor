@@ -6,7 +6,7 @@
 new AiEditor({
     element: "#aiEditor",
     video: {
-        customMenuInvoke: (editor: Editor) => {
+        customMenuInvoke: (editor: AiEditor) => {
         },
         uploadUrl: "https://your-domain/video/upload",
         uploadFormName: "video", //Upload File Form Name

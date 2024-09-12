@@ -7,7 +7,7 @@
 new AiEditor({
     element: "#aiEditor",
     attachment: {
-        customMenuInvoke: (editor: Editor) => {
+        customMenuInvoke: (editor: AiEditor) => {
         },
         uploadUrl: "https://your-domain/attachment/upload",
         uploadFormName: "attachment", //Upload File Form Name

@@ -6,7 +6,7 @@
 new AiEditor({
     element: "#aiEditor",
     video: {
-        customMenuInvoke: (editor: Editor) => {
+        customMenuInvoke: (editor: AiEditor) => {
         },
         uploadUrl: "https://your-domain/video/upload",
         uploadFormName: "video", //上传时的文件表单名称

@@ -8,7 +8,7 @@ new AiEditor({
     image: {
         allowBase64: true,
         defaultSize: 350,
-        customMenuInvoke: (editor: Editor) => {
+        customMenuInvoke: (editor: AiEditor) => {
         },
         uploadUrl: "https://your-domain/image/upload",
         uploadFormName: "image", //Upload File Form Name
