@@ -12,7 +12,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
     refreshMenuText: boolean = true;
     width: string = "48px";
     dropDivWith: string = "100px";
-    dropDivHeight: string = "260px";
+    dropDivHeight: string = "fit-content";
     showItemsTip: boolean = false;
 
     renderTemplate() {
