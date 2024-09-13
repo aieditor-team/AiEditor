@@ -94,12 +94,14 @@ export type MenuButtonOptions = {
     svg: string,
 }
 
-const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
+export const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
     , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen", "ai"
-];
+] as const;
 
+export const inbuiltTools = defaultMenus.filter((key) => key !== "divider");
+export type InbuiltToolKey = (typeof inbuiltTools)[number];
 
 export class Header extends HTMLElement implements AiEditorEvent {
     // template:string;
@@ -123,7 +125,20 @@ export class Header extends HTMLElement implements AiEditorEvent {
     }
 
     onCreate(event: EditorEvents["create"], options: AiEditorOptions): void {
-        let toolbarKeys = options.toolbarKeys || defaultMenus;
+        let toolbarKeys = options.toolbarKeys || defaultMenus as unknown as string[];
+        toolbarKeys = toolbarKeys.filter((tool) => {
+            if (typeof tool === "string") {
+                return !options.excludeKeys?.includes(tool as any);
+            }
+            return true;    
+        }).filter((tool, index, array) => {
+            const prevTool = array[index - 1];
+            if (typeof tool === "string" && (typeof prevTool === "string" || typeof prevTool === "undefined")) {
+                const dividers = ["divider", "|", undefined];
+                return dividers.includes(tool) ? !dividers.includes(prevTool) : true;
+            }
+            return true;
+        })
         initToolbarKeys(event, options, this.menuButtons, toolbarKeys);
     }
 

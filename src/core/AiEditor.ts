@@ -24,9 +24,14 @@ import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
 import {AiModelManager} from "../ai/AiModelManager.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {BubbleMenuItem} from "../components/bubbles/types.ts";
+import {InbuiltToolKey} from "../components/Header.ts";
 import {LanguageItem} from "../extensions/CodeBlockExt.ts";
 import {Transaction} from "@tiptap/pm/state";
 
+export {defaultCommands as defaultAiCommands} from "../extensions/AiCommandExt.ts";
+export {defaultMenus,inbuiltTools,type InbuiltToolKey} from "../components/Header.ts";
+export {defaultAiPanelMenus} from "../components/bubbles/items/selection/AI.ts"
+export {dafaultAiMenus} from "../components/menus/Ai.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -88,6 +93,7 @@ export type AiEditorOptions = {
     onDestroy?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu | MenuGroup)[],
+    excludeKeys?: InbuiltToolKey[],
     draggable?: boolean,
     codeBlock?: {
         languages?: LanguageItem[],
