@@ -1,5 +1,5 @@
 import {AiEditor} from "../../../src";
-// import {config} from "./xinghuo.ts"
+import {config} from "./xinghuo";
 // import {AiMessage} from "../../../src/ai/core/AiMessage.ts";
 
 const content = `
@@ -13,13 +13,9 @@ window.aiEditor = new AiEditor({
     content: JSON.parse(content),
     ai: {
         models: {
-            // spark: {
-            //     ...config
-            // },
-            gitee:{
-                endpoint:"https://ai.gitee.com/api/serverless/Qwen2-7B-Instruct/chat/completions",
-                apiKey:"P07AGYTQBNHREVNGDCM8XATPJLY8RVESLLLNWCNR",
-            }
+            spark: {
+                ...config
+            },
             // custom: {
             //     url: "http://127.0.0.1:8080/api/v1/ai/chat",
             //     messageWrapper: (message: string) => {
@@ -34,7 +30,7 @@ window.aiEditor = new AiEditor({
             //             // status: 0|1|2,
             //         }
             //     },
-                // protocol: "sse" | "websocket"
+            // protocol: "sse" | "websocket"
             // }
         },
     },
