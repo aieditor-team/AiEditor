@@ -1,5 +1,40 @@
 # AiEditor ChangeLog
 
+## v1.1.1 20240915:
+- feat: Increase the indent to 2em instead of 10px
+- feat: add FontSize defaultValue config
+- feat: add "align" config with image from server response.
+- feat: add server response to config the image and video width
+- feat: add custom to set lineHeights support
+- feat: add "toolbarExcludeKeys" config
+- feat: add resize button in the image bubble menus
+- refactor: optimize AbstractDropdownMenuButton.ts height to "fit-content"
+- fix: fix the bubble menu is active in table or image
+- fix: AbstractDropdownMenuButton active index error when aieditor init
+- fix: TableBubbleMenu can not show when double-click the cell
+- fix：fix the image Bubble Menus position not correct.
+- doc：add line height config docs
+- doc：add "toolbarExcludeKeys" config
+
+---
+
+- 新增: 增加缩进改为 2em，而不是 10px
+- 新增: 新增默认字号大小的设置的功能
+- 新增: 修复表格或图片的浮动菜单点击选中的问题
+- 新增: 新增支持图片上传时，服务器返回图片的对其方式
+- 新增: 新增图片或视频上传时，服务器返回图片的宽度和高度
+- 新增: 新增自定义行高设置的功能
+- 新增: 新增通过 "toolbarExcludeKeys" 配置自定义排除菜单的功能
+- 新增: 新增图片浮动菜单可以快速调整图片大小为 50% 75% 100% 的功能
+- 优化: 设置 AbstractDropdownMenuButton 的高度为 "fit-content"
+- 修复: 图片和表格的浮动菜单，点击时会处于 “选中” 状态的问题
+- 修复: AbstractDropdownMenuButton 在初始化时，默认选中不正确的问题
+- 修复: 表格的单元格双击选中时无法弹出表格操作菜单的问题
+- 修复：图片弹出的操作浮动菜单不是 100% 居中的问题
+- 文档: 添加自定义行高设置的相关文档
+- 文档: 添加 "toolbarExcludeKeys" 配置的相关文档
+
+
 
 ## v1.1.0 20240909:
 - feat: add "onClick" config support for ai menu to custom menu item click event.

@@ -107,6 +107,7 @@ export declare type AiEditorOptions = {
     onDestroy?: (editor: AiEditor) => void;
     onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
+    toolbarExcludeKeys?: DefaultToolbarKey[];
     draggable?: boolean;
     codeBlock?: {
         languages?: LanguageItem[];
@@ -156,7 +157,11 @@ export declare type AiEditorOptions = {
         values: NameAndValue[];
     };
     fontSize?: {
-        values: NameAndValue[];
+        defaultValue?: number;
+        values?: NameAndValue[];
+    };
+    lineHeight?: {
+        values?: string[];
     };
     ai?: AiGlobalConfig;
 };
@@ -275,6 +280,18 @@ export declare interface CustomMenu {
     onClick?: (event: MouseEvent, editor: AiEditor) => void;
     onCreate?: (button: HTMLElement, editor: AiEditor) => void;
 }
+
+export declare const dafaultAiMenus: AiMenu[];
+
+export declare const defaultAiCommands: AiMenu[];
+
+export declare const defaultAiPanelMenus: AIBubbleMenuItem[];
+
+export declare const defaultMenus: string[];
+
+export declare type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
+
+export declare const defaultToolbarKeys: string[];
 
 declare class Footer extends HTMLElement implements AiEditorEvent {
     count: number;
