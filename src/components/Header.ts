@@ -98,10 +98,10 @@ export const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "head
     , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen", "ai"
-] as const;
+];
 
-export const inbuiltTools = defaultMenus.filter((key) => key !== "divider");
-export type InbuiltToolKey = (typeof inbuiltTools)[number];
+export const defaultToolbarKeys = defaultMenus.filter((key) => key !== "divider");
+export type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
 
 export class Header extends HTMLElement implements AiEditorEvent {
     // template:string;
@@ -128,9 +128,9 @@ export class Header extends HTMLElement implements AiEditorEvent {
         let toolbarKeys = options.toolbarKeys || defaultMenus as unknown as string[];
         toolbarKeys = toolbarKeys.filter((tool) => {
             if (typeof tool === "string") {
-                return !options.excludeKeys?.includes(tool as any);
+                return !options.toolbarExcludeKeys?.includes(tool as any);
             }
-            return true;    
+            return true;
         }).filter((tool, index, array) => {
             const prevTool = array[index - 1];
             if (typeof tool === "string" && (typeof prevTool === "string" || typeof prevTool === "undefined")) {

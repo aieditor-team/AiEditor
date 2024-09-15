@@ -26,7 +26,7 @@ window.aiEditor = new AiEditor({
         },
         "ai",
     ],
-    excludeKeys: ["undo", "redo", "brush", "eraser", "heading", "font-family", "font-size"],
+    toolbarExcludeKeys: ["undo", "redo", "brush", "eraser", "heading", "font-family", "font-size"],
 
     // fontSize:{
     //     defaultValue:18
