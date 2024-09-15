@@ -10,7 +10,7 @@ import {uuid} from "../util/uuid.ts";
 import {createMediaDecoration} from "../util/decorations.ts";
 import {getUploader} from "../util/getUploader.ts";
 import {Uploader, UploaderEvent} from "../core/AiEditor.ts";
-import { getWidthUnit } from '../util/getWidthUnit.ts';
+import {getWidthUnit} from '../util/getWidthUnit.ts';
 
 declare module '@tiptap/core' {
     interface Commands<ReturnType> {
@@ -201,18 +201,23 @@ export const ImageExt = Image.extend<ImageOptions>({
                 if (!this.editor.isEditable) {
                     return {}
                 }
+
+                const {src, width, height, align, alt} = e.node.attrs;
+                const imgWidth = getWidthUnit(width || 350);
+                const wrapperStyle = imgWidth.indexOf("%") > 0 ? `style="width: ${imgWidth};"` : "";
+                const calcImgWidth = imgWidth.indexOf("%") > 0 ? `100%;"` : imgWidth;
+
                 const container = document.createElement('div')
-                const {src, width, height, align} = e.node.attrs;
                 container.classList.add(`align-${align}`)
                 container.innerHTML = `
-                <div class="aie-resize-wrapper">
+                <div class="aie-resize-wrapper" ${wrapperStyle}  >
                     <div class="aie-resize">
                         <div class="aie-resize-btn-top-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-top-right" data-position="right" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img src="${e.node.attrs['data-src'] || src}" style="width: ${getWidthUnit(width || 350)}; height: ${height || 'auto'}" class="align-${align} resize-obj">
+                    <img alt="${alt}" src="${e.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
                 resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("image", attrs));

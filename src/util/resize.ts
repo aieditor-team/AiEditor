@@ -41,6 +41,8 @@ export const resize = (container: HTMLDivElement
         //及时修改 image 节点宽度，再拖动结束后再通知渲染视图
         imgRef.style.width = `${newWidth}px`;
         imgRef.setAttribute("data-width", newWidth.toString())
+
+        imgRef.parentElement!.removeAttribute("style")
     }
 
 

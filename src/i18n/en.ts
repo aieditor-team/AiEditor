@@ -4,6 +4,7 @@ export const en =  {
     "delete": "Delete",
     "confirm": "Confirm",
     "cancel": "Cancel",
+    "resize": "Resize",
 
 
     //menu tips

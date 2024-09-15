@@ -31,10 +31,10 @@ window.aiEditor = new AiEditor({
     // fontSize:{
     //     defaultValue:18
     // },
-    image: {
-        //[AlignLeft, AlignCenter, AlignRight, Delete]
-        bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
-    },
+    // image: {
+    //     //[AlignLeft, AlignCenter, AlignRight, Delete]
+    //     bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
+    // },
     link: {
         //[Edit, UnLink, Visit]
         bubbleMenuItems: ["Edit", "UnLink", "visit"],
