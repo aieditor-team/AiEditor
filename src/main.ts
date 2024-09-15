@@ -1,5 +1,5 @@
 import {AiEditor} from "./core/AiEditor.ts";
-import {config} from "./spark.ts";
+// import {config} from "./spark.ts";
 // import { config } from "./spark.ts";
 // import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
 // @ts-ignore
@@ -23,8 +23,10 @@ window.aiEditor = new AiEditor({
         {
 
             toolbarKeys: ["undo", "redo", "brush", "font-color", "line-height"]
-        }
+        },
+        "ai",
     ],
+    excludeKeys: ["undo", "redo", "brush", "eraser", "heading", "font-family", "font-size"],
 
     // fontSize:{
     //     defaultValue:18
@@ -60,9 +62,9 @@ window.aiEditor = new AiEditor({
     // },
     ai: {
         models: {
-            spark: {
-                ...config
-            },
+            // spark: {
+            //     ...config
+            // },
             // openai: {
             //     endpoint: "https://api.moonshot.cn",
             //     model: "moonshot-v1-8k",
