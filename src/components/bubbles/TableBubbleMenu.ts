@@ -1,5 +1,5 @@
 import {AbstractBubbleMenu} from "../AbstractBubbleMenu.ts";
-import {EditorEvents} from "@tiptap/core";
+import {Editor, EditorEvents} from "@tiptap/core";
 import {CellSelection, TableMap} from '@tiptap/pm/tables';
 import {EditorView} from "@tiptap/pm/view";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
@@ -105,37 +105,22 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
     }
 
     connectedCallback() {
-        this.style.display = "none"
         super.connectedCallback();
+        this.checkSelectionAndShow(this.editor!);
     }
 
-
-    show(ids: string[]) {
-        if (!ids || ids.length == 0) {
-            this.style.display = "none"
-        } else {
-            this.style.display = ""
-        }
-        this.querySelectorAll(".aie-bubble-menu-item").forEach((el) => {
-            (el as HTMLElement).style.display = "none";
-        })
-
-        ids.forEach((id) => {
-            const div = this.querySelector(`#${id}`) as HTMLElement;
-            if (div) div.style.display = "";
-        })
-
+    onTransaction(event: EditorEvents["transaction"]) {
+        this.checkSelectionAndShow(event.editor);
     }
 
-    onTransaction(props: EditorEvents["transaction"]) {
-        if (!props.editor.isActive("table")) {
-            return;
-        }
-        const {state: {selection}, view} = props.editor;
+    checkSelectionAndShow(editor: Editor) {
+        const {state: {selection}, view} = editor;
         if (selection instanceof CellSelection) {
-            if (this.isOneCellSelected(selection)) {
+            if (this.isAllTableSelected(selection)) {
+                this.showItems(["delete"])
+            } else if (this.isOneCellSelected(selection)) {
                 const showIds = ["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"];
-                if (props.editor.can().splitCell()) {
+                if (editor.can().splitCell()) {
                     const nodeDOM = view.nodeDOM(selection.$anchorCell.pos) as HTMLTableRowElement;
                     const colspan = nodeDOM.getAttribute("colspan");
                     const rowspan = nodeDOM.getAttribute("rowspan");
@@ -145,19 +130,29 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                         showIds.push("split-cells-vertical")
                     }
                 }
-                this.show(showIds)
-            } else if (this.isAllTableSelected(selection)) {
-                this.show(["delete"])
+                this.showItems(showIds)
             } else if (this.isColumnSelected(selection, view)) {
-                this.show(["insert-column-left", "insert-column-right", "delete-column", "merge-cells-vertical"])
+                this.showItems(["insert-column-left", "insert-column-right", "delete-column", "merge-cells-vertical"])
             } else if (this.isRowSelected(selection, view)) {
-                this.show(["insert-row-top", "insert-row-bottom", "delete-row", "merge-cells-horizontal"])
+                this.showItems(["insert-row-top", "insert-row-bottom", "delete-row", "merge-cells-horizontal"])
             } else {
-                this.show(["merge-cells-horizontal"])
+                this.showItems(["merge-cells-horizontal"])
             }
         } else {
-            this.show(["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"])
+            this.showItems(["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"])
         }
+    }
+
+
+    showItems(ids: string[]) {
+        this.querySelectorAll(".aie-bubble-menu-item").forEach((el) => {
+            (el as HTMLElement).style.display = "none";
+        })
+
+        ids.forEach((id) => {
+            const div = this.querySelector(`#${id}`) as HTMLElement;
+            if (div) div.style.display = "";
+        })
     }
 
     isAllTableSelected(selection: CellSelection): boolean {
