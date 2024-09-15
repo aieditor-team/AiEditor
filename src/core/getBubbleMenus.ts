@@ -142,7 +142,7 @@ const createImageBubbleMenu = (aiEditor: AiEditor) => {
                 const imgRect = imageEl.getBoundingClientRect();
                 return {
                     ...domRect,
-                    left: imgRect.left + imgRect.width * 0.25
+                    left: imgRect.left + imgRect.width * 0.5 - 100
                 }
             }),
             onCreate(instance: Instance) {
