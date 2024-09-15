@@ -20,6 +20,17 @@ new AiEditor({
 The above configuration is the default configuration of the AiEditor tool class, which `"|"` represents the dividing line.
 
 
+## Exclude some tools
+
+Configure `toolbarExcludeKeys` to exclude the initialization of some tools. The sample code is as follows:
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    toolbarExcludeKeys: ["heading", "font-family", "font-size", "ai"],
+})
+```
+
 
 ## Customize toolbar
 

@@ -58,6 +58,18 @@ new AiEditor({
 - fullscreen: 全屏
 - ai: 人工智能
 
+## 排除部分工具
+
+通过配置 `toolbarExcludeKeys` 用于排除部分工具的初始化，示例代码如下：
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    toolbarExcludeKeys: ["heading", "font-family", "font-size", "ai"],
+})
+```
+
+
 ## 自定义工具栏
 
 在 AiEditor 中，我们可以通过在 `toolbarKeys` 配置中进行自定义工具栏的扩展，配置示例代码如下：
