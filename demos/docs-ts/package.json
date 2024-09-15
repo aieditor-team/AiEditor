@@ -11,5 +11,8 @@
   "devDependencies": {
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "aieditor": "^1.1.1"
   }
 }
