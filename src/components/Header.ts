@@ -44,6 +44,7 @@ import {Custom} from "./menus/Custom.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {Group} from "./menus/Group.ts";
 import {initToolbarKeys} from "../util/initToolbarKeys.ts";
+import { defaultToolbarKeys } from "./DefaultToolbarKeys.ts";
 
 defineCustomElement('aie-undo', Undo);
 defineCustomElement('aie-undo', Undo);
@@ -94,15 +95,6 @@ export type MenuButtonOptions = {
     svg: string,
 }
 
-export const defaultMenus = ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
-    , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
-    , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
-    , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen", "ai"
-];
-
-export const defaultToolbarKeys = defaultMenus.filter((key) => key !== "divider");
-export type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
-
 export class Header extends HTMLElement implements AiEditorEvent {
     // template:string;
     menuButtons: AbstractMenuButton[] = [];
@@ -125,7 +117,7 @@ export class Header extends HTMLElement implements AiEditorEvent {
     }
 
     onCreate(event: EditorEvents["create"], options: AiEditorOptions): void {
-        let toolbarKeys = options.toolbarKeys || defaultMenus as unknown as string[];
+        let toolbarKeys = options.toolbarKeys || defaultToolbarKeys;
         toolbarKeys = toolbarKeys.filter((tool) => {
             if (typeof tool === "string") {
                 return !options.toolbarExcludeKeys?.includes(tool as any);

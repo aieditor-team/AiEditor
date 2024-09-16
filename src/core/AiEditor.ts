@@ -24,14 +24,9 @@ import {AiGlobalConfig} from "../ai/AiGlobalConfig.ts";
 import {AiModelManager} from "../ai/AiModelManager.ts";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {BubbleMenuItem} from "../components/bubbles/types.ts";
-import {DefaultToolbarKey} from "../components/Header.ts";
 import {LanguageItem} from "../extensions/CodeBlockExt.ts";
 import {Transaction} from "@tiptap/pm/state";
-
-export {defaultCommands as defaultAiCommands} from "../extensions/AiCommandExt.ts";
-export {defaultMenus, defaultToolbarKeys, type DefaultToolbarKey} from "../components/Header.ts";
-export {defaultAiPanelMenus} from "../components/bubbles/items/selection/AI.ts"
-export {dafaultAiMenus} from "../components/menus/Ai.ts";
+import {DefaultToolbarKey} from "../components/DefaultToolbarKeys.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -189,7 +184,7 @@ export class InnerEditor extends Tiptap {
 
 export class AiEditor {
 
-    private customLayout: boolean = false;
+    customLayout: boolean = false;
 
     innerEditor!: InnerEditor;
 
@@ -232,7 +227,7 @@ export class AiEditor {
         })
     }
 
-    private initInnerEditor() {
+    protected initInnerEditor() {
         const rootEl = typeof this.options.element === "string"
             ? document.querySelector(this.options.element) as Element : this.options.element;
 
@@ -269,17 +264,11 @@ export class AiEditor {
             }
         }
 
-        let extensions = getExtensions(this, this.options);
-        if (this.options.onCreateBefore) {
-            const newExtensions = this.options.onCreateBefore(this, extensions);
-            if (newExtensions) extensions = newExtensions;
-        }
-
         this.innerEditor = new InnerEditor(this, {
             element: this.mainEl,
             content: content,
             editable: this.options.editable,
-            extensions: extensions,
+            extensions: this.getExtensions(),
             onCreate: (props) => this.onCreate(props),
             onTransaction: (props) => this.onTransaction(props),
             onFocus: () => this.options?.onFocus?.(this),
@@ -293,7 +282,18 @@ export class AiEditor {
         })
     }
 
-    private onCreate(props: EditorEvents['create']) {
+
+    protected getExtensions() {
+        let extensions = getExtensions(this, this.options);
+        if (this.options.onCreateBefore) {
+            const newExtensions = this.options.onCreateBefore(this, extensions);
+            if (newExtensions) extensions = newExtensions;
+        }
+        return extensions;
+    }
+
+
+    protected onCreate(props: EditorEvents['create']) {
         this.innerEditor.view.dom.style.height = "calc(100% - 20px)"
 
         this.eventComponents.forEach((zEvent) => {
@@ -318,7 +318,7 @@ export class AiEditor {
         }
     }
 
-    private onTransaction(transEvent: EditorEvents['transaction']) {
+    protected onTransaction(transEvent: EditorEvents['transaction']) {
         this.eventComponents.forEach((component) => {
             component.onTransaction && component.onTransaction(transEvent);
         });
