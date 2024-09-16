@@ -12,7 +12,7 @@ export class GiteeAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "gitee");
         this.aiModelConfig = {
-            max_tokens: 512,
+            max_tokens: 4096,
             temperature: 0.7,
             top_p: 0.7,
             top_k: 50,
@@ -22,6 +22,7 @@ export class GiteeAiModel extends AiModel {
 
     createAiClient(url: string, listener: AiMessageListener): AiClient {
         const config = this.aiModelConfig as GiteeModelConfig;
+        let prevMessageBody = "";
         return new SseClient({
             url,
             method: "post",
@@ -33,7 +34,18 @@ export class GiteeAiModel extends AiModel {
             onStart: listener.onStart,
             onStop: listener.onStop,
             onMessage: (bodyString: string) => {
-                const message = JSON.parse(bodyString) as any;
+                let message = null;
+                try {
+                    if (prevMessageBody) {
+                        bodyString = prevMessageBody + bodyString;
+                    }
+                    message = JSON.parse(bodyString);
+                    prevMessageBody = "";
+                } catch (err) {
+                    prevMessageBody = prevMessageBody + bodyString.trim();
+                    return;
+                }
+
                 listener.onMessage({
                     status: message.choices[0].finish_reason === "stop" ? 2 : 1,
                     role: "assistant",
