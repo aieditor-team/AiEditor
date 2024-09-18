@@ -11,6 +11,15 @@ npm i aieditor
 
 Usage：
 
+HTML:
+
+```html
+<div id="aiEditor" style="height: 550px;  margin: 20px"></div>
+```
+
+
+Typescript:
+
 ```typescript
 new AiEditor({
     element: "#aiEditor",

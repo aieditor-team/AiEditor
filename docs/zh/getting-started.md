@@ -9,7 +9,17 @@
 npm i aieditor
 ```
 
+
 使用：
+
+HTML:
+
+```html
+<div id="aiEditor" style="height: 550px;  margin: 20px"></div>
+```
+
+
+Typescript:
 
 ```typescript
 new AiEditor({
