@@ -4,8 +4,10 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags: [ v* ] # Push events to matching v*, i.e. v1.0, v20.15.10
+#  release:
+#    types: [created]
 
 jobs:
   build:
@@ -16,7 +18,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm test
+      - run: npm run build
 
   publish-npm:
     needs: build
@@ -30,4 +32,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
