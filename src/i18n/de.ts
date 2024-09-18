@@ -26,7 +26,7 @@ export const de =  {
     "superscript": "Hochgestellt",
     "hr": "Trennlinie",
     "todo": "Aufgabenliste",
-    "emoji": "Emoji-Ausdruck",
+    "emoji": "Emojis",
     "highlight": "Hervorheben",
     "font-color": "Schriftfarbe",
     "align": "Ausrichtung",
