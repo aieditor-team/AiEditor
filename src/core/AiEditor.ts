@@ -17,6 +17,8 @@ import "../styles"
 import i18next from "i18next";
 import {zh} from "../i18n/zh.ts";
 import {en} from "../i18n/en.ts";
+import {de} from "../i18n/de.ts";
+import {pt} from "../i18n/pt.ts";
 import {Resource} from "i18next";
 
 import {DOMParser} from "@tiptap/pm/model";
@@ -211,13 +213,15 @@ export class AiEditor {
     private initI18nAndInnerEditor() {
         const i18nConfig = this.options.i18n || {};
         const resources = {
+            de: {translation: {...de, ...i18nConfig.de}},
             en: {translation: {...en, ...i18nConfig.en}},
+            pt: {translation: {...en, ...i18nConfig.pt}},
             zh: {translation: {...zh, ...i18nConfig.zh}},
         } as Resource;
 
-        //fill the resources but en and zh
+        //fill the resources but de, en, pt and zh
         for (let key of Object.keys(i18nConfig)) {
-            if (key != "en" && key != "zh") {
+            if (key != "de" && key != "en" && key != "pt" && key != "zh") {
                 resources[key] = {
                     translation: {...i18nConfig[key]}
                 }
