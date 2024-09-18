@@ -41,7 +41,7 @@ export declare interface AiClientListener {
 }
 
 export declare class AiEditor {
-    private customLayout;
+    customLayout: boolean;
     innerEditor: InnerEditor;
     container: HTMLDivElement;
     header: Header;
@@ -51,9 +51,10 @@ export declare class AiEditor {
     eventComponents: AiEditorEvent[];
     constructor(_: AiEditorOptions);
     private initI18nAndInnerEditor;
-    private initInnerEditor;
-    private onCreate;
-    private onTransaction;
+    protected initInnerEditor(): void;
+    protected getExtensions(): Extensions;
+    protected onCreate(props: EditorEvents['create']): void;
+    protected onTransaction(transEvent: EditorEvents['transaction']): void;
     getHtml(): string;
     getJson(): JSONContent;
     getText(): string;
@@ -161,6 +162,9 @@ export declare type AiEditorOptions = {
         values?: NameAndValue[];
     };
     lineHeight?: {
+        values?: string[];
+    };
+    emoji?: {
         values?: string[];
     };
     ai?: AiGlobalConfig;
@@ -281,17 +285,9 @@ export declare interface CustomMenu {
     onCreate?: (button: HTMLElement, editor: AiEditor) => void;
 }
 
-export declare const dafaultAiMenus: AiMenu[];
+declare type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
 
-export declare const defaultAiCommands: AiMenu[];
-
-export declare const defaultAiPanelMenus: AIBubbleMenuItem[];
-
-export declare const defaultMenus: string[];
-
-export declare type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
-
-export declare const defaultToolbarKeys: string[];
+declare const defaultToolbarKeys: string[];
 
 declare class Footer extends HTMLElement implements AiEditorEvent {
     count: number;
