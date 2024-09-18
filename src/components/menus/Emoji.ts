@@ -1,14 +1,23 @@
+import {EditorEvents} from "@tiptap/core";
+import {AiEditorOptions} from "../../core/AiEditor.ts";
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import tippy from "tippy.js";
 
 
-const emojis = ['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','😇','🥰','😍','🤩','😘','😗','😚','😙','🥲','😋','😛','😜','🤪','😝'
-    ,'🤑','🤗','🤭','🤫','🤔','🤐','🤨','😐','😑','😶','😶‍🌫','😏','😒','🙄','😬','😮‍💨','🤥','😌','😔','😪','🤤','😴','😷'
-    ,'🤒','🤕','🤢','🤮','🤧','🥵','🥶','🥴','😵','😵‍💫','🤯','🤠','🥳','🥸','😎','🤓','🧐','😕','😟','🙁','😮','😲','😳'
-    ,'🥺','😦','😧','😨','😰','😥','😢','😭','😱','😖','😣','😞','😓','😩','😫','🥱','😤','😡','😠','🤬','😈','👿','💀','☠️','💩','🤡','👹','👺'
-    ,'👻','👽','👾','🤖','😺','😸','😹','😻','😼','😽','🙀','😿','😾','🙈','🙉','🙊','💌','💘','💝','💖','💗','💓','💞','💕','💟','❣️','💔'
-    ,'💋','💯','💢','💥','💫','💦','💨','💤'];
+const defaultEmojis = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '🥰', '😍', '🤩', '😘', '😗', '😚', '😙', '🥲', '😋', '😛', '😜', '🤪', '😝'
+    , '🤑', '🤗', '🤭', '🤫', '🤔', '🤐', '🤨', '😐', '😑', '😶', '😶‍🌫', '😏', '😒', '🙄', '😬', '😮‍💨', '🤥', '😌', '😔', '😪', '🤤', '😴', '😷'
+    , '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶', '🥴', '😵', '😵‍💫', '🤯', '🤠', '🥳', '🥸', '😎', '🤓', '🧐', '😕', '😟', '🙁', '😮', '😲', '😳'
+    , '🥺', '😦', '😧', '😨', '😰', '😥', '😢', '😭', '😱', '😖', '😣', '😞', '😓', '😩', '😫', '🥱', '😤', '😡', '😠', '🤬', '😈', '👿', '💀', '☠️', '💩', '🤡', '👹', '👺'
+    , '👻', '👽', '👾', '🤖', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾', '🙈', '🙉', '🙊', '💌', '💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔'
+    , '💋', '💯', '💢', '💥', '💫', '💦', '💨', '💤'];
+
+
 export class Emoji extends AbstractMenuButton {
+
+
+    emojis: string[] = defaultEmojis
+
+
     constructor() {
         super();
         this.template = `
@@ -18,6 +27,10 @@ export class Emoji extends AbstractMenuButton {
         `;
     }
 
+    onCreate(props: EditorEvents["create"], options: AiEditorOptions) {
+        super.onCreate(props, options);
+        this.emojis = options.emoji?.values || defaultEmojis;
+    }
 
     connectedCallback() {
         super.connectedCallback();
@@ -35,23 +48,24 @@ export class Emoji extends AbstractMenuButton {
 
     createMenuElement() {
         const div = document.createElement("div");
-        div.style.height = "220px"
-        div.style.width = "400px"
+        div.style.maxWidth = "450px"
+        div.style.overflow = "hidden"
+        div.style.display = "flex"
+        div.style.justifyContent = "center"
+
         div.classList.add("aie-dropdown-container")
         div.innerHTML = `
-        <div style="margin: 5px">
             <div class="emoji-cells">
-            ${emojis.map((emoji) => {
-                return `<div  class="emoji-cell">${emoji}</div>`;
+            ${this.emojis.map((emoji) => {
+            return `<div  class="emoji-cell"><span>${emoji}</span></div>`;
         }).join('')}
             </div>
-        </div>
         `;
 
-        div.querySelector(".emoji-cells")!.addEventListener("click",(e)=>{
-            const target:HTMLDivElement = (e.target as any).closest('.emoji-cell');
-            if (target){
-                this.editor?.commands.insertContent(target.innerHTML)
+        div.querySelector(".emoji-cells")!.addEventListener("click", (e) => {
+            const target: HTMLDivElement = (e.target as any).closest('.emoji-cell');
+            if (target) {
+                this.editor?.commands.insertContent(target.querySelector("span")!.innerHTML)
             }
         });
 

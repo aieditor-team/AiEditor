@@ -144,6 +144,9 @@ export type AiEditorOptions = {
     lineHeight?: {
         values?: string[]
     },
+    emoji?: {
+        values?: string[]
+    },
     ai?: AiGlobalConfig,
 }
 

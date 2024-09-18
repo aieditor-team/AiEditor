@@ -16,17 +16,17 @@ window.aiEditor = new AiEditor({
         items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
     },
 
-    toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
-        , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
-        , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
-        , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen",
-        {
-
-            toolbarKeys: ["undo", "redo", "brush", "font-color", "line-height"]
-        },
-        "ai",
-    ],
-    toolbarExcludeKeys: ["undo", "redo", "brush", "eraser", "heading", "font-family", "font-size"],
+    // toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
+    //     , "strike", "link", "code", "subscript", "superscript", "hr", "todo", "emoji", "divider", "highlight", "font-color", "divider"
+    //     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
+    //     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen",
+    //     {
+    //
+    //         toolbarKeys: ["undo", "redo", "brush", "font-color", "line-height"]
+    //     },
+    //     "ai",
+    // ],
+    // toolbarExcludeKeys: ["undo", "redo", "brush", "eraser", "heading", "font-family", "font-size"],
 
     // fontSize:{
     //     defaultValue:18
@@ -49,6 +49,9 @@ window.aiEditor = new AiEditor({
             {name: 'Clojure', value: 'clojure', alias: ['clj', 'edn']},
             {name: 'CMake', value: 'cmake', alias: ['cmake.in']},
         ]
+    },
+    emoji:{
+        // values:['😀', '😃', '😄', '😁', '😆', '😅',],
     },
     // lineHeight:{
     //     values:["1.0","1.1"],
