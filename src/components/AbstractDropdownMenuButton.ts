@@ -7,10 +7,10 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
     tippyEl?: HTMLDivElement;
     textEl?: HTMLDivElement;
     menuData: T[] = [];
-    menuTextWidth: string = "40px";
+    menuTextWidth: string = "fit-content";
     defaultMenuIndex: number = 0;
     refreshMenuText: boolean = true;
-    width: string = "48px";
+    width: string = "fit-content";
     dropDivWith: string = "100px";
     dropDivHeight: string = "fit-content";
     showItemsTip: boolean = false;
