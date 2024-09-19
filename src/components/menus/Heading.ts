@@ -10,7 +10,7 @@ export class Heading extends AbstractDropdownMenuButton<string> {
         super();
         this.menuData = titles.map((v) => t(v));
         this.dropDivHeight = "265px";
-        this.dropDivWith = "150px";
+        this.dropDivWith = "fit-content";
 
     }
 
