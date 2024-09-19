@@ -166,12 +166,14 @@ export const VideoExt = Node.create<VideoOptions>({
 
 
     addNodeView() {
-        return (e) => {
-            if (!this.editor.isEditable) {
-                return {}
-            }
+        return (props) => {
             const container = document.createElement('div')
-            const {src, width, align} = e.node.attrs;
+            if (!this.editor.isEditable) {
+                return {
+                    dom: container
+                }
+            }
+            const {src, width, align} = props.node.attrs;
             container.classList.add(`align-${align}`)
             container.innerHTML = `
                   <div class="aie-resize-wrapper">
@@ -186,7 +188,7 @@ export const VideoExt = Node.create<VideoOptions>({
                       </video>
                   </div>
                 `
-            resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("video", attrs));
+            resize(container, this.editor.view.dom, (attrs) => this.editor.commands.updateAttributes("video", attrs));
             return {
                 dom: container,
             }

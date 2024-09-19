@@ -1,7 +1,7 @@
 import {
     Image
 } from '@tiptap/extension-image';
-import {mergeAttributes} from "@tiptap/core";
+import {NodeViewRendererProps, mergeAttributes} from "@tiptap/core";
 import {resize} from "../util/resize";
 import {Plugin, PluginKey} from "@tiptap/pm/state";
 import {DecorationSet} from "prosemirror-view";
@@ -197,17 +197,20 @@ export const ImageExt = Image.extend<ImageOptions>({
 
 
         addNodeView() {
-            return (e) => {
+            return (props: NodeViewRendererProps) => {
+                const container = document.createElement('div')
+
                 if (!this.editor.isEditable) {
-                    return {}
+                    return {
+                        dom: container,
+                    }
                 }
 
-                const {src, width, height, align, alt} = e.node.attrs;
+                const {src, width, height, align, alt} = props.node.attrs;
                 const imgWidth = getWidthUnit(width || 350);
                 const wrapperStyle = imgWidth.indexOf("%") > 0 ? `style="width: ${imgWidth};"` : "";
                 const calcImgWidth = imgWidth.indexOf("%") > 0 ? `100%;"` : imgWidth;
 
-                const container = document.createElement('div')
                 container.classList.add(`align-${align}`)
                 container.innerHTML = `
                 <div class="aie-resize-wrapper" ${wrapperStyle}  >
@@ -217,11 +220,10 @@ export const ImageExt = Image.extend<ImageOptions>({
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img alt="${alt}" src="${e.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
+                    <img alt="${alt}" src="${props.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
-                resize(container, e.editor.view.dom, (attrs) => e.editor.commands.updateAttributes("image", attrs));
-
+                resize(container, this.editor.view.dom, (attrs) => this.editor.commands.updateAttributes("image", attrs));
                 return {
                     dom: container,
                 }

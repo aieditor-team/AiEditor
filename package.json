@@ -36,7 +36,7 @@
     "@types/node": "^20.9.0",
     "less": "^4.2.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
+    "vite": "^5.4.6",
     "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "@tiptap/extension-color": "^2.7.1",
     "@tiptap/extension-font-family": "^2.7.1",
     "@tiptap/extension-gapcursor": "^2.7.1",
+    "@tiptap/extension-heading": "^2.7.1",
     "@tiptap/extension-highlight": "^2.7.1",
     "@tiptap/extension-image": "^2.7.1",
     "@tiptap/extension-link": "^2.7.1",
@@ -73,7 +74,7 @@
     "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.11",
     "tippy.js": "^6.3.7",
-    "@codeflex/tiptap-markdown": "^0.8.10"
+    "tiptap-markdown": "^0.8.10"
   },
   "publishConfig": {
     "access": "public",
