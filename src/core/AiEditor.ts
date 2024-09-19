@@ -215,7 +215,7 @@ export class AiEditor {
         const resources = {
             de: {translation: {...de, ...i18nConfig.de}},
             en: {translation: {...en, ...i18nConfig.en}},
-            pt: {translation: {...en, ...i18nConfig.pt}},
+            pt: {translation: {...pt, ...i18nConfig.pt}},
             zh: {translation: {...zh, ...i18nConfig.zh}},
         } as Resource;
 
