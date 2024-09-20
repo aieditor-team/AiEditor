@@ -62,6 +62,7 @@ export declare class AiEditor {
     getMarkdown(): any;
     getOptions(): AiEditorOptions;
     getAttributes(name: string): Record<string, any>;
+    setAttributes(name: string, attributes: Record<string, any>): void;
     isActive(nameOrAttrs: any, attrs?: {}): boolean;
     commands(): SingleCommands;
     commandsChain(): ChainedCommands_2;
@@ -180,6 +181,10 @@ export declare interface AiGlobalConfig {
     bubblePanelMenus?: AIBubbleMenuItem[];
     menus?: AiMenu[];
     commands?: AiMenu[];
+    translate?: {
+        prompt?: (language: string, selectText: string) => string;
+        translateMenuItems?: TranslateMenuItem[];
+    };
     codeBlock?: {
         codeComments?: {
             model: string;
@@ -359,6 +364,11 @@ export declare interface SparkAiModelConfig extends AiModelConfig {
     protocol?: string;
     version?: string;
 }
+
+export declare type TranslateMenuItem = {
+    title: string;
+    language?: string;
+} | string;
 
 export declare type Uploader = (file: File, uploadUrl: string, headers: Record<string, any>, formName: string) => Promise<Record<string, any>>;
 
