@@ -1,5 +1,4 @@
 import {AiEditor} from "./core/AiEditor.ts";
-// import {config} from "./spark.ts";
 // import { config } from "./spark.ts";
 // import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
 // @ts-ignore
@@ -13,7 +12,7 @@ window.aiEditor = new AiEditor({
     textSelectionBubbleMenu: {
         // enable:false
         //[AI, Bold, Italic, Underline, Strike, Code]
-        items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
+        // items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
     },
 
     // toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"

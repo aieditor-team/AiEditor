@@ -15,3 +15,8 @@ export type AIBubbleMenuItem = {
     icon: string,
     title: string,
 } | string;
+
+export type TranslateMenuItem = {
+    title: string,
+    language?: string,
+} | string;

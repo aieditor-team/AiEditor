@@ -1,6 +1,6 @@
 import {AiModelConfig} from "./core/AiModelConfig.ts";
 import {AiModelFactory} from "./AiModelFactory.ts";
-import {AIBubbleMenuItem} from "../components/bubbles/types.ts";
+import {AIBubbleMenuItem, TranslateMenuItem} from "../components/bubbles/types.ts";
 
 export interface AiMenu {
     icon: string,
@@ -22,6 +22,10 @@ export interface AiGlobalConfig {
     bubblePanelMenus?: AIBubbleMenuItem[],
     menus?: AiMenu[],
     commands?: AiMenu[],
+    translate?: {
+        prompt?: (language: string, selectText: string) => string,
+        translateMenuItems?: TranslateMenuItem[],
+    },
     codeBlock?: {
         codeComments?: {
             model: string,

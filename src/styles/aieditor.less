@@ -11,6 +11,44 @@
     box-sizing: content-box;
   }
 
+  .aie-translate-panel {
+    margin-top: -5px;
+
+    &-body {
+      width: fit-content;
+      border: solid 1px;
+      border-color: var(--aie-ai-panel-border);
+      background: var(--aie-ai-panel-bg-color);
+      border-radius: 5px;
+      box-shadow: 0 0 7px 0 rgba(0, 0, 0, .15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      p {
+        width: 100%;
+        margin: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 40px;
+        line-height: 40px;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 0 20px;
+        color: #666;
+        text-decoration: none;
+        font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      }
+
+      p:hover {
+        background: var(--aie-menus-item-hover-color);
+      }
+    }
+  }
+
+
   .aie-ai-panel-body {
     width: 500px;
     border: solid 1px;
@@ -130,7 +168,7 @@
       }
 
       button:hover {
-        background: #3c77c0;
+        background: var(--aie-menus-item-hover-color);
         cursor: pointer;
       }
     }
@@ -184,7 +222,7 @@
     }
 
     p:hover {
-      background-color: #fafafa;
+      background: var(--aie-menus-item-hover-color);
     }
 
     svg {
@@ -436,7 +474,7 @@
         justify-content: center;
         padding: 2px 1px;
 
-        span{
+        span {
           margin-top: 2px;
         }
 
@@ -657,8 +695,9 @@
 
   //menu tips start
   .tippy-box {
-    max-width: 1000px!important;
+    max-width: 1000px !important;
   }
+
   .tippy-box[data-animation="fade"][data-state="hidden"] {
     opacity: 0;
   }
