@@ -379,6 +379,10 @@ export class AiEditor {
         return this.innerEditor.getAttributes(name);
     }
 
+    setAttributes(name: string, attributes: Record<string, any>) {
+        this.innerEditor.commands.updateAttributes(name, attributes);
+    }
+
     isActive(nameOrAttrs: any, attrs?: {}) {
         if (typeof nameOrAttrs === "object" || !attrs) {
             return this.innerEditor.isActive(nameOrAttrs);
