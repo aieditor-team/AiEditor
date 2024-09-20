@@ -159,16 +159,6 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
     }))
     // }
 
-    // if (options.cbName && options.cbUrl) {
-    //     const provider = new HocuspocusProvider({
-    //         url: options.cbUrl,
-    //         name: options.cbName,
-    //     })
-    //     ret.push(Collaboration.configure({
-    //         document: provider.document,
-    //     }))
-    // }
-
     if (options.onMentionQuery) {
         ret.push(createMention(options.onMentionQuery))
     }
