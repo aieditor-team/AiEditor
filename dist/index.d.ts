@@ -111,6 +111,7 @@ export declare type AiEditorOptions = {
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
     draggable?: boolean;
+    pasteAsText?: boolean;
     codeBlock?: {
         languages?: LanguageItem[];
         codeExplainPrompt?: string;

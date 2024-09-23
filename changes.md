@@ -1,5 +1,32 @@
 # AiEditor ChangeLog
 
+## v1.1.3 20240923:
+- feat: add translate bubble menu items
+- feat: add "pasteAsText" config support
+- feat: add de and pt langs, thanks to @TobiasKrais
+- feat: add Emoji config support
+- fix: fix GiteeAiModel parse ai message error
+- refactor: optimize AiEditor.ts and Header.ts
+- refactor: optimize styles in Emoji.ts/Heading.ts/AbstractDropdownMenuButton.ts, thanks to @TobiasKrais
+- refactor: optimize ai panel position
+- chore: create npm-publish.yml
+- chore: remove comment code
+
+--- 
+
+- 新增: 浮动菜单新增翻译功能，以及自定义翻译语言
+- 新增: 新增 "pasteAsText" 配置的功能，在粘贴时自动清除样式
+- 新增: 新增德语和葡萄牙语的配置，感谢 @TobiasKrais
+- 新增: 新增 emoji 自定义配置的功能
+- 修复: 修复 GiteeAiModel 在某些情况下解析错误的问题
+- 优化: 优化 AiEditor.ts 及 Header.ts 代码
+- 优化: 优化 Emoji.ts/Heading.ts/AbstractDropdownMenuButton.ts 的样式代码, @TobiasKrais
+- 优化: 优化 文字选中以及 ai 弹出菜单的位置
+- 优化: 创建 npm-publish.yml 用于自动发布的功能
+- 优化: 上传部分注释代码
+
+
+
 ## v1.1.1 20240915:
 - feat: Increase the indent to 2em instead of 10px
 - feat: add FontSize defaultValue config
