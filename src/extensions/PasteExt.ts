@@ -3,10 +3,11 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
+import {removeHtmlTags} from '../util/removeHtmlTag.ts';
 
 export const PasteExt = Extension.create({
     name: 'paste',
-    priority: 100,
+    priority: 1,
 
     addProseMirrorPlugins() {
         return [
@@ -21,7 +22,7 @@ export const PasteExt = Extension.create({
                         if (!event.clipboardData) return false;
 
                         const text = event.clipboardData.getData('text/plain');
-                        const html = event.clipboardData.getData('text/html');
+                        let html = event.clipboardData.getData('text/html');
 
                         if (!html && text) {
                             const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text);
@@ -29,6 +30,22 @@ export const PasteExt = Extension.create({
                                 const {state: {tr}, dispatch} = view;
                                 dispatch(tr.replaceSelection(new Slice(parseMarkdown, 0, 0)).scrollIntoView());
                                 return true;
+                            }
+                        } else if (html) {
+                            const {options} = (this.editor as InnerEditor).aiEditor;
+                            if (options.pasteAsText) {
+                                html = removeHtmlTags(html, ['a', 'span', 'strong', 'b', 'em', 'i', 'u']);
+                                const parser = new DOMParser();
+                                const document = parser.parseFromString(html, 'text/html');
+                                const workspace = document.documentElement.querySelector('body');
+                                if (workspace) {
+                                    workspace?.querySelectorAll('*').forEach(el => {
+                                        el.removeAttribute("style");
+                                    })
+                                    const innerHTML = workspace?.innerHTML;
+                                    this.editor.commands.insertContent(innerHTML);
+                                    return true;
+                                }
                             }
                         }
                     }
