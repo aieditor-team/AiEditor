@@ -5,7 +5,7 @@ import {AiModelManager} from "../../../../ai/AiModelManager.ts";
 import {Svgs} from "../../../../commons/Svgs.ts";
 import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
-import {isNodeSelection, posToDOMRect} from "@tiptap/core";
+import {posToDOMRect} from "@tiptap/core";
 
 
 type Holder = {
@@ -156,6 +156,13 @@ const createAiPanelElement = (holder: Holder, aiBubbleMenuItems: AIBubbleMenuIte
         })
     })
 
+    container.addEventListener("click", e => {
+        if (e.target === container) {
+            holder.aiPanelInstance?.hide();
+            holder.tippyInstance?.show();
+        }
+    })
+
     return container;
 }
 
@@ -178,7 +185,7 @@ export const AI = {
         holder.aiPanelInstance = tippy(parentEle.querySelector("#ai")!, {
             content: createAiPanelElement(holder, aiPanelMenus),
             appendTo: innerEditor!.view.dom.closest(".aie-container")!,
-            placement: "bottom",
+            placement: "bottom-start",
             trigger: 'click',
             interactive: true,
             arrow: false,
@@ -187,17 +194,11 @@ export const AI = {
                 const {ranges} = state.selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
                 const to = Math.max(...ranges.map(range => range.$to.pos))
-                if (isNodeSelection(state.selection)) {
-                    let node = view.nodeDOM(from) as HTMLElement
-                    const nodeViewWrapper = node.dataset.nodeViewWrapper ? node : node.querySelector('[data-node-view-wrapper]')
-                    if (nodeViewWrapper) {
-                        node = nodeViewWrapper.firstChild as HTMLElement
-                    }
-                    if (node) {
-                        return node.getBoundingClientRect()
-                    }
+                const selectRect = posToDOMRect(view, from, to);
+                return {
+                    ...selectRect,
+                    height: selectRect.height - 8,
                 }
-                return posToDOMRect(view, from, to)
             }),
             onShow: (_) => {
                 window.setTimeout(() => _.popper.querySelector<HTMLInputElement>("#prompt")?.focus(), 0);

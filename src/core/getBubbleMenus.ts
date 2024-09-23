@@ -58,6 +58,7 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             appendTo: aiEditor.container,
             arrow: false,
             getReferenceClientRect: (() => {
+
                 const selection = aiEditor.innerEditor.state.selection;
                 const {ranges} = selection
                 const from = Math.min(...ranges.map(range => range.$from.pos))
@@ -65,15 +66,18 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
 
                 const {view} = aiEditor.innerEditor;
 
-                const domRect = posToDOMRect(view, from, to);
-                const viewPos = view.coordsAtPos(0);
-                const selectPos = view.coordsAtPos(from);
+                const selectRect = posToDOMRect(view, from, to);
+                const editorRect = view.dom.getBoundingClientRect();
 
-                const top = selectPos.top - viewPos.top > 30 ? selectPos.top : selectPos.bottom + 65;
+                const minBottom = editorRect.bottom;
 
+                let top = selectRect.bottom + 65;
+                if (top > minBottom) {
+                    top = minBottom
+                }
                 return {
-                    ...domRect,
-                    top: top
+                    ...selectRect,
+                    top,
                 };
             }),
             onCreate(instance: Instance) {
