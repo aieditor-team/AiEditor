@@ -57,28 +57,24 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
         tippyOptions: {
             appendTo: aiEditor.container,
             arrow: false,
+            placement: 'bottom',
             getReferenceClientRect: (() => {
-
-                const selection = aiEditor.innerEditor.state.selection;
-                const {ranges} = selection
-                const from = Math.min(...ranges.map(range => range.$from.pos))
-                const to = Math.max(...ranges.map(range => range.$to.pos))
-
-                const {view} = aiEditor.innerEditor;
-
-                const selectRect = posToDOMRect(view, from, to);
-                const editorRect = view.dom.getBoundingClientRect();
-
-                const minBottom = editorRect.bottom;
-
-                let top = selectRect.bottom + 65;
-                if (top > minBottom) {
-                    top = minBottom
+                const {view, state} = aiEditor.innerEditor;
+                const {anchor, head, from, to} = state.selection;
+                if (from == 1 && to == state.doc.content.size - 1) {
+                    const selectRect = posToDOMRect(view, anchor, head);
+                    return {
+                        ...selectRect,
+                        top: selectRect.top - (view.dom.scrollHeight - view.dom.scrollTop) + 65,
+                    };
+                } else {
+                    const headRect = posToDOMRect(view, head, head);
+                    return {
+                        ...headRect,
+                        height: headRect.height - 10
+                    }
                 }
-                return {
-                    ...selectRect,
-                    top,
-                };
+
             }),
             onCreate(instance: Instance) {
                 menuEl.instance = instance;

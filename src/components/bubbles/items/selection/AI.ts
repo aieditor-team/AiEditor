@@ -185,20 +185,27 @@ export const AI = {
         holder.aiPanelInstance = tippy(parentEle.querySelector("#ai")!, {
             content: createAiPanelElement(holder, aiPanelMenus),
             appendTo: innerEditor!.view.dom.closest(".aie-container")!,
-            placement: "bottom-start",
             trigger: 'click',
             interactive: true,
             arrow: false,
+            placement: 'bottom',
             getReferenceClientRect: (() => {
-                const {state, view} = innerEditor
-                const {ranges} = state.selection
-                const from = Math.min(...ranges.map(range => range.$from.pos))
-                const to = Math.max(...ranges.map(range => range.$to.pos))
-                const selectRect = posToDOMRect(view, from, to);
-                return {
-                    ...selectRect,
-                    height: selectRect.height - 8,
+                const {view, state} = innerEditor;
+                const {anchor, head, from, to} = state.selection;
+                if (from == 1 && to == state.doc.content.size - 1) {
+                    const selectRect = posToDOMRect(view, anchor, head);
+                    return {
+                        ...selectRect,
+                        top: selectRect.top - (view.dom.scrollHeight - view.dom.scrollTop) + 65,
+                    };
+                } else {
+                    const headRect = posToDOMRect(view, head, head);
+                    return {
+                        ...headRect,
+                        height: headRect.height - 10
+                    }
                 }
+
             }),
             onShow: (_) => {
                 window.setTimeout(() => _.popper.querySelector<HTMLInputElement>("#prompt")?.focus(), 0);
