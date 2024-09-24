@@ -9,6 +9,8 @@ new AiEditor({
     theme: "light",
     content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
     contentRetention: true,
+    draggable: true,
+    pasteAsText: false,
     ai: {
         models: {
             spark: {
@@ -27,4 +29,6 @@ new AiEditor({
 - **content**：编辑的内容。
 - **contentRetention**：是否自动保存（缓存）当前编辑的内容，默认为：`false`。
 - **contentRetentionKey**：自动保存（缓存）到 `localStorage` 的 key 值，默认为：`ai-editor-content`。
+- **draggable**：是否可以通过在右下角拖动调整编辑器的大小。
+- **pasteAsText**：粘贴时，以文本方式进行粘贴，设置为 `true` 时，粘贴网页内容自动清除颜色、链接、字体、字号、加粗、删除线等样式。
 - **ai**: AI 相关配置，更多参考 [AI配置](/zh/ai/base.md) 的相关文档。

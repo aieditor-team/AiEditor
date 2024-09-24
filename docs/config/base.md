@@ -9,6 +9,8 @@ new AiEditor({
     theme: "light",
     content: 'AiEditor is an Open Source Rich Text Editor Designed for AI. ',
     contentRetention: true,
+    draggable: true,
+    pasteAsText: false,
     ai: {
         models: {
             spark: {
@@ -28,4 +30,6 @@ new AiEditor({
 - **content**: The content of the edit.
 - **contentRetention**: Whether to automatically save (cache) the currently edited content, which is set to the following `false` by default.
 - **contentRetentionKey**: The key value localStorage that is automatically saved (cached) to , defaults to: `ai-editor-content` .
+- **draggable**: Whether the editor can be resized by dragging the lower right corner.
+- **pasteAsText**: When pasting, paste as text. When set to `true`, the pasted web page content automatically clears the color, link, font, font size, bold, strikethrough and other styles.
 - **AI**: For more information about AI-related configurations, see [AI Configuration](/zh/ai/base.md).
