@@ -15,6 +15,17 @@ const {lang} = defineProps(['lang'])
 const divRef = ref();
 let aiEditor: any = null;
 
+const  content = `
+AiEditor is a next-generation rich text editor for AI. It is developed based on Web Component and therefore supports almost any front-end framework such as Vue, React, Angular, Svelte, etc. It is adapted to PC Web and mobile terminals, and provides two themes: light and dark. In addition, it also provides flexible configuration, and developers can easily use it to develop any text editing application.
+
+Positioning of AiEditor
+
+- Our original intention in developing AiEditor was to solve AI editing problems. Therefore, in terms of AI, AiEditor supports the use of private apiKey to connect to any LLMs, including ChatGPT, iFlytek Spark and any privatized LLM.
+- We hope that AiEditor has more usage scenarios and is not limited to any UI rendering framework, such as Vue, React, Angular, Svelte, etc. Therefore, we developed it based on Web Component, which can be well integrated with any framework.
+- We provide a friendly UI, support two themes, light and dark, support the writing habit of using Markdown, support flexible function configuration and custom layout, and use the open source protocol LGPL, which is more friendly than CKEditor and TinyMCE.
+- In addition, we will continue to learn from excellent products, such as Notion, etc., to provide a series of useful AI functions... Of course, AiEditor is still evolving, and we need your support.
+`
+
 onMounted(() => {
   //for ssr
   import('aieditor').then(({AiEditor}) => {
@@ -44,7 +55,7 @@ onMounted(() => {
         aiEditor = new AiEditor({
           element: divRef.value as Element,
           placeholder: "Click to Input Content...",
-          content: 'AiEditor is an Open Source Rich Text Editor Designed for AI.  ',
+          content,
           ai: {
             models: {
               spark: {
@@ -52,6 +63,12 @@ onMounted(() => {
               }
             },
             menus,
+            translate:{
+              translateMenuItems: [
+                {title: 'English', language:'English'},
+                {title: 'Chinese'},
+              ],
+            }
           },
           lang,
         })
