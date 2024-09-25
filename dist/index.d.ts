@@ -180,6 +180,7 @@ export declare interface AiGlobalConfig {
     bubblePanelEnable?: boolean;
     bubblePanelModel?: string;
     bubblePanelMenus?: AIBubbleMenuItem[];
+    bubblePanelIcon?: string;
     menus?: AiMenu[];
     commands?: AiMenu[];
     translate?: {
