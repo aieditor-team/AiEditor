@@ -8,7 +8,7 @@
 - refactor: add more common emojis 
 
 --- 
-- 新增：新增 ClassName 插件，用于自定义节点的 class 央视
+- 新增：新增 ClassName 插件，用于自定义节点的 class 样式
 - 新增：添加自定义泡泡菜单的 AI ICON 的功能
 - 优化：重构 翻译 功能的交互逻辑
 - 优化：重构 AI 弹出菜单的交互细节
