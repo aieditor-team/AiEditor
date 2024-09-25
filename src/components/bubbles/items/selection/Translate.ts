@@ -9,6 +9,7 @@ import tippy, {Instance} from "tippy.js";
 type Holder = {
     editor?: InnerEditor,
     translatePanelInstance?: Instance,
+    translateResultInstance?: Instance,
     tippyInstance?: Instance,
     aiClient?: AiClient
 }
@@ -24,18 +25,17 @@ export const defaultTranslateMenuItems = [
     {title: '西班牙语'},
 ] as TranslateMenuItem[]
 
-const startChat = (holder: Holder, lang: string) => {
+const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) => {
     if (holder.aiClient) {
         holder.aiClient.stop();
     } else {
         const {selection, doc} = holder.editor!.state
         const selectedText = doc.textBetween(selection.from, selection.to);
-        let prompt = holder.editor?.aiEditor.options.ai?.translate?.prompt?.(lang, selectedText);
-        if (!prompt) {
-            prompt = `请帮我把以下内容翻译为: ${lang}，并返回翻译结果。注意：只需要翻译的结果，不需要解释！您需要翻译的内容是：\n${selectedText}`
-        }
+        let prompt = holder.editor?.aiEditor.options.ai?.translate?.prompt?.(lang, selectedText)
+            || `请帮我把以下内容翻译为: ${lang}，并返回翻译结果。注意：只需要翻译的结果，不需要解释！您需要翻译的内容是：\n${selectedText}`;
         const aiModel = AiModelManager.get("auto");
         if (aiModel) {
+            let content = "";
             aiModel.chat("", prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;
@@ -44,13 +44,48 @@ const startChat = (holder: Holder, lang: string) => {
                     holder.aiClient = undefined;
                 },
                 onMessage(message) {
-                    holder.editor?.commands.insertContent(message.content);
+                    content += message.content;
+                    textarea.value = content;
+                    textarea.style.height = `${textarea.scrollHeight}px`;
+                    textarea.scrollTop = textarea.scrollHeight;
                 }
             })
         } else {
             console.error("AI model name config error.")
         }
     }
+}
+
+const createTranslateResultPanel = (holder: Holder) => {
+    const resultPanel = document.createElement("div");
+    resultPanel.classList.add("aie-translate-result-panel")
+    resultPanel.innerHTML = `
+    <textarea rows="5" readonly></textarea>
+    <div>
+     <button id="cancel">${t("ai-cancel")}</button>
+     <button id="append">${t("ai-append")}</button>
+     <button id="replace">${t("ai-replace")}</button>
+</div>
+    `
+
+    resultPanel.querySelector("#cancel")!.addEventListener("click", () => {
+        holder.translateResultInstance?.hide()
+        holder.tippyInstance?.show()
+    })
+
+    resultPanel.querySelector("#append")!.addEventListener("click", () => {
+        holder.translateResultInstance?.hide()
+        const {state: {selection, tr}, view: {dispatch}} = holder.editor!
+        dispatch(tr.insertText(resultPanel.querySelector("textarea")!.value, selection.to))
+    })
+
+    resultPanel.querySelector("#replace")!.addEventListener("click", () => {
+        holder.translateResultInstance?.hide()
+        holder.editor?.commands.insertContent(resultPanel.querySelector("textarea")!.value)
+    })
+
+
+    return resultPanel;
 }
 
 const createTranslatePanelElement = (holder: Holder, menuItems: TranslateMenuItem[]) => {
@@ -64,14 +99,32 @@ const createTranslatePanelElement = (holder: Holder, menuItems: TranslateMenuIte
     }).join('')}
         </div>
         `;
-
-    container.querySelectorAll(".aie-translate-panel-body p").forEach((element) => {
-        const lang = element.getAttribute("data-lang")!;
-        element.addEventListener("click", () => {
+    const aieContainer = holder.editor!.view.dom.closest(".aie-container")!;
+    holder.translateResultInstance = tippy(container, {
+        content: createTranslateResultPanel(holder),
+        appendTo: aieContainer,
+        placement: "bottom",
+        interactive: true,
+        trigger: "click",
+        arrow: false,
+        getReferenceClientRect() {
+            return aieContainer.getBoundingClientRect();
+        },
+        offset: [0, -aieContainer.getBoundingClientRect().height + 100],
+        onTrigger: (instance, event) => {
+            const lang = event.target && (event.target as HTMLParagraphElement).getAttribute("data-lang");
+            if (!lang) {
+                instance.disable();
+                return
+            }
+            const textarea = instance.popper.querySelector("textarea");
             holder.translatePanelInstance?.hide()
-            startChat(holder, lang);
-        })
-    })
+            startChat(holder, lang!, textarea!);
+        },
+        onUntrigger: (instance) => {
+            instance.enable();
+        },
+    });
 
     return container;
 }
