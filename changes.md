@@ -1,5 +1,21 @@
 # AiEditor ChangeLog
 
+## v1.1.4 20240925:
+- feat: add ClassName extension for custom node class attribute
+- feat: add custom AI icon in bubble menu
+- refactor: refactor translate bubble menu
+- refactor: refactor ai bubble panel
+- refactor: add more common emojis 
+
+--- 
+- 新增：新增 ClassName 插件，用于自定义节点的 class 央视
+- 新增：添加自定义泡泡菜单的 AI ICON 的功能
+- 优化：重构 翻译 功能的交互逻辑
+- 优化：重构 AI 弹出菜单的交互细节
+- 优化：添加更多场景的 emoji 表情
+
+
+
 ## v1.1.3 20240923:
 - feat: add translate bubble menu items
 - feat: add "pasteAsText" config support
