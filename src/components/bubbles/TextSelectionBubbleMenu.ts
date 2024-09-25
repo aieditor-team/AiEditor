@@ -17,6 +17,13 @@ export class TextSelectionBubbleMenu extends AbstractBubbleMenu {
 
         if (options.ai?.bubblePanelEnable === false) {
             removeIf(this.items, (item: BubbleMenuItem) => item.id === "ai")
+        } else if (options.ai?.bubblePanelIcon) {
+            for (let item of this.items) {
+                if (item.id === "ai") {
+                    item.icon = options.ai?.bubblePanelIcon;
+                    break
+                }
+            }
         }
     }
 
