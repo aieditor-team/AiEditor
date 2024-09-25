@@ -39,6 +39,7 @@ import {SaveExt} from "../extensions/SaveExt.ts";
 import {FigureExt} from "../extensions/FigureExt.ts";
 import {FigcaptionExt} from "../extensions/FigcaptionExt.ts";
 import {PasteExt} from "../extensions/PasteExt.ts";
+import {ClassNameExt} from "../extensions/ClassNameExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
@@ -128,6 +129,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 onSave: options.onSave,
             }),
             PasteExt,
+            ClassNameExt,
             Markdown.configure({
                 html: true,                  // Allow HTML input/output
                 tightLists: true,            // No <p> inside <li> in markdown output
