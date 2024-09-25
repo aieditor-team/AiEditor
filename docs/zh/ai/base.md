@@ -28,10 +28,13 @@ new AiEditor({
                 appId:"****",
                 apiKey:"****",
                 apiSecret:"****",
-                version:"v3.5" //支持 v2.1 v3.1 v3.5
+                version:"v3.5" //支持 v2.1 v3.1 v3.5 v4.0
             }
         },
         bubblePanelEnable: true,
+        bubblePanelModel: "auto",
+        bubblePanelIcon: "<svg .....>",
+        bubblePanelMenus: [],
         onCreateClientUrl: "...."
     },
 })
@@ -39,7 +42,9 @@ new AiEditor({
 
 - **models**: 模型配置，支持 `openai`, `spark`, `wenxin`, `custom`，具体参考：[这里](./llm.md)
 - **bubblePanelEnable**: 是否开启 AI 弹窗功能
-- **bubblePanelModel**: AI 弹框使用的模型名称
+- **bubblePanelModel**: AI 弹框使用的大语言模型名称
+- **bubblePanelIcon**: AI 弹框菜单的 自定义 ICON
+- **bubblePanelMenus**: 这个配置参考 [这里](/zh/ai/menu.html#泡泡菜单)
 - **onCreateClientUrl**: 自定义 URL 签名算法，一般情况下，如果编辑器涉及内容对外开放，则需要配置 onCreateURL，用于通过 server 端对 url 签名生成通信 url。
 - **spark**: 星火大模型配置，星火大模型支持配置的内容如下：
 

@@ -28,18 +28,22 @@ new AiEditor({
                 appId:"****",
                 apiKey:"****",
                 apiSecret:"****",
-                version:"v3.5" //support v2.1 v3.1 v3.5
+                version:"v3.5" //support v2.1 v3.1 v3.5 v4.0
             }
         },
         bubblePanelEnable: true,
+        bubblePanelModel: "auto",
+        bubblePanelIcon: "<svg .....>",
+        bubblePanelMenus: [],
         onCreateClientUrl: "...."
     },
 })
 ```
 
 - **models**: Model configuration, supports `openai`, `spark`, `wenxin`, `custom`, for details, please refer to: [here](./llm.md)
-- **bubblePanelEnable**: Whether to enable the AI BubblePanel
-- **bubblePanelModel**: The model name used on the AI BubblePanel
+- **bubblePanelModel**: The name of the large language model used by the AI Bubble menu
+- **bubblePanelIcon**: The custom icon of the AI Bubble menu
+- **bubblePanelMenus**: This configuration is referenced [here](/ai/menu.html##bubble-menu)
 - **onCreateClientUrl**: Custom URL signing algorithm. Generally, if the editor involves content open to the public, onCreateURL needs to be configured to sign the URL through the server to generate a communication URL.
 - **spark**: Configuration for the Spark large model. Supported configurations for the Spark large model include:
 
