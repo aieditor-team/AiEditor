@@ -36,7 +36,7 @@ const startChat = (holder: Holder, lang: string) => {
         }
         const aiModel = AiModelManager.get("auto");
         if (aiModel) {
-            aiModel.chat(selectedText, prompt, {
+            aiModel.chat("", prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;
                 },

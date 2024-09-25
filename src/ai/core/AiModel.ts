@@ -39,7 +39,7 @@ export abstract class AiModel {
     chat(selectedText: string, prompt: string, listener: AiMessageListener): void {
         const onSuccess = (url: string) => {
             const aiClient = this.createAiClient(url, listener);
-            const finalPrompt = prompt.includes("{content}") ? prompt.split('{content}').join(selectedText) : `${selectedText}\n${prompt}`
+            const finalPrompt = prompt.includes("{content}") ? prompt.split('{content}').join(selectedText) : `${selectedText ? selectedText + "\n" : ""}${prompt}`
             const payload = this.wrapPayload(finalPrompt);
             aiClient.start(typeof payload === "string" ? payload : JSON.stringify(payload))
         }
