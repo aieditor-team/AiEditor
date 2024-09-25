@@ -78,6 +78,8 @@ const startChat = (holder: Holder, container: HTMLDivElement, prompt: string) =>
                 },
                 onMessage(message) {
                     textarea!.value = textarea?.value + message.content;
+                    textarea.style.height = `${textarea.scrollHeight}px`;
+                    textarea.scrollTop = textarea.scrollHeight;
                 }
             })
         } else {
