@@ -62,9 +62,9 @@ const createTranslateResultPanel = (holder: Holder) => {
     resultPanel.innerHTML = `
     <textarea rows="5" readonly></textarea>
     <div>
-     <button id="cancel">${t("ai-cancel")}</button>
-     <button id="append">${t("ai-append")}</button>
-     <button id="replace">${t("ai-replace")}</button>
+     <button type="button" id="cancel">${t("ai-cancel")}</button>
+     <button type="button" id="append">${t("ai-append")}</button>
+     <button type="button" id="replace">${t("ai-replace")}</button>
 </div>
     `
 
