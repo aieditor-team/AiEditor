@@ -1,7 +1,6 @@
 import {Extension, Extensions, getTextBetween, posToDOMRect} from "@tiptap/core";
 import {AiEditor} from "./AiEditor.ts";
-import {BubbleMenuOptions, BubbleMenuPlugin} from "@tiptap/extension-bubble-menu";
-
+import {BubbleMenuOptions, BubbleMenuPlugin} from "../components/bubbles/BubbleMenuPlugin.ts";
 
 import {LinkBubbleMenu} from "../components/bubbles/LinkBubbleMenu.ts";
 import {AbstractBubbleMenu} from "../components/AbstractBubbleMenu.ts";
@@ -39,6 +38,7 @@ function createBubbleMenu(name: string, options: BubbleMenuOptions) {
                     tippyOptions: this.options.tippyOptions,
                     updateDelay: this.options.updateDelay,
                     shouldShow: this.options.shouldShow,
+                    updateAtMouseUp: this.options.updateAtMouseUp,
                 }),
             ]
         },
@@ -54,6 +54,8 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
     return createBubbleMenu("textSelectionBubble", {
         pluginKey: 'textSelectionBubble',
         element: menuEl,
+        updateDelay: 0,
+        updateAtMouseUp: true,
         tippyOptions: {
             appendTo: aiEditor.container,
             arrow: false,
