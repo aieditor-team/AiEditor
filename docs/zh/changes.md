@@ -1,5 +1,16 @@
 # AiEditor ChangeLog
 
+## v1.1.5 20240926:
+- refactor: optimize textSelectionBubbleMenu only update at the mouseup event
+- refactor: update dependencies
+- fix: fixed the translated buttons would trigger form submission
+
+---
+- 优化：优化文字选中弹出菜单仅在鼠标松开的时候进行弹出
+- 优化：更新相关依赖到最新版本
+- 修复：修复翻译的按钮会触发表单提交的问题
+
+
 ## v1.1.4 20240925:
 - feat: add ClassName extension for custom node class attribute
 - feat: add custom AI icon in bubble menu
