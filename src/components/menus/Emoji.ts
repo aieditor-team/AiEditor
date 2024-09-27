@@ -1,7 +1,7 @@
 import {EditorEvents} from "@tiptap/core";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
-import tippy from "tippy.js";
+import tippy, {Instance} from "tippy.js";
 
 
 const defaultEmojis = ['😀', '😃', '😄', '😁', '😆', '😅', '🤣', '😂', '🙂', '🙃', '😉', '😊', '😇', '🥰', '😍', '🤩', '😘', '😗', '😚', '😙', '🥲', '😋', '😛', '😜', '🤪', '😝'
@@ -16,6 +16,7 @@ export class Emoji extends AbstractMenuButton {
 
 
     emojis: string[] = defaultEmojis
+    tippy?: Instance;
 
 
     constructor() {
@@ -35,7 +36,7 @@ export class Emoji extends AbstractMenuButton {
     connectedCallback() {
         super.connectedCallback();
 
-        tippy(this.querySelector("svg")!, {
+        this.tippy = tippy(this.querySelector("svg")!, {
             content: this.createMenuElement(),
             appendTo: this.closest(".aie-container")!,
             placement: 'bottom',
@@ -66,6 +67,7 @@ export class Emoji extends AbstractMenuButton {
             const target: HTMLDivElement = (e.target as any).closest('.emoji-cell');
             if (target) {
                 this.editor?.commands.insertContent(target.querySelector("span")!.innerHTML)
+                this.tippy?.hide()
             }
         });
 
