@@ -235,7 +235,12 @@ export class BubbleMenuView {
             if (state.selection.from === state.selection.to) {
                 this.hide()
             }
-            return;
+            const {from, to} = state.selection;
+
+            //not select all
+            if (!(from == 1 && to == state.doc.content.size - 1)) {
+                return;
+            }
         }
 
         const hasValidSelection = state.selection.from !== state.selection.to

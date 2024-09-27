@@ -62,12 +62,20 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             placement: 'bottom',
             getReferenceClientRect: (() => {
                 const {view, state} = aiEditor.innerEditor;
-                const {anchor, head, from, to} = state.selection;
+                const {head, from, to} = state.selection;
                 if (from == 1 && to == state.doc.content.size - 1) {
-                    const selectRect = posToDOMRect(view, anchor, head);
+                    const selectRect = posToDOMRect(view, from, to);
+                    const editorRect = view.dom.getBoundingClientRect();
+
+                    const bottom = selectRect.bottom > editorRect.bottom ? editorRect.bottom : selectRect.bottom;
+                    const height = selectRect.height > editorRect.height ? editorRect.height / 2 : selectRect.height;
+                    const top = selectRect.top < editorRect.top ? editorRect.top : selectRect.top;
+
                     return {
                         ...selectRect,
-                        top: selectRect.top - (view.dom.scrollHeight - view.dom.scrollTop) + 65,
+                        top,
+                        height,
+                        bottom,
                     };
                 } else {
                     const headRect = posToDOMRect(view, head, head);
@@ -76,7 +84,6 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
                         height: headRect.height - 10
                     }
                 }
-
             }),
             onCreate(instance: Instance) {
                 menuEl.instance = instance;
