@@ -111,7 +111,7 @@ export declare type AiEditorOptions = {
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
     draggable?: boolean;
-    pasteAsText?: boolean;
+    htmlPasteConfig?: HtmlPasteConfig;
     codeBlock?: {
         languages?: LanguageItem[];
         codeExplainPrompt?: string;
@@ -312,6 +312,12 @@ declare class Header extends HTMLElement implements AiEditorEvent {
     connectedCallback(): void;
     onCreate(event: EditorEvents["create"], options: AiEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
+}
+
+export declare interface HtmlPasteConfig {
+    pasteAsText?: boolean;
+    pasteClean?: boolean;
+    pasteProcessor?: (html: string) => string;
 }
 
 export declare class InnerEditor extends Editor {

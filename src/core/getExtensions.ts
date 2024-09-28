@@ -23,7 +23,7 @@ import {Subscript} from "@tiptap/extension-subscript";
 import {TaskList} from "@tiptap/extension-task-list";
 import {TaskItem} from "@tiptap/extension-task-item";
 import {CodeBlockExt, languages} from "../extensions/CodeBlockExt.ts";
-import {common, createLowlight} from "lowlight";
+import {all, createLowlight} from "lowlight";
 import {VideoExt} from "../extensions/VideoExt.ts";
 import {IFrameExt} from "../extensions/IFrameExt.ts";
 import {getBubbleMenus} from "./getBubbleMenus.ts";
@@ -32,7 +32,7 @@ import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
-import {Markdown} from "tiptap-markdown";
+import {Markdown} from "@codeflex/tiptap-markdown";
 import {ContainerExt} from "../extensions/ContainerExt.ts";
 import {HeadingExt} from "../extensions/HeadingExt.ts";
 import {SaveExt} from "../extensions/SaveExt.ts";
@@ -102,7 +102,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 nested: true,
             }),
             CodeBlockExt.configure({
-                lowlight: createLowlight(common),
+                lowlight: createLowlight(all),
                 defaultLanguage: 'auto',
                 languageClassPrefix: 'language-',
                 languages: options.codeBlock?.languages || languages,

@@ -74,7 +74,7 @@
     "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.11",
     "tippy.js": "^6.3.7",
-    "tiptap-markdown": "^0.8.10"
+    "@codeflex/tiptap-markdown": "^0.8.11"
   },
   "publishConfig": {
     "access": "public",

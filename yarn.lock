@@ -14,6 +14,16 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@codeflex/tiptap-markdown@^0.8.11":
+  version "0.8.11"
+  resolved "https://registry.npmmirror.com/@codeflex/tiptap-markdown/-/tiptap-markdown-0.8.11.tgz"
+  integrity sha512-2R996ijDBRE68jzvUlns7szvAhZSw5qXk+DlWe4odw/YumMv1Szjhf0JgUlp5Xxkigm4i1+RjUeXbmwmJdpmLA==
+  dependencies:
+    "@types/markdown-it" "^13.0.7"
+    markdown-it "^14.1.0"
+    markdown-it-task-lists "^2.1.1"
+    prosemirror-markdown "^1.13.0"
+
 "@esbuild/darwin-x64@0.21.5":
   version "0.21.5"
   resolved "https://registry.npmmirror.com/@esbuild/darwin-x64/-/darwin-x64-0.21.5.tgz"
@@ -156,7 +166,7 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
-"@tiptap/core@^2.0.3", "@tiptap/core@^2.7.0", "@tiptap/core@^2.7.3":
+"@tiptap/core@^2.6.6", "@tiptap/core@^2.7.0", "@tiptap/core@^2.7.3":
   version "2.7.3"
   resolved "https://registry.npmmirror.com/@tiptap/core/-/core-2.7.3.tgz"
   integrity sha512-6b62isitaWRX6cR6V5x4O9+1lgCpoTNRrSegWwBrE1OGDHcGwdTZuzdNIbjLZ9k3qs4tXl49WKXHIXK44RDOIw==
@@ -1102,7 +1112,7 @@ prosemirror-keymap@^1.0.0, prosemirror-keymap@^1.1.2, prosemirror-keymap@^1.2.2:
     prosemirror-state "^1.0.0"
     w3c-keyname "^2.2.0"
 
-prosemirror-markdown@^1.11.1, prosemirror-markdown@^1.13.0:
+prosemirror-markdown@^1.13.0:
   version "1.13.0"
   resolved "https://mirrors.huaweicloud.com/repository/npm/prosemirror-markdown/-/prosemirror-markdown-1.13.0.tgz"
   integrity sha512-UziddX3ZYSYibgx8042hfGKmukq5Aljp2qoBiJRejD/8MH70siQNz5RB1TrdTPheqLMy4aCe4GYNF10/3lQS5g==
@@ -1337,16 +1347,6 @@ tippy.js@^6.3.7:
   integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
   dependencies:
     "@popperjs/core" "^2.9.0"
-
-tiptap-markdown@^0.8.10:
-  version "0.8.10"
-  resolved "https://registry.npmmirror.com/tiptap-markdown/-/tiptap-markdown-0.8.10.tgz"
-  integrity sha512-iDVkR2BjAqkTDtFX0h94yVvE2AihCXlF0Q7RIXSJPRSR5I0PA1TMuAg6FHFpmqTn4tPxJ0by0CK7PUMlnFLGEQ==
-  dependencies:
-    "@types/markdown-it" "^13.0.7"
-    markdown-it "^14.1.0"
-    markdown-it-task-lists "^2.1.1"
-    prosemirror-markdown "^1.11.1"
 
 tslib@^2.3.0:
   version "2.6.2"
