@@ -33,17 +33,33 @@ export const PasteExt = Extension.create({
                             }
                         } else if (html) {
                             const {options} = (this.editor as InnerEditor).aiEditor;
-                            if (options.pasteAsText) {
-                                html = removeHtmlTags(html, ['a', 'span', 'strong', 'b', 'em', 'i', 'u']);
-                                const parser = new DOMParser();
-                                const document = parser.parseFromString(html, 'text/html');
-                                const workspace = document.documentElement.querySelector('body');
-                                if (workspace) {
-                                    workspace?.querySelectorAll('*').forEach(el => {
-                                        el.removeAttribute("style");
-                                    })
-                                    const innerHTML = workspace?.innerHTML;
-                                    this.editor.commands.insertContent(innerHTML);
+                            if (options.htmlPasteConfig) {
+                                //pasteAsText
+                                if (options.htmlPasteConfig.pasteAsText) {
+                                    const c = document.createElement("div");
+                                    c.innerHTML = html;
+                                    html = c.textContent!;
+                                }
+                                //pasteClean
+                                else if (options.htmlPasteConfig.pasteClean) {
+                                    html = removeHtmlTags(html, ['a', 'span', 'strong', 'b', 'em', 'i', 'u']);
+                                    const parser = new DOMParser();
+                                    const document = parser.parseFromString(html, 'text/html');
+                                    const workspace = document.documentElement.querySelector('body');
+                                    if (workspace) {
+                                        workspace?.querySelectorAll('*').forEach(el => {
+                                            el.removeAttribute("style");
+                                        })
+                                        html = workspace?.innerHTML;
+                                    }
+                                }
+                                //paste with custom processor
+                                if (options.htmlPasteConfig.pasteProcessor) {
+                                    html = options.htmlPasteConfig.pasteProcessor(html);
+                                }
+
+                                if (html) {
+                                    this.editor.commands.insertContent(html);
                                     return true;
                                 }
                             }

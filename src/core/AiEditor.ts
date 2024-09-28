@@ -69,6 +69,12 @@ export interface MenuGroup {
     toolbarKeys: (string | CustomMenu | MenuGroup)[],
 }
 
+export interface HtmlPasteConfig {
+    pasteAsText?: boolean,
+    pasteClean?: boolean
+    pasteProcessor?: (html: string) => string
+}
+
 
 export type AiEditorOptions = {
     element: string | Element,
@@ -92,7 +98,7 @@ export type AiEditorOptions = {
     toolbarKeys?: (string | CustomMenu | MenuGroup)[],
     toolbarExcludeKeys?: DefaultToolbarKey[],
     draggable?: boolean,
-    pasteAsText?: boolean,
+    htmlPasteConfig?: HtmlPasteConfig,
     codeBlock?: {
         languages?: LanguageItem[],
         codeExplainPrompt?: string,
