@@ -32,10 +32,9 @@ const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) 
         const {selection, doc} = holder.editor!.state
         const selectedText = doc.textBetween(selection.from, selection.to);
         let prompt = holder.editor?.aiEditor.options.ai?.translate?.prompt?.(lang, selectedText)
-            || `请帮我把以下内容翻译为: ${lang}，并返回翻译结果。注意：只需要翻译的结果，不需要解释！您需要翻译的内容是：\n${selectedText}`;
+            || `你是一个${lang}翻译专家，精通多个国家的语言，请帮我把以下 <content> 标签里内容翻译为: ${lang}，并返回翻译后结果。您需要翻译的内容是：\n<content>${selectedText}</content>`;
         const aiModel = AiModelManager.get("auto");
         if (aiModel) {
-            let content = "";
             aiModel.chat("", prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;
@@ -44,8 +43,7 @@ const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) 
                     holder.aiClient = undefined;
                 },
                 onMessage(message) {
-                    content += message.content;
-                    textarea.value = content;
+                    textarea.value += message.content;
                     textarea.style.height = `${textarea.scrollHeight}px`;
                     textarea.scrollTop = textarea.scrollHeight;
                 }
@@ -62,9 +60,12 @@ const createTranslateResultPanel = (holder: Holder) => {
     resultPanel.innerHTML = `
     <textarea rows="5" readonly></textarea>
     <div>
-     <button type="button" id="cancel">${t("ai-cancel")}</button>
-     <button type="button" id="append">${t("ai-append")}</button>
-     <button type="button" id="replace">${t("ai-replace")}</button>
+     <button type="button" id="cancel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z" fill="currentColor"></path></svg> 
+        ${t("ai-cancel")}</button>
+     <button type="button" id="append"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 18H12V20H2V18ZM2 11H22V13H2V11ZM2 4H22V6H2V4ZM18 18V15H20V18H23V20H20V23H18V20H15V18H18Z" fill="currentColor"></path></svg> 
+${t("ai-append")}</button>
+     <button type="button" id="replace"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.071 4.92902L11.4852 6.34323L6.82834 11.0001L16.0002 11.0002L16.0002 13.0002L6.82839 13.0001L11.4852 17.6569L10.071 19.0712L2.99994 12.0001L10.071 4.92902ZM18.0001 19V5.00003H20.0001V19H18.0001Z" fill="currentColor"></path></svg> 
+       ${t("ai-replace")}</button>
 </div>
     `
 
@@ -118,6 +119,7 @@ const createTranslatePanelElement = (holder: Holder, menuItems: TranslateMenuIte
                 return
             }
             const textarea = instance.popper.querySelector("textarea");
+            textarea!.value = "";
             holder.translatePanelInstance?.hide()
             startChat(holder, lang!, textarea!);
         },
