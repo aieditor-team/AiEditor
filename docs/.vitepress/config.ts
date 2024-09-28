@@ -99,6 +99,7 @@ export default defineConfig({
                             {text: '自定义布局', link: '/zh/config/layout'},
                             {text: '快捷键', link: '/zh/config/shortcut'},
                             {text: '浮动菜单', link: '/zh/config/bubbleMenu'},
+                            {text: '粘贴配置', link: '/zh/config/paste'},
                         ]
                     },
                     {
@@ -184,6 +185,7 @@ export default defineConfig({
                     {text: 'Custom Layout', link: '/config/layout'},
                     {text: 'Shortcut key', link: '/config/shortcut'},
                     {text: 'Bubble Menu', link: '/config/bubbleMenu'},
+                    {text: 'Paste Config', link: '/config/paste'},
                 ]
             },
             {

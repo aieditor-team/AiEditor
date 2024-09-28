@@ -50,7 +50,14 @@ window.aiEditor = new AiEditor({
             {name: 'CMake', value: 'cmake', alias: ['cmake.in']},
         ]
     },
-    emoji:{
+    // htmlPasteConfig: {
+    //     pasteAsText: false,
+    //     pasteClean: false,
+    //     pasteProcessor: (html) => {
+    //         return html;
+    //     }
+    // },
+    emoji: {
         // values:['😀', '😃', '😄', '😁', '😆', '😅',],
     },
     // lineHeight:{
