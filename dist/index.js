@@ -72401,33 +72401,32 @@ const za = {
     t.aiClient.stop();
   else {
     const { selection: s, doc: l } = t.editor.state, c = l.textBetween(s.from, s.to);
-    let u = ((a = (o = (i = (r = t.editor) == null ? void 0 : r.aiEditor.options.ai) == null ? void 0 : i.translate) == null ? void 0 : o.prompt) == null ? void 0 : a.call(o, e, c)) || `请帮我把以下内容翻译为: ${e}，并返回翻译结果。注意：只需要翻译的结果，不需要解释！您需要翻译的内容是：
-${c}`;
+    let u = ((a = (o = (i = (r = t.editor) == null ? void 0 : r.aiEditor.options.ai) == null ? void 0 : i.translate) == null ? void 0 : o.prompt) == null ? void 0 : a.call(o, e, c)) || `你是一个${e}翻译专家，精通多个国家的语言，请帮我把以下 <content> 标签里内容翻译为: ${e}，并返回翻译后结果。您需要翻译的内容是：
+<content>${c}</content>`;
     const d = Hn.get("auto");
-    if (d) {
-      let p = "";
-      d.chat("", u, {
-        onStart(_) {
-          t.aiClient = _;
-        },
-        onStop() {
-          t.aiClient = void 0;
-        },
-        onMessage(_) {
-          p += _.content, n.value = p, n.style.height = `${n.scrollHeight}px`, n.scrollTop = n.scrollHeight;
-        }
-      });
-    } else
-      console.error("AI model name config error.");
+    d ? d.chat("", u, {
+      onStart(p) {
+        t.aiClient = p;
+      },
+      onStop() {
+        t.aiClient = void 0;
+      },
+      onMessage(p) {
+        n.value += p.content, n.style.height = `${n.scrollHeight}px`, n.scrollTop = n.scrollHeight;
+      }
+    }) : console.error("AI model name config error.");
   }
 }, b2 = (t) => {
   const e = document.createElement("div");
   return e.classList.add("aie-translate-result-panel"), e.innerHTML = `
     <textarea rows="5" readonly></textarea>
     <div>
-     <button type="button" id="cancel">${ue("ai-cancel")}</button>
-     <button type="button" id="append">${ue("ai-append")}</button>
-     <button type="button" id="replace">${ue("ai-replace")}</button>
+     <button type="button" id="cancel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 4V6H15V4H9Z" fill="currentColor"></path></svg> 
+        ${ue("ai-cancel")}</button>
+     <button type="button" id="append"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 18H12V20H2V18ZM2 11H22V13H2V11ZM2 4H22V6H2V4ZM18 18V15H20V18H23V20H20V23H18V20H15V18H18Z" fill="currentColor"></path></svg> 
+${ue("ai-append")}</button>
+     <button type="button" id="replace"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.071 4.92902L11.4852 6.34323L6.82834 11.0001L16.0002 11.0002L16.0002 13.0002L6.82839 13.0001L11.4852 17.6569L10.071 19.0712L2.99994 12.0001L10.071 4.92902ZM18.0001 19V5.00003H20.0001V19H18.0001Z" fill="currentColor"></path></svg> 
+       ${ue("ai-replace")}</button>
 </div>
     `, e.querySelector("#cancel").addEventListener("click", () => {
     var n, r;
@@ -72468,7 +72467,7 @@ ${c}`;
         return;
       }
       const s = i.popper.querySelector("textarea");
-      (l = t.translatePanelInstance) == null || l.hide(), S2(t, a, s);
+      s.value = "", (l = t.translatePanelInstance) == null || l.hide(), S2(t, a, s);
     },
     onUntrigger: (i) => {
       i.enable();
@@ -78666,7 +78665,7 @@ class uF extends eC {
     return this.parseHtml(r);
   }
 }
-class AB {
+class A4 {
   constructor(e) {
     L(this, "customLayout", !1);
     L(this, "innerEditor");
@@ -78859,7 +78858,7 @@ class AB {
   }
 }
 export {
-  AB as AiEditor,
+  A4 as AiEditor,
   Hn as AiModelManager,
   iv as CustomAiModel,
   uF as InnerEditor,

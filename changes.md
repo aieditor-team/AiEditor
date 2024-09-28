@@ -1,5 +1,19 @@
 # AiEditor ChangeLog
 
+## v1.1.6 20240928:
+- feat: Hide the emoji panel when clicking an emoji.
+- feat: add html paste config and close https://github.com/aieditor-team/AiEditor/issues/92
+- refactor: add icons in Translate action buttons
+- fix: cat not show bubble menu on Cmd+A text selection command, close https://github.com/aieditor-team/AiEditor/issues/91
+
+---
+- 优化：当点击 emoji 表情的时候，隐藏 emoji 面板
+- 优化：Html 粘贴添加更多的配置功能
+- 优化：为翻译面板的操作按钮添加统一的图标
+- 修复：通过快捷键 CMD+A 全选时，无法弹出选择操作浮动菜单的问题
+
+
+
 ## v1.1.5 20240926:
 - refactor: optimize textSelectionBubbleMenu only update at the mouseup event
 - refactor: update dependencies
