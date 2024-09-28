@@ -149,7 +149,7 @@ export const Translate = {
             content: createTranslatePanelElement(holder, translateMenuItems),
             appendTo: innerEditor!.view.dom.closest(".aie-container")!,
             placement: "bottom",
-            // trigger: 'click',
+            trigger: 'click',
             interactive: true,
             arrow: false,
         })
