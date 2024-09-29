@@ -4,6 +4,7 @@ import {InnerEditor} from "../../../../core/AiEditor.ts";
 import {AiModelManager} from "../../../../ai/AiModelManager.ts";
 import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
+import {SmoothAppender} from "../../../../util/SmoothAppender.ts";
 
 
 type Holder = {
@@ -35,6 +36,7 @@ const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) 
             || `你是一个${lang}翻译专家，精通多个国家的语言，请帮我把以下 <content> 标签里内容翻译为: ${lang}，并返回翻译后结果。您需要翻译的内容是：\n<content>${selectedText}</content>`;
         const aiModel = AiModelManager.get("auto");
         if (aiModel) {
+            const smoothAppender = new SmoothAppender(30, textarea)
             aiModel.chat("", prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;
@@ -43,9 +45,7 @@ const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) 
                     holder.aiClient = undefined;
                 },
                 onMessage(message) {
-                    textarea.value += message.content;
-                    textarea.style.height = `${textarea.scrollHeight}px`;
-                    textarea.scrollTop = textarea.scrollHeight;
+                    smoothAppender.appendText(message.content);
                 }
             })
         } else {

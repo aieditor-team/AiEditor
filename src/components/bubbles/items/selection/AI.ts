@@ -6,6 +6,7 @@ import {Svgs} from "../../../../commons/Svgs.ts";
 import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
 import {posToDOMRect} from "@tiptap/core";
+import {SmoothAppender} from "../../../../util/SmoothAppender.ts";
 
 
 type Holder = {
@@ -61,6 +62,7 @@ const startChat = (holder: Holder, container: HTMLDivElement, prompt: string) =>
         const options = holder.editor!.aiEditor.options;
         const aiModel = AiModelManager.get(options.ai?.bubblePanelModel!);
         if (aiModel) {
+            const smoothAppender = new SmoothAppender(30, textarea)
             aiModel.chat(selectedText, prompt, {
                 onStart(aiClient) {
                     holder.aiClient = aiClient;
@@ -77,9 +79,7 @@ const startChat = (holder: Holder, container: HTMLDivElement, prompt: string) =>
                     container.querySelector<HTMLElement>(".aie-ai-panel-actions")!.style.display = "none";
                 },
                 onMessage(message) {
-                    textarea!.value = textarea?.value + message.content;
-                    textarea.style.height = `${textarea.scrollHeight}px`;
-                    textarea.scrollTop = textarea.scrollHeight;
+                    smoothAppender.appendText(message.content);
                 }
             })
         } else {
