@@ -346,12 +346,14 @@ export class AiEditor {
         if (transEvent.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
+        
         if (transEvent.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey) {
-            const html = this.innerEditor.getHTML();
+            const html = transEvent.editor.getHTML();
             if ("<p></p>" === html || "" === html) {
                 localStorage.removeItem(this.options.contentRetentionKey);
             } else {
-                localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(this.innerEditor.getJSON()))
+                const json = transEvent.editor.getJSON();
+                localStorage.setItem(this.options.contentRetentionKey, JSON.stringify(json))
             }
         }
     }
