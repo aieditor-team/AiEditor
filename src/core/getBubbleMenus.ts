@@ -111,7 +111,7 @@ const createLinkBubbleMenu = (aiEditor: AiEditor) => {
     const menuEl = document.createElement("aie-bubble-link") as AbstractBubbleMenu;
     aiEditor.eventComponents.push(menuEl);
     return createBubbleMenu("linkBubble", {
-        pluginKey: 'textSelectionBubble',
+        pluginKey: 'linkBubble',
         element: menuEl,
         tippyOptions: {
             appendTo: aiEditor.container,
