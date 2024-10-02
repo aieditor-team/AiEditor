@@ -6,7 +6,7 @@ import {Slice} from '@tiptap/pm/model';
 import {removeHtmlTags} from '../util/removeHtmlTag.ts';
 
 export const PasteExt = Extension.create({
-    name: 'paste',
+    name: 'pasteExt',
     priority: 1,
 
     addProseMirrorPlugins() {
