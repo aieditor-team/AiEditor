@@ -232,13 +232,23 @@ export class BubbleMenuView {
         const {state} = view
 
         if (this.updateInMouseUp) {
-            if (state.selection.from === state.selection.to) {
+            if (state.selection.empty) {
                 this.hide()
+                return;
             }
-            const {from, to} = state.selection;
 
-            //not select all
-            if (!(from == 1 && to == state.doc.content.size - 1)) {
+            const {from, to, head,} = state.selection;
+            const isSelectAll = (from == 1 && to == state.doc.content.size - 1);
+            const isSelectToStart = head == 1;
+            const isSelectToEnd = head == state.doc.content.size - 1;
+
+            if (!isSelectAll && !isSelectToStart && !isSelectToEnd) {
+
+                const selectionChanged = !oldState?.selection.eq(view.state.selection)
+                if (this.tippy?.state.isVisible && selectionChanged) {
+                    this.hide();
+                }
+
                 return;
             }
         }
