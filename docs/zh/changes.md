@@ -1,5 +1,22 @@
 # AiEditor ChangeLog
 
+
+## v1.1.7 20241002:
+- feat: add SmoothAppender for textarea
+- refactor: optimize AiEditor.onTransaction() method
+- refactor: rename "PasteExt" extension Name to adapter v2.8.0
+- refactor: optimize BubbleMenuPlugin.ts
+- refactor: update linkBubbleMenu pluginKey's name
+
+---
+- 新增: 新增 SmoothAppender 使得 AI 输入更加湿滑
+- 优化: 优化 AiEditor.onTransaction() 的相关代码
+- 优化: 重命名 "PasteExt" 插件的名称以适配 v2.8.0
+- 优化: 优化 BubbleMenuPlugin.ts 的核心逻辑
+- 优化: 重命名 linkBubbleMenu 插件的名称
+
+
+
 ## v1.1.6 20240928:
 - feat: Hide the emoji panel when clicking an emoji.
 - feat: add html paste config and close https://github.com/aieditor-team/AiEditor/issues/92
