@@ -74,7 +74,7 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 - [x] 团队协作（多个人同时编辑一份文档）
 - [x] 批注功能，类似 word 选择一段文字进行批注评论的功能
 
-商业 Pro 版演示：http://aieditor-pro.jpress.cn/
+商业 Pro 版演示：http://pro.aieditor.com.cn/
 
 ## 开发中...
 

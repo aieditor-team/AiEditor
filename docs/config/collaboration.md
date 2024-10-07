@@ -4,7 +4,7 @@ Multi-person collaboration means that multiple users **simultaneously** edit the
 
 At the same time, you can see other users' nicknames, focus location and other information.
 
-> PS: This feature is only available in the Pro version , not in the open source version. Pro version preview address: http://aieditor-pro.jpress.cn
+> PS: This feature is only available in the Pro version , not in the open source version. Pro version preview address: http://pro.aieditor.com.cn
 
 ## How to use
 

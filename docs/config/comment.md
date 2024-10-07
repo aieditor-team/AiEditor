@@ -4,7 +4,7 @@ The annotate function is similar to the annotate function of Word, you can selec
 
 ![](../assets/image/comment-en.png)
 
->PS: This feature is only available in the Pro version (commercial version) and not in the open source version. Pro version preview address: http://aieditor-pro.jpress.cn
+>PS: This feature is only available in the Pro version (commercial version) and not in the open source version. Pro version preview address: http://pro.aieditor.com.cn
 ## How to Use
 
 ```typescript

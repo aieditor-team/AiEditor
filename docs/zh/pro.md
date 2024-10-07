@@ -2,7 +2,7 @@
 
 很高兴，我们终于推出了 AiEditor Pro 商业 Pro 版了！
 
-> 版预览地址：http://aieditor-pro.jpress.cn
+> 版预览地址：http://pro.aieditor.com.cn
 
 AiEditor Pro 的推出，有几个重大的意义：
 

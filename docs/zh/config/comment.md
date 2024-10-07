@@ -3,7 +3,7 @@
 
 ![](../../assets/image/comment1.png)
 
-> PS：此功能在 Pro 版本才有，开源版没有这个功能。 Pro 版预览地址：http://aieditor-pro.jpress.cn 
+> PS：此功能在 Pro 版本才有，开源版没有这个功能。 Pro 版预览地址：http://pro.aieditor.com.cn 
 
 ## 使用方法
 
