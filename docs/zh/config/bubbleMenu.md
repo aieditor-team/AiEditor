@@ -53,3 +53,27 @@ new AiEditor({
 - **title**:  当鼠标移动上去显示的标题，支持国际化配置。国际化配置参考 [国际化](./i18n.md) 章节。
 - **icon**: 菜单项的 icon 或者 html 内容。 icon 建议使用 https://remixicon.com 下的图标，已和 AIEditor 保持一致。
 - **onClick**: 监听点击事件
+
+## AI 浮动菜单 💪
+
+AI 浮动菜单只有在 `商业Pro版` 本中进行支持，点击配置的浮动菜单后，直接弹出 AI 对话内容。
+
+其配置如下：
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    placeholder: "点击输入内容...",
+    content: 'AiEditor 是一个面向 AI 的开源富文本编辑器。 ',
+    textSelectionBubbleMenu: {
+        enable: true,
+        items: ["ai", "Bold", "Italic", {
+            id:"translate",
+            icon:"<svg ....></svg>   ",
+            type:"ai",
+            prompt:"帮我翻译以下内容为英文： {content} "
+        }],
+    },
+})
+```
+> 注意：以上配置中，`type: "ai"` 为固定值，不能修改为其他内容，否则会和 `自定义浮动菜单` 冲突。
