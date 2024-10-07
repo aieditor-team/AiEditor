@@ -33,7 +33,7 @@ Gitee GVP 项目（最有价值开源项目）https://gitee.com/aieditor-team/ai
 | 开源协议      | <Unhappy /> GPL，具有传染性  | <Check />  LGPL，通过 NPM 安装不具有传染性                |
 | 开箱即用      | <Unhappy /> 使用复杂麻烦     | <Check />  通过 `npm install aieditor` 即可使用      |
 | 框架支持      | <Unhappy /> 特定少量框架     | <Check />  AIEditor 基于 Web Component 开发，支持任意框架 |
-| 服务端私有化部署  | <Unhappy /> 不支持        | <Check />  开源版和商业版都支持私有化部署，保证数据和隐私安全           |
+| 服务端私有化部署  | <Unhappy /> 不支持        | <Check />  开源版和商业 Pro 版都支持私有化部署，保证数据和隐私安全           |
 | 大模型类型     | <Unhappy />  少量支持      | <Check /> 支持接入市面上任意大模型，包括私有大模型                 |
 | 私有 Apikey | <Unhappy />  不支持       | <Check /> 支持，保证数据隐私安全，把控自己的消费                  |
 | 用户数限制     | <Unhappy />  按用户数量收费   | <Check /> 不限制用户数量                              |
@@ -209,7 +209,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 # 准备好了吗？
 
 <div class="subtitle">
-接下来，无论你使用开源版，还是商业版，都会收获惊喜!
+接下来，无论你使用开源版，还是商业 Pro 版，都会收获惊喜!
 </div>
 
 <div style="display: flex;justify-content: center">
@@ -227,7 +227,7 @@ AI 帮你检查拼写与语法错误；将 10 个字扩写成 200 字；也能�
 
 
 <div class="version-list">
-<span style="font-weight:700;">商业版</span><br />
+<span style="font-weight:700;">商业 Pro 版</span><br />
 <a href="/zh/contact-us.html" style="background: #1b1b1f;color: #fff;padding: 10px 50px;border-radius: 5px;font-weight: bold;font-size: 14px;margin: 20px 0 40px 0;text-decoration:none;display:inline-block">联系我们</a>
 <div style="font-size: 14px;color:#666;">
 价格超低<br />

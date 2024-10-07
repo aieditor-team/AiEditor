@@ -35,7 +35,7 @@ layout: home
 
 <div style="margin: 30px 0 40px;color: #999">
 
-当前版本为开源版，商业版演示请联系 AiEditor 联合创始人 Jenny 获取
+当前版本为开源版，商业 Pro 版演示请联系 AiEditor 联合创始人 Jenny 获取
 
 </div>
 

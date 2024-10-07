@@ -11,7 +11,7 @@ layout: home
 <div class="feature" style="margin-top: 80px">
 
 # Commercial license
-AiEditor Business Version has more powerful and practical features,
+AiEditor Pro Version has more powerful and practical features,
 Help you build a professional product.<br />
 In addition, It provide you with more professional, higher level of service.<br />
 Help you solve problems and your product get on track quickly.
@@ -23,7 +23,7 @@ Help you solve problems and your product get on track quickly.
 
 
 
-|                                                                                                                                                                                                                                                        |    Open Source Version    |  Licensed Version  |  Business Version  |
+|                                                                                                                                                                                                                                                        |    Open Source Version    |  Licensed Version  |  Pro Version  |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------:|:------------------:|:------------------:|
 | Price                                                                                                                                                                                                                                                  |    Free     |        2000 $      |       5000 $       |
 | **License**                                                                                                                                                                                                                                            |
