@@ -10,7 +10,7 @@ export const removeHtmlTags = (html: string, tagNames: string[]): string => {
     return html
 }
 
-export const keepHtmlTagsOnly = (html: string, keepTagNames: string[], removeAttrs: boolean): string => {
+export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boolean): string => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
 
@@ -18,7 +18,7 @@ export const keepHtmlTagsOnly = (html: string, keepTagNames: string[], removeAtt
 
         if (node.nodeType === Node.ELEMENT_NODE) {
             const element = node as HTMLElement;
-            if (keepTagNames.includes(element.tagName.toLowerCase())) {
+            if (preserveTags.includes(element.tagName.toLowerCase())) {
                 const textContent = element.textContent?.trim() || "";
                 if (!textContent) {
                     return null;
