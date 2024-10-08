@@ -50,7 +50,7 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 
 ## 在线演示
 
-- 现代风格（类腾讯文档）: http://aieditor1.jpress.cn
+- 现代风格（类腾讯文档）: http://doc.aieditor.com.cn
 - 经典/传统风格: https://aieditor.dev/demo.html
 
 

@@ -43,7 +43,7 @@ AIEditorはWebコンポーネントに基づいて開発されており、任意
 ## オンラインデモ
 
 - クラシック/トラディショナルスタイル: https://aieditor.dev/demo.html
-- モダンスタイル: http://aieditor1.jpress.cn
+- モダンスタイル: http://doc.aieditor.com.cn
 
 
 ## 完了済み

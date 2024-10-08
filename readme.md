@@ -45,7 +45,7 @@ please refer to here: https://aieditor.dev/versions.html
 ## Online Demo
 
 - Classic/traditional style: https://aieditor.dev/demo.html
-- Modern style: http://aieditor1.jpress.cn
+- Modern style: http://doc.aieditor.com.cn
 
 
 ## Completed

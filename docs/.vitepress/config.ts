@@ -56,7 +56,7 @@ export default defineConfig({
                     {
                         text: '在线 Demo', items: [
                             {text: '经典/传统风格', link: 'zh/demo'},
-                            {text: '类腾讯文档风格', link: 'http://aieditor1.jpress.cn'},
+                            {text: '类腾讯文档风格', link: 'http://doc.aieditor.com.cn'},
                             {text: '商业版演示', link: 'http://pro.aieditor.com.cn'},
                         ]
                     },
@@ -144,7 +144,7 @@ export default defineConfig({
             {
                 text: 'Demos', items: [
                     {text: 'Classic Style', link: '/demo'},
-                    {text: 'Modern style', link: 'http://aieditor1.jpress.cn'},
+                    {text: 'Modern style', link: 'http://doc.aieditor.com.cn'},
                     {text: 'AIEditor Pro', link: 'http://pro.aieditor.com.cn'},
                 ]
             },

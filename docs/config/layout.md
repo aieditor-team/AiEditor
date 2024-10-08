@@ -36,7 +36,7 @@ By default, when AiEditor is initialized, it will create the editor's head menu,
 ## Custom layouts
 
 
-In some scenarios, we may want to customize the entire UI layout, such as adopting a Tencent Docs-style layout (demo link: http://aieditor1.jpress.cn), or other customized layout forms. We can achieve this using AiEditor's customizable UI features.
+In some scenarios, we may want to customize the entire UI layout, such as adopting a Tencent Docs-style layout (demo link: http://doc.aieditor.com.cn), or other customized layout forms. We can achieve this using AiEditor's customizable UI features.
 
 
 
