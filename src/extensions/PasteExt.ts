@@ -3,7 +3,7 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
-import {removeHtmlTags} from '../util/removeHtmlTag.ts';
+import {keepHtmlTagsOnly, removeHtmlTags} from '../util/removeHtmlTag.ts';
 
 export const PasteExt = Extension.create({
     name: 'pasteExt',
@@ -36,9 +36,7 @@ export const PasteExt = Extension.create({
                             if (options.htmlPasteConfig) {
                                 //pasteAsText
                                 if (options.htmlPasteConfig.pasteAsText) {
-                                    const c = document.createElement("div");
-                                    c.innerHTML = html;
-                                    html = c.textContent!;
+                                    html = keepHtmlTagsOnly(html, ['p'], true)
                                 }
                                 //pasteClean
                                 else if (options.htmlPasteConfig.pasteClean) {
