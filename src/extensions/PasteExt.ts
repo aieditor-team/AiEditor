@@ -3,11 +3,11 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
-import {cleanHtml, removeHtmlTags} from '../util/htmlUtil.ts';
+import {cleanHtml, isExcelDocument, removeHtmlTags} from "../util/htmlUtil.ts";
 
 export const PasteExt = Extension.create({
     name: 'pasteExt',
-    priority: 1,
+    priority: 1000,
 
     addProseMirrorPlugins() {
         return [
@@ -59,6 +59,20 @@ export const PasteExt = Extension.create({
                                 if (html) {
                                     this.editor.commands.insertContent(html);
                                     return true;
+                                }
+                            }
+                            // process excel paste
+                            else if (text && html) {
+                                const parser = new DOMParser();
+                                const document = parser.parseFromString(html, 'text/html');
+                                const table = document.querySelector("table");
+                                if (table && isExcelDocument(document)) {
+                                    this.editor.commands.insertContent(table!.outerHTML, {
+                                        parseOptions: {
+                                            preserveWhitespace: false,
+                                        }
+                                    });
+                                    return true
                                 }
                             }
                         }
