@@ -77,6 +77,7 @@ const startChat = (holder: Holder, container: HTMLDivElement, prompt: string) =>
                     container.querySelector<HTMLElement>(".aie-ai-panel-footer")!.style.display = "block";
                     container.querySelector<HTMLElement>(".loader")!.style.display = "none";
                     container.querySelector<HTMLElement>(".aie-ai-panel-actions")!.style.display = "none";
+                    smoothAppender.finished();
                 },
                 onMessage(message) {
                     smoothAppender.appendText(message.content);

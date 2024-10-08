@@ -1,6 +1,7 @@
 export class SmoothAppender {
     private delay: number;
     private appending: boolean = false;
+    private isFinished: boolean = false;
     private textarea: HTMLTextAreaElement;
     private textQueue: string[] = [];
 
@@ -15,8 +16,21 @@ export class SmoothAppender {
         this.processQueue()
     }
 
+    finished() {
+        this.isFinished = true;
+    }
+
     private processQueue() {
         if (this.appending || this.textQueue.length === 0) {
+            return;
+        }
+
+        if (this.isFinished) {
+            for (let string of this.textQueue) {
+                this.textarea.value += string;
+                this.textarea.style.height = `${this.textarea.scrollHeight}px`;
+                this.textarea.scrollTop = this.textarea.scrollHeight;
+            }
             return;
         }
 

@@ -43,6 +43,7 @@ const startChat = (holder: Holder, lang: string, textarea: HTMLTextAreaElement) 
                 },
                 onStop() {
                     holder.aiClient = undefined;
+                    smoothAppender.finished();
                 },
                 onMessage(message) {
                     smoothAppender.appendText(message.content);
