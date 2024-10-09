@@ -212,7 +212,12 @@ export const getBubbleMenus = (aiEditor: AiEditor): Extensions => {
     }
 
     bubbleMenus.push(createLinkBubbleMenu(aiEditor))
-    bubbleMenus.push(createImageBubbleMenu(aiEditor))
+
+    const imageBubbleMenuEnable = !(aiEditor.options.image?.bubbleMenuEnable === false)
+    if (imageBubbleMenuEnable) {
+        bubbleMenus.push(createImageBubbleMenu(aiEditor))
+    }
+
     bubbleMenus.push(createTableBubbleMenu(aiEditor))
     return bubbleMenus;
 }

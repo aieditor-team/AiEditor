@@ -125,6 +125,7 @@ export type AiEditorOptions = {
         uploaderEvent?: UploaderEvent,
         defaultSize?: number,
         allowBase64?: boolean,
+        bubbleMenuEnable?: boolean,
         bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
     video?: {
@@ -346,7 +347,7 @@ export class AiEditor {
         if (transEvent.transaction.docChanged && this.options.onChange) {
             this.options.onChange(this);
         }
-        
+
         if (transEvent.transaction.docChanged && this.options.contentRetention && this.options.contentRetentionKey) {
             const html = transEvent.editor.getHTML();
             if ("<p></p>" === html || "" === html) {
