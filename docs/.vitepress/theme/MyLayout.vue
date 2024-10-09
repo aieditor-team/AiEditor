@@ -69,5 +69,13 @@ const {lang} = useData()
     <!--      </div>-->
     <!--    </template>-->
 
+
+    <template #layout-bottom>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2PD2F7J"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    </template>
+
   </Layout>
 </template>
