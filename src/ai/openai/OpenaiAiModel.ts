@@ -20,6 +20,7 @@ export class OpenaiAiModel extends AiModel {
 
     createAiClient(url: string, listener: AiMessageListener): AiClient {
         const config = this.aiModelConfig as OpenaiModelConfig;
+        let prevMessageBody = "";
         return new SseClient({
             url,
             method: "post",
@@ -31,7 +32,17 @@ export class OpenaiAiModel extends AiModel {
             onStart: listener.onStart,
             onStop: listener.onStop,
             onMessage: (bodyString: string) => {
-                const message = JSON.parse(bodyString) as any;
+                let message = null;
+                try {
+                    if (prevMessageBody) {
+                        bodyString = prevMessageBody + bodyString;
+                    }
+                    message = JSON.parse(bodyString);
+                    prevMessageBody = "";
+                } catch (err) {
+                    prevMessageBody = prevMessageBody + bodyString.trim();
+                    return;
+                }
                 listener.onMessage({
                     status: message.choices[0].finish_reason === "stop" ? 2 : 1,
                     role: "assistant",
