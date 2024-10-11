@@ -233,7 +233,7 @@
    margin: 10px;
    font-weight: bold;
    font-size: 18px;
-   
+
 }
 
 
@@ -282,7 +282,7 @@
 
 
 .feature-content{
-  width: 70%;    
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -308,7 +308,7 @@ color:#666;
 .excellent-list{
   width: 46%;
   background: #f8f9fa;
-  margin: 2%; 
+  margin: 2%;
   padding:30px;
   border-radius: 15px;
   margin-right: 15px;
@@ -356,7 +356,7 @@ color:#666;
   width: 100vw;
 }
 .versions-qa-list{
-  width: 50%; 
+  width: 50%;
   margin-left: 15px
 }
 .demo-content{
@@ -369,7 +369,7 @@ color:#666;
   margin: 0 3px;
 }
 
-@media only screen and (max-width: 750px){ 
+@media only screen and (max-width: 750px){
 .feature-list{
   display:flex;
   flex-direction: column;
@@ -381,7 +381,7 @@ color:#666;
   width:96%;
   padding:0 2%;
   order:2;
- 
+
 }
 
 .feature-content{
@@ -407,8 +407,8 @@ color:#666;
   max-width:100%;
 }
 .excellent-list{
-  width: 90%;   
-  margin: 5%; 
+  width: 90%;
+  margin: 5%;
   padding:30px;
   border-radius: 15px;
   margin-right: 15px;
@@ -419,8 +419,8 @@ color:#666;
   width: 100%;
 }
 .version-list{
-  width: 90%;   
-  margin: 5%; 
+  width: 90%;
+  margin: 5%;
   padding: 20px;
 }
 .subtitle{
@@ -431,17 +431,17 @@ color:#666;
   padding:50px 20px;
 }
 .VPContent> .VPHome> .vp-doc table{
-  width: 100%; 
-  border-collapse: collapse; 
+  width: 100%;
+  border-collapse: collapse;
   border-spacing:0;
 }
 th, td {
-  text-align: left; 
+  text-align: left;
 }
 .banner-home {
   width: 90%;
   margin: 30px auto;
-  
+
 }
 .image-bg{
   z-index:-1;
@@ -462,10 +462,10 @@ th, td {
   flex-direction: column;
   padding:0;
   width: 100%;
-  
+
 }
 .versions-qa-list{
-  width: 90%; 
+  width: 90%;
   margin: 5px 5%;
 }
 .demo-content{
@@ -474,4 +474,14 @@ th, td {
   padding: 20px;
 }
 
+}
+
+.VPSocialLink:last-child{
+  background: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  padding: 1px;
+  border: 1px solid #333;
+  margin-left: 8px;
 }
