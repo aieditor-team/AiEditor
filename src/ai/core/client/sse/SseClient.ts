@@ -1,5 +1,6 @@
 import {AiClientListener} from "../../AiClientListener.ts";
 import {AiClient} from "../../AiClient.ts";
+import {events} from "fetch-event-stream";
 
 type SSEConfig = { url: string, method: string, headers?: Record<string, any> }
 
@@ -37,60 +38,30 @@ export class SseClient implements AiClient {
     }
 
     async send(payload: string) {
-        if (this.isOpen) {
-            try {
-                const response = await fetch(this.config.url,
-                    {
-                        method: this.config.method || "POST",
-                        headers: this.config.headers,
-                        body: payload
-                    }
-                );
-                if (!response.ok) {
-                    this.onError();
-                    return
-                }
-                const reader = response.body?.getReader();
-                if (!reader) {
-                    this.onError();
-                    return
-                }
-                const decoder = new TextDecoder("utf-8");
-                while (true) {
-                    let {value, done} = await reader.read();
-                    if (done) {
-                        this.onClose();
-                        break;
-                    }
-                    let responseText = decoder.decode(value);
-                    if (!responseText) {
-                        return;
-                    }
+        let res = await fetch(this.config.url, {
+            method: this.config.method,
+            signal: this.ctrl.signal,
+            headers: this.config.headers,
+            body: payload,
+        });
 
-                    const lines = responseText.split("\n\n");
-                    let fullMessage = "";
-                    let index = 0;
-                    for (let line of lines) {
-                        if (line.indexOf("data:") == 0) {
-                            if (fullMessage) {
-                                this.onMessage(fullMessage);
-                            }
-                            fullMessage = line.substring(5);
-                        } else {
-                            if (index != lines.length - 1) {
-                                fullMessage += "\n\n";
-                            }
-                            fullMessage += line;
-                        }
-                        index++
-                    }
-                    if (fullMessage) {
-                        this.onMessage(fullMessage);
-                    }
+        if (!res.ok) {
+            this.onError();
+            return;
+        }
+
+        try {
+            let msgEvents = events(res, this.ctrl.signal);
+            for await (let event of msgEvents) {
+                if (event.data && "[DONE]" !== event.data.trim()) {
+                    this.onMessage(event.data)
                 }
-            } catch {
-                this.onError()
             }
+        } catch (err) {
+            console.error("error", err);
+            this.onError()
+        } finally {
+            this.onClose();
         }
     }
 

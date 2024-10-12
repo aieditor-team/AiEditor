@@ -40,6 +40,7 @@
     "vite-plugin-dts": "^3.6.3"
   },
   "dependencies": {
+    "@codeflex/tiptap-markdown": "^0.8.11",
     "@tiptap/core": "^2.8.0",
     "@tiptap/extension-bubble-menu": "^2.8.0",
     "@tiptap/extension-character-count": "^2.8.0",
@@ -68,13 +69,13 @@
     "@tiptap/starter-kit": "^2.8.0",
     "@tiptap/suggestion": "^2.8.0",
     "crypto-js": "^4.2.0",
+    "fetch-event-stream": "^0.1.5",
     "i18next": "^23.7.6",
     "lowlight": "^3.1.0",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",
     "node-html-parser": "^6.1.11",
-    "tippy.js": "^6.3.7",
-    "@codeflex/tiptap-markdown": "^0.8.11"
+    "tippy.js": "^6.3.7"
   },
   "publishConfig": {
     "access": "public",
