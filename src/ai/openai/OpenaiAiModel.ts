@@ -20,7 +20,6 @@ export class OpenaiAiModel extends AiModel {
 
     createAiClient(url: string, listener: AiMessageListener): AiClient {
         const config = this.aiModelConfig as OpenaiModelConfig;
-        let prevMessageBody = "";
         return new SseClient({
             url,
             method: "post",
@@ -34,13 +33,9 @@ export class OpenaiAiModel extends AiModel {
             onMessage: (bodyString: string) => {
                 let message = null;
                 try {
-                    if (prevMessageBody) {
-                        bodyString = prevMessageBody + bodyString;
-                    }
                     message = JSON.parse(bodyString);
-                    prevMessageBody = "";
                 } catch (err) {
-                    prevMessageBody = prevMessageBody + bodyString.trim();
+                    console.error("error", err, bodyString);
                     return;
                 }
                 listener.onMessage({
