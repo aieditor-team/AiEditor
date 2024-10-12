@@ -5,8 +5,8 @@ import {AiModelManager} from "../../../../ai/AiModelManager.ts";
 import {Svgs} from "../../../../commons/Svgs.ts";
 import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
-import {posToDOMRect} from "@tiptap/core";
 import {SmoothAppender} from "../../../../util/SmoothAppender.ts";
+import {getAIBoundingClientRect} from "../../../../util/getAIBoundingClientRect.ts";
 
 
 type Holder = {
@@ -192,31 +192,7 @@ export const AI = {
             interactive: true,
             arrow: false,
             placement: 'bottom',
-            getReferenceClientRect: (() => {
-                const {view, state} = innerEditor;
-                const {head, from, to} = state.selection;
-                if (from == 1 && to == state.doc.content.size - 1) {
-                    const selectRect = posToDOMRect(view, from, to);
-                    const editorRect = view.dom.getBoundingClientRect();
-
-                    const bottom = selectRect.bottom > editorRect.bottom ? editorRect.bottom : selectRect.bottom;
-                    const height = selectRect.height > editorRect.height ? editorRect.height / 2 : selectRect.height;
-                    const top = selectRect.top < editorRect.top ? editorRect.top : selectRect.top;
-
-                    return {
-                        ...selectRect,
-                        top,
-                        height,
-                        bottom,
-                    };
-                } else {
-                    const headRect = posToDOMRect(view, head, head);
-                    return {
-                        ...headRect,
-                        height: headRect.height - 10
-                    }
-                }
-            }),
+            getReferenceClientRect: () => getAIBoundingClientRect(innerEditor),
             onShow: (_) => {
                 window.setTimeout(() => _.popper.querySelector<HTMLInputElement>("#prompt")?.focus(), 0);
             }

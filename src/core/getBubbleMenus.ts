@@ -10,6 +10,7 @@ import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubble
 import {Instance} from "tippy.js";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {CellSelection} from "@tiptap/pm/tables";
+import { getAIBoundingClientRect } from "../util/getAIBoundingClientRect.ts";
 
 defineCustomElement('aie-bubble-link', LinkBubbleMenu);
 defineCustomElement('aie-bubble-image', ImageBubbleMenu);
@@ -60,43 +61,7 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
             appendTo: aiEditor.container,
             arrow: false,
             placement: 'bottom',
-            getReferenceClientRect: (() => {
-                const {view, state} = aiEditor.innerEditor;
-                const {head, from, to} = state.selection;
-                if (from == 1 && to == state.doc.content.size - 1) {
-                    const selectRect = posToDOMRect(view, from, to);
-
-                    const container = view.dom.closest('.aie-container')!;
-                    const editorRect = container.getBoundingClientRect();
-
-                    const bottom = selectRect.bottom > editorRect.bottom ? editorRect.bottom : selectRect.bottom;
-                    let height = selectRect.height > editorRect.height ? editorRect.height / 2 : selectRect.height;
-                    const top = selectRect.top < editorRect.top ? editorRect.top : selectRect.top;
-
-                    let left = selectRect.left;
-
-                    //最后一行为空白内容
-                    if (selectRect.width == 0) {
-                        const domRect = view.dom.getBoundingClientRect();
-                        left = domRect.left + domRect.right / 2;
-                        height -= 50;
-                    }
-
-                    return {
-                        ...selectRect,
-                        top,
-                        left,
-                        height,
-                        bottom,
-                    };
-                } else {
-                    const headRect = posToDOMRect(view, head, head);
-                    return {
-                        ...headRect,
-                        height: headRect.height - 10
-                    }
-                }
-            }),
+            getReferenceClientRect: () => getAIBoundingClientRect(aiEditor.innerEditor),
             onCreate(instance: Instance) {
                 menuEl.instance = instance;
             }
