@@ -26,11 +26,9 @@ export class SmoothAppender {
         }
 
         if (this.isFinished) {
-            for (let string of this.textQueue) {
-                this.textarea.value += string;
-                this.textarea.style.height = `${this.textarea.scrollHeight}px`;
-                this.textarea.scrollTop = this.textarea.scrollHeight;
-            }
+            this.textarea.value += this.textQueue.join("");
+            this.textarea.style.height = `${this.textarea.scrollHeight}px`;
+            this.textarea.scrollTop = this.textarea.scrollHeight;
             return;
         }
 
