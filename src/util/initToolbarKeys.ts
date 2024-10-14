@@ -91,7 +91,7 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                 }
             }
         } catch (e) {
-            console.error("Can not create toolbar by key: " + toolbarKey);
+            console.error(e, "Can not create toolbar by key: " + toolbarKey);
         }
     }
 }
