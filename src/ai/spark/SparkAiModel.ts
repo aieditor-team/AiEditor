@@ -79,7 +79,7 @@ export class SparkAiModel extends AiModel {
     }
 
 
-    private getDomain(sparkAiModelConfig: SparkAiModelConfig) {
+    public getDomain(sparkAiModelConfig: SparkAiModelConfig) {
         switch (sparkAiModelConfig.version) {
             case "v4.0":
                 return "4.0Ultra"
