@@ -52,7 +52,7 @@ export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boo
     if (cleanedContent) {
         resultContainer.appendChild(cleanedContent);
     }
-    return resultContainer.innerHTML;
+    return resultContainer.outerHTML;
 }
 
 export const isExcelDocument = (document: Document) => {
