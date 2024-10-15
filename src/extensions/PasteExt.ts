@@ -51,6 +51,12 @@ export const PasteExt = Extension.create({
                                         html = workspace?.innerHTML;
                                     }
                                 }
+
+                                if (!(options.htmlPasteConfig.clearLineBreaks === false)) {
+                                    //Windows would be \r\n, but Linux just uses \n and Apple uses \r.
+                                    html = html.replace(/(\r\n|\n|\r)/gm, "");
+                                }
+
                                 //paste with custom processor
                                 if (options.htmlPasteConfig.pasteProcessor) {
                                     html = options.htmlPasteConfig.pasteProcessor(html);
