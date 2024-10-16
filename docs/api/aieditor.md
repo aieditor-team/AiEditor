@@ -63,11 +63,8 @@ AiEditor provides the following methods:
 
 In the above outline content, each field's meaning is as follows:
 > -text: Directory name (or content)
-
 > -level: Directory level, values range from 1 to 6, corresponding to HTML tags h1 to h6
-
 > -pos: Position of the directory node in the document
-
 > -size: Size of the content of the directory node
 
 - `focus()`: Focus the editor.
@@ -76,10 +73,12 @@ In the above outline content, each field's meaning is as follows:
 - `focusEnd()`: Focus the editor and set the cursor at the end.
 - `isFocused()`: Check if the editor is currently focused.
 - `blur()`: Blur the editor.
-- `insert(content)`: Dynamically insert HTML, text, or Markdown content. **Note:** This method is ineffective when the aiEditor has not gained focus. You can first focus by calling `aiEditor.focus().insert(string)` and then insert content.
+- `insert(content)`: Dynamically insert HTML, text content. **Note:** This method is ineffective when the aiEditor has not gained focus. You can first focus by calling `aiEditor.focus().insert(string)` and then insert content.
+- `insertMarkdown(content)`: Dynamically insert markdown content.
 - `clear()`: Delete all content in the editor.
 - `setEditable(value)`: Set the editing mode of the editor. The value can be true or false.
-- `setContent(value)`: Dynamically set the content of the editor.
+- `setContent(value)`: Dynamically set the content of the editor, supporting json, html, and text settings.
+- `setMarkdownContent(value)`: Dynamically set the content of the editor, supporting the setting of markdown content.
 - `clear()`: Delete all content in the editor.
 - `isEmpty()`: Check if the editor has any content.
 - `removeRetention()`: Remove automatically recorded and saved editing content from the editor.

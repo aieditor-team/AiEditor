@@ -71,10 +71,12 @@ AiEditor 提供的方法如下：
 - `focusEnd()`： 让编辑器获得焦点，并设置光标在最末尾位置。
 - `isFocused()`： 检测当前编辑器是否获得焦点。
 - `blur()`： 让编辑器失去焦点。
-- `insert(content)`： 动态插入 html、文本、或者 Markdown 内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insert(string)` 先获得焦点后，再插入内容。
+- `insert(content)`： 动态插入 html、文本内容。**注意：** 当 aiEditor 没有获得焦点时，调用该方法无效，可以通过 `aiEditor.focus().insert(string)` 先获得焦点后，再插入内容。
+- `insertMarkdown(content)`： 动态插入 markdown 内容。
 - `clear()`： 删除编辑器里的所有内容。
 - `setEditable(value)`：设置编辑器的编辑模式：value 的值为 true 或者 false。
-- `setContent(value)`：动态设置编辑器的内容。
+- `setContent(value)`：动态设置编辑器的内容，支持 json、html、文本的设置。
+- `setMarkdownContent(value)`：动态设置编辑器的内容，支持 markdown 内容的设置。
 - `clear()`： 删除编辑器里的所有内容。
 - `isEmpty()`： 检查编辑器里是否有内容。
 - `removeRetention()`： 移除编辑器自动记录和保存的编辑内容。
