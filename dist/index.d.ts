@@ -77,6 +77,7 @@ export declare class AiEditor {
     insertMarkdown(content: string): this;
     setEditable(editable: boolean): this;
     setContent(content: string): this;
+    setMarkdownContent(content: string): this;
     clear(): this;
     isEmpty(): boolean;
     changeLang(lang: string): this;
@@ -93,6 +94,7 @@ export declare interface AiEditorEvent {
 export declare type AiEditorOptions = {
     element: string | Element;
     content?: string;
+    contentIsMarkdown?: boolean;
     contentRetention?: boolean;
     contentRetentionKey?: string;
     lang?: string;
