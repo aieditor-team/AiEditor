@@ -29,6 +29,7 @@ import {BubbleMenuItem} from "../components/bubbles/types.ts";
 import {LanguageItem} from "../extensions/CodeBlockExt.ts";
 import {Transaction} from "@tiptap/pm/state";
 import {DefaultToolbarKey} from "../components/DefaultToolbarKeys.ts";
+import {htmlToMd, mdToHtml} from "../util/mdUtil.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -80,6 +81,7 @@ export interface HtmlPasteConfig {
 export type AiEditorOptions = {
     element: string | Element,
     content?: string,
+    contentIsMarkdown?: boolean,
     contentRetention?: boolean,
     contentRetentionKey?: string,
     lang?: string,
@@ -189,9 +191,7 @@ export class InnerEditor extends Tiptap {
     }
 
     parseMarkdown(markdown: string) {
-        const html = this.storage.markdown?.parser?.parse?.(markdown, {
-            inline: false,
-        });
+        const html = mdToHtml(markdown);
         return this.parseHtml(html);
     }
 }
@@ -276,13 +276,17 @@ export class AiEditor {
         if (this.options.contentRetention && this.options.contentRetentionKey) {
             const cacheContent = localStorage.getItem(this.options.contentRetentionKey);
             if (cacheContent) {
-                content = JSON.parse(cacheContent);
+                try {
+                    content = JSON.parse(cacheContent);
+                } catch (e) {
+                    console.error(e, "Can not parse the cache content from localStorage.");
+                }
             }
         }
 
         this.innerEditor = new InnerEditor(this, {
             element: this.mainEl,
-            content: content,
+            content: this.options.contentIsMarkdown === true && typeof content === "string" ? mdToHtml(content) : content,
             editable: this.options.editable,
             extensions: this.getExtensions(),
             onCreate: (props) => this.onCreate(props),
@@ -379,8 +383,9 @@ export class AiEditor {
     }
 
     getMarkdown() {
-        return this.innerEditor.storage.markdown.getMarkdown();
+        return htmlToMd(this.getHtml())
     }
+
 
     getOptions() {
         return this.options;
@@ -478,6 +483,12 @@ export class AiEditor {
         return this;
     }
 
+    insertMarkdown(content: string) {
+        const html = mdToHtml(content);
+        this.innerEditor.commands.insertContent(html)
+        return this;
+    }
+
     setEditable(editable: boolean) {
         this.innerEditor.setEditable(editable, true);
         return this;
@@ -486,6 +497,11 @@ export class AiEditor {
     setContent(content: string) {
         this.focus().clear().insert(content);
         return this;
+    }
+
+    setMarkdownContent(content: string) {
+        const html = mdToHtml(content)
+        return this.setContent(html);
     }
 
     clear() {

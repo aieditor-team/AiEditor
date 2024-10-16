@@ -14,16 +14,6 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@codeflex/tiptap-markdown@^0.8.11":
-  version "0.8.11"
-  resolved "https://registry.npmmirror.com/@codeflex/tiptap-markdown/-/tiptap-markdown-0.8.11.tgz"
-  integrity sha512-2R996ijDBRE68jzvUlns7szvAhZSw5qXk+DlWe4odw/YumMv1Szjhf0JgUlp5Xxkigm4i1+RjUeXbmwmJdpmLA==
-  dependencies:
-    "@types/markdown-it" "^13.0.7"
-    markdown-it "^14.1.0"
-    markdown-it-task-lists "^2.1.1"
-    prosemirror-markdown "^1.13.0"
-
 "@esbuild/darwin-x64@0.21.5":
   version "0.21.5"
   resolved "https://registry.npmmirror.com/@esbuild/darwin-x64/-/darwin-x64-0.21.5.tgz"
@@ -111,6 +101,11 @@
   resolved "https://registry.npmjs.org/@microsoft/tsdoc/-/tsdoc-0.14.2.tgz"
   integrity sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==
 
+"@mixmark-io/domino@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmmirror.com/@mixmark-io/domino/-/domino-2.2.0.tgz"
+  integrity sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==
+
 "@popperjs/core@^2.9.0":
   version "2.11.8"
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
@@ -166,7 +161,7 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
-"@tiptap/core@^2.6.6", "@tiptap/core@^2.7.0", "@tiptap/core@^2.8.0":
+"@tiptap/core@^2.7.0", "@tiptap/core@^2.8.0":
   version "2.8.0"
   resolved "https://registry.npmmirror.com/@tiptap/core/-/core-2.8.0.tgz"
   integrity sha512-xsqDI4BNzYRWRtBq7+/38ThhqEr7uG9Njip1x+9/wgR3vWPBFnBkYJTz6jSxS35NRE6BSnERm4/B/vrLuY1Hdw==
@@ -441,24 +436,6 @@
   integrity sha512-2fYGlaDy/qyLlhidX42wAH0KBi2TCjKMH8CHmBXgRlJ3Y+OXTiqsPQ6IWarZKwF1JoUcAJdPogv1d4b0COTpmQ==
   dependencies:
     "@types/unist" "*"
-
-"@types/linkify-it@*":
-  version "3.0.5"
-  resolved "https://registry.npmjs.org/@types/linkify-it/-/linkify-it-3.0.5.tgz"
-  integrity sha512-yg6E+u0/+Zjva+buc3EIb+29XEg4wltq7cSmd4Uc2EE/1nUVmxyzpX6gUXD0V8jIrG0r7YeOGVIbYRkxeooCtw==
-
-"@types/markdown-it@^13.0.7":
-  version "13.0.7"
-  resolved "https://registry.npmjs.org/@types/markdown-it/-/markdown-it-13.0.7.tgz"
-  integrity sha512-U/CBi2YUUcTHBt5tjO2r5QV/x0Po6nsYwQU4Y04fBS6vfoImaiZ6f8bi3CjTCxBPQSO1LMyUqkByzi8AidyxfA==
-  dependencies:
-    "@types/linkify-it" "*"
-    "@types/mdurl" "*"
-
-"@types/mdurl@*":
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/@types/mdurl/-/mdurl-1.0.5.tgz"
-  integrity sha512-6L6VymKTzYSrEf4Nev4Xa1LCHKrlTlYCBMTlQKFuddo1CvQcE52I0mwfOJayueUC7MJuXOeHTcIU683lzd0cUA==
 
 "@types/node@*", "@types/node@^18.0.0 || >=20.0.0", "@types/node@^20.9.0":
   version "20.9.0"
@@ -932,11 +909,6 @@ markdown-it-container@^4.0.0:
   resolved "https://mirrors.huaweicloud.com/repository/npm/markdown-it-container/-/markdown-it-container-4.0.0.tgz"
   integrity sha512-HaNccxUH0l7BNGYbFbjmGpf5aLHAMTinqRZQAEQbMr2cdD3z91Q6kIo1oUn1CQndkT03jat6ckrdRYuwwqLlQw==
 
-markdown-it-task-lists@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/markdown-it-task-lists/-/markdown-it-task-lists-2.1.1.tgz"
-  integrity sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA==
-
 markdown-it@^14.0.0, markdown-it@^14.1.0:
   version "14.1.0"
   resolved "https://mirrors.huaweicloud.com/repository/npm/markdown-it/-/markdown-it-14.1.0.tgz"
@@ -1357,6 +1329,13 @@ tslib@^2.3.0:
   version "2.6.2"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz"
   integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
+
+turndown@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.npmmirror.com/turndown/-/turndown-7.2.0.tgz"
+  integrity sha512-eCZGBN4nNNqM9Owkv9HAtWRYfLA4h909E/WGAWWBpmB275ehNhZyk87/Tpvjbp0jjNl9XwCsbe6bm6CqFsgD+A==
+  dependencies:
+    "@mixmark-io/domino" "^2.2.0"
 
 typescript@*, typescript@^5.0.2:
   version "5.2.2"

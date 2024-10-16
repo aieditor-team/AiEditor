@@ -74,6 +74,7 @@ export declare class AiEditor {
     isFocused(): boolean;
     blur(): this;
     insert(content: any): this;
+    insertMarkdown(content: string): this;
     setEditable(editable: boolean): this;
     setContent(content: string): this;
     clear(): this;
@@ -138,6 +139,7 @@ export declare type AiEditorOptions = {
         uploaderEvent?: UploaderEvent;
         defaultSize?: number;
         allowBase64?: boolean;
+        bubbleMenuEnable?: boolean;
         bubbleMenuItems?: (string | BubbleMenuItem)[];
     };
     video?: {
@@ -317,6 +319,7 @@ declare class Header extends HTMLElement implements AiEditorEvent {
 export declare interface HtmlPasteConfig {
     pasteAsText?: boolean;
     pasteClean?: boolean;
+    clearLineBreaks?: boolean;
     pasteProcessor?: (html: string) => string;
 }
 
@@ -361,7 +364,7 @@ export declare class SparkAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
     wrapPayload(promptMessage: string): string;
-    private getDomain;
+    getDomain(sparkAiModelConfig: SparkAiModelConfig): "4.0Ultra" | "generalv3.5" | "generalv3" | "generalv2" | "general";
     createAiClientUrl(): string;
 }
 
