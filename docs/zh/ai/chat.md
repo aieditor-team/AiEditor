@@ -17,6 +17,8 @@ new AiEditorPro({
         systemPrompt: "你的名字叫 AIEditor 编辑助手，你擅长...",
         helloMessage: "欢迎使用 AIEditor 编辑助手，你可以...",
         localStorageKey: "aie-chat-messages",
+        placeholder: "what's your question?",
+        maxHeight: 600,
         maxAttachedMessageCount: 10,
         historyMessageTruncateEnable: false,
         historyMessageTruncateLength: 1000,
@@ -57,6 +59,12 @@ new AiEditorPro({
 
 ### localStorageKey
 历史消息保存在 LocalStorage 的 key 值的定义，默认值为： `aie-chat-messages`
+
+### placeholder
+设置输入框的 placeholder 属性
+
+### maxHeight
+设置聊天窗口的最大高度
 
 ### maxAttachedMessageCount
 在携带历史对话中，最大携带的历史消息条数，默认值为：`10`。条数越多，消耗的 token 越多。

@@ -18,6 +18,8 @@ new AiEditorPro({
         systemPrompt: "Your name is AIEditor Editing Assistant, you are good at...",
         helloMessage: "Welcome use AIEditor editing assistant, you can...",
         localStorageKey: "aie-chat-messages",
+        placeholder: "what's your question?",
+        maxHeight: 600,
         maxAttachedMessageCount: 10,
         historyMessageTruncateEnable: false,
         historyMessageTruncateLength: 1000,
@@ -58,6 +60,12 @@ Used to configure the welcome message when the user first opens the AI dialog.
 
 ### localStorageKey
 The key value definition of historical messages saved in LocalStorage, the default value is: `aie-chat-messages`
+
+### placeholder
+Set the placeholder attribute of the input box
+
+### maxHeight
+Set the maximum height of the chat window
 
 ### maxAttachedMessageCount
 In the history conversation, the maximum number of history messages that can be carried is 10 by default. The more history messages there are, the more tokens are consumed.
