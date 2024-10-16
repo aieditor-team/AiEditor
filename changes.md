@@ -14,22 +14,22 @@
 - refactor: optimize initToolbarKeys.ts
 - refactor: optimize SparkAiModel.ts
 - fix: OpenaiAiModel parse message error sometimes
-  fix: fixed "&nbsp" will be attached sometime if pastedAsText config enable
+- fix: fixed "&nbsp" will be attached sometime if pastedAsText config enable
 
 ---
-- feat: 增强来至于 Excel, WPS, LibreOffice, Number 和 腾讯文档的表格粘贴功能
-- feat: 添加新的配置 "image.bubbleMenuEnable"
-- feat: 添加新的配置 "htmlPasteConfig.clearLineBreaks"
-- refactor: 重构 markdown 的相关功能
-- refactor: 优化 SmoothAppender 输入时间过长的问题
-- refactor: 优化 "pasteAsText" 功能保留 "p" 标签不被移除
-- refactor: 重命名 "removeHtmlTag" 为 htmlUtil
-- refactor: 优化 textSelectionBubble
-- refactor: 优化 createAiClient() 方法
-- refactor: 优化 initToolbarKeys.ts
-- refactor: 优化 SparkAiModel.ts
-- fix: 修复 OpenaiAiModel 的消息在某些情况下解析错误的问题
-  fix: 修复在 pastedAsText 配置的情况下，"&nbsp" 会被粘贴的问题
+- 新增: 增强来至于 Excel, WPS, LibreOffice, Number 和 腾讯文档的表格粘贴功能
+- 新增: 添加新的配置 "image.bubbleMenuEnable"
+- 新增: 添加新的配置 "htmlPasteConfig.clearLineBreaks"
+- 优化: 重构 markdown 的相关功能
+- 优化: 优化 SmoothAppender 输入时间过长的问题
+- 优化: 优化 "pasteAsText" 功能保留 "p" 标签不被移除
+- 优化: 重命名 "removeHtmlTag" 为 htmlUtil
+- 优化: 优化 textSelectionBubble
+- 优化: 优化 createAiClient() 方法
+- 优化: 优化 initToolbarKeys.ts
+- 优化: 优化 SparkAiModel.ts
+- 修复: 修复 OpenaiAiModel 的消息在某些情况下解析错误的问题
+- 修复: 修复在 pastedAsText 配置的情况下，"&nbsp" 会被粘贴的问题
 
 
 

@@ -10,6 +10,7 @@ new AiEditor({
     htmlPasteConfig: {
         pasteAsText: false,
         pasteClean: false,
+        clearLineBreaks: true,
         pasteProcessor: (html) => {
             return html;
         }
@@ -19,4 +20,5 @@ new AiEditor({
 
 - **pasteAsText**: remove all non-text content and html tags.
 - **pasteClean**: remove all styles and `'a'`, `'span'`, `'strong'`, `'b'`, `'em'`, `'i'`, `'u'` tags.
+- **clearLineBreaks**: remove all line breaks, default is `true`
 - **pasteProcessor**: customize to process the html content.
