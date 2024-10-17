@@ -73,7 +73,6 @@ export interface MenuGroup {
 export interface HtmlPasteConfig {
     pasteAsText?: boolean,
     pasteClean?: boolean
-    clearLineBreaks?: boolean,
     pasteProcessor?: (html: string) => string
 }
 
@@ -194,6 +193,10 @@ export class InnerEditor extends Tiptap {
         const html = mdToHtml(markdown);
         return this.parseHtml(html);
     }
+
+    insertMarkdown(markdown: string) {
+        this.commands.insertContent(mdToHtml(markdown))
+    }
 }
 
 export class AiEditor {
@@ -266,10 +269,10 @@ export class AiEditor {
         this.mainEl.style.overflow = "auto";
 
         this.header = new Header();
+        this.eventComponents.push(this.header);
+
         this.footer = new Footer();
         this.footer.initDraggable(this.options.draggable)
-
-        this.eventComponents.push(this.header);
         this.eventComponents.push(this.footer);
 
         let content = this.options.content;
@@ -386,7 +389,6 @@ export class AiEditor {
         return htmlToMd(this.getHtml())
     }
 
-
     getOptions() {
         return this.options;
     }
@@ -484,8 +486,7 @@ export class AiEditor {
     }
 
     insertMarkdown(content: string) {
-        const html = mdToHtml(content);
-        this.innerEditor.commands.insertContent(html)
+        this.innerEditor.insertMarkdown(content)
         return this;
     }
 
