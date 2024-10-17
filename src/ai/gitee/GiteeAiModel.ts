@@ -12,8 +12,6 @@ export class GiteeAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "gitee");
         this.aiModelConfig = {
-            max_tokens: 4096,
-            temperature: 0.7,
             top_p: 0.7,
             top_k: 50,
             ...globalConfig.models["gitee"]
@@ -65,8 +63,8 @@ export class GiteeAiModel extends AiModel {
                 }
             ],
             stream: true,
-            max_tokens: config.max_tokens,
-            temperature: config.temperature,
+            max_tokens: config.maxTokens || null,
+            temperature: config.temperature || null,
             top_p: config.top_p,
             top_k: config.top_k,
         }

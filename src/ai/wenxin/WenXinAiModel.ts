@@ -38,11 +38,16 @@ export class WenXinAiModel extends AiModel {
 
     wrapPayload(prompt: string) {
         const object = {
-            messages: [] as any[],
-            "stream": true
+            messages: [
+                {
+                    role: "user",
+                    content: prompt
+                }
+            ],
+            "stream": true,
+            "max_tokens": this.aiModelConfig.maxTokens || null,
+            "temperature": this.aiModelConfig.temperature || null,
         }
-
-        object.messages.push({role: "user", content: prompt})
         return JSON.stringify(object);
     }
 

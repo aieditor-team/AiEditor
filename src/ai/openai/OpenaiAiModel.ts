@@ -62,6 +62,8 @@ export class OpenaiAiModel extends AiModel {
                     "content": prompt,
                 }
             ],
+            "max_tokens": config.maxTokens || null,
+            "temperature": config.temperature || null,
             "stream": true
         }
         return JSON.stringify(payload);
