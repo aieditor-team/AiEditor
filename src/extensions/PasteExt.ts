@@ -36,7 +36,7 @@ export const PasteExt = Extension.create({
                             if (options.htmlPasteConfig) {
                                 //pasteAsText
                                 if (options.htmlPasteConfig.pasteAsText) {
-                                    html = cleanHtml(html, ['p'], true)
+                                    html = cleanHtml(html, ['p', 'br'], true)
                                 }
                                 //pasteClean
                                 else if (options.htmlPasteConfig.pasteClean) {
@@ -50,11 +50,6 @@ export const PasteExt = Extension.create({
                                         })
                                         html = workspace?.innerHTML;
                                     }
-                                }
-
-                                if (!(options.htmlPasteConfig.clearLineBreaks === false)) {
-                                    //Windows would be \r\n, but Linux just uses \n and Apple uses \r.
-                                    html = html.replace(/(\r\n|\n|\r)/gm, "");
                                 }
 
                                 //paste with custom processor
