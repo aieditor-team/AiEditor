@@ -76,7 +76,7 @@ export const ClassNameExt = Extension.create<ClassNameOptions>({
                         const paragraph = rStep.slice.content.lastChild;
                         if (paragraph && !paragraph.textContent) {
                             //remove className
-                            editor.commands.updateAttributes(paragraph.type, {...paragraph, 'class': ''});
+                            editor.commands.updateAttributes(paragraph.type, {...paragraph.attrs, 'class': ''});
                         }
                     }
                 }
