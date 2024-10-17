@@ -1,6 +1,7 @@
 import '@tiptap/extension-text-style'
 
 import {Extension} from '@tiptap/core'
+import {ReplaceStep} from "prosemirror-transform";
 
 export type ClassNameOptions = {
     types: string[],
@@ -32,7 +33,9 @@ export const ClassNameExt = Extension.create<ClassNameOptions>({
                 attributes: {
                     "class": {
                         defaultValue: "",
-                        parseHTML: element => element.getAttribute('class'),
+                        parseHTML: element => {
+                            return element.getAttribute('class');
+                        },
                         renderHTML: (attributes) => {
                             if (!attributes['class']) {
                                 return {};
@@ -57,4 +60,28 @@ export const ClassNameExt = Extension.create<ClassNameOptions>({
             },
         }
     },
+
+    onTransaction({editor, transaction}) {
+        if (transaction.steps.length > 0) {
+            transaction.steps.forEach((step) => {
+                if (step instanceof ReplaceStep) {
+                    let isNewParagraphByInputEnterKey = false;
+                    step.getMap().forEach((_oldStart: number, _oldEnd: number, newStart: number, newEnd: number) => {
+                        if (newEnd == newStart + 2) {
+                            isNewParagraphByInputEnterKey = true;
+                        }
+                    })
+                    if (isNewParagraphByInputEnterKey) {
+                        const rStep = step as ReplaceStep;
+                        const paragraph = rStep.slice.content.lastChild;
+                        if (paragraph && !paragraph.textContent) {
+                            //remove className
+                            editor.commands.updateAttributes(paragraph.type, {...paragraph, 'class': ''});
+                        }
+                    }
+                }
+            })
+        }
+    },
+
 })
