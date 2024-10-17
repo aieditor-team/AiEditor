@@ -5,6 +5,7 @@ import {AiModelManager} from "../../../../ai/AiModelManager.ts";
 import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
 import {SmoothAppender} from "../../../../util/SmoothAppender.ts";
+import {TextSelection} from "@tiptap/pm/state";
 
 
 type Holder = {
@@ -77,13 +78,14 @@ ${t("ai-append")}</button>
 
     resultPanel.querySelector("#append")!.addEventListener("click", () => {
         holder.translateResultInstance?.hide()
-        const {state: {selection, tr}, view: {dispatch}} = holder.editor!
-        dispatch(tr.insertText(resultPanel.querySelector("textarea")!.value, selection.to))
+        const {state: {selection, doc}} = holder.editor!
+        holder.editor?.commands.setTextSelection(TextSelection.create(doc, selection.to));
+        holder.editor?.insertMarkdown(resultPanel.querySelector("textarea")!.value)
     })
 
     resultPanel.querySelector("#replace")!.addEventListener("click", () => {
         holder.translateResultInstance?.hide()
-        holder.editor?.commands.insertContent(resultPanel.querySelector("textarea")!.value)
+        holder.editor?.insertMarkdown(resultPanel.querySelector("textarea")!.value)
     })
 
 
