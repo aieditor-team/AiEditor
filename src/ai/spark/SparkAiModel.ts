@@ -57,13 +57,13 @@ export class SparkAiModel extends AiModel {
         const object = {
             "header": {
                 "app_id": sparkAiModelConfig.appId,
-                "uid": uuid(),
+                "uid": uuid().replace(/-/g, ""),
             },
             "parameter": {
                 "chat": {
                     "domain": this.getDomain(sparkAiModelConfig),
-                    "temperature": 0.5,
-                    "max_tokens": 2048,
+                    "temperature": sparkAiModelConfig.temperature || 0.5,
+                    "max_tokens": sparkAiModelConfig.maxTokens || 2048,
                 }
             },
             "payload": {
