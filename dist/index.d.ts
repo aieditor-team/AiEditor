@@ -173,6 +173,7 @@ export declare type AiEditorOptions = {
     emoji?: {
         values?: string[];
     };
+    textCounter?: (text: string) => number;
     ai?: AiGlobalConfig;
 };
 
@@ -249,6 +250,8 @@ declare abstract class AiModel {
 }
 
 declare interface AiModelConfig {
+    temperature?: number;
+    maxTokens?: number;
 }
 
 export declare interface AiModelFactory {
@@ -321,7 +324,7 @@ declare class Header extends HTMLElement implements AiEditorEvent {
 export declare interface HtmlPasteConfig {
     pasteAsText?: boolean;
     pasteClean?: boolean;
-    clearLineBreaks?: boolean;
+    removeEmptyParagraphs?: boolean;
     pasteProcessor?: (html: string) => string;
 }
 
@@ -330,6 +333,7 @@ export declare class InnerEditor extends Editor {
     constructor(aiEditor: AiEditor, options?: Partial<EditorOptions>);
     parseHtml(html: string): Fragment;
     parseMarkdown(markdown: string): Fragment;
+    insertMarkdown(markdown: string): void;
 }
 
 declare type LanguageItem = {
