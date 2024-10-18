@@ -3,7 +3,7 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
-import {cleanHtml, isExcelDocument, removeHtmlTags} from "../util/htmlUtil.ts";
+import {cleanHtml, isExcelDocument, removeEmptyParagraphs, removeHtmlTags} from "../util/htmlUtil.ts";
 
 export const PasteExt = Extension.create({
     name: 'pasteExt',
@@ -52,6 +52,11 @@ export const PasteExt = Extension.create({
                                     }
                                 }
 
+                                //remove empty paragraphs
+                                if (!(options.htmlPasteConfig.removeEmptyParagraphs === false)) {
+                                    html = removeEmptyParagraphs(html)
+                                }
+
                                 //paste with custom processor
                                 if (options.htmlPasteConfig.pasteProcessor) {
                                     html = options.htmlPasteConfig.pasteProcessor(html);
@@ -82,6 +87,4 @@ export const PasteExt = Extension.create({
             }),
         ]
     },
-
-
 })

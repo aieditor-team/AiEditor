@@ -73,6 +73,7 @@ export interface MenuGroup {
 export interface HtmlPasteConfig {
     pasteAsText?: boolean,
     pasteClean?: boolean
+    removeEmptyParagraphs?: boolean,
     pasteProcessor?: (html: string) => string
 }
 

@@ -43,7 +43,9 @@ export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boo
                 return clearChildren(element);
             }
         } else if (node.nodeType === Node.TEXT_NODE) {
-            return node;
+            if (node.textContent && node.textContent.trim().length > 0) {
+                return node
+            }
         }
         return null;
     }
@@ -53,7 +55,6 @@ export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boo
         for (let i = 0; i < brElements.length - 1; i++) {
             const currentBr = brElements[i];
             const nextBr = brElements[i + 1];
-
             if (currentBr.nextSibling === nextBr) {
                 let previousSibling = currentBr.previousSibling;
                 const elementsToWrap: Node[] = [];
@@ -72,8 +73,7 @@ export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boo
         }
     }
 
-    ////Windows would be \r\n, but Linux just uses \n and Apple uses \r.
-    html = html.replace(/(\r\n|\n|\r)/gm, "");
+    html = html.replace(/(\n)/gm, " ");
 
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
@@ -115,3 +115,17 @@ export const isExcelDocument = (document: Document) => {
     return !!(innerHTML?.startsWith("<table") && innerHTML?.endsWith("</table>"));
 }
 
+
+export const removeEmptyParagraphs = (html: string) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const paragraphs = tempDiv.querySelectorAll('p');
+
+    paragraphs.forEach(paragraph => {
+        if (!paragraph.textContent || paragraph.textContent.trim() === '') {
+            paragraph.remove();
+        }
+    });
+
+    return tempDiv.innerHTML;
+}
