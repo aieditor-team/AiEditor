@@ -69,34 +69,47 @@ export const ImageExt = Image.extend<ImageOptions>({
                 alt: {
                     default: '',
                     parseHTML: (element) => `${element.getAttribute('alt') ?? ''}`,
+                    renderHTML: ({alt}) => alt ? {alt} : {}
                 },
                 title: {
                     default: '',
                     parseHTML: (element) => `${element.getAttribute('title') ?? ''}`,
+                    renderHTML: ({title}) => title ? {title} : {}
                 },
                 width: {
                     default: this.options.defaultSize,
                     parseHTML: (element) => `${element.getAttribute('width') ?? ''}`,
+                    renderHTML: ({width}) => width ? {width} : {}
                 },
                 height: {
                     default: 'auto',
                     parseHTML: (element) => `${element.getAttribute('height') ?? ''}`,
+                    renderHTML: ({height}) => height ? {height} : {}
                 },
                 align: {
                     default: 'left',
-                    parseHTML: (element) => `${element.getAttribute('align') ?? ''}`,
+                    parseHTML: (element) => {
+                        return element.getAttribute('data-align') || element.getAttribute('align');
+                    },
+                    renderHTML: ({align}) => {
+                        return align ? {'data-align': align} : {}
+                    }
                 },
                 'data-src': {
                     default: null,
                     parseHTML: (element) => `${element.getAttribute('data-src') ?? ''}`,
+                    renderHTML: (attrs) => {
+                        if (!attrs['data-src']) {
+                            return {}
+                        } else {
+                            return {'data-src': attrs['data-src']}
+                        }
+                    }
                 },
                 loading: {
                     default: null,
                     parseHTML: (element) => `${element.getAttribute('loading') ?? ''}`,
-                },
-                class: {
-                    default: null,
-                    parseHTML: (element) => `${element.getAttribute('class') ?? ''}`,
+                    renderHTML: ({loading}) => loading ? {loading} : {}
                 }
             };
         },
@@ -113,8 +126,8 @@ export const ImageExt = Image.extend<ImageOptions>({
 
         renderHTML({HTMLAttributes}) {
             const imgAttrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
-            return ["p",
-                {style: `text-align:${imgAttrs.align}`},
+            return ["div",
+                {style: `text-align:${imgAttrs['data-align'] || 'left'}`},
                 ['img', imgAttrs,]
             ];
         },
@@ -200,20 +213,23 @@ export const ImageExt = Image.extend<ImageOptions>({
             return (props: NodeViewRendererProps) => {
                 const container = document.createElement('div')
 
+                const {src, width, height, align, alt} = props.node.attrs;
+                const imgWidth = getWidthUnit(width || 350);
+                const wrapperStyle = imgWidth.indexOf("%") > 0 ? `style="width: ${imgWidth};"` : "";
+                const calcImgWidth = imgWidth.indexOf("%") > 0 ? `calc(100% - 2px)` : imgWidth;
+                container.classList.add(`align-${align}`)
+
                 if (!this.editor.isEditable) {
+                    container.innerHTML = `<div class="aie-resize-wrapper" ${wrapperStyle}>
+<img alt="${alt}" src="${props.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
+</div>`
                     return {
                         dom: container,
                     }
                 }
 
-                const {src, width, height, align, alt} = props.node.attrs;
-                const imgWidth = getWidthUnit(width || 350);
-                const wrapperStyle = imgWidth.indexOf("%") > 0 ? `style="width: ${imgWidth};"` : "";
-                const calcImgWidth = imgWidth.indexOf("%") > 0 ? `100%;"` : imgWidth;
-
-                container.classList.add(`align-${align}`)
                 container.innerHTML = `
-                <div class="aie-resize-wrapper" ${wrapperStyle}  >
+                <div class="aie-resize-wrapper" ${wrapperStyle}>
                     <div class="aie-resize">
                         <div class="aie-resize-btn-top-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-top-right" data-position="right" draggable="true"></div>
