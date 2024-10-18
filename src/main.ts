@@ -37,6 +37,10 @@ window.aiEditor = new AiEditor({
         // bubbleMenuEnable:false,
         // bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
     },
+    textCounter:(text)=>{
+        // console.log("counter", text)
+        return text.length;
+    },
     link: {
         //[Edit, UnLink, Visit]
         bubbleMenuItems: ["Edit", "UnLink", "visit"],

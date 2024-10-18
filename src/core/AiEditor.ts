@@ -160,6 +160,7 @@ export type AiEditorOptions = {
     emoji?: {
         values?: string[]
     },
+    textCounter?: (text: string) => number,
     ai?: AiGlobalConfig,
 }
 
