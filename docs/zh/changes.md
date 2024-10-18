@@ -1,6 +1,32 @@
 # AiEditor ChangeLog
 
 
+## v1.2.1 20241018:
+- feat: add new option "textCounter"
+- feat: add temperature and maxTokens config for aiModel
+- refactor: optimize paste extensions and add new option "removeEmptyParagraphs" for paste
+- refactor: Optimize ClassNameExt to make the new paragraph does not carry the className of the previous
+- refactor: remove align attribute in image
+- refactor: use div replace p to wrapper image
+- refactor: remove empty value attributes
+- fix: image can not show in edit disable
+- fix: image border is 1px smaller after resizing
+- fix: SparkAiModel error if use v1.1
+
+--- 
+- 新增: 添加新的配置 "textCounter" 用于自定义文字数量的统计
+- 新增: AI 新增 temperature 和 maxTokens 的配置功能
+- 优化: 粘贴的功能添加新的 "removeEmptyParagraphs" 配置，用于移除空段落
+- 优化: 优化 ClassNameExt 插件，使之在新的段落里不携带上一个段落的 class 名称
+- 优化: 图片移除 align 属性，否则可能发生样式错误的问题
+- 优化: 使用 div 替代 p 包裹图片
+- 优化: 图片移除空属性值的属性
+- 修复: 图片无法在只读模式下显示的问题
+- 修复: 图片在拖拽大小后，其宽度会小 1px 的问题
+- 修复: 星火大模型无法使用其最低版本 v1.1 的问题
+
+
+
 ## v1.2.0 20241016:
 - feat: Enhanced pasting from Excel, WPS, LibreOffice, Number, and Tencent Docs table content
 - feat: add new options "image.bubbleMenuEnable"
