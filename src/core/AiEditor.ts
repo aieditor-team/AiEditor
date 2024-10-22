@@ -14,11 +14,19 @@ import {Footer} from "../components/Footer.ts";
 import {getExtensions} from "./getExtensions.ts";
 
 import "../styles"
+// i18n
 import i18next from "i18next";
 import {zh} from "../i18n/zh.ts";
 import {en} from "../i18n/en.ts";
 import {de} from "../i18n/de.ts";
 import {pt} from "../i18n/pt.ts";
+import {es} from "../i18n/es.ts";
+import {hi} from "../i18n/hi.ts";
+import {id} from "../i18n/id.ts";
+import {ja} from "../i18n/ja.ts";
+import {ko} from "../i18n/ko.ts";
+import {th} from "../i18n/th.ts";
+import {vi} from "../i18n/vi.ts";
 import {Resource} from "i18next";
 
 import {DOMParser} from "@tiptap/pm/model";
@@ -231,6 +239,13 @@ export class AiEditor {
             en: {translation: {...en, ...i18nConfig.en}},
             pt: {translation: {...pt, ...i18nConfig.pt}},
             zh: {translation: {...zh, ...i18nConfig.zh}},
+            es: {translation: {...es, ...i18nConfig.es}},
+            hi: {translation: {...hi, ...i18nConfig.hi}},
+            id: {translation: {...id, ...i18nConfig.id}},
+            ja: {translation: {...ja, ...i18nConfig.ja}},
+            ko: {translation: {...ko, ...i18nConfig.ko}},
+            th: {translation: {...th, ...i18nConfig.th}},
+            vi: {translation: {...vi, ...i18nConfig.vi}},
         } as Resource;
 
         //fill the resources but de, en, pt and zh
