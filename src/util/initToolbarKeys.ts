@@ -22,6 +22,14 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                 }
                 const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
                 menuButton.classList.add("aie-menu-item")
+
+                // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                if (options.editable === false) {
+                    menuButton.setAttribute("editable", "false");
+                    menuButton.style.pointerEvents = "none"; // 禁用点击事件
+                    menuButton.style.opacity = "0.5"; // 改变透明度
+                }
+
                 menuButton.onCreate(event, options);
 
                 if (toolbarKey !== "divider") {
@@ -43,6 +51,14 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     const mg = toolbarKey as MenuGroup;
                     const menuButton = document.createElement("aie-group") as Group;
                     menuButton.classList.add("aie-menu-item")
+
+                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                    if (options.editable === false) {
+                        menuButton.setAttribute("editable", "false");
+                        menuButton.style.pointerEvents = "none"; // 禁用点击事件
+                        menuButton.style.opacity = "0.5"; // 改变透明度
+                    }
+
                     menuButton.onCreate(event, options);
                     menuButton.init(event, options, mg);
 
@@ -62,6 +78,14 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     const customMenuConfig = toolbarKey as CustomMenu;
                     const menuButton = document.createElement("aie-custom") as Custom;
                     menuButton.classList.add("aie-menu-item")
+
+                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                    if (options.editable === false) {
+                        menuButton.setAttribute("editable", "false");
+                        menuButton.style.pointerEvents = "none"; // 禁用点击事件
+                        menuButton.style.opacity = "0.5"; // 改变透明度
+                    }
+
                     if (customMenuConfig.id) {
                         menuButton.setAttribute("id", customMenuConfig.id);
                     }
