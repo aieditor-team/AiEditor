@@ -7,6 +7,7 @@ import {SseClient} from "../core/client/sse/SseClient.ts";
 import {AiClientListener} from "../core/AiClientListener.ts";
 import {WebSocketClient} from "../core/client/ws/WebSocketClient.ts";
 import {InnerEditor} from "../../core/AiEditor.ts";
+import {HttpStreamSocketClient} from "../core/client/http/HttpSocketClient.ts";
 
 export class CustomAiModel extends AiModel {
 
@@ -29,11 +30,13 @@ export class CustomAiModel extends AiModel {
                 if (aiMessage) listener.onMessage(aiMessage);
             }
         };
-        return config.protocol === "sse" ? new SseClient({
-                url,
-                method: "post",
-                headers: config.headers?.()
-            }, aiClientListener)
+        const clientConfig = {
+            url,
+            method: config.method || "post",
+            headers: config.headers?.(),
+        };
+        return config.protocol === "sse" ? new SseClient(clientConfig, aiClientListener)
+            : config.protocol === "http" ? new HttpStreamSocketClient(clientConfig, aiClientListener)
             : new WebSocketClient(url, aiClientListener)
     }
 
