@@ -88,6 +88,10 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
     onTransaction(_transEvent: EditorEvents['transaction']) {
     }
 
+    // @ts-ignore
+    onEditableChange(editable: boolean) {
+    }
+
 }
 
 

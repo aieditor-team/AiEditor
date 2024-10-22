@@ -141,6 +141,12 @@ export class Header extends HTMLElement implements AiEditorEvent {
         }
     }
 
+    onEditableChange(editable: boolean) {
+        for (let menuButton of this.menuButtons) {
+            menuButton.onEditableChange(editable);
+        }
+    }
+
 
 }
 

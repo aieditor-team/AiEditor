@@ -94,6 +94,10 @@ export class Footer extends HTMLElement implements AiEditorEvent {
         }
     }
 
+    // @ts-ignore
+    onEditableChange(editable: boolean) {
+    }
+
 }
 
 

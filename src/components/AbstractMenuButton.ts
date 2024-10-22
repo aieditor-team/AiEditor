@@ -49,6 +49,17 @@ export class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onActive(editor: Editor): boolean {
         return false
     }
+
+    // @ts-ignore
+    onEditableChange(editable: boolean) {
+        if (!editable) {
+            this.style.pointerEvents = "none"; // 禁用点击事件
+            this.style.opacity = "0.5"; // 改变透明度
+        } else {
+            this.style.pointerEvents = "";
+            this.style.opacity = "";
+        }
+    }
 }
 
 

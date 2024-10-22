@@ -50,6 +50,7 @@ export interface NameAndValue {
 export interface AiEditorEvent {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void
     onTransaction: (props: EditorEvents['transaction']) => void
+    onEditableChange: (editable: boolean) => void
 }
 
 
@@ -508,7 +509,11 @@ export class AiEditor {
     }
 
     setEditable(editable: boolean) {
+        this.options.editable = editable;
         this.innerEditor.setEditable(editable, true);
+        this.eventComponents.forEach((ec) => {
+            ec.onEditableChange(editable)
+        })
         return this;
     }
 
