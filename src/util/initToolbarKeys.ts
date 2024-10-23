@@ -53,7 +53,6 @@ export const initToolbarKeys = (event: EditorEvents["create"],
 
                     // 设置不可编辑属性，并禁用点击和鼠标经过效果
                     if (options.editable === false) {
-                        menuButton.setAttribute("editable", "false");
                         menuButton.style.pointerEvents = "none"; // 禁用点击事件
                         menuButton.style.opacity = "0.5"; // 改变透明度
                     }
