@@ -304,29 +304,6 @@
       border-bottom: 1px solid var(--aie-container-border);
     }
 
-    svg {
-      fill: var(--aie-menus-svg-color);
-      width: 16px;
-      height: 16px;
-    }
-
-    .menu-ai {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      text-align: center;
-      background: var(--aie-menus-ai-bg-color);
-      color: var(--aie-menus-ai-color);
-      border-radius: 3px;
-      width: 30px;
-      padding: 0 1px 0 5px;
-      white-space: nowrap;
-
-      svg {
-        fill: var(--aie-menus-ai-color);
-      }
-    }
-
     .aie-menu-divider {
       background: var(--aie-menus-divider-color);
       width: 1px;
@@ -334,14 +311,70 @@
       margin: auto
     }
 
+    // default size -> small
     .aie-menu-item {
       height: 25px;
       padding: 5px 1px;
       display: flex;
       align-items: center;
 
+      // default svg
+      svg {
+        fill: var(--aie-menus-svg-color);
+        width: 16px;
+        height: 16px;
+      }
+
+      .menu-ai {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        text-align: center;
+        background: var(--aie-menus-ai-bg-color);
+        color: var(--aie-menus-ai-color);
+        border-radius: 3px;
+        width: 30px;
+        padding: 0 1px 0 5px;
+        white-space: nowrap;
+
+        // AI svg style
+        svg {
+          fill: var(--aie-menus-ai-color);
+        }
+      }
+
       .active {
         background: var(--aie-menus-item-hover-color);
+      }
+
+      // size -> medium
+      &[toolbar-size=medium] {
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .menu-ai {
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+
+      // size -> large
+      &[toolbar-size=large] {
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        .menu-ai {
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
       }
     }
 
@@ -350,6 +383,7 @@
       padding: 5px;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .aie-menu-item > div:hover:not([no-hover]) {

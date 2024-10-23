@@ -19,6 +19,54 @@ new AiEditor({
 
 The above configuration is the default configuration of the AiEditor tool class, which `"|"` represents the dividing line.
 
+- undo: Undo
+- redo: Redo
+- brush: Format Brush
+- eraser: Clear Formatting
+- heading: Text/Heading
+- font-family: Font
+- font-size: Font Size
+- bold: Bold
+- italic: Italic
+- underline: Underline
+- strike: Strikethrough
+- link: Link
+- code: Inline Code
+- subscript: Subscript
+- superscript: Superscript
+- hr: Divider
+- todo: Task List
+- emoji: Emoji
+- highlight: Highlight
+- font-color: Font Color
+- align: Align
+- line-height: Line Height
+- bullet-list: Bullet List
+- ordered-list: Ordered List
+- indent-decrease: Decrease Indent
+- indent-increase: Increase Indent
+- break: Line Break
+- image: Image
+- video: Video
+- attachment: Attachment
+- quote: Quote
+- container: Highlight Block
+- code-block: Code Block
+- table: Table
+- source-code: Source Code
+- printer: Print
+- fullscreen: Fullscreen
+- ai: Artificial Intelligence
+
+## Set Toolbar Button Size
+Set the toolbar button size by configuring `toolbarSize`:
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    toolbarSize: 'medium', // Default is small, options: 'small' | 'medium' | 'large'
+})
+````
 
 ## Exclude some tools
 
