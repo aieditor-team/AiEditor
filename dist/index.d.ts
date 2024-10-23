@@ -21,6 +21,7 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
     onCreate(props: EditorEvents["create"], options: AiEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
     onActive(editor: Editor): boolean;
+    onEditableChange(editable: boolean): void;
 }
 
 export declare type AIBubbleMenuItem = {
@@ -89,6 +90,7 @@ export declare class AiEditor {
 export declare interface AiEditorEvent {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void;
     onTransaction: (props: EditorEvents['transaction']) => void;
+    onEditableChange: (editable: boolean) => void;
 }
 
 export declare type AiEditorOptions = {
@@ -283,10 +285,11 @@ export declare class CustomAiModel extends AiModel {
 
 export declare interface CustomAiModelConfig extends AiModelConfig {
     url: (() => string) | string;
+    method?: string;
     headers?: () => Record<string, any> | undefined;
     wrapPayload: (prompt: string) => string;
     parseMessage: (bodyString: string) => AiMessage | undefined;
-    protocol: "sse" | "websocket";
+    protocol: "sse" | "websocket" | "http";
 }
 
 export declare interface CustomMenu {
@@ -311,6 +314,7 @@ declare class Footer extends HTMLElement implements AiEditorEvent {
     updateCharacters(): void;
     onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;
     onTransaction(props: EditorEvents["transaction"]): void;
+    onEditableChange(editable: boolean): void;
 }
 
 declare class Header extends HTMLElement implements AiEditorEvent {
@@ -319,6 +323,7 @@ declare class Header extends HTMLElement implements AiEditorEvent {
     connectedCallback(): void;
     onCreate(event: EditorEvents["create"], options: AiEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
+    onEditableChange(editable: boolean): void;
 }
 
 export declare interface HtmlPasteConfig {
