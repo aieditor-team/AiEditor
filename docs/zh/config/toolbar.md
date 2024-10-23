@@ -58,6 +58,16 @@ new AiEditor({
 - fullscreen: 全屏
 - ai: 人工智能
 
+## 设置工具栏按钮尺寸
+通过配置 `toolbarSize` 用于设置工具栏按钮尺寸：
+
+```typescript
+new AiEditor({
+    element: "#aiEditor",
+    toolbarSize: 'medium', // 默认 small，可选 'small' | 'medium' | 'large'
+})
+```
+
 ## 排除部分工具
 
 通过配置 `toolbarExcludeKeys` 用于排除部分工具的初始化，示例代码如下：

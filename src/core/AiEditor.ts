@@ -109,6 +109,7 @@ export type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean,
     toolbarKeys?: (string | CustomMenu | MenuGroup)[],
     toolbarExcludeKeys?: DefaultToolbarKey[],
+    toolbarSize?: 'small' | 'medium' | 'large',
     draggable?: boolean,
     htmlPasteConfig?: HtmlPasteConfig,
     codeBlock?: {
@@ -180,6 +181,7 @@ const defaultOptions: Partial<AiEditorOptions> = {
     editable: true,
     draggable: true,
     placeholder: "",
+    toolbarSize: 'small',
 }
 
 export class InnerEditor extends Tiptap {
