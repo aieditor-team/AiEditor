@@ -17,6 +17,8 @@ aimp/
 /docs/.vitepress/dist/
 /demos/vanilla-ts/dist/
 
+dist
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
