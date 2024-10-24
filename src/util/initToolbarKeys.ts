@@ -10,7 +10,6 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                                 options: AiEditorOptions,
                                 menuButtons: AbstractMenuButton[],
                                 toolbarKeys: (string | CustomMenu | MenuGroup)[]) => {
-    console.log(options.toolbarSize)
 
     for (let toolbarKey of toolbarKeys) {
         if (!toolbarKey) continue;
@@ -35,7 +34,7 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                 if (toolbarKey !== "divider") {
                     const tip = t(toolbarKey) as string;
                     menuButton.setAttribute("data-title", tip);
-                    menuButton.setAttribute("toolbar-size", options.toolbarSize as string);
+                    menuButton.setAttribute("data-size", options.toolbarSize as string);
                     tip && tippy(menuButton, {
                         appendTo: () => event.editor.view.dom.closest(".aie-container")!,
                         content: tip,

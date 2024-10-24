@@ -7,6 +7,7 @@ window.aiEditor = new AiEditor({
     element: "#aiEditor",
     placeholder: "点击输入内容1...",
     contentRetention: true,
+    toolbarSize:'large',
     // pasteAsText: true,
     // draggable:false,
     // editable:false,
