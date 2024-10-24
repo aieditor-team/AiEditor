@@ -32,12 +32,12 @@ export class AbstractColorsMenuButton extends AbstractMenuButton {
 
     connectedCallback() {
         this.template = `
-            <div style="width: 36px;height: 18px;display: flex;padding-right: 0">
-                <div style="width: 18px;height: 18px" class="currentColor">
-                    <div style="height: 15px;width: 15px;padding:0 1.5px;line-height: 18px">${this.iconSvg}</div>
-                    <div style="width: 18px;height: 3px;background: #333" id="menuColorEL"></div>
+            <div class="colors-menu">
+                <div class="currentColor">
+                    <div class="colors-menu-icon">${this.iconSvg}</div>
+                    <div class="colors-menu-status" id="menuColorEL"></div>
                 </div>
-                <div style="width: 18px;height: 18px" id="dropdown">
+                <div id="dropdown">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14L8 10H16L12 14Z"></path></svg>
                 </div>
             </div>

@@ -95,11 +95,12 @@
         display: flex;
         align-items: center;
 
-        svg{
+        svg {
           width: 16px;
           height: 16px;
           margin-right: 3px;
         }
+
         &:hover {
           background-color: var(--aie-menus-item-hover-color);
           cursor: pointer;
@@ -311,12 +312,16 @@
       margin: auto
     }
 
-    // default size -> small
+    // default or size -> small
     .aie-menu-item {
-      height: 25px;
+      height: fit-content;
       padding: 5px 1px;
       display: flex;
       align-items: center;
+
+      #text {
+        font-size: 14px;
+      }
 
       // default svg
       svg {
@@ -343,12 +348,50 @@
         }
       }
 
+      .colors-menu {
+        //width: 36px;
+        display: flex;
+        padding-right: 0;
+
+        .currentColor {
+          width: 16px;
+          height: 16px;
+
+          .colors-menu-icon {
+            height: calc(100% - 3px);
+            width: 100%;
+            display: flex;
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .colors-menu-status {
+            width: 100%;
+            height: 3px;
+            background: #333
+          }
+        }
+
+
+
+        #dropdown {
+          display: flex;
+        }
+      }
+
       .active {
         background: var(--aie-menus-item-hover-color);
       }
 
       // size -> medium
       &[data-size=medium] {
+        #text {
+          font-size: 16px;
+        }
+
         svg {
           width: 20px;
           height: 20px;
@@ -360,10 +403,27 @@
             height: 16px;
           }
         }
+
+        .colors-menu {
+          .currentColor {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
       }
 
       // size -> large
       &[data-size=large] {
+        #text {
+          font-size: 17px;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
         svg {
           width: 24px;
           height: 24px;
@@ -375,6 +435,14 @@
             height: 18px;
           }
         }
+
+        .colors-menu {
+          .currentColor {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
       }
     }
 
@@ -494,7 +562,7 @@
       padding: 3px 0;
 
       .text {
-        padding: 2px 10px 0 0;
+        padding: 2px 15px 0 0;
         overflow: hidden;
         font-size: 14px;
         display: flex;

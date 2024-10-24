@@ -11,7 +11,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
     defaultMenuIndex: number = 0;
     refreshMenuText: boolean = true;
     width: string = "fit-content";
-    dropDivWith: string = "100px";
+    dropDivWith: string = "fit-content";
     dropDivHeight: string = "fit-content";
     showItemsTip: boolean = false;
 
@@ -19,7 +19,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
         this.template = `
          <div>
          <div style="display: flex;align-items: center;padding: 0 4px;" id="tippy">
-             <span style="line-height: 18px;font-size: 14px;text-align:center;overflow: hidden;" id="text">
+             <span style="display:flex;text-align:center;overflow: hidden;" id="text">
                 ${this.onMenuTextRender(this.defaultMenuIndex)}
              </span>
              <div style="display: flex;justify-content: center;align-items: center;">
@@ -108,7 +108,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
         this.tippyEl?.querySelector(`#item${activeIndex}`)!.children[0].classList.add("red-dot")
         if (this.refreshMenuText && this.textEl) {
             const menuTextResult = this.onMenuTextRender(activeIndex);
-            if (typeof menuTextResult === "string" || typeof menuTextResult === "number") {
+            if (typeof menuTextResult === "string") {
                 this.textEl.innerHTML = menuTextResult;
             } else {
                 this.textEl.removeChild(this.textEl.firstChild!);

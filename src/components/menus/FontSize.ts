@@ -30,7 +30,6 @@ export class FontSize extends AbstractDropdownMenuButton<NameAndValue> {
 
     constructor() {
         super();
-        this.dropDivWith = "134px";
     }
 
     onCreate(_: EditorEvents["create"], options: AiEditorOptions) {
