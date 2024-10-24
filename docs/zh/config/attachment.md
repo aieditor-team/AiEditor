@@ -70,5 +70,6 @@ new AiEditor({
 - href： 附件地址
 - fileName： 附件名称
 
-若服务器返回的不是以上内容格式，我们可以通过配置 `dataProcessor` 对数据进行二次处理，并按以上格式返回。
+若服务器返回的不是以上内容格式，我们可以在 `uploaderEvent` 的 `onSuccess` 对数据进行二次处理，并按以上格式返回。
+
 

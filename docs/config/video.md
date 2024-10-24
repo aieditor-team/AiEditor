@@ -61,7 +61,7 @@ After the video is successfully uploaded, the server must return the following c
 - src：  video playback address
 - poster： the cover address of the video
 
-If the server returns a content format other than the above, we can configure `dataProcessor` the data to reprocess and return it in the above format.
+If the server does not return the above content format, we can perform secondary processing on the data in `onSuccess` of `uploaderEvent` and return it in the above format.
 
 In data, in addition to src and poster, you can also return the following content to further specify the content of the video:
 
