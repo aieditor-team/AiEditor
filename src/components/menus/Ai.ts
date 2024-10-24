@@ -84,7 +84,7 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
             const item = document.createElement("div");
             item.classList.add("aie-dropdown-item");
             item.innerHTML = `
-            <div class="text" style="display: flex;padding: 5px">${this.onDropdownItemRender(i)}</div>
+            <div class="text" style="display: flex;padding: 5px 10px">${this.onDropdownItemRender(i)}</div>
             `
             item.addEventListener("click", (evt) => {
                 const menuItem = this.menuData[i] as any;
