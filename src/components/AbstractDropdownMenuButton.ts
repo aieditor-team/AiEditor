@@ -125,7 +125,4 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
 
     abstract onDropdownItemClick(index: number): void;
 
-
 }
-
-
