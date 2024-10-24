@@ -1,7 +1,24 @@
 # AiEditor ChangeLog
 
+## v1.2.3 202410124:
+- feat: added more language files for i18n
+- feat: custom ai model support http ReadableStream
+- feat: Added toolbarSize to control toolbar button size
+- fix: When the editor editable is false, disable the toolbar
+- chore: update dependencies
+- chore: optimize styles
 
-## v1.2.1 20241018:
+---
+- 新增: 新增更多的语言支持，目前已经支持 中文、英文、德语、葡萄牙语、西班牙语、印度语、印尼语、日语、韩语、泰语、越南语
+- 新增: 自定义大语言模型支持 http ReadableStream
+- 新增: 添加 toolbarSize 配置用于控制工具栏按钮的大小
+- 修复: 当编辑器设置 editable 为 false, 禁用工具栏
+- 优化: 更新依赖到最新版本
+- 优化: 优化样式细节
+
+
+
+## v1.2.2 20241018:
 - feat: add new option "textCounter"
 - feat: add temperature and maxTokens config for aiModel
 - refactor: optimize paste extensions and add new option "removeEmptyParagraphs" for paste

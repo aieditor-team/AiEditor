@@ -12033,8 +12033,8 @@ class me extends HTMLElement {
 class Rf extends me {
   constructor() {
     super(), this.template = `
-        <div style="height: 16px">
-            <svg style="width: 15px;height: 15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z"></path></svg>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z"></path></svg>
         </div>
         `, this.registerClickListener();
   }
@@ -12046,8 +12046,8 @@ class Rf extends me {
 class uC extends me {
   constructor() {
     super(), this.template = `
-         <div style="height: 16px">
-            <svg style="width: 15px;height: 15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.1716 6.99955H11C7.68629 6.99955 5 9.68584 5 12.9996C5 16.3133 7.68629 18.9996 11 18.9996H20V20.9996H11C6.58172 20.9996 3 17.4178 3 12.9996C3 8.58127 6.58172 4.99955 11 4.99955H18.1716L15.636 2.46402L17.0503 1.0498L22 5.99955L17.0503 10.9493L15.636 9.53509L18.1716 6.99955Z"></path></svg>
+         <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.1716 6.99955H11C7.68629 6.99955 5 9.68584 5 12.9996C5 16.3133 7.68629 18.9996 11 18.9996H20V20.9996H11C6.58172 20.9996 3 17.4178 3 12.9996C3 8.58127 6.58172 4.99955 11 4.99955H18.1716L15.636 2.46402L17.0503 1.0498L22 5.99955L17.0503 10.9493L15.636 9.53509L18.1716 6.99955Z"></path></svg>
          </div>
         `, this.registerClickListener();
   }
@@ -13777,7 +13777,7 @@ class mi extends me {
     w(this, "defaultMenuIndex", 0);
     w(this, "refreshMenuText", !0);
     w(this, "width", "fit-content");
-    w(this, "dropDivWith", "100px");
+    w(this, "dropDivWith", "fit-content");
     w(this, "dropDivHeight", "fit-content");
     w(this, "showItemsTip", !1);
   }
@@ -13785,7 +13785,7 @@ class mi extends me {
     this.template = `
          <div>
          <div style="display: flex;align-items: center;padding: 0 4px;" id="tippy">
-             <span style="line-height: 18px;font-size: 14px;text-align:center;overflow: hidden;" id="text">
+             <span style="display:flex;text-align:center;overflow: hidden;" id="text">
                 ${this.onMenuTextRender(this.defaultMenuIndex)}
              </span>
              <div style="display: flex;justify-content: center;align-items: center;">
@@ -13846,7 +13846,7 @@ class mi extends me {
       }
     if ((a = this.tippyEl) == null || a.querySelector(`#item${i}`).children[0].classList.add("red-dot"), this.refreshMenuText && this.textEl) {
       const s = this.onMenuTextRender(i);
-      typeof s == "string" || typeof s == "number" ? this.textEl.innerHTML = s : (this.textEl.removeChild(this.textEl.firstChild), this.textEl.appendChild(s));
+      typeof s == "string" ? this.textEl.innerHTML = s : (this.textEl.removeChild(this.textEl.firstChild), this.textEl.appendChild(s));
     }
   }
 }
@@ -15395,7 +15395,6 @@ class Ey extends mi {
   constructor() {
     super();
     w(this, "defaultValue", 14);
-    this.dropDivWith = "134px";
   }
   onCreate(n, r) {
     var i, o;
@@ -15587,12 +15586,12 @@ class Qf extends me {
   }
   connectedCallback() {
     this.template = `
-            <div style="width: 36px;height: 18px;display: flex;padding-right: 0">
-                <div style="width: 18px;height: 18px" class="currentColor">
-                    <div style="height: 15px;width: 15px;padding:0 1.5px;line-height: 18px">${this.iconSvg}</div>
-                    <div style="width: 18px;height: 3px;background: #333" id="menuColorEL"></div>
+            <div class="colors-menu">
+                <div class="currentColor">
+                    <div class="colors-menu-icon">${this.iconSvg}</div>
+                    <div class="colors-menu-status" id="menuColorEL"></div>
                 </div>
-                <div style="width: 18px;height: 18px" id="dropdown">
+                <div id="dropdown">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14L8 10H16L12 14Z"></path></svg>
                 </div>
             </div>
@@ -15650,7 +15649,7 @@ class Qf extends me {
 }
 let Ny = class extends Qf {
   constructor() {
-    super(), this.historyColorsKey = "highlightHistoryColors", this.iconSvg = '<svg style="width: 14px;height: 14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.2427 4.51138L8.50547 11.2486L7.79836 13.3699L6.7574 14.4109L9.58583 17.2393L10.6268 16.1983L12.7481 15.4912L19.4853 8.75402L15.2427 4.51138ZM21.6066 8.04692C21.9972 8.43744 21.9972 9.0706 21.6066 9.46113L13.8285 17.2393L11.7071 17.9464L10.2929 19.3606C9.90241 19.7511 9.26925 19.7511 8.87872 19.3606L4.63608 15.118C4.24556 14.7275 4.24556 14.0943 4.63608 13.7038L6.0503 12.2896L6.7574 10.1682L14.5356 2.39006C14.9261 1.99954 15.5593 1.99954 15.9498 2.39006L21.6066 8.04692ZM15.2427 7.33981L16.6569 8.75402L11.7071 13.7038L10.2929 12.2896L15.2427 7.33981ZM4.28253 16.8858L7.11096 19.7142L5.69674 21.1284L1.4541 19.7142L4.28253 16.8858Z"></path></svg>', this.onDefaultColorClick = () => {
+    super(), this.historyColorsKey = "highlightHistoryColors", this.iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.2427 4.51138L8.50547 11.2486L7.79836 13.3699L6.7574 14.4109L9.58583 17.2393L10.6268 16.1983L12.7481 15.4912L19.4853 8.75402L15.2427 4.51138ZM21.6066 8.04692C21.9972 8.43744 21.9972 9.0706 21.6066 9.46113L13.8285 17.2393L11.7071 17.9464L10.2929 19.3606C9.90241 19.7511 9.26925 19.7511 8.87872 19.3606L4.63608 15.118C4.24556 14.7275 4.24556 14.0943 4.63608 13.7038L6.0503 12.2896L6.7574 10.1682L14.5356 2.39006C14.9261 1.99954 15.5593 1.99954 15.9498 2.39006L21.6066 8.04692ZM15.2427 7.33981L16.6569 8.75402L11.7071 13.7038L10.2929 12.2896L15.2427 7.33981ZM4.28253 16.8858L7.11096 19.7142L5.69674 21.1284L1.4541 19.7142L4.28253 16.8858Z"></path></svg>', this.onDefaultColorClick = () => {
       var e;
       (e = this.editor) == null || e.chain().focus().unsetHighlight().run();
     }, this.onColorItemClick = (e) => {
@@ -15664,7 +15663,7 @@ let Ny = class extends Qf {
 };
 class Ay extends Qf {
   constructor() {
-    super(), this.historyColorsKey = "fontHistoryColors", this.iconSvg = '<svg style="width: 14px;height: 14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.55446 22H3.40039L11.0004 3H13.0004L20.6004 22H18.4463L16.0463 16H7.95446L5.55446 22ZM8.75446 14H15.2463L12.0004 5.88517L8.75446 14Z"></path></svg>', this.onDefaultColorClick = () => {
+    super(), this.historyColorsKey = "fontHistoryColors", this.iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.55446 22H3.40039L11.0004 3H13.0004L20.6004 22H18.4463L16.0463 16H7.95446L5.55446 22ZM8.75446 14H15.2463L12.0004 5.88517L8.75446 14Z"></path></svg>', this.onDefaultColorClick = () => {
       var e;
       (e = this.editor) == null || e.chain().focus().unsetColor().run();
     }, this.onColorItemClick = (e) => {
@@ -15678,11 +15677,7 @@ class Ay extends Qf {
 }
 class Iy extends me {
   constructor() {
-    super(), this.template = `
-        <div no-hover style="width: 1px;height: 20px; display: flex">
-            <div class="aie-menu-divider" />
-        </div>
-        `;
+    super(), this.template = '<div no-hover style="width: 1px;display: flex"><div class="aie-menu-divider" /></div>';
   }
 }
 let xy = class extends me {
@@ -15744,29 +15739,29 @@ class wy extends me {
 }
 const Ly = [
   {
-    icon: '<div style="width:18px;height: 18px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 19H17V21H3V19ZM3 14H21V16H3V14ZM3 9H17V11H3V9Z"></path></svg></div>',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 19H17V21H3V19ZM3 14H21V16H3V14ZM3 9H17V11H3V9Z"></path></svg>',
     title: "align-left",
     value: "left"
   },
   {
-    icon: '<div style="width:18px;height: 18px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM5 19H19V21H5V19ZM3 14H21V16H3V14ZM5 9H19V11H5V9Z"></path></svg></div>',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM5 19H19V21H5V19ZM3 14H21V16H3V14ZM5 9H19V11H5V9Z"></path></svg>',
     title: "align-center",
     value: "center"
   },
   {
-    icon: '<div style="width:18px;height: 18px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM7 19H21V21H7V19ZM3 14H21V16H3V14ZM7 9H21V11H7V9Z"></path></svg></div>',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM7 19H21V21H7V19ZM3 14H21V16H3V14ZM7 9H21V11H7V9Z"></path></svg>',
     title: "align-right",
     value: "right"
   },
   {
-    icon: '<div style="width:18px;height: 18px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 19H21V21H3V19ZM3 14H21V16H3V14ZM3 9H21V11H3V9Z"></path></svg></div>',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 19H21V21H3V19ZM3 14H21V16H3V14ZM3 9H21V11H3V9Z"></path></svg>',
     title: "align-justify",
     value: "justify"
   }
 ];
 class ky extends mi {
   constructor() {
-    super(), this.menuData = Ly.map((e) => ({ ...e, title: ce(e.title) })), this.dropDivHeight = "112px", this.dropDivWith = "60px", this.width = "36px", this.menuTextWidth = "20px", this.showItemsTip = !0;
+    super(), this.menuData = Ly.map((e) => ({ ...e, title: ce(e.title) })), this.showItemsTip = !0;
   }
   onDropdownActive(e, n) {
     return e.isActive({ textAlign: this.menuData[n].value });
@@ -16059,7 +16054,7 @@ let zy = class extends me {
 class qy extends me {
   constructor() {
     super(), this.template = `
-        <div style="height: 16px">
+        <div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.9999 18.9967H20.9999V20.9967H11.9999L8.00229 20.9992L1.51457 14.5115C1.12405 14.1209 1.12405 13.4878 1.51457 13.0972L12.1212 2.49065C12.5117 2.10012 13.1449 2.10012 13.5354 2.49065L21.3136 10.2688C21.7041 10.6593 21.7041 11.2925 21.3136 11.683L13.9999 18.9967ZM15.6567 14.5115L19.1922 10.9759L12.8283 4.61197L9.29275 8.1475L15.6567 14.5115Z"></path></svg>
         </div>
         `, this.registerClickListener();
@@ -16413,18 +16408,12 @@ class Jy extends me {
 }
 class ev extends me {
   constructor() {
-    super();
-    w(this, "svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 4.99658V7.99658H19V4.99658H5ZM4 2.99658H20C20.5523 2.99658 21 3.4443 21 3.99658V8.99658C21 9.54887 20.5523 9.99658 20 9.99658H4C3.44772 9.99658 3 9.54887 3 8.99658V3.99658C3 3.4443 3.44772 2.99658 4 2.99658ZM6 11.9966H12C12.5523 11.9966 13 12.4443 13 12.9966V15.9966H14V21.9966H10V15.9966H11V13.9966H5C4.44772 13.9966 4 13.5489 4 12.9966V10.9966H6V11.9966ZM17.7322 13.7288L19.5 11.961L21.2678 13.7288C22.2441 14.7051 22.2441 16.288 21.2678 17.2643C20.2915 18.2407 18.7085 18.2407 17.7322 17.2643C16.7559 16.288 16.7559 14.7051 17.7322 13.7288Z"></path></svg>');
-    this.template = `
-        <div style="height: 16px">
-        ${this.svg}
-        </div>
-        `, this.registerClickListener();
+    super(), this.template = '<div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 4.99658V7.99658H19V4.99658H5ZM4 2.99658H20C20.5523 2.99658 21 3.4443 21 3.99658V8.99658C21 9.54887 20.5523 9.99658 20 9.99658H4C3.44772 9.99658 3 9.54887 3 8.99658V3.99658C3 3.4443 3.44772 2.99658 4 2.99658ZM6 11.9966H12C12.5523 11.9966 13 12.4443 13 12.9966V15.9966H14V21.9966H10V15.9966H11V13.9966H5C4.44772 13.9966 4 13.5489 4 12.9966V10.9966H6V11.9966ZM17.7322 13.7288L19.5 11.961L21.2678 13.7288C22.2441 14.7051 22.2441 16.288 21.2678 17.2643C20.2915 18.2407 18.7085 18.2407 17.7322 17.2643C16.7559 16.288 16.7559 14.7051 17.7322 13.7288Z"></path></svg></div>', this.registerClickListener();
   }
   // @ts-ignore
-  onClick(n) {
-    var r;
-    n.setPainter((r = this.editor) == null ? void 0 : r.state.selection.$head.marks());
+  onClick(e) {
+    var n;
+    e.setPainter((n = this.editor) == null ? void 0 : n.state.selection.$head.marks());
   }
 }
 class ho {
