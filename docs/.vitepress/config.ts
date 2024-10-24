@@ -231,6 +231,29 @@ export default defineConfig({
   gtag('config', 'G-C6VPTJNB4Y');`
         ],
 
+        ["script",  {},
+            `window.addEventListener('load', function (event) {
+document.querySelectorAll('a[href*="discord"]').forEach(function (e) {
+e.addEventListener("click", function () {
+gtag('event', 'conversion', { 'send_to': 'AW-16676526364/NmBKCIicyeAZEJyy_o8-' });})})})`
+        ],
+
+        ["script",  {},
+            `window.addEventListener('load', function (event) {
+document.querySelectorAll('a[href*="mailto:"]').forEach(function (e) {
+e.addEventListener("click", function () {
+gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });})})})`
+        ],
+
+        ["script",  {},
+            `var selection = document.getSelection();
+document.addEventListener('copy', function (e) {
+var selectedText = selection.toString();
+if (selectedText.includes('@')) {
+gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });}})`
+        ],
+
+
         ["script",
             {},
             `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
