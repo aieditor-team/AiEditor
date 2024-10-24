@@ -10,7 +10,7 @@ import { JSONContent } from '@tiptap/core';
 import { SingleCommands } from '@tiptap/core';
 import { Transaction } from '@tiptap/pm/state';
 
-declare class AbstractMenuButton extends HTMLElement implements AiEditorEvent {
+declare class AbstractMenuButton extends HTMLElement implements AiEditorEventListener {
     template: string;
     editor?: Editor;
     options?: AiEditorOptions;
@@ -49,7 +49,7 @@ export declare class AiEditor {
     mainEl: HTMLDivElement;
     footer: Footer;
     options: AiEditorOptions;
-    eventComponents: AiEditorEvent[];
+    eventComponents: AiEditorEventListener[];
     constructor(_: AiEditorOptions);
     private initI18nAndInnerEditor;
     protected initInnerEditor(): void;
@@ -87,7 +87,7 @@ export declare class AiEditor {
     isDestroyed(): boolean;
 }
 
-export declare interface AiEditorEvent {
+export declare interface AiEditorEventListener {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void;
     onTransaction: (props: EditorEvents['transaction']) => void;
     onEditableChange: (editable: boolean) => void;
@@ -115,6 +115,7 @@ export declare type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean;
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
+    toolbarSize?: 'small' | 'medium' | 'large';
     draggable?: boolean;
     htmlPasteConfig?: HtmlPasteConfig;
     codeBlock?: {
@@ -306,7 +307,7 @@ declare type DefaultToolbarKey = (typeof defaultToolbarKeys)[number];
 
 declare const defaultToolbarKeys: string[];
 
-declare class Footer extends HTMLElement implements AiEditorEvent {
+declare class Footer extends HTMLElement implements AiEditorEventListener {
     count: number;
     draggable: boolean;
     constructor();
@@ -317,7 +318,7 @@ declare class Footer extends HTMLElement implements AiEditorEvent {
     onEditableChange(editable: boolean): void;
 }
 
-declare class Header extends HTMLElement implements AiEditorEvent {
+declare class Header extends HTMLElement implements AiEditorEventListener {
     menuButtons: AbstractMenuButton[];
     constructor();
     connectedCallback(): void;
