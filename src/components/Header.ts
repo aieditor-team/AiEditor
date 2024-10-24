@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {AiEditorOptions, AiEditorEventListener} from "../core/AiEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 import {Undo} from "./menus/Undo";
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
@@ -95,7 +95,7 @@ export type MenuButtonOptions = {
     svg: string,
 }
 
-export class Header extends HTMLElement implements AiEditorEvent {
+export class Header extends HTMLElement implements AiEditorEventListener {
     // template:string;
     menuButtons: AbstractMenuButton[] = [];
 

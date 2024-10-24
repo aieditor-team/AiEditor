@@ -47,7 +47,7 @@ export interface NameAndValue {
     value: any;
 }
 
-export interface AiEditorEvent {
+export interface AiEditorEventListener {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void
     onTransaction: (props: EditorEvents['transaction']) => void
     onEditableChange: (editable: boolean) => void
@@ -228,7 +228,7 @@ export class AiEditor {
 
     options: AiEditorOptions;
 
-    eventComponents: AiEditorEvent[] = [];
+    eventComponents: AiEditorEventListener[] = [];
 
     constructor(_: AiEditorOptions) {
         this.options = {...defaultOptions, ..._};

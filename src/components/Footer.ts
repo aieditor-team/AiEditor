@@ -1,8 +1,8 @@
-import {AiEditorOptions, AiEditorEvent} from "../core/AiEditor.ts";
+import {AiEditorOptions, AiEditorEventListener} from "../core/AiEditor.ts";
 import {EditorEvents} from "@tiptap/core";
 
 
-export class Footer extends HTMLElement implements AiEditorEvent {
+export class Footer extends HTMLElement implements AiEditorEventListener {
 
     count: number = 0
     draggable: boolean = true;
