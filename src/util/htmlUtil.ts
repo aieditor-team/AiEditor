@@ -79,12 +79,12 @@ export const cleanHtml = (html: string, preserveTags: string[], removeAttrs: boo
     const doc = parser.parseFromString(html, 'text/html');
 
     const cleanedContent = cleanNode(doc.body);
-    const resultContainer = document.createElement('div');
+    const tempDiv = document.createElement('div');
     if (cleanedContent) {
-        resultContainer.appendChild(cleanedContent);
-        replaceDoubleBrWithP(resultContainer);
+        tempDiv.appendChild(cleanedContent);
+        replaceDoubleBrWithP(tempDiv);
     }
-    return resultContainer.outerHTML;
+    return tempDiv.innerHTML;
 }
 
 
@@ -127,5 +127,24 @@ export const removeEmptyParagraphs = (html: string) => {
         }
     });
 
+    return tempDiv.innerHTML;
+}
+
+
+export const clearDataMpSlice = (html: string) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const fragment = document.createDocumentFragment();
+    for (let child of doc.body.children) {
+        if (child.hasAttribute("data-pm-slice")) {
+            child.childNodes.forEach((child) => {
+                fragment.appendChild(child);
+            })
+        } else {
+            fragment.appendChild(child);
+        }
+    }
+    const tempDiv = document.createElement('div');
+    tempDiv.appendChild(fragment)
     return tempDiv.innerHTML;
 }

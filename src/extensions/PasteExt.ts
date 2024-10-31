@@ -3,7 +3,7 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
-import {cleanHtml, isExcelDocument, removeEmptyParagraphs, removeHtmlTags} from "../util/htmlUtil.ts";
+import {cleanHtml, clearDataMpSlice, isExcelDocument, removeEmptyParagraphs, removeHtmlTags} from "../util/htmlUtil.ts";
 
 export const PasteExt = Extension.create({
     name: 'pasteExt',
@@ -20,10 +20,8 @@ export const PasteExt = Extension.create({
                         }
 
                         if (!event.clipboardData) return false;
-
                         const text = event.clipboardData.getData('text/plain');
                         let html = event.clipboardData.getData('text/html');
-
                         if (!html && text) {
                             const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text);
                             if (parseMarkdown) {
@@ -32,6 +30,7 @@ export const PasteExt = Extension.create({
                                 return true;
                             }
                         } else if (html) {
+                            html = clearDataMpSlice(html);
                             const {options} = (this.editor as InnerEditor).aiEditor;
                             if (options.htmlPasteConfig) {
                                 //pasteAsText
@@ -87,4 +86,6 @@ export const PasteExt = Extension.create({
             }),
         ]
     },
+
+
 })
