@@ -135,13 +135,14 @@ export const clearDataMpSlice = (html: string) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const fragment = document.createDocumentFragment();
-    for (let child of doc.body.children) {
+    const children = doc.body.children;
+    for (let child of children) {
         if (child.hasAttribute("data-pm-slice")) {
             child.childNodes.forEach((child) => {
-                fragment.appendChild(child);
+                fragment.appendChild(child.cloneNode(true));
             })
         } else {
-            fragment.appendChild(child);
+            fragment.appendChild(child.cloneNode(true));
         }
     }
     const tempDiv = document.createElement('div');
