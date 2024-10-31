@@ -1,6 +1,20 @@
 # AiEditor ChangeLog
 
-## v1.2.3 202410124:
+
+## v1.2.4 20241031:
+- fix: CodeBlock Extensions error sometime
+- fix: optimize paste extension and fix paste with data-pm-slice is error
+- fix: fix tab key conflict with ordered lists
+
+
+---
+- 修复：代码插件在某些情况下错处的问题
+- 修复：优化粘贴内容插件并修复粘贴文本时独占一行的问题
+- 修复：修复 tab 键和列表冲突的问题
+
+
+
+## v1.2.3 20241024:
 - feat: added more language files for i18n
 - feat: custom ai model support http ReadableStream
 - feat: Added toolbarSize to control toolbar button size
