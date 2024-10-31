@@ -194,12 +194,11 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             ...this.parent?.(),
 
             addCodeComments: (node, pos) => ({editor}) => {
-                const {storage, view: {dispatch}, state: {tr}} = editor;
+                const {view: {dispatch}, state: {tr}} = editor;
                 dispatch(tr.setSelection(NodeSelection.create(editor.state.doc, pos)).deleteSelection())
 
-                const markdown = storage.markdown.serializer.serialize(node);
                 const aiModel = AiModelManager.get(this.options.codeCommentsAi!.model);
-                aiModel.chat(markdown, this.options.codeCommentsAi!.prompt, new DefaultAiMessageListener(editor, {
+                aiModel.chat(node.textContent, this.options.codeCommentsAi!.prompt, new DefaultAiMessageListener(editor, {
                     markdownParseEnable: true,
                     useMarkdownTextOnly: true,
                 }))
@@ -208,7 +207,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
 
 
             addCodeExplain: (node, pos) => ({editor}) => {
-                const {storage, view: {dispatch}, state: {tr}} = editor;
+                const {view: {dispatch}, state: {tr}} = editor;
 
                 const nodeSize = editor.state.doc.nodeSize;
 
@@ -220,10 +219,8 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                     dispatch(tr.setSelection(TextSelection.create(editor.state.doc, pos + node.nodeSize + 1)))
                 }
 
-                const markdown = storage.markdown.serializer.serialize(node);
                 const aiModel = AiModelManager.get(this.options.codeExplainAi!.model);
-
-                aiModel?.chat(markdown, this.options.codeExplainAi!.prompt, new DefaultAiMessageListener(editor));
+                aiModel?.chat(node.textContent, this.options.codeExplainAi!.prompt, new DefaultAiMessageListener(editor));
                 return true;
             },
 
