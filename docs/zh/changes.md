@@ -1,7 +1,7 @@
 # AiEditor ChangeLog
 
 
-## v1.2.4 20241031:
+## v1.2.5 20241031:
 - fix: CodeBlock Extensions error sometime
 - fix: optimize paste extension and fix paste with data-pm-slice is error
 - fix: fix tab key conflict with ordered lists
