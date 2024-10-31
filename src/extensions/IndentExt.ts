@@ -1,5 +1,5 @@
-import { Command, Extension } from '@tiptap/core';
-import { AllSelection, TextSelection, Transaction } from 'prosemirror-state';
+import {Command, Extension} from '@tiptap/core';
+import {AllSelection, TextSelection, Transaction} from 'prosemirror-state';
 
 export interface IndentOptions {
     types: string[];
@@ -19,12 +19,15 @@ declare module '@tiptap/core' {
 export const IndentExt = Extension.create<IndentOptions>({
     name: 'indent',
 
+    // Fix tab key conflict with ordered lists
+    priority: 99,
+
     addOptions() {
-       return {
-           types: ['listItem', 'paragraph'],
-           minLevel: 0,
-           maxLevel: 8,
-       }
+        return {
+            types: ['listItem', 'paragraph'],
+            minLevel: 0,
+            maxLevel: 8,
+        }
     },
 
     addGlobalAttributes() {
@@ -33,7 +36,7 @@ export const IndentExt = Extension.create<IndentOptions>({
                 types: this.options.types,
                 attributes: {
                     indent: {
-                        default:0,
+                        default: 0,
                         parseHTML: element => {
                             const level = Number(element.getAttribute('data-indent'));
                             return level && level > this.options.minLevel ? level : null;
@@ -41,13 +44,13 @@ export const IndentExt = Extension.create<IndentOptions>({
 
                         renderHTML: attributes => {
                             // return attributes?.indent > this.options.minLevel ? { 'data-indent': attributes.indent } : null;
-                            if (!attributes.indent){
+                            if (!attributes.indent) {
                                 return {}
                             }
 
                             return {
                                 style: `text-indent: ${attributes?.indent * 2}em`,
-                                "data-indent":attributes?.indent,
+                                "data-indent": attributes?.indent,
                             }
                         },
                     },
@@ -62,12 +65,12 @@ export const IndentExt = Extension.create<IndentOptions>({
 
             if (node) {
                 const nextLevel = (node.attrs.indent || 0) + delta;
-                const { minLevel, maxLevel } = this.options;
+                const {minLevel, maxLevel} = this.options;
                 const indent = nextLevel < minLevel ? minLevel : nextLevel > maxLevel ? maxLevel : nextLevel;
 
                 if (indent !== node.attrs.indent) {
-                    const { indent: oldIndent, ...currentAttrs } = node.attrs;
-                    const nodeAttrs = indent > minLevel ? { ...currentAttrs, indent } : currentAttrs;
+                    const {indent: oldIndent, ...currentAttrs} = node.attrs;
+                    const nodeAttrs = indent > minLevel ? {...currentAttrs, indent} : currentAttrs;
                     return tr.setNodeMarkup(pos, node.type, nodeAttrs, node.marks);
                 }
             }
@@ -75,10 +78,10 @@ export const IndentExt = Extension.create<IndentOptions>({
         };
 
         const updateIndentLevel = (tr: Transaction, delta: number): Transaction => {
-            const { doc, selection } = tr;
+            const {doc, selection} = tr;
 
             if (doc && selection && (selection instanceof TextSelection || selection instanceof AllSelection)) {
-                const { from, to } = selection;
+                const {from, to} = selection;
                 doc.nodesBetween(from, to, (node, pos) => {
                     if (this.options.types.includes(node.type.name)) {
                         tr = setNodeIndentMarkup(tr, pos, delta);
@@ -95,8 +98,8 @@ export const IndentExt = Extension.create<IndentOptions>({
         const applyIndent: (direction: number) => () => Command =
             direction =>
                 () =>
-                    ({ tr, state, dispatch }) => {
-                        const { selection } = state;
+                    ({tr, state, dispatch}) => {
+                        const {selection} = state;
                         tr = tr.setSelection(selection);
                         tr = updateIndentLevel(tr, direction);
 
@@ -107,7 +110,6 @@ export const IndentExt = Extension.create<IndentOptions>({
 
                         return false;
                     };
-
         return {
             indent: applyIndent(1),
             outdent: applyIndent(-1),
