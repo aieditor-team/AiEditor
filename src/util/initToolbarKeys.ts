@@ -48,7 +48,7 @@ export const initToolbarKeys = (event: EditorEvents["create"],
             } else {
                 //menu group
                 if ((toolbarKey as any).toolbarKeys) {
-                    const mg = toolbarKey as MenuGroup;
+                    const menuGroup = toolbarKey as MenuGroup;
                     const menuButton = document.createElement("aie-group") as Group;
                     menuButton.classList.add("aie-menu-item")
 
@@ -59,17 +59,19 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     }
 
                     menuButton.onCreate(event, options);
-                    menuButton.init(event, options, mg);
+                    menuButton.init(event, options, menuGroup);
 
-                    const tip = t(mg.title || "menu-group") as string;
-                    tip && tippy(menuButton, {
-                        appendTo: () => event.editor.view.dom.closest(".aie-container")!,
-                        content: tip,
-                        theme: 'aietip',
-                        arrow: true,
-                        // trigger:"click",
-                        // interactive:true,
-                    });
+                    if (menuGroup.title) {
+                        const tip = t(menuGroup.title) as string;
+                        tip && tippy(menuButton, {
+                            appendTo: () => event.editor.view.dom.closest(".aie-container")!,
+                            content: tip,
+                            theme: 'aietip',
+                            arrow: true,
+                            // trigger:"click",
+                            // interactive:true,
+                        });
+                    }
                     menuButtons.push(menuButton);
                 }
                 // custom menu

@@ -23,7 +23,7 @@ window.aiEditor = new AiEditor({
     //     , "align", "line-height", "divider", "bullet-list", "ordered-list", "indent-decrease", "indent-increase", "break", "divider"
     //     , "image", "video", "attachment", "quote", "container", "code-block", "table", "divider", "source-code", "printer", "fullscreen",
     //     {
-    //
+    //         // title:"test",
     //         toolbarKeys: ["undo", "redo", "brush", "font-color", "line-height"]
     //     },
     //     "ai",
