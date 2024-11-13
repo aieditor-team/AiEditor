@@ -26,9 +26,16 @@ const turndownService = new TurndownService({
 
 
 export const mdToHtml = (markdown: string) => {
-    return md.render(markdown);
+    if (!markdown) return markdown;
+    const html = md.render(markdown).trim();
+    if (html.startsWith("<p>") && html.endsWith("</p>")) {
+        return html.substring(3, html.length - 4);
+    }
+    return html;
 }
 
+
 export const htmlToMd = (html: string) => {
+    if (!html) return html;
     return turndownService.turndown(html)
 }
