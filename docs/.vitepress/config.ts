@@ -214,8 +214,8 @@ export default defineConfig({
         ],
 
         footer: {
-            message: 'Released under the LGPL-v2.1 License.',
-            copyright: 'Copyright © 2023-present AiEditor. 黔ICP备19009310号-15 ',
+            message: 'Released under the LGPL-v2.1 License. Copyright © 2023-present AiEditor.  ',
+            copyright: '<a href="/disclaimer.html" target="_blank">Disclaimer (免责声明)</a> 黔ICP备19009310号-15 ',
         },
     },
 
