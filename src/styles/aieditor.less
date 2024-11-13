@@ -463,12 +463,20 @@
 
   .aie-content {
     ::selection {
-      background: none;
+      background: #88c6ff66;
+    }
+
+    [contenteditable="true"]::selection {
+      background: #88c6ff66;
+    }
+
+    [contenteditable="true"]:focus-visible {
+      outline: none;
     }
 
     .selection-marker {
-      background: #85c3ff6d;
-      padding: 2px 0;
+      background: #88c6ff66;
+      padding: 0;
     }
   }
 

@@ -5,26 +5,20 @@ import {Decoration, DecorationSet} from '@tiptap/pm/view';
 
 export const SelectionMarkerExt = Extension.create({
     addProseMirrorPlugins() {
+        const e = this.editor;
         return [
             new Plugin({
                 key: new PluginKey("selection-marker"),
-                state: {
-                    init: () => DecorationSet.empty,
-                    apply: (tr, set, state) => {
-                        const {selection} = tr;
-                        if (selection) {
-                            const decos = [Decoration.inline(selection.$from.pos, selection.$to.pos,
-                                {class: 'selection-marker'},
-                                {inclusiveLeft: true, inclusiveRight: true}
-                            )];
-                            return DecorationSet.create(state.doc, decos);
-                        }
-                        return set;
-                    }
-                },
                 props: {
                     decorations(state) {
-                        return this.getState(state);
+                        if (state.selection.empty || e.isFocused) {
+                            return null;
+                        }
+                        return DecorationSet.create(state.doc, [
+                            Decoration.inline(state.selection.from, state.selection.to,
+                                {class: 'selection-marker'}
+                            )
+                        ])
                     }
                 }
             }),
