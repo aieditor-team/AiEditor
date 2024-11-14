@@ -27,9 +27,18 @@ const turndownService = new TurndownService({
 
 export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;
-    const html = md.render(markdown).trim();
-    if (html.startsWith("<p>") && html.endsWith("</p>")) {
-        return html.substring(3, html.length - 4);
+    const renderHtml = md.render(markdown).trim();
+    if (!renderHtml) return markdown;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(renderHtml, 'text/html');
+    let html = '';
+    for (let i = 0; i < doc.body.children.length; i++) {
+        const child = doc.body.children[i];
+        if (i == 0 && child.tagName === "P") {
+            html += child.innerHTML;
+        } else {
+            html += child.outerHTML;
+        }
     }
     return html;
 }
