@@ -1,11 +1,22 @@
 # AiEditor ChangeLog
 
 
+## v1.2.6 20241114:
+- fix: Fixed the line break issue when AI translation and AI output replacement content
+- fix: Fixed the issue of not being able to select content on Android devices (IOS does not have this problem)
+- feat: The title of the menu group is changed to an optional configuration, and will not pop up when it is not filled in
+
+---
+- 修复: 修复 AI 翻译、AI 输出替换内容时换行的问题
+- 修复: 修复在 Android 设备下无法选择内容的问题（IOS 没有这个问题）
+- 优化：菜单组的 title 修改为可选配置，当不填写时不弹出显示
+
+
+
 ## v1.2.5 20241031:
 - fix: CodeBlock Extensions error sometime
 - fix: optimize paste extension and fix paste with data-pm-slice is error
 - fix: fix tab key conflict with ordered lists
-
 
 ---
 - 修复：代码插件在某些情况下错处的问题
