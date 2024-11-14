@@ -13,6 +13,7 @@ new AiEditor({
     contentRetentionKey: 'ai-editor-content',
     draggable: true,
     pasteAsText: false,
+    textCounter: (text: string) => number,
     ai: {
         models: {
             spark: {
@@ -34,6 +35,7 @@ new AiEditor({
 - **contentRetentionKey**：自动保存（缓存）到 `localStorage` 的 key 值，默认为：`ai-editor-content`。
 - **draggable**：是否可以通过在右下角拖动调整编辑器的大小。
 - **pasteAsText**：粘贴时，以文本方式进行粘贴，设置为 `true` 时，粘贴网页内容自动清除颜色、链接、字体、字号、加粗、删除线等样式。
+- **textCounter**：文本计数器，用于在右下角显示当前文本的数量，可以在这里自定义计数算法。
 - **ai**: AI 相关配置，更多参考 [AI配置](/zh/ai/base.md) 的相关文档。
 
 > 注意：从 v1.2.0 开始，如果初始化的内容是 `markdown` 内容，需要同时添加 `contentIsMarkdown:true` 配置。

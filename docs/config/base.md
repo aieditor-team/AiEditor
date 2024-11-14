@@ -13,6 +13,7 @@ new AiEditor({
     contentRetentionKey: 'ai-editor-content',
     draggable: true,
     pasteAsText: false,
+    textCounter: (text: string) => number,
     ai: {
         models: {
             spark: {
@@ -35,6 +36,7 @@ new AiEditor({
 - **contentRetentionKey**: The key value localStorage that is automatically saved (cached) to , defaults to: `ai-editor-content` .
 - **draggable**: Whether the editor can be resized by dragging the lower right corner.
 - **pasteAsText**: When pasting, paste as text. When set to `true`, the pasted web page content automatically clears the color, link, font, font size, bold, strikethrough and other styles.
+- **textCounter**: Text counter, used to display the current amount of text in the lower right corner. You can customize the counting algorithm here.
 - **AI**: For more information about AI-related configurations, see [AI Configuration](/zh/ai/base.md).
 
 > Note: Starting from v1.2.0, if the initialized content is `markdown` content, you need to add the `contentIsMarkdown:true` configuration at the same time.

@@ -1,9 +1,10 @@
 # 批注（或评论）
+
 批注功能和 Word 的批注评论功能类似，可以选择一段文字对齐进行批注，如下图所示：
 
 ![](../../assets/image/comment1.png)
 
-> PS：此功能在 Pro 版本才有，开源版没有这个功能。 Pro 版预览地址：http://pro.aieditor.com.cn 
+> PS：此功能在 Pro 版本才有，开源版没有这个功能。 Pro 版预览地址：http://pro.aieditor.com.cn
 
 ## 使用方法
 
@@ -12,87 +13,135 @@ new AiEditor({
     element: "#aiEditor",
     comment: {
         enable: true,
+        floatable: false,
+        enableWithEditDisable: true,
         onCommentActivated: (commentIds) => {
-            //当评论被激活时，鼠标选中了（或点击）了某段被标识的内容
+            // 当评论区域获得焦点
         },
 
-        onCommentCreate: (commentId, content, callback) => {
-            //当评论被创建时，这里应该通过 http 请求把数据存放到数据库
-            //保存成功后，调用 callback 使得评论生效
+        queryAllComments: () => {
+            // 查询当前文档的所有评论，返回 CommentInfo[] 或者 Promise<CommentInfo[]>
         },
 
-        onCommentDelete: (commentId, callback) => {
-           //当评论内容被删除时
+        queryMyComments: () => {
+            // 查询 “我的评论”，返回 CommentInfo[] 或者 Promise<CommentInfo[]>
         },
 
-        onCommentQuery: (commentId, callback) => {
-            //初次加载时根据评论 id 查询评论内容
-        }
+        queryCommentsByIds: (commentIds) => {
+            // 根据多个文档id，查询多条评论，返回 CommentInfo[] 或者 Promise<CommentInfo[]>
+        },
+
+
+        onCommentCreate: (commentId, content, commentPid) => {
+            // 当评论被创建时，，返回 CommentInfo 或者 Promise<CommentInfo>
+        },
+
+        onCommentDelete: (commentId) => {
+            // 当评论被删除时， 返回 boolean 或者  Promise<boolean>;
+        },
     },
 })
 ```
 
 - **enable**: 是否启用评论功能
+- **floatable**: 评论的内容，是否是跟评论区域位置浮动的
+- **enableWithEditDisable**: 是否在只读模式下，也开启批注（评论）的功能，默认为 false
 - **onCommentActivated**: 监听评论被创建，此时我们应该把评论内容保存到数据库，并返回完整的评论信息
 - **onCommentCreate**:  监听评论被创建，此时我们应该把评论内容保存到数据库，并返回完整的评论信息
 - **onCommentDelete**:  监听评论被删除，此时应该同步删除数据库的评论
-- **onCommentQuery**:  初次加载时，查询评论内容
-
+- **queryAllComments**:  查询所有的评论（当配置 `floatable: false` 是有效）
+- **queryMyComments**:  查询 我的评论（当配置 `floatable: false` 是有效）
+- **queryCommentsByIds**:  根据多条评论 id，查询所有的评论（当配置 `floatable: true` 是有效）
 
 ## 示例代码
 
 以下的示例代码，是使用了 LocalStorage 来保存评论内容
 
 ```typescript
-const colors = ['#3f3f3f', '#938953', '#548dd4', '#95b3d7', 
+const colors = ['#3f3f3f', '#938953', '#548dd4', '#95b3d7',
     '#d99694', '#c3d69b', '#b2a2c7', '#92cddc', '#fac08f'];
 new AiEditor({
     element: "#aiEditor",
     comment: {
         enable: true,
-        onCommentActivated: (commentIds) => {
-            //用户鼠标点击（或选中）了带有评论的内容
-            console.log("commentIds", commentIds)
+        floatable: false,
+        enableWithEditDisable: true,
+        onCommentActivated: (_commentId) => {
+            // console.log("onCommentActivated---->", commentId)
         },
 
-        onCommentCreate: (commentId, content, callback) => {
-            //根据 评论 id 和 内容，生成一条新的评论
+        queryAllComments: () => {
+            const allCommentsString = localStorage.getItem("all-comments");
+            const allCommentIds = allCommentsString ? JSON.parse(allCommentsString) : [];
+            const allComments = [] as any[];
+            allCommentIds.forEach((commentId: any) => {
+                const contentJSON = localStorage.getItem(commentId);
+                if (contentJSON) allComments.push(JSON.parse(contentJSON));
+            })
+            return allComments;
+        },
+
+        queryCommentsByIds: (commentIds) => {
+            const allComments = [] as any[];
+            if (commentIds) commentIds.forEach((commentId: any) => {
+                const contentJSON = localStorage.getItem("comment-" + commentId);
+                if (contentJSON) allComments.push(JSON.parse(contentJSON));
+            })
+            return allComments;
+        },
+
+
+        onCommentCreate: (commentId, content, commentPid) => {
             const comment = {
                 id: commentId,
-                account:"张三",
-                avatar:"https://aieditor.dev/assets/image/logo.png",
-                mainColor:colors[Math.floor(Math.random() * colors.length)],
-                createdAt:"2024-05-26 10:23:56",
+                pid: commentPid,
+                account: "张三",
+                avatar: Math.floor(Math.random() * 10) > 3 ? "https://aieditor.dev/assets/image/logo.png" : undefined,
+                mainColor: colors[Math.floor(Math.random() * colors.length)],
+                createdAt: "2024-05-26 10:23:56",
                 content
             } as CommentInfo;
-            
-            //把评论信息保存到 localStorage
+
             localStorage.setItem("comment-" + commentId, JSON.stringify(comment));
-            
-            //调用 callback 传回 comment 信息
-            return callback(comment);
+
+            const allCommentsString = localStorage.getItem("all-comments");
+            const allComments = allCommentsString ? JSON.parse(allCommentsString) : [];
+
+            if (commentPid) {
+                const parentCommentJSON = localStorage.getItem("comment-" + commentPid);
+                if (parentCommentJSON) {
+                    const parentComment = JSON.parse(parentCommentJSON);
+                    if (parentComment.children) {
+                        parentComment.children.unshift(comment)
+                    } else {
+                        parentComment.children = [comment]
+                    }
+                    localStorage.setItem("comment-" + commentPid, JSON.stringify(parentComment));
+                }
+            } else {
+                allComments.push("comment-" + commentId)
+            }
+
+
+            localStorage.setItem("all-comments", JSON.stringify(allComments));
+
+            return new Promise((resolve) => {
+                resolve(comment)
+            })
         },
 
-        onCommentDelete: (commentId, callback) => {
-            //删除评论
-            localStorage.removeItem("comment-"+commentId);
-            return callback();
+        onCommentDelete: (commentId) => {
+            localStorage.removeItem("comment-" + commentId);
+            return true;
         },
-
-        onCommentQuery: (commentId, callback) => {
-            //从 localStorage 获取评论信息
-            const contentJSON = localStorage.getItem("comment-"+commentId);
-            if (!contentJSON) return false;
-
-            //调用 callback 传回 comment 信息
-            return callback(JSON.parse(contentJSON))
-        }
     },
 })
 ```
 
 **CommentInfo** 评论信息描述
+
 - id: 评论的 id，全局唯一
+- pid: 评论的 父级 id
 - account: 评论的账户或昵称
 - avatar: 用户的头像 URL 地址
 - mainColor: 评论的文字的背景颜色
