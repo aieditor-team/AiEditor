@@ -11,7 +11,8 @@ window.aiEditor = new AiEditor({
     // pasteAsText: true,
     // draggable:false,
     // editable:false,
-    content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。<p> <strong>提示：</strong> <br/>1、输入 空格 + "/" 可以快速弹出 AI 菜单 <br/> 2、输入 空格 + "@" 可以提及某人</p> ',
+    content: '# AiEditor 是一个面向 AI 的下一代富文本编辑器。 \n **提示：** \n- 1、输入 空格 + "/" 可以快速弹出 AI 菜单 \n- 2、输入 空格 + "@" 可以提及某人 ',
+    contentIsMarkdown: true,
     textSelectionBubbleMenu: {
         // enable:false
         //[AI, Bold, Italic, Underline, Strike, Code]
@@ -38,7 +39,7 @@ window.aiEditor = new AiEditor({
         // bubbleMenuEnable:false,
         // bubbleMenuItems: ["AlignLeft", "AlignCenter", "AlignRight", "delete"]
     },
-    textCounter:(text)=>{
+    textCounter: (text) => {
         // console.log("counter", text)
         return text.length;
     },

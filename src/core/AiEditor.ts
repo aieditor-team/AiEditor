@@ -296,6 +296,10 @@ export class AiEditor {
         this.eventComponents.push(this.footer);
 
         let content = this.options.content;
+        if (content && this.options.contentIsMarkdown) {
+            content = mdToHtml(content)
+        }
+
         if (this.options.contentRetention && this.options.contentRetentionKey) {
             const cacheContent = localStorage.getItem(this.options.contentRetentionKey);
             if (cacheContent) {
@@ -309,7 +313,7 @@ export class AiEditor {
 
         this.innerEditor = new InnerEditor(this, {
             element: this.mainEl,
-            content: this.options.contentIsMarkdown === true && typeof content === "string" ? mdToHtml(content) : content,
+            content,
             editable: this.options.editable,
             extensions: this.getExtensions(),
             onCreate: (props) => this.onCreate(props),
