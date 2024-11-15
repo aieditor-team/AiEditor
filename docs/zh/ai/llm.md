@@ -10,13 +10,15 @@ new AiEditor({
     ai: {
         models: {
             openai: {
-                apiKey: "sk-alQ96zbDn*****"
+                apiKey: "sk-alQ96zbDn*****",
+                model:"gpt-4o",
             }
         }
     },
 })
 ```
 或者通过 Openai 的接口使用 `月之暗面` 或者其他和 Openai API 兼容的模型。
+
 ```ts
 new AiEditor({
     element: "#aiEditor",
@@ -31,6 +33,25 @@ new AiEditor({
     },
 })
 ```
+
+注意，在以上的配置中，AIEditor 会去自动请求 URL 为`https://api.moonshot.cn/v1/chat/completions` 进行 AI 对话，若当前的大模型的地址并不是
+`endpoint` + `/v1/chat/completions` 时，我们需要配置 `customUrl`，如下代码所示：
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                customUrl: "https://api.moonshot.cn/your/custom/path",
+                model: "moonshot-v1-8k",
+                apiKey: "sk-alQ96zb******"
+            }
+        }
+    },
+})
+```
+
 
 
 

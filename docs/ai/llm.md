@@ -11,7 +11,8 @@ new AiEditor({
     ai: {
         models: {
             openai: {
-                apiKey:"sk-alQ96zbDn*****"
+                apiKey:"sk-alQ96zbDn*****",
+                model:"gpt-4o",
             } as OpenaiModelConfig
         }
     },
@@ -33,6 +34,24 @@ new AiEditor({
     },
 })
 ```
+
+Note that in the above configuration, AIEditor will automatically request the URL `https://api.moonshot.cn/v1/chat/completions` for AI dialogue. If the address of the current large model is not `endpoint` + `/v1/chat/completions`, we need to configure `customUrl`, as shown in the following code:
+
+```ts
+new AiEditor({
+    element: "#aiEditor",
+    ai: {
+        models: {
+            openai: {
+                customUrl: "https://api.moonshot.cn/your/custom/path",
+                model: "moonshot-v1-8k",
+                apiKey: "sk-alQ96zb******"
+            }
+        }
+    },
+})
+```
+
 
 ## Spark large
 
