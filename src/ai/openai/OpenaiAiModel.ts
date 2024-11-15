@@ -13,7 +13,7 @@ export class OpenaiAiModel extends AiModel {
         super(editor, globalConfig, "openai");
         this.aiModelConfig = {
             endpoint: "https://api.openai.com",
-            model: "gpt-3.5-turbo",
+            // model: "gpt-3.5-turbo",
             ...globalConfig.models["openai"]
         } as OpenaiModelConfig;
     }
@@ -55,7 +55,7 @@ export class OpenaiAiModel extends AiModel {
     wrapPayload(prompt: string) {
         const config = this.aiModelConfig as OpenaiModelConfig;
         const payload = {
-            "model": config.model,
+            // "model": config.model,
             "messages": [
                 {
                     "role": "user",
@@ -65,12 +65,25 @@ export class OpenaiAiModel extends AiModel {
             "max_tokens": config.maxTokens || null,
             "temperature": config.temperature || null,
             "stream": true
+        } as any
+
+        if (config.model) {
+            payload.model = config.model;
         }
+
         return JSON.stringify(payload);
     }
 
     createAiClientUrl(): string {
         const config = this.aiModelConfig as OpenaiModelConfig;
+        if (config.customUrl) {
+            if (typeof config.customUrl === "string") {
+                return config.customUrl;
+            } else if (typeof config.customUrl === "function") {
+                return config.customUrl();
+            }
+        }
+
         return `${config.endpoint}/v1/chat/completions`;
     }
 
