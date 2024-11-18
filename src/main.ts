@@ -11,7 +11,9 @@ window.aiEditor = new AiEditor({
     // pasteAsText: true,
     // draggable:false,
     // editable:false,
-    content: '# AiEditor 是一个面向 AI 的下一代富文本编辑器。 \n **提示：** \n- 1、输入 空格 + "/" 可以快速弹出 AI 菜单 \n- 2、输入 空格 + "@" 可以提及某人 ',
+    content: '# AiEditor 是一个 **面向 AI 的** 下一代富文本编辑器。 \n **提示：** \n- 1、输入 空格 + "/" 可以快速弹出 AI 菜单 \n- 2、输入 空格 + "@" 可以提及某人  ' +
+        '\n\n haha ![图片alt](https://aieditor.com.cn/assets/image/logo.png)' +
+        '\n ',
     contentIsMarkdown: true,
     textSelectionBubbleMenu: {
         // enable:false

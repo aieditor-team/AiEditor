@@ -33,20 +33,13 @@ export const mdToHtml = (markdown: string) => {
     const doc = parser.parseFromString(renderHtml, 'text/html');
     let html = '';
     for (let i = 0; i < doc.body.children.length; i++) {
-        const child = doc.body.children[i];
-        if (child.children.length != 0) {
-            child.childNodes.forEach(node => {
-                if (node.nodeType === 1) {
-                    const elementNode = node as Element;
-                    html += elementNode.outerHTML;
-                } else if (node.nodeType === 3) {
-                    html += node.textContent;
-                }
-            });
-        } else if (i == 0 && child.tagName === "P") {
-            html += child.innerHTML;
+        const element = doc.body.children[i];
+        if (i == 0 && element.tagName === "P") {
+            html += element.innerHTML;
         } else {
-            html += child.outerHTML;
+            // https://gitee.com/aieditor-team/aieditor/pulls/10
+            html += element.querySelector("img")
+                ? element.innerHTML : element.outerHTML;
         }
     }
     return html;
