@@ -20,13 +20,16 @@ export class OpenaiAiModel extends AiModel {
 
     createAiClient(url: string, listener: AiMessageListener): AiClient {
         const config = this.aiModelConfig as OpenaiModelConfig;
+        const headers = {
+            "Content-Type": "application/json",
+        } as any
+        if (config.apiKey) {
+            headers["Authorization"] = `Bearer ${config.apiKey}`;
+        }
         return new SseClient({
             url,
             method: "post",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${config.apiKey}`,
-            }
+            headers,
         }, {
             onStart: listener.onStart,
             onStop: listener.onStop,
@@ -38,6 +41,11 @@ export class OpenaiAiModel extends AiModel {
                     console.error("error", err, bodyString);
                     return;
                 }
+
+                if (!message.choices || message.choices.length === 0) {
+                    return;
+                }
+
                 listener.onMessage({
                     status: message.choices[0].finish_reason === "stop" ? 2 : 1,
                     role: "assistant",
