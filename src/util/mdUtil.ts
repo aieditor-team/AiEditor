@@ -24,6 +24,10 @@ const turndownService = new TurndownService({
     preformattedCode: false,
 });
 
+turndownService.keep((node: any) => {
+    return !(node && node.nodeName === "DIV");
+});
+
 
 export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;
