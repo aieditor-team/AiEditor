@@ -89,6 +89,8 @@ export class SparkAiModel extends AiModel {
                 return "generalv3"
             case "v2.1":
                 return "generalv2"
+            case "v1.1":
+                return "lite"
             default:
                 return "general"
         }
