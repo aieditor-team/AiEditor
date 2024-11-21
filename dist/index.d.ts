@@ -368,7 +368,8 @@ export declare class OpenaiAiModel extends AiModel {
 
 export declare interface OpenaiModelConfig extends AiModelConfig {
     endpoint?: string;
-    apiKey: string;
+    customUrl?: string | (() => string);
+    apiKey?: string;
     model?: string;
 }
 
@@ -376,7 +377,7 @@ export declare class SparkAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);
     createAiClient(url: string, listener: AiMessageListener): AiClient;
     wrapPayload(promptMessage: string): string;
-    getDomain(sparkAiModelConfig: SparkAiModelConfig): "4.0Ultra" | "generalv3.5" | "generalv3" | "generalv2" | "general";
+    getDomain(sparkAiModelConfig: SparkAiModelConfig): "4.0Ultra" | "generalv3.5" | "generalv3" | "generalv2" | "lite" | "general";
     createAiClientUrl(): string;
 }
 

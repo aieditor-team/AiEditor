@@ -53,7 +53,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                 uploadHeaders: {},
                 uploader: void 0,
                 defaultSize: 350,
-            }
+            } as any
         },
 
         allowGapCursor() {
