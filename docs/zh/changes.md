@@ -1,5 +1,22 @@
 # AiEditor ChangeLog
 
+## v1.2.7 20241121:
+- fix: When configuring contentIsMarkdown, it may affect the reload problem
+- fix: When markdown parses images, the images will be wrapped in p tags, resulting in incorrect parsing
+- fix: The problem of prompting domain errors when using spark lite models
+- feat: Openai has added a customUrl configuration function to facilitate users to customize the configuration URL
+- feat: When there is an empty p tag in the table, its height is incorrect
+- feat: Upgrade related dependencies to the latest version
+
+---
+- 修复: 当配置 contentIsMarkdown 时，可能会影响再次加载的问题
+- 修复: markdown 在解析图片时，图片会被 p 标签包裹导致无法正确解析的问题
+- 修复：使用 spark lite 模型提示 domain 错误的问题
+- 优化: openai 新增 customUrl 配置的功能，方便用户自定义配置 url
+- 优化：table 中存在空的 p 标签时，其高度不正确的问题
+- 优化：升级相关依赖到最新版本
+
+
 
 ## v1.2.6 20241114:
 - fix: Fixed the line break issue when AI translation and AI output replacement content
