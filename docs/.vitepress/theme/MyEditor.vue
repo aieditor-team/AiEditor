@@ -56,11 +56,12 @@ onMounted(() => {
           element: divRef.value as Element,
           placeholder: "Click to Input Content...",
           content,
+          contentIsMarkdown: true,
           ai: {
             models: {
               spark: {
                 ...config
-              }
+              } as any
             },
             menus,
             translate:{
