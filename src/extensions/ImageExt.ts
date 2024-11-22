@@ -53,7 +53,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                 uploadHeaders: {},
                 uploader: void 0,
                 defaultSize: 350,
-            } as any
+            }
         },
 
         allowGapCursor() {
@@ -125,7 +125,7 @@ export const ImageExt = Image.extend<ImageOptions>({
         },
 
         renderHTML({HTMLAttributes}) {
-            const imgAttrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
+            const imgAttrs = mergeAttributes(this.options.HTMLAttributes!, HTMLAttributes);
             return ["div",
                 {style: `text-align:${imgAttrs['data-align'] || 'left'}`},
                 ['img', imgAttrs,]
