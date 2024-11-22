@@ -185,7 +185,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
             lowlight: {},
             defaultLanguage: null,
             languages: [],
-        } as any
+        }
     },
 
 
@@ -340,6 +340,63 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 }
                 return true;
             },
+            'Shift-Tab': ({editor}) => {
+                const {state, view} = editor;
+                if (!isActive(state, this.name)) {
+                    return false;
+                }
+                const {selection, tr} = state;
+                const {$from, from, to} = selection;
+                const node = $from.node(); // code block node
+                if (node.type !== this.type) {
+                    return false;
+                }
+
+                const {start: selectedLineStart, end: selectedLineEnd} =
+                    getSelectedLineRange(selection, node);
+
+                if (selectedLineStart === undefined || selectedLineEnd === undefined) {
+                    return false;
+                }
+
+                const text = node.textContent || '';
+                const lines = text.split('\n');
+                let newSelectionFrom = from;
+                let newSelectionTo = to;
+                const newLines = lines.map((line, index) => {
+                    if (
+                        index >= selectedLineStart &&
+                        index <= selectedLineEnd &&
+                        line
+                    ) {
+                        for (let i = 0; i < 2; i++) {
+                            if (line.startsWith(' ')) {
+                                line = line.slice(1);
+                                if (index == selectedLineStart) {
+                                    newSelectionFrom--;
+                                }
+                                newSelectionTo--;
+                            }
+                        }
+                    }
+                    return line;
+                });
+                const codeBlockTextNode = $from.node(1);
+                const codeBlockTextNodeStart = $from.start(1);
+                tr.replaceWith(
+                    codeBlockTextNodeStart,
+                    codeBlockTextNodeStart + codeBlockTextNode.nodeSize - 2,
+                    state.schema.text(newLines.join('\n'))
+                );
+                tr.setSelection(
+                    TextSelection.between(
+                        tr.doc.resolve(newSelectionFrom),
+                        tr.doc.resolve(newSelectionTo),
+                    )
+                );
+                view.dispatch(tr);
+                return true;
+            },
         };
     },
 
@@ -399,7 +456,7 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
                 const div = document.createElement("div") as HTMLDivElement;
                 div.classList.add("aie-codeblock-langs")
                 div.innerHTML = `
-                ${this.options.languages.map((lang) => {
+                ${this.options.languages?.map((lang) => {
                     return `<div class="aie-codeblock-langs-item" data-item="${lang.value}">${lang.name}</div>`
                 }).join("")}`
 
@@ -429,9 +486,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
 
             container.querySelector(".aie-codeblock-tools-comments")
                 ?.addEventListener("click", (e: any) => {
-                    // can not use the props node and its getPos, because node's attr and pos will change if dispatch transaction
-                    // props.editor.chain().addCodeComments(props.node, (props.getPos as Function)());
-
                     const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
                     const codeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
                     props.editor.chain().addCodeComments(codeBlock, coordinates!.pos);
@@ -439,9 +493,6 @@ export const CodeBlockExt = CodeBlockLowlight.extend<MyCodeBlockLowlightOptions>
 
             container.querySelector(".aie-codeblock-tools-explain")
                 ?.addEventListener("click", (e: any) => {
-                    // can not use the props node and its getPos, because node's attr and pos will change if dispatch transaction
-                    // props.editor.chain().addCodeExplain(props.node, (props.getPos as Function)());
-
                     const coordinates = props.editor.view.posAtCoords({left: e.clientX, top: e.clientY})
                     const codeBlock = props.editor.state.doc.resolve(coordinates!.pos).parent;
                     props.editor.chain().addCodeExplain(codeBlock, coordinates!.pos);
