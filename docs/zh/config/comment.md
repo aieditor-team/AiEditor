@@ -46,7 +46,7 @@ new AiEditor({
 - **enable**: 是否启用评论功能
 - **floatable**: 评论的内容，是否是跟评论区域位置浮动的
 - **enableWithEditDisable**: 是否在只读模式下，也开启批注（评论）的功能，默认为 false
-- **onCommentActivated**: 监听评论被创建，此时我们应该把评论内容保存到数据库，并返回完整的评论信息
+- **onCommentActivated**: 评论获得焦点时，会触发此回调
 - **onCommentCreate**:  监听评论被创建，此时我们应该把评论内容保存到数据库，并返回完整的评论信息
 - **onCommentDelete**:  监听评论被删除，此时应该同步删除数据库的评论
 - **queryAllComments**:  查询所有的评论（当配置 `floatable: false` 是有效）

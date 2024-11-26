@@ -44,7 +44,7 @@ new AiEditor({
 - **enable**: Whether to enable the comment function
 - **floatable**: Whether the content of the comment is floating with the position of the comment area
 - **enableWithEditDisable**: Whether to enable the annotation (comment) function in read-only mode, the default is false
-- **onCommentActivated**: Listen for comments to be created. At this time, we should save the comment content to the database and return the complete comment information
+- **onCommentActivated**: This callback is triggered when the comment gains focus
 - **onCommentCreate**: Listen for comments to be created. At this time, we should save the comment content to the database and return the complete comment information
 - **onCommentDelete**: Listen for comments to be deleted. At this time, the comments in the database should be deleted synchronously
 - **queryAllComments**: Query all comments (when the configuration `floatable: false` is valid)
