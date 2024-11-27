@@ -11,7 +11,7 @@ export const SelectionMarkerExt = Extension.create({
                 key: new PluginKey("selection-marker"),
                 props: {
                     decorations(state) {
-                        if (state.selection.empty || e.isFocused) {
+                        if (state.selection.empty || e.isFocused || !e.isEditable) {
                             return null;
                         }
                         return DecorationSet.create(state.doc, [
