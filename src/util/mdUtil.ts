@@ -35,6 +35,13 @@ export const mdToHtml = (markdown: string) => {
     if (!renderHtml) return markdown;
     const parser = new DOMParser();
     const doc = parser.parseFromString(renderHtml, 'text/html');
+    const lis = doc.querySelectorAll("li");
+
+    //"tiptap" does not support empty list items. Here to fill in the gaps
+    if (lis) lis.forEach(li => {
+        if (!li.innerHTML) li.innerHTML = "<p></p>"
+    })
+
     let html = '';
     for (let i = 0; i < doc.body.children.length; i++) {
         const element = doc.body.children[i];
