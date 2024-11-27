@@ -4,5 +4,5 @@ export interface OpenaiModelConfig extends AiModelConfig {
     endpoint?: string,
     customUrl?: string | (() => string),
     apiKey?: string,
-    model?: string
+    model: string
 }

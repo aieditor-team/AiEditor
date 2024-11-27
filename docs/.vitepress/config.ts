@@ -49,7 +49,7 @@ export default defineConfig({
                     label: "章节"
                 },
                 editLink: {
-                    pattern: 'https://github.com/agents-flex/agents-flex/edit/main/docs/:path',
+                    pattern: 'https://github.com/aieditor-team/AiEditor/edit/main/docs/:path',
                     text: '编辑当前页面'
                 },
 

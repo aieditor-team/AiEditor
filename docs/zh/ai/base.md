@@ -10,7 +10,8 @@ new AiEditor({
     ai: {
         models: {
             openai: {
-                apiKey:"sk-alQ96zbDn*****"
+                apiKey:"sk-alQ96zbDn*****",
+                model: 'gpt-4o-mini'
             } as OpenaiModelConfig
         }
     },
