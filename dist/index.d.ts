@@ -370,7 +370,7 @@ export declare interface OpenaiModelConfig extends AiModelConfig {
     endpoint?: string;
     customUrl?: string | (() => string);
     apiKey?: string;
-    model?: string;
+    model: string;
 }
 
 export declare class SparkAiModel extends AiModel {
