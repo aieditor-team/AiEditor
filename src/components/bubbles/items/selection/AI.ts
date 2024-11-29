@@ -7,6 +7,7 @@ import {AiClient} from "../../../../ai/core/AiClient.ts";
 import tippy, {Instance} from "tippy.js";
 import {SmoothAppender} from "../../../../util/SmoothAppender.ts";
 import {getAIBoundingClientRect} from "../../../../util/getAIBoundingClientRect.ts";
+import { TextSelection } from "@tiptap/pm/state";
 
 
 type Holder = {
@@ -124,9 +125,7 @@ const createAiPanelElement = (holder: Holder, aiBubbleMenuItems: AIBubbleMenuIte
     container.querySelector("#replace")!.addEventListener("click", () => {
         const textarea = container.querySelector("textarea")!;
         if (textarea.value) {
-            const {state: {selection, tr}, view: {dispatch}, schema} = holder.editor!
-            const textNode = schema.text(textarea.value);
-            dispatch(tr.replaceRangeWith(selection.from, selection.to, textNode))
+            holder.editor?.insertMarkdown(textarea.value)
             holder.aiPanelInstance?.hide();
             holder.tippyInstance?.show();
         }
@@ -135,16 +134,24 @@ const createAiPanelElement = (holder: Holder, aiBubbleMenuItems: AIBubbleMenuIte
     container.querySelector("#insert")!.addEventListener("click", () => {
         const textarea = container.querySelector("textarea")!;
         if (textarea.value) {
-            const {state: {selection, tr}, view: {dispatch}} = holder.editor!
-            dispatch(tr.insertText(textarea.value, selection.to))
+            const {state: {selection, doc}} = holder.editor!
+            holder.editor?.commands.setTextSelection(TextSelection.create(doc, selection.to));
+            holder.editor?.insertMarkdown(textarea.value)
+
             holder.aiPanelInstance?.hide();
-            holder.tippyInstance?.show();
+
+            if (selection.from != selection.to) {
+                holder.tippyInstance?.show()
+            }
         }
     });
 
     container.querySelector("#hide")!.addEventListener("click", () => {
-        holder.aiPanelInstance?.hide();
-        holder.tippyInstance?.show();
+        holder.aiPanelInstance?.hide()
+        const {state: {selection}} = holder.editor!
+        if (selection.from != selection.to) {
+            holder.tippyInstance?.show()
+        }
     });
 
     container.querySelector("#go")!.addEventListener("click", () => {
