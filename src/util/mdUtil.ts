@@ -1,12 +1,36 @@
-// @ts-ignore
-import markdownit from 'markdown-it'
+import MarkdownIt from 'markdown-it';
+import container from 'markdown-it-container';
+
+
 // @ts-ignore
 import TurndownService from 'turndown'
 
-const md = markdownit({
+
+const md = MarkdownIt({
     html: true,
     linkify: true,
     typographer: true
+});
+
+
+const containerClasses = ['info', 'tip', 'warning', 'danger'];
+containerClasses.forEach(name => {
+    md.use(container, name, {
+        validate: function (params: any) {
+            params = params.trim()
+            if (params === '') return true;
+            return params.indexOf(name) >= 0;
+        },
+        render: function (tokens: any, idx: any) {
+            if (tokens[idx].nesting === 1) {
+                // opening tag
+                return `<div class="container-wrapper ${name}">`;
+            } else {
+                // closing tag
+                return '</div>';
+            }
+        }
+    })
 })
 
 
@@ -27,7 +51,25 @@ const turndownService = new TurndownService({
 turndownService.keep((node: any) => {
     return !(node && node.nodeName === "DIV");
 });
-
+turndownService.addRule("container", {
+    // match <div class="container-wrapper warning">...</div>
+    filter: ['div'],
+    tokenizer: (token: any, _context: any) => {
+        if (token.tag === 'div' && token.attribs.class === 'container-wrapper') {
+            return token;
+        }
+    },
+    replacement: function (content: any, _token: HTMLElement) {
+        let className = '';
+        for (let containerClass of containerClasses) {
+            if (_token.classList.contains(containerClass)) {
+                className = ' ' + containerClass;
+                break;
+            }
+        }
+        return `:::${className}\n` + content.trim() + '\n:::\n';
+    }
+})
 
 export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;

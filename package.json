@@ -33,6 +33,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-container": "^2.0.10",
     "@types/node": "^20.9.0",
     "less": "^4.2.0",
     "typescript": "^5.0.2",
