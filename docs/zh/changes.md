@@ -1,5 +1,30 @@
 # AiEditor ChangeLog
 
+## v1.2.8 20241203:
+
+- feat: Added support for the Shift-Tab de-indentation shortcut key in code blocks
+- feat: Added support for the `:::` syntax of Markdown
+- feat: Updated related dependencies to the latest version
+- feat: Modified the model in OpenaiModelConfig to be required
+- fix: The editor cannot be selected when editing is prohibited under the Android operating system
+- fix: When inserting an empty ordered list, it cannot be inserted
+- fix: The markdown content output by AI cannot be inserted correctly
+- doc: Updated some description errors in the document
+- doc: Corrected the configuration errors related to openai in the document
+
+---
+- 新增：代码块添加 Shift-Tab 取消缩进快捷键的支持
+- 新增：添加 Markdown 的 `:::` 语法的支持
+- 优化：更新相关依赖到最新版本
+- 优化：修改 OpenaiModelConfig 中的 model 为必填
+- 修复：编辑器在 Android 操作系统下，且禁止编辑时无法选择的问题
+- 修复：当插入一个空的有序列表时，无法被插入的问题
+- 修复：AI 输出的 markdown 内容无法被正确插入的问题
+- 文档：更新文档的一些描述错误
+- 文档：修正文档关于 openai 的相关配置错误
+
+
+
 ## v1.2.7 20241121:
 - fix: When configuring contentIsMarkdown, it may affect the reload problem
 - fix: When markdown parses images, the images will be wrapped in p tags, resulting in incorrect parsing
