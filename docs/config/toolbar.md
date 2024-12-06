@@ -58,6 +58,14 @@ The above configuration is the default configuration of the AiEditor tool class,
 - fullscreen: Fullscreen
 - ai: Artificial Intelligence
 
+In addition, the pro version also supports the following configurations:
+
+- pdf-export: PDF export
+- word-export: Word export
+- word-import: Word import
+- chat: AI conversation
+
+
 ## Set Toolbar Button Size
 Set the toolbar button size by configuring `toolbarSize`:
 
