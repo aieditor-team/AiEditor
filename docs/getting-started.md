@@ -21,6 +21,9 @@ HTML:
 Typescript:
 
 ```typescript
+import {AiEditor} from "aieditor";
+import "aieditor/dist/style.css"
+
 new AiEditor({
     element: "#aiEditor",
     placeholder: "Click to Input Content...",
