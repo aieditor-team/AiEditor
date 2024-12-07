@@ -24,6 +24,8 @@ const discord_icon_svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2
 export default defineConfig({
     lang: 'zh-CN',
     title: "AIEditor",
+    mpa: true,
+    base: '/docs/',
     description: "A next-generation rich text editor for AI, open-source rich text editor, modern rich text editor",
     titleTemplate: ':title - AiEditor',
     lastUpdated: true,
@@ -31,7 +33,6 @@ export default defineConfig({
         hostname: "https://aieditor.dev"
     },
     appearance: false,
-
 
     locales: {
         root: {
@@ -54,16 +55,10 @@ export default defineConfig({
                 },
 
                 nav: [
-                    {text: '开发文档', link: 'zh/what-is-ai-editor'},
-                    {
-                        text: '在线 Demo', items: [
-                            {text: '经典/传统风格', link: 'zh/demo'},
-                            {text: '类腾讯文档风格', link: 'http://doc.aieditor.com.cn'},
-                            {text: '商业版演示', link: 'http://pro.aieditor.com.cn'},
-                        ]
-                    },
-                    {text: 'AiEditor Pro', link: 'zh/versions'},
-                    {text: '联系我们', link: 'zh/contact-us'},
+                    {text: '开发文档', link: '/zh/what-is-ai-editor'},
+                    {text: '在线演示', link: '../../zh/demo/index.html'},
+                    {text: '价格', link: '../../zh/price/index.html'},
+                    {text: '联系我们', link: '../../zh/contact-us/index.html'},
                     {text: '更新记录', link: '/zh/changes.html'},
                 ],
 
@@ -131,6 +126,7 @@ export default defineConfig({
 
     themeConfig: {
         logo: '/assets/image/logo.png',
+        logoLink: '../../',
 
         editLink: {
             pattern: 'https://gitee.com/aieditor-team/aieditor/edit/main/docs/:path',
@@ -138,22 +134,17 @@ export default defineConfig({
         socialLinks: [
             {icon: {svg: gitee_icon_svg}, link: 'https://gitee.com/aieditor-team/aieditor'},
             {icon: 'github', link: 'https://github.com/aieditor-team/aieditor'},
-            {icon: {svg:discord_icon_svg}, link: 'https://discord.gg/YFYcQAbz4r'},
+            {icon: {svg: discord_icon_svg}, link: 'https://discord.gg/YFYcQAbz4r'},
         ],
         search: {
             provider: 'local'
         },
         nav: [
             {text: 'Document', link: '/what-is-ai-editor'},
-            {
-                text: 'Demos', items: [
-                    {text: 'Classic Style', link: '/demo'},
-                    {text: 'Modern style', link: 'http://doc.aieditor.com.cn'},
-                    {text: 'AIEditor Pro', link: 'http://pro.aieditor.com.cn'},
-                ]
-            },
-            {text: 'AiEditor Pro', link: '/versions'},
-            {text: 'Contact Us', link: '/contact-us'},
+            {text: 'Demo', link: '../../demo/index.html'},
+            {text: 'Price', link: '../../price/index.html'},
+            {text: 'Contact Us', link: '../../contact-us/index.html'},
+            {text: 'Changes', link: '/changes'},
         ],
 
         sidebar: [
@@ -222,30 +213,30 @@ export default defineConfig({
     head: [
         ['link', {rel: 'icon', href: '/assets/image/logo.png'}],
         ["script",
-            {"async":"","src":"https://www.googletagmanager.com/gtag/js?id=G-C6VPTJNB4Y"}, ],
+            {"async": "", "src": "https://www.googletagmanager.com/gtag/js?id=G-C6VPTJNB4Y"},],
 
-        ["script",  {},
+        ["script", {},
             `window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-C6VPTJNB4Y');`
         ],
 
-        ["script",  {},
+        ["script", {},
             `window.addEventListener('load', function (event) {
 document.querySelectorAll('a[href*="discord"]').forEach(function (e) {
 e.addEventListener("click", function () {
 gtag('event', 'conversion', { 'send_to': 'AW-16676526364/NmBKCIicyeAZEJyy_o8-' });})})})`
         ],
 
-        ["script",  {},
+        ["script", {},
             `window.addEventListener('load', function (event) {
 document.querySelectorAll('a[href*="mailto:"]').forEach(function (e) {
 e.addEventListener("click", function () {
 gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });})})})`
         ],
 
-        ["script",  {},
+        ["script", {},
             `var selection = document.getSelection();
 document.addEventListener('copy', function (e) {
 var selectedText = selection.toString();
