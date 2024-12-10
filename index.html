@@ -6,29 +6,22 @@
     <title>AiEditor Demo</title>
     <script>
         let isDark = false;
-        function dark() {
-            if (!isDark) {
-                document.body.style.background = "#1a1b1e"
-                document.querySelector("#title").style.color = "#eee"
-                document.querySelector("#aiEditor").classList.remove("aie-theme-light");
-                document.querySelector("#aiEditor").classList.add("aie-theme-dark");
-            } else {
-                document.body.style.background = ""
-                document.querySelector("#title").style.color = ""
-                document.querySelector("#aiEditor").classList.remove("aie-theme-dark");
-                document.querySelector("#aiEditor").classList.add("aie-theme-light");
-            }
+
+        function changeTheme() {
+            document.body.style.background = isDark ? "" : "#1a1b1e"
+            document.querySelector("#title").style.color = isDark ? "" : "#eee"
+            aiEditor.changeTheme();
             isDark = !isDark;
         }
 
-        function changeLang(){
+        function changeLang() {
             const lang = localStorage.getItem("lang");
-            if (!lang || lang === "zh"){
+            if (!lang || lang === "zh") {
                 aiEditor.changeLang("en");
-                localStorage.setItem("lang","en");
-            }else {
+                localStorage.setItem("lang", "en");
+            } else {
                 aiEditor.changeLang("zh");
-                localStorage.setItem("lang","zh");
+                localStorage.setItem("lang", "zh");
             }
         }
 
@@ -40,11 +33,11 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-<!--    <style>-->
-<!--        .aie-content {-->
-<!--            font-size: 18px;-->
-<!--        }-->
-<!--    </style>-->
+    <!--    <style>-->
+    <!--        .aie-content {-->
+    <!--            font-size: 18px;-->
+    <!--        }-->
+    <!--    </style>-->
 </head>
 <body>
 
@@ -53,7 +46,7 @@
     AiEditor，一个面向 AI 的下一代富文本编辑器。
     <a href="https://gitee.com/aieditor-team/aieditor" target="_blank">获取源码</a>
     <a href="https://aieditor.dev" target="_blank">访问官网</a>
-    <button onclick="dark()">切换主题</button>
+    <button onclick="changeTheme()">切换主题</button>
     <button onclick="changeLang()">切换语言</button>
 </div>
 

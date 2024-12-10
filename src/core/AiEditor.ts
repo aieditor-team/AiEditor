@@ -550,6 +550,19 @@ export class AiEditor {
         return this;
     }
 
+    changeTheme(theme?: "dark" | "light") {
+        const rootEl = typeof this.options.element === "string"
+            ? document.querySelector(this.options.element) as Element : this.options.element;
+
+        if (!theme) {
+            theme = this.options.theme === "dark" ? "light" : "dark";
+        }
+
+        rootEl.classList.remove(`aie-theme-${this.options.theme}`);
+        rootEl.classList.add(`aie-theme-${theme}`);
+        this.options.theme = theme;
+    }
+
     removeRetention() {
         this.options.contentRetentionKey && localStorage.removeItem(this.options.contentRetentionKey);
         return this;
