@@ -67,7 +67,7 @@
       font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       border: none;
       margin: 10px 10px 0 10px;
-      background: var(--aie-input-bg-color);
+      background: var(--aie-popover-bg-color);
       color: var(--aie-text-color);
       resize: none;
       max-height: 300px;
@@ -80,18 +80,19 @@
     div {
       display: flex;
       justify-content: end;
-      border-top: solid 1px var();
+      border-top: solid 1px var(--aie-popover-border-color);
       padding: 10px;
-      background-color: #fafafa;
+      background-color: var(--aie-popover-bg-color);
 
       button {
         margin-left: 10px;
-        background: var(--aie-input-bg-color);
+        background: var(--aie-button-bg-color);
         color: var(--aie-text-color);
-        border: solid 1px #eaeaea;
+        border: solid 1px ;
         padding: 5px 15px;
         font-size: 14px;
         border-radius: 3px;
+        border-color: var(--aie-button-border-color);
         display: flex;
         align-items: center;
 
@@ -102,7 +103,7 @@
         }
 
         &:hover {
-          background-color: var(--aie-menus-item-hover-color);
+          background-color: var(--aie-button-hover-bg-color);
           cursor: pointer;
         }
       }
@@ -173,6 +174,8 @@
         font-family: Arial, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
         border: none;
         resize: none;
+        color: var(--aie-text-color);
+        background-color: var(--aie-popover-bg-color);
       }
 
       textarea:focus-visible {
@@ -220,7 +223,7 @@
         background: #609eec;
 
         svg {
-          fill: var(--aie-text-color);
+          fill: #fff;
           width: 18px;
           margin-left: 2px;
           margin-top: 2px;
