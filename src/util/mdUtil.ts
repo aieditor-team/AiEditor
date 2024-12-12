@@ -6,6 +6,7 @@ import container from 'markdown-it-container';
 import TurndownService from 'turndown'
 // @ts-ignore
 import {gfm, tables} from 'joplin-turndown-plugin-gfm';
+import { organizeHTMLContent } from './htmlUtil';
 
 
 const md = MarkdownIt({
@@ -77,29 +78,8 @@ export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;
     const renderHtml = md.render(markdown).trim();
     if (!renderHtml) return markdown;
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(renderHtml, 'text/html');
-    const lis = doc.querySelectorAll("li");
-
-    //"tiptap" does not support empty list items. Here to fill in the gaps
-    if (lis) lis.forEach(li => {
-        if (!li.innerHTML) li.innerHTML = "<p></p>"
-    })
-
-    let html = '';
-    for (let i = 0; i < doc.body.children.length; i++) {
-        const element = doc.body.children[i];
-        if (i == 0 && element.tagName === "P") {
-            html += element.innerHTML;
-        } else {
-            // https://gitee.com/aieditor-team/aieditor/pulls/10
-            html += element.querySelector("img")
-                ? element.innerHTML : element.outerHTML;
-        }
-    }
-    return html;
+    return organizeHTMLContent(renderHtml);
 }
-
 
 export const htmlToMd = (html: string) => {
     if (!html) return html;

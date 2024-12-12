@@ -149,3 +149,28 @@ export const clearDataMpSlice = (html: string) => {
     tempDiv.appendChild(fragment)
     return tempDiv.innerHTML;
 }
+
+export const organizeHTMLContent = (originalHtml: string) => {
+    if (!originalHtml) return "";
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(originalHtml, 'text/html');
+    const lis = doc.querySelectorAll("li");
+
+    //"tiptap" does not support empty list items. Here to fill in the gaps
+    if (lis) lis.forEach(li => {
+        if (!li.innerHTML) li.innerHTML = "<p></p>"
+    })
+
+    let html = '';
+    for (let i = 0; i < doc.body.children.length; i++) {
+        const element = doc.body.children[i];
+        if (i == 0 && element.tagName === "P") {
+            html += element.innerHTML;
+        } else {
+            // https://gitee.com/aieditor-team/aieditor/pulls/10
+            html += element.querySelector("img")
+                ? element.innerHTML : element.outerHTML;
+        }
+    }
+    return html;
+}
