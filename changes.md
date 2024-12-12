@@ -1,5 +1,24 @@
 # AiEditor ChangeLog
 
+## v1.2.9 20241212:
+
+- feat: Added changeTheme() method for dynamic theme switching
+- feat: Optimized the color variables related to dark and light themes
+- feat: Adjusted the size of emoji to use the toolbarSize configuration
+- feat: Optimized the related tool methods of htmlUtil and mdUtil
+- fix: When getting markdown, the image content cannot be correctly converted to markdown
+- fix: When getting markdown, the table cannot be correctly converted to markdown in some cases
+
+---
+- 新增：添加 changeTheme() 方法，用于动态切换主题
+- 优化：优化暗色与亮色主题的相关颜色变量
+- 优化：调整 emoji 的大小以在使用 toolbarSize 的配置
+- 优化：优化 htmlUtil 和 mdUtil 的相关工具方法
+- 修复：获取 markdown 时，图片内容无法正确转换为 markdown
+- 修复：获取 markdown 时，表格在某些情况下无法正确转换为 markdown
+
+
+
 ## v1.2.8 20241203:
 
 - feat: Added support for the Shift-Tab de-indentation shortcut key in code blocks
