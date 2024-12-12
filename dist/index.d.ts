@@ -82,6 +82,7 @@ export declare class AiEditor {
     clear(): this;
     isEmpty(): boolean;
     changeLang(lang: string): this;
+    changeTheme(theme?: "dark" | "light"): void;
     removeRetention(): this;
     destroy(): void;
     isDestroyed(): boolean;
