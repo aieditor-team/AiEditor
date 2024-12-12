@@ -1,5 +1,5 @@
 import {EditorEvents} from "@tiptap/core";
-import {AiEditorOptions} from "../../core/AiEditor.ts";
+import {AiEditorOptions, InnerEditor} from "../../core/AiEditor.ts";
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import tippy, {Instance} from "tippy.js";
 
@@ -54,11 +54,13 @@ export class Emoji extends AbstractMenuButton {
         div.style.display = "flex"
         div.style.justifyContent = "center"
 
+        const size = this.getSize();
+
         div.classList.add("aie-dropdown-container")
         div.innerHTML = `
             <div class="emoji-cells">
             ${this.emojis.map((emoji) => {
-            return `<div  class="emoji-cell"><span>${emoji}</span></div>`;
+            return `<div  class="emoji-cell" style="width: ${size}px;height: ${size}px;font-size: ${size-2}px;"><span>${emoji}</span></div>`;
         }).join('')}
             </div>
         `;
@@ -72,6 +74,15 @@ export class Emoji extends AbstractMenuButton {
         });
 
         return div;
+    }
+
+    getSize() {
+        const options = (this.editor as InnerEditor).aiEditor.options;
+        if (options.toolbarSize === "large") {
+            return 30
+        } else if (options.toolbarSize === "medium") {
+            return 25
+        } else return 20
     }
 }
 
