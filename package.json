@@ -72,6 +72,7 @@
     "crypto-js": "^4.2.0",
     "fetch-event-stream": "^0.1.5",
     "i18next": "^23.16.2",
+    "joplin-turndown-plugin-gfm": "^1.0.12",
     "lowlight": "^3.1.0",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",

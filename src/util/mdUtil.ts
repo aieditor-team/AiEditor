@@ -4,6 +4,8 @@ import container from 'markdown-it-container';
 
 // @ts-ignore
 import TurndownService from 'turndown'
+// @ts-ignore
+import {gfm, tables} from 'joplin-turndown-plugin-gfm';
 
 
 const md = MarkdownIt({
@@ -47,17 +49,17 @@ const turndownService = new TurndownService({
     linkReferenceStyle: 'full',
     preformattedCode: false,
 });
+turndownService.use(gfm);
+turndownService.use(tables);
 
 turndownService.keep((node: any) => {
     return !(node && node.nodeName === "DIV");
 });
 turndownService.addRule("container", {
     // match <div class="container-wrapper warning">...</div>
-    filter: ['div'],
-    tokenizer: (token: any, _context: any) => {
-        if (token.tag === 'div' && token.attribs.class === 'container-wrapper') {
-            return token;
-        }
+    // filter: ['div'],
+    filter: (node: HTMLElement) => {
+        return node.tagName === "DIV" && node.classList.contains('container-wrapper');
     },
     replacement: function (content: any, _token: HTMLElement) {
         let className = '';
@@ -101,5 +103,12 @@ export const mdToHtml = (markdown: string) => {
 
 export const htmlToMd = (html: string) => {
     if (!html) return html;
-    return turndownService.turndown(html)
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const colGroupList = doc.querySelectorAll("colgroup");
+    colGroupList.forEach(colgroup => colgroup.remove())
+
+    const innerHTML = doc.body.innerHTML;
+    return turndownService.turndown(innerHTML)
 }
