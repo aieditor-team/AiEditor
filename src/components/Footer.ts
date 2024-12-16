@@ -81,13 +81,13 @@ export class Footer extends HTMLElement implements AiEditorEventListener {
         }
     }
 
-    onCreate(props: EditorEvents["create"], _: AiEditorOptions): void {
-        this.count = props.editor.storage.characterCount.characters()
+    onCreate(event: EditorEvents["create"], _: AiEditorOptions): void {
+        this.count = event.editor.storage.characterCount.characters()
         this.updateCharacters()
     }
 
-    onTransaction(props: EditorEvents["transaction"]): void {
-        const newCount = props.editor.storage.characterCount.characters();
+    onTransaction(event: EditorEvents["transaction"]): void {
+        const newCount = event.editor.storage.characterCount.characters();
         if (newCount != this.count) {
             this.count = newCount
             this.updateCharacters()

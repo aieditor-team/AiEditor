@@ -85,9 +85,10 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             TableRow,
             TableHeader,
             TableCell,
-            typeof options.textCounter === "function" ? CharacterCount.configure({
-                textCounter: options.textCounter
-            }) : CharacterCount,
+            CharacterCount.configure({
+                textCounter: typeof options?.textCounter === "function"
+                    ? options.textCounter : (text) => text.length
+            }),
             Link.configure({
                 openOnClick: false,
                 autolink: typeof options.link?.autolink === "undefined" ? true : options.link?.autolink,
