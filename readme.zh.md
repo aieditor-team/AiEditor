@@ -27,7 +27,7 @@
 AiEditor 是一个面向 AI 的下一代富文本编辑器，她基于 Web Component，因此支持 Layui、Vue、React、Angular 等几乎任何前端框架。她适配了 PC Web 
 端和手机端，并提供了 亮色 和 暗色 两个主题。除此之外，她还提供了灵活的配置，开发者可以方便的使用其开发任何文字编辑的应用。
 
-更多关于 AiEditor，请访问官网： https://aieditor.dev 
+更多关于 AiEditor，请访问官网： https://aieditor.com.cn
 
 
 ## AIEditor 的与众不同之处
@@ -45,13 +45,13 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 
 ### 3、除了开源版，还提供商业 Pro 版
 除了开源版以外，我们还提供了功能更加强大的商业，商业 Pro 版不限制用户量、不限制应用数量。更多商业 Pro 版的对比，
-可以参考这里：https://aieditor.dev/versions.html
+可以参考这里：https://aieditor.com.cn/zh/price
 
 
 ## 在线演示
 
 - 现代风格（类腾讯文档）: http://doc.aieditor.com.cn
-- 经典/传统风格: https://aieditor.dev/demo.html
+- 经典/传统风格: https://aieditor.com.cn/zh/demo
 
 
 ## 已完善
@@ -87,7 +87,7 @@ AIEditor 基于 Web Component 开发，支持与任意主流的前端框架集�
 
 ## 快速开始
 
-访问官网：https://aieditor.dev/zh/getting-started.html
+访问官网：https://aieditor.com.cn
 
 ## 交流
 

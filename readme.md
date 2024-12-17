@@ -39,12 +39,12 @@ without worrying about the GPL infection problem that may be caused by the GPL p
 
 ### 3. In addition to the open source version, a commercial version is also available
 In addition to the open source version, we also provide a more powerful commercial version, which does not limit the number of users or the number of applications. For more comparisons of commercial versions,
-please refer to here: https://aieditor.dev/versions.html
+please refer to here: https://aieditor.dev/price
 
 
 ## Online Demo
 
-- Classic/traditional style: https://aieditor.dev/demo.html
+- Classic/traditional style: https://aieditor.dev/demo
 - Modern style: http://doc.aieditor.com.cn
 
 
@@ -81,4 +81,4 @@ please refer to here: https://aieditor.dev/versions.html
 
 ## Quick start
 
-Visit the official website: https://aieditor.dev/getting-started.html
+Visit the official website: https://aieditor.dev
