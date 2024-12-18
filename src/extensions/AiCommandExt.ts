@@ -53,13 +53,13 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                     editor.chain().focus().deleteRange(range).run();
 
                     if (props && props.aiItem) {
-                        let aiMenu = props.aiItem as AiMenu;
+                        const aiMenu = props.aiItem as AiMenu;
 
                         if (aiMenu.onClick) {
                             aiMenu.onClick(props.event);
                         } else {
                             const selectedText = editor.state.selection.$head.parent.textContent;
-                            let useModelType = aiMenu.model!;
+                            const useModelType = aiMenu.model!;
                             const aiModel = AiModelManager.get(aiMenu.model!);
                             if (aiModel) {
                                 aiModel?.chat(selectedText, aiMenu.prompt!, new DefaultAiMessageListener(editor));
