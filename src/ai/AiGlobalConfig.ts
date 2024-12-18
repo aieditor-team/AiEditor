@@ -8,6 +8,7 @@ export interface AiMenu {
     prompt?: string,
     text?: "selected" | "focusBefore",
     model?: string,
+    onClick?: (event: MouseEvent)=> void,
     children?: AiMenu[],
 }
 

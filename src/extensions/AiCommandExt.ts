@@ -53,15 +53,19 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                     editor.chain().focus().deleteRange(range).run();
 
                     if (props && props.aiItem) {
-                        let aiCommand = props.aiItem as AiMenu;
-                        const selectedText = editor.state.selection.$head.parent.textContent;
+                        let aiMenu = props.aiItem as AiMenu;
 
-                        let useModelType = aiCommand.model!;
-                        const aiModel = AiModelManager.get(aiCommand.model!);
-                        if (aiModel) {
-                            aiModel?.chat(selectedText, aiCommand.prompt!, new DefaultAiMessageListener(editor));
+                        if (aiMenu.onClick) {
+                            aiMenu.onClick(props.event);
                         } else {
-                            console.error("Ai model config error. can not find the type:" + useModelType + " at command menu")
+                            const selectedText = editor.state.selection.$head.parent.textContent;
+                            let useModelType = aiMenu.model!;
+                            const aiModel = AiModelManager.get(aiMenu.model!);
+                            if (aiModel) {
+                                aiModel?.chat(selectedText, aiMenu.prompt!, new DefaultAiMessageListener(editor));
+                            } else {
+                                console.error("Ai model config error. can not find the type:" + useModelType + " at command menu")
+                            }
                         }
                     } else {
                         switch (props.index) {

@@ -87,10 +87,10 @@ export class Ai extends AbstractDropdownMenuButton<AiMenu> {
             <div class="text" style="display: flex;padding: 5px 10px">${this.onDropdownItemRender(i)}</div>
             `
             item.addEventListener("click", (evt) => {
-                const menuItem = this.menuData[i] as any;
+                const menuItem = this.menuData[i];
                 if (menuItem.onClick) {
-                    const result = menuItem.onClick(evt)
-                    if (result) this.tippyInstance!.hide()
+                    menuItem.onClick(evt)
+                    this.tippyInstance!.hide()
                 } else {
                     this.onDropdownItemClick(i);
                     this.tippyInstance!.hide()
