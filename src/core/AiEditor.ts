@@ -38,6 +38,7 @@ import {LanguageItem} from "../extensions/CodeBlockExt.ts";
 import {Transaction} from "@tiptap/pm/state";
 import {DefaultToolbarKey} from "../components/DefaultToolbarKeys.ts";
 import {htmlToMd, mdToHtml} from "../util/mdUtil.ts";
+import {organizeHTMLContent} from "../util/htmlUtil.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -296,8 +297,12 @@ export class AiEditor {
         this.eventComponents.push(this.footer);
 
         let content = this.options.content;
-        if (content && this.options.contentIsMarkdown) {
-            content = mdToHtml(content)
+        if (typeof content === "string") {
+            if (this.options.contentIsMarkdown) {
+                content = mdToHtml(content)
+            } else {
+                content = organizeHTMLContent(content)
+            }
         }
 
         if (this.options.contentRetention && this.options.contentRetentionKey) {
@@ -505,6 +510,9 @@ export class AiEditor {
     }
 
     insert(content: any) {
+        if (typeof content === "string") {
+            content = organizeHTMLContent(content);
+        }
         this.innerEditor.commands.insertContent(content);
         return this;
     }

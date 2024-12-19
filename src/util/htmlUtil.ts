@@ -154,12 +154,23 @@ export const organizeHTMLContent = (originalHtml: string) => {
     if (!originalHtml) return "";
     const parser = new DOMParser();
     const doc = parser.parseFromString(originalHtml, 'text/html');
-    const lis = doc.querySelectorAll("li");
+
 
     //"tiptap" does not support empty list items. Here to fill in the gaps
-    if (lis) lis.forEach(li => {
+    const liNodeList = doc.querySelectorAll("li");
+    if (liNodeList) liNodeList.forEach(li => {
         if (!li.innerHTML) li.innerHTML = "<p></p>"
     })
+
+    const imgNodeList = doc.querySelectorAll('body>p>img');
+    if (imgNodeList.length > 0) {
+        const body = doc.querySelector('body')!;
+        for (const image of imgNodeList) {
+            const imageParent = image.parentNode;
+            const position = Array.prototype.indexOf.call(body.children, imageParent);
+            body.insertBefore(image, body.children[position]);
+        }
+    }
 
     let html = '';
     for (let i = 0; i < doc.body.children.length; i++) {
