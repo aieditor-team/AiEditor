@@ -338,16 +338,15 @@ export const ImageExt = Image.extend<ImageOptions>({
                         transformPastedHTML(html) {
                             const parser = new DOMParser();
                             const document = parser.parseFromString(html, 'text/html');
-                            const workspace = document.documentElement.querySelector('body');
-                            if (workspace?.children) {
-                                const imgNodes = document.documentElement.querySelectorAll('p > img');
+                            const body = document.querySelector('body');
+                            if (body?.children) {
+                                const imgNodes = body.querySelectorAll('p > img');
                                 for (const image of imgNodes) {
                                     const imageParent = image.parentNode;
-                                    const position = Array.prototype.indexOf.call(workspace.children, imageParent);
-                                    image.parentElement!.prepend(image);
-                                    workspace.insertBefore(image, workspace.children[position]);
+                                    const position = Array.prototype.indexOf.call(body.children, imageParent);
+                                    body.insertBefore(image, body.children[position]);
                                 }
-                                return workspace.innerHTML;
+                                return body.innerHTML;
                             }
                             return html;
                         },
