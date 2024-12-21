@@ -214,6 +214,7 @@ export declare interface AiMenu {
     prompt?: string;
     text?: "selected" | "focusBefore";
     model?: string;
+    onClick?: (event: MouseEvent) => void;
     children?: AiMenu[];
 }
 
@@ -274,6 +275,7 @@ export declare type BubbleMenuItem = {
     title?: string;
     icon: string;
     holder?: any;
+    isActive?: (editor: AiEditor) => boolean;
     onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
     onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 };
@@ -314,8 +316,8 @@ declare class Footer extends HTMLElement implements AiEditorEventListener {
     constructor();
     initDraggable(draggable?: boolean): void;
     updateCharacters(): void;
-    onCreate(props: EditorEvents["create"], _: AiEditorOptions): void;
-    onTransaction(props: EditorEvents["transaction"]): void;
+    onCreate(event: EditorEvents["create"], _: AiEditorOptions): void;
+    onTransaction(event: EditorEvents["transaction"]): void;
     onEditableChange(editable: boolean): void;
 }
 
