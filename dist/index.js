@@ -12719,8 +12719,8 @@ function u1(t) {
         if (ue)
           return O = ue, "break";
       }, z = k; z > 0; z--) {
-        var se = G(z);
-        if (se === "break") break;
+        var le = G(z);
+        if (le === "break") break;
       }
     e.placement !== O && (e.modifiersData[r]._skip = !0, e.placement = O, e.reset = !0);
   }
@@ -12838,7 +12838,7 @@ function b1(t) {
   };
   if (T) {
     if (o) {
-      var $, q = g === "y" ? _t : mt, V = g === "y" ? Lt : kt, X = g === "y" ? "height" : "width", y = T[g], v = y + h[q], A = y - h[V], k = _ ? -x[X] / 2 : 0, G = S === oi ? R[X] : x[X], z = S === oi ? -x[X] : -R[X], se = e.elements.arrow, Ce = _ && se ? Xc(se) : {
+      var $, q = g === "y" ? _t : mt, V = g === "y" ? Lt : kt, X = g === "y" ? "height" : "width", y = T[g], v = y + h[q], A = y - h[V], k = _ ? -x[X] / 2 : 0, G = S === oi ? R[X] : x[X], z = S === oi ? -x[X] : -R[X], le = e.elements.arrow, Ce = _ && le ? Xc(le) : {
         width: 0,
         height: 0
       }, oe = e.modifiersData["arrow#persistent"] ? e.modifiersData["arrow#persistent"].padding : zf(), ue = oe[q], Be = oe[V], Le = ki(0, R[X], Ce[X]), We = b ? R[X] / 2 - k - Le - ue - M.mainAxis : G - Le - ue - M.mainAxis, Ke = b ? -R[X] / 2 + k + Le + Be + M.mainAxis : z + Le + Be + M.mainAxis, gt = e.elements.arrow && Eo(e.elements.arrow), Ft = gt ? g === "y" ? gt.clientTop || 0 : gt.clientLeft || 0 : 0, de = ($ = B == null ? void 0 : B[g]) != null ? $ : 0, Pe = y + We - de - Ft, Qe = y + Ke - de, ge = ki(_ ? ya(v, Pe) : v, y, _ ? dr(A, Qe) : A);
@@ -13537,7 +13537,7 @@ function ay(t, e) {
       }
     }
   }
-  function se() {
+  function le() {
     l = !0;
   }
   function Ce() {
@@ -13545,11 +13545,11 @@ function ay(t, e) {
   }
   function oe() {
     var I = q();
-    I.addEventListener("mousedown", z, !0), I.addEventListener("touchend", z, Jn), I.addEventListener("touchstart", Ce, Jn), I.addEventListener("touchmove", se, Jn);
+    I.addEventListener("mousedown", z, !0), I.addEventListener("touchend", z, Jn), I.addEventListener("touchstart", Ce, Jn), I.addEventListener("touchmove", le, Jn);
   }
   function ue() {
     var I = q();
-    I.removeEventListener("mousedown", z, !0), I.removeEventListener("touchend", z, Jn), I.removeEventListener("touchstart", Ce, Jn), I.removeEventListener("touchmove", se, Jn);
+    I.removeEventListener("mousedown", z, !0), I.removeEventListener("touchend", z, Jn), I.removeEventListener("touchstart", Ce, Jn), I.removeEventListener("touchmove", le, Jn);
   }
   function Be(I, Q) {
     We(I, function() {
@@ -13942,7 +13942,7 @@ class hi extends me {
     }
   }
 }
-const le = (t) => typeof t == "string", yi = () => {
+const se = (t) => typeof t == "string", yi = () => {
   let t, e;
   const n = new Promise((r, i) => {
     t = r, e = i;
@@ -13952,8 +13952,8 @@ const le = (t) => typeof t == "string", yi = () => {
   t.forEach((r) => {
     e[r] && (n[r] = e[r]);
   });
-}, ly = /###/g, bp = (t) => t && t.indexOf("###") > -1 ? t.replace(ly, ".") : t, Tp = (t) => !t || le(t), Bi = (t, e, n) => {
-  const r = le(e) ? e.split(".") : e;
+}, ly = /###/g, bp = (t) => t && t.indexOf("###") > -1 ? t.replace(ly, ".") : t, Tp = (t) => !t || se(t), Bi = (t, e, n) => {
+  const r = se(e) ? e.split(".") : e;
   let i = 0;
   for (; i < r.length - 1; ) {
     if (Tp(t)) return {};
@@ -13995,7 +13995,7 @@ const le = (t) => typeof t == "string", yi = () => {
   return r !== void 0 ? r : Ra(e, n);
 }, ah = (t, e, n) => {
   for (const r in e)
-    r !== "__proto__" && r !== "constructor" && (r in t ? le(t[r]) || t[r] instanceof String || le(e[r]) || e[r] instanceof String ? n && (t[r] = e[r]) : ah(t[r], e[r], n) : t[r] = e[r]);
+    r !== "__proto__" && r !== "constructor" && (r in t ? se(t[r]) || t[r] instanceof String || se(e[r]) || e[r] instanceof String ? n && (t[r] = e[r]) : ah(t[r], e[r], n) : t[r] = e[r]);
   return t;
 }, Dr = (t) => t.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 var dy = {
@@ -14006,7 +14006,7 @@ var dy = {
   "'": "&#39;",
   "/": "&#x2F;"
 };
-const py = (t) => le(t) ? t.replace(/[&<>"'\/]/g, (e) => dy[e]) : t;
+const py = (t) => se(t) ? t.replace(/[&<>"'\/]/g, (e) => dy[e]) : t;
 class _y {
   constructor(e) {
     this.capacity = e, this.regExpMap = /* @__PURE__ */ new Map(), this.regExpQueue = [];
@@ -14095,7 +14095,7 @@ class Na {
     return this.forward(n, "warn", "WARNING DEPRECATED: ", !0);
   }
   forward(e, n, r, i) {
-    return i && !this.debug ? null : (le(e[0]) && (e[0] = `${r}${this.prefix} ${e[0]}`), this.logger[n](e));
+    return i && !this.debug ? null : (se(e[0]) && (e[0] = `${r}${this.prefix} ${e[0]}`), this.logger[n](e));
   }
   create(e) {
     return new Na(this.logger, {
@@ -14161,9 +14161,9 @@ class yp extends bs {
     let i = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {};
     const o = i.keySeparator !== void 0 ? i.keySeparator : this.options.keySeparator, a = i.ignoreJSONStructure !== void 0 ? i.ignoreJSONStructure : this.options.ignoreJSONStructure;
     let s;
-    e.indexOf(".") > -1 ? s = e.split(".") : (s = [e, n], r && (Array.isArray(r) ? s.push(...r) : le(r) && o ? s.push(...r.split(o)) : s.push(r)));
+    e.indexOf(".") > -1 ? s = e.split(".") : (s = [e, n], r && (Array.isArray(r) ? s.push(...r) : se(r) && o ? s.push(...r.split(o)) : s.push(r)));
     const l = Ra(this.data, s);
-    return !l && !n && !r && e.indexOf(".") > -1 && (e = s[0], n = s[1], r = s.slice(2).join(".")), l || !a || !le(r) ? l : oc(this.data && this.data[e] && this.data[e][n], r, o);
+    return !l && !n && !r && e.indexOf(".") > -1 && (e = s[0], n = s[1], r = s.slice(2).join(".")), l || !a || !se(r) ? l : oc(this.data && this.data[e] && this.data[e][n], r, o);
   }
   addResource(e, n, r, i) {
     let o = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : {
@@ -14178,7 +14178,7 @@ class yp extends bs {
       silent: !1
     };
     for (const o in r)
-      (le(r[o]) || Array.isArray(r[o])) && this.addResource(e, n, o, r[o], {
+      (se(r[o]) || Array.isArray(r[o])) && this.addResource(e, n, o, r[o], {
         silent: !0
       });
     i.silent || this.emit("added", e, n, r);
@@ -14257,14 +14257,14 @@ class Aa extends bs {
       if (l && l.length > 0)
         return {
           key: e,
-          namespaces: o
+          namespaces: se(o) ? [o] : o
         };
       const c = e.split(r);
       (r !== i || r === i && this.options.ns.indexOf(c[0]) > -1) && (o = c.shift()), e = c.join(i);
     }
-    return le(o) && (o = [o]), {
+    return {
       key: e,
-      namespaces: o
+      namespaces: se(o) ? [o] : o
     };
   }
   translate(e, n, r) {
@@ -14299,8 +14299,8 @@ class Aa extends bs {
     }
     const d = this.resolve(e, n);
     let p = d && d.res;
-    const _ = d && d.usedKey || a, m = d && d.exactUsedKey || a, f = Object.prototype.toString.apply(p), h = ["[object Number]", "[object Function]", "[object RegExp]"], E = n.joinArrays !== void 0 ? n.joinArrays : this.options.joinArrays, S = !this.i18nFormat || this.i18nFormat.handleAsObject, b = !le(p) && typeof p != "boolean" && typeof p != "number";
-    if (S && p && b && h.indexOf(f) < 0 && !(le(E) && Array.isArray(p))) {
+    const _ = d && d.usedKey || a, m = d && d.exactUsedKey || a, f = Object.prototype.toString.apply(p), h = ["[object Number]", "[object Function]", "[object RegExp]"], E = n.joinArrays !== void 0 ? n.joinArrays : this.options.joinArrays, S = !this.i18nFormat || this.i18nFormat.handleAsObject, b = !se(p) && typeof p != "boolean" && typeof p != "number";
+    if (S && p && b && h.indexOf(f) < 0 && !(se(E) && Array.isArray(p))) {
       if (!n.returnObjects && !this.options.returnObjects) {
         this.options.returnedObjectHandler || this.logger.warn("accessing an object - but returnObjects options is not enabled!");
         const g = this.options.returnedObjectHandler ? this.options.returnedObjectHandler(_, p, {
@@ -14322,11 +14322,11 @@ class Aa extends bs {
           }
         p = C;
       }
-    } else if (S && le(E) && Array.isArray(p))
+    } else if (S && se(E) && Array.isArray(p))
       p = p.join(E), p && (p = this.extendTranslation(p, e, n, r));
     else {
       let g = !1, C = !1;
-      const T = n.count !== void 0 && !le(n.count), R = Aa.hasDefaultValue(n), x = T ? this.pluralResolver.getSuffix(c, n.count, n) : "", O = n.ordinal && T ? this.pluralResolver.getSuffix(c, n.count, {
+      const T = n.count !== void 0 && !se(n.count), R = Aa.hasDefaultValue(n), x = T ? this.pluralResolver.getSuffix(c, n.count, n) : "", O = n.ordinal && T ? this.pluralResolver.getSuffix(c, n.count, {
         ordinal: !1
       }) : "", M = T && !n.ordinal && n.count === 0 && this.pluralResolver.shouldUseIntlApi(), B = M && n[`defaultValue${this.options.pluralSeparator}zero`] || n[`defaultValue${x}`] || n[`defaultValue${O}`] || n.defaultValue;
       !this.isValidLookup(p) && R && (g = !0, p = B), this.isValidLookup(p) || (C = !0, p = a);
@@ -14377,13 +14377,13 @@ class Aa extends bs {
           ...r.interpolation
         }
       });
-      const c = le(e) && (r && r.interpolation && r.interpolation.skipOnVariables !== void 0 ? r.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables);
+      const c = se(e) && (r && r.interpolation && r.interpolation.skipOnVariables !== void 0 ? r.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables);
       let u;
       if (c) {
         const p = e.match(this.interpolator.nestingRegexp);
         u = p && p.length;
       }
-      let d = r.replace && !le(r.replace) ? r.replace : r;
+      let d = r.replace && !se(r.replace) ? r.replace : r;
       if (this.options.interpolation.defaultVariables && (d = {
         ...this.options.interpolation.defaultVariables,
         ...d
@@ -14397,7 +14397,7 @@ class Aa extends bs {
         return o && o[0] === _[0] && !r.context ? (a.logger.warn(`It seems you are nesting recursively key: ${_[0]} in key: ${n[0]}`), null) : a.translate(..._, n);
       }, r)), r.interpolation && this.interpolator.reset();
     }
-    const s = r.postProcess || this.options.postProcess, l = le(s) ? [s] : s;
+    const s = r.postProcess || this.options.postProcess, l = se(s) ? [s] : s;
     return e != null && l && l.length && r.applyPostProcessor !== !1 && (e = sh.handle(l, e, n, this.options && this.options.postProcessPassResolved ? {
       i18nResolved: {
         ...i,
@@ -14408,13 +14408,13 @@ class Aa extends bs {
   }
   resolve(e) {
     let n = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r, i, o, a, s;
-    return le(e) && (e = [e]), e.forEach((l) => {
+    return se(e) && (e = [e]), e.forEach((l) => {
       if (this.isValidLookup(r)) return;
       const c = this.extractFromKey(l, n), u = c.key;
       i = u;
       let d = c.namespaces;
       this.options.fallbackNS && (d = d.concat(this.options.fallbackNS));
-      const p = n.count !== void 0 && !le(n.count), _ = p && !n.ordinal && n.count === 0 && this.pluralResolver.shouldUseIntlApi(), m = n.context !== void 0 && (le(n.context) || typeof n.context == "number") && n.context !== "", f = n.lngs ? n.lngs : this.languageUtils.toResolveHierarchy(n.lng || this.language, n.fallbackLng);
+      const p = n.count !== void 0 && !se(n.count), _ = p && !n.ordinal && n.count === 0 && this.pluralResolver.shouldUseIntlApi(), m = n.context !== void 0 && (se(n.context) || typeof n.context == "number") && n.context !== "", f = n.lngs ? n.lngs : this.languageUtils.toResolveHierarchy(n.lng || this.language, n.fallbackLng);
       d.forEach((h) => {
         this.isValidLookup(r) || (s = h, !vp[`${f[0]}-${h}`] && this.utils && this.utils.hasLoadedNamespace && !this.utils.hasLoadedNamespace(s) && (vp[`${f[0]}-${h}`] = !0, this.logger.warn(`key "${i}" for languages "${f.join(", ")}" won't get resolved as namespace "${s}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!")), f.forEach((E) => {
           if (this.isValidLookup(r)) return;
@@ -14453,7 +14453,7 @@ class Aa extends bs {
   }
   getUsedParamsDetails() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-    const n = ["defaultValue", "ordinal", "context", "replace", "lng", "lngs", "fallbackLng", "ns", "keySeparator", "nsSeparator", "returnObjects", "returnDetails", "joinArrays", "postProcess", "interpolation"], r = e.replace && !le(e.replace);
+    const n = ["defaultValue", "ordinal", "context", "replace", "lng", "lngs", "fallbackLng", "ns", "keySeparator", "nsSeparator", "returnObjects", "returnDetails", "joinArrays", "postProcess", "interpolation"], r = e.replace && !se(e.replace);
     let i = r ? e.replace : e;
     if (r && typeof e.count < "u" && (i.count = e.count), this.options.interpolation.defaultVariables && (i = {
       ...this.options.interpolation.defaultVariables,
@@ -14491,7 +14491,7 @@ class Rp {
     return this.formatLanguageCode(n[0]);
   }
   formatLanguageCode(e) {
-    if (le(e) && e.indexOf("-") > -1) {
+    if (se(e) && e.indexOf("-") > -1) {
       if (typeof Intl < "u" && typeof Intl.getCanonicalLocales < "u")
         try {
           let i = Intl.getCanonicalLocales(e)[0];
@@ -14527,7 +14527,7 @@ class Rp {
   }
   getFallbackCodes(e, n) {
     if (!e) return [];
-    if (typeof e == "function" && (e = e(n)), le(e) && (e = [e]), Array.isArray(e)) return e;
+    if (typeof e == "function" && (e = e(n)), se(e) && (e = [e]), Array.isArray(e)) return e;
     if (!n) return e.default || [];
     let r = e[n];
     return r || (r = e[this.getScriptPartFromCode(n)]), r || (r = e[this.formatLanguageCode(n)]), r || (r = e[this.getLanguagePartFromCode(n)]), r || (r = e.default), r || [];
@@ -14536,7 +14536,7 @@ class Rp {
     const r = this.getFallbackCodes(n || this.options.fallbackLng || [], e), i = [], o = (a) => {
       a && (this.isSupportedCode(a) ? i.push(a) : this.logger.warn(`rejecting language code not found in supportedLngs: ${a}`));
     };
-    return le(e) && (e.indexOf("-") > -1 || e.indexOf("_") > -1) ? (this.options.load !== "languageOnly" && o(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && o(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && o(this.getLanguagePartFromCode(e))) : le(e) && o(this.formatLanguageCode(e)), r.forEach((a) => {
+    return se(e) && (e.indexOf("-") > -1 || e.indexOf("_") > -1) ? (this.options.load !== "languageOnly" && o(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && o(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && o(this.getLanguagePartFromCode(e))) : se(e) && o(this.formatLanguageCode(e)), r.forEach((a) => {
       i.indexOf(a) < 0 && o(this.formatLanguageCode(a));
     }), i;
   }
@@ -14688,21 +14688,25 @@ class yy {
   }
   getRule(e) {
     let n = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-    if (this.shouldUseIntlApi())
+    if (this.shouldUseIntlApi()) {
+      const r = Oa(e === "dev" ? "en" : e), i = n.ordinal ? "ordinal" : "cardinal", o = JSON.stringify({
+        cleanedCode: r,
+        type: i
+      });
+      if (o in this.pluralRulesCache)
+        return this.pluralRulesCache[o];
+      let a;
       try {
-        const r = Oa(e === "dev" ? "en" : e), i = n.ordinal ? "ordinal" : "cardinal", o = JSON.stringify({
-          cleanedCode: r,
+        a = new Intl.PluralRules(r, {
           type: i
         });
-        if (o in this.pluralRulesCache)
-          return this.pluralRulesCache[o];
-        const a = new Intl.PluralRules(r, {
-          type: i
-        });
-        return this.pluralRulesCache[o] = a, a;
       } catch {
-        return;
+        if (!e.match(/-|_/)) return;
+        const l = this.languageUtils.getLanguagePartFromCode(e);
+        a = this.getRule(l, n);
       }
+      return this.pluralRulesCache[o] = a, a;
+    }
     return this.rules[e] || this.rules[this.languageUtils.getLanguagePartFromCode(e)];
   }
   needsPlural(e) {
@@ -14737,7 +14741,7 @@ class yy {
 }
 const Np = function(t, e, n) {
   let r = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : ".", i = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : !0, o = uy(t, e, n);
-  return !o && i && le(n) && (o = oc(t, n, r), o === void 0 && (o = oc(e, n, r))), o;
+  return !o && i && se(n) && (o = oc(t, n, r), o === void 0 && (o = oc(e, n, r))), o;
 }, il = (t) => t.replace(/\$/g, "$$$$");
 class vy {
   constructor() {
@@ -14809,7 +14813,7 @@ class vy {
         if (a = c(m), a === void 0)
           if (typeof u == "function") {
             const h = u(e, o, i);
-            a = le(h) ? h : "";
+            a = se(h) ? h : "";
           } else if (i && Object.prototype.hasOwnProperty.call(i, m))
             a = "";
           else if (d) {
@@ -14817,7 +14821,7 @@ class vy {
             continue;
           } else
             this.logger.warn(`missed to pass in variable ${m} for interpolating ${e}`), a = "";
-        else !le(a) && !this.useRawValueToEscape && (a = Sp(a));
+        else !se(a) && !this.useRawValueToEscape && (a = Sp(a));
         const f = _.safeValue(a);
         if (e = e.replace(o[0], f), d ? (_.regex.lastIndex += a.length, _.regex.lastIndex -= o[0].length) : _.regex.lastIndex = 0, s++, s >= this.maxReplaces)
           break;
@@ -14848,14 +14852,14 @@ class vy {
       let l = [];
       a = {
         ...r
-      }, a = a.replace && !le(a.replace) ? a.replace : a, a.applyPostProcessor = !1, delete a.defaultValue;
+      }, a = a.replace && !se(a.replace) ? a.replace : a, a.applyPostProcessor = !1, delete a.defaultValue;
       let c = !1;
       if (i[0].indexOf(this.formatSeparator) !== -1 && !/{.*}/.test(i[1])) {
         const u = i[1].split(this.formatSeparator).map((d) => d.trim());
         i[1] = u.shift(), l = u, c = !0;
       }
-      if (o = n(s.call(this, i[1].trim(), a), a), o && i[0] === e && !le(o)) return o;
-      le(o) || (o = Sp(o)), o || (this.logger.warn(`missed to resolve ${i[1]} for nesting ${e}`), o = ""), c && (o = l.reduce((u, d) => this.format(u, d, r.lng, {
+      if (o = n(s.call(this, i[1].trim(), a), a), o && i[0] === e && !se(o)) return o;
+      se(o) || (o = Sp(o)), o || (this.logger.warn(`missed to resolve ${i[1]} for nesting ${e}`), o = ""), c && (o = l.reduce((u, d) => this.format(u, d, r.lng, {
         ...r,
         interpolationkey: i[1].trim()
       }), o.trim())), e = e.replace(i[0], o), this.regexp.lastIndex = 0;
@@ -14898,22 +14902,37 @@ class Oy {
   constructor() {
     let e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     this.logger = Xt.create("formatter"), this.options = e, this.formats = {
-      number: Mr((n, r) => (i) => new Intl.NumberFormat(n, {
-        ...r
-      }).format(i)),
-      currency: Mr((n, r) => (i) => new Intl.NumberFormat(n, {
-        ...r,
-        style: "currency"
-      }).format(i)),
-      datetime: Mr((n, r) => (i) => new Intl.DateTimeFormat(n, {
-        ...r
-      }).format(i)),
-      relativetime: Mr((n, r) => (i) => new Intl.RelativeTimeFormat(n, {
-        ...r
-      }).format(i, r.range || "day")),
-      list: Mr((n, r) => (i) => new Intl.ListFormat(n, {
-        ...r
-      }).format(i))
+      number: Mr((n, r) => {
+        const i = new Intl.NumberFormat(n, {
+          ...r
+        });
+        return (o) => i.format(o);
+      }),
+      currency: Mr((n, r) => {
+        const i = new Intl.NumberFormat(n, {
+          ...r,
+          style: "currency"
+        });
+        return (o) => i.format(o);
+      }),
+      datetime: Mr((n, r) => {
+        const i = new Intl.DateTimeFormat(n, {
+          ...r
+        });
+        return (o) => i.format(o);
+      }),
+      relativetime: Mr((n, r) => {
+        const i = new Intl.RelativeTimeFormat(n, {
+          ...r
+        });
+        return (o) => i.format(o, r.range || "day");
+      }),
+      list: Mr((n, r) => {
+        const i = new Intl.ListFormat(n, {
+          ...r
+        });
+        return (o) => i.format(o);
+      })
     }, this.init(e);
   }
   init(e) {
@@ -15047,7 +15066,7 @@ class Ay extends bs {
     let r = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {}, i = arguments.length > 3 ? arguments[3] : void 0;
     if (!this.backend)
       return this.logger.warn("No backend was added via i18next.use. Will not load resources."), i && i();
-    le(e) && (e = this.languageUtils.toResolveHierarchy(e)), le(n) && (n = [n]);
+    se(e) && (e = this.languageUtils.toResolveHierarchy(e)), se(n) && (n = [n]);
     const o = this.queueLoad(e, n, r, i);
     if (!o.toLoad.length)
       return o.pending.length || i(), null;
@@ -15132,7 +15151,7 @@ const Ap = () => ({
   appendNamespaceToCIMode: !1,
   overloadTranslationOptionHandler: (t) => {
     let e = {};
-    if (typeof t[1] == "object" && (e = t[1]), le(t[1]) && (e.defaultValue = t[1]), le(t[2]) && (e.tDescription = t[2]), typeof t[2] == "object" || typeof t[3] == "object") {
+    if (typeof t[1] == "object" && (e = t[1]), se(t[1]) && (e.defaultValue = t[1]), se(t[2]) && (e.tDescription = t[2]), typeof t[2] == "object" || typeof t[3] == "object") {
       const n = t[3] || t[2];
       Object.keys(n).forEach((r) => {
         e[r] = n[r];
@@ -15153,7 +15172,7 @@ const Ap = () => ({
     maxReplaces: 1e3,
     skipOnVariables: !0
   }
-}), Ip = (t) => (le(t.ns) && (t.ns = [t.ns]), le(t.fallbackLng) && (t.fallbackLng = [t.fallbackLng]), le(t.fallbackNS) && (t.fallbackNS = [t.fallbackNS]), t.supportedLngs && t.supportedLngs.indexOf("cimode") < 0 && (t.supportedLngs = t.supportedLngs.concat(["cimode"])), t), Po = () => {
+}), Ip = (t) => (se(t.ns) && (t.ns = [t.ns]), se(t.fallbackLng) && (t.fallbackLng = [t.fallbackLng]), se(t.fallbackNS) && (t.fallbackNS = [t.fallbackNS]), t.supportedLngs && t.supportedLngs.indexOf("cimode") < 0 && (t.supportedLngs = t.supportedLngs.concat(["cimode"])), t), Po = () => {
 }, Iy = (t) => {
   Object.getOwnPropertyNames(Object.getPrototypeOf(t)).forEach((n) => {
     typeof t[n] == "function" && (t[n] = t[n].bind(t));
@@ -15175,7 +15194,7 @@ class eo extends bs {
   init() {
     var e = this;
     let n = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, r = arguments.length > 1 ? arguments[1] : void 0;
-    this.isInitializing = !0, typeof n == "function" && (r = n, n = {}), !n.defaultNS && n.defaultNS !== !1 && n.ns && (le(n.ns) ? n.defaultNS = n.ns : n.ns.indexOf("translation") < 0 && (n.defaultNS = n.ns[0]));
+    this.isInitializing = !0, typeof n == "function" && (r = n, n = {}), !n.defaultNS && n.defaultNS !== !1 && n.ns && (se(n.ns) ? n.defaultNS = n.ns : n.ns.indexOf("translation") < 0 && (n.defaultNS = n.ns[0]));
     const i = Ap();
     this.options = {
       ...i,
@@ -15235,7 +15254,7 @@ class eo extends bs {
   }
   loadResources(e) {
     let r = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Po;
-    const i = le(e) ? e : this.language;
+    const i = se(e) ? e : this.language;
     if (typeof e == "function" && (r = e), !this.options.resources || this.options.partialBundledLanguages) {
       if (i && i.toLowerCase() === "cimode" && (!this.options.preload || this.options.preload.length === 0)) return r();
       const o = [], a = (s) => {
@@ -15286,7 +15305,7 @@ class eo extends bs {
       });
     }, s = (l) => {
       !e && !l && this.services.languageDetector && (l = []);
-      const c = le(l) ? l : this.services.languageUtils.getBestMatchFromCodes(l);
+      const c = se(l) ? l : this.services.languageUtils.getBestMatchFromCodes(l);
       c && (this.language || o(c), this.translator.language || this.translator.changeLanguage(c), this.services.languageDetector && this.services.languageDetector.cacheUserLanguage && this.services.languageDetector.cacheUserLanguage(c)), this.loadResources(c, (u) => {
         a(u, c);
       });
@@ -15310,7 +15329,7 @@ class eo extends bs {
       let _;
       return l.keyPrefix && Array.isArray(a) ? _ = a.map((m) => `${l.keyPrefix}${p}${m}`) : _ = l.keyPrefix ? `${l.keyPrefix}${p}${a}` : a, i.t(_, l);
     };
-    return le(e) ? o.lng = e : o.lngs = e, o.ns = n, o.keyPrefix = r, o;
+    return se(e) ? o.lng = e : o.lngs = e, o.ns = n, o.keyPrefix = r, o;
   }
   t() {
     return this.translator && this.translator.translate(...arguments);
@@ -15341,7 +15360,7 @@ class eo extends bs {
   }
   loadNamespaces(e, n) {
     const r = yi();
-    return this.options.ns ? (le(e) && (e = [e]), e.forEach((i) => {
+    return this.options.ns ? (se(e) && (e = [e]), e.forEach((i) => {
       this.options.ns.indexOf(i) < 0 && this.options.ns.push(i);
     }), this.loadResources((i) => {
       r.resolve(), n && n(i);
@@ -15349,7 +15368,7 @@ class eo extends bs {
   }
   loadLanguages(e, n) {
     const r = yi();
-    le(e) && (e = [e]);
+    se(e) && (e = [e]);
     const i = this.options.preload || [], o = e.filter((a) => i.indexOf(a) < 0 && this.services.languageUtils.isSupportedCode(a));
     return o.length ? (this.options.preload = i.concat(o), this.loadResources((a) => {
       r.resolve(), n && n(a);
@@ -23152,8 +23171,8 @@ function AN(t) {
   F(R, $r, Y), F(R, Ui, $), F(R, Hi, q), F(R, Gi, V), F(Y, nr, T), F($, qr, T), F(q, Wr, T), F(V, rr, T), F(Y, nr, T);
   const X = Ge(Zn), y = Ge(Zn), v = Ge(Zn), A = Ge(Zn);
   J(Y, n, X), J($, n, y), J(q, n, v), J(V, n, A);
-  const k = Ge(), G = Ge(), z = Ge(), se = Ge();
-  return J(Y, r), J($, r), J(q, r), J(V, r), J(X, n, X), J(y, n, y), J(v, n, v), J(A, n, A), J(X, r, X), J(y, r, y), J(v, r, v), J(A, r, A), J(k, n, k), J(G, n, y), J(z, n, v), J(se, n, A), J(k, r, k), J(G, r, G), J(z, r, z), J(se, r, se), F(y, qr, T), F(v, Wr, T), F(A, rr, T), F(X, nr, T), F(G, qr, T), F(z, Wr, T), F(se, rr, T), F(k, rr, T), F(o, no, b), F(o, cu, NN), {
+  const k = Ge(), G = Ge(), z = Ge(), le = Ge();
+  return J(Y, r), J($, r), J(q, r), J(V, r), J(X, n, X), J(y, n, y), J(v, n, v), J(A, n, A), J(X, r, X), J(y, r, y), J(v, r, v), J(A, r, A), J(k, n, k), J(G, n, y), J(z, n, v), J(le, n, A), J(k, r, k), J(G, r, G), J(z, r, z), J(le, r, le), F(y, qr, T), F(v, Wr, T), F(A, rr, T), F(X, nr, T), F(G, qr, T), F(z, Wr, T), F(le, rr, T), F(k, rr, T), F(o, no, b), F(o, cu, NN), {
     start: o,
     tokens: Ph
   };
@@ -24380,15 +24399,15 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
       language: G
     };
     V("before:highlight", z);
-    const se = z.result ? z.result : d(z.language, z.code, A);
-    return se.code = z.code, V("after:highlight", se), se;
+    const le = z.result ? z.result : d(z.language, z.code, A);
+    return le.code = z.code, V("after:highlight", le), le;
   }
   function d(y, v, A, k) {
     const G = /* @__PURE__ */ Object.create(null);
     function z(N, D) {
       return N.keywords[D];
     }
-    function se() {
+    function le() {
       if (!P.keywords) {
         ae.addText(j);
         return;
@@ -24428,7 +24447,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
       P.relevance > 0 && (He += N.relevance), ae.__addSublanguage(N._emitter, N.language);
     }
     function oe() {
-      P.subLanguage != null ? Ce() : se(), j = "";
+      P.subLanguage != null ? Ce() : le(), j = "";
     }
     function ue(N, D) {
       N !== "" && (ae.startScope(D), ae.addText(N), ae.endScope());
@@ -24442,7 +24461,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
           continue;
         }
         const _e = ge.classNameAliases[N[U]] || N[U], De = D[U];
-        _e ? ue(De, _e) : (j = De, se(), j = ""), U++;
+        _e ? ue(De, _e) : (j = De, le(), j = ""), U++;
       }
     }
     function Le(N, D) {
@@ -24602,8 +24621,8 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
           return -1;
       }
       return 0;
-    }), [z, se] = G, Ce = z;
-    return Ce.secondBest = se, Ce;
+    }), [z, le] = G, Ce = z;
+    return Ce.secondBest = le, Ce;
   }
   function m(y, v, A) {
     const k = v && n[v] || A;
@@ -25231,7 +25250,7 @@ const $A = /^[`·]{3}([a-z]+)?[\s\n]$/, qA = /^[~～]{3}([a-z]+)?[\s\n]$/, WA = 
   }
 });
 function KA(t) {
-  const e = "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", i = "далее " + "возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт ", s = "загрузитьизфайла " + "вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент ", p = "разделительстраниц разделительстрок символтабуляции " + "ansitooem oemtoansi ввестивидсубконто ввестиперечисление ввестипериод ввестиплансчетов выбранныйплансчетов датагод датамесяц датачисло заголовоксистемы значениевстроку значениеизстроки каталогиб каталогпользователя кодсимв конгода конецпериодаби конецрассчитанногопериодаби конецстандартногоинтервала конквартала конмесяца коннедели лог лог10 максимальноеколичествосубконто названиеинтерфейса названиенабораправ назначитьвид назначитьсчет найтиссылки началопериодаби началостандартногоинтервала начгода начквартала начмесяца начнедели номерднягода номерднянедели номернеделигода обработкаожидания основнойжурналрасчетов основнойплансчетов основнойязык очиститьокносообщений периодстр получитьвремята получитьдатута получитьдокументта получитьзначенияотбора получитьпозициюта получитьпустоезначение получитьта префиксавтонумерации пропись пустоезначение разм разобратьпозициюдокумента рассчитатьрегистрына рассчитатьрегистрыпо симв создатьобъект статусвозврата стрколичествострок сформироватьпозициюдокумента счетпокоду текущеевремя типзначения типзначениястр установитьтана установитьтапо фиксшаблон шаблон " + "acos asin atan base64значение base64строка cos exp log log10 pow sin sqrt tan xmlзначение xmlстрока xmlтип xmlтипзнч активноеокно безопасныйрежим безопасныйрежимразделенияданных булево ввестидату ввестизначение ввестистроку ввестичисло возможностьчтенияxml вопрос восстановитьзначение врег выгрузитьжурналрегистрации выполнитьобработкуоповещения выполнитьпроверкуправдоступа вычислить год данныеформывзначение дата день деньгода деньнедели добавитьмесяц заблокироватьданныедляредактирования заблокироватьработупользователя завершитьработусистемы загрузитьвнешнююкомпоненту закрытьсправку записатьjson записатьxml записатьдатуjson записьжурналарегистрации заполнитьзначениясвойств запроситьразрешениепользователя запуститьприложение запуститьсистему зафиксироватьтранзакцию значениевданныеформы значениевстрокувнутр значениевфайл значениезаполнено значениеизстрокивнутр значениеизфайла изxmlтипа импортмоделиxdto имякомпьютера имяпользователя инициализироватьпредопределенныеданные информацияобошибке каталогбиблиотекимобильногоустройства каталогвременныхфайлов каталогдокументов каталогпрограммы кодироватьстроку кодлокализацииинформационнойбазы кодсимвола командасистемы конецгода конецдня конецквартала конецмесяца конецминуты конецнедели конецчаса конфигурациябазыданныхизмененадинамически конфигурацияизменена копироватьданныеформы копироватьфайл краткоепредставлениеошибки лев макс местноевремя месяц мин минута монопольныйрежим найти найтинедопустимыесимволыxml найтиокнопонавигационнойссылке найтипомеченныенаудаление найтипоссылкам найтифайлы началогода началодня началоквартала началомесяца началоминуты началонедели началочаса начатьзапросразрешенияпользователя начатьзапускприложения начатькопированиефайла начатьперемещениефайла начатьподключениевнешнейкомпоненты начатьподключениерасширенияработыскриптографией начатьподключениерасширенияработысфайлами начатьпоискфайлов начатьполучениекаталогавременныхфайлов начатьполучениекаталогадокументов начатьполучениерабочегокаталогаданныхпользователя начатьполучениефайлов начатьпомещениефайла начатьпомещениефайлов начатьсозданиедвоичныхданныхизфайла начатьсозданиекаталога начатьтранзакцию начатьудалениефайлов начатьустановкувнешнейкомпоненты начатьустановкурасширенияработыскриптографией начатьустановкурасширенияработысфайлами неделягода необходимостьзавершениясоединения номерсеансаинформационнойбазы номерсоединенияинформационнойбазы нрег нстр обновитьинтерфейс обновитьнумерациюобъектов обновитьповторноиспользуемыезначения обработкапрерыванияпользователя объединитьфайлы окр описаниеошибки оповестить оповеститьобизменении отключитьобработчикзапросанастроекклиенталицензирования отключитьобработчикожидания отключитьобработчикоповещения открытьзначение открытьиндекссправки открытьсодержаниесправки открытьсправку открытьформу открытьформумодально отменитьтранзакцию очиститьжурналрегистрации очиститьнастройкипользователя очиститьсообщения параметрыдоступа перейтипонавигационнойссылке переместитьфайл подключитьвнешнююкомпоненту подключитьобработчикзапросанастроекклиенталицензирования подключитьобработчикожидания подключитьобработчикоповещения подключитьрасширениеработыскриптографией подключитьрасширениеработысфайлами подробноепредставлениеошибки показатьвводдаты показатьвводзначения показатьвводстроки показатьвводчисла показатьвопрос показатьзначение показатьинформациюобошибке показатьнакарте показатьоповещениепользователя показатьпредупреждение полноеимяпользователя получитьcomобъект получитьxmlтип получитьадреспоместоположению получитьблокировкусеансов получитьвремязавершенияспящегосеанса получитьвремязасыпанияпассивногосеанса получитьвремяожиданияблокировкиданных получитьданныевыбора получитьдополнительныйпараметрклиенталицензирования получитьдопустимыекодылокализации получитьдопустимыечасовыепояса получитьзаголовокклиентскогоприложения получитьзаголовоксистемы получитьзначенияотборажурналарегистрации получитьидентификаторконфигурации получитьизвременногохранилища получитьимявременногофайла получитьимяклиенталицензирования получитьинформациюэкрановклиента получитьиспользованиежурналарегистрации получитьиспользованиесобытияжурналарегистрации получитькраткийзаголовокприложения получитьмакетоформления получитьмаскувсефайлы получитьмаскувсефайлыклиента получитьмаскувсефайлысервера получитьместоположениепоадресу получитьминимальнуюдлинупаролейпользователей получитьнавигационнуюссылку получитьнавигационнуюссылкуинформационнойбазы получитьобновлениеконфигурациибазыданных получитьобновлениепредопределенныхданныхинформационнойбазы получитьобщиймакет получитьобщуюформу получитьокна получитьоперативнуюотметкувремени получитьотключениебезопасногорежима получитьпараметрыфункциональныхопцийинтерфейса получитьполноеимяпредопределенногозначения получитьпредставлениянавигационныхссылок получитьпроверкусложностипаролейпользователей получитьразделительпути получитьразделительпутиклиента получитьразделительпутисервера получитьсеансыинформационнойбазы получитьскоростьклиентскогосоединения получитьсоединенияинформационнойбазы получитьсообщенияпользователю получитьсоответствиеобъектаиформы получитьсоставстандартногоинтерфейсаodata получитьструктурухранениябазыданных получитьтекущийсеансинформационнойбазы получитьфайл получитьфайлы получитьформу получитьфункциональнуюопцию получитьфункциональнуюопциюинтерфейса получитьчасовойпоясинформационнойбазы пользователиос поместитьвовременноехранилище поместитьфайл поместитьфайлы прав праводоступа предопределенноезначение представлениекодалокализации представлениепериода представлениеправа представлениеприложения представлениесобытияжурналарегистрации представлениечасовогопояса предупреждение прекратитьработусистемы привилегированныйрежим продолжитьвызов прочитатьjson прочитатьxml прочитатьдатуjson пустаястрока рабочийкаталогданныхпользователя разблокироватьданныедляредактирования разделитьфайл разорватьсоединениесвнешнимисточникомданных раскодироватьстроку рольдоступна секунда сигнал символ скопироватьжурналрегистрации смещениелетнеговремени смещениестандартноговремени соединитьбуферыдвоичныхданных создатькаталог создатьфабрикуxdto сокрл сокрлп сокрп сообщить состояние сохранитьзначение сохранитьнастройкипользователя сред стрдлина стрзаканчиваетсяна стрзаменить стрнайти стрначинаетсяс строка строкасоединенияинформационнойбазы стрполучитьстроку стрразделить стрсоединить стрсравнить стрчисловхождений стрчислострок стршаблон текущаядата текущаядатасеанса текущаяуниверсальнаядата текущаяуниверсальнаядатавмиллисекундах текущийвариантинтерфейсаклиентскогоприложения текущийвариантосновногошрифтаклиентскогоприложения текущийкодлокализации текущийрежимзапуска текущийязык текущийязыксистемы тип типзнч транзакцияактивна трег удалитьданныеинформационнойбазы удалитьизвременногохранилища удалитьобъекты удалитьфайлы универсальноевремя установитьбезопасныйрежим установитьбезопасныйрежимразделенияданных установитьблокировкусеансов установитьвнешнююкомпоненту установитьвремязавершенияспящегосеанса установитьвремязасыпанияпассивногосеанса установитьвремяожиданияблокировкиданных установитьзаголовокклиентскогоприложения установитьзаголовоксистемы установитьиспользованиежурналарегистрации установитьиспользованиесобытияжурналарегистрации установитькраткийзаголовокприложения установитьминимальнуюдлинупаролейпользователей установитьмонопольныйрежим установитьнастройкиклиенталицензирования установитьобновлениепредопределенныхданныхинформационнойбазы установитьотключениебезопасногорежима установитьпараметрыфункциональныхопцийинтерфейса установитьпривилегированныйрежим установитьпроверкусложностипаролейпользователей установитьрасширениеработыскриптографией установитьрасширениеработысфайлами установитьсоединениесвнешнимисточникомданных установитьсоответствиеобъектаиформы установитьсоставстандартногоинтерфейсаodata установитьчасовойпоясинформационнойбазы установитьчасовойпояссеанса формат цел час часовойпояс часовойпояссеанса число числопрописью этоадресвременногохранилища " + "wsссылки библиотекакартинок библиотекамакетовоформлениякомпоновкиданных библиотекастилей бизнеспроцессы внешниеисточникиданных внешниеобработки внешниеотчеты встроенныепокупки главныйинтерфейс главныйстиль документы доставляемыеуведомления журналыдокументов задачи информацияобинтернетсоединении использованиерабочейдаты историяработыпользователя константы критерииотбора метаданные обработки отображениерекламы отправкадоставляемыхуведомлений отчеты панельзадачос параметрзапуска параметрысеанса перечисления планывидоврасчета планывидовхарактеристик планыобмена планысчетов полнотекстовыйпоиск пользователиинформационнойбазы последовательности проверкавстроенныхпокупок рабочаядата расширенияконфигурации регистрыбухгалтерии регистрынакопления регистрырасчета регистрысведений регламентныезадания сериализаторxdto справочники средствагеопозиционирования средствакриптографии средствамультимедиа средстваотображениярекламы средствапочты средствателефонии фабрикаxdto файловыепотоки фоновыезадания хранилищанастроек хранилищевариантовотчетов хранилищенастроекданныхформ хранилищеобщихнастроек хранилищепользовательскихнастроекдинамическихсписков хранилищепользовательскихнастроекотчетов хранилищесистемныхнастроек ", A = "webцвета windowsцвета windowsшрифты библиотекакартинок рамкистиля символы цветастиля шрифтыстиля " + "автоматическоесохранениеданныхформывнастройках автонумерациявформе автораздвижениесерий анимациядиаграммы вариантвыравниванияэлементовизаголовков вариантуправлениявысотойтаблицы вертикальнаяпрокруткаформы вертикальноеположение вертикальноеположениеэлемента видгруппыформы виддекорацииформы виддополненияэлементаформы видизмененияданных видкнопкиформы видпереключателя видподписейкдиаграмме видполяформы видфлажка влияниеразмеранапузырекдиаграммы горизонтальноеположение горизонтальноеположениеэлемента группировкаколонок группировкаподчиненныхэлементовформы группыиэлементы действиеперетаскивания дополнительныйрежимотображения допустимыедействияперетаскивания интервалмеждуэлементамиформы использованиевывода использованиеполосыпрокрутки используемоезначениеточкибиржевойдиаграммы историявыборапривводе источникзначенийоситочекдиаграммы источникзначенияразмерапузырькадиаграммы категориягруппыкоманд максимумсерий начальноеотображениедерева начальноеотображениесписка обновлениетекстаредактирования ориентациядендрограммы ориентациядиаграммы ориентацияметокдиаграммы ориентацияметоксводнойдиаграммы ориентацияэлементаформы отображениевдиаграмме отображениевлегендедиаграммы отображениегруппыкнопок отображениезаголовкашкалыдиаграммы отображениезначенийсводнойдиаграммы отображениезначенияизмерительнойдиаграммы отображениеинтерваладиаграммыганта отображениекнопки отображениекнопкивыбора отображениеобсужденийформы отображениеобычнойгруппы отображениеотрицательныхзначенийпузырьковойдиаграммы отображениепанелипоиска отображениеподсказки отображениепредупрежденияприредактировании отображениеразметкиполосырегулирования отображениестраницформы отображениетаблицы отображениетекстазначениядиаграммыганта отображениеуправленияобычнойгруппы отображениефигурыкнопки палитрацветовдиаграммы поведениеобычнойгруппы поддержкамасштабадендрограммы поддержкамасштабадиаграммыганта поддержкамасштабасводнойдиаграммы поисквтаблицепривводе положениезаголовкаэлементаформы положениекартинкикнопкиформы положениекартинкиэлементаграфическойсхемы положениекоманднойпанелиформы положениекоманднойпанелиэлементаформы положениеопорнойточкиотрисовки положениеподписейкдиаграмме положениеподписейшкалызначенийизмерительнойдиаграммы положениесостоянияпросмотра положениестрокипоиска положениетекстасоединительнойлинии положениеуправленияпоиском положениешкалывремени порядокотображенияточекгоризонтальнойгистограммы порядоксерийвлегендедиаграммы размеркартинки расположениезаголовкашкалыдиаграммы растягиваниеповертикалидиаграммыганта режимавтоотображениясостояния режимвводастроктаблицы режимвыборанезаполненного режимвыделениядаты режимвыделениястрокитаблицы режимвыделениятаблицы режимизмененияразмера режимизменениясвязанногозначения режимиспользованиядиалогапечати режимиспользованияпараметракоманды режиммасштабированияпросмотра режимосновногоокнаклиентскогоприложения режимоткрытияокнаформы режимотображениявыделения режимотображениягеографическойсхемы режимотображениязначенийсерии режимотрисовкисеткиграфическойсхемы режимполупрозрачностидиаграммы режимпробеловдиаграммы режимразмещениянастранице режимредактированияколонки режимсглаживаниядиаграммы режимсглаживанияиндикатора режимсписказадач сквозноевыравнивание сохранениеданныхформывнастройках способзаполнениятекстазаголовкашкалыдиаграммы способопределенияограничивающегозначениядиаграммы стандартнаягруппакоманд стандартноеоформление статусоповещенияпользователя стильстрелки типаппроксимациилиниитрендадиаграммы типдиаграммы типединицышкалывремени типимпортасерийслоягеографическойсхемы типлиниигеографическойсхемы типлиниидиаграммы типмаркерагеографическойсхемы типмаркерадиаграммы типобластиоформления типорганизацииисточникаданныхгеографическойсхемы типотображениясериислоягеографическойсхемы типотображенияточечногообъектагеографическойсхемы типотображенияшкалыэлементалегендыгеографическойсхемы типпоискаобъектовгеографическойсхемы типпроекциигеографическойсхемы типразмещенияизмерений типразмещенияреквизитовизмерений типрамкиэлементауправления типсводнойдиаграммы типсвязидиаграммыганта типсоединениязначенийпосериямдиаграммы типсоединенияточекдиаграммы типсоединительнойлинии типстороныэлементаграфическойсхемы типформыотчета типшкалырадарнойдиаграммы факторлиниитрендадиаграммы фигуракнопки фигурыграфическойсхемы фиксациявтаблице форматдняшкалывремени форматкартинки ширинаподчиненныхэлементовформы " + "виддвижениябухгалтерии виддвижениянакопления видпериодарегистрарасчета видсчета видточкимаршрутабизнеспроцесса использованиеагрегатарегистранакопления использованиегруппиэлементов использованиережимапроведения использованиесреза периодичностьагрегатарегистранакопления режимавтовремя режимзаписидокумента режимпроведениядокумента " + "авторегистрацияизменений допустимыйномерсообщения отправкаэлементаданных получениеэлементаданных " + "использованиерасшифровкитабличногодокумента ориентациястраницы положениеитоговколоноксводнойтаблицы положениеитоговстроксводнойтаблицы положениетекстаотносительнокартинки расположениезаголовкагруппировкитабличногодокумента способчтениязначенийтабличногодокумента типдвустороннейпечати типзаполненияобластитабличногодокумента типкурсоровтабличногодокумента типлиниирисункатабличногодокумента типлинииячейкитабличногодокумента типнаправленияпереходатабличногодокумента типотображениявыделениятабличногодокумента типотображениялинийсводнойтаблицы типразмещениятекстатабличногодокумента типрисункатабличногодокумента типсмещениятабличногодокумента типузоратабличногодокумента типфайлатабличногодокумента точностьпечати чередованиерасположениястраниц " + "отображениевремениэлементовпланировщика " + "типфайлаформатированногодокумента " + "обходрезультатазапроса типзаписизапроса " + "видзаполнениярасшифровкипостроителяотчета типдобавленияпредставлений типизмеренияпостроителяотчета типразмещенияитогов " + "доступкфайлу режимдиалогавыборафайла режимоткрытияфайла " + "типизмеренияпостроителязапроса " + "видданныханализа методкластеризации типединицыинтервалавременианализаданных типзаполнениятаблицырезультатаанализаданных типиспользованиячисловыхзначенийанализаданных типисточникаданныхпоискаассоциаций типколонкианализаданныхдереворешений типколонкианализаданныхкластеризация типколонкианализаданныхобщаястатистика типколонкианализаданныхпоискассоциаций типколонкианализаданныхпоискпоследовательностей типколонкимоделипрогноза типмерырасстоянияанализаданных типотсеченияправилассоциации типполяанализаданных типстандартизациианализаданных типупорядочиванияправилассоциациианализаданных типупорядочиванияшаблоновпоследовательностейанализаданных типупрощениядереварешений " + "wsнаправлениепараметра вариантxpathxs вариантзаписидатыjson вариантпростоготипаxs видгруппымоделиxs видфасетаxdto действиепостроителяdom завершенностьпростоготипаxs завершенностьсоставноготипаxs завершенностьсхемыxs запрещенныеподстановкиxs исключениягруппподстановкиxs категорияиспользованияатрибутаxs категорияограниченияидентичностиxs категорияограниченияпространствименxs методнаследованияxs модельсодержимогоxs назначениетипаxml недопустимыеподстановкиxs обработкапробельныхсимволовxs обработкасодержимогоxs ограничениезначенияxs параметрыотбораузловdom переносстрокjson позициявдокументеdom пробельныесимволыxml типатрибутаxml типзначенияjson типканоническогоxml типкомпонентыxs типпроверкиxml типрезультатаdomxpath типузлаdom типузлаxml формаxml формапредставленияxs форматдатыjson экранированиесимволовjson " + "видсравнениякомпоновкиданных действиеобработкирасшифровкикомпоновкиданных направлениесортировкикомпоновкиданных расположениевложенныхэлементоврезультатакомпоновкиданных расположениеитоговкомпоновкиданных расположениегруппировкикомпоновкиданных расположениеполейгруппировкикомпоновкиданных расположениеполякомпоновкиданных расположениереквизитовкомпоновкиданных расположениересурсовкомпоновкиданных типбухгалтерскогоостаткакомпоновкиданных типвыводатекстакомпоновкиданных типгруппировкикомпоновкиданных типгруппыэлементовотборакомпоновкиданных типдополненияпериодакомпоновкиданных типзаголовкаполейкомпоновкиданных типмакетагруппировкикомпоновкиданных типмакетаобластикомпоновкиданных типостаткакомпоновкиданных типпериодакомпоновкиданных типразмещениятекстакомпоновкиданных типсвязинаборовданныхкомпоновкиданных типэлементарезультатакомпоновкиданных расположениелегендыдиаграммыкомпоновкиданных типпримененияотборакомпоновкиданных режимотображенияэлементанастройкикомпоновкиданных режимотображениянастроеккомпоновкиданных состояниеэлементанастройкикомпоновкиданных способвосстановлениянастроеккомпоновкиданных режимкомпоновкирезультата использованиепараметракомпоновкиданных автопозицияресурсовкомпоновкиданных вариантиспользованиягруппировкикомпоновкиданных расположениересурсоввдиаграммекомпоновкиданных фиксациякомпоновкиданных использованиеусловногооформлениякомпоновкиданных " + "важностьинтернетпочтовогосообщения обработкатекстаинтернетпочтовогосообщения способкодированияинтернетпочтовоговложения способкодированиянеasciiсимволовинтернетпочтовогосообщения типтекстапочтовогосообщения протоколинтернетпочты статусразборапочтовогосообщения " + "режимтранзакциизаписижурналарегистрации статустранзакциизаписижурналарегистрации уровеньжурналарегистрации " + "расположениехранилищасертификатовкриптографии режимвключениясертификатовкриптографии режимпроверкисертификатакриптографии типхранилищасертификатовкриптографии " + "кодировкаименфайловвzipфайле методсжатияzip методшифрованияzip режимвосстановленияпутейфайловzip режимобработкиподкаталоговzip режимсохраненияпутейzip уровеньсжатияzip " + "звуковоеоповещение направлениепереходакстроке позициявпотоке порядокбайтов режимблокировкиданных режимуправленияблокировкойданных сервисвстроенныхпокупок состояниефоновогозадания типподписчикадоставляемыхуведомлений уровеньиспользованиязащищенногосоединенияftp " + "направлениепорядкасхемызапроса типдополненияпериодамисхемызапроса типконтрольнойточкисхемызапроса типобъединениясхемызапроса типпараметрадоступнойтаблицысхемызапроса типсоединениясхемызапроса " + "httpметод автоиспользованиеобщегореквизита автопрефиксномеразадачи вариантвстроенногоязыка видиерархии видрегистранакопления видтаблицывнешнегоисточникаданных записьдвиженийприпроведении заполнениепоследовательностей индексирование использованиебазыпланавидоврасчета использованиебыстроговыбора использованиеобщегореквизита использованиеподчинения использованиеполнотекстовогопоиска использованиеразделяемыхданныхобщегореквизита использованиереквизита назначениеиспользованияприложения назначениерасширенияконфигурации направлениепередачи обновлениепредопределенныхданных оперативноепроведение основноепредставлениевидарасчета основноепредставлениевидахарактеристики основноепредставлениезадачи основноепредставлениепланаобмена основноепредставлениесправочника основноепредставлениесчета перемещениеграницыприпроведении периодичностьномерабизнеспроцесса периодичностьномерадокумента периодичностьрегистрарасчета периодичностьрегистрасведений повторноеиспользованиевозвращаемыхзначений полнотекстовыйпоискпривводепостроке принадлежностьобъекта проведение разделениеаутентификацииобщегореквизита разделениеданныхобщегореквизита разделениерасширенийконфигурацииобщегореквизита режимавтонумерацииобъектов режимзаписирегистра режимиспользованиямодальности режимиспользованиясинхронныхвызововрасширенийплатформыивнешнихкомпонент режимповторногоиспользованиясеансов режимполученияданныхвыборапривводепостроке режимсовместимости режимсовместимостиинтерфейса режимуправленияблокировкойданныхпоумолчанию сериикодовпланавидовхарактеристик сериикодовпланасчетов сериикодовсправочника созданиепривводе способвыбора способпоискастрокипривводепостроке способредактирования типданныхтаблицывнешнегоисточникаданных типкодапланавидоврасчета типкодасправочника типмакета типномерабизнеспроцесса типномерадокумента типномеразадачи типформы удалениедвижений " + "важностьпроблемыприменениярасширенияконфигурации вариантинтерфейсаклиентскогоприложения вариантмасштабаформклиентскогоприложения вариантосновногошрифтаклиентскогоприложения вариантстандартногопериода вариантстандартнойдатыначала видграницы видкартинки видотображенияполнотекстовогопоиска видрамки видсравнения видцвета видчисловогозначения видшрифта допустимаядлина допустимыйзнак использованиеbyteordermark использованиеметаданныхполнотекстовогопоиска источникрасширенийконфигурации клавиша кодвозвратадиалога кодировкаxbase кодировкатекста направлениепоиска направлениесортировки обновлениепредопределенныхданных обновлениеприизмененииданных отображениепанелиразделов проверказаполнения режимдиалогавопрос режимзапускаклиентскогоприложения режимокругления режимоткрытияформприложения режимполнотекстовогопоиска скоростьклиентскогосоединения состояниевнешнегоисточникаданных состояниеобновленияконфигурациибазыданных способвыборасертификатаwindows способкодированиястроки статуссообщения типвнешнейкомпоненты типплатформы типповеденияклавишиenter типэлементаинформацииовыполненииобновленияконфигурациибазыданных уровеньизоляциитранзакций хешфункция частидаты", z = "comобъект ftpсоединение httpзапрос httpсервисответ httpсоединение wsопределения wsпрокси xbase анализданных аннотацияxs блокировкаданных буфердвоичныхданных включениеxs выражениекомпоновкиданных генераторслучайныхчисел географическаясхема географическиекоординаты графическаясхема группамоделиxs данныерасшифровкикомпоновкиданных двоичныеданные дендрограмма диаграмма диаграммаганта диалогвыборафайла диалогвыборацвета диалогвыборашрифта диалограсписаниярегламентногозадания диалогредактированиястандартногопериода диапазон документdom документhtml документацияxs доставляемоеуведомление записьdom записьfastinfoset записьhtml записьjson записьxml записьzipфайла записьданных записьтекста записьузловdom запрос защищенноесоединениеopenssl значенияполейрасшифровкикомпоновкиданных извлечениетекста импортxs интернетпочта интернетпочтовоесообщение интернетпочтовыйпрофиль интернетпрокси интернетсоединение информациядляприложенияxs использованиеатрибутаxs использованиесобытияжурналарегистрации источникдоступныхнастроеккомпоновкиданных итераторузловdom картинка квалификаторыдаты квалификаторыдвоичныхданных квалификаторыстроки квалификаторычисла компоновщикмакетакомпоновкиданных компоновщикнастроеккомпоновкиданных конструктормакетаоформлениякомпоновкиданных конструкторнастроеккомпоновкиданных конструкторформатнойстроки линия макеткомпоновкиданных макетобластикомпоновкиданных макетоформлениякомпоновкиданных маскаxs менеджеркриптографии наборсхемxml настройкикомпоновкиданных настройкисериализацииjson обработкакартинок обработкарасшифровкикомпоновкиданных обходдереваdom объявлениеатрибутаxs объявлениенотацииxs объявлениеэлементаxs описаниеиспользованиясобытиядоступжурналарегистрации описаниеиспользованиясобытияотказвдоступежурналарегистрации описаниеобработкирасшифровкикомпоновкиданных описаниепередаваемогофайла описаниетипов определениегруппыатрибутовxs определениегруппымоделиxs определениеограниченияидентичностиxs определениепростоготипаxs определениесоставноготипаxs определениетипадокументаdom определенияxpathxs отборкомпоновкиданных пакетотображаемыхдокументов параметрвыбора параметркомпоновкиданных параметрызаписиjson параметрызаписиxml параметрычтенияxml переопределениеxs планировщик полеанализаданных полекомпоновкиданных построительdom построительзапроса построительотчета построительотчетаанализаданных построительсхемxml поток потоквпамяти почта почтовоесообщение преобразованиеxsl преобразованиекканоническомуxml процессорвыводарезультатакомпоновкиданныхвколлекциюзначений процессорвыводарезультатакомпоновкиданныхвтабличныйдокумент процессоркомпоновкиданных разыменовательпространствименdom рамка расписаниерегламентногозадания расширенноеимяxml результатчтенияданных своднаядиаграмма связьпараметравыбора связьпотипу связьпотипукомпоновкиданных сериализаторxdto сертификатклиентаwindows сертификатклиентафайл сертификаткриптографии сертификатыудостоверяющихцентровwindows сертификатыудостоверяющихцентровфайл сжатиеданных системнаяинформация сообщениепользователю сочетаниеклавиш сравнениезначений стандартнаядатаначала стандартныйпериод схемаxml схемакомпоновкиданных табличныйдокумент текстовыйдокумент тестируемоеприложение типданныхxml уникальныйидентификатор фабрикаxdto файл файловыйпоток фасетдлиныxs фасетколичестваразрядовдробнойчастиxs фасетмаксимальноговключающегозначенияxs фасетмаксимальногоисключающегозначенияxs фасетмаксимальнойдлиныxs фасетминимальноговключающегозначенияxs фасетминимальногоисключающегозначенияxs фасетминимальнойдлиныxs фасетобразцаxs фасетобщегоколичестваразрядовxs фасетперечисленияxs фасетпробельныхсимволовxs фильтрузловdom форматированнаястрока форматированныйдокумент фрагментxs хешированиеданных хранилищезначения цвет чтениеfastinfoset чтениеhtml чтениеjson чтениеxml чтениеzipфайла чтениеданных чтениетекста чтениеузловdom шрифт элементрезультатакомпоновкиданных " + "comsafearray деревозначений массив соответствие списокзначений структура таблицазначений фиксированнаяструктура фиксированноесоответствие фиксированныймассив ", se = "null истина ложь неопределено", Ce = t.inherit(t.NUMBER_MODE), oe = {
+  const e = "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", i = "далее " + "возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт ", s = "загрузитьизфайла " + "вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент ", p = "разделительстраниц разделительстрок символтабуляции " + "ansitooem oemtoansi ввестивидсубконто ввестиперечисление ввестипериод ввестиплансчетов выбранныйплансчетов датагод датамесяц датачисло заголовоксистемы значениевстроку значениеизстроки каталогиб каталогпользователя кодсимв конгода конецпериодаби конецрассчитанногопериодаби конецстандартногоинтервала конквартала конмесяца коннедели лог лог10 максимальноеколичествосубконто названиеинтерфейса названиенабораправ назначитьвид назначитьсчет найтиссылки началопериодаби началостандартногоинтервала начгода начквартала начмесяца начнедели номерднягода номерднянедели номернеделигода обработкаожидания основнойжурналрасчетов основнойплансчетов основнойязык очиститьокносообщений периодстр получитьвремята получитьдатута получитьдокументта получитьзначенияотбора получитьпозициюта получитьпустоезначение получитьта префиксавтонумерации пропись пустоезначение разм разобратьпозициюдокумента рассчитатьрегистрына рассчитатьрегистрыпо симв создатьобъект статусвозврата стрколичествострок сформироватьпозициюдокумента счетпокоду текущеевремя типзначения типзначениястр установитьтана установитьтапо фиксшаблон шаблон " + "acos asin atan base64значение base64строка cos exp log log10 pow sin sqrt tan xmlзначение xmlстрока xmlтип xmlтипзнч активноеокно безопасныйрежим безопасныйрежимразделенияданных булево ввестидату ввестизначение ввестистроку ввестичисло возможностьчтенияxml вопрос восстановитьзначение врег выгрузитьжурналрегистрации выполнитьобработкуоповещения выполнитьпроверкуправдоступа вычислить год данныеформывзначение дата день деньгода деньнедели добавитьмесяц заблокироватьданныедляредактирования заблокироватьработупользователя завершитьработусистемы загрузитьвнешнююкомпоненту закрытьсправку записатьjson записатьxml записатьдатуjson записьжурналарегистрации заполнитьзначениясвойств запроситьразрешениепользователя запуститьприложение запуститьсистему зафиксироватьтранзакцию значениевданныеформы значениевстрокувнутр значениевфайл значениезаполнено значениеизстрокивнутр значениеизфайла изxmlтипа импортмоделиxdto имякомпьютера имяпользователя инициализироватьпредопределенныеданные информацияобошибке каталогбиблиотекимобильногоустройства каталогвременныхфайлов каталогдокументов каталогпрограммы кодироватьстроку кодлокализацииинформационнойбазы кодсимвола командасистемы конецгода конецдня конецквартала конецмесяца конецминуты конецнедели конецчаса конфигурациябазыданныхизмененадинамически конфигурацияизменена копироватьданныеформы копироватьфайл краткоепредставлениеошибки лев макс местноевремя месяц мин минута монопольныйрежим найти найтинедопустимыесимволыxml найтиокнопонавигационнойссылке найтипомеченныенаудаление найтипоссылкам найтифайлы началогода началодня началоквартала началомесяца началоминуты началонедели началочаса начатьзапросразрешенияпользователя начатьзапускприложения начатькопированиефайла начатьперемещениефайла начатьподключениевнешнейкомпоненты начатьподключениерасширенияработыскриптографией начатьподключениерасширенияработысфайлами начатьпоискфайлов начатьполучениекаталогавременныхфайлов начатьполучениекаталогадокументов начатьполучениерабочегокаталогаданныхпользователя начатьполучениефайлов начатьпомещениефайла начатьпомещениефайлов начатьсозданиедвоичныхданныхизфайла начатьсозданиекаталога начатьтранзакцию начатьудалениефайлов начатьустановкувнешнейкомпоненты начатьустановкурасширенияработыскриптографией начатьустановкурасширенияработысфайлами неделягода необходимостьзавершениясоединения номерсеансаинформационнойбазы номерсоединенияинформационнойбазы нрег нстр обновитьинтерфейс обновитьнумерациюобъектов обновитьповторноиспользуемыезначения обработкапрерыванияпользователя объединитьфайлы окр описаниеошибки оповестить оповеститьобизменении отключитьобработчикзапросанастроекклиенталицензирования отключитьобработчикожидания отключитьобработчикоповещения открытьзначение открытьиндекссправки открытьсодержаниесправки открытьсправку открытьформу открытьформумодально отменитьтранзакцию очиститьжурналрегистрации очиститьнастройкипользователя очиститьсообщения параметрыдоступа перейтипонавигационнойссылке переместитьфайл подключитьвнешнююкомпоненту подключитьобработчикзапросанастроекклиенталицензирования подключитьобработчикожидания подключитьобработчикоповещения подключитьрасширениеработыскриптографией подключитьрасширениеработысфайлами подробноепредставлениеошибки показатьвводдаты показатьвводзначения показатьвводстроки показатьвводчисла показатьвопрос показатьзначение показатьинформациюобошибке показатьнакарте показатьоповещениепользователя показатьпредупреждение полноеимяпользователя получитьcomобъект получитьxmlтип получитьадреспоместоположению получитьблокировкусеансов получитьвремязавершенияспящегосеанса получитьвремязасыпанияпассивногосеанса получитьвремяожиданияблокировкиданных получитьданныевыбора получитьдополнительныйпараметрклиенталицензирования получитьдопустимыекодылокализации получитьдопустимыечасовыепояса получитьзаголовокклиентскогоприложения получитьзаголовоксистемы получитьзначенияотборажурналарегистрации получитьидентификаторконфигурации получитьизвременногохранилища получитьимявременногофайла получитьимяклиенталицензирования получитьинформациюэкрановклиента получитьиспользованиежурналарегистрации получитьиспользованиесобытияжурналарегистрации получитькраткийзаголовокприложения получитьмакетоформления получитьмаскувсефайлы получитьмаскувсефайлыклиента получитьмаскувсефайлысервера получитьместоположениепоадресу получитьминимальнуюдлинупаролейпользователей получитьнавигационнуюссылку получитьнавигационнуюссылкуинформационнойбазы получитьобновлениеконфигурациибазыданных получитьобновлениепредопределенныхданныхинформационнойбазы получитьобщиймакет получитьобщуюформу получитьокна получитьоперативнуюотметкувремени получитьотключениебезопасногорежима получитьпараметрыфункциональныхопцийинтерфейса получитьполноеимяпредопределенногозначения получитьпредставлениянавигационныхссылок получитьпроверкусложностипаролейпользователей получитьразделительпути получитьразделительпутиклиента получитьразделительпутисервера получитьсеансыинформационнойбазы получитьскоростьклиентскогосоединения получитьсоединенияинформационнойбазы получитьсообщенияпользователю получитьсоответствиеобъектаиформы получитьсоставстандартногоинтерфейсаodata получитьструктурухранениябазыданных получитьтекущийсеансинформационнойбазы получитьфайл получитьфайлы получитьформу получитьфункциональнуюопцию получитьфункциональнуюопциюинтерфейса получитьчасовойпоясинформационнойбазы пользователиос поместитьвовременноехранилище поместитьфайл поместитьфайлы прав праводоступа предопределенноезначение представлениекодалокализации представлениепериода представлениеправа представлениеприложения представлениесобытияжурналарегистрации представлениечасовогопояса предупреждение прекратитьработусистемы привилегированныйрежим продолжитьвызов прочитатьjson прочитатьxml прочитатьдатуjson пустаястрока рабочийкаталогданныхпользователя разблокироватьданныедляредактирования разделитьфайл разорватьсоединениесвнешнимисточникомданных раскодироватьстроку рольдоступна секунда сигнал символ скопироватьжурналрегистрации смещениелетнеговремени смещениестандартноговремени соединитьбуферыдвоичныхданных создатькаталог создатьфабрикуxdto сокрл сокрлп сокрп сообщить состояние сохранитьзначение сохранитьнастройкипользователя сред стрдлина стрзаканчиваетсяна стрзаменить стрнайти стрначинаетсяс строка строкасоединенияинформационнойбазы стрполучитьстроку стрразделить стрсоединить стрсравнить стрчисловхождений стрчислострок стршаблон текущаядата текущаядатасеанса текущаяуниверсальнаядата текущаяуниверсальнаядатавмиллисекундах текущийвариантинтерфейсаклиентскогоприложения текущийвариантосновногошрифтаклиентскогоприложения текущийкодлокализации текущийрежимзапуска текущийязык текущийязыксистемы тип типзнч транзакцияактивна трег удалитьданныеинформационнойбазы удалитьизвременногохранилища удалитьобъекты удалитьфайлы универсальноевремя установитьбезопасныйрежим установитьбезопасныйрежимразделенияданных установитьблокировкусеансов установитьвнешнююкомпоненту установитьвремязавершенияспящегосеанса установитьвремязасыпанияпассивногосеанса установитьвремяожиданияблокировкиданных установитьзаголовокклиентскогоприложения установитьзаголовоксистемы установитьиспользованиежурналарегистрации установитьиспользованиесобытияжурналарегистрации установитькраткийзаголовокприложения установитьминимальнуюдлинупаролейпользователей установитьмонопольныйрежим установитьнастройкиклиенталицензирования установитьобновлениепредопределенныхданныхинформационнойбазы установитьотключениебезопасногорежима установитьпараметрыфункциональныхопцийинтерфейса установитьпривилегированныйрежим установитьпроверкусложностипаролейпользователей установитьрасширениеработыскриптографией установитьрасширениеработысфайлами установитьсоединениесвнешнимисточникомданных установитьсоответствиеобъектаиформы установитьсоставстандартногоинтерфейсаodata установитьчасовойпоясинформационнойбазы установитьчасовойпояссеанса формат цел час часовойпояс часовойпояссеанса число числопрописью этоадресвременногохранилища " + "wsссылки библиотекакартинок библиотекамакетовоформлениякомпоновкиданных библиотекастилей бизнеспроцессы внешниеисточникиданных внешниеобработки внешниеотчеты встроенныепокупки главныйинтерфейс главныйстиль документы доставляемыеуведомления журналыдокументов задачи информацияобинтернетсоединении использованиерабочейдаты историяработыпользователя константы критерииотбора метаданные обработки отображениерекламы отправкадоставляемыхуведомлений отчеты панельзадачос параметрзапуска параметрысеанса перечисления планывидоврасчета планывидовхарактеристик планыобмена планысчетов полнотекстовыйпоиск пользователиинформационнойбазы последовательности проверкавстроенныхпокупок рабочаядата расширенияконфигурации регистрыбухгалтерии регистрынакопления регистрырасчета регистрысведений регламентныезадания сериализаторxdto справочники средствагеопозиционирования средствакриптографии средствамультимедиа средстваотображениярекламы средствапочты средствателефонии фабрикаxdto файловыепотоки фоновыезадания хранилищанастроек хранилищевариантовотчетов хранилищенастроекданныхформ хранилищеобщихнастроек хранилищепользовательскихнастроекдинамическихсписков хранилищепользовательскихнастроекотчетов хранилищесистемныхнастроек ", A = "webцвета windowsцвета windowsшрифты библиотекакартинок рамкистиля символы цветастиля шрифтыстиля " + "автоматическоесохранениеданныхформывнастройках автонумерациявформе автораздвижениесерий анимациядиаграммы вариантвыравниванияэлементовизаголовков вариантуправлениявысотойтаблицы вертикальнаяпрокруткаформы вертикальноеположение вертикальноеположениеэлемента видгруппыформы виддекорацииформы виддополненияэлементаформы видизмененияданных видкнопкиформы видпереключателя видподписейкдиаграмме видполяформы видфлажка влияниеразмеранапузырекдиаграммы горизонтальноеположение горизонтальноеположениеэлемента группировкаколонок группировкаподчиненныхэлементовформы группыиэлементы действиеперетаскивания дополнительныйрежимотображения допустимыедействияперетаскивания интервалмеждуэлементамиформы использованиевывода использованиеполосыпрокрутки используемоезначениеточкибиржевойдиаграммы историявыборапривводе источникзначенийоситочекдиаграммы источникзначенияразмерапузырькадиаграммы категориягруппыкоманд максимумсерий начальноеотображениедерева начальноеотображениесписка обновлениетекстаредактирования ориентациядендрограммы ориентациядиаграммы ориентацияметокдиаграммы ориентацияметоксводнойдиаграммы ориентацияэлементаформы отображениевдиаграмме отображениевлегендедиаграммы отображениегруппыкнопок отображениезаголовкашкалыдиаграммы отображениезначенийсводнойдиаграммы отображениезначенияизмерительнойдиаграммы отображениеинтерваладиаграммыганта отображениекнопки отображениекнопкивыбора отображениеобсужденийформы отображениеобычнойгруппы отображениеотрицательныхзначенийпузырьковойдиаграммы отображениепанелипоиска отображениеподсказки отображениепредупрежденияприредактировании отображениеразметкиполосырегулирования отображениестраницформы отображениетаблицы отображениетекстазначениядиаграммыганта отображениеуправленияобычнойгруппы отображениефигурыкнопки палитрацветовдиаграммы поведениеобычнойгруппы поддержкамасштабадендрограммы поддержкамасштабадиаграммыганта поддержкамасштабасводнойдиаграммы поисквтаблицепривводе положениезаголовкаэлементаформы положениекартинкикнопкиформы положениекартинкиэлементаграфическойсхемы положениекоманднойпанелиформы положениекоманднойпанелиэлементаформы положениеопорнойточкиотрисовки положениеподписейкдиаграмме положениеподписейшкалызначенийизмерительнойдиаграммы положениесостоянияпросмотра положениестрокипоиска положениетекстасоединительнойлинии положениеуправленияпоиском положениешкалывремени порядокотображенияточекгоризонтальнойгистограммы порядоксерийвлегендедиаграммы размеркартинки расположениезаголовкашкалыдиаграммы растягиваниеповертикалидиаграммыганта режимавтоотображениясостояния режимвводастроктаблицы режимвыборанезаполненного режимвыделениядаты режимвыделениястрокитаблицы режимвыделениятаблицы режимизмененияразмера режимизменениясвязанногозначения режимиспользованиядиалогапечати режимиспользованияпараметракоманды режиммасштабированияпросмотра режимосновногоокнаклиентскогоприложения режимоткрытияокнаформы режимотображениявыделения режимотображениягеографическойсхемы режимотображениязначенийсерии режимотрисовкисеткиграфическойсхемы режимполупрозрачностидиаграммы режимпробеловдиаграммы режимразмещениянастранице режимредактированияколонки режимсглаживаниядиаграммы режимсглаживанияиндикатора режимсписказадач сквозноевыравнивание сохранениеданныхформывнастройках способзаполнениятекстазаголовкашкалыдиаграммы способопределенияограничивающегозначениядиаграммы стандартнаягруппакоманд стандартноеоформление статусоповещенияпользователя стильстрелки типаппроксимациилиниитрендадиаграммы типдиаграммы типединицышкалывремени типимпортасерийслоягеографическойсхемы типлиниигеографическойсхемы типлиниидиаграммы типмаркерагеографическойсхемы типмаркерадиаграммы типобластиоформления типорганизацииисточникаданныхгеографическойсхемы типотображениясериислоягеографическойсхемы типотображенияточечногообъектагеографическойсхемы типотображенияшкалыэлементалегендыгеографическойсхемы типпоискаобъектовгеографическойсхемы типпроекциигеографическойсхемы типразмещенияизмерений типразмещенияреквизитовизмерений типрамкиэлементауправления типсводнойдиаграммы типсвязидиаграммыганта типсоединениязначенийпосериямдиаграммы типсоединенияточекдиаграммы типсоединительнойлинии типстороныэлементаграфическойсхемы типформыотчета типшкалырадарнойдиаграммы факторлиниитрендадиаграммы фигуракнопки фигурыграфическойсхемы фиксациявтаблице форматдняшкалывремени форматкартинки ширинаподчиненныхэлементовформы " + "виддвижениябухгалтерии виддвижениянакопления видпериодарегистрарасчета видсчета видточкимаршрутабизнеспроцесса использованиеагрегатарегистранакопления использованиегруппиэлементов использованиережимапроведения использованиесреза периодичностьагрегатарегистранакопления режимавтовремя режимзаписидокумента режимпроведениядокумента " + "авторегистрацияизменений допустимыйномерсообщения отправкаэлементаданных получениеэлементаданных " + "использованиерасшифровкитабличногодокумента ориентациястраницы положениеитоговколоноксводнойтаблицы положениеитоговстроксводнойтаблицы положениетекстаотносительнокартинки расположениезаголовкагруппировкитабличногодокумента способчтениязначенийтабличногодокумента типдвустороннейпечати типзаполненияобластитабличногодокумента типкурсоровтабличногодокумента типлиниирисункатабличногодокумента типлинииячейкитабличногодокумента типнаправленияпереходатабличногодокумента типотображениявыделениятабличногодокумента типотображениялинийсводнойтаблицы типразмещениятекстатабличногодокумента типрисункатабличногодокумента типсмещениятабличногодокумента типузоратабличногодокумента типфайлатабличногодокумента точностьпечати чередованиерасположениястраниц " + "отображениевремениэлементовпланировщика " + "типфайлаформатированногодокумента " + "обходрезультатазапроса типзаписизапроса " + "видзаполнениярасшифровкипостроителяотчета типдобавленияпредставлений типизмеренияпостроителяотчета типразмещенияитогов " + "доступкфайлу режимдиалогавыборафайла режимоткрытияфайла " + "типизмеренияпостроителязапроса " + "видданныханализа методкластеризации типединицыинтервалавременианализаданных типзаполнениятаблицырезультатаанализаданных типиспользованиячисловыхзначенийанализаданных типисточникаданныхпоискаассоциаций типколонкианализаданныхдереворешений типколонкианализаданныхкластеризация типколонкианализаданныхобщаястатистика типколонкианализаданныхпоискассоциаций типколонкианализаданныхпоискпоследовательностей типколонкимоделипрогноза типмерырасстоянияанализаданных типотсеченияправилассоциации типполяанализаданных типстандартизациианализаданных типупорядочиванияправилассоциациианализаданных типупорядочиванияшаблоновпоследовательностейанализаданных типупрощениядереварешений " + "wsнаправлениепараметра вариантxpathxs вариантзаписидатыjson вариантпростоготипаxs видгруппымоделиxs видфасетаxdto действиепостроителяdom завершенностьпростоготипаxs завершенностьсоставноготипаxs завершенностьсхемыxs запрещенныеподстановкиxs исключениягруппподстановкиxs категорияиспользованияатрибутаxs категорияограниченияидентичностиxs категорияограниченияпространствименxs методнаследованияxs модельсодержимогоxs назначениетипаxml недопустимыеподстановкиxs обработкапробельныхсимволовxs обработкасодержимогоxs ограничениезначенияxs параметрыотбораузловdom переносстрокjson позициявдокументеdom пробельныесимволыxml типатрибутаxml типзначенияjson типканоническогоxml типкомпонентыxs типпроверкиxml типрезультатаdomxpath типузлаdom типузлаxml формаxml формапредставленияxs форматдатыjson экранированиесимволовjson " + "видсравнениякомпоновкиданных действиеобработкирасшифровкикомпоновкиданных направлениесортировкикомпоновкиданных расположениевложенныхэлементоврезультатакомпоновкиданных расположениеитоговкомпоновкиданных расположениегруппировкикомпоновкиданных расположениеполейгруппировкикомпоновкиданных расположениеполякомпоновкиданных расположениереквизитовкомпоновкиданных расположениересурсовкомпоновкиданных типбухгалтерскогоостаткакомпоновкиданных типвыводатекстакомпоновкиданных типгруппировкикомпоновкиданных типгруппыэлементовотборакомпоновкиданных типдополненияпериодакомпоновкиданных типзаголовкаполейкомпоновкиданных типмакетагруппировкикомпоновкиданных типмакетаобластикомпоновкиданных типостаткакомпоновкиданных типпериодакомпоновкиданных типразмещениятекстакомпоновкиданных типсвязинаборовданныхкомпоновкиданных типэлементарезультатакомпоновкиданных расположениелегендыдиаграммыкомпоновкиданных типпримененияотборакомпоновкиданных режимотображенияэлементанастройкикомпоновкиданных режимотображениянастроеккомпоновкиданных состояниеэлементанастройкикомпоновкиданных способвосстановлениянастроеккомпоновкиданных режимкомпоновкирезультата использованиепараметракомпоновкиданных автопозицияресурсовкомпоновкиданных вариантиспользованиягруппировкикомпоновкиданных расположениересурсоввдиаграммекомпоновкиданных фиксациякомпоновкиданных использованиеусловногооформлениякомпоновкиданных " + "важностьинтернетпочтовогосообщения обработкатекстаинтернетпочтовогосообщения способкодированияинтернетпочтовоговложения способкодированиянеasciiсимволовинтернетпочтовогосообщения типтекстапочтовогосообщения протоколинтернетпочты статусразборапочтовогосообщения " + "режимтранзакциизаписижурналарегистрации статустранзакциизаписижурналарегистрации уровеньжурналарегистрации " + "расположениехранилищасертификатовкриптографии режимвключениясертификатовкриптографии режимпроверкисертификатакриптографии типхранилищасертификатовкриптографии " + "кодировкаименфайловвzipфайле методсжатияzip методшифрованияzip режимвосстановленияпутейфайловzip режимобработкиподкаталоговzip режимсохраненияпутейzip уровеньсжатияzip " + "звуковоеоповещение направлениепереходакстроке позициявпотоке порядокбайтов режимблокировкиданных режимуправленияблокировкойданных сервисвстроенныхпокупок состояниефоновогозадания типподписчикадоставляемыхуведомлений уровеньиспользованиязащищенногосоединенияftp " + "направлениепорядкасхемызапроса типдополненияпериодамисхемызапроса типконтрольнойточкисхемызапроса типобъединениясхемызапроса типпараметрадоступнойтаблицысхемызапроса типсоединениясхемызапроса " + "httpметод автоиспользованиеобщегореквизита автопрефиксномеразадачи вариантвстроенногоязыка видиерархии видрегистранакопления видтаблицывнешнегоисточникаданных записьдвиженийприпроведении заполнениепоследовательностей индексирование использованиебазыпланавидоврасчета использованиебыстроговыбора использованиеобщегореквизита использованиеподчинения использованиеполнотекстовогопоиска использованиеразделяемыхданныхобщегореквизита использованиереквизита назначениеиспользованияприложения назначениерасширенияконфигурации направлениепередачи обновлениепредопределенныхданных оперативноепроведение основноепредставлениевидарасчета основноепредставлениевидахарактеристики основноепредставлениезадачи основноепредставлениепланаобмена основноепредставлениесправочника основноепредставлениесчета перемещениеграницыприпроведении периодичностьномерабизнеспроцесса периодичностьномерадокумента периодичностьрегистрарасчета периодичностьрегистрасведений повторноеиспользованиевозвращаемыхзначений полнотекстовыйпоискпривводепостроке принадлежностьобъекта проведение разделениеаутентификацииобщегореквизита разделениеданныхобщегореквизита разделениерасширенийконфигурацииобщегореквизита режимавтонумерацииобъектов режимзаписирегистра режимиспользованиямодальности режимиспользованиясинхронныхвызововрасширенийплатформыивнешнихкомпонент режимповторногоиспользованиясеансов режимполученияданныхвыборапривводепостроке режимсовместимости режимсовместимостиинтерфейса режимуправленияблокировкойданныхпоумолчанию сериикодовпланавидовхарактеристик сериикодовпланасчетов сериикодовсправочника созданиепривводе способвыбора способпоискастрокипривводепостроке способредактирования типданныхтаблицывнешнегоисточникаданных типкодапланавидоврасчета типкодасправочника типмакета типномерабизнеспроцесса типномерадокумента типномеразадачи типформы удалениедвижений " + "важностьпроблемыприменениярасширенияконфигурации вариантинтерфейсаклиентскогоприложения вариантмасштабаформклиентскогоприложения вариантосновногошрифтаклиентскогоприложения вариантстандартногопериода вариантстандартнойдатыначала видграницы видкартинки видотображенияполнотекстовогопоиска видрамки видсравнения видцвета видчисловогозначения видшрифта допустимаядлина допустимыйзнак использованиеbyteordermark использованиеметаданныхполнотекстовогопоиска источникрасширенийконфигурации клавиша кодвозвратадиалога кодировкаxbase кодировкатекста направлениепоиска направлениесортировки обновлениепредопределенныхданных обновлениеприизмененииданных отображениепанелиразделов проверказаполнения режимдиалогавопрос режимзапускаклиентскогоприложения режимокругления режимоткрытияформприложения режимполнотекстовогопоиска скоростьклиентскогосоединения состояниевнешнегоисточникаданных состояниеобновленияконфигурациибазыданных способвыборасертификатаwindows способкодированиястроки статуссообщения типвнешнейкомпоненты типплатформы типповеденияклавишиenter типэлементаинформацииовыполненииобновленияконфигурациибазыданных уровеньизоляциитранзакций хешфункция частидаты", z = "comобъект ftpсоединение httpзапрос httpсервисответ httpсоединение wsопределения wsпрокси xbase анализданных аннотацияxs блокировкаданных буфердвоичныхданных включениеxs выражениекомпоновкиданных генераторслучайныхчисел географическаясхема географическиекоординаты графическаясхема группамоделиxs данныерасшифровкикомпоновкиданных двоичныеданные дендрограмма диаграмма диаграммаганта диалогвыборафайла диалогвыборацвета диалогвыборашрифта диалограсписаниярегламентногозадания диалогредактированиястандартногопериода диапазон документdom документhtml документацияxs доставляемоеуведомление записьdom записьfastinfoset записьhtml записьjson записьxml записьzipфайла записьданных записьтекста записьузловdom запрос защищенноесоединениеopenssl значенияполейрасшифровкикомпоновкиданных извлечениетекста импортxs интернетпочта интернетпочтовоесообщение интернетпочтовыйпрофиль интернетпрокси интернетсоединение информациядляприложенияxs использованиеатрибутаxs использованиесобытияжурналарегистрации источникдоступныхнастроеккомпоновкиданных итераторузловdom картинка квалификаторыдаты квалификаторыдвоичныхданных квалификаторыстроки квалификаторычисла компоновщикмакетакомпоновкиданных компоновщикнастроеккомпоновкиданных конструктормакетаоформлениякомпоновкиданных конструкторнастроеккомпоновкиданных конструкторформатнойстроки линия макеткомпоновкиданных макетобластикомпоновкиданных макетоформлениякомпоновкиданных маскаxs менеджеркриптографии наборсхемxml настройкикомпоновкиданных настройкисериализацииjson обработкакартинок обработкарасшифровкикомпоновкиданных обходдереваdom объявлениеатрибутаxs объявлениенотацииxs объявлениеэлементаxs описаниеиспользованиясобытиядоступжурналарегистрации описаниеиспользованиясобытияотказвдоступежурналарегистрации описаниеобработкирасшифровкикомпоновкиданных описаниепередаваемогофайла описаниетипов определениегруппыатрибутовxs определениегруппымоделиxs определениеограниченияидентичностиxs определениепростоготипаxs определениесоставноготипаxs определениетипадокументаdom определенияxpathxs отборкомпоновкиданных пакетотображаемыхдокументов параметрвыбора параметркомпоновкиданных параметрызаписиjson параметрызаписиxml параметрычтенияxml переопределениеxs планировщик полеанализаданных полекомпоновкиданных построительdom построительзапроса построительотчета построительотчетаанализаданных построительсхемxml поток потоквпамяти почта почтовоесообщение преобразованиеxsl преобразованиекканоническомуxml процессорвыводарезультатакомпоновкиданныхвколлекциюзначений процессорвыводарезультатакомпоновкиданныхвтабличныйдокумент процессоркомпоновкиданных разыменовательпространствименdom рамка расписаниерегламентногозадания расширенноеимяxml результатчтенияданных своднаядиаграмма связьпараметравыбора связьпотипу связьпотипукомпоновкиданных сериализаторxdto сертификатклиентаwindows сертификатклиентафайл сертификаткриптографии сертификатыудостоверяющихцентровwindows сертификатыудостоверяющихцентровфайл сжатиеданных системнаяинформация сообщениепользователю сочетаниеклавиш сравнениезначений стандартнаядатаначала стандартныйпериод схемаxml схемакомпоновкиданных табличныйдокумент текстовыйдокумент тестируемоеприложение типданныхxml уникальныйидентификатор фабрикаxdto файл файловыйпоток фасетдлиныxs фасетколичестваразрядовдробнойчастиxs фасетмаксимальноговключающегозначенияxs фасетмаксимальногоисключающегозначенияxs фасетмаксимальнойдлиныxs фасетминимальноговключающегозначенияxs фасетминимальногоисключающегозначенияxs фасетминимальнойдлиныxs фасетобразцаxs фасетобщегоколичестваразрядовxs фасетперечисленияxs фасетпробельныхсимволовxs фильтрузловdom форматированнаястрока форматированныйдокумент фрагментxs хешированиеданных хранилищезначения цвет чтениеfastinfoset чтениеhtml чтениеjson чтениеxml чтениеzipфайла чтениеданных чтениетекста чтениеузловdom шрифт элементрезультатакомпоновкиданных " + "comsafearray деревозначений массив соответствие списокзначений структура таблицазначений фиксированнаяструктура фиксированноесоответствие фиксированныймассив ", le = "null истина ложь неопределено", Ce = t.inherit(t.NUMBER_MODE), oe = {
     className: "string",
     begin: '"|\\|',
     end: '"|$',
@@ -25289,7 +25308,7 @@ function KA(t) {
             keywords: {
               $pattern: e,
               keyword: "знач",
-              literal: se
+              literal: le
             },
             contains: [
               Ce,
@@ -25312,7 +25331,7 @@ function KA(t) {
       built_in: p,
       class: A,
       type: z,
-      literal: se
+      literal: le
     },
     contains: [
       Le,
@@ -32714,8 +32733,8 @@ function tx(t) {
   }, f = function({ includeEqual: v }) {
     let A;
     v ? A = "!%&*+-/<=>@^|~?" : A = "!%&*+-/<>@^|~?";
-    const k = Array.from(A), G = Bt("[", ...k.map(JI), "]"), z = jn(G, /\./), se = Bt(z, Oi(z)), Ce = jn(
-      Bt(se, z, "*"),
+    const k = Array.from(A), G = Bt("[", ...k.map(JI), "]"), z = jn(G, /\./), le = Bt(z, Oi(z)), Ce = jn(
+      Bt(le, z, "*"),
       // Matches at least 2 chars operators
       Bt(G, "+")
       // Matches at least one char operators
@@ -62457,12 +62476,12 @@ function xM(t) {
       }
       G === ">" && (n(v, { after: k }) || A.ignoreMatch());
       let z;
-      const se = v.input.substring(k);
-      if (z = se.match(/^\s*=/)) {
+      const le = v.input.substring(k);
+      if (z = le.match(/^\s*=/)) {
         A.ignoreMatch();
         return;
       }
-      if ((z = se.match(/^\s+extends\s+/)) && z.index === 0) {
+      if ((z = le.match(/^\s+extends\s+/)) && z.index === 0) {
         A.ignoreMatch();
         return;
       }
@@ -68767,7 +68786,7 @@ function fw(t) {
         relevance: 0
       }
     ]
-  }, se = {
+  }, le = {
     begin: /</,
     end: />/,
     keywords: c,
@@ -68779,7 +68798,7 @@ function fw(t) {
       z
     ]
   };
-  z.contains.push(se);
+  z.contains.push(le);
   const Ce = {
     match: ye(dn, /\s*:/),
     keywords: "_|0",
@@ -69140,12 +69159,12 @@ function hw(t) {
       }
       G === ">" && (n(v, { after: k }) || A.ignoreMatch());
       let z;
-      const se = v.input.substring(k);
-      if (z = se.match(/^\s*=/)) {
+      const le = v.input.substring(k);
+      if (z = le.match(/^\s*=/)) {
         A.ignoreMatch();
         return;
       }
-      if ((z = se.match(/^\s+extends\s+/)) && z.index === 0) {
+      if ((z = le.match(/^\s+extends\s+/)) && z.index === 0) {
         A.ignoreMatch();
         return;
       }
@@ -71180,15 +71199,15 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
       language: G
     };
     V("before:highlight", z);
-    const se = z.result ? z.result : d(z.language, z.code, A);
-    return se.code = z.code, V("after:highlight", se), se;
+    const le = z.result ? z.result : d(z.language, z.code, A);
+    return le.code = z.code, V("after:highlight", le), le;
   }
   function d(y, v, A, k) {
     const G = /* @__PURE__ */ Object.create(null);
     function z(N, D) {
       return N.keywords[D];
     }
-    function se() {
+    function le() {
       if (!P.keywords) {
         ae.addText(j);
         return;
@@ -71228,7 +71247,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
       P.relevance > 0 && (He += N.relevance), ae.__addSublanguage(N._emitter, N.language);
     }
     function oe() {
-      P.subLanguage != null ? Ce() : se(), j = "";
+      P.subLanguage != null ? Ce() : le(), j = "";
     }
     function ue(N, D) {
       N !== "" && (ae.startScope(D), ae.addText(N), ae.endScope());
@@ -71242,7 +71261,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
           continue;
         }
         const _e = ge.classNameAliases[N[U]] || N[U], De = D[U];
-        _e ? ue(De, _e) : (j = De, se(), j = ""), U++;
+        _e ? ue(De, _e) : (j = De, le(), j = ""), U++;
       }
     }
     function Le(N, D) {
@@ -71402,8 +71421,8 @@ https://github.com/highlightjs/highlight.js/issues/2277`), G = y, k = v), A === 
           return -1;
       }
       return 0;
-    }), [z, se] = G, Ce = z;
-    return Ce.secondBest = se, Ce;
+    }), [z, le] = G, Ce = z;
+    return Ce.secondBest = le, Ce;
   }
   function m(y, v, A) {
     const k = v && n[v] || A;
