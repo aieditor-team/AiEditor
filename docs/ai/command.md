@@ -9,22 +9,19 @@ new AiEditor({
     element: "#aiEditor",
     ai:{
         models:{
-            spark:{
-                appId:"****",
-                apiKey:"****",
-                apiSecret:"****"
+            openai: {
+                apiKey: "sk-alQ96zbDn*****",
+                model:"gpt-4o",
             }
         },
         commands:[
             {
                 name: "AI Continuation Writing",
                 prompt: "Please help me further expand on this passage.",
-                model: "spark",
             },
             {
                 name: "AI Inquiry",
-                prompt: "",
-                model: "spark",
+                prompt: "...",
             },
         ]
     },
@@ -32,9 +29,12 @@ new AiEditor({
 ```
 
 
-- **name**: Name of the AI menu.
-- **prompt**: AI prompt message.
-- **model**: AI large model used, currently supports `spark` (Spark large model), `wenxin` (Wenxin Yiyuan), and `custom` (custom type). In the future, it will support multiple models such as Wenxin Yiyuan, ChatGPT, etc.
+commands configures the AI menu and supports the following parameters:
 
-**Note:** When `model` is not configured or configured as "`auto`", the first configured large language model will be automatically selected.
+- **icon**: icon of the AI enu
+- **name**: name of the AI menu
+- **prompt**: AI prompt
+- **text**: "selected" | "focusBefore" optional, represents the selected text, or the text before the cursor
+- **model**: the AI large model used. When `model` is not configured or configured as "`auto`", the first configured large language model will be automatically selected.
+- **onClick**: click event callback function, only used for custom functions.
 
