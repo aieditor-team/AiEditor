@@ -1,5 +1,24 @@
 # AiEditor ChangeLog
 
+## v1.3.0 20241221:
+
+- feat: Add link configuration to images
+- feat: Add alt, title and other attribute configuration to images
+- feat: Add onClick configuration support to AIMenu
+- fix: When migrating edited data from wangEditor to AIEditor, some images are not displayed
+- fix: When there are multiple editor instances on the same page, the number of characters counted is inaccurate
+- fix: When the menu is in the active state, the corners are not rounded.
+
+---
+- 新增：图片添加链接配置的功能
+- 新增：图片添加 alt、title 等属性配置的功能
+- 新增：AIMenu 添加 onClick 配置的支持
+- 修复：wangEditor 编辑数据迁移到 AIEditor 时，某些图片不显示的问题
+- 修复：当同一个页面存在多个编辑器实例时，右下角统计字符数不准确
+- 修复：菜单在 active 的状态时，不是圆角的。
+
+
+
 ## v1.2.9 20241212:
 
 - feat: Added changeTheme() method for dynamic theme switching
