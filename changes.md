@@ -9,6 +9,7 @@
 - fix: When there are multiple editor instances on the same page, the number of characters counted is inaccurate
 - fix: When the menu is in the active state, the corners are not rounded.
 - doc: update ai command docs
+- doc: update comment docs
 
 ---
 - 新增：图片添加链接配置的功能
@@ -18,6 +19,7 @@
 - 修复：当同一个页面存在多个编辑器实例时，右下角统计字符数不准确
 - 修复：菜单在 active 的状态时，不是圆角的。
 - 文档：更新 ai command 的相关文档
+- 文档：更新评论（批注）的相关文档
 
 
 
