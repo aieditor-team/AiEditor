@@ -1,6 +1,6 @@
 # AiEditor ChangeLog
 
-## v1.3.1 20241221:
+## v1.3.2 20241221:
 
 - feat: Add link configuration to images
 - feat: Add alt, title and other attribute configuration to images

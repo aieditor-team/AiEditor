@@ -20223,7 +20223,6 @@ const bh = Sh(!1, !0), Th = Sh(!0, !0), NR = he.create({
     name: "image",
     draggable: !0,
     selectable: !0,
-    priority: 8888,
     addOptions() {
       var t;
       return {
