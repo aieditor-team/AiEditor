@@ -45,7 +45,6 @@ export const ImageExt = Image.extend<ImageOptions>({
         name: "image",
         draggable: true,
         selectable: true,
-        priority: 8888,
 
         addOptions() {
             return {
