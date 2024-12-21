@@ -173,20 +173,23 @@ export const organizeHTMLContent = (originalHtml: string) => {
     }
 
     let html = '';
-    for (let i = 0; i < doc.body.children.length; i++) {
-        const element = doc.body.children[i];
-        if (i == 0 && element.tagName === "P") {
-            html += element.innerHTML;
-        } else {
-            // https://gitee.com/aieditor-team/aieditor/pulls/10
-            if (element.querySelector("img") && element.tagName !== "A") {
-                //return image element
+    doc.body.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            html += node.textContent;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const element = node as HTMLElement;
+            if (element === doc.body.firstChild && element.tagName === "P") {
                 html += element.innerHTML;
             } else {
-                html += element.outerHTML;
+                // https://gitee.com/aieditor-team/aieditor/pulls/10
+                if (element.querySelector("img") && element.tagName !== "A") {
+                    //return image element
+                    html += element.innerHTML;
+                } else {
+                    html += element.outerHTML;
+                }
             }
         }
-    }
-    // debugger
+    })
     return html;
 }
