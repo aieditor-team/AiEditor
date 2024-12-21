@@ -59,18 +59,18 @@ export const de =  {
     //// colors panel
     "standardColors": "Standardfarben",
     "historyColors": "Zuletzt verwendete Farben",
-    
+
     //// table
     "insertTable": "Tabelle einfügen",
     "row": "Zeile",
     "column": "Spalte",
-    
+
     //// alignment
     "align-left": "Linksbündig",
     "align-right": "Rechtsbündig",
     "align-center": "Zentriert",
     "align-justify": "Blocksatz",
-    
+
     //// table
     "insert-column-left": "Spalte links einfügen",
     "insert-column-right": "Spalte rechts einfügen",
@@ -91,15 +91,21 @@ export const de =  {
     "link-address": "Link-Adresse",
     "link-open-type": "Link öffnen in...",
     "link-open-blank": "Neues Fenster",
-    
+
     //// font
     "default-font-size": "Schriftgröße",
     "default-font-family": "Standardschriftart",
-    
+
     //// code block
     "codeblock-ai-auto-comment": "Automatischer Kommentar",
     "codeblock-ai-code-explain": "Code-Erklärung",
-    
+
+    ////image
+    "image-property":"Bildeigenschaft",
+    "image-size":"Bildgröße",
+    "image-keep-current":"Aktuell behalten",
+    "image-original-size":"Originalgröße des Bilds",
+
     //// ai
     "placeholder-tell-ai-what-to-do-next": "Sagen Sie der KI, was als Nächstes zu tun ist, z.B. helfen Sie mir, ins Englische zu übersetzen",
     "tip-you-can-enter-text-above-or-select-the-operation-below": "Tipp: Sie können oben Text eingeben oder die untenstehende Operation auswählen",
@@ -113,7 +119,7 @@ export const de =  {
     "ai-append": "Anhängen",
     "ai-replace": "Ersetzen",
     "ai-cancel": "Abbrechen",
-    
+
     /// ai menus
     "ai-continuation": "Vorschläge für Fortsetzung",
     "ai-optimization": "Optimierung",
