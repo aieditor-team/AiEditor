@@ -1,13 +1,14 @@
 # AiEditor ChangeLog
 
-## v1.3.2 20241221:
 
+## v1.3.3 20241221:
 - feat: Add link configuration to images
 - feat: Add alt, title and other attribute configuration to images
 - feat: Add onClick configuration support to AIMenu
 - fix: When migrating edited data from wangEditor to AIEditor, some images are not displayed
 - fix: When there are multiple editor instances on the same page, the number of characters counted is inaccurate
 - fix: When the menu is in the active state, the corners are not rounded.
+- fix: fix parse init html error if the content is text only
 - doc: update ai command docs
 - doc: update comment docs
 
@@ -18,13 +19,13 @@
 - 修复：wangEditor 编辑数据迁移到 AIEditor 时，某些图片不显示的问题
 - 修复：当同一个页面存在多个编辑器实例时，右下角统计字符数不准确
 - 修复：菜单在 active 的状态时，不是圆角的。
+- 修复：修复当初始化内容为存文本时 html 解析错误的问题
 - 文档：更新 ai command 的相关文档
 - 文档：更新评论（批注）的相关文档
 
 
 
 ## v1.2.9 20241212:
-
 - feat: Added changeTheme() method for dynamic theme switching
 - feat: Optimized the color variables related to dark and light themes
 - feat: Adjusted the size of emoji to use the toolbarSize configuration
@@ -43,7 +44,6 @@
 
 
 ## v1.2.8 20241203:
-
 - feat: Added support for the Shift-Tab de-indentation shortcut key in code blocks
 - feat: Added support for the `:::` syntax of Markdown
 - feat: Updated related dependencies to the latest version

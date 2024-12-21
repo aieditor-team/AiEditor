@@ -73886,11 +73886,14 @@ const hL = /^:::([a-z]+)?[\s\n]$/, gL = Ne.create({
     }
   }
   let o = "";
-  for (let a = 0; a < n.body.children.length; a++) {
-    const s = n.body.children[a];
-    a == 0 && s.tagName === "P" || s.querySelector("img") && s.tagName !== "A" ? o += s.innerHTML : o += s.outerHTML;
-  }
-  return o;
+  return n.body.childNodes.forEach((a) => {
+    if (a.nodeType === Node.TEXT_NODE)
+      o += a.textContent;
+    else if (a.nodeType === Node.ELEMENT_NODE) {
+      const s = a;
+      s === n.body.firstChild && s.tagName === "P" || s.querySelector("img") && s.tagName !== "A" ? o += s.innerHTML : o += s.outerHTML;
+    }
+  }), o;
 }, AL = he.create({
   name: "pasteExt",
   priority: 1e3,
