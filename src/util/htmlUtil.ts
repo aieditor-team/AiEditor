@@ -179,9 +179,14 @@ export const organizeHTMLContent = (originalHtml: string) => {
             html += element.innerHTML;
         } else {
             // https://gitee.com/aieditor-team/aieditor/pulls/10
-            html += element.querySelector("img")
-                ? element.innerHTML : element.outerHTML;
+            if (element.querySelector("img") && element.tagName !== "A") {
+                //return image element
+                html += element.innerHTML;
+            } else {
+                html += element.outerHTML;
+            }
         }
     }
+    // debugger
     return html;
 }

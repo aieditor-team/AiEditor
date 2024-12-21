@@ -45,6 +45,7 @@ export const ImageExt = Image.extend<ImageOptions>({
         name: "image",
         draggable: true,
         selectable: true,
+        priority: 8888,
 
         addOptions() {
             return {
@@ -95,6 +96,22 @@ export const ImageExt = Image.extend<ImageOptions>({
                         return align ? {'data-align': align} : {}
                     }
                 },
+                href: {
+                    default: null,
+                    parseHTML: (element) => {
+                        if (element.parentElement?.tagName === 'A') {
+                            return element.parentElement.getAttribute('href');
+                        }
+                    }
+                },
+                target: {
+                    default: null,
+                    parseHTML: (element) => {
+                        if (element.parentElement?.tagName === 'A') {
+                            return element.parentElement.getAttribute('target');
+                        }
+                    },
+                },
                 'data-src': {
                     default: null,
                     parseHTML: (element) => `${element.getAttribute('data-src') ?? ''}`,
@@ -125,10 +142,19 @@ export const ImageExt = Image.extend<ImageOptions>({
         },
 
         renderHTML({HTMLAttributes}) {
-            const imgAttrs = mergeAttributes(this.options.HTMLAttributes!, HTMLAttributes);
+            const attrs = mergeAttributes(this.options.HTMLAttributes!, HTMLAttributes);
+            if (attrs.href) {
+                return ["div",
+                    {style: `text-align:${attrs['data-align'] || 'left'}`},
+                    ["a", {href: attrs.href, target: attrs.target},
+                        ["img", {...attrs, href: null, target: null},]
+                    ]
+                ];
+            }
+            attrs['target'] = null;
             return ["div",
-                {style: `text-align:${imgAttrs['data-align'] || 'left'}`},
-                ['img', imgAttrs,]
+                {style: `text-align:${attrs['data-align'] || 'left'}`},
+                ['img', attrs,]
             ];
         },
 
@@ -333,7 +359,6 @@ export const ImageExt = Image.extend<ImageOptions>({
                                 return true
                             }
                         },
-
 
                         transformPastedHTML(html) {
                             const parser = new DOMParser();

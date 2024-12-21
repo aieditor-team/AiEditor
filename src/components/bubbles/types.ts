@@ -6,6 +6,7 @@ export type BubbleMenuItem = {
     title?: string,
     icon: string,
     holder?: any,
+    isActive?: (editor: AiEditor) => boolean,
     onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
     onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 }

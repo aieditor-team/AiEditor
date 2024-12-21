@@ -6,7 +6,10 @@ export class Popover {
 
     tippyInstance?: Instance;
     content?: string;
+    cancelText?: string;
+    confirmText?: string;
     onConfirmClickFunc?: (instance: Instance) => void;
+    onCancelClickFunc?: (instance: Instance) => void;
     onShowFunc?: (instance: Instance) => void;
 
 
@@ -14,8 +17,13 @@ export class Popover {
         this.content = content;
     }
 
+
     onConfirmClick(onConfirmClick: (instance: Instance) => void) {
         this.onConfirmClickFunc = onConfirmClick;
+    }
+
+    onCancelClick(onCancelClickFunc: (instance: Instance) => void) {
+        this.onCancelClickFunc = onCancelClickFunc;
     }
 
     onShow(onShow: (instance: Instance) => void) {
@@ -52,7 +60,8 @@ export class Popover {
               </div>
               <div class="aie-popover-content">${this.content}</div>
               <div class="aie-popover-footer">
-              <button class="aie-popover-footer-confirm" type="button">${t("confirm")}</button>
+              <button class="aie-popover-footer-cancel" type="button">${this.cancelText ? this.cancelText : t("cancel")}</button>
+              <button class="aie-popover-footer-confirm" type="button">${this.confirmText ? this.confirmText : t("confirm")}</button>
               </div>
             </div>
         `;
@@ -68,6 +77,12 @@ export class Popover {
         container.querySelector(".aie-popover-footer-confirm")!
             .addEventListener("click", () => {
                 this.onConfirmClickFunc && this.onConfirmClickFunc(this.tippyInstance!);
+                this.tippyInstance!.hide();
+            })
+
+        container.querySelector(".aie-popover-footer-cancel")!
+            .addEventListener("click", () => {
+                this.onCancelClickFunc && this.onCancelClickFunc(this.tippyInstance!);
                 this.tippyInstance!.hide();
             })
 

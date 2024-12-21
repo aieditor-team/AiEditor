@@ -1053,21 +1053,47 @@
   &-footer {
     display: flex;
     padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
 
-    &-confirm {
-      margin-left: auto;
-      background: var(--aie-button-bg-color);
-      border: solid 1px var(--aie-button-border-color);
+    button {
       color: var(--aie-text-color);
       padding: 5px 10px;
       font-size: 14px;
       border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      gap: 2px;
+      svg {
+        width: 14px;
+        height: 14px;
+        fill: var(--aie-text-color);
+      }
+    }
+
+    &-confirm {
+      background: var(--aie-button-bg-color);
+      border: solid 1px var(--aie-button-border-color);
 
       &:hover {
         background: var(--aie-button-hover-bg-color);
         border-color: var(--aie-button-hover-border-color);
-        cursor: pointer;
       }
+    }
+
+    &-cancel {
+      border: none;
+      background: none;
+
+      &:hover {
+        background: var(--aie-button-hover-bg-color);
+        border-color: var(--aie-button-hover-border-color);
+      }
+
     }
   }
 

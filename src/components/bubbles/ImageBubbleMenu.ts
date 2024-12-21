@@ -14,6 +14,12 @@ export class ImageBubbleMenu extends AbstractBubbleMenu {
         this.activeOnClick = false;
     }
 
+    onTransaction(_transEvent: EditorEvents["transaction"]) {
+        if (_transEvent.editor.isActive("image")) {
+            this.refreshActive()
+        }
+    }
+
 }
 
 
