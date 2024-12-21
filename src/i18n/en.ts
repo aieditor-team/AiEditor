@@ -102,6 +102,13 @@ export const en =  {
     "codeblock-ai-code-explain":"code explain",
 
 
+    //// image
+    "image-property":"Image property",
+    "image-size":"Image size",
+    "image-keep-current":"Keep current",
+    "image-original-size":"Image original size",
+
+
     //// ai
     "placeholder-tell-ai-what-to-do-next":"Tell AI what to do next? e.g., help me translate into English",
     "tip-you-can-enter-text-above-or-select-the-operation-below":"Tip: You can enter text above or select the operation below",

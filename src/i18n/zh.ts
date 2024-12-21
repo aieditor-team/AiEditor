@@ -100,6 +100,12 @@ export const zh  =  {
     "codeblock-ai-auto-comment":"自动注释",
     "codeblock-ai-code-explain":"代码解释",
 
+    //// image
+    "image-property":"图片属性",
+    "image-size":"图片大小",
+    "image-keep-current":"保持当前",
+    "image-original-size":"图片原始大小",
+
     //// ai
     "placeholder-tell-ai-what-to-do-next":"告诉 AI 下一步应该如何？比如：帮我翻译成英语",
     "tip-you-can-enter-text-above-or-select-the-operation-below":"提示：您可以在上面输入文字或者选择下方的操作",
