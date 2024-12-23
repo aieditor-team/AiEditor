@@ -11,6 +11,7 @@ window.aiEditor = new AiEditor({
     // toolbarSize:'large',
     // pasteAsText: true,
     // draggable:false,
+    theme: "dark",
     // editable:false,
     content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
     // contentIsMarkdown: true,
@@ -18,6 +19,39 @@ window.aiEditor = new AiEditor({
         // enable:false
         //[AI, Bold, Italic, Underline, Strike, Code]
         // items: ["ai", "Bold", "Italic", "Underline", "Strike", "code"],
+    },
+
+    container: {
+        colorItems: [
+            {
+                name: "default",
+                lightBgColor: "#fafafa",
+                lightBorderColor: "#e0e0e0",
+                darkBgColor: "#1e1e1e",
+                darkBorderColor: "#303030",
+            },
+            {
+                name: 'info',
+                lightBgColor: '#eff1f3',
+                lightBorderColor: '#D7DAE0',
+                darkBgColor: '#2a2c30',
+                darkBorderColor: '#333',
+            },
+            {
+                name: 'warning',
+                lightBgColor: '#fcf5e4',
+                lightBorderColor: '#D7DAE0',
+                darkBgColor: '#40361d',
+                darkBorderColor: '#333',
+            },
+            {
+                name: 'danger',
+                lightBgColor: '#ffe7ea',
+                lightBorderColor: '#D7DAE0',
+                darkBgColor: '#46222a',
+                darkBorderColor: '#333',
+            },
+        ]
     },
 
     // toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"

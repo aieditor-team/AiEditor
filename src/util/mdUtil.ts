@@ -6,7 +6,7 @@ import container from 'markdown-it-container';
 import TurndownService from 'turndown'
 // @ts-ignore
 import {gfm, tables} from 'joplin-turndown-plugin-gfm';
-import { organizeHTMLContent } from './htmlUtil';
+import {organizeHTMLContent} from './htmlUtil';
 
 
 const md = MarkdownIt({
@@ -15,25 +15,20 @@ const md = MarkdownIt({
     typographer: true
 });
 
-
-const containerClasses = ['info', 'tip', 'warning', 'danger'];
-containerClasses.forEach(name => {
-    md.use(container, name, {
-        validate: function (params: any) {
-            params = params.trim()
-            if (params === '') return true;
-            return params.indexOf(name) >= 0;
-        },
-        render: function (tokens: any, idx: any) {
-            if (tokens[idx].nesting === 1) {
-                // opening tag
-                return `<div class="container-wrapper ${name}">`;
-            } else {
-                // closing tag
-                return '</div>';
-            }
+md.use(container, 'container-wrapper', {
+    validate: function (_: any) {
+        return true;
+    },
+    render: function (tokens: any, idx: any) {
+        if (tokens[idx].nesting === 1) {
+            const className = tokens[idx].info.trim().split(' ')[0];
+            // opening tag
+            return `<div class="container-wrapper ${className}">`;
+        } else {
+            // closing tag
+            return '</div>';
         }
-    })
+    }
 })
 
 
@@ -64,10 +59,10 @@ turndownService.addRule("container", {
     },
     replacement: function (content: any, _token: HTMLElement) {
         let className = '';
-        for (let containerClass of containerClasses) {
-            if (_token.classList.contains(containerClass)) {
-                className = ' ' + containerClass;
-                break;
+        for (let c of _token.classList) {
+            if (c != 'container-wrapper') {
+                className = c;
+                break
             }
         }
         return `:::${className}\n` + content.trim() + '\n:::\n';
