@@ -11,7 +11,7 @@ window.aiEditor = new AiEditor({
     // toolbarSize:'large',
     // pasteAsText: true,
     // draggable:false,
-    theme: "dark",
+    // theme: "dark",
     // editable:false,
     content: 'AiEditor 是一个面向 AI 的下一代富文本编辑器。',
     // contentIsMarkdown: true,
@@ -22,7 +22,8 @@ window.aiEditor = new AiEditor({
     },
 
     container: {
-        colorItems: [
+        defaultTypeName: "default",
+        typeItems: [
             {
                 name: "default",
                 lightBgColor: "#fafafa",

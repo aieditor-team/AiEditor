@@ -5,6 +5,7 @@ export const zh  =  {
     "confirm": "确定",
     "cancel": "取消",
     "resize": "调整大小",
+    "type": "类型",
 
     //menu tips
     "undo": "撤销",

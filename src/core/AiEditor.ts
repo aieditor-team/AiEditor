@@ -39,7 +39,7 @@ import {Transaction} from "@tiptap/pm/state";
 import {DefaultToolbarKey} from "../components/DefaultToolbarKeys.ts";
 import {htmlToMd, mdToHtml} from "../util/mdUtil.ts";
 import {organizeHTMLContent} from "../util/htmlUtil.ts";
-import {ContainerColorItem} from "../extensions/ContainerExt.ts";
+import {ContainerTypeItem} from "../extensions/ContainerExt.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -131,7 +131,8 @@ export type AiEditorOptions = {
         bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
     container?: {
-        colorItems?: ContainerColorItem[],
+        defaultTypeName?: string,
+        typeItems?: ContainerTypeItem[],
     },
     uploader?: Uploader,
     image?: {

@@ -1,8 +1,8 @@
 import {Node, mergeAttributes, wrappingInputRule} from '@tiptap/core';
-import markdownitContainer from "markdown-it-container";
 import {createElement} from '../util/htmlUtil';
 import tippy, {Instance} from "tippy.js";
 import {AiEditorOptions, InnerEditor} from "../core/AiEditor.ts";
+import {t} from "i18next";
 
 
 declare module '@tiptap/core' {
@@ -16,7 +16,7 @@ declare module '@tiptap/core' {
 }
 
 
-export interface ContainerColorItem {
+export interface ContainerTypeItem {
     name: string,
     lightBgColor: string,
     lightBorderColor: string,
@@ -24,7 +24,7 @@ export interface ContainerColorItem {
     darkBorderColor: string,
 }
 
-export const defaultColorItems = [
+export const defaultTypeItems = [
     {
         name: 'info',
         lightBgColor: '#eff1f3',
@@ -46,7 +46,7 @@ export const defaultColorItems = [
         darkBgColor: '#46222a',
         darkBorderColor: '#333',
     },
-] as ContainerColorItem[]
+] as ContainerTypeItem[]
 
 
 export interface ContainerOptions {
@@ -54,7 +54,8 @@ export interface ContainerOptions {
     HTMLAttributes: {
         [key: string]: any
     },
-    colorItems: ContainerColorItem[],
+    typeItems: ContainerTypeItem[],
+    defaultTypeName?: string | null,
 }
 
 export const containerInputRegex = /^:::([a-z]+)?[\s\n]$/
@@ -71,38 +72,19 @@ export const ContainerExt = Node.create<ContainerOptions>({
             HTMLAttributes: {
                 class: 'container-wrapper',
             },
-            colorItems: defaultColorItems,
+            typeItems: defaultTypeItems,
+            defaultTypeName: null,
         }
     },
 
-    addStorage() {
-        return {
-            markdown: {
-                serialize(state: any, node: any) {
-                    state.write("::: " + (node.attrs.containerClass || "") + "\n");
-                    state.renderContent(node);
-                    state.flushClose(1);
-                    state.write(":::");
-                    state.closeBlock(node);
-                },
-                parse: {
-                    setup: (markdownIt: any) => {
-                        this.options.classes.forEach(className => {
-                            markdownIt.use(markdownitContainer, className);
-                        });
-                    },
-                }
-            }
-        }
-    },
 
     addAttributes() {
         return {
             containerClass: {
-                default: null,
+                default: this.options.defaultTypeName,
                 parseHTML: element => {
                     for (let clazz of element.classList) {
-                        if (clazz != 'container-wrapper'){
+                        if (clazz != 'container-wrapper') {
                             return clazz;
                         }
                     }
@@ -125,8 +107,8 @@ export const ContainerExt = Node.create<ContainerOptions>({
 
     renderHTML({node, HTMLAttributes}) {
         const attrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
-        if (node.attrs.containerClass && this.options.colorItems) {
-            const colorItem = this.options.colorItems.find(item => item.name === node.attrs.containerClass)
+        if (node.attrs.containerClass && this.options.typeItems) {
+            const colorItem = this.options.typeItems.find(item => item.name === node.attrs.containerClass)
             let theme = (this.editor?.options as AiEditorOptions).theme
             if (colorItem) {
                 if (theme === 'dark') {
@@ -143,9 +125,11 @@ export const ContainerExt = Node.create<ContainerOptions>({
     addCommands() {
         return {
             setContainer: type => ({commands}) => {
+                if (!type) type = this.options.defaultTypeName!
                 return commands.wrapIn(this.name, {containerClass: type})
             },
             toggleContainer: type => ({commands}) => {
+                if (!type) type = this.options.defaultTypeName!
                 return commands.toggleWrap(this.name, {containerClass: type})
             },
             unsetContainer: () => ({commands}) => {
@@ -174,8 +158,8 @@ export const ContainerExt = Node.create<ContainerOptions>({
             div.classList.add('container-wrapper')
             div.classList.add(node.attrs.containerClass)
 
-            if (node.attrs.containerClass && this.options.colorItems) {
-                const colorItem = this.options.colorItems.find(item => item.name === node.attrs.containerClass)
+            if (node.attrs.containerClass && this.options.typeItems) {
+                const colorItem = this.options.typeItems.find(item => item.name === node.attrs.containerClass)
                 let theme = (this.editor?.options as AiEditorOptions).theme
                 if (colorItem) {
                     if (theme === 'dark') {
@@ -204,16 +188,16 @@ export const ContainerExt = Node.create<ContainerOptions>({
                 const createEL = () => {
                     const el = createElement(`<div>
 <div class="aie-container-tools-body">
-    <div>样式选择</div>
-    <div class="aie-container-tools-body-color-items">${this.options.colorItems.map(item => {
+    <div>${t('type')}</div>
+    <div class="aie-container-tools-body-color-items">${this.options.typeItems.map(item => {
                         const bgColor = theme === "dark" ? item.darkBgColor : item.lightBgColor;
-                        return `<div class="aie-container-tools-body-color-box" data-name="${item.name}" style="background-color: ${bgColor};"></div>`
+                        return `<div class="aie-container-tools-body-color-box" title="${item.name}" style="background-color: ${bgColor};"></div>`
                     }).join("")}</div>
 </div>`)
                     el.addEventListener("click", (e) => {
                         if (e.target instanceof HTMLElement && e.target.classList.contains("aie-container-tools-body-color-box")) {
                             editor.commands.updateAttributes(this.name, {
-                                containerClass: e.target.getAttribute("data-name")
+                                containerClass: e.target.getAttribute("title")
                             })
                         }
                     })

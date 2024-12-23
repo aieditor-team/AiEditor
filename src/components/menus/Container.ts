@@ -17,7 +17,7 @@ export class Container extends AbstractMenuButton {
         if (this.editor?.isActive("container")) {
             commands.unsetContainer()
         } else {
-            commands.setContainer("warning")
+            commands.setContainer("")
         }
         commands.focus()
     }

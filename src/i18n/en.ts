@@ -5,6 +5,7 @@ export const en =  {
     "confirm": "Confirm",
     "cancel": "Cancel",
     "resize": "Resize",
+    "type": "Type",
 
 
     //menu tips
