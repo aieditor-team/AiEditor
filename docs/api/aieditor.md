@@ -40,18 +40,21 @@ AiEditor provides the following methods:
 ```json
 [
     {
+        "id":"aie-heading-1",
         "text":"Installation",
         "level":2,
         "pos":1203,
         "size":4
     },
     {
+        "id":"aie-heading-2",
         "text":"Usage",
         "level":2,
         "pos":1229,
         "size":4
     },
     {
+        "id":"aie-heading-3",
         "text":"Configuration",
         "level":2,
         "pos":2744,

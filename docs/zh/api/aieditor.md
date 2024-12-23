@@ -40,18 +40,21 @@ AiEditor 提供的方法如下：
 ```json
 [
     {
+        "id":"aie-heading-1",
         "text":"安装",
         "level":2,
         "pos":1203,
         "size":4
     },
     {
+        "id":"aie-heading-2",
         "text":"使用",
         "level":2,
         "pos":1229,
         "size":4
     },
     {
+        "id":"aie-heading-3",
         "text":"配置",
         "level":2,
         "pos":2744,
