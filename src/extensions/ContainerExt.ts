@@ -1,9 +1,8 @@
 import {Node, mergeAttributes, wrappingInputRule} from '@tiptap/core';
-// @ts-ignore
 import markdownitContainer from "markdown-it-container";
 import {createElement} from '../util/htmlUtil';
 import tippy, {Instance} from "tippy.js";
-import {InnerEditor} from "../core/AiEditor.ts";
+import {AiEditorOptions, InnerEditor} from "../core/AiEditor.ts";
 
 
 declare module '@tiptap/core' {
@@ -25,7 +24,7 @@ export interface ContainerColorItem {
     darkBorderColor: string,
 }
 
-const defaultColorItems = [
+export const defaultColorItems = [
     {
         name: 'info',
         lightBgColor: '#eff1f3',
@@ -101,7 +100,13 @@ export const ContainerExt = Node.create<ContainerOptions>({
         return {
             containerClass: {
                 default: null,
-                parseHTML: element => [...element.classList].find(className => this.options.classes.includes(className)),
+                parseHTML: element => {
+                    for (let clazz of element.classList) {
+                        if (clazz != 'container-wrapper'){
+                            return clazz;
+                        }
+                    }
+                },
                 renderHTML: attributes => ({
                     'class': attributes.containerClass,
                 }),
@@ -112,22 +117,17 @@ export const ContainerExt = Node.create<ContainerOptions>({
     parseHTML() {
         return [
             {
-                tag: 'div[.container-wrapper]',
-                getAttrs: element => {
-                    const el = element as HTMLElement;
-                    const classes = ["container-wrapper"].concat(this.options.classes);
-                    return [...el.classList].find(className => classes.includes(className)) ? null : false
-                },
+                tag: 'div.container-wrapper',
             },
         ]
     },
 
 
-    renderHTML({HTMLAttributes}) {
+    renderHTML({node, HTMLAttributes}) {
         const attrs = mergeAttributes(this.options.HTMLAttributes, HTMLAttributes);
-        if (attrs.containerClass && this.options.colorItems) {
-            const colorItem = this.options.colorItems.find(item => item.name === attrs.containerClass)
-            let theme = (this.editor as InnerEditor).aiEditor?.options?.theme
+        if (node.attrs.containerClass && this.options.colorItems) {
+            const colorItem = this.options.colorItems.find(item => item.name === node.attrs.containerClass)
+            let theme = (this.editor?.options as AiEditorOptions).theme
             if (colorItem) {
                 if (theme === 'dark') {
                     attrs.style = `background-color: ${colorItem.darkBgColor}; border-color: ${colorItem.darkBorderColor}`
@@ -173,8 +173,20 @@ export const ContainerExt = Node.create<ContainerOptions>({
             const div = document.createElement('div')
             div.classList.add('container-wrapper')
             div.classList.add(node.attrs.containerClass)
-            div.style.backgroundColor = node.attrs.bgColor
-            div.style.borderColor = node.attrs.borderColor
+
+            if (node.attrs.containerClass && this.options.colorItems) {
+                const colorItem = this.options.colorItems.find(item => item.name === node.attrs.containerClass)
+                let theme = (this.editor?.options as AiEditorOptions).theme
+                if (colorItem) {
+                    if (theme === 'dark') {
+                        div.style.backgroundColor = colorItem.darkBgColor
+                        div.style.borderColor = colorItem.darkBorderColor
+                    } else {
+                        div.style.backgroundColor = colorItem.lightBgColor
+                        div.style.borderColor = colorItem.lightBorderColor
+                    }
+                }
+            }
 
             let contentDOM = div;
             let tippyInstance: Instance | null = null;
