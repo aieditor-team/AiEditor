@@ -1,3 +1,9 @@
+export const createElement = (html: string) => {
+    const htmlDivElement = document.createElement("div");
+    htmlDivElement.innerHTML = html;
+    return htmlDivElement.firstElementChild!;
+}
+
 export const removeHtmlTag = (html: string, tagName: string): string => {
     const regex = new RegExp(`<${tagName}[^>]*>(.*?)<\/${tagName}>`, 'gi');
     return html.replace(regex, (_, innerContent) => innerContent);
