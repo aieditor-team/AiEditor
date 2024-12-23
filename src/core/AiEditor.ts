@@ -39,6 +39,7 @@ import {Transaction} from "@tiptap/pm/state";
 import {DefaultToolbarKey} from "../components/DefaultToolbarKeys.ts";
 import {htmlToMd, mdToHtml} from "../util/mdUtil.ts";
 import {organizeHTMLContent} from "../util/htmlUtil.ts";
+import {ContainerColorItem} from "../extensions/ContainerExt.ts";
 
 defineCustomElement('aie-header', Header);
 defineCustomElement('aie-footer', Footer);
@@ -129,6 +130,9 @@ export type AiEditorOptions = {
         class?: string,
         bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
+    container?: {
+        colorItems?: ContainerColorItem[],
+    },
     uploader?: Uploader,
     image?: {
         customMenuInvoke?: (editor: AiEditor) => void;
@@ -173,7 +177,7 @@ export type AiEditorOptions = {
     },
     textCounter?: (text: string) => number,
     ai?: AiGlobalConfig,
-}
+} & Partial<Omit<EditorOptions, "element">>
 
 const defaultOptions: Partial<AiEditorOptions> = {
     theme: "light",
@@ -317,6 +321,7 @@ export class AiEditor {
         }
 
         this.innerEditor = new InnerEditor(this, {
+            ...this.options as any,
             element: this.mainEl,
             content,
             editable: this.options.editable,
