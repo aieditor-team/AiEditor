@@ -88,10 +88,16 @@ export declare class AiEditor {
     isDestroyed(): boolean;
 }
 
+export declare interface AiEditorEvent {
+    type: string;
+    value: any;
+}
+
 export declare interface AiEditorEventListener {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void;
     onTransaction: (props: EditorEvents['transaction']) => void;
     onEditableChange: (editable: boolean) => void;
+    onEvent?: (event: AiEditorEvent) => void;
 }
 
 export declare type AiEditorOptions = {
@@ -134,6 +140,10 @@ export declare type AiEditorOptions = {
         rel?: string;
         class?: string;
         bubbleMenuItems?: (string | BubbleMenuItem)[];
+    };
+    container?: {
+        defaultTypeName?: string;
+        typeItems?: ContainerTypeItem[];
     };
     uploader?: Uploader;
     image?: {
@@ -179,7 +189,7 @@ export declare type AiEditorOptions = {
     };
     textCounter?: (text: string) => number;
     ai?: AiGlobalConfig;
-};
+} & Partial<Omit<EditorOptions, "element">>;
 
 export declare interface AiGlobalConfig {
     models: Record<string, AiModelConfig>;
@@ -279,6 +289,14 @@ export declare type BubbleMenuItem = {
     onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
     onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 };
+
+declare interface ContainerTypeItem {
+    name: string;
+    lightBgColor: string;
+    lightBorderColor: string;
+    darkBgColor: string;
+    darkBorderColor: string;
+}
 
 export declare class CustomAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);

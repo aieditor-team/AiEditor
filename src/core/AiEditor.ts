@@ -49,10 +49,17 @@ export interface NameAndValue {
     value: any;
 }
 
+
+export interface AiEditorEvent {
+    type: string;
+    value: any;
+}
+
 export interface AiEditorEventListener {
     onCreate: (props: EditorEvents['create'], options: AiEditorOptions) => void
     onTransaction: (props: EditorEvents['transaction']) => void
     onEditableChange: (editable: boolean) => void
+    onEvent?: (event: AiEditorEvent) => void
 }
 
 
@@ -589,9 +596,9 @@ export class AiEditor {
 
         //custom layout
         if (this.customLayout) {
-            this.header.remove();
+            this.header?.remove();
             this.mainEl.remove();
-            this.footer.remove();
+            this.footer?.remove();
         } else {
             this.container.remove();
         }
