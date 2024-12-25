@@ -39,12 +39,12 @@ export class Image extends AbstractMenuButton {
     // @ts-ignore
     onClick(commands) {
         if (this.options?.image?.customMenuInvoke) {
-            this.options.image.customMenuInvoke((this.editor as InnerEditor).aiEditor);
+            setTimeout(() => {
+                this.options!.image!.customMenuInvoke!((this.editor as InnerEditor).aiEditor);
+            })
         } else {
             this.fileInput?.click();
         }
     }
 
 }
-
-
