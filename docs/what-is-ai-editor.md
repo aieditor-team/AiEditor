@@ -33,7 +33,7 @@ Therefore, I decided to develop AiEditor to solve the above problems.
 
 ## Open source
 
-After a period of development, AiEditor finally released its first open source version, and it already has the basic functions that an editor should have, such as:
+After more than a year of development, AIEditor has released more than 30 versions and has become a very complete rich text editor.
 
 | Function | Description                                                                                                                                                                                           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -46,17 +46,20 @@ After a period of development, AiEditor finally released its first open source v
 | **More features** | Internationalization, light theme, dark theme, mobile adaptation, full-screen editing, @someone (mentioned)...                                                                                 |
 
 
-Next, we will also launch a series of features, such as:
+At the same time, AIEditor also launched a commercial version, providing more powerful functions, such as:
+- Team collaboration
+- Word import and export, Word export supports large file export of more than 500 pages, supports automatic conversion of IFrame in the editor to image export, etc.
+- PDF export, supports automatic conversion of IFrame in the editor to image.
+- Notion-like drag and drop sorting function
+- Powerful annotation (comment) function
+  - Supports line annotation
+  - Supports image annotation
+  - Supports reply annotation
+  - Supports modification and deletion of annotations
+- Supports @someone  in the annotation, etc.
+- AI dialogue function, dialogue with AI while creating, support direct dialogue by selecting context...
 
-* Collaboration
-* insert image by AI
-* image-generating by AI
-* one-click layout by AI
-* Automatically obtain thumbnails for uploaded videos
-* WORD import and export
-* PDF export, and preview
-* Notion-like drag and drop features
-* etc
+Click [here](https://aieditor.dev/price) to learn more about the commercial version price.
 
 ### Github
 -  https://github.com/aieditor-team/aieditor
