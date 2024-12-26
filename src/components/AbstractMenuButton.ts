@@ -1,4 +1,4 @@
-import {AiEditorOptions, AiEditorEventListener} from "../core/AiEditor.ts";
+import {AiEditorOptions, AiEditorEventListener, InnerEditor} from "../core/AiEditor.ts";
 import {Editor, EditorEvents} from "@tiptap/core";
 // @ts-ignore
 import {ChainedCommands} from "@tiptap/core/dist/packages/core/src/types";
@@ -6,7 +6,7 @@ import {ChainedCommands} from "@tiptap/core/dist/packages/core/src/types";
 export class AbstractMenuButton extends HTMLElement implements AiEditorEventListener {
 
     template: string = '';
-    editor?: Editor;
+    editor?: InnerEditor;
     options?: AiEditorOptions;
 
     protected constructor() {
@@ -31,7 +31,7 @@ export class AbstractMenuButton extends HTMLElement implements AiEditorEventList
     }
 
     onCreate(props: EditorEvents["create"], options: AiEditorOptions): void {
-        this.editor = props.editor;
+        this.editor = props.editor as InnerEditor;
         this.options = options;
     }
 
@@ -50,7 +50,6 @@ export class AbstractMenuButton extends HTMLElement implements AiEditorEventList
         return false
     }
 
-    // @ts-ignore
     onEditableChange(editable: boolean) {
         if (!editable) {
             this.style.pointerEvents = "none"; // 禁用点击事件
@@ -60,7 +59,5 @@ export class AbstractMenuButton extends HTMLElement implements AiEditorEventList
             this.style.opacity = "";
         }
     }
+
 }
-
-
-

@@ -65,7 +65,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
             item.addEventListener("click", (event) => {
                 const menuItem = this.menuData[i] as any;
                 if (menuItem.onClick) {
-                    const result = menuItem.onClick(event)
+                    const result = menuItem.onClick(event, this.editor!.aiEditor)
                     if (result) this.tippyInstance!.hide()
                 } else {
                     this.onDropdownItemClick(i);

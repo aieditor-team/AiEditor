@@ -1,6 +1,7 @@
 import {AiModelConfig} from "./core/AiModelConfig.ts";
 import {AiModelFactory} from "./AiModelFactory.ts";
 import {AIBubbleMenuItem, TranslateMenuItem} from "../components/bubbles/types.ts";
+import {AiEditor} from "../core/AiEditor.ts";
 
 export interface AiMenu {
     icon: string,
@@ -8,7 +9,7 @@ export interface AiMenu {
     prompt?: string,
     text?: "selected" | "focusBefore",
     model?: string,
-    onClick?: (event: MouseEvent)=> void,
+    onClick?: (event: MouseEvent, editor: AiEditor) => void,
     children?: AiMenu[],
 }
 
