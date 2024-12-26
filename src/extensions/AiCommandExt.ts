@@ -5,7 +5,7 @@ import Suggestion, {SuggestionOptions, SuggestionProps} from '@tiptap/suggestion
 
 import tippy, {Instance} from "tippy.js";
 import {AiModelManager} from "../ai/AiModelManager.ts";
-import {AiEditorOptions} from "../core/AiEditor.ts";
+import {AiEditorOptions, InnerEditor} from "../core/AiEditor.ts";
 import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
 import {AiMenu} from "../ai/AiGlobalConfig.ts";
 
@@ -56,7 +56,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                         const aiMenu = props.aiItem as AiMenu;
 
                         if (aiMenu.onClick) {
-                            aiMenu.onClick(props.event);
+                            aiMenu.onClick(props.event, (editor as InnerEditor).aiEditor);
                         } else {
                             const selectedText = editor.state.selection.$head.parent.textContent;
                             const useModelType = aiMenu.model!;
@@ -167,6 +167,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 const selectIndex = Number(closest.getAttribute("data-index"));
                                 suggestionProps.command({
                                     index: selectIndex,
+                                    event: e,
                                     aiItem: selectIndex > 11 ? suggestionProps.items[selectIndex - 12] : null
                                 })
                             }
@@ -260,6 +261,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                             } else if (props.event.key === "Enter") {
                                 suggestionProps.command({
                                     index: selectIndex,
+                                    event: props.event,
                                     aiItem: selectIndex > 11 ? suggestionProps.items[selectIndex - 12] : null
                                 })
                                 return true;
