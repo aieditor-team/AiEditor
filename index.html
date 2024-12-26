@@ -33,11 +33,19 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-    <!--    <style>-->
-    <!--        .aie-content {-->
-    <!--            font-size: 18px;-->
-    <!--        }-->
-    <!--    </style>-->
+        <style>
+            .aie-theme-light {
+                --my-default-color: #fafafa;
+            }
+
+            .aie-theme-dark {
+                --my-default-color: #333;
+            }
+
+            .aie-container div.default{
+                background: var(--my-default-color);
+            }
+        </style>
 </head>
 <body>
 

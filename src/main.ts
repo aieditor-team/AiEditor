@@ -23,36 +23,7 @@ window.aiEditor = new AiEditor({
 
     container: {
         defaultTypeName: "default",
-        typeItems: [
-            {
-                name: "default",
-                lightBgColor: "#fafafa",
-                lightBorderColor: "#e0e0e0",
-                darkBgColor: "#1e1e1e",
-                darkBorderColor: "#303030",
-            },
-            {
-                name: 'info',
-                lightBgColor: '#eff1f3',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#2a2c30',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'warning',
-                lightBgColor: '#fcf5e4',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#40361d',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'danger',
-                lightBgColor: '#ffe7ea',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#46222a',
-                darkBorderColor: '#333',
-            },
-        ]
+        typeItems: [ "default", 'info','warning','danger',]
     },
 
     // toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"

@@ -32,7 +32,7 @@ import {createMention} from "../extensions/MentionExt.ts";
 import {AiEditor, AiEditorOptions} from "./AiEditor.ts";
 import {AiCommandExt, defaultCommands} from "../extensions/AiCommandExt.ts";
 import {SelectionMarkerExt} from "../extensions/SelectionMarkerExt.ts";
-import {ContainerExt, defaultTypeItems} from "../extensions/ContainerExt.ts";
+import {ContainerExt, defaultItems} from "../extensions/ContainerExt.ts";
 import {HeadingExt} from "../extensions/HeadingExt.ts";
 import {SaveExt} from "../extensions/SaveExt.ts";
 import {FigureExt} from "../extensions/FigureExt.ts";
@@ -133,8 +133,8 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             PasteExt,
             ClassNameExt,
             ContainerExt.configure({
-                defaultTypeName: options.container?.defaultTypeName || "warning",
-                typeItems: options.container?.typeItems || defaultTypeItems,
+                defaultType: options.container?.defaultTypeName || "warning",
+                typeItems: options.container?.typeItems || defaultItems,
             }),
             ...getBubbleMenus(editor),
         )
