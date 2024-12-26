@@ -30,7 +30,7 @@ Or when the user only enters `:::` and then presses the Enter key, the default t
 new AiEditor({
     element: "#aiEditor",
     container: {
-        defaultTypeName: "warning",
+        defaultName: "warning",
     }
 })
 ```
@@ -45,48 +45,38 @@ Users can make more configurations through the following code:
 new AiEditor({
     element: "#aiEditor",
     container: {
-        typeItems: [
-            {
-                name: "default",
-                lightBgColor: "#fafafa",
-                lightBorderColor: "#e0e0e0",
-                darkBgColor: "#1e1e1e",
-                darkBorderColor: "#303030",
-            },
-            {
-                name: 'info',
-                lightBgColor: '#eff1f3',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#2a2c30',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'warning',
-                lightBgColor: '#fcf5e4',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#40361d',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'danger',
-                lightBgColor: '#ffe7ea',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#46222a',
-                darkBorderColor: '#333',
-            },
-        ]
+        typeItems: [ "default", 'info','warning','danger',]
     },
 })
 ```
 In the above code, 4 types of highlight blocks are configured, namely `default`, `info`, `warning`, and `danger`. 
 At this time, we enter `:::default` and then press Enter to add a highlight block of the `default` type.
 
-The configuration item `typeItems` is an array, each element in the array is an object, and the object contains the following fields:
-- name: The name of the highlight block, used to distinguish different highlight blocks, must be unique and cannot be empty.
-- lightBgColor: The background color of the highlight block, displayed in light theme.
-- lightBorderColor: The border color of the highlight block, displayed in light theme.
-- darkBgColor: The background color of the highlight block, displayed in dark theme.
-- darkBorderColor: The border color of the highlight block, displayed in dark theme.
+
+In the above code, although we have added the "default" type, this type will not have any style. We also need to add the following css code externally:
+
+```css
+/* The “default” in the following “div.default” is the name we added*/
+.aie-container div.default{
+    background: #fafafa;
+}
+```
+
+Or, define different colors in dark and light themes:
+
+```css
+.aie-theme-light {
+    --my-default-color: #fafafa;
+}
+
+.aie-theme-dark {
+    --my-default-color: #333;
+}
+
+.aie-container div.default{
+    background: var(--my-default-color);
+}
+```
 
 ## Other things
 

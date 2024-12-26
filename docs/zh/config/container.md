@@ -28,7 +28,7 @@ This is a warning.
 new AiEditor({
     element: "#aiEditor",
     container: {
-        defaultTypeName: "warning",
+        defaultType: "warning",
     }
 })
 ```
@@ -43,47 +43,38 @@ new AiEditor({
 new AiEditor({
     element: "#aiEditor",
     container: {
-        typeItems: [
-            {
-                name: "default",
-                lightBgColor: "#fafafa",
-                lightBorderColor: "#e0e0e0",
-                darkBgColor: "#1e1e1e",
-                darkBorderColor: "#303030",
-            },
-            {
-                name: 'info',
-                lightBgColor: '#eff1f3',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#2a2c30',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'warning',
-                lightBgColor: '#fcf5e4',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#40361d',
-                darkBorderColor: '#333',
-            },
-            {
-                name: 'danger',
-                lightBgColor: '#ffe7ea',
-                lightBorderColor: '#D7DAE0',
-                darkBgColor: '#46222a',
-                darkBorderColor: '#333',
-            },
-        ]
+        typeItems: [ "default", 'info','warning','danger',]
     },
 })
 ```
 以上代码中，配置了 4 种类型的高亮块，分别为 `default`、 `info`、`warning`、`danger`。此时，我们输入 `:::default`，然后输入回车，即可添加 `default` 类型的高亮块。
 
-配置项 `typeItems` 是一个数组，数组中的每个元素都是一个对象，对象中包含以下字段：
-- name: 高亮块的名称，用于区分不同的高亮块，必须唯一，且不能为空。
-- lightBgColor: 高亮块的背景色，在浅色主题下显示。
-- lightBorderColor: 高亮块的边框颜色，在浅色主题下显示。
-- darkBgColor: 高亮块的背景色，在深色主题下显示。
-- darkBorderColor: 高亮块的边框颜色，在深色主题下显示。
+在以上的代码中，虽然我们新增了 “default” 类型，但是，该类型不会有任何的样式，我们还需要在外部添加如下的 css 代码：
+
+```css
+/* 以下的 div.default 中的 default 为我们新增的名称*/
+.aie-container div.default{
+    background: #fafafa;
+}
+```
+
+或者，在暗色和亮色主题下定义不同的颜色：
+
+```css
+.aie-theme-light {
+    --my-default-color: #fafafa;
+}
+
+.aie-theme-dark {
+    --my-default-color: #333;
+}
+
+.aie-container div.default{
+    background: var(--my-default-color);
+}
+```
+
+
 
 ## 其他事项
 
