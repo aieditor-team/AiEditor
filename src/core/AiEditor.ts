@@ -137,7 +137,7 @@ export type AiEditorOptions = {
         bubbleMenuItems?: (string | BubbleMenuItem)[],
     },
     container?: {
-        defaultTypeName?: string,
+        defaultType?: string,
         typeItems?: string[],
     },
     uploader?: Uploader,

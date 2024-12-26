@@ -133,7 +133,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             PasteExt,
             ClassNameExt,
             ContainerExt.configure({
-                defaultType: options.container?.defaultTypeName || "warning",
+                defaultType: options.container?.defaultType || "warning",
                 typeItems: options.container?.typeItems || defaultItems,
             }),
             ...getBubbleMenus(editor),

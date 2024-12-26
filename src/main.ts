@@ -22,7 +22,7 @@ window.aiEditor = new AiEditor({
     },
 
     container: {
-        defaultTypeName: "default",
+        defaultType: "default",
         typeItems: [ "default", 'info','warning','danger',]
     },
 
