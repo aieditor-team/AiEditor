@@ -59,7 +59,11 @@ At the same time, AIEditor also launched a commercial version, providing more po
 - Supports @someone  in the annotation, etc.
 - AI dialogue function, dialogue with AI while creating, support direct dialogue by selecting context...
 
-Click [here](https://aieditor.dev/price) to learn more about the commercial version price.
+> If you are looking for a powerful AI rich text editor and related services, trust us, we are very professional!
+>
+> At present, we have served many listed companies and financial companies in China, as well as many customers in the United States and Europe.
+
+Click [here](https://aieditor.dev/price) to learn more about the commercial version and its price.
 
 ### Github
 -  https://github.com/aieditor-team/aieditor
