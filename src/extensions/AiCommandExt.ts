@@ -111,7 +111,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
 
                 render: () => {
                     let element: HTMLDivElement;
-                    let popup: Instance[];
+                    let popup: Instance;
                     let selectIndex: number = 0;
                     let suggestionProps: SuggestionProps;
                     const updateElement = () => {
@@ -190,7 +190,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                             // @ts-ignore
                             popup = tippy('body', {
                                 getReferenceClientRect: props.clientRect,
-                                appendTo: () => props.editor.view.dom.closest(".aie-container"),
+                                appendTo: () => props.editor.view.dom.closest(".aie-container")!,
                                 content: element,
                                 showOnCreate: true,
                                 interactive: true,
@@ -198,7 +198,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 trigger: 'manual',
                                 placement: 'right-start',
                                 arrow: false,
-                            })
+                            })[0]
                         },
 
                         onUpdate(props) {
@@ -208,7 +208,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                                 return
                             }
 
-                            popup[0].setProps({
+                            popup?.setProps({
                                 getReferenceClientRect: props.clientRect as any,
                             })
                         },
@@ -216,7 +216,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
 
                         onKeyDown(props) {
                             if (props.event.key === 'Escape') {
-                                popup[0].hide();
+                                popup?.hide();
                                 return true;
                             } else if (props.event.key === "ArrowUp") {
                                 if (selectIndex < 6) {
@@ -270,7 +270,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                         },
 
                         onExit() {
-                            popup[0].destroy()
+                            popup?.destroy()
                             element.remove()
                         },
                     }
