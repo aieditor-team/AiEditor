@@ -40,5 +40,8 @@ export class Fullscreen extends AbstractMenuButton {
     this.querySelector("div")!.innerHTML = this.isFullscreen
       ? this.fullscreenExitSvg
       : this.fullscreenSvg;
+    if (this.editor?.options?.onFullscreen) {
+      this.editor.options.onFullscreen(this.isFullscreen);
+    }
   }
 }
