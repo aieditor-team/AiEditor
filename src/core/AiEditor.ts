@@ -115,6 +115,7 @@ export type AiEditorOptions = {
     onBlur?: (editor: AiEditor) => void,
     onDestroy?: (editor: AiEditor) => void,
     onSave?: (editor: AiEditor) => boolean,
+    onFullscreen?: (isFullscreen: boolean) => void,
     toolbarKeys?: (string | CustomMenu | MenuGroup)[],
     toolbarExcludeKeys?: DefaultToolbarKey[],
     toolbarSize?: 'small' | 'medium' | 'large',
