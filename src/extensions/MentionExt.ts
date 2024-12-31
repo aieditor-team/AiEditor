@@ -21,7 +21,7 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                     element.innerHTML = `
                             <div class="items">
                              ${suggestionProps.items.map((item: any, index) => {
-                                return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> @${item.name ? item.name : item}</button>`
+                                return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> @${item.label || item}</button>`
                             }).join("")}
                             </div>
                             `

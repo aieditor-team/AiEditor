@@ -23,7 +23,7 @@ window.aiEditor = new AiEditor({
 
     container: {
         defaultType: "default",
-        typeItems: [ "default", 'info','warning','danger',]
+        typeItems: ["default", 'info', 'warning', 'danger',]
     },
 
     // toolbarKeys: ["undo", "redo", "brush", "eraser", "divider", "heading", "font-family", "font-size", "divider", "bold", "italic", "underline"
@@ -135,12 +135,46 @@ window.aiEditor = new AiEditor({
             // "redo": "重做(可自定义国际化内容!)",
         }
     },
+    // onMentionQuery: (query) => {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => {
+    //             const data = [
+    //                 'Michael Yang', 'Jean Zhou', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder'
+    //                 , 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John'
+    //                 , 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey'
+    //                 , 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet',
+    //             ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+    //             resolve(data)
+    //         }, 200)
+    //     })
+    // }
     onMentionQuery: (query) => {
-        return [
-            'Michael Yang', 'Jean Zhou', 'Tom Cruise', 'Madonna', 'Jerry Hall', 'Joan Collins', 'Winona Ryder'
-            , 'Christina Applegate', 'Alyssa Milano', 'Molly Ringwald', 'Ally Sheedy', 'Debbie Harry', 'Olivia Newton-John'
-            , 'Elton John', 'Michael J. Fox', 'Axl Rose', 'Emilio Estevez', 'Ralph Macchio', 'Rob Lowe', 'Jennifer Grey'
-            , 'Mickey Rourke', 'John Cusack', 'Matthew Broderick', 'Justine Bateman', 'Lisa Bonet',
-        ].filter(item => item.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const data = [
+                    {
+                        id: 1,
+                        label: 'Michael Yang'
+                    },
+                    {
+                        id: 2,
+                        label: 'Jean Zhou'
+                    },
+                    {
+                        id: 3,
+                        label: 'Tom Cruise'
+                    },
+                    {
+                        id: 4,
+                        label: 'Madonna'
+                    },
+                    {
+                        id: 5,
+                        label: 'Jerry Hall'
+                    }
+                ].filter(item => item.label.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
+                resolve(data)
+            }, 200)
+        })
     }
 })
