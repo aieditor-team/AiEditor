@@ -12,7 +12,7 @@ import { Transaction } from '@tiptap/pm/state';
 
 declare class AbstractMenuButton extends HTMLElement implements AiEditorEventListener {
     template: string;
-    editor?: Editor;
+    editor?: InnerEditor;
     options?: AiEditorOptions;
     protected constructor();
     protected registerClickListener(): void;
@@ -120,6 +120,7 @@ export declare type AiEditorOptions = {
     onBlur?: (editor: AiEditor) => void;
     onDestroy?: (editor: AiEditor) => void;
     onSave?: (editor: AiEditor) => boolean;
+    onFullscreen?: (isFullscreen: boolean) => void;
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
     toolbarSize?: 'small' | 'medium' | 'large';
@@ -142,8 +143,8 @@ export declare type AiEditorOptions = {
         bubbleMenuItems?: (string | BubbleMenuItem)[];
     };
     container?: {
-        defaultTypeName?: string;
-        typeItems?: ContainerTypeItem[];
+        defaultType?: string;
+        typeItems?: string[];
     };
     uploader?: Uploader;
     image?: {
@@ -224,7 +225,7 @@ export declare interface AiMenu {
     prompt?: string;
     text?: "selected" | "focusBefore";
     model?: string;
-    onClick?: (event: MouseEvent) => void;
+    onClick?: (event: MouseEvent, editor: AiEditor) => void;
     children?: AiMenu[];
 }
 
@@ -289,14 +290,6 @@ export declare type BubbleMenuItem = {
     onInit?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement) => any;
     onClick?: (editor: AiEditor, tippyInstance: Instance, parentEle: HTMLElement, holder: any) => void;
 };
-
-declare interface ContainerTypeItem {
-    name: string;
-    lightBgColor: string;
-    lightBorderColor: string;
-    darkBgColor: string;
-    darkBorderColor: string;
-}
 
 export declare class CustomAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig);

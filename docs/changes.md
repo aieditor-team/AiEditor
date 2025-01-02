@@ -1,6 +1,32 @@
 # AiEditor ChangeLog
 
 
+## v1.3.4 20250102:
+- feat: Added custom color and color selection functions to the highlight block
+- feat: htmlUtil added createElement method
+- feat: AIMenu added onClick configuration support
+- feat: Added onFullscreen event listener configuration support
+- feat: Optimize InnerEditor's options assignment
+- feat: Optimize markdown's parsing of highlight blocks
+- feat: Optimize AIMenu's default prompt words
+- fix: The problem of inserting content in the click event of the custom image in the toolbar reported an error
+- fix: The event of AiCommand is undefined
+- fix: The mention function cannot display the label
+
+---
+- 新增：高亮块新增自定义颜色和选择颜色的功能
+- 新增：htmlUtil 添加 createElement 方法
+- 新增：AIMenu 添加 onClick 配置的支持
+- 新增：添加 onFullscreen 的事件监听的配置支持
+- 优化：优化 InnerEditor 的 options 赋值
+- 优化：优化 markdown 对高亮块的解析
+- 优化：优化 AIMenu 的默认提示词
+- 修复：在工具栏的自定义图片的点击事件插入内容报错的问题
+- 修复：AiCommand 的 event 为 undefined 的问题
+- 修复：提及（mention）功能无法显示 label 的问题
+
+
+
 ## v1.3.3 20241221:
 - feat: Add link configuration to images
 - feat: Add alt, title and other attribute configuration to images
