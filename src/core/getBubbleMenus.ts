@@ -10,7 +10,7 @@ import {TextSelectionBubbleMenu} from "../components/bubbles/TextSelectionBubble
 import {Instance} from "tippy.js";
 import {defineCustomElement} from "../commons/defineCustomElement.ts";
 import {CellSelection} from "@tiptap/pm/tables";
-import { getAIBoundingClientRect } from "../util/getAIBoundingClientRect.ts";
+import {getAIBoundingClientRect} from "../util/getAIBoundingClientRect.ts";
 
 defineCustomElement('aie-bubble-link', LinkBubbleMenu);
 defineCustomElement('aie-bubble-image', ImageBubbleMenu);
@@ -77,6 +77,7 @@ const createTextSelectionBubbleMenu = (aiEditor: AiEditor) => {
                 }).trim().length > 0
                 && !editor.isActive("link")
                 && !editor.isActive("image")
+                && !editor.isActive("codeBlock")
                 // 选中表格的时候取消 文本的弹出
                 && !(selection instanceof CellSelection)
         }
