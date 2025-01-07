@@ -173,7 +173,11 @@ export const organizeHTMLContent = (originalHtml: string) => {
 
                 const liOrP = ul.firstElementChild;
                 if (liOrP?.tagName === "P") {
-                    liOrP.replaceWith(liOrP.innerHTML)
+                    const fragment = document.createDocumentFragment();
+                    liOrP.childNodes.forEach(node => {
+                        fragment.append(node.cloneNode(true))
+                    })
+                    liOrP.replaceWith(fragment)
                 }
 
                 const liList = ul.querySelectorAll("li");
