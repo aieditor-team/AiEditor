@@ -161,6 +161,37 @@ export const organizeHTMLContent = (originalHtml: string) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(originalHtml, 'text/html');
 
+    //change github style task list items to taskList
+    const ulList = doc.querySelectorAll("ul");
+    if (ulList) {
+        ulList.forEach(ul => {
+            if (ul.getAttribute("class")?.includes("task-list")) {
+                ul.getAttributeNames().forEach(attr => {
+                    ul.removeAttribute(attr)
+                })
+                ul.setAttribute("data-type", "taskList")
+
+                const liOrP = ul.firstElementChild;
+                if (liOrP?.tagName === "P") {
+                    liOrP.replaceWith(liOrP.innerHTML)
+                }
+
+                const liList = ul.querySelectorAll("li");
+                liList.forEach(li => {
+                    li.getAttributeNames().forEach(attr => {
+                        ul.removeAttribute(attr)
+                    })
+                    const checkbox = li.querySelector("input[type='checkbox']");
+                    if (checkbox) {
+                        li.setAttribute("data-type", "taskItem")
+                        li.setAttribute("data-checked", checkbox.hasAttribute("checked") ? "true" : "false")
+                        // li.removeChild(checkbox)
+                    }
+                })
+            }
+        })
+    }
+
 
     //"tiptap" does not support empty list items. Here to fill in the gaps
     const liNodeList = doc.querySelectorAll("li");

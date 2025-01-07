@@ -1,11 +1,12 @@
 import MarkdownIt from 'markdown-it';
 import container from 'markdown-it-container';
-
-
+// @ts-ignore
+import taskLists from 'markdown-it-task-lists';
 // @ts-ignore
 import TurndownService from 'turndown'
 // @ts-ignore
 import {gfm, tables} from 'joplin-turndown-plugin-gfm';
+
 import {organizeHTMLContent} from './htmlUtil';
 
 
@@ -31,6 +32,11 @@ md.use(container, 'container-wrapper', {
     }
 })
 
+md.use(taskLists, {
+    enabled: true,
+    label: true,
+});
+
 
 //options https://github.com/mixmark-io/turndown?tab=readme-ov-file#options
 const turndownService = new TurndownService({
@@ -51,6 +57,29 @@ turndownService.use(tables);
 turndownService.keep((node: any) => {
     return !(node && node.nodeName === "DIV");
 });
+
+turndownService.addRule('checkbox', {
+    filter: (node: HTMLElement) => {
+        // 匹配 <input type="checkbox"></input>
+        if (node.tagName === 'INPUT' && node.getAttribute("type") === 'checkbox') {
+            return true
+        } else if (node.tagName === "LABEL" && node.firstElementChild?.tagName === 'INPUT'
+            && node.firstElementChild?.getAttribute("type") === 'checkbox') {
+            return true
+        }
+    },
+    replacement: function (_content: any, node: any) {
+        if (node.type === 'checkbox') {
+            return node.checked ? '[x]' : '[ ]'
+        } else if (node.tagName === "LABEL") {
+            if (node.firstElementChild?.type === 'checkbox') {
+                return node.firstElementChild.checked ? '[x]' : '[ ]'
+            }
+        }
+        return null
+    }
+})
+
 turndownService.addRule("container", {
     // match <div class="container-wrapper warning">...</div>
     // filter: ['div'],
@@ -84,6 +113,19 @@ export const htmlToMd = (html: string) => {
     const colGroupList = doc.querySelectorAll("colgroup");
     colGroupList.forEach(colgroup => colgroup.remove())
 
+    // fix task list to markdown
+    const lis = doc.querySelectorAll("li");
+    lis.forEach(li => {
+        const div = li.querySelector("div");
+        if (div && div.firstElementChild) {
+            const fragment = document.createDocumentFragment();
+            fragment.append(" ")
+            div.firstElementChild.childNodes.forEach(node => {
+                fragment.append(node.cloneNode(true))
+            })
+            div.replaceWith(fragment)
+        }
+    })
     const innerHTML = doc.body.innerHTML;
     return turndownService.turndown(innerHTML)
 }
