@@ -54,6 +54,13 @@ const turndownService = new TurndownService({
 turndownService.use(gfm);
 turndownService.use(tables);
 
+turndownService.addRule('strikethrough', {
+    filter: ['del', 's', 'strike'],
+    replacement: function (content:any) {
+        return '~~' + content + '~~'
+    }
+})
+
 turndownService.keep((node: any) => {
     return !(node && node.nodeName === "DIV");
 });
