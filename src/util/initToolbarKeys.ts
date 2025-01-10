@@ -23,13 +23,9 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                 const menuButton = document.createElement("aie-" + toolbarKey) as AbstractMenuButton;
                 menuButton.classList.add("aie-menu-item")
 
-                // 设置不可编辑属性，并禁用点击和鼠标经过效果
-                if (options.editable === false) {
-                    menuButton.style.pointerEvents = "none"; // 禁用点击事件
-                    menuButton.style.opacity = "0.5"; // 改变透明度
-                }
-
                 menuButton.onCreate(event, options);
+                // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                menuButton.onEditableChange(!!options.editable)
 
                 if (toolbarKey !== "divider") {
                     const tip = t(toolbarKey) as string;
@@ -52,14 +48,11 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     const menuButton = document.createElement("aie-group") as Group;
                     menuButton.classList.add("aie-menu-item")
 
-                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
-                    if (options.editable === false) {
-                        menuButton.style.pointerEvents = "none"; // 禁用点击事件
-                        menuButton.style.opacity = "0.5"; // 改变透明度
-                    }
-
                     menuButton.onCreate(event, options);
                     menuButton.init(event, options, menuGroup);
+
+                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                    menuButton.onEditableChange(!!options.editable)
 
                     if (menuGroup.title) {
                         const tip = t(menuGroup.title) as string;
@@ -80,12 +73,6 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     const menuButton = document.createElement("aie-custom") as Custom;
                     menuButton.classList.add("aie-menu-item")
 
-                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
-                    if (options.editable === false) {
-                        menuButton.style.pointerEvents = "none"; // 禁用点击事件
-                        menuButton.style.opacity = "0.5"; // 改变透明度
-                    }
-
                     if (customMenuConfig.id) {
                         menuButton.setAttribute("id", customMenuConfig.id);
                     }
@@ -94,6 +81,9 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                     }
                     menuButton.onCreate(event, options);
                     menuButton.onConfig(customMenuConfig);
+
+                    // 设置不可编辑属性，并禁用点击和鼠标经过效果
+                    menuButton.onEditableChange(!!options.editable)
 
                     if (customMenuConfig.tip) {
                         const tip = t(customMenuConfig.tip) as string;

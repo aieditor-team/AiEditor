@@ -60,6 +60,10 @@ export class Printer extends AbstractMenuButton {
         }
     }
 
+
+    onEditableChange() {
+        //do nothing
+    }
 }
 
 
