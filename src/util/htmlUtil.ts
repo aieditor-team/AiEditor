@@ -125,7 +125,8 @@ export const isExcelDocument = (document: Document) => {
 export const removeEmptyParagraphs = (html: string) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
-    const paragraphs = tempDiv.querySelectorAll('p');
+    // `<p><img src="src" /></p>`的情况文字内容为空但不应该被清除
+    const paragraphs = tempDiv.querySelectorAll('p:not(:has(img))');
 
     paragraphs.forEach(paragraph => {
         if (!paragraph.textContent || paragraph.textContent.trim() === '') {
