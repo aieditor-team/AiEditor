@@ -69,6 +69,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             }),
             IndentExt,
             ImageExt.configure({
+                inline: true,
                 allowBase64: typeof options.image?.allowBase64 === "undefined" ? true : options.image?.allowBase64,
                 defaultSize: options.image?.defaultSize || 350,
                 uploadUrl: options.image?.uploadUrl,
