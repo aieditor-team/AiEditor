@@ -125,12 +125,14 @@ export const isExcelDocument = (document: Document) => {
 export const removeEmptyParagraphs = (html: string) => {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = html;
-    // `<p><img src="src" /></p>`的情况文字内容为空但不应该被清除
-    const paragraphs = tempDiv.querySelectorAll('p:not(:has(img))');
-
+    const paragraphs = tempDiv.querySelectorAll('p');
     paragraphs.forEach(paragraph => {
         if (!paragraph.textContent || paragraph.textContent.trim() === '') {
-            paragraph.remove();
+            //In the case of `<p><img src="src"/></p>`, the text content is empty but should not be cleared
+            if (!paragraph.querySelector("img")) {
+                paragraph.remove();
+            }
+
         }
     });
 
