@@ -132,10 +132,8 @@ export const removeEmptyParagraphs = (html: string) => {
             if (!paragraph.querySelector("img")) {
                 paragraph.remove();
             }
-
         }
     });
-
     return tempDiv.innerHTML;
 }
 
