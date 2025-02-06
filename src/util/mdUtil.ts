@@ -56,7 +56,7 @@ turndownService.use(tables);
 
 turndownService.addRule('strikethrough', {
     filter: ['del', 's', 'strike'],
-    replacement: function (content:any) {
+    replacement: function (content: any) {
         return '~~' + content + '~~'
     }
 })
@@ -109,7 +109,7 @@ export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;
     const renderHtml = md.render(markdown).trim();
     if (!renderHtml) return markdown;
-    return organizeHTMLContent(renderHtml);
+    return organizeHTMLContent(renderHtml.replace(/\n/g, ''));
 }
 
 export const htmlToMd = (html: string) => {
