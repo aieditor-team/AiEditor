@@ -185,6 +185,10 @@ export type AiEditorOptions = {
     },
     textCounter?: (text: string) => number,
     ai?: AiGlobalConfig,
+    toc?: {
+        visible?: boolean, // used to set whether to show the table of contents during initialization
+        includeLevels?: number[], // used to set which heading levels to include, such as [1,2,3,4]
+    }
 } & Partial<Omit<EditorOptions, "element">>
 
 const defaultOptions: Partial<AiEditorOptions> = {
@@ -235,6 +239,8 @@ export class AiEditor {
 
     header!: Header;
 
+    mainWrapper!: HTMLDivElement; // for layout of toc and main content
+    tocEl!: HTMLDivElement;
     mainEl!: HTMLDivElement;
 
     footer!: Footer;
@@ -297,9 +303,18 @@ export class AiEditor {
 
         rootEl.appendChild(this.container);
 
+        this.mainWrapper = document.createElement("div");
+        this.mainWrapper.classList.add("aie-container__main-wrapper");
+        this.mainWrapper.style.flexGrow = "1";
+        this.mainWrapper.style.overflow = "auto";
+
+        this.tocEl = document.createElement("div");
+        this.tocEl.classList.add("aie-container__toc");
+
         this.mainEl = document.createElement("div");
-        this.mainEl.style.flexGrow = "1";
-        this.mainEl.style.overflow = "auto";
+        this.mainEl.classList.add("aie-container__main");
+        // this.mainEl.style.flexGrow = "1";
+        // this.mainEl.style.overflow = "auto";
 
         this.header = new Header();
         this.eventComponents.push(this.header);
@@ -368,11 +383,37 @@ export class AiEditor {
         const _header = this.container.querySelector(".aie-container-header") || this.container;
         _header.appendChild(this.header);
 
-        const _main = this.container.querySelector(".aie-container-main") || this.container;
-        _main.appendChild(this.mainEl);
+        let _footer = this.container.querySelector(".aie-container-footer");
+        if (_footer) {
+            _footer.appendChild(this.footer);
+        } else {
+            _footer = this.footer;
+            this.container.appendChild(this.footer);
+        }
 
-        const _footer = this.container.querySelector(".aie-container-footer") || this.container;
-        _footer.appendChild(this.footer);
+        let _mainWrapper = this.container.querySelector(".aie-container-main-wrapper");
+        if (_mainWrapper) {
+            _mainWrapper.appendChild(this.mainWrapper);
+        } else {
+            _mainWrapper = this.mainWrapper
+            this.container.insertBefore(this.mainWrapper, _footer);
+        }
+
+        const _toc = this.container.querySelector(".aie-container-toc");
+        if (_toc) {
+            _toc.appendChild(this.tocEl)
+            this.mainWrapper.appendChild(_toc);
+        } else {
+            this.mainWrapper.appendChild(this.tocEl);
+        }
+        
+        const _main = this.container.querySelector(".aie-container-main");
+        if (_main) {
+            _main.appendChild(this.mainEl)
+            this.mainWrapper.appendChild(_main);
+        } else {
+            this.mainWrapper.appendChild(this.mainEl);
+        }
 
         if (this.options.ai) {
             AiModelManager.init(this.innerEditor, this.options.ai);

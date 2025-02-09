@@ -13,6 +13,7 @@ export const ko = {
     "brush": "형식 브러시",
     "container": "강조 블록",
     "eraser": "서식 지우기",
+    "toc": "목차",
     "heading": "본문/제목",
     "font-family": "글꼴",
     "font-size": "글꼴 크기",

@@ -13,6 +13,7 @@ export const ja = {
     "brush": "フォーマットブラシ",
     "container": "ハイライトブロック",
     "eraser": "フォーマットクリア",
+    "toc": "目次",
     "heading": "テキスト/見出し",
     "font-family": "フォント",
     "font-size": "フォントサイズ",

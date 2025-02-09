@@ -13,6 +13,7 @@ export const es = {
     "brush": "Pincel de formato",
     "container": "Bloque resaltado",
     "eraser": "Borrar formato",
+    "toc": "Índice",
     "heading": "Texto/Título",
     "font-family": "Fuente",
     "font-size": "Tamaño de fuente",

@@ -2,6 +2,7 @@
 import {AiEditor} from "./core/AiEditor.ts";
 // import { config } from "./spark.ts";
 // import {OpenaiModelConfig} from "./ai/openai/OpenaiModelConfig.ts";
+import mdContent from '../mdContentDemo'
 // @ts-ignore
 window.aiEditor = new AiEditor({
     element: "#aiEditor",
@@ -176,5 +177,11 @@ window.aiEditor = new AiEditor({
                 resolve(data)
             }, 200)
         })
-    }
+    },
+    toc: {
+        visible: true,
+        includeLevels: [1,2,3]
+    },
 })
+//@ts-ignore
+window.aiEditor.setMarkdownContent(mdContent)

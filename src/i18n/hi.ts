@@ -13,6 +13,7 @@ export const hi = {
     "brush": "फॉर्मेट ब्रश",
     "container": "हाइलाइट ब्लॉक",
     "eraser": "फॉर्मेट साफ़ करें",
+    "toc": "विषय सूची",
     "heading": "पाठ/शीर्षक",
     "font-family": "फ़ॉन्ट",
     "font-size": "फ़ॉन्ट आकार",

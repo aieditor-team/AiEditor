@@ -12,6 +12,7 @@ export const pt =  {
     "brush": "Pincel",
     "container": "Destacar seleção",
     "eraser": "Apagar formatação",
+    "toc": "Índice",
     "heading": "Cabeçalho",
     "font-family": "Fonte",
     "font-size": "Tamanho da fonte",

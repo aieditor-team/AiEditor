@@ -13,6 +13,7 @@ export const vi  =  {
     "brush": "Chổi định dạng",
     "container": "Khối nổi bật",
     "eraser": "Xóa định dạng",
+    "toc": "Mục lục",
     "heading": "Nội dung/Đầu đề",
     "font-family": "Phông chữ",
     "font-size": "Cỡ chữ",

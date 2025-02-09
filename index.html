@@ -58,7 +58,29 @@
     <button onclick="changeLang()">切换语言</button>
 </div>
 
-<div id="aiEditor" style="height: 450px;  margin: 20px"></div>
+<div id="aiEditor" style="height: 640px;  margin: 20px">
+    
+    <!-- ↓ both works well ↓ -->
+
+    <!-- old layout -->
+    <!-- <div class="aie-container">
+        <div class="aie-container-header"></div>
+        <div class="aie-container-main"></div>
+        <div class="aie-container-footer"></div>
+    </div> -->
+
+    <!-- new layout -->
+    <div class="aie-container">
+        <div class="aie-container-header"></div>
+        <div class="aie-container-main-wrapper">
+            <div class="aie-container-toc"></div>
+            <div class="aie-container-main"></div>
+        </div>
+        <div class="aie-container-footer"></div>
+    </div>
+
+    <!-- ↑ both works well ↑ -->
+</div>
 <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

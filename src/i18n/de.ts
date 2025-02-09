@@ -12,6 +12,7 @@ export const de =  {
     "brush": "Format übertragen",
     "container": "Auswahl hervorheben",
     "eraser": "Format löschen",
+    "toc": "Inhaltsverzeichnis",
     "heading": "Absatz/Überschrift",
     "font-family": "Schriftart",
     "font-size": "Schriftgröße",

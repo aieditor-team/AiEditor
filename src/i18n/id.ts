@@ -13,6 +13,7 @@ export const id  =  {
     "brush": "Kuas format",
     "container": "Blok sorot",
     "eraser": "Hapus format",
+    "toc": "Daftar Isi",
     "heading": "Teks/Judul",
     "font-family": "Font",
     "font-size": "Ukuran font",

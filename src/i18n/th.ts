@@ -13,6 +13,7 @@ export const th  =  {
     "brush": "แปรงรูปแบบ",
     "container": "บล็อกไฮไลท์",
     "eraser": "ล้างรูปแบบ",
+    "toc": "สารบัญ",
     "heading": "ข้อความ/หัวข้อ",
     "font-family": "แบบอักษร",
     "font-size": "ขนาดตัวอักษร",

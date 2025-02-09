@@ -14,6 +14,7 @@ export const en =  {
     "brush": "Format Painter",
     "container": "Highlight container",
     "eraser": "clear format",
+    "toc": "Table of contents",
     "heading": "Paragraph/Heading",
     "font-family": "Font Family",
     "font-size": "Font Size",
