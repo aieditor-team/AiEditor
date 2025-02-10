@@ -39,7 +39,7 @@ import {FigureExt} from "../extensions/FigureExt.ts";
 import {FigcaptionExt} from "../extensions/FigcaptionExt.ts";
 import {PasteExt} from "../extensions/PasteExt.ts";
 import {ClassNameExt} from "../extensions/ClassNameExt.ts";
-import {TocGeneratorExt} from "../extensions/TocGenerator.ts";
+import {TocGeneratorExt} from "../extensions/TocGeneratorExt.ts";
 
 export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Extensions => {
     // the Collaboration extension comes with its own history handling
