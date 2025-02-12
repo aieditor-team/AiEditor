@@ -2,20 +2,20 @@
 
 
 ## v1.3.5 20250212:
-feat: Optimize the experience and cancel the pop-up of the floating menu in the code block
-feat: Optimize the tools and methods such as organizeHTMLContent
-feat: In read-only mode, do not disable the "Print" and "Full Screen" buttons
-fix: taskList cannot be converted to markdown, and taskList of markdown cannot be converted to html
-fix: The problem that the strikethrough in html cannot be converted to `~~`
-fix: Fix the problem that removeEmptyParagraphs accidentally deletes images in some cases
+- feat: Optimize the experience and cancel the pop-up of the floating menu in the code block
+- feat: Optimize the tools and methods such as organizeHTMLContent
+- feat: In read-only mode, do not disable the "Print" and "Full Screen" buttons
+- fix: taskList cannot be converted to markdown, and taskList of markdown cannot be converted to html
+- fix: The problem that the strikethrough in html cannot be converted to `~~`
+- fix: Fix the problem that removeEmptyParagraphs accidentally deletes images in some cases
 
 ---
-优化: 优化体验，取消浮动菜单在代码块的弹出
-优化：优化 organizeHTMLContent 等工具方法
-优化：在只读模式下，不禁用 “打印” 和 “全屏” 按钮
-修复：taskList 无法转换为 markdown，markdown 的 taskList 也无法转换为 html 的问题
-修复：html 中的删除线无法转换为 `~~` 的问题
-修复：修复 removeEmptyParagraphs 在某些情况下误删图片的情况
+- 优化: 优化体验，取消浮动菜单在代码块的弹出
+- 优化：优化 organizeHTMLContent 等工具方法
+- 优化：在只读模式下，不禁用 “打印” 和 “全屏” 按钮
+- 修复：taskList 无法转换为 markdown，markdown 的 taskList 也无法转换为 html 的问题
+- 修复：html 中的删除线无法转换为 `~~` 的问题
+- 修复：修复 removeEmptyParagraphs 在某些情况下误删图片的情况
 
 
 
