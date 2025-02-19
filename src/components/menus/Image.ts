@@ -17,6 +17,16 @@ export class Image extends AbstractMenuButton {
     }
 
 
+    protected registerClickListener() {
+        this.addEventListener("click", () => {
+            if (this.options?.image?.customMenuInvoke) {
+                    this.options!.image!.customMenuInvoke!((this.editor as InnerEditor).aiEditor);
+            } else {
+                this.fileInput?.click();
+            }
+        })
+    }
+
     connectedCallback() {
         super.connectedCallback();
         if (this.options?.image?.customMenuInvoke) {
@@ -31,19 +41,7 @@ export class Image extends AbstractMenuButton {
                     }
                 }
                 (this.fileInput as any).value = "";
-            });
-        }
-    }
-
-
-    // @ts-ignore
-    onClick(commands) {
-        if (this.options?.image?.customMenuInvoke) {
-            setTimeout(() => {
-                this.options!.image!.customMenuInvoke!((this.editor as InnerEditor).aiEditor);
             })
-        } else {
-            this.fileInput?.click();
         }
     }
 

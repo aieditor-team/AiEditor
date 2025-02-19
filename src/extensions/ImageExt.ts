@@ -172,9 +172,12 @@ export const ImageExt = Image.extend<ImageOptions>({
                         }
                     }
 
+                    setTimeout(() => {
+                        this.editor.commands.deleteSelection();
+                    })
+
                     const id = uuid();
                     const {state: {tr}, view, schema} = this.editor!
-                    if (!tr.selection.empty) tr.deleteSelection();
 
                     view.dispatch(tr.setMeta(actionKey, {
                         type: "add",
@@ -187,7 +190,6 @@ export const ImageExt = Image.extend<ImageOptions>({
                     const uploadFormName = this.options.uploadFormName || "image";
                     uploader(file, this.options.uploadUrl!, headers, uploadFormName)
                         .then(json => {
-
                             //process on success
                             if (this.options.uploaderEvent?.onSuccess) {
                                 const result = this.options.uploaderEvent.onSuccess(file, json);
@@ -221,11 +223,11 @@ export const ImageExt = Image.extend<ImageOptions>({
                                 }
                             }
                         }).catch((err) => {
-                        const {state: {tr}, view} = this.editor!
-                        view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                        if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
-                            this.options.uploaderEvent.onError(file, err);
-                        }
+                            const {state: {tr}, view} = this.editor!
+                            view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                            if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
+                                this.options.uploaderEvent.onError(file, err);
+                            }
                     })
 
                     return true;
