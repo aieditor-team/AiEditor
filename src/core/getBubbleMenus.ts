@@ -154,19 +154,12 @@ const createTableBubbleMenu = (aiEditor: AiEditor) => {
             appendTo: aiEditor.container,
             arrow: false,
             getReferenceClientRect: (() => {
-                const selection = aiEditor.innerEditor.state.selection;
-                const {ranges} = selection
-                const from = Math.min(...ranges.map(range => range.$from.pos))
-                const to = Math.max(...ranges.map(range => range.$to.pos))
                 const {view, state} = aiEditor.innerEditor;
-
-                const domRect = posToDOMRect(view, from, to);
-                const tablePos = state.selection.$from.posAtIndex(0, 1);
-                const coordsAtPos = view.coordsAtPos(tablePos);
-
+                const {selection} = state;
+                const domRect = posToDOMRect(view, selection.from, selection.to);
+                
                 return {
                     ...domRect,
-                    top: coordsAtPos.top
                 };
             })
         },
