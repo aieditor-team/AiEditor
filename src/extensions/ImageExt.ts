@@ -241,7 +241,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                 const container = document.createElement('div')
 
                 const {src, width, height, align, alt} = props.node.attrs;
-                const imgWidth = getWidthUnit(width || 350);
+                const imgWidth = getWidthUnit(width || this.options.defaultSize);
                 const wrapperStyle = imgWidth.indexOf("%") > 0 ? `style="width: ${imgWidth};"` : "";
                 const calcImgWidth = imgWidth.indexOf("%") > 0 ? `calc(100% - 2px)` : imgWidth;
                 container.classList.add(`align-${align}`)
