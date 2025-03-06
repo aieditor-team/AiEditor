@@ -109,6 +109,11 @@ export const mdToHtml = (markdown: string) => {
     if (!markdown) return markdown;
     const renderHtml = md.render(markdown).trim();
     if (!renderHtml) return markdown;
+    // 如果包含代码块，保留代码块中的换行符
+    if (renderHtml.includes('<pre')) {
+    // 移除代码块末尾多余的换行符，但保留代码块内部的换行
+       return organizeHTMLContent(renderHtml.replace(/\n+(?=<\/code><\/pre>)/, ''))
+    }
     return organizeHTMLContent(renderHtml.replace(/\n/g, ''));
 }
 
