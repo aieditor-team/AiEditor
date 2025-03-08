@@ -47,7 +47,6 @@ import {initToolbarKeys} from "../util/initToolbarKeys.ts";
 import { defaultToolbarKeys } from "./DefaultToolbarKeys.ts";
 
 defineCustomElement('aie-undo', Undo);
-defineCustomElement('aie-undo', Undo);
 defineCustomElement('aie-redo', Redo);
 defineCustomElement('aie-brush', Painter);
 defineCustomElement('aie-container', Container);
