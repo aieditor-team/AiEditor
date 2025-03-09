@@ -45,7 +45,4 @@ export class Fullscreen extends AbstractMenuButton {
         }
     }
 
-    onEditableChange() {
-        //do nothing
-    }
 }
