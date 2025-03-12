@@ -14,6 +14,7 @@ declare class AbstractMenuButton extends HTMLElement implements AiEditorEventLis
     template: string;
     editor?: InnerEditor;
     options?: AiEditorOptions;
+    alwaysEnabledButtons: string[];
     protected constructor();
     protected registerClickListener(): void;
     connectedCallback(): void;
@@ -122,6 +123,7 @@ export declare type AiEditorOptions = {
     onSave?: (editor: AiEditor) => boolean;
     onFullscreen?: (isFullscreen: boolean) => void;
     toolbarKeys?: (string | CustomMenu | MenuGroup)[];
+    alwaysEnabledToolbarKeys?: string[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
     toolbarSize?: 'small' | 'medium' | 'large';
     draggable?: boolean;
