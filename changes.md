@@ -1,5 +1,24 @@
 # AiEditor ChangeLog
 
+## v1.3.6 20250312:
+- feat: Added alwaysEnabledToolbarKeys configuration to specify that certain buttons are always enabled
+- feat: Optimized the AI command menu to make its code more concise
+- feat: aie-undo duplicate definition problem
+- fix: When selecting an existing image in the editor first and then inserting another image, the "Applying a mismatched transaction" error appears
+- fix: Fixed some typos in AI prompt words that may cause AI to misunderstand
+- fix: Image configuration defaultSize does not work
+- fix: Code block does not wrap after AI automatically comments
+
+---
+- 新增：添加 alwaysEnabledToolbarKeys 配置，用于指定某些按钮永远处于不被禁用
+- 优化：优化 AI 命令菜单，使其代码更加简洁
+- 优化：aie-undo 重复定义的问题
+- 修复：当先选择编辑器里已存在的图片，再插入一张图片时，出现 "Applying a mismatched transaction" 错误
+- 修复：修复 AI 提示词的一些错别字，可能导致 AI 理解错误的问题
+- 修复：图片配置 defaultSize 不起作用的问题
+- 修复：代码块通过 AI 自动注释之后代码不换行问题修改
+
+
 
 ## v1.3.5 20250212:
 - feat: Optimize the experience and cancel the pop-up of the floating menu in the code block
