@@ -110,10 +110,7 @@ export const mdToHtml = (markdown: string) => {
     const renderHtml = md.render(markdown).trim();
     if (!renderHtml) return markdown;
     // 如果包含代码块，保留代码块中的换行符
-    if (renderHtml.includes('<pre')) {
-       return organizeHTMLContent(renderHtml)
-    }
-    return organizeHTMLContent(renderHtml.replace(/\n/g, ''));
+    return organizeHTMLContent(renderHtml.includes("<pre") ? renderHtml : renderHtml.replace(/\n/g, ''));
 }
 
 export const htmlToMd = (html: string) => {
@@ -124,17 +121,24 @@ export const htmlToMd = (html: string) => {
     const colGroupList = doc.querySelectorAll("colgroup");
     colGroupList.forEach(colgroup => colgroup.remove())
 
-    // fix task list to markdown
+
     const lis = doc.querySelectorAll("li");
     lis.forEach(li => {
         const div = li.querySelector("div");
-        if (div && div.firstElementChild) {
-            const fragment = document.createDocumentFragment();
-            fragment.append(" ")
-            div.firstElementChild.childNodes.forEach(node => {
-                fragment.append(node.cloneNode(true))
-            })
-            div.replaceWith(fragment)
+        if (div) {
+            const image = div.querySelector("img");
+            if (image) {
+                //ignore
+            }
+            // fix task list to markdown
+            else if (div.firstElementChild) {
+                const fragment = document.createDocumentFragment();
+                fragment.append(" ")
+                div.firstElementChild.childNodes.forEach(node => {
+                    fragment.append(node.cloneNode(true))
+                })
+                div.replaceWith(fragment)
+            }
         }
     })
     const innerHTML = doc.body.innerHTML;
