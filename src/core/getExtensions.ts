@@ -114,7 +114,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 },
                 codeCommentsAi: options.ai?.codeBlock?.codeComments || {
                     model: "auto",
-                    prompt: options.codeBlock?.codeCommentsPrompt || "帮我对这个代码添加一些注释，并返回添加注释的代码，只返回代码",
+                    prompt: options.codeBlock?.codeCommentsPrompt || "帮我对这个代码添加代码注释，并返回添加注释的代码，注意只需要返回代码。",
                 },
             }),
             VideoExt.configure({
