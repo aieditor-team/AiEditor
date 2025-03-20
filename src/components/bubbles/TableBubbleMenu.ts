@@ -3,6 +3,8 @@ import {Editor, EditorEvents} from "@tiptap/core";
 import {CellSelection, TableMap} from '@tiptap/pm/tables';
 import {EditorView} from "@tiptap/pm/view";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
+import { TableCellBackgroundColor } from "../menus/TableCellBackgroundColor.ts";
+import tippy from "tippy.js";
 
 export class TableBubbleMenu extends AbstractBubbleMenu {
     constructor() {
@@ -95,6 +97,78 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                 onClick: ({innerEditor: editor}) => {
                     editor?.chain().focus().deleteTable().run()
                 }
+            },
+            {
+                id: "cell-background-color",
+                title: "highlight",
+                icon: `
+                    <div class="table-bubble-menu colors-menu">
+                        <div class="currentColor">
+                            <div class="colors-menu-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.2427 4.51138L8.50547 11.2486L7.79836 13.3699L6.7574 14.4109L9.58583 17.2393L10.6268 16.1983L12.7481 15.4912L19.4853 8.75402L15.2427 4.51138ZM21.6066 8.04692C21.9972 8.43744 21.9972 9.0706 21.6066 9.46113L13.8285 17.2393L11.7071 17.9464L10.2929 19.3606C9.90241 19.7511 9.26925 19.7511 8.87872 19.3606L4.63608 15.118C4.24556 14.7275 4.24556 14.0943 4.63608 13.7038L6.0503 12.2896L6.7574 10.1682L14.5356 2.39006C14.9261 1.99954 15.5593 1.99954 15.9498 2.39006L21.6066 8.04692ZM15.2427 7.33981L16.6569 8.75402L11.7071 13.7038L10.2929 12.2896L15.2427 7.33981ZM4.28253 16.8858L7.11096 19.7142L5.69674 21.1284L1.4541 19.7142L4.28253 16.8858Z"></path></svg>
+                            </div>
+                            <style>
+                            </style>
+                            <div class="colors-menu-status" id="cellBgColorStatus"></div>
+                        </div>
+                        <div id="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14L8 10H16L12 14Z"></path></svg>
+                        </div>
+                    </div>
+                `.trim(),
+                onInit: (editor,tippyInstance, menu) => {
+                    const lastUsedColor = TableCellBackgroundColor.getLastUsedColor() || '';
+                    const statusElement = menu.querySelector('#cellBgColorStatus') as HTMLElement;
+                    if (statusElement) {
+                        statusElement.style.backgroundColor = lastUsedColor;
+                    }
+                },
+                onClick: ({innerEditor: editor},tippyInstance,menu,holder) => {
+                    const e = window.event as MouseEvent;
+                    const target = e.target as HTMLElement;
+
+                    const menuItem = menu.querySelector('#cell-background-color');
+                    
+                    // 检查点击的是哪个元素
+                    // 查找最近的匹配选择器的父元素
+                    const isDropdown = target.closest('#dropdown');
+                    const isColorIcon = target.closest('.colors-menu-icon');
+
+                    if (isDropdown) {
+                        // 点击的是下拉箭头，显示颜色选择器
+                        const colorPicker = new TableCellBackgroundColor();
+                        colorPicker.editor = editor;
+                        
+                        // 创建颜色选择器元素
+                        const colorPickerElement = colorPicker.createColorPicker();
+                        
+                        // 使用tippy显示颜色选择器
+                        const instance = tippy(menuItem as HTMLElement, {
+                            content: colorPickerElement,
+                            placement: 'bottom',
+                            trigger: 'manual',
+                            arrow: false,
+                            interactive: true,
+                            appendTo: editor.aiEditor.container,
+                            onHide() {
+                                setTimeout(() => {
+                                    instance.destroy();
+                                }, 0);
+                            }
+                        });
+                        colorPicker.onClose = (color) => {
+                            instance.hide();
+                            const statusElement = menu.querySelector('#cellBgColorStatus') as HTMLElement;
+                            if (statusElement) {
+                                statusElement.style.backgroundColor = color || '';
+                            }
+                        };
+                        instance.show();
+                    } else if (isColorIcon) {
+                        const currentColor = TableCellBackgroundColor.getLastUsedColor();
+                        editor?.chain().setCellAttribute('backgroundColor', currentColor).run();
+                    }
+                }
             }
         ]
     }
@@ -119,7 +193,11 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
             if (this.isAllTableSelected(selection)) {
                 this.showItems(["delete"])
             } else if (this.isOneCellSelected(selection)) {
-                const showIds = ["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"];
+                const showIds = [
+                    "insert-column-left", "insert-column-right", "delete-column",
+                    "insert-row-top", "insert-row-bottom", "delete-row",
+                    "cell-background-color" // 新增背景色按钮
+                ];
                 if (editor.can().splitCell()) {
                     const nodeDOM = view.nodeDOM(selection.$anchorCell.pos) as HTMLTableRowElement;
                     const colspan = nodeDOM.getAttribute("colspan");
@@ -132,14 +210,24 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                 }
                 this.showItems(showIds)
             } else if (this.isColumnSelected(selection, view)) {
-                this.showItems(["insert-column-left", "insert-column-right", "delete-column", "merge-cells-vertical"])
+                this.showItems([
+                    "insert-column-left", "insert-column-right", "delete-column",
+                    "merge-cells-vertical", "cell-background-color" // 新增
+                ])
             } else if (this.isRowSelected(selection, view)) {
-                this.showItems(["insert-row-top", "insert-row-bottom", "delete-row", "merge-cells-horizontal"])
+                this.showItems([
+                    "insert-row-top", "insert-row-bottom", "delete-row",
+                    "merge-cells-horizontal", "cell-background-color" // 新增
+                ])
             } else {
-                this.showItems(["merge-cells-horizontal"])
+                this.showItems(["merge-cells-horizontal", "cell-background-color"]) // 新增
             }
         } else {
-            this.showItems(["insert-column-left", "insert-column-right", "delete-column", "insert-row-top", "insert-row-bottom", "delete-row"])
+            this.showItems([
+                "insert-column-left", "insert-column-right", "delete-column",
+                "insert-row-top", "insert-row-bottom", "delete-row",
+                "cell-background-color" // 新增
+            ])
         }
     }
 

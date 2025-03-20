@@ -1,3 +1,43 @@
+/** table-cell-background-color */
+.table-bubble-menu.colors-menu {
+  display: flex;
+  padding-right: 0;  
+
+  .currentColor {
+    width: 16px;
+    height: 16px;
+    
+    .colors-menu-icon {
+      height: calc(100% - 3px);
+      width: 100%;
+      display: flex;
+      
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    
+    .colors-menu-status {
+      width: 100%;
+      height: 3px;
+      background: #333;
+    }
+  }
+
+  .colors-menu {
+    #dropdown {
+      display: flex;
+    }
+    
+    &-status {
+      width: 100%;
+      height: 3px;
+      background: #333;
+    }
+  }
+}
+
 
 .aie-container {
   display: flex;
@@ -685,6 +725,13 @@
         font-size: 14px;
         border-radius: 3px;
       }
+    }
+
+    /** table-color-background-color */
+    .color-panel-default-button,
+    .color-item,
+    .history-color-item {
+      cursor: pointer;
     }
   }
 

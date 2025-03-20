@@ -3,7 +3,7 @@ import tippy from "tippy.js";
 import {t} from "i18next";
 
 
-const colors = [
+export const colors = [
         'ffffff', '000000', 'e9d989', '2972f4', '609eec', 'de3c36', 'a1d533', '7334c5', '27b5d9', 'ff8926',
         'f2f2f2', '7f7f7f', 'ddd9c3', 'c6d9f0', 'dbe5f1', 'f2dcdb', 'ebf1dd', 'e5e0ec', 'dbeef3', 'fdeada',
         'd8d8d8', '595959', 'c4bd97', '8db3e2', 'b8cce4', 'e5b9b7', 'd7e3bc', 'ccc1d9', 'b7dde8', 'fbd5b5',
