@@ -14,8 +14,8 @@ import {IndentExt} from "../extensions/IndentExt.ts";
 import {ImageExt} from "../extensions/ImageExt.ts";
 import {Table} from "@tiptap/extension-table";
 import {TableRow} from "@tiptap/extension-table-row";
-import {TableHeader} from "@tiptap/extension-table-header";
-import {TableCell} from "@tiptap/extension-table-cell";
+import {TableHeaderExt} from "../extensions/TableHeaderExt";
+import {TableCellExt} from "../extensions/TableCellExt";
 import {CharacterCount} from "@tiptap/extension-character-count";
 import {Link} from "@tiptap/extension-link";
 import {Superscript} from "@tiptap/extension-superscript";
@@ -83,8 +83,8 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
                 allowTableNodeSelection: true,
             }),
             TableRow,
-            TableHeader,
-            TableCell,
+            TableCellExt,
+            TableHeaderExt,
             CharacterCount.configure({
                 textCounter: typeof options?.textCounter === "function"
                     ? options.textCounter : (text) => text.length
