@@ -195,7 +195,13 @@ export declare type AiEditorOptions = {
 } & Partial<Omit<EditorOptions, "element">>;
 
 export declare interface AiGlobalConfig {
-    models: Record<string, AiModelConfig>;
+    models?: {
+        openai?: OpenaiModelConfig;
+        gitee?: GiteeModelConfig;
+        spark?: SparkAiModelConfig;
+        wenxin?: WenXinAiModelConfig;
+        custom?: CustomAiModelConfig;
+    };
     modelFactory?: AiModelFactory;
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void;
     onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void;
@@ -234,8 +240,8 @@ export declare interface AiMenu {
 export declare interface AiMessage {
     role: string;
     content: string;
-    index: number;
-    status: 0 | 1 | 2;
+    index?: number;
+    status?: 0 | 1 | 2;
 }
 
 export declare interface AiMessageListener {
@@ -301,12 +307,12 @@ export declare class CustomAiModel extends AiModel {
 }
 
 export declare interface CustomAiModelConfig extends AiModelConfig {
-    url: (() => string) | string;
+    url: string | (() => string);
+    protocol?: "sse" | "websocket" | "http";
     method?: string;
     headers?: () => Record<string, any> | undefined;
     wrapPayload: (prompt: string) => string;
     parseMessage: (bodyString: string) => AiMessage | undefined;
-    protocol: "sse" | "websocket" | "http";
 }
 
 export declare interface CustomMenu {
@@ -332,6 +338,13 @@ declare class Footer extends HTMLElement implements AiEditorEventListener {
     onCreate(event: EditorEvents["create"], _: AiEditorOptions): void;
     onTransaction(event: EditorEvents["transaction"]): void;
     onEditableChange(editable: boolean): void;
+}
+
+declare interface GiteeModelConfig extends AiModelConfig {
+    endpoint: string;
+    apiKey: string;
+    top_p: number;
+    top_k: number;
 }
 
 declare class Header extends HTMLElement implements AiEditorEventListener {
