@@ -3,7 +3,7 @@ import {Editor, EditorEvents} from "@tiptap/core";
 import {CellSelection, TableMap} from '@tiptap/pm/tables';
 import {EditorView} from "@tiptap/pm/view";
 import {AiEditorOptions} from "../../core/AiEditor.ts";
-import { TableCellBackgroundColor } from "../menus/TableCellBackgroundColor.ts";
+import {TableCellBackgroundColor} from "../menus/TableCellBackgroundColor.ts";
 import tippy from "tippy.js";
 
 export class TableBubbleMenu extends AbstractBubbleMenu {
@@ -116,19 +116,19 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                         </div>
                     </div>
                 `.trim(),
-                onInit: (editor,tippyInstance, menu) => {
+                onInit: (_editor, _tippyInstance, menu) => {
                     const lastUsedColor = TableCellBackgroundColor.getLastUsedColor() || '';
                     const statusElement = menu.querySelector('#cellBgColorStatus') as HTMLElement;
                     if (statusElement) {
                         statusElement.style.backgroundColor = lastUsedColor;
                     }
                 },
-                onClick: ({innerEditor: editor},tippyInstance,menu,holder) => {
+                onClick: ({innerEditor: editor}, _tippyInstance, menu, _holder) => {
                     const e = window.event as MouseEvent;
                     const target = e.target as HTMLElement;
 
                     const menuItem = menu.querySelector('#cell-background-color');
-                    
+
                     // 检查点击的是哪个元素
                     // 查找最近的匹配选择器的父元素
                     const isDropdown = target.closest('#dropdown');
@@ -138,10 +138,10 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
                         // 点击的是下拉箭头，显示颜色选择器
                         const colorPicker = new TableCellBackgroundColor();
                         colorPicker.editor = editor;
-                        
+
                         // 创建颜色选择器元素
                         const colorPickerElement = colorPicker.createColorPicker();
-                        
+
                         // 使用tippy显示颜色选择器
                         const instance = tippy(menuItem as HTMLElement, {
                             content: colorPickerElement,

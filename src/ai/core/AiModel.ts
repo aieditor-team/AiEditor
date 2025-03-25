@@ -4,6 +4,7 @@ import {AiGlobalConfig} from "../AiGlobalConfig.ts";
 import {AiModelConfig} from "./AiModelConfig.ts";
 import {InnerEditor} from "../../core/AiEditor.ts";
 
+type ModelsKey = keyof AiGlobalConfig['models'];
 
 export abstract class AiModel {
 
@@ -16,7 +17,7 @@ export abstract class AiModel {
         this.editor = editor;
         this.globalConfig = globalConfig;
         this.aiModelName = aiModelName;
-        this.aiModelConfig = globalConfig.models[aiModelName];
+        this.aiModelConfig = globalConfig.models![aiModelName as ModelsKey];
     }
 
     chatWithPayload(payload: any, listener: AiMessageListener): void {

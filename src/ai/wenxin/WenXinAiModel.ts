@@ -12,7 +12,7 @@ export class WenXinAiModel extends AiModel {
     constructor(editor: InnerEditor, globalConfig: AiGlobalConfig) {
         super(editor, globalConfig, "wenxin");
         this.aiModelConfig = {
-            ...globalConfig.models["wenxin"]
+            ...globalConfig.models?.wenxin
         } as WenXinAiModelConfig;
     }
 

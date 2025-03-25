@@ -19,7 +19,7 @@ export class SparkAiModel extends AiModel {
         this.aiModelConfig = {
             version: "v3.5",
             protocol: "wss",
-            ...globalConfig.models["spark"]
+            ...globalConfig.models?.spark
         } as SparkAiModelConfig;
     }
 

@@ -97,6 +97,46 @@ window.aiEditor = new AiEditor({
             //     endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
             //     apiKey:"***",
             // }
+
+            custom: {
+                url: "https://ai.gitee.com/v1/chat/completions",
+                headers: () => {
+                    debugger
+                    return {
+                        Authorization: "Bearer xxxx",
+                        'Content-Type': "application/json",
+                        'X-Failover-Enabled': true,
+                    }
+                },
+                wrapPayload: (message: string) => {
+                    const messageObj = {
+                        model: "QwQ-32B",
+                        max_tokens: 2048,
+                        temperature: 0.7,
+                        top_p: 0.8,
+                        top_k: 50,
+                        stream: true,
+                        messages: [
+                            {
+                                role: "user",
+                                content: message,
+                            }
+                        ]
+                    }
+
+                    return JSON.stringify(messageObj)
+                },
+                parseMessage: (message: string) => {
+                    const messageObject = JSON.parse(message);
+                    return {
+                        role: "assistant",
+                        content: messageObject.choices[0].delta?.content || "",
+                        // index: number,
+                        // //0 代表首个文本结果；1 代表中间文本结果；2 代表最后一个文本结果。
+                        // status: 0|1|2,
+                    }
+                },
+            }
         },
         // bubblePanelEnable:false,
         // bubblePanelModel: "spark",

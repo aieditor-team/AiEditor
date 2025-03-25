@@ -2,6 +2,11 @@ import {AiModelConfig} from "./core/AiModelConfig.ts";
 import {AiModelFactory} from "./AiModelFactory.ts";
 import {AIBubbleMenuItem, TranslateMenuItem} from "../components/bubbles/types.ts";
 import {AiEditor} from "../core/AiEditor.ts";
+import {OpenaiModelConfig} from "./openai/OpenaiModelConfig.ts";
+import {GiteeModelConfig} from "./gitee/GiteeModelConfig.ts";
+import {SparkAiModelConfig} from "./spark/SparkAiModelConfig.ts";
+import {CustomAiModelConfig} from "./custom/CustomAiModelConfig.ts";
+import {WenXinAiModelConfig} from "./wenxin/WenXinAiModelConfig.ts";
 
 export interface AiMenu {
     icon: string,
@@ -15,7 +20,13 @@ export interface AiMenu {
 
 
 export interface AiGlobalConfig {
-    models: Record<string, AiModelConfig>,
+    models?: {
+        openai?: OpenaiModelConfig,
+        gitee?: GiteeModelConfig,
+        spark?: SparkAiModelConfig,
+        wenxin?: WenXinAiModelConfig,
+        custom?: CustomAiModelConfig,
+    },
     modelFactory?: AiModelFactory,
     onTokenConsume?: (modelName: string, modelConfig: AiModelConfig, count: number) => void,
     onCreateClientUrl?: (modelName: string, modelConfig: AiModelConfig, onSuccess: (url: string) => void, onFailure: () => void) => void

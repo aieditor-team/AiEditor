@@ -14,7 +14,7 @@ export class GiteeAiModel extends AiModel {
         this.aiModelConfig = {
             top_p: 0.7,
             top_k: 50,
-            ...globalConfig.models["gitee"]
+            ...globalConfig.models?.gitee
         } as GiteeModelConfig;
     }
 

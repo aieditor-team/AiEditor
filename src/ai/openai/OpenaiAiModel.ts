@@ -14,7 +14,7 @@ export class OpenaiAiModel extends AiModel {
         this.aiModelConfig = {
             endpoint: "https://api.openai.com",
             // model: "gpt-3.5-turbo",
-            ...globalConfig.models["openai"]
+            ...globalConfig.models?.openai
         } as OpenaiModelConfig;
     }
 
