@@ -5,7 +5,7 @@ export interface CustomAiModelConfig extends AiModelConfig {
     url: string | (() => string),
     protocol?: "sse" | "websocket" | "http"
     method?: string;
-    headers?: () => Record<string, any> | undefined,
+    headers?:  Record<string, any> | (() => Record<string, any>),
     wrapPayload: (prompt: string) => string,
     parseMessage: (bodyString: string) => AiMessage | undefined,
 }

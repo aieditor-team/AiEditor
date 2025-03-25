@@ -87,27 +87,17 @@ window.aiEditor = new AiEditor({
     // },
     ai: {
         models: {
-            // spark: {
-            //     ...config
-            // },
-            // openai: {
-            //     ...openai
-            // },
-            // gitee:{
-            //     endpoint:"https://ai.gitee.com/api/inference/serverless/KGHCVOPBV7GY/chat/completions",
-            //     apiKey:"***",
-            // }
-
             custom: {
                 url: "https://ai.gitee.com/v1/chat/completions",
-                headers: () => {
-                    debugger
-                    return {
-                        Authorization: "Bearer xxxx",
-                        'Content-Type': "application/json",
-                        'X-Failover-Enabled': true,
-                    }
-                },
+                headers:{},
+                // headers: () => {
+                //     debugger
+                //     return {
+                //         Authorization: "Bearer xxxx",
+                //         'Content-Type': "application/json",
+                //         'X-Failover-Enabled': true,
+                //     }
+                // },
                 wrapPayload: (message: string) => {
                     const messageObj = {
                         model: "QwQ-32B",

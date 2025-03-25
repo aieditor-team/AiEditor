@@ -33,12 +33,12 @@ export class CustomAiModel extends AiModel {
         const clientConfig = {
             url,
             method: config.method || "post",
-            headers: config.headers?.(),
+            headers: typeof config.headers === "function" ? config.headers?.() : config.headers,
         };
 
         return config.protocol === "sse" ? new SseClient(clientConfig, aiClientListener)
             : config.protocol === "http" ? new HttpStreamSocketClient(clientConfig, aiClientListener)
-            : new WebSocketClient(url, aiClientListener)
+                : new WebSocketClient(url, aiClientListener)
     }
 
     wrapPayload(promptMessage: string) {
