@@ -141,11 +141,7 @@ export class BubbleMenuView {
             this.shouldShow = shouldShow
         }
 
-        this.element.addEventListener('mousedown', this.mousedownHandler, {capture: true})
-
-        if (this.updateInMouseUp) {
-            this.view.dom.addEventListener('mouseup', this.mouseupHandler);
-        }
+        document.addEventListener('mousedown', this.mousedownHandler, {capture: true});
 
         this.view.dom.addEventListener('dragstart', this.dragstartHandler)
         this.editor.on('focus', this.focusHandler)
@@ -159,6 +155,16 @@ export class BubbleMenuView {
 
     mousedownHandler = () => {
         this.preventHide = true
+        const self = this;
+        
+        const handleGlobalMouseUp = () => {
+            self.mouseupHandler.bind(self)()
+            document.removeEventListener('mouseup', handleGlobalMouseUp);
+        };
+  
+        if (self.updateInMouseUp) {
+            document.addEventListener('mouseup', handleGlobalMouseUp);
+        }
     }
 
     mouseupHandler = () => {
@@ -356,11 +362,7 @@ export class BubbleMenuView {
             )
         }
         this.tippy?.destroy()
-        this.element.removeEventListener('mousedown', this.mousedownHandler, {capture: true})
-
-        if (this.updateInMouseUp) {
-            this.view.dom.removeEventListener('mouseup', this.mouseupHandler);
-        }
+        document.removeEventListener('mousedown', this.mousedownHandler, {capture: true});
 
         this.view.dom.removeEventListener('dragstart', this.dragstartHandler)
         this.editor.off('focus', this.focusHandler)
