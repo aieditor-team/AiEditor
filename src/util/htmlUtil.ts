@@ -137,13 +137,28 @@ export const removeEmptyParagraphs = (html: string) => {
     return tempDiv.innerHTML;
 }
 
+const isSpecialBlockElement = (element: Element): boolean => {
+    const specialElements = [
+        'table', 'thead', 'tbody', 'tr', 'th', 'td', // 表格相关
+        'ul', 'ol', 'li',                            // 列表相关
+        'pre', 'blockquote',                         // 代码块和引用
+        'figure', 'iframe', 'video', 'audio',        // 媒体元素
+        'svg', 'math', 'embed'                       // 图表、公式和嵌入内容
+    ];
+    return specialElements.includes(element.tagName.toLowerCase());
+};
 
-export const clearDataMpSlice = (html: string) => {
+export const clearDataPmSlice = (html: string) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const fragment = document.createDocumentFragment();
     const children = doc.body.children;
     for (let child of children) {
+        if (isSpecialBlockElement(child)) {
+            fragment.appendChild(child.cloneNode(true));
+            continue;
+        }
+
         if (child.hasAttribute("data-pm-slice")) {
             child.childNodes.forEach((child) => {
                 fragment.appendChild(child.cloneNode(true));
