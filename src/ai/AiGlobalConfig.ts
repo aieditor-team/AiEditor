@@ -36,6 +36,7 @@ export interface AiGlobalConfig {
     bubblePanelIcon?: string,
     menus?: AiMenu[],
     commands?: AiMenu[],
+    commandsEnable?: boolean,
     translate?: {
         prompt?: (language: string, selectText: string) => string,
         translateMenuItems?: TranslateMenuItem[],

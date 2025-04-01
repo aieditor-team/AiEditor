@@ -146,16 +146,16 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
         }))
     }
 
-    // if (options.ai?.command){
-    ret.push(AiCommandExt.configure({
-        suggestion: {
-            items: (_) => {
-                const commands = options.ai?.commands || defaultCommands;
-                return commands as any;
+    if (options.ai?.commandsEnable !== false) {
+        ret.push(AiCommandExt.configure({
+            suggestion: {
+                items: (_) => {
+                    const commands = options.ai?.commands || defaultCommands;
+                    return commands as any;
+                }
             }
-        }
-    }))
-    // }
+        }))
+    }
 
     if (options.onMentionQuery) {
         ret.push(createMention(options.onMentionQuery))
