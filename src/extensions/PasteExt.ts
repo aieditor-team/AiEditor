@@ -20,9 +20,10 @@ export const PasteExt = Extension.create({
                         }
 
                         if (!event.clipboardData) return false;
-                        const text = event.clipboardData.getData('text/plain');
+                        let text = event.clipboardData.getData('text/plain');
                         let html = event.clipboardData.getData('text/html');
                         if (!html && text) {
+                            text = text.replace(/\n/g, '<br>')
                             const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text);
                             if (parseMarkdown) {
                                 const {state: {tr}, dispatch} = view;
