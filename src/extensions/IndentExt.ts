@@ -19,9 +19,6 @@ declare module '@tiptap/core' {
 export const IndentExt = Extension.create<IndentOptions>({
     name: 'indent',
 
-    // Fix tab key conflict with ordered lists
-    priority: 99,
-
     addOptions() {
         return {
             types: ['listItem', 'paragraph'],
@@ -119,9 +116,17 @@ export const IndentExt = Extension.create<IndentOptions>({
     addKeyboardShortcuts() {
         return {
             Tab: () => {
+                if (this.editor.isActive('listItem') ||
+                    this.editor.isActive('orderedList')) {
+                    return false;
+                }
                 return this.editor.commands.indent();
             },
             'Shift-Tab': () => {
+                if (this.editor.isActive('listItem') ||
+                    this.editor.isActive('orderedList')) {
+                    return false;
+                }
                 return this.editor.commands.outdent();
             },
         };
