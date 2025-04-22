@@ -211,6 +211,7 @@ export declare interface AiGlobalConfig {
     bubblePanelIcon?: string;
     menus?: AiMenu[];
     commands?: AiMenu[];
+    commandsEnable?: boolean;
     translate?: {
         prompt?: (language: string, selectText: string) => string;
         translateMenuItems?: TranslateMenuItem[];
@@ -310,7 +311,7 @@ export declare interface CustomAiModelConfig extends AiModelConfig {
     url: string | (() => string);
     protocol?: "sse" | "websocket" | "http";
     method?: string;
-    headers?: () => Record<string, any> | undefined;
+    headers?: Record<string, any> | (() => Record<string, any>);
     wrapPayload: (prompt: string) => string;
     parseMessage: (bodyString: string) => AiMessage | undefined;
 }
