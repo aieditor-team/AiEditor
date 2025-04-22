@@ -1,5 +1,30 @@
 # AiEditor ChangeLog
 
+
+## v1.3.7 20250422:
+- feat: Added the ability to support background and color configuration in tables, thanks @maonianyou
+- feat: Added support for AI configuration of commandsEnable
+- refactor: Optimized the configuration and automatic prompts for large models
+- refactor: Optimized the problem that pop-up prompts disappear automatically when the mouse moves out of the editor
+- refactor: clearDataPmSlice supports pasting code blocks
+- refactor: Optimized the code logic of pasting
+- refactor: When the table is too long, select the bottom cell of the table, and the table operation pop-up box is above the table header, which will appear hidden and invisible
+- refactor: When pasting an image, there will be a blank row above the image, and the mouse will automatically focus on the row
+- refactor: When switching between title and text on the mobile phone, the menu automatically hides
+
+---
+- 新增：表格添加支持 background 和 color 配置的能力，感谢 @maonianyou
+- 新增：添加 commandsEnable 的 AI 配置的支持
+- 优化：优化对大模型的配置和自动提示
+- 优化：优化弹出提示在鼠标移出编辑器时自动消失的问题
+- 优化：clearDataPmSlice 支持粘贴代码块
+- 优化：优化粘贴的代码逻辑
+- 优化：表格过长的情况下，选中表格最下方单元格，表格操作弹框在表头上方，会出现隐藏看不见的情况
+- 优化：粘贴图片时，图片上方会有一个空白的行，且鼠标自动聚焦到该行的问题
+- 优化：在手机端切换标题和文本时，菜单自动隐藏的问题
+
+
+
 ## v1.3.6 20250312:
 - feat: Added alwaysEnabledToolbarKeys configuration to specify that certain buttons are always enabled
 - feat: Optimized the AI command menu to make its code more concise
