@@ -1,5 +1,13 @@
 # AiEditor ChangeLog
 
+## v1.3.8 20250422:
+- fix: rollback BubbleMenuPlugin plugin to prevent floating menu errors
+- refactor: optimize the indentation display when pasting word
+---
+- 修复: 回退 BubbleMenuPlugin 插件，防止浮动菜单错误
+- 优化: 优化 word 粘贴时的缩进显示
+
+
 
 ## v1.3.7 20250422:
 - feat: Added the ability to support background and color configuration in tables, thanks @maonianyou
