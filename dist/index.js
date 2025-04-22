@@ -20177,8 +20177,14 @@ const Hh = Uh(!1, !0), Gh = Uh(!0, !0), ZR = Se.create({
           indent: {
             default: 0,
             parseHTML: (t) => {
-              const e = Number(t.getAttribute("data-indent"));
-              return e && e > this.options.minLevel ? e : null;
+              let e = Number(t.getAttribute("data-indent"));
+              if (e)
+                return e > this.options.maxLevel ? e = this.options.maxLevel : e < this.options.minLevel && (e = this.options.minLevel), e;
+              {
+                const n = t.style.textIndent;
+                let r = 0;
+                return n && n.endsWith("pt") ? r = Number(n.substring(0, n.indexOf("pt"))) * (96 / 72) / 16 : n && n.endsWith("em") ? r = Number(n.substring(0, n.indexOf("em"))) : n && n.endsWith("px") && (r = Number(n.substring(0, n.indexOf("px"))) / 16), r > 0 && (e = Math.round(r / 2)), e ? (e > this.options.maxLevel ? e = this.options.maxLevel : e < this.options.minLevel && (e = this.options.minLevel), e) : 0;
+              }
             },
             renderHTML: (t) => t.indent ? {
               style: `text-indent: ${(t == null ? void 0 : t.indent) * 2}em`,
@@ -73961,10 +73967,6 @@ class rL {
     });
     M(this, "mousedownHandler", () => {
       this.preventHide = !0;
-      const e = this, n = () => {
-        e.mouseupHandler.bind(e)(), document.removeEventListener("mouseup", n);
-      };
-      e.updateInMouseUp && document.addEventListener("mouseup", n);
     });
     M(this, "mouseupHandler", () => {
       setTimeout(() => {
@@ -74029,7 +74031,7 @@ class rL {
         })
       }), this.show();
     });
-    this.editor = e, this.element = n, this.view = r, this.updateDelay = o, this.updateInMouseUp = a, s && (this.shouldShow = s), document.addEventListener("mousedown", this.mousedownHandler, { capture: !0 }), this.view.dom.addEventListener("dragstart", this.dragstartHandler), this.editor.on("focus", this.focusHandler), this.editor.on("blur", this.blurHandler), this.tippyOptions = i, this.element.remove(), this.element.style.visibility = "visible";
+    this.editor = e, this.element = n, this.view = r, this.updateDelay = o, this.updateInMouseUp = a, s && (this.shouldShow = s), this.element.addEventListener("mousedown", this.mousedownHandler, { capture: !0 }), this.updateInMouseUp && this.view.dom.addEventListener("mouseup", this.mouseupHandler), this.view.dom.addEventListener("dragstart", this.dragstartHandler), this.editor.on("focus", this.focusHandler), this.editor.on("blur", this.blurHandler), this.tippyOptions = i, this.element.remove(), this.element.style.visibility = "visible";
   }
   createTooltip() {
     const { element: e } = this.editor.options, n = !!e.parentElement;
@@ -74080,7 +74082,7 @@ class rL {
     (e = this.tippy) != null && e.popper.firstChild && this.tippy.popper.firstChild.removeEventListener(
       "blur",
       this.tippyBlurHandler
-    ), (n = this.tippy) == null || n.destroy(), document.removeEventListener("mousedown", this.mousedownHandler, { capture: !0 }), this.view.dom.removeEventListener("dragstart", this.dragstartHandler), this.editor.off("focus", this.focusHandler), this.editor.off("blur", this.blurHandler);
+    ), (n = this.tippy) == null || n.destroy(), this.element.removeEventListener("mousedown", this.mousedownHandler, { capture: !0 }), this.updateInMouseUp && this.view.dom.removeEventListener("mouseup", this.mouseupHandler), this.view.dom.removeEventListener("dragstart", this.dragstartHandler), this.editor.off("focus", this.focusHandler), this.editor.off("blur", this.blurHandler);
   }
 }
 const iL = (t) => new Te({
