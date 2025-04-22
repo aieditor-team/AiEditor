@@ -23,9 +23,9 @@ export class Heading extends AbstractDropdownMenuButton<string> {
 
     onDropdownItemClick(index: number): void {
         if (index == 0) {
-            this.editor!.chain().setParagraph().run()
+            this.editor!.chain().setParagraph().focus().run()
         } else {
-            this.editor!.chain().setHeading({level: index as any}).run();
+            this.editor!.chain().setHeading({level: index as any}).focus().run();
         }
     }
 
@@ -35,7 +35,7 @@ export class Heading extends AbstractDropdownMenuButton<string> {
     }
 
     onMenuTextRender(index: number): Element | string {
-        return this.menuData[index].replace(" ","");
+        return this.menuData[index].replace(" ", "");
     }
 
 }
