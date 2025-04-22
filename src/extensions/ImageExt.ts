@@ -205,7 +205,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                                 const decorations = key.getState(this.editor.state) as DecorationSet;
                                 let found = decorations.find(void 0, void 0, spec => spec.id == id)
                                 view.dispatch(view.state.tr
-                                    .insert(found[0].from, schema.nodes.image.create({
+                                    .insert(found[0].from - 1, schema.nodes.image.create({
                                         src: json.data.src,
                                         alt: json.data.alt,
                                         align: json.data.align || "left",
