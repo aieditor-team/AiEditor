@@ -35,8 +35,35 @@ export const IndentExt = Extension.create<IndentOptions>({
                     indent: {
                         default: 0,
                         parseHTML: element => {
-                            const level = Number(element.getAttribute('data-indent'));
-                            return level && level > this.options.minLevel ? level : null;
+                            let level = Number(element.getAttribute('data-indent'));
+                            if (level) {
+                                if (level > this.options.maxLevel) level = this.options.maxLevel;
+                                else if (level < this.options.minLevel) level = this.options.minLevel;
+                                return level;
+                            } else {
+                                const textIndent = element.style.textIndent;
+                                let emValue = 0;
+                                if (textIndent && textIndent.endsWith("pt")) {
+                                    const ptValue = Number(textIndent.substring(0, textIndent.indexOf("pt")));
+                                    emValue = ptValue * (96 / 72) / 16;
+                                } else if (textIndent && textIndent.endsWith("em")) {
+                                    emValue = Number(textIndent.substring(0, textIndent.indexOf("em")));
+                                } else if (textIndent && textIndent.endsWith("px")) {
+                                    const pxValue = Number(textIndent.substring(0, textIndent.indexOf("px")));
+                                    emValue = pxValue / 16;
+                                }
+
+                                if (emValue > 0) {
+                                    level = Math.round(emValue / 2);
+                                }
+                                if (level) {
+                                    if (level > this.options.maxLevel) level = this.options.maxLevel;
+                                    else if (level < this.options.minLevel) level = this.options.minLevel;
+                                    return level;
+                                } else {
+                                    return 0
+                                }
+                            }
                         },
 
                         renderHTML: attributes => {
