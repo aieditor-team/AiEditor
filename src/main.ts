@@ -5,7 +5,7 @@ import {AiEditor} from "./core/AiEditor.ts";
 // @ts-ignore
 window.aiEditor = new AiEditor({
     element: "#aiEditor",
-    placeholder: "点击输入内容1...",
+    placeholder: "点击输入内容...",
     contentRetention: true,
     // toolbarSize: 'small',
     // toolbarSize:'large',
