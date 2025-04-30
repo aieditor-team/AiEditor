@@ -12,7 +12,9 @@ new AiEditor({
     contentRetention: true,
     contentRetentionKey: 'ai-editor-content',
     draggable: true,
-    pasteAsText: false,
+    htmlPasteConfig:{
+      pasteAsText: false,
+    },
     textCounter: (text: string) => number,
     ai: {
         models: {
