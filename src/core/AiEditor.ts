@@ -546,6 +546,9 @@ export class AiEditor {
     }
 
     setContent(content: string) {
+        if (typeof content === 'string') {
+          content = organizeHTMLContent(content);
+        }
         this.focus().clear().insert(content);
         return this;
     }
