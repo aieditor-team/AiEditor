@@ -1,5 +1,6 @@
 import {AbstractMenuButton} from "../AbstractMenuButton.ts";
 import {Popover} from "../../commons/Popover.ts";
+import { organizeHTMLContent } from '../../util/htmlUtil.ts';
 
 export class SourceCode extends AbstractMenuButton {
     constructor() {
@@ -21,7 +22,7 @@ export class SourceCode extends AbstractMenuButton {
         `);
         popover.onConfirmClick((instance) => {
             const textarea = instance.popper.querySelector("#source-code") as HTMLTextAreaElement;
-            this.editor?.commands.setContent(textarea.value)
+            this.editor?.commands.setContent(organizeHTMLContent(textarea.value));
         });
 
         popover.onShow((instance) => {
