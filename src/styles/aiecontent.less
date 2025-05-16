@@ -194,7 +194,8 @@
     padding: 0 3px;
   }
 
-  p.is-editor-empty:first-child::before {
+  p.is-editor-empty:first-child::before,
+  p.is-empty::before {
     color: var(--aie-text-placeholder-color);
     content: attr(data-placeholder);
     float: left;
