@@ -179,7 +179,7 @@ export const organizeHTMLContent = (originalHtml: string) => {
 
     //change github style task list items to taskList
     const ulList = doc.querySelectorAll("ul");
-    if (ulList) {
+    if (ulList && ulList.length > 0) {
         ulList.forEach(ul => {
             if (ul.getAttribute("class")?.includes("task-list")) {
                 ul.getAttributeNames().forEach(attr => {
@@ -215,9 +215,11 @@ export const organizeHTMLContent = (originalHtml: string) => {
 
     //"tiptap" does not support empty list items. Here to fill in the gaps
     const liNodeList = doc.querySelectorAll("li");
-    if (liNodeList) liNodeList.forEach(li => {
-        if (!li.innerHTML) li.innerHTML = "<p></p>"
-    })
+    if (liNodeList && liNodeList.length > 0) {
+        liNodeList.forEach(li => {
+            if (!li.innerHTML) li.innerHTML = "<p></p>"
+        })
+    }
 
     const imgNodeList = doc.querySelectorAll('body>p>img');
     if (imgNodeList.length > 0) {
@@ -229,24 +231,84 @@ export const organizeHTMLContent = (originalHtml: string) => {
         }
     }
 
+    const tables = doc.querySelectorAll('table');
+    if (tables.length > 0) {
+        tables.forEach(table => {
+            removeWhitespaceFromTable(table);
+        });
+    }
+
+
     let html = '';
     doc.body.childNodes.forEach(node => {
         if (node.nodeType === Node.TEXT_NODE) {
             html += node.textContent;
         } else if (node.nodeType === Node.ELEMENT_NODE) {
             const element = node as HTMLElement;
-            if (element === doc.body.firstChild && element.tagName === "P") {
+            // if (element === doc.body.firstChild && element.tagName === "P") {
+            //     html += element.innerHTML;
+            // } else {
+            // https://gitee.com/aieditor-team/aieditor/pulls/10
+            if (element.querySelector("img") && element.tagName !== "A") {
+                //return image element
                 html += element.innerHTML;
             } else {
-                // https://gitee.com/aieditor-team/aieditor/pulls/10
-                if (element.querySelector("img") && element.tagName !== "A") {
-                    //return image element
-                    html += element.innerHTML;
-                } else {
-                    html += element.outerHTML;
-                }
+                html += element.outerHTML;
             }
+            // }
         }
     })
     return html;
+}
+
+
+export const cleanTableWhitespace = (html: string): string => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const tables = doc.querySelectorAll('table');
+    tables.forEach(table => {
+        removeWhitespaceFromTable(table);
+    });
+
+    return doc.body.innerHTML;
+}
+
+export const removeWhitespaceFromTable = (node: Node): void => {
+    if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as Element;
+        // 判断是否是 table 的结构元素（包括 colgroup 和 col）
+        const isTableStructureTag = [
+            'TABLE',
+            'THEAD',
+            'TBODY',
+            'TFOOT',
+            'TR',
+            'COLGROUP',
+            'COL'
+        ].includes(el.tagName);
+
+        if (isTableStructureTag) {
+            const children = Array.from(el.childNodes);
+            children.forEach(child => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                    // 移除纯空白文本节点
+                    if (/^[\s\n\r]*$/.test(child.textContent || '')) {
+                        el.removeChild(child);
+                    }
+                } else {
+                    removeWhitespaceFromTable(child); // 递归处理子节点
+                }
+            });
+        }
+
+        // 处理 td/th：如果为空，则插入 <p></p>
+        // 解决 table 中插入空白单元格时会出现错误： Uncaught RangeError: Invalid content for node tableCell: <> 的问题
+        if (el.tagName === 'TD' || el.tagName === 'TH') {
+            if (!el.hasChildNodes()) {
+                const p = document.createElement('p');
+                el.appendChild(p);
+            }
+        }
+    }
 }

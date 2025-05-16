@@ -3,7 +3,14 @@ import {Extension} from "@tiptap/core";
 import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
-import {cleanHtml, clearDataPmSlice, isExcelDocument, removeEmptyParagraphs, removeHtmlTags} from "../util/htmlUtil.ts";
+import {
+    cleanHtml,
+    cleanTableWhitespace,
+    clearDataPmSlice,
+    isExcelDocument,
+    removeEmptyParagraphs,
+    removeHtmlTags
+} from "../util/htmlUtil.ts";
 
 export const PasteExt = Extension.create({
     name: 'pasteExt',
@@ -73,11 +80,8 @@ export const PasteExt = Extension.create({
                                 const document = parser.parseFromString(html, 'text/html');
                                 const table = document.querySelector("table");
                                 if (table && isExcelDocument(document)) {
-                                    this.editor.commands.insertContent(table!.outerHTML, {
-                                        parseOptions: {
-                                            preserveWhitespace: false,
-                                        }
-                                    });
+                                    const outerHTML = cleanTableWhitespace(table!.outerHTML);
+                                    this.editor.commands.insertContent(outerHTML);
                                     return true
                                 }
                             }
