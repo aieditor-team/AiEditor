@@ -1,23 +1,23 @@
 /** table-cell-background-color */
 .table-bubble-menu.colors-menu {
   display: flex;
-  padding-right: 0;  
+  padding-right: 0;
 
   .currentColor {
     width: 16px;
     height: 16px;
-    
+
     .colors-menu-icon {
       height: calc(100% - 3px);
       width: 100%;
       display: flex;
-      
+
       svg {
         width: 100%;
         height: 100%;
       }
     }
-    
+
     .colors-menu-status {
       width: 100%;
       height: 3px;
@@ -29,7 +29,7 @@
     #dropdown {
       display: flex;
     }
-    
+
     &-status {
       width: 100%;
       height: 3px;
@@ -100,7 +100,8 @@
     overflow: hidden;
 
     textarea {
-      width: 500px;
+      width: calc(100vw - 120px);
+      max-width: 500px;
       padding: 5px;
       box-sizing: border-box;
       font-size: 14px;
