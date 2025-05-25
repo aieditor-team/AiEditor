@@ -4,6 +4,7 @@ import {PluginKey} from "@tiptap/pm/state";
 import {InnerEditor} from "../core/AiEditor.ts";
 import {Slice} from '@tiptap/pm/model';
 import {
+    cleanFirstParagraph,
     cleanHtml,
     cleanTableWhitespace,
     clearDataPmSlice,
@@ -44,6 +45,8 @@ export const PasteExt = Extension.create({
                                 //pasteAsText
                                 if (options.htmlPasteConfig.pasteAsText) {
                                     html = cleanHtml(html, ['p', 'br'], true)
+                                    // 调用这个方法，防止粘贴后，自动换行的问题
+                                    html = cleanFirstParagraph(html)
                                 }
                                 //pasteClean
                                 else if (options.htmlPasteConfig.pasteClean) {

@@ -262,6 +262,27 @@ export const organizeHTMLContent = (originalHtml: string) => {
 }
 
 
+export const cleanFirstParagraph = (html: string): string => {
+    if (!html) return "";
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html.trim(), 'text/html');
+
+    let result = '';
+    doc.body.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            result += node.textContent;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const element = node as HTMLElement;
+            if (element === doc.body.firstChild && element.tagName === "P") {
+                result += element.innerHTML;
+            } else {
+                result += element.outerHTML;
+            }
+        }
+    })
+    return result;
+}
+
 export const cleanTableWhitespace = (html: string): string => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
