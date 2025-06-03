@@ -1,5 +1,22 @@
 # AiEditor ChangeLog
 
+## v1.3.9 20250603:
+- fix: fixed paste in new line if pasteAsText options enable 
+- fix: fix: fixed Uncaught RangeError: Invalid content for node tableCell: `<>` 
+- fix: Fix the problem that `p>img` is lost when pasting source code without HTML processing
+- fix: Fix the problem that `p>img` is lost when setContent is not processed with HTML
+- fix: Pasting in a new line in some cases
+- docs: Modify the level of pasteAsText in the basic configuration sample code. There is no pasteAsText under the AiEditorOptions type
+
+---
+- 修复: 修复源代码粘贴没有进行 html 处理导致 `p>img` 丢失问题 
+- 修复: 修复 setContent 没有进行 html 处理导致 `p>img` 丢失等问题 
+- 修复: 粘贴表格出现 RangeError: Invalid content for node tableCell: `<>` 错误的问题
+- 修复：粘贴时在某些情况下会粘贴在新行的问题
+- 文档: 修改基础配置 示例代码中的 pasteAsText 的层级。AiEditorOptions 类型下没有 pasteAsText
+
+
+
 ## v1.3.8 20250422:
 - fix: rollback BubbleMenuPlugin plugin to prevent floating menu errors
 - refactor: optimize the indentation display when pasting word
