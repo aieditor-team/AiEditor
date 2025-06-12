@@ -9,7 +9,7 @@
 ## 使用方法
 
 ```typescript
-new AiEditor({
+new AiEditorPro({
     element: "#aiEditor",
     comment: {
         enable: true,
@@ -79,7 +79,7 @@ new AiEditor({
 ```typescript
 const colors = ['#3f3f3f', '#938953', '#548dd4', '#95b3d7',
     '#d99694', '#c3d69b', '#b2a2c7', '#92cddc', '#fac08f'];
-new AiEditor({
+new AiEditorPro({
     element: "#aiEditor",
     comment: {
         enable: true,

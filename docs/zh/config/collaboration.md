@@ -9,7 +9,7 @@
 ## 使用方法
 
 ```typescript
-new AiEditor({
+new AiEditorPro({
     element: "#aiEditor",
     collaboration: {
         url: "ws://127.0.0.1:8080?somekey=value",
