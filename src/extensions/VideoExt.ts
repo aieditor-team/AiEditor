@@ -70,6 +70,26 @@ export const VideoExt = Node.create<VideoOptions>({
                 default: true,
                 parseHTML: (element) => `${element.getAttribute('controls') ?? 'true'}`,
             },
+            autoplay: {
+                default: null,
+                parseHTML: el => el.hasAttribute('autoplay') ? 'true' : null,
+                renderHTML: attrs => attrs.autoplay ? { autoplay: 'autoplay' } : {},
+            },
+            loop: {
+                default: null,
+                parseHTML: el => el.hasAttribute('loop') ? 'true' : null,
+                renderHTML: attrs => attrs.loop ? { loop: 'loop' } : {},
+            },
+            muted: {
+                default: null,
+                parseHTML: el => el.hasAttribute('muted') ? 'true' : null,
+                renderHTML: attrs => attrs.muted ? { muted: 'muted' } : {},
+            },
+            preload: {
+                default: null,
+                parseHTML: el => el.getAttribute('preload'),
+                renderHTML: attrs => attrs.preload ? { preload: attrs.preload } : {},
+            }
         };
     },
 
@@ -144,6 +164,10 @@ export const VideoExt = Node.create<VideoOptions>({
                                     poster: json.data.poster,
                                     width: json.data.width || 350,
                                     controls: json.data.controls || "true",
+                                    autoplay: json.data.autoplay,
+                                    loop: json.data.loop,
+                                    muted: json.data.muted,
+                                    preload: json.data.preload
                                 }))
                                 .setMeta(actionKey, {type: "remove", id}));
                         } else {
@@ -167,20 +191,48 @@ export const VideoExt = Node.create<VideoOptions>({
 
     addNodeView() {
         return (props) => {
-            const {src, width, align} = props.node.attrs;
+            const {src, width, align, controls, poster, autoplay, loop, muted, preload} = props.node.attrs;
             if (!this.editor.isEditable) {
                 const container = document.createElement('video');
-                container.setAttribute('controls', 'controls');
                 container.setAttribute('width', width);
                 container.classList.add(`align-${align}`);
                 const source = document.createElement('source');
                 source.setAttribute('src', src);
+                if(controls !== "false"){
+                    container.setAttribute('controls', 'controls');
+                }
+                if(poster){
+                    container.setAttribute('poster', poster);
+                }
+                if(autoplay){
+                    container.setAttribute('autoplay',"autoplay");
+                }
+                if(loop){
+                    container.setAttribute('loop',"loop");
+                }
+                if(muted){
+                    container.setAttribute('muted',"muted");
+                    container.muted = true
+                }
+                if(preload){
+                    container.setAttribute('preload',preload);
+                }
                 container.appendChild(source);
 
                 return {
                     dom: container
-                };
+                }
             }
+            const videoAttributes = [
+                `class="resize-obj"`,
+                controls !== "false" ? `controls="controls"` : '',
+                width ? `width="${width}"` : '',
+                poster ? `poster="${poster}"` : "",
+                autoplay ? `autoplay="autoplay"` : "",
+                loop ? `loop="loop"` : "",
+                muted ? `muted="muted"` : "",
+                preload ? `preload="${preload}"` : "",
+            ].filter(Boolean).join(' ');
             const container = document.createElement('div')
             container.classList.add(`align-${align}`)
             container.innerHTML = `
@@ -191,7 +243,7 @@ export const VideoExt = Node.create<VideoOptions>({
                           <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                           <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                       </div>
-                      <video controls="controls" width="${width}" class="resize-obj">
+                      <video ${videoAttributes}>
                           <source src="${src}">
                       </video>
                   </div>
