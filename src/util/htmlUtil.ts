@@ -238,7 +238,6 @@ export const organizeHTMLContent = (originalHtml: string) => {
         });
     }
 
-
     let html = '';
     doc.body.childNodes.forEach(node => {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -249,7 +248,7 @@ export const organizeHTMLContent = (originalHtml: string) => {
             //     html += element.innerHTML;
             // } else {
             // https://gitee.com/aieditor-team/aieditor/pulls/10
-            if (element.querySelector("img") && element.tagName !== "A") {
+            if (element.querySelector("img") && element.tagName !== "A" && element.tagName !== "TABLE") {
                 //return image element
                 html += element.innerHTML;
             } else {
