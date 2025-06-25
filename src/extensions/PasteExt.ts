@@ -30,7 +30,16 @@ export const PasteExt = Extension.create({
                         if (!event.clipboardData) return false;
                         let text = event.clipboardData.getData('text/plain');
                         let html = event.clipboardData.getData('text/html');
+
                         if (!html && text) {
+
+                            //判断当前是不是代码块获得焦点，如果是代码块，则将粘贴的文本插入到代码块中，不对粘贴的内容进行处理
+                            if (this.editor.isActive('codeBlock') || this.editor.isActive('code')) {
+                                const {state: {tr}, dispatch} = view;
+                                dispatch(tr.replaceSelectionWith(this.editor.schema.text(text)).scrollIntoView());
+                                return true;
+                            }
+
                             text = text.replace(/\n/g, '<br>')
                             const parseMarkdown = (this.editor as InnerEditor).parseMarkdown(text);
                             if (parseMarkdown) {
