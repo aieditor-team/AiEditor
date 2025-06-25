@@ -1,5 +1,24 @@
 # AiEditor ChangeLog
 
+
+## v1.4.0 20250625:
+- feat: Added video attributes autoplay, loop, muted, preload
+- feat: Upgraded related dependencies to the latest version
+- fix: Fixed the issue that the video does not display in read-only mode
+- fix: Fixed the issue that the video attributes poster and controls do not take effect
+- fix: In the code block, the issue that the pasted code does not display
+- fix: fixed when pasting images in a table, the table is lost when data is backfilled
+
+---
+- 新增：新增视频属性 autoplay, loop, muted, preload
+- 优化：升级相关依赖到最新版本
+- 修复：修复只读模式下，视频不显示的问题
+- 修复：修复视频属性 poster、controls 不生效问题
+- 修复：在代码块中，粘贴代码不显示的问题
+- 修复：在 table 内粘贴图片时，当数据回填的时候 table 丢失的问题
+
+
+
 ## v1.3.9 20250603:
 - fix: fixed paste in new line if pasteAsText options enable 
 - fix: fix: fixed Uncaught RangeError: Invalid content for node tableCell: `<>` 

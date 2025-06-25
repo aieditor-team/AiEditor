@@ -16231,7 +16231,7 @@ const Sl = (t) => {
       s += l.textContent;
     else if (l.nodeType === Node.ELEMENT_NODE) {
       const c = l;
-      c.querySelector("img") && c.tagName !== "A" ? s += c.innerHTML : s += c.outerHTML;
+      c.querySelector("img") && c.tagName !== "A" && c.tagName !== "TABLE" ? s += c.innerHTML : s += c.outerHTML;
     }
   }), s;
 }, wv = (t) => {
