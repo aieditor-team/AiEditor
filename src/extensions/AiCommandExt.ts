@@ -8,6 +8,7 @@ import {AiModelManager} from "../ai/AiModelManager.ts";
 import {AiEditorOptions, InnerEditor} from "../core/AiEditor.ts";
 import {DefaultAiMessageListener} from "../ai/core/DefaultAiMessageListener.ts";
 import {AiMenu} from "../ai/AiGlobalConfig.ts";
+import {getCursorTextBefore} from "../util/getCursorTextBefore.ts";
 
 export type AiCommandOptions = {
     HTMLAttributes?: Record<string, any>
@@ -137,7 +138,7 @@ export const AiCommandExt = Extension.create<AiCommandOptions>({
                         if (aiMenu.onClick) {
                             aiMenu.onClick(props.event, (editor as InnerEditor).aiEditor);
                         } else {
-                            const selectedText = editor.state.selection.$head.parent.textContent;
+                            const selectedText = getCursorTextBefore(editor) || "";
                             const useModelType = aiMenu.model!;
                             const aiModel = AiModelManager.get(aiMenu.model!);
                             if (aiModel) {
