@@ -114,6 +114,7 @@ export default defineConfig({
                             {text: '高亮块', link: '/zh/config/container'},
                             {text: '批注 💪', link: '/zh/config/comment'},
                             {text: '多人协作 💪', link: '/zh/config/collaboration'},
+                            {text: '高级替换 💪', link: '/zh/config/advancedReplace'},
                             {text: '国际化', link: '/zh/config/i18n'},
                             {text: '只读模式', link: '/zh/config/editable'},
                             {text: '自定义布局', link: '/zh/config/layout'},
