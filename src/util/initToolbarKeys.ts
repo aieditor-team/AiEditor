@@ -27,7 +27,7 @@ export const initToolbarKeys = (event: EditorEvents["create"],
                 // 设置不可编辑属性，并禁用点击和鼠标经过效果
                 menuButton.onEditableChange(!!options.editable)
 
-                if (toolbarKey !== "divider") {
+                if (toolbarKey !== "divider" && options.toolbarTipEnable !== false) {
                     const tip = t(toolbarKey) as string;
                     menuButton.setAttribute("data-title", tip);
                     menuButton.setAttribute("data-size", options.toolbarSize as string);

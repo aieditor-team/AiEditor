@@ -120,6 +120,7 @@ export type AiEditorOptions = {
     alwaysEnabledToolbarKeys?: string[],
     toolbarExcludeKeys?: DefaultToolbarKey[],
     toolbarSize?: 'small' | 'medium' | 'large',
+    toolbarTipEnable?: boolean,
     draggable?: boolean,
     htmlPasteConfig?: HtmlPasteConfig,
     codeBlock?: {
