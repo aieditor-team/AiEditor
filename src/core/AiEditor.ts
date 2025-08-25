@@ -545,11 +545,16 @@ export class AiEditor {
         return this;
     }
 
-    setContent(content: string) {
+    setContent(content: string, focus?: boolean) {
         if (typeof content === 'string') {
-          content = organizeHTMLContent(content);
+            content = organizeHTMLContent(content);
         }
-        this.focus().clear().insert(content);
+
+        if (focus === false) {
+            this.clear().insert(content);
+        } else {
+            this.focus().clear().insert(content);
+        }
         return this;
     }
 
