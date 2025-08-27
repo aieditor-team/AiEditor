@@ -73,22 +73,22 @@ export const VideoExt = Node.create<VideoOptions>({
             autoplay: {
                 default: null,
                 parseHTML: el => el.hasAttribute('autoplay') ? 'true' : null,
-                renderHTML: attrs => attrs.autoplay ? { autoplay: 'autoplay' } : {},
+                renderHTML: attrs => attrs.autoplay ? {autoplay: 'autoplay'} : {},
             },
             loop: {
                 default: null,
                 parseHTML: el => el.hasAttribute('loop') ? 'true' : null,
-                renderHTML: attrs => attrs.loop ? { loop: 'loop' } : {},
+                renderHTML: attrs => attrs.loop ? {loop: 'loop'} : {},
             },
             muted: {
                 default: null,
                 parseHTML: el => el.hasAttribute('muted') ? 'true' : null,
-                renderHTML: attrs => attrs.muted ? { muted: 'muted' } : {},
+                renderHTML: attrs => attrs.muted ? {muted: 'muted'} : {},
             },
             preload: {
                 default: null,
                 parseHTML: el => el.getAttribute('preload'),
-                renderHTML: attrs => attrs.preload ? { preload: attrs.preload } : {},
+                renderHTML: attrs => attrs.preload ? {preload: attrs.preload} : {},
             }
         };
     },
@@ -198,24 +198,24 @@ export const VideoExt = Node.create<VideoOptions>({
                 container.classList.add(`align-${align}`);
                 const source = document.createElement('source');
                 source.setAttribute('src', src);
-                if(controls !== "false"){
+                if (controls !== "false") {
                     container.setAttribute('controls', 'controls');
                 }
-                if(poster){
+                if (poster) {
                     container.setAttribute('poster', poster);
                 }
-                if(autoplay){
-                    container.setAttribute('autoplay',"autoplay");
+                if (autoplay) {
+                    container.setAttribute('autoplay', "autoplay");
                 }
-                if(loop){
-                    container.setAttribute('loop',"loop");
+                if (loop) {
+                    container.setAttribute('loop', "loop");
                 }
-                if(muted){
-                    container.setAttribute('muted',"muted");
+                if (muted) {
+                    container.setAttribute('muted', "muted");
                     container.muted = true
                 }
-                if(preload){
-                    container.setAttribute('preload',preload);
+                if (preload) {
+                    container.setAttribute('preload', preload);
                 }
                 container.appendChild(source);
 
@@ -248,7 +248,11 @@ export const VideoExt = Node.create<VideoOptions>({
                       </video>
                   </div>
                 `
-            resize(container, this.editor.view.dom, (attrs) => this.editor.commands.updateAttributes("video", attrs));
+            resize(this.editor,
+                props.node,
+                container,
+                (attrs) => this.editor.commands.updateAttributes("video", attrs)
+            );
             return {
                 dom: container,
             }

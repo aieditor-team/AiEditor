@@ -223,11 +223,11 @@ export const ImageExt = Image.extend<ImageOptions>({
                                 }
                             }
                         }).catch((err) => {
-                            const {state: {tr}, view} = this.editor!
-                            view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
-                            if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
-                                this.options.uploaderEvent.onError(file, err);
-                            }
+                        const {state: {tr}, view} = this.editor!
+                        view.dispatch(tr.setMeta(actionKey, {type: "remove", id}));
+                        if (this.options.uploaderEvent && this.options.uploaderEvent.onError) {
+                            this.options.uploaderEvent.onError(file, err);
+                        }
                     })
 
                     return true;
@@ -266,7 +266,13 @@ export const ImageExt = Image.extend<ImageOptions>({
                     <img alt="${alt}" src="${props.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
-                resize(container, this.editor.view.dom, (attrs) => this.editor.commands.updateAttributes("image", attrs));
+                resize(this.editor,
+                    props.node,
+                    container,
+                    (attrs) => this.editor.chain()
+                        .updateAttributes("image", attrs)
+                        .run(),
+                );
                 return {
                     dom: container,
                 }

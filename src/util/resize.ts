@@ -1,11 +1,18 @@
-export const resize = (container: HTMLDivElement
-    , root: HTMLElement
-    , updateAttrs: (data: any) => void) => {
+import {Editor} from "@tiptap/core";
 
+export const resize = (editor: Editor
+    , currentNode: any
+    , container: HTMLDivElement
+    , updateAttrs: (data: any) => void
+) => {
+
+    const root: HTMLElement = editor.view.dom;
     const imgRef = container.querySelector(".resize-obj") as HTMLElement,
         minWidth = 10;
 
-    let startX: number, imageWidth: number, startPosition: string,maxWidth:number;
+    let startX: number, imageWidth: number, startPosition: string, maxWidth: number;
+
+    let prevSelection: { from: number; to: number; } | null = null
 
 
     const onMousedown = (e: any) => {
@@ -19,6 +26,13 @@ export const resize = (container: HTMLDivElement
         imageWidth = Number(imgRef.getAttribute("data-with")) || imgRef.clientWidth;
         startPosition = e.target.getAttribute("data-position");
         maxWidth = (root.clientWidth - 100);
+
+        prevSelection = editor.state.selection;
+        editor.state.doc.descendants((n, pos) => {
+            if (currentNode === n) {
+                editor.commands.setNodeSelection(pos);
+            }
+        })
     };
 
 
@@ -53,6 +67,10 @@ export const resize = (container: HTMLDivElement
 
         const attrs = {width: Number(imgRef.getAttribute("data-width"))};
         updateAttrs(attrs)
+
+        if (prevSelection) {
+            editor.commands.setTextSelection(prevSelection);
+        }
     };
 
 
