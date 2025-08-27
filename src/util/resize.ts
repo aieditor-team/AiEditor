@@ -6,14 +6,12 @@ export const resize = (editor: Editor
     , updateAttrs: (data: any) => void
 ) => {
 
-    const root: HTMLElement = editor.view.dom;
+    // const root: HTMLElement = editor.view.dom;
+    const root: HTMLElement = document.body;
     const imgRef = container.querySelector(".resize-obj") as HTMLElement,
         minWidth = 10;
 
     let startX: number, imageWidth: number, startPosition: string, maxWidth: number;
-
-    let prevSelection: { from: number; to: number; } | null = null
-
 
     const onMousedown = (e: any) => {
         e.preventDefault();
@@ -26,13 +24,6 @@ export const resize = (editor: Editor
         imageWidth = Number(imgRef.getAttribute("data-with")) || imgRef.clientWidth;
         startPosition = e.target.getAttribute("data-position");
         maxWidth = (root.clientWidth - 100);
-
-        prevSelection = editor.state.selection;
-        editor.state.doc.descendants((n, pos) => {
-            if (currentNode === n) {
-                editor.commands.setNodeSelection(pos);
-            }
-        })
     };
 
 
@@ -65,6 +56,13 @@ export const resize = (editor: Editor
         root.removeEventListener('mouseup', onMouseup);
         root.removeEventListener('mouseleave', onMouseup);
 
+        const prevSelection = editor.state.selection;
+        editor.state.doc.descendants((n, pos) => {
+            if (currentNode === n) {
+                editor.commands.setNodeSelection(pos);
+            }
+        })
+
         const attrs = {width: Number(imgRef.getAttribute("data-width"))};
         updateAttrs(attrs)
 
@@ -77,6 +75,5 @@ export const resize = (editor: Editor
     for (let child of container.querySelector(".aie-resize")!.children) {
         child.addEventListener("mousedown", onMousedown)
     }
-
 
 }
