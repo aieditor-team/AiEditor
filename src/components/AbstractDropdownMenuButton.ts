@@ -1,6 +1,7 @@
 import {AbstractMenuButton} from "./AbstractMenuButton.ts";
 import tippy, {Instance} from "tippy.js";
 import {Editor, EditorEvents} from "@tiptap/core";
+import {AiEditorOptions} from "../core/AiEditor.ts";
 
 export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
     tippyInstance?: Instance;
@@ -73,7 +74,7 @@ export abstract class AbstractDropdownMenuButton<T> extends AbstractMenuButton {
                 }
             });
 
-            if (this.showItemsTip) {
+            if (this.showItemsTip && (this.editor?.options as AiEditorOptions).toolbarTipEnable !== false) {
                 const itemData = this.menuData[i] as any;
                 tippy(item, {
                     appendTo: () => this.closest(".aie-container")!,

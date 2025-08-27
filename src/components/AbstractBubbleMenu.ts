@@ -63,7 +63,7 @@ export abstract class AbstractBubbleMenu extends HTMLElement implements AiEditor
 
         this.querySelectorAll(".aie-bubble-menu-item").forEach((el, index) => {
             const title = this.items[index].title;
-            if (title) {
+            if (title && (this.editor?.options as AiEditorOptions).toolbarTipEnable !== false) {
                 tippy(el, {
                     appendTo: this.closest(".aie-container")!,
                     content: t(title),
