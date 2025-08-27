@@ -91,7 +91,7 @@ export const getExtensions = (editor: AiEditor, options: AiEditorOptions): Exten
             }),
             Link.configure({
                 openOnClick: false,
-                autolink: typeof options.link?.autolink === "undefined" ? true : options.link?.autolink,
+                autolink: !!options.link?.autolink,
                 HTMLAttributes: {
                     ref: options?.link?.rel,
                     class: options?.link?.class,
