@@ -176,7 +176,6 @@ export const organizeHTMLContent = (originalHtml: string) => {
     if (!originalHtml) return "";
     const parser = new DOMParser();
     const doc = parser.parseFromString(originalHtml, 'text/html');
-
     //change github style task list items to taskList
     const ulList = doc.querySelectorAll("ul");
     if (ulList && ulList.length > 0) {
@@ -199,7 +198,7 @@ export const organizeHTMLContent = (originalHtml: string) => {
                 const liList = ul.querySelectorAll("li");
                 liList.forEach(li => {
                     li.getAttributeNames().forEach(attr => {
-                        ul.removeAttribute(attr)
+                        li.removeAttribute(attr)
                     })
                     const checkbox = li.querySelector("input[type='checkbox']");
                     if (checkbox) {
@@ -219,16 +218,6 @@ export const organizeHTMLContent = (originalHtml: string) => {
         liNodeList.forEach(li => {
             if (!li.innerHTML) li.innerHTML = "<p></p>"
         })
-    }
-
-    const imgNodeList = doc.querySelectorAll('body>p>img');
-    if (imgNodeList.length > 0) {
-        const body = doc.querySelector('body')!;
-        for (const image of imgNodeList) {
-            const imageParent = image.parentNode;
-            const position = Array.prototype.indexOf.call(body.children, imageParent);
-            body.insertBefore(image, body.children[position]);
-        }
     }
 
     const tables = doc.querySelectorAll('table');
@@ -257,8 +246,82 @@ export const organizeHTMLContent = (originalHtml: string) => {
             // }
         }
     })
-    return html;
+
+    return transformMixedParagraphs(html);
 }
+
+
+/**
+ * 由于在 tiptap 中， p 段落只能有文本，所以如果有图片，则需要将图片转换为 img 元素
+ * <p>第一段文字<img src="1.jpg">第二段文字<img src="2.jpg">第三段文字<img src="3.jpg">最后一段文字</p>
+ * 转换为
+ * <p>第一段文字</p>
+ * <img src="1.jpg">
+ * <p>第二段文字</p>
+ * <img src="2.jpg">
+ * <p>第三段文字</p>
+ * <img src="3.jpg">
+ * <p>最后一段文字</p>
+ * @param html
+ */
+export const transformMixedParagraphs = (html: string): string => {
+    if (!html) return '';
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    //  找到文档中所有的 <p> 元素
+    const allParagraphs = doc.querySelectorAll('p');
+
+    allParagraphs.forEach(p => {
+        const nodes = Array.from(p.childNodes);
+        const parent = p.parentNode;
+        if (!parent) return;
+
+        // 如果这个 <p> 不包含 <img>，可以跳过（可选优化）
+        const hasImg = nodes.some(node =>
+            node.nodeType === Node.ELEMENT_NODE &&
+            (node as Element).tagName === 'IMG'
+        );
+        if (!hasImg) return;
+
+        const fragment = document.createDocumentFragment();
+        let currentP: HTMLElement | null = doc.createElement('p'); // 用于累积文本
+
+        nodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const textContent = node.textContent;
+                if (textContent && textContent.trim()) {
+                    currentP?.appendChild(node.cloneNode());
+                } else if (textContent?.length) {
+                    // 可选：保留空白字符作为单个空格
+                    if (!currentP?.lastChild) {
+                        currentP?.appendChild(doc.createTextNode(' '));
+                    }
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'IMG') {
+                // 遇到图片：先输出当前累积的 <p>
+                if (currentP && currentP.childNodes.length > 0) {
+                    fragment.appendChild(currentP);
+                }
+                // 重置为新 <p>
+                currentP = doc.createElement('p');
+                // 添加图片
+                fragment.appendChild(node.cloneNode(true));
+            }
+        });
+        // 处理最后剩下的文本
+        if (currentP && currentP.childNodes.length > 0) {
+            fragment.appendChild(currentP);
+        }
+
+        // 用 fragment 替换原来的 <p>
+        parent.replaceChild(fragment, p);
+    });
+
+    // 返回 body 内容
+    return doc.body.innerHTML;
+};
 
 
 export const cleanFirstParagraph = (html: string): string => {
