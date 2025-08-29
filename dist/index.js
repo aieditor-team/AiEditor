@@ -3,7 +3,7 @@ var ud = (t) => {
   throw TypeError(t);
 };
 var jE = (t, e, n) => e in t ? XE(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
-var M = (t, e, n) => jE(t, typeof e != "symbol" ? e + "" : e, n), dd = (t, e, n) => e.has(t) || ud("Cannot " + n);
+var w = (t, e, n) => jE(t, typeof e != "symbol" ? e + "" : e, n), dd = (t, e, n) => e.has(t) || ud("Cannot " + n);
 var Nr = (t, e, n) => (dd(t, e, "read from private field"), n ? n.call(t) : e.get(t)), pd = (t, e, n) => e.has(t) ? ud("Cannot add the same private member more than once") : e instanceof WeakSet ? e.add(t) : e.set(t, n), _d = (t, e, n, r) => (dd(t, e, "write to private field"), r ? r.call(t, n) : e.set(t, n), n);
 function Ze(t) {
   this.content = t;
@@ -8317,7 +8317,7 @@ function b0(t, e, n, r, i) {
   if (t.input.compositionPendingChanges = 0, e < 0) {
     let N = t.input.lastSelectionTime > Date.now() - 50 ? t.input.lastSelectionOrigin : null, x = Qc(t, N);
     if (x && !t.state.selection.eq(x)) {
-      if (rt && hn && t.input.lastKeyCode === 13 && Date.now() - 100 < t.input.lastKeyCodeTime && t.someProp("handleKeyDown", (z) => z(t, tr(13, "Enter"))))
+      if (rt && hn && t.input.lastKeyCode === 13 && Date.now() - 100 < t.input.lastKeyCodeTime && t.someProp("handleKeyDown", (Y) => Y(t, tr(13, "Enter"))))
         return;
       let P = t.state.tr.setSelection(x);
       N == "pointer" ? P.setMeta("pointer", !0) : N == "key" && P.scrollIntoView(), o && P.setMeta("composition", o), t.dispatch(P);
@@ -12157,10 +12157,10 @@ function jC(t) {
 class fe extends HTMLElement {
   constructor() {
     super();
-    M(this, "template", "");
-    M(this, "editor");
-    M(this, "options");
-    M(this, "alwaysEnabledButtons", ["fullscreen", "printer"]);
+    w(this, "template", "");
+    w(this, "editor");
+    w(this, "options");
+    w(this, "alwaysEnabledButtons", ["fullscreen", "printer"]);
   }
   registerClickListener() {
     this.addEventListener("click", () => {
@@ -12494,14 +12494,14 @@ function Cp(t) {
   }
   var P = Object.assign({
     position: s
-  }, c && C1), z = u === !0 ? y1({
+  }, c && C1), Y = u === !0 ? y1({
     x: _,
     y: f
   }, Nt(n)) : {
     x: _,
     y: f
   };
-  if (_ = z.x, f = z.y, l) {
+  if (_ = Y.x, f = Y.y, l) {
     var Z;
     return Object.assign({}, P, (Z = {}, Z[g] = S ? "0" : "", Z[b] = E ? "0" : "", Z.transform = (T.devicePixelRatio || 1) <= 1 ? "translate(" + _ + "px, " + f + "px)" : "translate3d(" + _ + "px, " + f + "px, 0)", Z));
   }
@@ -12717,10 +12717,10 @@ function ro(t, e) {
     right: N.right - T.right + E.right
   }, P = t.modifiersData.offset;
   if (p === Ei && P) {
-    var z = P[i];
+    var Y = P[i];
     Object.keys(x).forEach(function(Z) {
-      var q = [Ft, Pt].indexOf(Z) >= 0 ? 1 : -1, Y = [gt, Pt].indexOf(Z) >= 0 ? "y" : "x";
-      x[Z] += z[Y] * q;
+      var q = [Ft, Pt].indexOf(Z) >= 0 ? 1 : -1, V = [gt, Pt].indexOf(Z) >= 0 ? "y" : "x";
+      x[Z] += Y[V] * q;
     });
   }
   return x;
@@ -12764,25 +12764,25 @@ function F1(t) {
         allowedAutoPlacements: f
       }) : le);
     }, []), T = e.rects.reference, C = e.rects.popper, v = /* @__PURE__ */ new Map(), I = !0, N = g[0], x = 0; x < g.length; x++) {
-      var P = g[x], z = en(P), Z = ii(P) === ti, q = [gt, Pt].indexOf(z) >= 0, Y = q ? "width" : "height", O = ro(e, {
+      var P = g[x], Y = en(P), Z = ii(P) === ti, q = [gt, Pt].indexOf(Y) >= 0, V = q ? "width" : "height", O = ro(e, {
         placement: P,
         boundary: u,
         rootBoundary: d,
         altBoundary: p,
         padding: c
       }), y = q ? Z ? Ft : Et : Z ? Pt : gt;
-      T[Y] > C[Y] && (y = ca(y));
-      var R = ca(y), w = [];
-      if (o && w.push(O[z] <= 0), s && w.push(O[y] <= 0, O[R] <= 0), w.every(function(pe) {
+      T[V] > C[V] && (y = ca(y));
+      var R = ca(y), M = [];
+      if (o && M.push(O[Y] <= 0), s && M.push(O[y] <= 0, O[R] <= 0), M.every(function(pe) {
         return pe;
       })) {
         N = P, I = !1;
         break;
       }
-      v.set(P, w);
+      v.set(P, M);
     }
     if (I)
-      for (var B = m ? 3 : 1, V = function(le) {
+      for (var B = m ? 3 : 1, z = function(le) {
         var ge = g.find(function(We) {
           var we = v.get(We);
           if (we)
@@ -12793,7 +12793,7 @@ function F1(t) {
         if (ge)
           return N = ge, "break";
       }, X = B; X > 0; X--) {
-        var de = V(X);
+        var de = z(X);
         if (de === "break") break;
       }
     e.placement !== N && (e.modifiersData[r]._skip = !0, e.placement = N, e.reset = !0);
@@ -12906,23 +12906,23 @@ function W1(t) {
   } : Object.assign({
     mainAxis: 0,
     altAxis: 0
-  }, N), P = e.modifiersData.offset ? e.modifiersData.offset[e.placement] : null, z = {
+  }, N), P = e.modifiersData.offset ? e.modifiersData.offset[e.placement] : null, Y = {
     x: 0,
     y: 0
   };
   if (C) {
     if (o) {
-      var Z, q = g === "y" ? gt : Et, Y = g === "y" ? Pt : Ft, O = g === "y" ? "height" : "width", y = C[g], R = y + h[q], w = y - h[Y], B = _ ? -I[O] / 2 : 0, V = S === ti ? v[O] : I[O], X = S === ti ? -I[O] : -v[O], de = e.elements.arrow, pe = _ && de ? mu(de) : {
+      var Z, q = g === "y" ? gt : Et, V = g === "y" ? Pt : Ft, O = g === "y" ? "height" : "width", y = C[g], R = y + h[q], M = y - h[V], B = _ ? -I[O] / 2 : 0, z = S === ti ? v[O] : I[O], X = S === ti ? -I[O] : -v[O], de = e.elements.arrow, pe = _ && de ? mu(de) : {
         width: 0,
         height: 0
-      }, le = e.modifiersData["arrow#persistent"] ? e.modifiersData["arrow#persistent"].padding : ch(), ge = le[q], We = le[Y], we = Li(0, v[O], pe[O]), et = b ? v[O] / 2 - B - we - ge - x.mainAxis : V - we - ge - x.mainAxis, Ke = b ? -v[O] / 2 + B + we + We + x.mainAxis : X + we + We + x.mainAxis, st = e.elements.arrow && vo(e.elements.arrow), Ut = st ? g === "y" ? st.clientTop || 0 : st.clientLeft || 0 : 0, lt = (Z = P == null ? void 0 : P[g]) != null ? Z : 0, ct = y + et - lt - Ut, Pe = y + Ke - lt, ae = Li(_ ? Ra(R, ct) : R, y, _ ? ur(w, Pe) : w);
-      C[g] = ae, z[g] = ae - y;
+      }, le = e.modifiersData["arrow#persistent"] ? e.modifiersData["arrow#persistent"].padding : ch(), ge = le[q], We = le[V], we = Li(0, v[O], pe[O]), et = b ? v[O] / 2 - B - we - ge - x.mainAxis : z - we - ge - x.mainAxis, Ke = b ? -v[O] / 2 + B + we + We + x.mainAxis : X + we + We + x.mainAxis, st = e.elements.arrow && vo(e.elements.arrow), Ut = st ? g === "y" ? st.clientTop || 0 : st.clientLeft || 0 : 0, lt = (Z = P == null ? void 0 : P[g]) != null ? Z : 0, ct = y + et - lt - Ut, Pe = y + Ke - lt, ae = Li(_ ? Ra(R, ct) : R, y, _ ? ur(M, Pe) : M);
+      C[g] = ae, Y[g] = ae - y;
     }
     if (s) {
       var Qe, Q = g === "x" ? gt : Et, J = g === "x" ? Pt : Ft, Ee = C[T], ee = T === "y" ? "height" : "width", _e = Ee + h[Q], Fe = Ee - h[J], Ge = [gt, Et].indexOf(E) !== -1, Tt = (Qe = P == null ? void 0 : P[T]) != null ? Qe : 0, U = Ge ? _e : Ee - v[ee] - I[ee] - Tt + x.altAxis, A = Ge ? Ee + v[ee] + I[ee] - Tt - x.altAxis : Fe, k = _ && Ge ? g1(U, Ee, A) : Li(_ ? U : _e, Ee, _ ? A : Fe);
-      C[T] = k, z[T] = k - Ee;
+      C[T] = k, Y[T] = k - Ee;
     }
-    e.modifiersData[r] = z;
+    e.modifiersData[r] = Y;
   }
 }
 const K1 = {
@@ -13538,7 +13538,7 @@ function My(t, e) {
   function P() {
     return x()[0] === "hold";
   }
-  function z() {
+  function Y() {
     var D;
     return !!((D = g.props.render) != null && D.$$tippy);
   }
@@ -13549,7 +13549,7 @@ function My(t, e) {
     var D = Z().parentNode;
     return D ? gy(D) : document;
   }
-  function Y() {
+  function V() {
     return Tc(C);
   }
   function O(D) {
@@ -13566,7 +13566,7 @@ function My(t, e) {
       (be = g.props)[D].apply(be, W);
     }
   }
-  function w() {
+  function M() {
     var D = g.props.aria;
     if (D.content) {
       var W = "aria-" + D.content, ie = C.id, be = Br(g.props.triggerTarget || t);
@@ -13589,7 +13589,7 @@ function My(t, e) {
       });
     }
   }
-  function V() {
+  function z() {
     q().removeEventListener("mousemove", m), Go = Go.filter(function(D) {
       return D !== m;
     });
@@ -13634,7 +13634,7 @@ function My(t, e) {
     et(D, W);
   }
   function et(D, W) {
-    var ie = Y().box;
+    var ie = V().box;
     function be(he) {
       he.target === ie && (fl(ie, "remove", be), W());
     }
@@ -13700,7 +13700,7 @@ function My(t, e) {
           props: n
         } : null;
       }).filter(Boolean);
-      Ey(be, D) && (V(), Fe(D));
+      Ey(be, D) && (z(), Fe(D));
     }
   }
   function Pe(D) {
@@ -13721,7 +13721,7 @@ function My(t, e) {
   }
   function Q() {
     J();
-    var D = g.props, W = D.popperOptions, ie = D.placement, be = D.offset, he = D.getReferenceClientRect, tt = D.moveTransition, Ct = z() ? Tc(C).arrow : null, Zn = he ? {
+    var D = g.props, W = D.popperOptions, ie = D.placement, be = D.offset, he = D.getReferenceClientRect, tt = D.moveTransition, Ct = Y() ? Tc(C).arrow : null, Zn = he ? {
       getBoundingClientRect: he,
       contextElement: he.contextElement || Z()
     } : t, Ws = {
@@ -13731,8 +13731,8 @@ function My(t, e) {
       requires: ["computeStyles"],
       fn: function(fi) {
         var Xn = fi.state;
-        if (z()) {
-          var nd = Y(), Do = nd.box;
+        if (Y()) {
+          var nd = V(), Do = nd.box;
           ["placement", "reference-hidden", "escaped"].forEach(function(hi) {
             hi === "placement" ? Do.setAttribute("data-placement", Xn.placement) : Xn.attributes.popper["data-popper-" + hi] ? Do.setAttribute("data-" + hi, "") : Do.removeAttribute("data-" + hi);
           }), Xn.attributes.popper = {};
@@ -13764,7 +13764,7 @@ function My(t, e) {
         adaptive: !tt
       }
     }, Ws];
-    z() && Ct && Tn.push({
+    Y() && Ct && Tn.push({
       name: "arrow",
       options: {
         element: Ct,
@@ -13828,7 +13828,7 @@ function My(t, e) {
       var W = g.props, ie = Pp(t, Object.assign({}, W, Dp(D), {
         ignoreAttributes: !0
       }));
-      g.props = ie, st(), W.interactiveDebounce !== ie.interactiveDebounce && (V(), m = Ip(ct, ie.interactiveDebounce)), W.triggerTarget && !ie.triggerTarget ? Br(W.triggerTarget).forEach(function(be) {
+      g.props = ie, st(), W.interactiveDebounce !== ie.interactiveDebounce && (z(), m = Ip(ct, ie.interactiveDebounce)), W.triggerTarget && !ie.triggerTarget ? Br(W.triggerTarget).forEach(function(be) {
         be.removeAttribute("aria-expanded");
       }) : ie.triggerTarget && t.removeAttribute("aria-expanded"), B(), y(), v && v(W, ie), g.popperInstance && (Q(), ee().forEach(function(be) {
         requestAnimationFrame(be._tippy.popperInstance.forceUpdate);
@@ -13844,18 +13844,18 @@ function My(t, e) {
     Dt.NODE_ENV !== "production" && mn(g.state.isDestroyed, xr("show"));
     var D = g.state.isVisible, W = g.state.isDestroyed, ie = !g.state.isEnabled, be = Qt.isTouch && !g.props.touch, he = _l(g.props.duration, 0, vt.duration);
     if (!(D || W || ie || be) && !Z().hasAttribute("disabled") && (R("onShow", [g], !1), g.props.onShow(g) !== !1)) {
-      if (g.state.isVisible = !0, z() && (C.style.visibility = "visible"), y(), le(), g.state.isMounted || (C.style.transition = "none"), z()) {
-        var tt = Y(), Ct = tt.box, Zn = tt.content;
+      if (g.state.isVisible = !0, Y() && (C.style.visibility = "visible"), y(), le(), g.state.isMounted || (C.style.transition = "none"), Y()) {
+        var tt = V(), Ct = tt.box, Zn = tt.content;
         ml([Ct, Zn], 0);
       }
       p = function() {
         var Tn;
         if (!(!g.state.isVisible || c)) {
-          if (c = !0, C.offsetHeight, C.style.transition = g.props.moveTransition, z() && g.props.animation) {
-            var xo = Y(), fi = xo.box, Xn = xo.content;
+          if (c = !0, C.offsetHeight, C.style.transition = g.props.moveTransition, Y() && g.props.animation) {
+            var xo = V(), fi = xo.box, Xn = xo.content;
             ml([fi, Xn], he), wp([fi, Xn], "visible");
           }
-          w(), B(), xp(hl, g), (Tn = g.popperInstance) == null || Tn.forceUpdate(), R("onMount", [g]), g.props.animation && z() && we(he, function() {
+          M(), B(), xp(hl, g), (Tn = g.popperInstance) == null || Tn.forceUpdate(), R("onMount", [g]), g.props.animation && Y() && we(he, function() {
             g.state.isShown = !0, R("onShown", [g]);
           });
         }
@@ -13866,11 +13866,11 @@ function My(t, e) {
     Dt.NODE_ENV !== "production" && mn(g.state.isDestroyed, xr("hide"));
     var D = !g.state.isVisible, W = g.state.isDestroyed, ie = !g.state.isEnabled, be = _l(g.props.duration, 1, vt.duration);
     if (!(D || W || ie) && (R("onHide", [g], !1), g.props.onHide(g) !== !1)) {
-      if (g.state.isVisible = !1, g.state.isShown = !1, c = !1, a = !1, z() && (C.style.visibility = "hidden"), V(), ge(), y(!0), z()) {
-        var he = Y(), tt = he.box, Ct = he.content;
+      if (g.state.isVisible = !1, g.state.isShown = !1, c = !1, a = !1, Y() && (C.style.visibility = "hidden"), z(), ge(), y(!0), Y()) {
+        var he = V(), tt = he.box, Ct = he.content;
         g.props.animation && (ml([tt, Ct], be), wp([tt, Ct], "hidden"));
       }
-      w(), B(), g.props.animation ? z() && We(be, g.unmount) : g.unmount();
+      M(), B(), g.props.animation ? Y() && We(be, g.unmount) : g.unmount();
     }
   }
   function Ce(D) {
@@ -13935,17 +13935,17 @@ xe.setDefaultProps({
 class pi extends fe {
   constructor() {
     super(...arguments);
-    M(this, "tippyInstance");
-    M(this, "tippyEl");
-    M(this, "textEl");
-    M(this, "menuData", []);
-    M(this, "menuTextWidth", "fit-content");
-    M(this, "defaultMenuIndex", 0);
-    M(this, "refreshMenuText", !0);
-    M(this, "width", "fit-content");
-    M(this, "dropDivWith", "fit-content");
-    M(this, "dropDivHeight", "fit-content");
-    M(this, "showItemsTip", !1);
+    w(this, "tippyInstance");
+    w(this, "tippyEl");
+    w(this, "textEl");
+    w(this, "menuData", []);
+    w(this, "menuTextWidth", "fit-content");
+    w(this, "defaultMenuIndex", 0);
+    w(this, "refreshMenuText", !0);
+    w(this, "width", "fit-content");
+    w(this, "dropDivWith", "fit-content");
+    w(this, "dropDivHeight", "fit-content");
+    w(this, "showItemsTip", !1);
   }
   renderTemplate() {
     this.template = `
@@ -13974,29 +13974,30 @@ class pi extends fe {
     });
   }
   createMenuElement() {
+    var r;
     const n = document.createElement("div");
     n.style.height = this.dropDivHeight, n.style.width = this.dropDivWith, n.classList.add("aie-dropdown-container");
-    for (let r = 0; r < this.menuData.length; r++) {
-      const i = document.createElement("div");
-      if (i.classList.add("aie-dropdown-item"), i.innerHTML = `
-            <div class="red-dot-container" id="item${r}">
-                <div class="${r == this.defaultMenuIndex ? "red-dot" : ""}"></div>
+    for (let i = 0; i < this.menuData.length; i++) {
+      const o = document.createElement("div");
+      if (o.classList.add("aie-dropdown-item"), o.innerHTML = `
+            <div class="red-dot-container" id="item${i}">
+                <div class="${i == this.defaultMenuIndex ? "red-dot" : ""}"></div>
             </div>
-            <div class="text">${this.onDropdownItemRender(r)}</div>
-            `, i.addEventListener("click", (o) => {
-        const a = this.menuData[r];
-        a.onClick ? a.onClick(o, this.editor.aiEditor) && this.tippyInstance.hide() : (this.onDropdownItemClick(r), this.tippyInstance.hide());
-      }), this.showItemsTip) {
-        const o = this.menuData[r];
-        xe(i, {
+            <div class="text">${this.onDropdownItemRender(i)}</div>
+            `, o.addEventListener("click", (a) => {
+        const s = this.menuData[i];
+        s.onClick ? s.onClick(a, this.editor.aiEditor) && this.tippyInstance.hide() : (this.onDropdownItemClick(i), this.tippyInstance.hide());
+      }), this.showItemsTip && ((r = this.editor) == null ? void 0 : r.options).toolbarTipEnable !== !1) {
+        const a = this.menuData[i];
+        xe(o, {
           appendTo: () => this.closest(".aie-container"),
-          content: o.tip || o.title,
+          content: a.tip || a.title,
           theme: "aietip",
           arrow: !0,
           placement: "right"
         });
       }
-      n.appendChild(i);
+      n.appendChild(o);
     }
     return this.tippyEl = n, n;
   }
@@ -14413,22 +14414,22 @@ class xa extends Ms {
           });
           R && R.res && this.logger.warn("Seems the loaded translations were in flat JSON format instead of nested. Either set keySeparator: false on init or make sure your translations are published in nested format.");
         }
-        let Y = [];
+        let V = [];
         const O = this.languageUtils.getFallbackCodes(this.options.fallbackLng, n.lng || this.language);
         if (this.options.saveMissingTo === "fallback" && O && O[0])
           for (let R = 0; R < O.length; R++)
-            Y.push(O[R]);
-        else this.options.saveMissingTo === "all" ? Y = this.languageUtils.toResolveHierarchy(n.lng || this.language) : Y.push(n.lng || this.language);
-        const y = (R, w, B) => {
-          const V = v && B !== p ? B : Z;
-          this.options.missingKeyHandler ? this.options.missingKeyHandler(R, l, w, V, q, n) : this.backendConnector && this.backendConnector.saveMissing && this.backendConnector.saveMissing(R, l, w, V, q, n), this.emit("missingKey", R, l, w, p);
+            V.push(O[R]);
+        else this.options.saveMissingTo === "all" ? V = this.languageUtils.toResolveHierarchy(n.lng || this.language) : V.push(n.lng || this.language);
+        const y = (R, M, B) => {
+          const z = v && B !== p ? B : Z;
+          this.options.missingKeyHandler ? this.options.missingKeyHandler(R, l, M, z, q, n) : this.backendConnector && this.backendConnector.saveMissing && this.backendConnector.saveMissing(R, l, M, z, q, n), this.emit("missingKey", R, l, M, p);
         };
-        this.options.saveMissing && (this.options.saveMissingPlurals && C ? Y.forEach((R) => {
-          const w = this.pluralResolver.getSuffixes(R, n);
-          x && n[`defaultValue${this.options.pluralSeparator}zero`] && w.indexOf(`${this.options.pluralSeparator}zero`) < 0 && w.push(`${this.options.pluralSeparator}zero`), w.forEach((B) => {
+        this.options.saveMissing && (this.options.saveMissingPlurals && C ? V.forEach((R) => {
+          const M = this.pluralResolver.getSuffixes(R, n);
+          x && n[`defaultValue${this.options.pluralSeparator}zero`] && M.indexOf(`${this.options.pluralSeparator}zero`) < 0 && M.push(`${this.options.pluralSeparator}zero`), M.forEach((B) => {
             y([R], a + B, n[`defaultValue${B}`] || P);
           });
-        }) : y(Y, a, P));
+        }) : y(V, a, P));
       }
       p = this.extendTranslation(p, e, n, d, r), T && p === a && this.options.appendNamespaceToMissingKey && (p = `${l}:${a}`), (T || g) && this.options.parseMissingKeyHandler && (this.options.compatibilityAPI !== "v1" ? p = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? `${l}:${a}` : a, g ? p : void 0) : p = this.options.parseMissingKeyHandler(p));
     }
@@ -15579,7 +15580,7 @@ const sv = [
 class lv extends pi {
   constructor() {
     super();
-    M(this, "defaultValue", 14);
+    w(this, "defaultValue", 14);
   }
   onCreate(n, r) {
     var i, o;
@@ -15762,12 +15763,12 @@ const Nh = [
 class Ih extends fe {
   constructor() {
     super();
-    M(this, "historyColorsKey", "historyColors");
-    M(this, "historyColors", []);
-    M(this, "iconSvg");
-    M(this, "menuColorEL");
-    M(this, "onColorItemClick");
-    M(this, "onDefaultColorClick");
+    w(this, "historyColorsKey", "historyColors");
+    w(this, "historyColors", []);
+    w(this, "iconSvg");
+    w(this, "menuColorEL");
+    w(this, "onColorItemClick");
+    w(this, "onDefaultColorClick");
   }
   connectedCallback() {
     this.template = `
@@ -15963,13 +15964,13 @@ class yv extends pi {
 }
 class Ro {
   constructor() {
-    M(this, "tippyInstance");
-    M(this, "content");
-    M(this, "cancelText");
-    M(this, "confirmText");
-    M(this, "onConfirmClickFunc");
-    M(this, "onCancelClickFunc");
-    M(this, "onShowFunc");
+    w(this, "tippyInstance");
+    w(this, "content");
+    w(this, "cancelText");
+    w(this, "confirmText");
+    w(this, "onConfirmClickFunc");
+    w(this, "onCancelClickFunc");
+    w(this, "onShowFunc");
   }
   setContent(e) {
     this.content = e;
@@ -16187,54 +16188,63 @@ const Sl = (t) => {
 }, Bi = (t) => {
   if (!t) return "";
   const n = new DOMParser().parseFromString(t, "text/html"), r = n.querySelectorAll("ul");
-  r && r.length > 0 && r.forEach((l) => {
-    var c;
-    if ((c = l.getAttribute("class")) != null && c.includes("task-list")) {
-      l.getAttributeNames().forEach((p) => {
-        l.removeAttribute(p);
-      }), l.setAttribute("data-type", "taskList");
-      const u = l.firstElementChild;
-      if ((u == null ? void 0 : u.tagName) === "P") {
-        const p = document.createDocumentFragment();
-        u.childNodes.forEach((_) => {
-          p.append(_.cloneNode(!0));
-        }), u.replaceWith(p);
+  r && r.length > 0 && r.forEach((s) => {
+    var l;
+    if ((l = s.getAttribute("class")) != null && l.includes("task-list")) {
+      s.getAttributeNames().forEach((d) => {
+        s.removeAttribute(d);
+      }), s.setAttribute("data-type", "taskList");
+      const c = s.firstElementChild;
+      if ((c == null ? void 0 : c.tagName) === "P") {
+        const d = document.createDocumentFragment();
+        c.childNodes.forEach((p) => {
+          d.append(p.cloneNode(!0));
+        }), c.replaceWith(d);
       }
-      l.querySelectorAll("li").forEach((p) => {
-        p.getAttributeNames().forEach((m) => {
-          l.removeAttribute(m);
+      s.querySelectorAll("li").forEach((d) => {
+        d.getAttributeNames().forEach((_) => {
+          d.removeAttribute(_);
         });
-        const _ = p.querySelector("input[type='checkbox']");
-        _ && (p.setAttribute("data-type", "taskItem"), p.setAttribute("data-checked", _.hasAttribute("checked") ? "true" : "false"));
+        const p = d.querySelector("input[type='checkbox']");
+        p && (d.setAttribute("data-type", "taskItem"), d.setAttribute("data-checked", p.hasAttribute("checked") ? "true" : "false"));
       });
     }
   });
   const i = n.querySelectorAll("li");
-  i && i.length > 0 && i.forEach((l) => {
-    l.innerHTML || (l.innerHTML = "<p></p>");
+  i && i.length > 0 && i.forEach((s) => {
+    s.innerHTML || (s.innerHTML = "<p></p>");
   });
-  const o = n.querySelectorAll("body>p>img");
-  if (o.length > 0) {
-    const l = n.querySelector("body");
-    for (const c of o) {
-      const u = c.parentNode, d = Array.prototype.indexOf.call(l.children, u);
-      l.insertBefore(c, l.children[d]);
-    }
-  }
-  const a = n.querySelectorAll("table");
-  a.length > 0 && a.forEach((l) => {
-    bu(l);
+  const o = n.querySelectorAll("table");
+  o.length > 0 && o.forEach((s) => {
+    bu(s);
   });
-  let s = "";
-  return n.body.childNodes.forEach((l) => {
-    if (l.nodeType === Node.TEXT_NODE)
-      s += l.textContent;
-    else if (l.nodeType === Node.ELEMENT_NODE) {
-      const c = l;
-      c.querySelector("img") && c.tagName !== "A" && c.tagName !== "TABLE" ? s += c.innerHTML : s += c.outerHTML;
+  let a = "";
+  return n.body.childNodes.forEach((s) => {
+    if (s.nodeType === Node.TEXT_NODE)
+      a += s.textContent;
+    else if (s.nodeType === Node.ELEMENT_NODE) {
+      const l = s;
+      l.querySelector("img") && l.tagName !== "A" && l.tagName !== "TABLE" ? a += l.innerHTML : a += l.outerHTML;
     }
-  }), s;
+  }), wv(a);
 }, wv = (t) => {
+  if (!t) return "";
+  const n = new DOMParser().parseFromString(t, "text/html");
+  return n.querySelectorAll("p").forEach((i) => {
+    const o = Array.from(i.childNodes), a = i.parentNode;
+    if (!a || !o.some(
+      (u) => u.nodeType === Node.ELEMENT_NODE && u.tagName === "IMG"
+    )) return;
+    const l = document.createDocumentFragment();
+    let c = n.createElement("p");
+    o.forEach((u) => {
+      if (u.nodeType === Node.TEXT_NODE) {
+        const d = u.textContent;
+        d && d.trim() ? c == null || c.appendChild(u.cloneNode()) : d != null && d.length && (c != null && c.lastChild || c == null || c.appendChild(n.createTextNode(" ")));
+      } else u.nodeType === Node.ELEMENT_NODE && u.tagName === "IMG" && (c && c.childNodes.length > 0 && l.appendChild(c), c = n.createElement("p"), l.appendChild(u.cloneNode(!0)));
+    }), c && c.childNodes.length > 0 && l.appendChild(c), a.replaceChild(l, i);
+  }), n.body.innerHTML;
+}, Mv = (t) => {
   if (!t) return "";
   const n = new DOMParser().parseFromString(t.trim(), "text/html");
   let r = "";
@@ -16246,7 +16256,7 @@ const Sl = (t) => {
       o === n.body.firstChild && o.tagName === "P" ? r += o.innerHTML : r += o.outerHTML;
     }
   }), r;
-}, Mv = (t) => {
+}, Lv = (t) => {
   const n = new DOMParser().parseFromString(t, "text/html");
   return n.querySelectorAll("table").forEach((i) => {
     bu(i);
@@ -16270,7 +16280,7 @@ const Sl = (t) => {
     }
   }
 };
-class Lv extends fe {
+class kv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16295,7 +16305,7 @@ class Lv extends fe {
     }), e.setTrigger(this.querySelector("div"), "bottom");
   }
 }
-class kv extends fe {
+class Pv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16311,14 +16321,14 @@ class kv extends fe {
     return e.isActive("taskList");
   }
 }
-const Pv = ["1.0", "1.25", "1.5", "2.0", "2.5", "3.0"];
-class Fv extends pi {
+const Fv = ["1.0", "1.25", "1.5", "2.0", "2.5", "3.0"];
+class Bv extends pi {
   constructor() {
     super(), this.refreshMenuText = !1, this.dropDivWith = "70px", this.width = "36px", this.menuTextWidth = "20px";
   }
   onCreate(e, n) {
     var r;
-    super.onCreate(e, n), this.menuData = ((r = n.lineHeight) == null ? void 0 : r.values) || Pv;
+    super.onCreate(e, n), this.menuData = ((r = n.lineHeight) == null ? void 0 : r.values) || Fv;
   }
   onDropdownActive(e, n) {
     let r = null;
@@ -16339,7 +16349,7 @@ class Fv extends pi {
          `;
   }
 }
-class Bv extends fe {
+class Uv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16355,10 +16365,10 @@ class Bv extends fe {
     return e.isActive("blockquote");
   }
 }
-let Uv = class extends fe {
+let Hv = class extends fe {
   constructor() {
     super();
-    M(this, "fileInput");
+    w(this, "fileInput");
     this.template = `
         <div>
         <input type="file" accept="image/*" multiple  style="display: none">
@@ -16384,10 +16394,10 @@ let Uv = class extends fe {
     }));
   }
 };
-class Hv extends fe {
+class Gv extends fe {
   constructor() {
     super();
-    M(this, "fileInput");
+    w(this, "fileInput");
     this.template = `
         <div>
         <input type="file" accept="video/*" style="display: none">
@@ -16412,7 +16422,7 @@ class Hv extends fe {
     (i = (r = this.options) == null ? void 0 : r.video) != null && i.customMenuInvoke ? this.options.video.customMenuInvoke(this.editor.aiEditor) : (o = this.fileInput) == null || o.click();
   }
 }
-let Gv = class extends fe {
+let Vv = class extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16427,7 +16437,7 @@ let Gv = class extends fe {
   onActive(e) {
     return e.isActive("code");
   }
-}, Vv = class extends fe {
+}, Yv = class extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16443,7 +16453,7 @@ let Gv = class extends fe {
     return e.isActive("codeBlock");
   }
 };
-class Yv extends fe {
+class zv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16456,7 +16466,7 @@ class Yv extends fe {
     e.unsetAllMarks();
   }
 }
-class zv extends fe {
+class $v extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16469,10 +16479,10 @@ class zv extends fe {
     e.setHorizontalRule();
   }
 }
-let $v = class extends fe {
+let qv = class extends fe {
   constructor() {
     super();
-    M(this, "instance");
+    w(this, "instance");
     this.template = `
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 10H10V14H14V10ZM16 10V14H19V10H16ZM14 19V16H10V19H14ZM16 19H19V16H16V19ZM14 5H10V8H14V5ZM16 5V8H19V5H16ZM8 10H5V14H8V10ZM8 19V16H5V19H8ZM8 5H5V8H8V5ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3Z"></path></svg>
@@ -16526,7 +16536,7 @@ let $v = class extends fe {
     }), n;
   }
 };
-class qv extends fe {
+class Wv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16539,10 +16549,10 @@ class qv extends fe {
     e.setHardBreak();
   }
 }
-class Wv extends fe {
+class Kv extends fe {
   constructor() {
     super();
-    M(this, "fileInput");
+    w(this, "fileInput");
     this.template = `
         <div>
         <input type="file" style="display: none">
@@ -16567,12 +16577,12 @@ class Wv extends fe {
     (i = (r = this.options) == null ? void 0 : r.attachment) != null && i.customMenuInvoke ? this.options.attachment.customMenuInvoke(this.editor.aiEditor) : (o = this.fileInput) == null || o.click();
   }
 }
-class Kv extends fe {
+class Qv extends fe {
   constructor() {
     super();
-    M(this, "fullscreenSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3V5H4V9H2V3H8ZM2 21V15H4V19H8V21H2ZM22 21H16V19H20V15H22V21ZM22 9H20V5H16V3H22V9Z"></path></svg>');
-    M(this, "fullscreenExitSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 7H22V9H16V3H18V7ZM8 9H2V7H6V3H8V9ZM18 17V21H16V15H22V17H18ZM8 15V21H6V17H2V15H8Z"></path></svg>');
-    M(this, "isFullscreen", !1);
+    w(this, "fullscreenSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3V5H4V9H2V3H8ZM2 21V15H4V19H8V21H2ZM22 21H16V19H20V15H22V21ZM22 9H20V5H16V3H22V9Z"></path></svg>');
+    w(this, "fullscreenExitSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 7H22V9H16V3H18V7ZM8 9H2V7H6V3H8V9ZM18 17V21H16V15H22V17H18ZM8 15V21H6V17H2V15H8Z"></path></svg>');
+    w(this, "isFullscreen", !1);
     this.template = `
         <div>
         ${this.fullscreenSvg}
@@ -16586,7 +16596,7 @@ class Kv extends fe {
     this.isFullscreen ? (r.style.height = "100%", r.style.width = "", r.style.background = "", r.style.position = "", r.style.top = "", r.style.left = "", r.style.zIndex = "") : (r.style.height = "calc(100vh - 2px)", r.style.width = "calc(100% - 2px)", r.style.position = "fixed", r.style.top = "0", r.style.left = "0", r.style.zIndex = "9999"), this.isFullscreen = !this.isFullscreen, this.querySelector("div").innerHTML = this.isFullscreen ? this.fullscreenExitSvg : this.fullscreenSvg, (i = this.options) != null && i.onFullscreen && this.options.onFullscreen(this.isFullscreen);
   }
 }
-class Qv extends fe {
+class Zv extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -16761,11 +16771,11 @@ const Zp = [
   "💨",
   "💤"
 ];
-class Zv extends fe {
+class Xv extends fe {
   constructor() {
     super();
-    M(this, "emojis", Zp);
-    M(this, "tippy");
+    w(this, "emojis", Zp);
+    w(this, "tippy");
     this.template = `
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM8 13H16C16 15.2091 14.2091 17 12 17C9.79086 17 8 15.2091 8 13ZM8 11C7.17157 11 6.5 10.3284 6.5 9.5C6.5 8.67157 7.17157 8 8 8C8.82843 8 9.5 8.67157 9.5 9.5C9.5 10.3284 8.82843 11 8 11ZM16 11C15.1716 11 14.5 10.3284 14.5 9.5C14.5 8.67157 15.1716 8 16 8C16.8284 8 17.5 8.67157 17.5 9.5C17.5 10.3284 16.8284 11 16 11Z"></path></svg>
@@ -16805,7 +16815,7 @@ class Zv extends fe {
     return n.toolbarSize === "large" ? 30 : n.toolbarSize === "medium" ? 25 : 20;
   }
 }
-class Xv extends fe {
+class jv extends fe {
   constructor() {
     super(), this.template = '<div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 4.99658V7.99658H19V4.99658H5ZM4 2.99658H20C20.5523 2.99658 21 3.4443 21 3.99658V8.99658C21 9.54887 20.5523 9.99658 20 9.99658H4C3.44772 9.99658 3 9.54887 3 8.99658V3.99658C3 3.4443 3.44772 2.99658 4 2.99658ZM6 11.9966H12C12.5523 11.9966 13 12.4443 13 12.9966V15.9966H14V21.9966H10V15.9966H11V13.9966H5C4.44772 13.9966 4 13.5489 4 12.9966V10.9966H6V11.9966ZM17.7322 13.7288L19.5 11.961L21.2678 13.7288C22.2441 14.7051 22.2441 16.288 21.2678 17.2643C20.2915 18.2407 18.7085 18.2407 17.7322 17.2643C16.7559 16.288 16.7559 14.7051 17.7322 13.7288Z"></path></svg></div>', this.registerClickListener();
   }
@@ -16817,10 +16827,10 @@ class Xv extends fe {
 }
 class Oo {
   constructor(e, n, r) {
-    M(this, "editor");
-    M(this, "globalConfig");
-    M(this, "aiModelName");
-    M(this, "aiModelConfig");
+    w(this, "editor");
+    w(this, "globalConfig");
+    w(this, "aiModelName");
+    w(this, "aiModelConfig");
     this.editor = e, this.globalConfig = n, this.aiModelName = r, this.aiModelConfig = n.models[r];
   }
   chatWithPayload(e, n) {
@@ -16844,12 +16854,12 @@ class Oo {
 }
 class xh {
   constructor(e, n) {
-    M(this, "isStop", !1);
-    M(this, "url");
-    M(this, "webSocket");
-    M(this, "isOpen", !1);
-    M(this, "payload");
-    M(this, "listener");
+    w(this, "isStop", !1);
+    w(this, "url");
+    w(this, "webSocket");
+    w(this, "isOpen", !1);
+    w(this, "payload");
+    w(this, "listener");
     this.url = e, this.listener = n;
   }
   start(e) {
@@ -16878,7 +16888,7 @@ var kn = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
 function Ls(t) {
   return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
 }
-function jv(t) {
+function Jv(t) {
   if (t.__esModule) return t;
   var e = t.default;
   if (typeof e == "function") {
@@ -16898,14 +16908,14 @@ function jv(t) {
   }), n;
 }
 var Dh = { exports: {} };
-function Jv(t) {
+function eR(t) {
   throw new Error('Could not dynamically require "' + t + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
 }
 var bl = { exports: {} };
-const eR = {}, tR = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const tR = {}, nR = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: eR
-}, Symbol.toStringTag, { value: "Module" })), nR = /* @__PURE__ */ jv(tR);
+  default: tR
+}, Symbol.toStringTag, { value: "Module" })), rR = /* @__PURE__ */ Jv(nR);
 var Xp;
 function ks() {
   return Xp || (Xp = 1, function(t, e) {
@@ -16914,9 +16924,9 @@ function ks() {
     })(kn, function() {
       var n = n || function(r, i) {
         var o;
-        if (typeof window < "u" && window.crypto && (o = window.crypto), typeof self < "u" && self.crypto && (o = self.crypto), typeof globalThis < "u" && globalThis.crypto && (o = globalThis.crypto), !o && typeof window < "u" && window.msCrypto && (o = window.msCrypto), !o && typeof kn < "u" && kn.crypto && (o = kn.crypto), !o && typeof Jv == "function")
+        if (typeof window < "u" && window.crypto && (o = window.crypto), typeof self < "u" && self.crypto && (o = self.crypto), typeof globalThis < "u" && globalThis.crypto && (o = globalThis.crypto), !o && typeof window < "u" && window.msCrypto && (o = window.msCrypto), !o && typeof kn < "u" && kn.crypto && (o = kn.crypto), !o && typeof eR == "function")
           try {
-            o = nR;
+            o = rR;
           } catch {
           }
         var a = function() {
@@ -17280,8 +17290,8 @@ function ks() {
             S ? N = r.ceil(N) : N = r.max((N | 0) - this._minBufferSize, 0);
             var x = N * v, P = r.min(x * 4, C);
             if (x) {
-              for (var z = 0; z < x; z += v)
-                this._doProcessBlock(T, z);
+              for (var Y = 0; Y < x; Y += v)
+                this._doProcessBlock(T, Y);
               b = T.splice(0, x), g.sigBytes -= P;
             }
             return new d.init(b, P);
@@ -17408,7 +17418,7 @@ function ks() {
   }(bl)), bl.exports;
 }
 var Tl = { exports: {} }, jp;
-function rR() {
+function iR() {
   return jp || (jp = 1, function(t, e) {
     (function(n, r) {
       t.exports = r(ks());
@@ -17437,10 +17447,10 @@ function rR() {
               if (I < 16)
                 d[I] = _[m + I] | 0;
               else {
-                var N = d[I - 15], x = (N << 25 | N >>> 7) ^ (N << 14 | N >>> 18) ^ N >>> 3, P = d[I - 2], z = (P << 15 | P >>> 17) ^ (P << 13 | P >>> 19) ^ P >>> 10;
-                d[I] = x + d[I - 7] + z + d[I - 16];
+                var N = d[I - 15], x = (N << 25 | N >>> 7) ^ (N << 14 | N >>> 18) ^ N >>> 3, P = d[I - 2], Y = (P << 15 | P >>> 17) ^ (P << 13 | P >>> 19) ^ P >>> 10;
+                d[I] = x + d[I - 7] + Y + d[I - 16];
               }
-              var Z = g & T ^ ~g & C, q = h & E ^ h & S ^ E & S, Y = (h << 30 | h >>> 2) ^ (h << 19 | h >>> 13) ^ (h << 10 | h >>> 22), O = (g << 26 | g >>> 6) ^ (g << 21 | g >>> 11) ^ (g << 7 | g >>> 25), y = v + O + Z + u[I] + d[I], R = Y + q;
+              var Z = g & T ^ ~g & C, q = h & E ^ h & S ^ E & S, V = (h << 30 | h >>> 2) ^ (h << 19 | h >>> 13) ^ (h << 10 | h >>> 22), O = (g << 26 | g >>> 6) ^ (g << 21 | g >>> 11) ^ (g << 7 | g >>> 25), y = v + O + Z + u[I] + d[I], R = V + q;
               v = C, C = T, T = g, g = b + y | 0, b = S, S = E, E = h, h = y + R | 0;
             }
             f[0] = f[0] + h | 0, f[1] = f[1] + E | 0, f[2] = f[2] + S | 0, f[3] = f[3] + b | 0, f[4] = f[4] + g | 0, f[5] = f[5] + T | 0, f[6] = f[6] + C | 0, f[7] = f[7] + v | 0;
@@ -17460,7 +17470,7 @@ function rR() {
   }(Tl)), Tl.exports;
 }
 var Cl = { exports: {} }, Jp;
-function iR() {
+function oR() {
   return Jp || (Jp = 1, function(t, e) {
     (function(n, r) {
       t.exports = r(ks());
@@ -17539,13 +17549,13 @@ function iR() {
 }
 (function(t, e) {
   (function(n, r, i) {
-    t.exports = r(ks(), rR(), iR());
+    t.exports = r(ks(), iR(), oR());
   })(kn, function(n) {
     return n.HmacSHA256;
   });
 })(Dh);
-var oR = Dh.exports;
-const aR = /* @__PURE__ */ Ls(oR);
+var aR = Dh.exports;
+const sR = /* @__PURE__ */ Ls(aR);
 var wh = { exports: {} };
 (function(t, e) {
   (function(n, r) {
@@ -17619,12 +17629,12 @@ var wh = { exports: {} };
     }(), n.enc.Base64;
   });
 })(wh);
-var sR = wh.exports;
-const lR = /* @__PURE__ */ Ls(sR), Ps = () => "10000000-1000-4000-8000-100000000000".replace(
+var lR = wh.exports;
+const cR = /* @__PURE__ */ Ls(lR), Ps = () => "10000000-1000-4000-8000-100000000000".replace(
   /[018]/g,
   (t) => (t ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> t / 4).toString(16)
 );
-class cR extends Oo {
+class uR extends Oo {
   constructor(e, n) {
     var r;
     super(e, n, "spark"), this.aiModelConfig = {
@@ -17693,18 +17703,18 @@ class cR extends Oo {
 `;
     r += "date: " + n + `
 `, r += `GET /${e.version}/chat HTTP/1.1`;
-    const i = aR(r, e.apiSecret), o = lR.stringify(i), a = `api_key="${e.apiKey}", algorithm="hmac-sha256", headers="host date request-line", signature="${o}"`, s = btoa(a);
+    const i = sR(r, e.apiSecret), o = cR.stringify(i), a = `api_key="${e.apiKey}", algorithm="hmac-sha256", headers="host date request-line", signature="${o}"`, s = btoa(a);
     return `${e.protocol}://spark-api.xf-yun.com/${e.version}/chat?authorization=${s}&date=${encodeURIComponent(n)}&host=spark-api.xf-yun.com`;
   }
 }
 class Mh {
   constructor(e, n) {
-    M(this, "isStop", !1);
-    M(this, "config");
-    M(this, "fetch");
-    M(this, "isOpen", !1);
-    M(this, "payload");
-    M(this, "listener");
+    w(this, "isStop", !1);
+    w(this, "config");
+    w(this, "fetch");
+    w(this, "isOpen", !1);
+    w(this, "payload");
+    w(this, "listener");
     this.config = e, this.listener = n;
   }
   start(e) {
@@ -17744,7 +17754,7 @@ class Mh {
     this.isOpen = !1, this.isStop || (this.listener.onStop(), this.isStop = !0);
   }
 }
-class uR extends Oo {
+class dR extends Oo {
   constructor(e, n) {
     var r;
     super(e, n, "wenxin"), this.aiModelConfig = {
@@ -17787,7 +17797,7 @@ class uR extends Oo {
   }
 }
 var fn;
-class dR extends TransformStream {
+class pR extends TransformStream {
   /** Constructs a new instance. */
   constructor(n = { allowCR: !1 }) {
     super({
@@ -17817,11 +17827,11 @@ class dR extends TransformStream {
   }
 }
 fn = new WeakMap();
-function pR(t) {
-  let e = new TextDecoderStream(), n = new dR({ allowCR: !0 });
+function _R(t) {
+  let e = new TextDecoderStream(), n = new pR({ allowCR: !0 });
   return t.pipeThrough(e).pipeThrough(n);
 }
-function _R(t) {
+function mR(t) {
   let n = /[:]\s*/.exec(t), r = n && n.index;
   if (r)
     return [
@@ -17829,10 +17839,10 @@ function _R(t) {
       t.substring(r + n[0].length)
     ];
 }
-async function* mR(t, e) {
+async function* fR(t, e) {
   if (!t.body)
     return;
-  let n = pR(t.body), r, i = n.getReader(), o;
+  let n = _R(t.body), r, i = n.getReader(), o;
   for (; ; ) {
     if (e && e.aborted)
       return i.cancel();
@@ -17842,20 +17852,20 @@ async function* mR(t, e) {
       o && (yield o), o = void 0;
       continue;
     }
-    let [a, s] = _R(r.value) || [];
+    let [a, s] = mR(r.value) || [];
     a && (a === "data" ? (o || (o = {}), o[a] = o[a] ? o[a] + `
 ` + s : s) : a === "event" ? (o || (o = {}), o[a] = s) : a === "id" ? (o || (o = {}), o[a] = +s || s) : a === "retry" && (o || (o = {}), o[a] = +s || void 0));
   }
 }
 class Tu {
   constructor(e, n) {
-    M(this, "isStop", !1);
-    M(this, "config");
-    M(this, "fetch");
-    M(this, "isOpen", !1);
-    M(this, "payload");
-    M(this, "listener");
-    M(this, "ctrl", new AbortController());
+    w(this, "isStop", !1);
+    w(this, "config");
+    w(this, "fetch");
+    w(this, "isOpen", !1);
+    w(this, "payload");
+    w(this, "listener");
+    w(this, "ctrl", new AbortController());
     this.config = e, this.listener = n;
   }
   start(e) {
@@ -17876,7 +17886,7 @@ class Tu {
       return;
     }
     try {
-      let r = mR(n, this.ctrl.signal);
+      let r = fR(n, this.ctrl.signal);
       for await (let i of r)
         i.data && i.data.trim() !== "[DONE]" && this.onMessage(i.data);
     } catch (r) {
@@ -17898,7 +17908,7 @@ class Tu {
     this.isOpen = !1, this.isStop || (this.listener.onStop(), this.isStop = !0);
   }
 }
-class fR extends Oo {
+class hR extends Oo {
   constructor(e, n) {
     var r;
     super(e, n, "custom"), this.aiModelConfig = {
@@ -17934,7 +17944,7 @@ class fR extends Oo {
     return typeof e.url == "string" ? e.url : (n = e.url) == null ? void 0 : n.call(e);
   }
 }
-class hR extends Oo {
+class gR extends Oo {
   constructor(e, n) {
     var r;
     super(e, n, "openai"), this.aiModelConfig = {
@@ -17998,7 +18008,7 @@ class hR extends Oo {
     return `${e.endpoint}/v1/chat/completions`;
   }
 }
-class gR extends Oo {
+class ER extends Oo {
   constructor(e, n) {
     var r;
     super(e, n, "gitee"), this.aiModelConfig = {
@@ -18065,19 +18075,19 @@ class $n {
       for (let i of Object.keys(n.models))
         switch (i) {
           case "spark":
-            this.set(i, new cR(e, n));
-            break;
-          case "wenxin":
             this.set(i, new uR(e, n));
             break;
-          case "openai":
-            this.set(i, new hR(e, n));
+          case "wenxin":
+            this.set(i, new dR(e, n));
             break;
-          case "gitee":
+          case "openai":
             this.set(i, new gR(e, n));
             break;
+          case "gitee":
+            this.set(i, new ER(e, n));
+            break;
           case "custom":
-            this.set(i, new fR(e, n));
+            this.set(i, new hR(e, n));
             break;
           default:
             const o = (r = n.modelFactory) == null ? void 0 : r.create(i, e, n);
@@ -18091,8 +18101,8 @@ class $n {
     this.models[e] = n;
   }
 }
-M($n, "models", {});
-const ER = (t) => {
+w($n, "models", {});
+const SR = (t) => {
   let e = "";
   return t.descendants((n) => {
     n.text && (e += n.text);
@@ -18100,9 +18110,9 @@ const ER = (t) => {
 };
 class Da {
   constructor(e, n) {
-    M(this, "editor");
-    M(this, "from");
-    M(this, "options");
+    w(this, "editor");
+    w(this, "from");
+    w(this, "options");
     this.editor = e, this.from = e.view.state.selection.from, this.options = n || {
       markdownParseEnable: !0
     };
@@ -18116,7 +18126,7 @@ class Da {
     if (r.dispatch(n.insertText(e.content)), e.status == 2 && this.options.markdownParseEnable) {
       const i = this.editor.state.selection.to, o = this.editor.state.doc.textBetween(this.from, i), { state: { tr: a }, view: s } = this.editor, l = this.editor.parseMarkdown(o);
       if (this.options.useMarkdownTextOnly) {
-        const c = ER(l), u = this.editor.schema.text(c);
+        const c = SR(l), u = this.editor.schema.text(c);
         s.dispatch(a.replaceWith(this.from, i, u).scrollIntoView());
       } else
         s.dispatch(a.replaceWith(this.from, i, l).scrollIntoView());
@@ -18124,7 +18134,7 @@ class Da {
     this.editor.commands.scrollIntoView();
   }
 }
-const SR = [
+const bR = [
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M4 18.9997H20V13.9997H22V19.9997C22 20.552 21.5523 20.9997 21 20.9997H3C2.44772 20.9997 2 20.552 2 19.9997V13.9997H4V18.9997ZM16.1716 6.9997L12.2218 3.04996L13.636 1.63574L20 7.9997L13.636 14.3637L12.2218 12.9495L16.1716 8.9997H5V6.9997H16.1716Z"></path></svg>',
     name: "ai-continuation",
@@ -18163,10 +18173,10 @@ const SR = [
     model: "auto"
   }
 ];
-class bR extends pi {
+class TR extends pi {
   constructor() {
     super();
-    M(this, "aiMenus", SR.map((n) => ({
+    w(this, "aiMenus", bR.map((n) => ({
       ...n,
       name: `${te(n.name)}`
     })));
@@ -18229,7 +18239,7 @@ class bR extends pi {
     return this.menuData[n].icon;
   }
 }
-class TR extends fe {
+class CR extends fe {
   constructor() {
     super(), this.template = `
         <div>
@@ -18246,10 +18256,10 @@ class TR extends fe {
     return e.isActive("container");
   }
 }
-class CR extends fe {
+class yR extends fe {
   constructor() {
     super();
-    M(this, "config");
+    w(this, "config");
   }
   onConfig(n) {
     this.config = n, n.html ? this.template = n.html : n.icon && (this.template = `<div style="height: 16px">${n.icon}</div>`), this.addEventListener("click", (r) => {
@@ -18266,7 +18276,7 @@ const oe = (t, e) => {
         if (typeof i == "string") {
           i = i.trim(), i === "|" && (i = "divider");
           const o = document.createElement("aie-" + i);
-          if (o.classList.add("aie-menu-item"), o.onCreate(t, e), o.onEditableChange(!!e.editable), i !== "divider") {
+          if (o.classList.add("aie-menu-item"), o.onCreate(t, e), o.onEditableChange(!!e.editable), i !== "divider" && e.toolbarTipEnable !== !1) {
             const a = te(i);
             o.setAttribute("data-title", a), o.setAttribute("data-size", e.toolbarSize), a && xe(o, {
               appendTo: () => t.editor.view.dom.closest(".aie-container"),
@@ -18311,13 +18321,13 @@ const oe = (t, e) => {
         console.error(o, "Can not create toolbar by key: " + i);
       }
 };
-class yR extends fe {
+class vR extends fe {
   constructor() {
     super();
-    M(this, "menuButtons", []);
-    M(this, "tippyInstance");
-    M(this, "tippyEl");
-    M(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C11.175 3 10.5 3.675 10.5 4.5C10.5 5.325 11.175 6 12 6C12.825 6 13.5 5.325 13.5 4.5C13.5 3.675 12.825 3 12 3ZM12 18C11.175 18 10.5 18.675 10.5 19.5C10.5 20.325 11.175 21 12 21C12.825 21 13.5 20.325 13.5 19.5C13.5 18.675 12.825 18 12 18ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"></path></svg>');
+    w(this, "menuButtons", []);
+    w(this, "tippyInstance");
+    w(this, "tippyEl");
+    w(this, "iconSvg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C11.175 3 10.5 3.675 10.5 4.5C10.5 5.325 11.175 6 12 6C12.825 6 13.5 5.325 13.5 4.5C13.5 3.675 12.825 3 12 3ZM12 18C11.175 18 10.5 18.675 10.5 19.5C10.5 20.325 11.175 21 12 21C12.825 21 13.5 20.325 13.5 19.5C13.5 18.675 12.825 18 12 18ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"></path></svg>');
   }
   onCreate(n, r) {
     super.onCreate(n, r);
@@ -18368,7 +18378,7 @@ class yR extends fe {
     return this.tippyEl = n, n;
   }
 }
-const vR = [
+const RR = [
   "undo",
   "redo",
   "brush",
@@ -18417,10 +18427,10 @@ const vR = [
 ];
 oe("aie-undo", JC);
 oe("aie-redo", e1);
-oe("aie-brush", Xv);
-oe("aie-container", TR);
-oe("aie-custom", CR);
-oe("aie-eraser", Yv);
+oe("aie-brush", jv);
+oe("aie-container", CR);
+oe("aie-custom", yR);
+oe("aie-eraser", zv);
 oe("aie-heading", iv);
 oe("aie-font-family", av);
 oe("aie-font-size", lv);
@@ -18429,8 +18439,8 @@ oe("aie-italic", uv);
 oe("aie-underline", dv);
 oe("aie-strike", pv);
 oe("aie-link", vv);
-oe("aie-source-code", Lv);
-oe("aie-code", Gv);
+oe("aie-source-code", kv);
+oe("aie-code", Vv);
 oe("aie-subscript", _v);
 oe("aie-superscript", mv);
 oe("aie-highlight", fv);
@@ -18441,26 +18451,26 @@ oe("aie-ordered-list", Sv);
 oe("aie-indent-decrease", bv);
 oe("aie-indent-increase", Tv);
 oe("aie-align", yv);
-oe("aie-todo", kv);
-oe("aie-line-height", Fv);
-oe("aie-break", qv);
-oe("aie-quote", Bv);
-oe("aie-image", Uv);
-oe("aie-video", Hv);
-oe("aie-code-block", Vv);
-oe("aie-hr", zv);
-oe("aie-table", $v);
-oe("aie-attachment", Wv);
-oe("aie-fullscreen", Kv);
-oe("aie-printer", Qv);
-oe("aie-emoji", Zv);
-oe("aie-ai", bR);
-oe("aie-group", yR);
+oe("aie-todo", Pv);
+oe("aie-line-height", Bv);
+oe("aie-break", Wv);
+oe("aie-quote", Uv);
+oe("aie-image", Hv);
+oe("aie-video", Gv);
+oe("aie-code-block", Yv);
+oe("aie-hr", $v);
+oe("aie-table", qv);
+oe("aie-attachment", Kv);
+oe("aie-fullscreen", Qv);
+oe("aie-printer", Zv);
+oe("aie-emoji", Xv);
+oe("aie-ai", TR);
+oe("aie-group", vR);
 class kh extends HTMLElement {
   constructor() {
     super();
     // template:string;
-    M(this, "menuButtons", []);
+    w(this, "menuButtons", []);
   }
   connectedCallback() {
     if (this.children && this.children.length > 0)
@@ -18471,7 +18481,7 @@ class kh extends HTMLElement {
     n.style.display = "flex", n.style.flexWrap = "wrap", this.appendChild(n);
   }
   onCreate(n, r) {
-    let i = r.toolbarKeys || vR;
+    let i = r.toolbarKeys || RR;
     i = i.filter((o) => {
       var a;
       return typeof o == "string" ? !((a = r.toolbarExcludeKeys) != null && a.includes(o)) : !0;
@@ -18496,8 +18506,8 @@ class kh extends HTMLElement {
 class Ph extends HTMLElement {
   constructor() {
     super();
-    M(this, "count", 0);
-    M(this, "draggable", !0);
+    w(this, "count", 0);
+    w(this, "draggable", !0);
   }
   initDraggable(n) {
     if (this.draggable = !!n, !this.draggable)
@@ -18539,7 +18549,7 @@ class Ph extends HTMLElement {
   onEditableChange(n) {
   }
 }
-const RR = /^\s*>\s$/, OR = De.create({
+const OR = /^\s*>\s$/, NR = De.create({
   name: "blockquote",
   addOptions() {
     return {
@@ -18572,12 +18582,12 @@ const RR = /^\s*>\s$/, OR = De.create({
   addInputRules() {
     return [
       Sr({
-        find: RR,
+        find: OR,
         type: this.type
       })
     ];
   }
-}), NR = /(?:^|\s)(\*\*(?!\s+\*\*)((?:[^*]+))\*\*(?!\s+\*\*))$/, AR = /(?:^|\s)(\*\*(?!\s+\*\*)((?:[^*]+))\*\*(?!\s+\*\*))/g, IR = /(?:^|\s)(__(?!\s+__)((?:[^_]+))__(?!\s+__))$/, xR = /(?:^|\s)(__(?!\s+__)((?:[^_]+))__(?!\s+__))/g, DR = St.create({
+}), AR = /(?:^|\s)(\*\*(?!\s+\*\*)((?:[^*]+))\*\*(?!\s+\*\*))$/, IR = /(?:^|\s)(\*\*(?!\s+\*\*)((?:[^*]+))\*\*(?!\s+\*\*))/g, xR = /(?:^|\s)(__(?!\s+__)((?:[^_]+))__(?!\s+__))$/, DR = /(?:^|\s)(__(?!\s+__)((?:[^_]+))__(?!\s+__))/g, wR = St.create({
   name: "bold",
   addOptions() {
     return {
@@ -18622,11 +18632,11 @@ const RR = /^\s*>\s$/, OR = De.create({
   addInputRules() {
     return [
       Er({
-        find: NR,
+        find: AR,
         type: this.type
       }),
       Er({
-        find: IR,
+        find: xR,
         type: this.type
       })
     ];
@@ -18634,16 +18644,16 @@ const RR = /^\s*>\s$/, OR = De.create({
   addPasteRules() {
     return [
       zn({
-        find: AR,
+        find: IR,
         type: this.type
       }),
       zn({
-        find: xR,
+        find: DR,
         type: this.type
       })
     ];
   }
-}), wR = "listItem", e_ = "textStyle", t_ = /^\s*([-+*])\s$/, MR = De.create({
+}), MR = "listItem", e_ = "textStyle", t_ = /^\s*([-+*])\s$/, LR = De.create({
   name: "bulletList",
   addOptions() {
     return {
@@ -18667,7 +18677,7 @@ const RR = /^\s*>\s$/, OR = De.create({
   },
   addCommands() {
     return {
-      toggleBulletList: () => ({ commands: t, chain: e }) => this.options.keepAttributes ? e().toggleList(this.name, this.options.itemTypeName, this.options.keepMarks).updateAttributes(wR, this.editor.getAttributes(e_)).run() : t.toggleList(this.name, this.options.itemTypeName, this.options.keepMarks)
+      toggleBulletList: () => ({ commands: t, chain: e }) => this.options.keepAttributes ? e().toggleList(this.name, this.options.itemTypeName, this.options.keepMarks).updateAttributes(MR, this.editor.getAttributes(e_)).run() : t.toggleList(this.name, this.options.itemTypeName, this.options.keepMarks)
     };
   },
   addKeyboardShortcuts() {
@@ -18691,7 +18701,7 @@ const RR = /^\s*>\s$/, OR = De.create({
       t
     ];
   }
-}), LR = /(^|[^`])`([^`]+)`(?!`)/, kR = /(^|[^`])`([^`]+)`(?!`)/g, PR = St.create({
+}), kR = /(^|[^`])`([^`]+)`(?!`)/, PR = /(^|[^`])`([^`]+)`(?!`)/g, FR = St.create({
   name: "code",
   addOptions() {
     return {
@@ -18724,7 +18734,7 @@ const RR = /^\s*>\s$/, OR = De.create({
   addInputRules() {
     return [
       Er({
-        find: LR,
+        find: kR,
         type: this.type
       })
     ];
@@ -18732,12 +18742,12 @@ const RR = /^\s*>\s$/, OR = De.create({
   addPasteRules() {
     return [
       zn({
-        find: kR,
+        find: PR,
         type: this.type
       })
     ];
   }
-}), FR = /^```([a-z]+)?[\s\n]$/, BR = /^~~~([a-z]+)?[\s\n]$/, Fh = De.create({
+}), BR = /^```([a-z]+)?[\s\n]$/, UR = /^~~~([a-z]+)?[\s\n]$/, Fh = De.create({
   name: "codeBlock",
   addOptions() {
     return {
@@ -18828,14 +18838,14 @@ const RR = /^\s*>\s$/, OR = De.create({
   addInputRules() {
     return [
       fc({
-        find: FR,
+        find: BR,
         type: this.type,
         getAttributes: (t) => ({
           language: t[1]
         })
       }),
       fc({
-        find: BR,
+        find: UR,
         type: this.type,
         getAttributes: (t) => ({
           language: t[1]
@@ -18864,19 +18874,19 @@ const RR = /^\s*>\s$/, OR = De.create({
       })
     ];
   }
-}), UR = De.create({
+}), HR = De.create({
   name: "doc",
   topNode: !0,
   content: "block+"
 });
-function HR(t = {}) {
+function GR(t = {}) {
   return new Te({
     view(e) {
-      return new GR(e, t);
+      return new VR(e, t);
     }
   });
 }
-class GR {
+class VR {
   constructor(e, n) {
     var r;
     this.editorView = e, this.cursorPos = null, this.element = null, this.timeout = -1, this.width = (r = n.width) !== null && r !== void 0 ? r : 1, this.color = n.color === !1 ? void 0 : n.color || "black", this.class = n.class, this.handlers = ["dragover", "dragend", "drop", "dragleave"].map((i) => {
@@ -18948,7 +18958,7 @@ class GR {
     (e.target == this.editorView.dom || !this.editorView.dom.contains(e.relatedTarget)) && this.setCursor(null);
   }
 }
-const VR = Se.create({
+const YR = Se.create({
   name: "dropCursor",
   addOptions() {
     return {
@@ -18959,7 +18969,7 @@ const VR = Se.create({
   },
   addProseMirrorPlugins() {
     return [
-      HR(this.options)
+      GR(this.options)
     ];
   }
 });
@@ -19002,7 +19012,7 @@ class ke extends ne {
   */
   static valid(e) {
     let n = e.parent;
-    if (n.isTextblock || !YR(e) || !zR(e))
+    if (n.isTextblock || !zR(e) || !$R(e))
       return !1;
     let r = n.type.spec.allowGapCursor;
     if (r != null)
@@ -19063,7 +19073,7 @@ class Cu {
     return ke.valid(n) ? new ke(n) : ne.near(n);
   }
 }
-function YR(t) {
+function zR(t) {
   for (let e = t.depth; e >= 0; e--) {
     let n = t.index(e), r = t.node(e);
     if (n == 0) {
@@ -19080,7 +19090,7 @@ function YR(t) {
   }
   return !0;
 }
-function zR(t) {
+function $R(t) {
   for (let e = t.depth; e >= 0; e--) {
     let n = t.indexAfter(e), r = t.node(e);
     if (n == r.childCount) {
@@ -19097,20 +19107,20 @@ function zR(t) {
   }
   return !0;
 }
-function $R() {
+function qR() {
   return new Te({
     props: {
-      decorations: QR,
+      decorations: ZR,
       createSelectionBetween(t, e, n) {
         return e.pos == n.pos && ke.valid(n) ? new ke(n) : null;
       },
-      handleClick: WR,
-      handleKeyDown: qR,
-      handleDOMEvents: { beforeinput: KR }
+      handleClick: KR,
+      handleKeyDown: WR,
+      handleDOMEvents: { beforeinput: QR }
     }
   });
 }
-const qR = nu({
+const WR = nu({
   ArrowLeft: Yo("horiz", -1),
   ArrowRight: Yo("horiz", 1),
   ArrowUp: Yo("vert", -1),
@@ -19129,7 +19139,7 @@ function Yo(t, e) {
     return c ? (i && i(r.tr.setSelection(new ke(c))), !0) : !1;
   };
 }
-function WR(t, e, n) {
+function KR(t, e, n) {
   if (!t || !t.editable)
     return !1;
   let r = t.state.doc.resolve(e);
@@ -19138,7 +19148,7 @@ function WR(t, e, n) {
   let i = t.posAtCoords({ left: n.clientX, top: n.clientY });
   return i && i.inside > -1 && j.isSelectable(t.state.doc.nodeAt(i.inside)) ? !1 : (t.dispatch(t.state.tr.setSelection(new ke(r))), !0);
 }
-function KR(t, e) {
+function QR(t, e) {
   if (e.inputType != "insertCompositionText" || !(t.state.selection instanceof ke))
     return !1;
   let { $from: n } = t.state.selection, r = n.parent.contentMatchAt(n.index()).findWrapping(t.state.schema.nodes.text);
@@ -19150,17 +19160,17 @@ function KR(t, e) {
   let o = t.state.tr.replace(n.pos, n.pos, new H(i, 0, 0));
   return o.setSelection(K.near(o.doc.resolve(n.pos + 1))), t.dispatch(o), !1;
 }
-function QR(t) {
+function ZR(t) {
   if (!(t.selection instanceof ke))
     return null;
   let e = document.createElement("div");
   return e.className = "ProseMirror-gapcursor", ye.create(t.doc, [Be.widget(t.selection.head, e, { key: "gapcursor" })]);
 }
-const ZR = Se.create({
+const XR = Se.create({
   name: "gapCursor",
   addProseMirrorPlugins() {
     return [
-      $R()
+      qR()
     ];
   },
   extendNodeSchema(t) {
@@ -19174,7 +19184,7 @@ const ZR = Se.create({
       allowGapCursor: (e = ce($(t, "allowGapCursor", n))) !== null && e !== void 0 ? e : null
     };
   }
-}), XR = De.create({
+}), jR = De.create({
   name: "hardBreak",
   addOptions() {
     return {
@@ -19283,7 +19293,7 @@ $e.prototype.prepend = function(e) {
   return e.length ? $e.from(e).append(this) : this;
 };
 $e.prototype.appendInner = function(e) {
-  return new jR(this, e);
+  return new JR(this, e);
 };
 $e.prototype.slice = function(e, n) {
   return e === void 0 && (e = 0), n === void 0 && (n = this.length), e >= n ? $e.empty : this.sliceInner(Math.max(0, e), Math.min(this.length, n));
@@ -19338,7 +19348,7 @@ var Uh = /* @__PURE__ */ function(t) {
   }, Object.defineProperties(e.prototype, n), e;
 }($e);
 $e.empty = new Uh([]);
-var jR = /* @__PURE__ */ function(t) {
+var JR = /* @__PURE__ */ function(t) {
   function e(n, r) {
     t.call(this), this.left = n, this.right = r, this.length = n.length + r.length, this.depth = Math.max(n.depth, r.depth) + 1;
   }
@@ -19371,7 +19381,7 @@ var jR = /* @__PURE__ */ function(t) {
     return this.left.depth >= Math.max(this.right.depth, r.depth) + 1 ? new e(this.left, new e(this.right, r)) : new e(this, r);
   }, e;
 }($e);
-const JR = 500;
+const eO = 500;
 class Gt {
   constructor(e, n) {
     this.items = e, this.eventCount = n;
@@ -19413,7 +19423,7 @@ class Gt {
       (_ = l && l.merge(p)) && (p = _, u ? o.pop() : s = s.slice(0, s.length - 1)), o.push(p), n && (a++, n = void 0), i || (l = p);
     }
     let c = a - r.depth;
-    return c > tO && (s = eO(s, c), a -= c), new Gt(s.append(o), a);
+    return c > nO && (s = tO(s, c), a -= c), new Gt(s.append(o), a);
   }
   remapping(e, n) {
     let r = new $r();
@@ -19453,7 +19463,7 @@ class Gt {
     for (let p = n; p < a; p++)
       c.push(new qt(o.maps[p]));
     let u = this.items.slice(0, i).append(c).append(r), d = new Gt(u, s);
-    return d.emptyItemCount() > JR && (d = d.compress(this.items.length - r.length)), d;
+    return d.emptyItemCount() > eO && (d = d.compress(this.items.length - r.length)), d;
   }
   emptyItemCount() {
     let e = 0;
@@ -19485,7 +19495,7 @@ class Gt {
   }
 }
 Gt.empty = new Gt($e.empty, 0);
-function eO(t, e) {
+function tO(t, e) {
   let n;
   return t.forEach((r, i) => {
     if (r.selection && e-- == 0)
@@ -19509,23 +19519,23 @@ class Rn {
     this.done = e, this.undone = n, this.prevRanges = r, this.prevTime = i, this.prevComposition = o;
   }
 }
-const tO = 20;
-function nO(t, e, n, r) {
+const nO = 20;
+function rO(t, e, n, r) {
   let i = n.getMeta(dr), o;
   if (i)
     return i.historyState;
-  n.getMeta(oO) && (t = new Rn(t.done, t.undone, null, 0, -1));
+  n.getMeta(aO) && (t = new Rn(t.done, t.undone, null, 0, -1));
   let a = n.getMeta("appendedTransaction");
   if (n.steps.length == 0)
     return t;
   if (a && a.getMeta(dr))
     return a.getMeta(dr).redo ? new Rn(t.done.addTransform(n, void 0, r, ua(e)), t.undone, n_(n.mapping.maps), t.prevTime, t.prevComposition) : new Rn(t.done, t.undone.addTransform(n, void 0, r, ua(e)), null, t.prevTime, t.prevComposition);
   if (n.getMeta("addToHistory") !== !1 && !(a && a.getMeta("addToHistory") === !1)) {
-    let s = n.getMeta("composition"), l = t.prevTime == 0 || !a && t.prevComposition != s && (t.prevTime < (n.time || 0) - r.newGroupDelay || !rO(n, t.prevRanges)), c = a ? yl(t.prevRanges, n.mapping) : n_(n.mapping.maps);
+    let s = n.getMeta("composition"), l = t.prevTime == 0 || !a && t.prevComposition != s && (t.prevTime < (n.time || 0) - r.newGroupDelay || !iO(n, t.prevRanges)), c = a ? yl(t.prevRanges, n.mapping) : n_(n.mapping.maps);
     return new Rn(t.done.addTransform(n, l ? e.selection.getBookmark() : void 0, r, ua(e)), Gt.empty, c, n.time, s ?? t.prevComposition);
   } else return (o = n.getMeta("rebased")) ? new Rn(t.done.rebased(n, o), t.undone.rebased(n, o), yl(t.prevRanges, n.mapping), t.prevTime, t.prevComposition) : new Rn(t.done.addMaps(n.mapping.maps), t.undone.addMaps(n.mapping.maps), yl(t.prevRanges, n.mapping), t.prevTime, t.prevComposition);
 }
-function rO(t, e) {
+function iO(t, e) {
   if (!e)
     return !1;
   if (!t.docChanged)
@@ -19552,7 +19562,7 @@ function yl(t, e) {
   }
   return n;
 }
-function iO(t, e, n) {
+function oO(t, e, n) {
   let r = ua(e), i = dr.get(e).spec.config, o = (n ? t.undone : t.done).popEvent(e, r);
   if (!o)
     return null;
@@ -19572,8 +19582,8 @@ function ua(t) {
   }
   return vl;
 }
-const dr = new Oe("history"), oO = new Oe("closeHistory");
-function aO(t = {}) {
+const dr = new Oe("history"), aO = new Oe("closeHistory");
+function sO(t = {}) {
   return t = {
     depth: t.depth || 100,
     newGroupDelay: t.newGroupDelay || 500
@@ -19584,7 +19594,7 @@ function aO(t = {}) {
         return new Rn(Gt.empty, Gt.empty, null, 0, -1);
       },
       apply(e, n, r) {
-        return nO(n, r, e, t);
+        return rO(n, r, e, t);
       }
     },
     config: t,
@@ -19604,13 +19614,13 @@ function Hh(t, e) {
     if (!i || (t ? i.undone : i.done).eventCount == 0)
       return !1;
     if (r) {
-      let o = iO(i, n, t);
+      let o = oO(i, n, t);
       o && r(e ? o.scrollIntoView() : o);
     }
     return !0;
   };
 }
-const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
+const Gh = Hh(!1, !0), Vh = Hh(!0, !0), lO = Se.create({
   name: "history",
   addOptions() {
     return {
@@ -19626,7 +19636,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   },
   addProseMirrorPlugins() {
     return [
-      aO(this.options)
+      sO(this.options)
     ];
   },
   addKeyboardShortcuts() {
@@ -19639,7 +19649,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Shift-Mod-я": () => this.editor.commands.redo()
     };
   }
-}), lO = De.create({
+}), cO = De.create({
   name: "horizontalRule",
   addOptions() {
     return {
@@ -19691,7 +19701,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       })
     ];
   }
-}), cO = /(?:^|\s)(\*(?!\s+\*)((?:[^*]+))\*(?!\s+\*))$/, uO = /(?:^|\s)(\*(?!\s+\*)((?:[^*]+))\*(?!\s+\*))/g, dO = /(?:^|\s)(_(?!\s+_)((?:[^_]+))_(?!\s+_))$/, pO = /(?:^|\s)(_(?!\s+_)((?:[^_]+))_(?!\s+_))/g, _O = St.create({
+}), uO = /(?:^|\s)(\*(?!\s+\*)((?:[^*]+))\*(?!\s+\*))$/, dO = /(?:^|\s)(\*(?!\s+\*)((?:[^*]+))\*(?!\s+\*))/g, pO = /(?:^|\s)(_(?!\s+_)((?:[^_]+))_(?!\s+_))$/, _O = /(?:^|\s)(_(?!\s+_)((?:[^_]+))_(?!\s+_))/g, mO = St.create({
   name: "italic",
   addOptions() {
     return {
@@ -19735,11 +19745,11 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addInputRules() {
     return [
       Er({
-        find: cO,
+        find: uO,
         type: this.type
       }),
       Er({
-        find: dO,
+        find: pO,
         type: this.type
       })
     ];
@@ -19747,16 +19757,16 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addPasteRules() {
     return [
       zn({
-        find: uO,
+        find: dO,
         type: this.type
       }),
       zn({
-        find: pO,
+        find: _O,
         type: this.type
       })
     ];
   }
-}), mO = De.create({
+}), fO = De.create({
   name: "listItem",
   addOptions() {
     return {
@@ -19784,7 +19794,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Shift-Tab": () => this.editor.commands.liftListItem(this.name)
     };
   }
-}), fO = "listItem", i_ = "textStyle", o_ = /^(\d+)\.\s$/, hO = De.create({
+}), hO = "listItem", i_ = "textStyle", o_ = /^(\d+)\.\s$/, gO = De.create({
   name: "orderedList",
   addOptions() {
     return {
@@ -19823,7 +19833,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   },
   addCommands() {
     return {
-      toggleOrderedList: () => ({ commands: t, chain: e }) => this.options.keepAttributes ? e().toggleList(this.name, this.options.itemTypeName, this.options.keepMarks).updateAttributes(fO, this.editor.getAttributes(i_)).run() : t.toggleList(this.name, this.options.itemTypeName, this.options.keepMarks)
+      toggleOrderedList: () => ({ commands: t, chain: e }) => this.options.keepAttributes ? e().toggleList(this.name, this.options.itemTypeName, this.options.keepMarks).updateAttributes(hO, this.editor.getAttributes(i_)).run() : t.toggleList(this.name, this.options.itemTypeName, this.options.keepMarks)
     };
   },
   addKeyboardShortcuts() {
@@ -19850,7 +19860,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       t
     ];
   }
-}), gO = De.create({
+}), EO = De.create({
   name: "paragraph",
   priority: 1e3,
   addOptions() {
@@ -19878,7 +19888,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Mod-Alt-0": () => this.editor.commands.setParagraph()
     };
   }
-}), EO = /(?:^|\s)(~~(?!\s+~~)((?:[^~]+))~~(?!\s+~~))$/, SO = /(?:^|\s)(~~(?!\s+~~)((?:[^~]+))~~(?!\s+~~))/g, bO = St.create({
+}), SO = /(?:^|\s)(~~(?!\s+~~)((?:[^~]+))~~(?!\s+~~))$/, bO = /(?:^|\s)(~~(?!\s+~~)((?:[^~]+))~~(?!\s+~~))/g, TO = St.create({
   name: "strike",
   addOptions() {
     return {
@@ -19921,7 +19931,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addInputRules() {
     return [
       Er({
-        find: EO,
+        find: SO,
         type: this.type
       })
     ];
@@ -19929,21 +19939,21 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addPasteRules() {
     return [
       zn({
-        find: SO,
+        find: bO,
         type: this.type
       })
     ];
   }
-}), TO = De.create({
+}), CO = De.create({
   name: "text",
   group: "inline"
-}), CO = Se.create({
+}), yO = Se.create({
   name: "starterKit",
   addExtensions() {
     const t = [];
-    return this.options.bold !== !1 && t.push(DR.configure(this.options.bold)), this.options.blockquote !== !1 && t.push(OR.configure(this.options.blockquote)), this.options.bulletList !== !1 && t.push(MR.configure(this.options.bulletList)), this.options.code !== !1 && t.push(PR.configure(this.options.code)), this.options.codeBlock !== !1 && t.push(Fh.configure(this.options.codeBlock)), this.options.document !== !1 && t.push(UR.configure(this.options.document)), this.options.dropcursor !== !1 && t.push(VR.configure(this.options.dropcursor)), this.options.gapcursor !== !1 && t.push(ZR.configure(this.options.gapcursor)), this.options.hardBreak !== !1 && t.push(XR.configure(this.options.hardBreak)), this.options.heading !== !1 && t.push(Bh.configure(this.options.heading)), this.options.history !== !1 && t.push(sO.configure(this.options.history)), this.options.horizontalRule !== !1 && t.push(lO.configure(this.options.horizontalRule)), this.options.italic !== !1 && t.push(_O.configure(this.options.italic)), this.options.listItem !== !1 && t.push(mO.configure(this.options.listItem)), this.options.orderedList !== !1 && t.push(hO.configure(this.options.orderedList)), this.options.paragraph !== !1 && t.push(gO.configure(this.options.paragraph)), this.options.strike !== !1 && t.push(bO.configure(this.options.strike)), this.options.text !== !1 && t.push(TO.configure(this.options.text)), t;
+    return this.options.bold !== !1 && t.push(wR.configure(this.options.bold)), this.options.blockquote !== !1 && t.push(NR.configure(this.options.blockquote)), this.options.bulletList !== !1 && t.push(LR.configure(this.options.bulletList)), this.options.code !== !1 && t.push(FR.configure(this.options.code)), this.options.codeBlock !== !1 && t.push(Fh.configure(this.options.codeBlock)), this.options.document !== !1 && t.push(HR.configure(this.options.document)), this.options.dropcursor !== !1 && t.push(YR.configure(this.options.dropcursor)), this.options.gapcursor !== !1 && t.push(XR.configure(this.options.gapcursor)), this.options.hardBreak !== !1 && t.push(jR.configure(this.options.hardBreak)), this.options.heading !== !1 && t.push(Bh.configure(this.options.heading)), this.options.history !== !1 && t.push(lO.configure(this.options.history)), this.options.horizontalRule !== !1 && t.push(cO.configure(this.options.horizontalRule)), this.options.italic !== !1 && t.push(mO.configure(this.options.italic)), this.options.listItem !== !1 && t.push(fO.configure(this.options.listItem)), this.options.orderedList !== !1 && t.push(gO.configure(this.options.orderedList)), this.options.paragraph !== !1 && t.push(EO.configure(this.options.paragraph)), this.options.strike !== !1 && t.push(TO.configure(this.options.strike)), this.options.text !== !1 && t.push(CO.configure(this.options.text)), t;
   }
-}), yO = St.create({
+}), vO = St.create({
   name: "underline",
   addOptions() {
     return {
@@ -19978,7 +19988,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Mod-U": () => this.editor.commands.toggleUnderline()
     };
   }
-}), vO = (t) => {
+}), RO = (t) => {
   if (!t.children.length)
     return;
   const e = t.querySelectorAll("span");
@@ -19987,7 +19997,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
     const o = n.getAttribute("style"), a = (i = (r = n.parentElement) === null || r === void 0 ? void 0 : r.closest("span")) === null || i === void 0 ? void 0 : i.getAttribute("style");
     n.setAttribute("style", `${a};${o}`);
   });
-}, RO = St.create({
+}, OO = St.create({
   name: "textStyle",
   priority: 101,
   addOptions() {
@@ -20000,7 +20010,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
     return [
       {
         tag: "span",
-        getAttrs: (t) => t.hasAttribute("style") ? (this.options.mergeNestedSpanStyles && vO(t), {}) : !1
+        getAttrs: (t) => t.hasAttribute("style") ? (this.options.mergeNestedSpanStyles && RO(t), {}) : !1
       }
     ];
   },
@@ -20019,7 +20029,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       }
     };
   }
-}), OO = Se.create({
+}), NO = Se.create({
   name: "fontFamily",
   addOptions() {
     return {
@@ -20053,13 +20063,13 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   return e.classList.add("aie-loader-placeholder"), e.innerHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 3C16.9706 3 21 7.02944 21 12H19C19 8.13401 15.866 5 12 5V3Z"></path></svg>
     `, Be.widget(t.pos, e, { id: t.id });
-}, NO = (t) => {
+}, AO = (t) => {
   const e = document.createElement("div");
   return e.classList.add("aie-loader-placeholder"), e.style.height = "20px", e.style.display = "inline-block", e.innerHTML = `
     <svg style="width: 16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 3C16.9706 3 21 7.02944 21 12H19C19 8.13401 15.866 5 12 5V3Z"></path></svg>
    ${t.text}
     `, Be.widget(t.pos, e, { id: t.id });
-}, AO = (t, e, n, r) => {
+}, IO = (t, e, n, r) => {
   const i = new FormData();
   return i.append(r, t), new Promise((o, a) => {
     fetch(e, {
@@ -20072,12 +20082,12 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       a(s);
     });
   });
-}, IO = (t, e, n, r) => {
+}, xO = (t, e, n, r) => {
   let i = new FileReader();
   return new Promise((o, a) => {
     i.onload = () => o({ errorCode: 0, data: { src: i.result, href: t.name } }), i.onerror = () => a(i.error), setTimeout(() => i.readAsDataURL(t), 5e3 * Math.random());
   });
-}, yu = (t) => t ? AO : IO, a_ = new Oe("aie-attachment-plugin"), bi = "attachment_action", xO = Se.create({
+}, yu = (t) => t ? IO : xO, a_ = new Oe("aie-attachment-plugin"), bi = "attachment_action", DO = Se.create({
   name: "attachment",
   addOptions() {
     return {
@@ -20133,7 +20143,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
           init: () => ye.empty,
           apply: (e, n) => {
             const r = e.getMeta(bi);
-            return n = n.map(e.mapping, e.doc), r && r.type === "add" ? n = n.add(e.doc, [NO(r)]) : r && r.type === "remove" && (n = n.remove(n.find(
+            return n = n.map(e.mapping, e.doc), r && r.type === "add" ? n = n.add(e.doc, [AO(r)]) : r && r.type === "remove" && (n = n.remove(n.find(
               void 0,
               void 0,
               (i) => i.id == r.id
@@ -20157,7 +20167,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       })
     ];
   }
-}), DO = Se.create({
+}), wO = Se.create({
   name: "painter",
   addCommands() {
     return {
@@ -20196,7 +20206,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       })
     ];
   }
-}), wO = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))$/, MO = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))/g, LO = St.create({
+}), MO = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))$/, LO = /(?:^|\s)(==(?!\s+==)((?:[^=]+))==(?!\s+==))/g, kO = St.create({
   name: "highlight",
   addOptions() {
     return {
@@ -20241,7 +20251,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addInputRules() {
     return [
       Er({
-        find: wO,
+        find: MO,
         type: this.type
       })
     ];
@@ -20249,12 +20259,12 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addPasteRules() {
     return [
       zn({
-        find: MO,
+        find: LO,
         type: this.type
       })
     ];
   }
-}), kO = Se.create({
+}), PO = Se.create({
   name: "color",
   addOptions() {
     return {
@@ -20286,7 +20296,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       unsetColor: () => ({ chain: t }) => t().setMark("textStyle", { color: null }).removeEmptyTextStyle().run()
     };
   }
-}), PO = Se.create({
+}), FO = Se.create({
   name: "fontSize",
   addOptions() {
     return {
@@ -20318,7 +20328,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       unsetFontSize: () => ({ chain: t }) => t().setMark("textStyle", { fontSize: null }).removeEmptyTextStyle().run()
     };
   }
-}), FO = Se.create({
+}), BO = Se.create({
   name: "lineHeight",
   addOptions() {
     return {
@@ -20350,7 +20360,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       )
     };
   }
-}), BO = Se.create({
+}), UO = Se.create({
   name: "textAlign",
   addOptions() {
     return {
@@ -20391,7 +20401,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Mod-Shift-j": () => this.editor.commands.setTextAlign("justify")
     };
   }
-}), UO = Se.create({
+}), HO = Se.create({
   name: "indent",
   addOptions() {
     return {
@@ -20460,7 +20470,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       "Shift-Tab": () => this.editor.isActive("listItem") || this.editor.isActive("orderedList") ? !1 : this.editor.commands.outdent()
     };
   }
-}), HO = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/, GO = De.create({
+}), GO = /(?:^|\s)(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/, VO = De.create({
   name: "image",
   addOptions() {
     return {
@@ -20510,7 +20520,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
   addInputRules() {
     return [
       du({
-        find: HO,
+        find: GO,
         type: this.type,
         getAttributes: (t) => {
           const [, , e, n, r] = t;
@@ -20519,25 +20529,29 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
       })
     ];
   }
-}), zh = (t, e, n) => {
-  const r = t.querySelector(".resize-obj"), i = 10;
-  let o, a, s, l;
-  const c = (p) => {
-    p.preventDefault(), e.addEventListener("mousemove", u), e.addEventListener("mouseup", d), e.addEventListener("mouseleave", d), o = p.clientX, a = Number(r.getAttribute("data-with")) || r.clientWidth, s = p.target.getAttribute("data-position"), l = e.clientWidth - 100;
-  }, u = (p) => {
-    const _ = p.clientX - o;
-    if (_ == 0) return;
-    const m = s === "right" ? _ > 0 : _ < 0;
-    let f = a + Math.abs(_) * (m ? 1 : -1);
-    f >= l && (f = l), f < i && (f = i), r.style.width = `${f}px`, r.setAttribute("data-width", f.toString()), r.parentElement.removeAttribute("style");
-  }, d = () => {
-    e.removeEventListener("mousemove", u), e.removeEventListener("mouseup", d), e.removeEventListener("mouseleave", d);
-    const p = { width: Number(r.getAttribute("data-width")) };
-    n(p);
+}), zh = (t, e, n, r) => {
+  const i = document.body, o = n.querySelector(".resize-obj"), a = 10;
+  let s, l, c, u;
+  const d = (m) => {
+    m.preventDefault(), i.addEventListener("mousemove", p), i.addEventListener("mouseup", _), i.addEventListener("mouseleave", _), s = m.clientX, l = Number(o.getAttribute("data-with")) || o.clientWidth, c = m.target.getAttribute("data-position"), u = i.clientWidth - 100;
+  }, p = (m) => {
+    const f = m.clientX - s;
+    if (f == 0) return;
+    const h = c === "right" ? f > 0 : f < 0;
+    let E = l + Math.abs(f) * (h ? 1 : -1);
+    E >= u && (E = u), E < a && (E = a), o.style.width = `${E}px`, o.setAttribute("data-width", E.toString()), o.parentElement.removeAttribute("style");
+  }, _ = () => {
+    i.removeEventListener("mousemove", p), i.removeEventListener("mouseup", _), i.removeEventListener("mouseleave", _);
+    const m = t.state.selection;
+    t.state.doc.descendants((h, E) => {
+      e === h && t.commands.setNodeSelection(E);
+    });
+    const f = { width: Number(o.getAttribute("data-width")) };
+    r(f), m && t.commands.setTextSelection(m);
   };
-  for (let p of t.querySelector(".aie-resize").children)
-    p.addEventListener("mousedown", c);
-}, VO = (t) => typeof t == "number" || !isNaN(+t) ? `${t}px` : t, s_ = new Oe("aie-image-plugin"), Ti = "image_action", YO = GO.extend(
+  for (let m of n.querySelector(".aie-resize").children)
+    m.addEventListener("mousedown", d);
+}, YO = (t) => typeof t == "number" || !isNaN(+t) ? `${t}px` : t, s_ = new Oe("aie-image-plugin"), Ti = "image_action", zO = VO.extend(
   {
     name: "image",
     draggable: !0,
@@ -20664,8 +20678,8 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
               typeof d == "object" && (c = d);
             }
             if (c.errorCode === 0 && c.data && c.data.src) {
-              let p = s_.getState(this.editor.state).find(void 0, void 0, (_) => _.id == r);
-              o.dispatch(o.state.tr.insert(p[0].from - 1, a.nodes.image.create({
+              let p = s_.getState(this.editor.state).find(void 0, void 0, (f) => f.id == r), _ = p[0].from;
+              this.editor.state.doc.resolve(p[0].from).nodeBefore || (_ -= 1), o.dispatch(o.state.tr.insert(_, a.nodes.image.create({
                 src: c.data.src,
                 alt: c.data.alt,
                 align: c.data.align || "left",
@@ -20686,7 +20700,7 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
     },
     addNodeView() {
       return (t) => {
-        const e = document.createElement("div"), { src: n, width: r, height: i, align: o, alt: a } = t.node.attrs, s = VO(r || this.options.defaultSize), l = s.indexOf("%") > 0 ? `style="width: ${s};"` : "", c = s.indexOf("%") > 0 ? "calc(100% - 2px)" : s;
+        const e = document.createElement("div"), { src: n, width: r, height: i, align: o, alt: a } = t.node.attrs, s = YO(r || this.options.defaultSize), l = s.indexOf("%") > 0 ? `style="width: ${s};"` : "", c = s.indexOf("%") > 0 ? "calc(100% - 2px)" : s;
         return e.classList.add(`align-${o}`), this.editor.isEditable ? (e.innerHTML = `
                 <div class="aie-resize-wrapper" ${l}>
                     <div class="aie-resize">
@@ -20695,12 +20709,17 @@ const Gh = Hh(!1, !0), Vh = Hh(!0, !0), sO = Se.create({
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img alt="${a}" src="${t.node.attrs["data-src"] || n}" style="width: ${c}; height: ${i || "auto"}" class="align-${o} resize-obj">
+                    <img alt="${a}" src="${n || t.node.attrs["data-src"]}" style="width: ${c}; height: ${i || "auto"}" class="align-${o} resize-obj">
                 </div>
-                `, zh(e, this.editor.view.dom, (u) => this.editor.commands.updateAttributes("image", u)), {
+                `, zh(
+          this.editor,
+          t.node,
+          e,
+          (u) => this.editor.chain().updateAttributes("image", u).run()
+        ), {
           dom: e
         }) : (e.innerHTML = `<div class="aie-resize-wrapper" ${l}>
-<img alt="${a}" src="${t.node.attrs["data-src"] || n}" style="width: ${c}; height: ${i || "auto"}" class="align-${o} resize-obj">
+<img alt="${a}" src="${n || t.node.attrs["data-src"]}" style="width: ${c}; height: ${i || "auto"}" class="align-${o} resize-obj">
 </div>`, {
           dom: e
         });
@@ -20867,13 +20886,13 @@ var Me = class {
   }
   // Find the table map for the given table node.
   static get(t) {
-    return yc(t) || vc(t, zO(t));
+    return yc(t) || vc(t, $O(t));
   }
 };
-function zO(t) {
+function $O(t) {
   if (t.type.spec.tableRole != "table")
     throw new RangeError("Not a table node: " + t.type.name);
-  const e = $O(t), n = t.childCount, r = [];
+  const e = qO(t), n = t.childCount, r = [];
   let i = 0, o = null;
   const a = [];
   for (let c = 0, u = e * n; c < u; c++) r[c] = 0;
@@ -20920,9 +20939,9 @@ function zO(t) {
   let l = !1;
   for (let c = 0; !l && c < a.length; c += 2)
     a[c] != null && a[c + 1] < n && (l = !0);
-  return l && qO(s, a, t), s;
+  return l && WO(s, a, t), s;
 }
-function $O(t) {
+function qO(t) {
   let e = -1, n = !1;
   for (let r = 0; r < t.childCount; r++) {
     const i = t.child(r);
@@ -20943,7 +20962,7 @@ function $O(t) {
   }
   return e;
 }
-function qO(t, e, n) {
+function WO(t, e, n) {
   t.problems || (t.problems = []);
   const r = {};
   for (let i = 0; i < t.map.length; i++) {
@@ -20957,7 +20976,7 @@ function qO(t, e, n) {
     const l = a.attrs;
     for (let c = 0; c < l.colspan; c++) {
       const u = (i + c) % t.width, d = e[u * 2];
-      d != null && (!l.colwidth || l.colwidth[c] != d) && ((s || (s = WO(l)))[c] = d);
+      d != null && (!l.colwidth || l.colwidth[c] != d) && ((s || (s = KO(l)))[c] = d);
     }
     s && t.problems.unshift({
       type: "colwidth mismatch",
@@ -20966,7 +20985,7 @@ function qO(t, e, n) {
     });
   }
 }
-function WO(t) {
+function KO(t) {
   if (t.colwidth) return t.colwidth.slice();
   const e = [];
   for (let n = 0; n < t.colspan; n++) e.push(0);
@@ -20990,7 +21009,7 @@ function _i(t) {
       return t.node(0).resolve(t.before(e + 1));
   return null;
 }
-function KO(t) {
+function QO(t) {
   for (let e = t.depth; e > 0; e--) {
     const n = t.node(e).type.spec.tableRole;
     if (n === "cell" || n === "header_cell") return t.node(e);
@@ -21009,12 +21028,12 @@ function Fs(t) {
     return e.$anchorCell.pos > e.$headCell.pos ? e.$anchorCell : e.$headCell;
   if ("node" in e && e.node && e.node.type.spec.tableRole == "cell")
     return e.$anchor;
-  const n = _i(e.$head) || QO(e.$head);
+  const n = _i(e.$head) || ZO(e.$head);
   if (n)
     return n;
   throw new RangeError(`No cell found around position ${e.head}`);
 }
-function QO(t) {
+function ZO(t) {
   for (let e = t.nodeAfter, n = t.pos; e; e = e.firstChild, n++) {
     const r = e.type.spec.tableRole;
     if (r == "cell" || r == "header_cell") return t.doc.resolve(n);
@@ -21028,7 +21047,7 @@ function QO(t) {
 function Rc(t) {
   return t.parent.type.spec.tableRole == "row" && !!t.nodeAfter;
 }
-function ZO(t) {
+function XO(t) {
   return t.node(0).resolve(t.pos + t.nodeAfter.nodeSize);
 }
 function vu(t, e) {
@@ -21050,7 +21069,7 @@ function qh(t, e, n = 1) {
   }
   return r;
 }
-function XO(t, e, n) {
+function jO(t, e, n) {
   const r = it(e.type.schema).header_cell;
   for (let i = 0; i < t.height; i++)
     if (e.nodeAt(t.map[n + i * t.width]).type != r)
@@ -21218,12 +21237,12 @@ var ve = class dn extends ne {
     return new dn(e.resolve(n), e.resolve(r));
   }
   getBookmark() {
-    return new jO(this.$anchorCell.pos, this.$headCell.pos);
+    return new JO(this.$anchorCell.pos, this.$headCell.pos);
   }
 };
 ve.prototype.visible = !1;
 ne.jsonID("cell", ve);
-var jO = class Wh {
+var JO = class Wh {
   constructor(e, n) {
     this.anchor = e, this.head = n;
   }
@@ -21235,7 +21254,7 @@ var jO = class Wh {
     return n.parent.type.spec.tableRole == "row" && r.parent.type.spec.tableRole == "row" && n.index() < n.parent.childCount && r.index() < r.parent.childCount && vu(n, r) ? new ve(n, r) : ne.near(r, 1);
   }
 };
-function JO(t) {
+function eN(t) {
   if (!(t.selection instanceof ve)) return null;
   const e = [];
   return t.selection.forEachCell((n, r) => {
@@ -21244,7 +21263,7 @@ function JO(t) {
     );
   }), ye.create(t.doc, e);
 }
-function eN({ $from: t, $to: e }) {
+function tN({ $from: t, $to: e }) {
   if (t.pos == e.pos || t.pos < e.pos - 6) return !1;
   let n = t.pos, r = e.pos, i = t.depth;
   for (; i >= 0 && !(t.after(i + 1) < t.end(i)); i--, n++)
@@ -21253,7 +21272,7 @@ function eN({ $from: t, $to: e }) {
     ;
   return n == r && /row|table/.test(t.node(i).type.spec.tableRole);
 }
-function tN({ $from: t, $to: e }) {
+function nN({ $from: t, $to: e }) {
   let n, r;
   for (let i = t.depth; i > 0; i--) {
     const o = t.node(i);
@@ -21271,7 +21290,7 @@ function tN({ $from: t, $to: e }) {
   }
   return n !== r && e.parentOffset === 0;
 }
-function nN(t, e, n) {
+function rN(t, e, n) {
   const r = (e || t).selection, i = (e || t).doc;
   let o, a;
   if (r instanceof j && (a = r.node.type.spec.tableRole)) {
@@ -21284,10 +21303,10 @@ function nN(t, e, n) {
       const s = Me.get(r.node), l = r.from + 1, c = l + s.map[s.width * s.height - 1];
       o = ve.create(i, l + 1, c);
     }
-  } else r instanceof K && eN(r) ? o = K.create(i, r.from) : r instanceof K && tN(r) && (o = K.create(i, r.$from.start(), r.$from.end()));
+  } else r instanceof K && tN(r) ? o = K.create(i, r.from) : r instanceof K && nN(r) && (o = K.create(i, r.$from.start(), r.$from.end()));
   return o && (e || (e = t.tr)).setSelection(o), e;
 }
-var rN = new Oe("fix-tables");
+var iN = new Oe("fix-tables");
 function Kh(t, e, n, r) {
   const i = t.childCount, o = e.childCount;
   e: for (let a = 0, s = 0; a < o; a++) {
@@ -21303,11 +21322,11 @@ function Kh(t, e, n, r) {
 function Qh(t, e) {
   let n;
   const r = (i, o) => {
-    i.type.spec.tableRole == "table" && (n = iN(t, i, o, n));
+    i.type.spec.tableRole == "table" && (n = oN(t, i, o, n));
   };
   return e ? e.doc != t.doc && Kh(e.doc, t.doc, 0, r) : t.doc.descendants(r), n;
 }
-function iN(t, e, n, r) {
+function oN(t, e, n, r) {
   const i = Me.get(e);
   if (!i.problems) return r;
   r || (r = t.tr);
@@ -21364,7 +21383,7 @@ function iN(t, e, n, r) {
     }
     c = d;
   }
-  return r.setMeta(rN, { fixTables: !0 });
+  return r.setMeta(iN, { fixTables: !0 });
 }
 function on(t) {
   const e = t.selection, n = Fs(t), r = n.node(-1), i = n.start(-1), o = Me.get(r);
@@ -21375,7 +21394,7 @@ function on(t) {
 }
 function Zh(t, { map: e, tableStart: n, table: r }, i) {
   let o = i > 0 ? -1 : 0;
-  XO(e, r, i + o) && (o = i == 0 || i == e.width ? null : 0);
+  jO(e, r, i + o) && (o = i == 0 || i == e.width ? null : 0);
   for (let a = 0; a < e.height; a++) {
     const s = a * e.width + i;
     if (i > 0 && i < e.width && e.map[s - 1] == e.map[s]) {
@@ -21392,7 +21411,7 @@ function Zh(t, { map: e, tableStart: n, table: r }, i) {
   }
   return t;
 }
-function oN(t, e) {
+function aN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t);
@@ -21400,7 +21419,7 @@ function oN(t, e) {
   }
   return !0;
 }
-function aN(t, e) {
+function sN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t);
@@ -21408,7 +21427,7 @@ function aN(t, e) {
   }
   return !0;
 }
-function sN(t, { map: e, table: n, tableStart: r }, i) {
+function lN(t, { map: e, table: n, tableStart: r }, i) {
   const o = t.mapping.maps.length;
   for (let a = 0; a < e.height; ) {
     const s = a * e.width + i, l = e.map[s], c = n.nodeAt(l), u = c.attrs;
@@ -21425,12 +21444,12 @@ function sN(t, { map: e, table: n, tableStart: r }, i) {
     a += u.rowspan;
   }
 }
-function lN(t, e) {
+function cN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t), r = t.tr;
     if (n.left == 0 && n.right == n.map.width) return !1;
-    for (let i = n.right - 1; sN(r, n, i), i != n.left; i--) {
+    for (let i = n.right - 1; lN(r, n, i), i != n.left; i--) {
       const o = n.tableStart ? r.doc.nodeAt(n.tableStart - 1) : r.doc;
       if (!o)
         throw RangeError("No table found");
@@ -21440,7 +21459,7 @@ function lN(t, e) {
   }
   return !0;
 }
-function cN(t, e, n) {
+function uN(t, e, n) {
   var r;
   const i = it(e.type.schema).header_cell;
   for (let o = 0; o < t.width; o++)
@@ -21454,7 +21473,7 @@ function Xh(t, { map: e, tableStart: n, table: r }, i) {
   for (let c = 0; c < i; c++) a += r.child(c).nodeSize;
   const s = [];
   let l = i > 0 ? -1 : 0;
-  cN(e, r, i + l) && (l = i == 0 || i == e.height ? null : 0);
+  uN(e, r, i + l) && (l = i == 0 || i == e.height ? null : 0);
   for (let c = 0, u = e.width * i; c < e.width; c++, u++)
     if (i > 0 && i < e.height && e.map[u] == e.map[u - e.width]) {
       const d = e.map[u], p = r.nodeAt(d).attrs;
@@ -21468,7 +21487,7 @@ function Xh(t, { map: e, tableStart: n, table: r }, i) {
     }
   return t.insert(a, it(r.type.schema).row.create(null, s)), t;
 }
-function uN(t, e) {
+function dN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t);
@@ -21476,7 +21495,7 @@ function uN(t, e) {
   }
   return !0;
 }
-function dN(t, e) {
+function pN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t);
@@ -21484,7 +21503,7 @@ function dN(t, e) {
   }
   return !0;
 }
-function pN(t, { map: e, table: n, tableStart: r }, i) {
+function _N(t, { map: e, table: n, tableStart: r }, i) {
   let o = 0;
   for (let c = 0; c < i; c++) o += n.child(c).nodeSize;
   const a = o + n.child(i).nodeSize, s = t.mapping.maps.length;
@@ -21509,12 +21528,12 @@ function pN(t, { map: e, table: n, tableStart: r }, i) {
     }
   }
 }
-function _N(t, e) {
+function mN(t, e) {
   if (!Yt(t)) return !1;
   if (e) {
     const n = on(t), r = t.tr;
     if (n.top == 0 && n.bottom == n.map.height) return !1;
-    for (let i = n.bottom - 1; pN(r, n, i), i != n.top; i--) {
+    for (let i = n.bottom - 1; _N(r, n, i), i != n.top; i--) {
       const o = n.tableStart ? r.doc.nodeAt(n.tableStart - 1) : r.doc;
       if (!o)
         throw RangeError("No table found");
@@ -21528,7 +21547,7 @@ function l_(t) {
   const e = t.content;
   return e.childCount == 1 && e.child(0).isTextblock && e.child(0).childCount == 0;
 }
-function mN({ width: t, height: e, map: n }, r) {
+function fN({ width: t, height: e, map: n }, r) {
   let i = r.top * t + r.left, o = i, a = (r.bottom - 1) * t + r.left, s = i + (r.right - r.left - 1);
   for (let l = r.top; l < r.bottom; l++) {
     if (r.left > 0 && n[o] == n[o - 1] || r.right < t && n[s] == n[s + 1])
@@ -21547,7 +21566,7 @@ function c_(t, e) {
   if (!(n instanceof ve) || n.$anchorCell.pos == n.$headCell.pos)
     return !1;
   const r = on(t), { map: i } = r;
-  if (mN(i, r)) return !1;
+  if (fN(i, r)) return !1;
   if (e) {
     const o = t.tr, a = {};
     let s = L.empty, l, c;
@@ -21584,9 +21603,9 @@ function c_(t, e) {
 }
 function u_(t, e) {
   const n = it(t.schema);
-  return fN(({ node: r }) => n[r.type.spec.tableRole])(t, e);
+  return hN(({ node: r }) => n[r.type.spec.tableRole])(t, e);
 }
-function fN(t) {
+function hN(t) {
   return (e, n) => {
     var r;
     const i = e.selection;
@@ -21595,7 +21614,7 @@ function fN(t) {
       if (i.$anchorCell.pos != i.$headCell.pos) return !1;
       o = i.$anchorCell.nodeAfter, a = i.$anchorCell.pos;
     } else {
-      if (o = KO(i.$from), !o) return !1;
+      if (o = QO(i.$from), !o) return !1;
       a = (r = _i(i.$from)) == null ? void 0 : r.pos;
     }
     if (o == null || a == null || o.attrs.colspan == 1 && o.attrs.rowspan == 1)
@@ -21636,7 +21655,7 @@ function fN(t) {
     return !0;
   };
 }
-function hN(t, e) {
+function gN(t, e) {
   return function(n, r) {
     if (!Yt(n)) return !1;
     const i = Fs(n);
@@ -21656,7 +21675,7 @@ function hN(t, e) {
     return !0;
   };
 }
-function gN(t) {
+function EN(t) {
   return function(e, n) {
     if (!Yt(e)) return !1;
     if (n) {
@@ -21706,7 +21725,7 @@ function d_(t, e, n) {
   return !0;
 }
 function so(t, e) {
-  return e = e || { useDeprecatedLogic: !1 }, e.useDeprecatedLogic ? gN(t) : function(n, r) {
+  return e = e || { useDeprecatedLogic: !1 }, e.useDeprecatedLogic ? EN(t) : function(n, r) {
     if (!Yt(n)) return !1;
     if (r) {
       const i = it(n.schema), o = on(n), a = n.tr, s = d_("row", o, i), l = d_(
@@ -21738,10 +21757,10 @@ so("row", {
 so("column", {
   useDeprecatedLogic: !0
 });
-var EN = so("cell", {
+var SN = so("cell", {
   useDeprecatedLogic: !0
 });
-function SN(t, e) {
+function bN(t, e) {
   if (e < 0) {
     const n = t.nodeBefore;
     if (n) return t.pos - n.nodeSize;
@@ -21766,18 +21785,18 @@ function SN(t, e) {
 function p_(t) {
   return function(e, n) {
     if (!Yt(e)) return !1;
-    const r = SN(Fs(e), t);
+    const r = bN(Fs(e), t);
     if (r == null) return !1;
     if (n) {
       const i = e.doc.resolve(r);
       n(
-        e.tr.setSelection(K.between(i, ZO(i))).scrollIntoView()
+        e.tr.setSelection(K.between(i, XO(i))).scrollIntoView()
       );
     }
     return !0;
   };
 }
-function bN(t, e) {
+function TN(t, e) {
   const n = t.selection.$anchor;
   for (let r = n.depth; r > 0; r--)
     if (n.node(r).type.spec.tableRole == "table")
@@ -21801,7 +21820,7 @@ function zo(t, e) {
   }
   return !0;
 }
-function TN(t) {
+function CN(t) {
   if (!t.size) return null;
   let { content: e, openStart: n, openEnd: r } = t;
   for (; e.childCount == 1 && (n > 0 && r > 0 || e.child(0).type.spec.tableRole == "table"); )
@@ -21825,9 +21844,9 @@ function TN(t) {
     );
   else
     return null;
-  return CN(a, s);
+  return yN(a, s);
 }
-function CN(t, e) {
+function yN(t, e) {
   const n = [];
   for (let i = 0; i < e.length; i++) {
     const o = e[i];
@@ -21852,7 +21871,7 @@ function Oc(t, e) {
   const n = t.createAndFill();
   return new qc(n).replace(0, n.content.size, e).doc;
 }
-function yN({ width: t, height: e, rows: n }, r, i) {
+function vN({ width: t, height: e, rows: n }, r, i) {
   if (t != r) {
     const o = [], a = [];
     for (let s = 0; s < n.length; s++) {
@@ -21894,7 +21913,7 @@ function yN({ width: t, height: e, rows: n }, r, i) {
   }
   return { width: t, height: e, rows: n };
 }
-function vN(t, e, n, r, i, o, a) {
+function RN(t, e, n, r, i, o, a) {
   const s = t.doc.type.schema, l = it(s);
   let c, u;
   if (i > e.width)
@@ -21981,7 +22000,7 @@ function f_(t, e, n, r, i) {
       throw new Error("No table found");
     a = Me.get(o), p = d.mapping.maps.length;
   }
-  vN(d, a, o, n, c, u, p) && _(), __(d, a, o, n, l, c, s, p) && _(), __(d, a, o, n, l, c, u, p) && _(), m_(d, a, o, n, s, u, l, p) && _(), m_(d, a, o, n, s, u, c, p) && _();
+  RN(d, a, o, n, c, u, p) && _(), __(d, a, o, n, l, c, s, p) && _(), __(d, a, o, n, l, c, u, p) && _(), m_(d, a, o, n, s, u, l, p) && _(), m_(d, a, o, n, s, u, c, p) && _();
   for (let m = s; m < u; m++) {
     const f = a.positionAt(m, l, o), h = a.positionAt(m, c, o);
     d.replace(
@@ -21997,7 +22016,7 @@ function f_(t, e, n, r, i) {
     )
   ), e(d);
 }
-var RN = nu({
+var ON = nu({
   ArrowLeft: $o("horiz", -1),
   ArrowRight: $o("horiz", 1),
   ArrowUp: $o("vert", -1),
@@ -22060,13 +22079,13 @@ function qo(t, e) {
     ) : !1;
   };
 }
-function ON(t, e) {
+function NN(t, e) {
   const n = t.state.doc, r = _i(n.resolve(e));
   return r ? (t.dispatch(t.state.tr.setSelection(new ve(r))), !0) : !1;
 }
-function NN(t, e, n) {
+function AN(t, e, n) {
   if (!Yt(t.state)) return !1;
-  let r = TN(n);
+  let r = CN(n);
   const i = t.state.selection;
   if (i instanceof ve) {
     r || (r = {
@@ -22082,7 +22101,7 @@ function NN(t, e, n) {
       i.$anchorCell.pos - a,
       i.$headCell.pos - a
     );
-    return r = yN(r, s.right - s.left, s.bottom - s.top), f_(t.state, t.dispatch, a, s, r), !0;
+    return r = vN(r, s.right - s.left, s.bottom - s.top), f_(t.state, t.dispatch, a, s, r), !0;
   } else if (r) {
     const o = Fs(t.state), a = o.start(-1);
     return f_(
@@ -22095,7 +22114,7 @@ function NN(t, e, n) {
   } else
     return !1;
 }
-function AN(t, e) {
+function IN(t, e) {
   var n;
   if (e.ctrlKey || e.metaKey) return;
   const r = h_(t, e.target);
@@ -22158,7 +22177,7 @@ function Rl(t, e) {
   });
   return n && n ? _i(t.state.doc.resolve(n.pos)) : null;
 }
-var IN = class {
+var xN = class {
   constructor(e, n) {
     this.node = e, this.defaultCellMinWidth = n, this.dom = document.createElement("div"), this.dom.className = "tableWrapper", this.table = this.dom.appendChild(document.createElement("table")), this.table.style.setProperty(
       "--default-cell-min-width",
@@ -22204,11 +22223,11 @@ function Nc(t, e, n, r, i, o) {
 var Rt = new Oe(
   "tableColumnResizing"
 );
-function xN({
+function DN({
   handleWidth: t = 5,
   cellMinWidth: e = 25,
   defaultCellMinWidth: n = 100,
-  View: r = IN,
+  View: r = xN,
   lastColumnResizable: i = !0
 } = {}) {
   const o = new Te({
@@ -22217,7 +22236,7 @@ function xN({
       init(a, s) {
         var l, c;
         const u = (c = (l = o.spec) == null ? void 0 : l.props) == null ? void 0 : c.nodeViews, d = it(s.schema).table.name;
-        return r && u && (u[d] = (p, _) => new r(p, n, _)), new DN(-1, !1);
+        return r && u && (u[d] = (p, _) => new r(p, n, _)), new wN(-1, !1);
       },
       apply(a, s) {
         return s.apply(a);
@@ -22230,26 +22249,26 @@ function xN({
       },
       handleDOMEvents: {
         mousemove: (a, s) => {
-          wN(a, s, t, i);
+          MN(a, s, t, i);
         },
         mouseleave: (a) => {
-          MN(a);
+          LN(a);
         },
         mousedown: (a, s) => {
-          LN(a, s, e, n);
+          kN(a, s, e, n);
         }
       },
       decorations: (a) => {
         const s = Rt.getState(a);
         if (s && s.activeHandle > -1)
-          return UN(a, s.activeHandle);
+          return HN(a, s.activeHandle);
       },
       nodeViews: {}
     }
   });
   return o;
 }
-var DN = class pa {
+var wN = class pa {
   constructor(e, n) {
     this.activeHandle = e, this.dragging = n;
   }
@@ -22266,11 +22285,11 @@ var DN = class pa {
     return n;
   }
 };
-function wN(t, e, n, r) {
+function MN(t, e, n, r) {
   if (!t.editable) return;
   const i = Rt.getState(t.state);
   if (i && !i.dragging) {
-    const o = PN(e.target);
+    const o = FN(e.target);
     let a = -1;
     if (o) {
       const { left: s, right: l } = o.getBoundingClientRect();
@@ -22286,18 +22305,18 @@ function wN(t, e, n, r) {
     }
   }
 }
-function MN(t) {
+function LN(t) {
   if (!t.editable) return;
   const e = Rt.getState(t.state);
   e && e.activeHandle > -1 && !e.dragging && Jh(t, -1);
 }
-function LN(t, e, n, r) {
+function kN(t, e, n, r) {
   var i;
   if (!t.editable) return !1;
   const o = (i = t.dom.ownerDocument.defaultView) != null ? i : window, a = Rt.getState(t.state);
   if (!a || a.activeHandle == -1 || a.dragging)
     return !1;
-  const s = t.state.doc.nodeAt(a.activeHandle), l = kN(t, a.activeHandle, s.attrs);
+  const s = t.state.doc.nodeAt(a.activeHandle), l = PN(t, a.activeHandle, s.attrs);
   t.dispatch(
     t.state.tr.setMeta(Rt, {
       setDragging: { startX: e.clientX, startWidth: l }
@@ -22306,7 +22325,7 @@ function LN(t, e, n, r) {
   function c(d) {
     o.removeEventListener("mouseup", c), o.removeEventListener("mousemove", u);
     const p = Rt.getState(t.state);
-    p != null && p.dragging && (FN(
+    p != null && p.dragging && (BN(
       t,
       p.activeHandle,
       E_(p.dragging, d, n)
@@ -22334,7 +22353,7 @@ function LN(t, e, n, r) {
     r
   ), o.addEventListener("mouseup", c), o.addEventListener("mousemove", u), e.preventDefault(), !0;
 }
-function kN(t, e, { colspan: n, colwidth: r }) {
+function PN(t, e, { colspan: n, colwidth: r }) {
   const i = r && r[r.length - 1];
   if (i) return i;
   const o = t.domAtPos(e);
@@ -22344,7 +22363,7 @@ function kN(t, e, { colspan: n, colwidth: r }) {
       r[c] && (s -= r[c], l--);
   return s / l;
 }
-function PN(t) {
+function FN(t) {
   for (; t && t.nodeName != "TD" && t.nodeName != "TH"; )
     t = t.classList && t.classList.contains("ProseMirror") ? null : t.parentNode;
   return t;
@@ -22370,14 +22389,14 @@ function Jh(t, e) {
     t.state.tr.setMeta(Rt, { setHandle: e })
   );
 }
-function FN(t, e, n) {
+function BN(t, e, n) {
   const r = t.state.doc.resolve(e), i = r.node(-1), o = Me.get(i), a = r.start(-1), s = o.colCount(r.pos - a) + r.nodeAfter.attrs.colspan - 1, l = t.state.tr;
   for (let c = 0; c < o.height; c++) {
     const u = c * o.width + s;
     if (c && o.map[u] == o.map[u - o.width]) continue;
     const d = o.map[u], p = i.nodeAt(d).attrs, _ = p.colspan == 1 ? 0 : s - o.colCount(d);
     if (p.colwidth && p.colwidth[_] == n) continue;
-    const m = p.colwidth ? p.colwidth.slice() : BN(p.colspan);
+    const m = p.colwidth ? p.colwidth.slice() : UN(p.colspan);
     m[_] = n, l.setNodeMarkup(a + d, null, { ...p, colwidth: m });
   }
   l.docChanged && t.dispatch(l);
@@ -22396,10 +22415,10 @@ function S_(t, e, n, r) {
     n
   );
 }
-function BN(t) {
+function UN(t) {
   return Array(t).fill(0);
 }
-function UN(t, e) {
+function HN(t, e) {
   var n;
   const r = [], i = t.doc.resolve(e), o = i.node(-1);
   if (!o)
@@ -22422,7 +22441,7 @@ function UN(t, e) {
   }
   return ye.create(t.doc, r);
 }
-function HN({
+function GN({
   allowTableNodeSelection: t = !1
 } = {}) {
   return new Te({
@@ -22443,19 +22462,19 @@ function HN({
       }
     },
     props: {
-      decorations: JO,
+      decorations: eN,
       handleDOMEvents: {
-        mousedown: AN
+        mousedown: IN
       },
       createSelectionBetween(e) {
         return In.getState(e.state) != null ? e.state.selection : null;
       },
-      handleTripleClick: ON,
-      handleKeyDown: RN,
-      handlePaste: NN
+      handleTripleClick: NN,
+      handleKeyDown: ON,
+      handlePaste: AN
     },
     appendTransaction(e, n, r) {
-      return nN(
+      return rN(
         r,
         Qh(r, n),
         t
@@ -22493,7 +22512,7 @@ function b_(t, e, n, r, i, o) {
   }
   l ? (n.style.width = `${s}px`, n.style.minWidth = "") : (n.style.width = "", n.style.minWidth = `${s}px`);
 }
-class GN {
+class VN {
   constructor(e, n) {
     this.node = e, this.cellMinWidth = n, this.dom = document.createElement("div"), this.dom.className = "tableWrapper", this.table = this.dom.appendChild(document.createElement("table")), this.colgroup = this.table.appendChild(document.createElement("colgroup")), b_(e, this.colgroup, this.table, n), this.contentDOM = this.table.appendChild(document.createElement("tbody"));
   }
@@ -22504,7 +22523,7 @@ class GN {
     return e.type === "attributes" && (e.target === this.table || this.colgroup.contains(e.target));
   }
 }
-function VN(t, e, n, r) {
+function YN(t, e, n, r) {
   let i = 0, o = !0;
   const a = [], s = t.firstChild;
   if (!s)
@@ -22527,7 +22546,7 @@ function VN(t, e, n, r) {
 function T_(t, e) {
   return t.createAndFill();
 }
-function YN(t) {
+function zN(t) {
   if (t.cached.tableNodeTypes)
     return t.cached.tableNodeTypes;
   const e = {};
@@ -22536,8 +22555,8 @@ function YN(t) {
     r.spec.tableRole && (e[r.spec.tableRole] = r);
   }), t.cached.tableNodeTypes = e, e;
 }
-function zN(t, e, n, r, i) {
-  const o = YN(t), a = [], s = [];
+function $N(t, e, n, r, i) {
+  const o = zN(t), a = [], s = [];
   for (let c = 0; c < n; c += 1) {
     const u = T_(o.cell);
     if (u && s.push(u), r) {
@@ -22550,12 +22569,12 @@ function zN(t, e, n, r, i) {
     l.push(o.row.createChecked(null, r && c === 0 ? a : s));
   return o.table.createChecked(null, l);
 }
-function $N(t) {
+function qN(t) {
   return t instanceof ve;
 }
 const Wo = ({ editor: t }) => {
   const { selection: e } = t.state;
-  if (!$N(e))
+  if (!qN(e))
     return !1;
   let n = 0;
   const r = th(e.ranges[0].$from, (o) => o.type.name === "table");
@@ -22564,7 +22583,7 @@ const Wo = ({ editor: t }) => {
       return !1;
     ["tableCell", "tableHeader"].includes(o.type.name) && (n += 1);
   }), n === e.ranges.length ? (t.commands.deleteTable(), !0) : !1;
-}, qN = De.create({
+}, WN = De.create({
   name: "table",
   // @ts-ignore
   addOptions() {
@@ -22574,7 +22593,7 @@ const Wo = ({ editor: t }) => {
       handleWidth: 5,
       cellMinWidth: 25,
       // TODO: fix
-      View: GN,
+      View: VN,
       lastColumnResizable: !0,
       allowTableNodeSelection: !1
     };
@@ -22587,7 +22606,7 @@ const Wo = ({ editor: t }) => {
     return [{ tag: "table" }];
   },
   renderHTML({ node: t, HTMLAttributes: e }) {
-    const { colgroup: n, tableWidth: r, tableMinWidth: i } = VN(t, this.options.cellMinWidth);
+    const { colgroup: n, tableWidth: r, tableMinWidth: i } = YN(t, this.options.cellMinWidth);
     return [
       "table",
       me(this.options.HTMLAttributes, e, {
@@ -22600,27 +22619,27 @@ const Wo = ({ editor: t }) => {
   addCommands() {
     return {
       insertTable: ({ rows: t = 3, cols: e = 3, withHeaderRow: n = !0 } = {}) => ({ tr: r, dispatch: i, editor: o }) => {
-        const a = zN(o.schema, t, e, n);
+        const a = $N(o.schema, t, e, n);
         if (i) {
           const s = r.selection.from + 1;
           r.replaceSelectionWith(a).scrollIntoView().setSelection(K.near(r.doc.resolve(s)));
         }
         return !0;
       },
-      addColumnBefore: () => ({ state: t, dispatch: e }) => oN(t, e),
-      addColumnAfter: () => ({ state: t, dispatch: e }) => aN(t, e),
-      deleteColumn: () => ({ state: t, dispatch: e }) => lN(t, e),
-      addRowBefore: () => ({ state: t, dispatch: e }) => uN(t, e),
-      addRowAfter: () => ({ state: t, dispatch: e }) => dN(t, e),
-      deleteRow: () => ({ state: t, dispatch: e }) => _N(t, e),
-      deleteTable: () => ({ state: t, dispatch: e }) => bN(t, e),
+      addColumnBefore: () => ({ state: t, dispatch: e }) => aN(t, e),
+      addColumnAfter: () => ({ state: t, dispatch: e }) => sN(t, e),
+      deleteColumn: () => ({ state: t, dispatch: e }) => cN(t, e),
+      addRowBefore: () => ({ state: t, dispatch: e }) => dN(t, e),
+      addRowAfter: () => ({ state: t, dispatch: e }) => pN(t, e),
+      deleteRow: () => ({ state: t, dispatch: e }) => mN(t, e),
+      deleteTable: () => ({ state: t, dispatch: e }) => TN(t, e),
       mergeCells: () => ({ state: t, dispatch: e }) => c_(t, e),
       splitCell: () => ({ state: t, dispatch: e }) => u_(t, e),
       toggleHeaderColumn: () => ({ state: t, dispatch: e }) => so("column")(t, e),
       toggleHeaderRow: () => ({ state: t, dispatch: e }) => so("row")(t, e),
-      toggleHeaderCell: () => ({ state: t, dispatch: e }) => EN(t, e),
+      toggleHeaderCell: () => ({ state: t, dispatch: e }) => SN(t, e),
       mergeOrSplit: () => ({ state: t, dispatch: e }) => c_(t, e) ? !0 : u_(t, e),
-      setCellAttribute: (t, e) => ({ state: n, dispatch: r }) => hN(t, e)(n, r),
+      setCellAttribute: (t, e) => ({ state: n, dispatch: r }) => gN(t, e)(n, r),
       goToNextCell: () => ({ state: t, dispatch: e }) => p_(1)(t, e),
       goToPreviousCell: () => ({ state: t, dispatch: e }) => p_(-1)(t, e),
       fixTables: () => ({ state: t, dispatch: e }) => (e && Qh(t), !0),
@@ -22646,7 +22665,7 @@ const Wo = ({ editor: t }) => {
   addProseMirrorPlugins() {
     return [
       ...this.options.resizable && this.editor.isEditable ? [
-        xN({
+        DN({
           handleWidth: this.options.handleWidth,
           cellMinWidth: this.options.cellMinWidth,
           defaultCellMinWidth: this.options.cellMinWidth,
@@ -22654,7 +22673,7 @@ const Wo = ({ editor: t }) => {
           lastColumnResizable: this.options.lastColumnResizable
         })
       ] : [],
-      HN({
+      GN({
         allowTableNodeSelection: this.options.allowTableNodeSelection
       })
     ];
@@ -22669,7 +22688,7 @@ const Wo = ({ editor: t }) => {
       tableRole: ce($(t, "tableRole", e))
     };
   }
-}), WN = De.create({
+}), KN = De.create({
   name: "tableRow",
   addOptions() {
     return {
@@ -22686,7 +22705,7 @@ const Wo = ({ editor: t }) => {
   renderHTML({ HTMLAttributes: t }) {
     return ["tr", me(this.options.HTMLAttributes, t), 0];
   }
-}), KN = De.create({
+}), QN = De.create({
   name: "tableHeader",
   addOptions() {
     return {
@@ -22721,7 +22740,7 @@ const Wo = ({ editor: t }) => {
   renderHTML({ HTMLAttributes: t }) {
     return ["th", me(this.options.HTMLAttributes, t), 0];
   }
-}), QN = KN.extend({
+}), ZN = QN.extend({
   addAttributes() {
     var t;
     return {
@@ -22749,7 +22768,7 @@ const Wo = ({ editor: t }) => {
       }
     };
   }
-}), ZN = De.create({
+}), XN = De.create({
   name: "tableCell",
   addOptions() {
     return {
@@ -22784,7 +22803,7 @@ const Wo = ({ editor: t }) => {
   renderHTML({ HTMLAttributes: t }) {
     return ["td", me(this.options.HTMLAttributes, t), 0];
   }
-}), XN = ZN.extend({
+}), jN = XN.extend({
   addAttributes() {
     var t;
     return {
@@ -22812,7 +22831,7 @@ const Wo = ({ editor: t }) => {
       }
     };
   }
-}), jN = Se.create({
+}), JN = Se.create({
   name: "characterCount",
   addOptions() {
     return {
@@ -22878,22 +22897,22 @@ const Wo = ({ editor: t }) => {
       })
     ];
   }
-}), JN = "aaa1rp3bb0ott3vie4c1le2ogado5udhabi7c0ademy5centure6ountant0s9o1tor4d0s1ult4e0g1ro2tna4f0l1rica5g0akhan5ency5i0g1rbus3force5tel5kdn3l0ibaba4pay4lfinanz6state5y2sace3tom5m0azon4ericanexpress7family11x2fam3ica3sterdam8nalytics7droid5quan4z2o0l2partments8p0le4q0uarelle8r0ab1mco4chi3my2pa2t0e3s0da2ia2sociates9t0hleta5torney7u0ction5di0ble3o3spost5thor3o0s4w0s2x0a2z0ure5ba0by2idu3namex4d1k2r0celona5laycard4s5efoot5gains6seball5ketball8uhaus5yern5b0c1t1va3cg1n2d1e0ats2uty4er2ntley5rlin4st0buy5t2f1g1h0arti5i0ble3d1ke2ng0o3o1z2j1lack0friday9ockbuster8g1omberg7ue3m0s1w2n0pparibas9o0ats3ehringer8fa2m1nd2o0k0ing5sch2tik2on4t1utique6x2r0adesco6idgestone9oadway5ker3ther5ussels7s1t1uild0ers6siness6y1zz3v1w1y1z0h3ca0b1fe2l0l1vinklein9m0era3p2non3petown5ital0one8r0avan4ds2e0er0s4s2sa1e1h1ino4t0ering5holic7ba1n1re3c1d1enter4o1rn3f0a1d2g1h0anel2nel4rity4se2t2eap3intai5ristmas6ome4urch5i0priani6rcle4sco3tadel4i0c2y3k1l0aims4eaning6ick2nic1que6othing5ud3ub0med6m1n1o0ach3des3ffee4llege4ogne5m0mbank4unity6pany2re3uter5sec4ndos3struction8ulting7tact3ractors9oking4l1p2rsica5untry4pon0s4rses6pa2r0edit0card4union9icket5own3s1uise0s6u0isinella9v1w1x1y0mru3ou3z2dad1nce3ta1e1ing3sun4y2clk3ds2e0al0er2s3gree4livery5l1oitte5ta3mocrat6ntal2ist5si0gn4v2hl2iamonds6et2gital5rect0ory7scount3ver5h2y2j1k1m1np2o0cs1tor4g1mains5t1wnload7rive4tv2ubai3nlop4pont4rban5vag2r2z2earth3t2c0o2deka3u0cation8e1g1mail3erck5nergy4gineer0ing9terprises10pson4quipment8r0icsson6ni3s0q1tate5t1u0rovision8s2vents5xchange6pert3osed4ress5traspace10fage2il1rwinds6th3mily4n0s2rm0ers5shion4t3edex3edback6rrari3ero6i0delity5o2lm2nal1nce1ial7re0stone6mdale6sh0ing5t0ness6j1k1lickr3ghts4r2orist4wers5y2m1o0o0d1tball6rd1ex2sale4um3undation8x2r0ee1senius7l1ogans4ntier7tr2ujitsu5n0d2rniture7tbol5yi3ga0l0lery3o1up4me0s3p1rden4y2b0iz3d0n2e0a1nt0ing5orge5f1g0ee3h1i0ft0s3ves2ing5l0ass3e1obal2o4m0ail3bh2o1x2n1odaddy5ld0point6f2o0dyear5g0le4p1t1v2p1q1r0ainger5phics5tis4een3ipe3ocery4up4s1t1u0cci3ge2ide2tars5ru3w1y2hair2mburg5ngout5us3bo2dfc0bank7ealth0care8lp1sinki6re1mes5iphop4samitsu7tachi5v2k0t2m1n1ockey4ldings5iday5medepot5goods5s0ense7nda3rse3spital5t0ing5t0els3mail5use3w2r1sbc3t1u0ghes5yatt3undai7ibm2cbc2e1u2d1e0ee3fm2kano4l1m0amat4db2mo0bilien9n0c1dustries8finiti5o2g1k1stitute6urance4e4t0ernational10uit4vestments10o1piranga7q1r0ish4s0maili5t0anbul7t0au2v3jaguar4va3cb2e0ep2tzt3welry6io2ll2m0p2nj2o0bs1urg4t1y2p0morgan6rs3uegos4niper7kaufen5ddi3e0rryhotels6logistics9properties14fh2g1h1i0a1ds2m1ndle4tchen5wi3m1n1oeln3matsu5sher5p0mg2n2r0d1ed3uokgroup8w1y0oto4z2la0caixa5mborghini8er3ncaster6d0rover6xess5salle5t0ino3robe5w0yer5b1c1ds2ease3clerc5frak4gal2o2xus4gbt3i0dl2fe0insurance9style7ghting6ke2lly3mited4o2ncoln4k2psy3ve1ing5k1lc1p2oan0s3cker3us3l1ndon4tte1o3ve3pl0financial11r1s1t0d0a3u0ndbeck6xe1ury5v1y2ma0drid4if1son4keup4n0agement7go3p1rket0ing3s4riott5shalls7ttel5ba2c0kinsey7d1e0d0ia3et2lbourne7me1orial6n0u2rckmsd7g1h1iami3crosoft7l1ni1t2t0subishi9k1l0b1s2m0a2n1o0bi0le4da2e1i1m1nash3ey2ster5rmon3tgage6scow4to0rcycles9v0ie4p1q1r1s0d2t0n1r2u0seum3ic4v1w1x1y1z2na0b1goya4me2vy3ba2c1e0c1t0bank4flix4work5ustar5w0s2xt0direct7us4f0l2g0o2hk2i0co2ke1on3nja3ssan1y5l1o0kia3rton4w0ruz3tv4p1r0a1w2tt2u1yc2z2obi1server7ffice5kinawa6layan0group9lo3m0ega4ne1g1l0ine5oo2pen3racle3nge4g0anic5igins6saka4tsuka4t2vh3pa0ge2nasonic7ris2s1tners4s1y3y2ccw3e0t2f0izer5g1h0armacy6d1ilips5one2to0graphy6s4ysio5ics1tet2ures6d1n0g1k2oneer5zza4k1l0ace2y0station9umbing5s3m1n0c2ohl2ker3litie5rn2st3r0america6xi3ess3ime3o0d0uctions8f1gressive8mo2perties3y5tection8u0dential9s1t1ub2w0c2y2qa1pon3uebec3st5racing4dio4e0ad1lestate6tor2y4cipes5d0stone5umbrella9hab3ise0n3t2liance6n0t0als5pair3ort3ublican8st0aurant8view0s5xroth6ich0ardli6oh3l1o1p2o0cks3deo3gers4om3s0vp3u0gby3hr2n2w0e2yukyu6sa0arland6fe0ty4kura4le1on3msclub4ung5ndvik0coromant12ofi4p1rl2s1ve2xo3b0i1s2c0b1haeffler7midt4olarships8ol3ule3warz5ience5ot3d1e0arch3t2cure1ity6ek2lect4ner3rvices6ven3w1x0y3fr2g1h0angrila6rp3ell3ia1ksha5oes2p0ping5uji3w3i0lk2na1gles5te3j1k0i0n2y0pe4l0ing4m0art3ile4n0cf3o0ccer3ial4ftbank4ware6hu2lar2utions7ng1y2y2pa0ce3ort2t3r0l2s1t0ada2ples4r1tebank4farm7c0group6ockholm6rage3e3ream4udio2y3yle4u0cks3pplies3y2ort5rf1gery5zuki5v1watch4iss4x1y0dney4stems6z2tab1ipei4lk2obao4rget4tamotors6r2too4x0i3c0i2d0k2eam2ch0nology8l1masek5nnis4va3f1g1h0d1eater2re6iaa2ckets5enda4ps2res2ol4j0maxx4x2k0maxx5l1m0all4n1o0day3kyo3ols3p1ray3shiba5tal3urs3wn2yota3s3r0ade1ing4ining5vel0ers0insurance16ust3v2t1ube2i1nes3shu4v0s2w1z2ua1bank3s2g1k1nicom3versity8o2ol2ps2s1y1z2va0cations7na1guard7c1e0gas3ntures6risign5mögensberater2ung14sicherung10t2g1i0ajes4deo3g1king4llas4n1p1rgin4sa1ion4va1o3laanderen9n1odka3lvo3te1ing3o2yage5u2wales2mart4ter4ng0gou5tch0es6eather0channel12bcam3er2site5d0ding5ibo2r3f1hoswho6ien2ki2lliamhill9n0dows4e1ners6me2olterskluwer11odside6rk0s2ld3w2s1tc1f3xbox3erox4ihuan4n2xx2yz3yachts4hoo3maxun5ndex5e1odobashi7ga2kohama6u0tube6t1un3za0ppos4ra3ero3ip2m1one3uerich6w2", eA = "ελ1υ2бг1ел3дети4ею2католик6ом3мкд2он1сква6онлайн5рг3рус2ф2сайт3рб3укр3қаз3հայ3ישראל5קום3ابوظبي5رامكو5لاردن4بحرين5جزائر5سعودية6عليان5مغرب5مارات5یران5بارت2زار4يتك3ھارت5تونس4سودان3رية5شبكة4عراق2ب2مان4فلسطين6قطر3كاثوليك6وم3مصر2ليسيا5وريتانيا7قع4همراه5پاکستان7ڀارت4कॉम3नेट3भारत0म्3ोत5संगठन5বাংলা5ভারত2ৰত4ਭਾਰਤ4ભારત4ଭାରତ4இந்தியா6லங்கை6சிங்கப்பூர்11భారత్5ಭಾರತ4ഭാരതം5ලංකා4คอม3ไทย3ລາວ3გე2みんな3アマゾン4クラウド4グーグル4コム2ストア3セール3ファッション6ポイント4世界2中信1国1國1文网3亚马逊3企业2佛山2信息2健康2八卦2公司1益2台湾1灣2商城1店1标2嘉里0大酒店5在线2大拿2天主教3娱乐2家電2广东2微博2慈善2我爱你3手机2招聘2政务1府2新加坡2闻2时尚2書籍2机构2淡马锡3游戏2澳門2点看2移动2组织机构4网址1店1站1络2联通2谷歌2购物2通販2集团2電訊盈科4飞利浦3食品2餐厅2香格里拉3港2닷넷1컴2삼성2한국2", oi = (t, e) => {
+}), eA = "aaa1rp3bb0ott3vie4c1le2ogado5udhabi7c0ademy5centure6ountant0s9o1tor4d0s1ult4e0g1ro2tna4f0l1rica5g0akhan5ency5i0g1rbus3force5tel5kdn3l0ibaba4pay4lfinanz6state5y2sace3tom5m0azon4ericanexpress7family11x2fam3ica3sterdam8nalytics7droid5quan4z2o0l2partments8p0le4q0uarelle8r0ab1mco4chi3my2pa2t0e3s0da2ia2sociates9t0hleta5torney7u0ction5di0ble3o3spost5thor3o0s4w0s2x0a2z0ure5ba0by2idu3namex4d1k2r0celona5laycard4s5efoot5gains6seball5ketball8uhaus5yern5b0c1t1va3cg1n2d1e0ats2uty4er2ntley5rlin4st0buy5t2f1g1h0arti5i0ble3d1ke2ng0o3o1z2j1lack0friday9ockbuster8g1omberg7ue3m0s1w2n0pparibas9o0ats3ehringer8fa2m1nd2o0k0ing5sch2tik2on4t1utique6x2r0adesco6idgestone9oadway5ker3ther5ussels7s1t1uild0ers6siness6y1zz3v1w1y1z0h3ca0b1fe2l0l1vinklein9m0era3p2non3petown5ital0one8r0avan4ds2e0er0s4s2sa1e1h1ino4t0ering5holic7ba1n1re3c1d1enter4o1rn3f0a1d2g1h0anel2nel4rity4se2t2eap3intai5ristmas6ome4urch5i0priani6rcle4sco3tadel4i0c2y3k1l0aims4eaning6ick2nic1que6othing5ud3ub0med6m1n1o0ach3des3ffee4llege4ogne5m0mbank4unity6pany2re3uter5sec4ndos3struction8ulting7tact3ractors9oking4l1p2rsica5untry4pon0s4rses6pa2r0edit0card4union9icket5own3s1uise0s6u0isinella9v1w1x1y0mru3ou3z2dad1nce3ta1e1ing3sun4y2clk3ds2e0al0er2s3gree4livery5l1oitte5ta3mocrat6ntal2ist5si0gn4v2hl2iamonds6et2gital5rect0ory7scount3ver5h2y2j1k1m1np2o0cs1tor4g1mains5t1wnload7rive4tv2ubai3nlop4pont4rban5vag2r2z2earth3t2c0o2deka3u0cation8e1g1mail3erck5nergy4gineer0ing9terprises10pson4quipment8r0icsson6ni3s0q1tate5t1u0rovision8s2vents5xchange6pert3osed4ress5traspace10fage2il1rwinds6th3mily4n0s2rm0ers5shion4t3edex3edback6rrari3ero6i0delity5o2lm2nal1nce1ial7re0stone6mdale6sh0ing5t0ness6j1k1lickr3ghts4r2orist4wers5y2m1o0o0d1tball6rd1ex2sale4um3undation8x2r0ee1senius7l1ogans4ntier7tr2ujitsu5n0d2rniture7tbol5yi3ga0l0lery3o1up4me0s3p1rden4y2b0iz3d0n2e0a1nt0ing5orge5f1g0ee3h1i0ft0s3ves2ing5l0ass3e1obal2o4m0ail3bh2o1x2n1odaddy5ld0point6f2o0dyear5g0le4p1t1v2p1q1r0ainger5phics5tis4een3ipe3ocery4up4s1t1u0cci3ge2ide2tars5ru3w1y2hair2mburg5ngout5us3bo2dfc0bank7ealth0care8lp1sinki6re1mes5iphop4samitsu7tachi5v2k0t2m1n1ockey4ldings5iday5medepot5goods5s0ense7nda3rse3spital5t0ing5t0els3mail5use3w2r1sbc3t1u0ghes5yatt3undai7ibm2cbc2e1u2d1e0ee3fm2kano4l1m0amat4db2mo0bilien9n0c1dustries8finiti5o2g1k1stitute6urance4e4t0ernational10uit4vestments10o1piranga7q1r0ish4s0maili5t0anbul7t0au2v3jaguar4va3cb2e0ep2tzt3welry6io2ll2m0p2nj2o0bs1urg4t1y2p0morgan6rs3uegos4niper7kaufen5ddi3e0rryhotels6logistics9properties14fh2g1h1i0a1ds2m1ndle4tchen5wi3m1n1oeln3matsu5sher5p0mg2n2r0d1ed3uokgroup8w1y0oto4z2la0caixa5mborghini8er3ncaster6d0rover6xess5salle5t0ino3robe5w0yer5b1c1ds2ease3clerc5frak4gal2o2xus4gbt3i0dl2fe0insurance9style7ghting6ke2lly3mited4o2ncoln4k2psy3ve1ing5k1lc1p2oan0s3cker3us3l1ndon4tte1o3ve3pl0financial11r1s1t0d0a3u0ndbeck6xe1ury5v1y2ma0drid4if1son4keup4n0agement7go3p1rket0ing3s4riott5shalls7ttel5ba2c0kinsey7d1e0d0ia3et2lbourne7me1orial6n0u2rckmsd7g1h1iami3crosoft7l1ni1t2t0subishi9k1l0b1s2m0a2n1o0bi0le4da2e1i1m1nash3ey2ster5rmon3tgage6scow4to0rcycles9v0ie4p1q1r1s0d2t0n1r2u0seum3ic4v1w1x1y1z2na0b1goya4me2vy3ba2c1e0c1t0bank4flix4work5ustar5w0s2xt0direct7us4f0l2g0o2hk2i0co2ke1on3nja3ssan1y5l1o0kia3rton4w0ruz3tv4p1r0a1w2tt2u1yc2z2obi1server7ffice5kinawa6layan0group9lo3m0ega4ne1g1l0ine5oo2pen3racle3nge4g0anic5igins6saka4tsuka4t2vh3pa0ge2nasonic7ris2s1tners4s1y3y2ccw3e0t2f0izer5g1h0armacy6d1ilips5one2to0graphy6s4ysio5ics1tet2ures6d1n0g1k2oneer5zza4k1l0ace2y0station9umbing5s3m1n0c2ohl2ker3litie5rn2st3r0america6xi3ess3ime3o0d0uctions8f1gressive8mo2perties3y5tection8u0dential9s1t1ub2w0c2y2qa1pon3uebec3st5racing4dio4e0ad1lestate6tor2y4cipes5d0stone5umbrella9hab3ise0n3t2liance6n0t0als5pair3ort3ublican8st0aurant8view0s5xroth6ich0ardli6oh3l1o1p2o0cks3deo3gers4om3s0vp3u0gby3hr2n2w0e2yukyu6sa0arland6fe0ty4kura4le1on3msclub4ung5ndvik0coromant12ofi4p1rl2s1ve2xo3b0i1s2c0b1haeffler7midt4olarships8ol3ule3warz5ience5ot3d1e0arch3t2cure1ity6ek2lect4ner3rvices6ven3w1x0y3fr2g1h0angrila6rp3ell3ia1ksha5oes2p0ping5uji3w3i0lk2na1gles5te3j1k0i0n2y0pe4l0ing4m0art3ile4n0cf3o0ccer3ial4ftbank4ware6hu2lar2utions7ng1y2y2pa0ce3ort2t3r0l2s1t0ada2ples4r1tebank4farm7c0group6ockholm6rage3e3ream4udio2y3yle4u0cks3pplies3y2ort5rf1gery5zuki5v1watch4iss4x1y0dney4stems6z2tab1ipei4lk2obao4rget4tamotors6r2too4x0i3c0i2d0k2eam2ch0nology8l1masek5nnis4va3f1g1h0d1eater2re6iaa2ckets5enda4ps2res2ol4j0maxx4x2k0maxx5l1m0all4n1o0day3kyo3ols3p1ray3shiba5tal3urs3wn2yota3s3r0ade1ing4ining5vel0ers0insurance16ust3v2t1ube2i1nes3shu4v0s2w1z2ua1bank3s2g1k1nicom3versity8o2ol2ps2s1y1z2va0cations7na1guard7c1e0gas3ntures6risign5mögensberater2ung14sicherung10t2g1i0ajes4deo3g1king4llas4n1p1rgin4sa1ion4va1o3laanderen9n1odka3lvo3te1ing3o2yage5u2wales2mart4ter4ng0gou5tch0es6eather0channel12bcam3er2site5d0ding5ibo2r3f1hoswho6ien2ki2lliamhill9n0dows4e1ners6me2olterskluwer11odside6rk0s2ld3w2s1tc1f3xbox3erox4ihuan4n2xx2yz3yachts4hoo3maxun5ndex5e1odobashi7ga2kohama6u0tube6t1un3za0ppos4ra3ero3ip2m1one3uerich6w2", tA = "ελ1υ2бг1ел3дети4ею2католик6ом3мкд2он1сква6онлайн5рг3рус2ф2сайт3рб3укр3қаз3հայ3ישראל5קום3ابوظبي5رامكو5لاردن4بحرين5جزائر5سعودية6عليان5مغرب5مارات5یران5بارت2زار4يتك3ھارت5تونس4سودان3رية5شبكة4عراق2ب2مان4فلسطين6قطر3كاثوليك6وم3مصر2ليسيا5وريتانيا7قع4همراه5پاکستان7ڀارت4कॉम3नेट3भारत0म्3ोत5संगठन5বাংলা5ভারত2ৰত4ਭਾਰਤ4ભારત4ଭାରତ4இந்தியா6லங்கை6சிங்கப்பூர்11భారత్5ಭಾರತ4ഭാരതം5ලංකා4คอม3ไทย3ລາວ3გე2みんな3アマゾン4クラウド4グーグル4コム2ストア3セール3ファッション6ポイント4世界2中信1国1國1文网3亚马逊3企业2佛山2信息2健康2八卦2公司1益2台湾1灣2商城1店1标2嘉里0大酒店5在线2大拿2天主教3娱乐2家電2广东2微博2慈善2我爱你3手机2招聘2政务1府2新加坡2闻2时尚2書籍2机构2淡马锡3游戏2澳門2点看2移动2组织机构4网址1店1站1络2联通2谷歌2购物2通販2集团2電訊盈科4飞利浦3食品2餐厅2香格里拉3港2닷넷1컴2삼성2한국2", oi = (t, e) => {
   for (const n in e)
     t[n] = e[n];
   return t;
-}, Ic = "numeric", xc = "ascii", Dc = "alpha", Ui = "asciinumeric", Ii = "alphanumeric", wc = "domain", eg = "emoji", tA = "scheme", nA = "slashscheme", Ol = "whitespace";
-function rA(t, e) {
+}, Ic = "numeric", xc = "ascii", Dc = "alpha", Ui = "asciinumeric", Ii = "alphanumeric", wc = "domain", eg = "emoji", nA = "scheme", rA = "slashscheme", Ol = "whitespace";
+function iA(t, e) {
   return t in e || (e[t] = []), e[t];
 }
 function or(t, e, n) {
   e[Ic] && (e[Ui] = !0, e[Ii] = !0), e[xc] && (e[Ui] = !0, e[Dc] = !0), e[Ui] && (e[Ii] = !0), e[Dc] && (e[Ii] = !0), e[Ii] && (e[wc] = !0), e[eg] && (e[wc] = !0);
   for (const r in e) {
-    const i = rA(r, n);
+    const i = iA(r, n);
     i.indexOf(t) < 0 && i.push(t);
   }
 }
-function iA(t, e) {
+function oA(t, e) {
   const n = {};
   for (const r in e)
     e[r].indexOf(t) >= 0 && (n[r] = !0);
@@ -23015,7 +23034,7 @@ ft.prototype = {
     if (s ? (a = new ft(), oi(a.j, s.j), a.jr.push.apply(a.jr, s.jr), a.jd = s.jd, a.t = s.t) : a = new ft(), o) {
       if (r)
         if (a.t && typeof a.t == "string") {
-          const l = oi(iA(a.t, r), n);
+          const l = oi(oA(a.t, r), n);
           or(o, l, r);
         } else n && or(o, n, r);
       a.t = o;
@@ -23083,13 +23102,13 @@ var og = /* @__PURE__ */ Object.freeze({
   SYM: is
 });
 const cn = /[a-z]/, Ci = new RegExp("\\p{L}", "u"), Nl = new RegExp("\\p{Emoji}", "u"), un = /\d/, Al = /\s/, y_ = "\r", Il = `
-`, oA = "️", aA = "‍", xl = "￼";
+`, aA = "️", sA = "‍", xl = "￼";
 let Ko = null, Qo = null;
-function sA(t = []) {
+function lA(t = []) {
   const e = {};
   ft.groups = e;
   const n = new ft();
-  Ko == null && (Ko = v_(JN)), Qo == null && (Qo = v_(eA)), F(n, "'", Nu), F(n, "{", Hi), F(n, "}", Gi), F(n, "[", Ma), F(n, "]", La), F(n, "(", ka), F(n, ")", Pa), F(n, "<", Fa), F(n, ">", Ba), F(n, "（", Ua), F(n, "）", Ha), F(n, "「", Ga), F(n, "」", Va), F(n, "『", Ya), F(n, "』", za), F(n, "＜", $a), F(n, "＞", qa), F(n, "&", Wa), F(n, "*", Ka), F(n, "@", On), F(n, "`", Za), F(n, "^", Xa), F(n, ":", xn), F(n, ",", Au), F(n, "$", ja), F(n, ".", Wt), F(n, "=", Ja), F(n, "!", Iu), F(n, "-", xt), F(n, "%", Vi), F(n, "|", es), F(n, "+", ts), F(n, "#", ns), F(n, "?", Yi), F(n, '"', xu), F(n, "/", Kt), F(n, ";", Du), F(n, "~", zi), F(n, "_", rs), F(n, "\\", Qa), F(n, "・", rg);
+  Ko == null && (Ko = v_(eA)), Qo == null && (Qo = v_(tA)), F(n, "'", Nu), F(n, "{", Hi), F(n, "}", Gi), F(n, "[", Ma), F(n, "]", La), F(n, "(", ka), F(n, ")", Pa), F(n, "<", Fa), F(n, ">", Ba), F(n, "（", Ua), F(n, "）", Ha), F(n, "「", Ga), F(n, "」", Va), F(n, "『", Ya), F(n, "』", za), F(n, "＜", $a), F(n, "＞", qa), F(n, "&", Wa), F(n, "*", Ka), F(n, "@", On), F(n, "`", Za), F(n, "^", Xa), F(n, ":", xn), F(n, ",", Au), F(n, "$", ja), F(n, ".", Wt), F(n, "=", Ja), F(n, "!", Iu), F(n, "-", xt), F(n, "%", Vi), F(n, "|", es), F(n, "+", ts), F(n, "#", ns), F(n, "?", Yi), F(n, '"', xu), F(n, "/", Kt), F(n, ";", Du), F(n, "~", zi), F(n, "_", rs), F(n, "\\", Qa), F(n, "・", rg);
   const r = Le(n, un, Ru, {
     [Ic]: !0
   });
@@ -23117,8 +23136,8 @@ function sA(t = []) {
   const d = Le(n, Nl, ig, {
     [eg]: !0
   });
-  F(d, "#"), Le(d, Nl, d), F(d, oA, d);
-  const p = F(d, aA);
+  F(d, "#"), Le(d, Nl, d), F(d, aA, d);
+  const p = F(d, sA);
   F(p, "#"), Le(p, Nl, d);
   const _ = [[cn, a], [un, i]], m = [[cn, null], [Ci, s], [un, o]];
   for (let f = 0; f < Ko.length; f++)
@@ -23140,9 +23159,9 @@ function sA(t = []) {
   }, e), t = t.sort((f, h) => f[0] > h[0] ? 1 : -1);
   for (let f = 0; f < t.length; f++) {
     const h = t[f][0], S = t[f][1] ? {
-      [tA]: !0
-    } : {
       [nA]: !0
+    } : {
+      [rA]: !0
     };
     h.indexOf("-") >= 0 ? S[wc] = !0 : cn.test(h) ? un.test(h) ? S[Ui] = !0 : S[xc] = !0 : S[Ic] = !0, C_(n, h, h, S);
   }
@@ -23156,7 +23175,7 @@ function sA(t = []) {
   };
 }
 function ag(t, e) {
-  const n = lA(e.replace(/[A-Z]/g, (s) => s.toLowerCase())), r = n.length, i = [];
+  const n = cA(e.replace(/[A-Z]/g, (s) => s.toLowerCase())), r = n.length, i = [];
   let o = 0, a = 0;
   for (; a < r; ) {
     let s = t, l = null, c = 0, u = null, d = -1, p = -1;
@@ -23175,7 +23194,7 @@ function ag(t, e) {
   }
   return i;
 }
-function lA(t) {
+function cA(t) {
   const e = [], n = t.length;
   let r = 0;
   for (; r < n; ) {
@@ -23421,7 +23440,7 @@ const O_ = Bs("email", {
   toHref() {
     return "mailto:" + this.toString();
   }
-}), N_ = Bs("text"), cA = Bs("nl"), Zo = Bs("url", {
+}), N_ = Bs("text"), uA = Bs("nl"), Zo = Bs("url", {
   isLink: !0,
   /**
   	Lowercases relevant parts of the domain and adds the protocol if
@@ -23442,7 +23461,7 @@ const O_ = Bs("email", {
     return t.length >= 2 && t[0].t !== lo && t[1].t === xn;
   }
 }), It = (t) => new ft(t);
-function uA({
+function dA({
   groups: t
 }) {
   const e = t.domain.concat([Wa, Ka, On, Qa, Za, Xa, ja, Ja, xt, Ru, Vi, es, ts, ns, Kt, is, zi, rs]), n = [xn, Au, Wt, Iu, Vi, Yi, xu, Du, Fa, Ba, Hi, Gi, La, Ma, ka, Pa, Ua, Ha, Ga, Va, Ya, za, $a, qa], r = [Wa, Nu, Ka, Qa, Za, Xa, ja, Ja, xt, Hi, Gi, Vi, es, ts, ns, Yi, Kt, is, zi, rs], i = It(), o = F(i, zi);
@@ -23491,20 +23510,20 @@ function uA({
     [$a, qa]
     // ＜＞
   ];
-  for (let z = 0; z < P.length; z++) {
-    const [Z, q] = P[z], Y = F(T, Z);
-    F(C, Z, Y), F(Y, q, T);
+  for (let Y = 0; Y < P.length; Y++) {
+    const [Z, q] = P[Y], V = F(T, Z);
+    F(C, Z, V), F(V, q, T);
     const O = It(Zo);
-    ue(Y, e, O);
+    ue(V, e, O);
     const y = It();
-    ue(Y, n), ue(O, e, O), ue(O, n, y), ue(y, e, O), ue(y, n, y), F(O, q, T), F(y, q, T);
+    ue(V, n), ue(O, e, O), ue(O, n, y), ue(y, e, O), ue(y, n, y), F(O, q, T), F(y, q, T);
   }
-  return F(i, lo, S), F(i, Ou, cA), {
+  return F(i, lo, S), F(i, Ou, uA), {
     start: i,
     tokens: og
   };
 }
-function dA(t, e, n) {
+function pA(t, e, n) {
   let r = n.length, i = 0, o = [], a = [];
   for (; i < r; ) {
     let s = t, l = null, c = null, u = 0, d = null, p = -1;
@@ -23526,8 +23545,8 @@ function Dl(t, e, n) {
   const r = n[0].s, i = n[n.length - 1].e, o = e.slice(r, i);
   return new t(o, n);
 }
-const pA = typeof console < "u" && console && console.warn || (() => {
-}), _A = "until manual call of linkify.init(). Register all schemes and plugins before invoking linkify the first time.", Ie = {
+const _A = typeof console < "u" && console && console.warn || (() => {
+}), mA = "until manual call of linkify.init(). Register all schemes and plugins before invoking linkify the first time.", Ie = {
   scanner: null,
   parser: null,
   tokenQueue: [],
@@ -23535,24 +23554,24 @@ const pA = typeof console < "u" && console && console.warn || (() => {
   customSchemes: [],
   initialized: !1
 };
-function mA() {
+function fA() {
   return ft.groups = {}, Ie.scanner = null, Ie.parser = null, Ie.tokenQueue = [], Ie.pluginQueue = [], Ie.customSchemes = [], Ie.initialized = !1, Ie;
 }
 function A_(t, e = !1) {
-  if (Ie.initialized && pA(`linkifyjs: already initialized - will not register custom scheme "${t}" ${_A}`), !/^[0-9a-z]+(-[0-9a-z]+)*$/.test(t))
+  if (Ie.initialized && _A(`linkifyjs: already initialized - will not register custom scheme "${t}" ${mA}`), !/^[0-9a-z]+(-[0-9a-z]+)*$/.test(t))
     throw new Error(`linkifyjs: incorrect scheme format.
 1. Must only contain digits, lowercase ASCII letters or "-"
 2. Cannot start or end with "-"
 3. "-" cannot repeat`);
   Ie.customSchemes.push([t, e]);
 }
-function fA() {
-  Ie.scanner = sA(Ie.customSchemes);
+function hA() {
+  Ie.scanner = lA(Ie.customSchemes);
   for (let t = 0; t < Ie.tokenQueue.length; t++)
     Ie.tokenQueue[t][1]({
       scanner: Ie.scanner
     });
-  Ie.parser = uA(Ie.scanner.tokens);
+  Ie.parser = dA(Ie.scanner.tokens);
   for (let t = 0; t < Ie.pluginQueue.length; t++)
     Ie.pluginQueue[t][1]({
       scanner: Ie.scanner,
@@ -23561,7 +23580,7 @@ function fA() {
   return Ie.initialized = !0, Ie;
 }
 function Mu(t) {
-  return Ie.initialized || fA(), dA(Ie.parser.start, t, ag(Ie.scanner.start, t));
+  return Ie.initialized || hA(), pA(Ie.parser.start, t, ag(Ie.scanner.start, t));
 }
 Mu.scan = ag;
 function lg(t, e = null, n = null) {
@@ -23577,10 +23596,10 @@ function lg(t, e = null, n = null) {
   }
   return o;
 }
-function hA(t) {
+function gA(t) {
   return t.length === 1 ? t[0].isLink : t.length === 3 && t[1].isLink ? ["()", "[]"].includes(t[0].value + t[2].value) : !1;
 }
-function gA(t) {
+function EA(t) {
   return new Te({
     key: new Oe("autolink"),
     appendTransaction: (e, n, r) => {
@@ -23599,7 +23618,7 @@ function gA(t) {
           if (!m)
             return !1;
           const h = Mu(m).map((E) => E.toObject(t.defaultProtocol));
-          if (!hA(h))
+          if (!gA(h))
             return !1;
           h.filter((E) => E.isLink).map((E) => ({
             ...E,
@@ -23616,7 +23635,7 @@ function gA(t) {
     }
   });
 }
-function EA(t) {
+function SA(t) {
   return new Te({
     key: new Oe("handleClickLink"),
     props: {
@@ -23636,7 +23655,7 @@ function EA(t) {
     }
   });
 }
-function SA(t) {
+function bA(t) {
   return new Te({
     key: new Oe("handlePasteLink"),
     props: {
@@ -23656,7 +23675,7 @@ function SA(t) {
     }
   });
 }
-const bA = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g;
+const TA = /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g;
 function jn(t, e) {
   const n = [
     "http",
@@ -23673,13 +23692,13 @@ function jn(t, e) {
   return e && e.forEach((r) => {
     const i = typeof r == "string" ? r : r.scheme;
     i && n.push(i);
-  }), !t || t.replace(bA, "").match(new RegExp(
+  }), !t || t.replace(TA, "").match(new RegExp(
     // eslint-disable-next-line no-useless-escape
     `^(?:(?:${n.join("|")}):|[^a-z]|[a-z0-9+.-]+(?:[^a-z+.-:]|$))`,
     "i"
   ));
 }
-const TA = St.create({
+const CA = St.create({
   name: "link",
   priority: 1e3,
   keepOnSplit: !1,
@@ -23694,7 +23713,7 @@ const TA = St.create({
     });
   },
   onDestroy() {
-    mA();
+    fA();
   },
   inclusive() {
     return this.options.autolink;
@@ -23815,7 +23834,7 @@ const TA = St.create({
   },
   addProseMirrorPlugins() {
     const t = [], { protocols: e, defaultProtocol: n } = this.options;
-    return this.options.autolink && t.push(gA({
+    return this.options.autolink && t.push(EA({
       type: this.type,
       defaultProtocol: this.options.defaultProtocol,
       validate: (r) => this.options.isAllowedUri(r, {
@@ -23824,15 +23843,15 @@ const TA = St.create({
         defaultProtocol: n
       }),
       shouldAutoLink: this.options.shouldAutoLink
-    })), this.options.openOnClick === !0 && t.push(EA({
+    })), this.options.openOnClick === !0 && t.push(SA({
       type: this.type
-    })), this.options.linkOnPaste && t.push(SA({
+    })), this.options.linkOnPaste && t.push(bA({
       editor: this.editor,
       defaultProtocol: this.options.defaultProtocol,
       type: this.type
     })), t;
   }
-}), CA = St.create({
+}), yA = St.create({
   name: "superscript",
   addOptions() {
     return {
@@ -23867,7 +23886,7 @@ const TA = St.create({
       "Mod-.": () => this.editor.commands.toggleSuperscript()
     };
   }
-}), yA = St.create({
+}), vA = St.create({
   name: "subscript",
   addOptions() {
     return {
@@ -23902,7 +23921,7 @@ const TA = St.create({
       "Mod-,": () => this.editor.commands.toggleSubscript()
     };
   }
-}), vA = De.create({
+}), RA = De.create({
   name: "taskList",
   addOptions() {
     return {
@@ -23935,7 +23954,7 @@ const TA = St.create({
       "Mod-Shift-9": () => this.editor.commands.toggleTaskList()
     };
   }
-}), RA = /^\s*(\[([( |x])?\])\s$/, OA = De.create({
+}), OA = /^\s*(\[([( |x])?\])\s$/, NA = De.create({
   name: "taskItem",
   addOptions() {
     return {
@@ -24034,7 +24053,7 @@ const TA = St.create({
   addInputRules() {
     return [
       Sr({
-        find: RA,
+        find: OA,
         type: this.type,
         getAttributes: (t) => ({
           checked: t[t.length - 1] === "x"
@@ -24043,7 +24062,7 @@ const TA = St.create({
     ];
   }
 });
-function NA(t) {
+function AA(t) {
   return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
 }
 function cg(t) {
@@ -24080,7 +24099,7 @@ function Pn(t, ...e) {
   }), /** @type {T} */
   n;
 }
-const AA = "</span>", x_ = (t) => !!t.scope, IA = (t, { prefix: e }) => {
+const IA = "</span>", x_ = (t) => !!t.scope, xA = (t, { prefix: e }) => {
   if (t.startsWith("language:"))
     return t.replace("language:", "language-");
   if (t.includes(".")) {
@@ -24092,7 +24111,7 @@ const AA = "</span>", x_ = (t) => !!t.scope, IA = (t, { prefix: e }) => {
   }
   return `${e}${t}`;
 };
-let xA = class {
+let DA = class {
   /**
    * Creates a new HTMLRenderer
    *
@@ -24115,7 +24134,7 @@ let xA = class {
    * @param {Node} node */
   openNode(e) {
     if (!x_(e)) return;
-    const n = IA(
+    const n = xA(
       e.scope,
       { prefix: this.classPrefix }
     );
@@ -24126,7 +24145,7 @@ let xA = class {
    *
    * @param {Node} node */
   closeNode(e) {
-    x_(e) && (this.buffer += AA);
+    x_(e) && (this.buffer += IA);
   }
   /**
    * returns the accumulated buffer
@@ -24147,7 +24166,7 @@ const D_ = (t = {}) => {
   const e = { children: [] };
   return Object.assign(e, t), e;
 };
-let DA = class dg {
+let wA = class dg {
   constructor() {
     this.rootNode = D_(), this.stack = [this.rootNode];
   }
@@ -24198,7 +24217,7 @@ let DA = class dg {
       dg._collapse(n);
     }));
   }
-}, wA = class extends DA {
+}, MA = class extends wA {
   /**
    * @param {*} options
    */
@@ -24227,7 +24246,7 @@ let DA = class dg {
     n && (r.scope = `language:${n}`), this.add(r);
   }
   toHTML() {
-    return new xA(this, this.options).value();
+    return new DA(this, this.options).value();
   }
   finalize() {
     return this.closeAllNodes(), !0;
@@ -24239,30 +24258,30 @@ function uo(t) {
 function pg(t) {
   return yr("(?=", t, ")");
 }
-function MA(t) {
+function LA(t) {
   return yr("(?:", t, ")*");
 }
-function LA(t) {
+function kA(t) {
   return yr("(?:", t, ")?");
 }
 function yr(...t) {
   return t.map((n) => uo(n)).join("");
 }
-function kA(t) {
+function PA(t) {
   const e = t[t.length - 1];
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function Lu(...t) {
-  return "(" + (kA(t).capture ? "" : "?:") + t.map((r) => uo(r)).join("|") + ")";
+  return "(" + (PA(t).capture ? "" : "?:") + t.map((r) => uo(r)).join("|") + ")";
 }
 function _g(t) {
   return new RegExp(t.toString() + "|").exec("").length - 1;
 }
-function PA(t, e) {
+function FA(t, e) {
   const n = t && t.exec(e);
   return n && n.index === 0;
 }
-const FA = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
+const BA = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
 function ku(t, { joinWith: e }) {
   let n = 0;
   return t.map((r) => {
@@ -24270,7 +24289,7 @@ function ku(t, { joinWith: e }) {
     const i = n;
     let o = uo(r), a = "";
     for (; o.length > 0; ) {
-      const s = FA.exec(o);
+      const s = BA.exec(o);
       if (!s) {
         a += o;
         break;
@@ -24280,7 +24299,7 @@ function ku(t, { joinWith: e }) {
     return a;
   }).map((r) => `(${r})`).join(e);
 }
-const BA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\\d+)?", hg = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", gg = "\\b(0b[01]+)", UA = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", HA = (t = {}) => {
+const UA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\\d+)?", hg = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", gg = "\\b(0b[01]+)", HA = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", GA = (t = {}) => {
   const e = /^#![ ]*\//;
   return t.binary && (t.begin = yr(
     e,
@@ -24300,19 +24319,19 @@ const BA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\
 }, po = {
   begin: "\\\\[\\s\\S]",
   relevance: 0
-}, GA = {
+}, VA = {
   scope: "string",
   begin: "'",
   end: "'",
   illegal: "\\n",
   contains: [po]
-}, VA = {
+}, YA = {
   scope: "string",
   begin: '"',
   end: '"',
   illegal: "\\n",
   contains: [po]
-}, YA = {
+}, zA = {
   begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/
 }, Us = function(t, e, n = {}) {
   const r = Pn(
@@ -24380,19 +24399,19 @@ const BA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\
       // look for 3 words in a row
     }
   ), r;
-}, zA = Us("//", "$"), $A = Us("/\\*", "\\*/"), qA = Us("#", "$"), WA = {
+}, $A = Us("//", "$"), qA = Us("/\\*", "\\*/"), WA = Us("#", "$"), KA = {
   scope: "number",
   begin: fg,
   relevance: 0
-}, KA = {
+}, QA = {
   scope: "number",
   begin: hg,
   relevance: 0
-}, QA = {
+}, ZA = {
   scope: "number",
   begin: gg,
   relevance: 0
-}, ZA = {
+}, XA = {
   scope: "regexp",
   begin: /\/(?=[^/\n]*\/)/,
   end: /\/[gimuy]*/,
@@ -24405,19 +24424,19 @@ const BA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\
       contains: [po]
     }
   ]
-}, XA = {
+}, jA = {
   scope: "title",
   begin: mg,
   relevance: 0
-}, jA = {
+}, JA = {
   scope: "title",
   begin: Pu,
   relevance: 0
-}, JA = {
+}, eI = {
   // excludes method names from keyword processing
   begin: "\\.\\s*" + Pu,
   relevance: 0
-}, eI = function(t) {
+}, tI = function(t) {
   return Object.assign(
     t,
     {
@@ -24434,53 +24453,53 @@ const BA = /\b\B/, mg = "[a-zA-Z]\\w*", Pu = "[a-zA-Z_]\\w*", fg = "\\b\\d+(\\.\
 };
 var Xo = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  APOS_STRING_MODE: GA,
+  APOS_STRING_MODE: VA,
   BACKSLASH_ESCAPE: po,
-  BINARY_NUMBER_MODE: QA,
+  BINARY_NUMBER_MODE: ZA,
   BINARY_NUMBER_RE: gg,
   COMMENT: Us,
-  C_BLOCK_COMMENT_MODE: $A,
-  C_LINE_COMMENT_MODE: zA,
-  C_NUMBER_MODE: KA,
+  C_BLOCK_COMMENT_MODE: qA,
+  C_LINE_COMMENT_MODE: $A,
+  C_NUMBER_MODE: QA,
   C_NUMBER_RE: hg,
-  END_SAME_AS_BEGIN: eI,
-  HASH_COMMENT_MODE: qA,
+  END_SAME_AS_BEGIN: tI,
+  HASH_COMMENT_MODE: WA,
   IDENT_RE: mg,
-  MATCH_NOTHING_RE: BA,
-  METHOD_GUARD: JA,
-  NUMBER_MODE: WA,
+  MATCH_NOTHING_RE: UA,
+  METHOD_GUARD: eI,
+  NUMBER_MODE: KA,
   NUMBER_RE: fg,
-  PHRASAL_WORDS_MODE: YA,
-  QUOTE_STRING_MODE: VA,
-  REGEXP_MODE: ZA,
-  RE_STARTERS_RE: UA,
-  SHEBANG: HA,
-  TITLE_MODE: XA,
+  PHRASAL_WORDS_MODE: zA,
+  QUOTE_STRING_MODE: YA,
+  REGEXP_MODE: XA,
+  RE_STARTERS_RE: HA,
+  SHEBANG: GA,
+  TITLE_MODE: jA,
   UNDERSCORE_IDENT_RE: Pu,
-  UNDERSCORE_TITLE_MODE: jA
+  UNDERSCORE_TITLE_MODE: JA
 });
-function tI(t, e) {
+function nI(t, e) {
   t.input[t.index - 1] === "." && e.ignoreMatch();
 }
-function nI(t, e) {
+function rI(t, e) {
   t.className !== void 0 && (t.scope = t.className, delete t.className);
 }
-function rI(t, e) {
-  e && t.beginKeywords && (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = tI, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
-}
 function iI(t, e) {
-  Array.isArray(t.illegal) && (t.illegal = Lu(...t.illegal));
+  e && t.beginKeywords && (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = nI, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
 }
 function oI(t, e) {
+  Array.isArray(t.illegal) && (t.illegal = Lu(...t.illegal));
+}
+function aI(t, e) {
   if (t.match) {
     if (t.begin || t.end) throw new Error("begin & end are not supported with match");
     t.begin = t.match, delete t.match;
   }
 }
-function aI(t, e) {
+function sI(t, e) {
   t.relevance === void 0 && (t.relevance = 1);
 }
-const sI = (t, e) => {
+const lI = (t, e) => {
   if (!t.beforeMatch) return;
   if (t.starts) throw new Error("beforeMatch cannot be used with starts");
   const n = Object.assign({}, t);
@@ -24492,7 +24511,7 @@ const sI = (t, e) => {
       Object.assign(n, { endsParent: !0 })
     ]
   }, t.relevance = 0, delete n.beforeMatch;
-}, lI = [
+}, cI = [
   "of",
   "and",
   "for",
@@ -24507,8 +24526,8 @@ const sI = (t, e) => {
   // common variable name
   "value"
   // common variable name
-], cI = "keyword";
-function Eg(t, e, n = cI) {
+], uI = "keyword";
+function Eg(t, e, n = uI) {
   const r = /* @__PURE__ */ Object.create(null);
   return typeof t == "string" ? i(n, t.split(" ")) : Array.isArray(t) ? i(n, t) : Object.keys(t).forEach(function(o) {
     Object.assign(
@@ -24519,15 +24538,15 @@ function Eg(t, e, n = cI) {
   function i(o, a) {
     e && (a = a.map((s) => s.toLowerCase())), a.forEach(function(s) {
       const l = s.split("|");
-      r[l[0]] = [o, uI(l[0], l[1])];
+      r[l[0]] = [o, dI(l[0], l[1])];
     });
   }
 }
-function uI(t, e) {
-  return e ? Number(e) : dI(t) ? 0 : 1;
+function dI(t, e) {
+  return e ? Number(e) : pI(t) ? 0 : 1;
 }
-function dI(t) {
-  return lI.includes(t.toLowerCase());
+function pI(t) {
+  return cI.includes(t.toLowerCase());
 }
 const w_ = {}, pr = (t) => {
   console.error(t);
@@ -24543,7 +24562,7 @@ function Sg(t, e, { key: n }) {
     a[s + r] = i[s], o[s + r] = !0, r += _g(e[s - 1]);
   t[n] = a, t[n]._emit = o, t[n]._multi = !0;
 }
-function pI(t) {
+function _I(t) {
   if (Array.isArray(t.begin)) {
     if (t.skip || t.excludeBegin || t.returnBegin)
       throw pr("skip, excludeBegin, returnBegin not compatible with beginScope: {}"), as;
@@ -24552,7 +24571,7 @@ function pI(t) {
     Sg(t, t.begin, { key: "beginScope" }), t.begin = ku(t.begin, { joinWith: "" });
   }
 }
-function _I(t) {
+function mI(t) {
   if (Array.isArray(t.end)) {
     if (t.skip || t.excludeEnd || t.returnEnd)
       throw pr("skip, excludeEnd, returnEnd not compatible with endScope: {}"), as;
@@ -24561,13 +24580,13 @@ function _I(t) {
     Sg(t, t.end, { key: "endScope" }), t.end = ku(t.end, { joinWith: "" });
   }
 }
-function mI(t) {
+function fI(t) {
   t.scope && typeof t.scope == "object" && t.scope !== null && (t.beginScope = t.scope, delete t.scope);
 }
-function fI(t) {
-  mI(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), pI(t), _I(t);
-}
 function hI(t) {
+  fI(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), _I(t), mI(t);
+}
+function gI(t) {
   function e(a, s) {
     return new RegExp(
       uo(a),
@@ -24640,26 +24659,26 @@ function hI(t) {
     );
     if (a.isCompiled) return l;
     [
-      nI,
+      rI,
       // do this early so compiler extensions generally don't have to worry about
       // the distinction between match/begin
-      oI,
-      fI,
-      sI
+      aI,
+      hI,
+      lI
     ].forEach((u) => u(a, s)), t.compilerExtensions.forEach((u) => u(a, s)), a.__beforeBegin = null, [
-      rI,
+      iI,
       // do this later so compiler extensions that come earlier have access to the
       // raw array if they wanted to perhaps manipulate it, etc.
-      iI,
+      oI,
       // default to 1 relevance if not specified
-      aI
+      sI
     ].forEach((u) => u(a, s)), a.isCompiled = !0;
     let c = null;
     return typeof a.keywords == "object" && a.keywords.$pattern && (a.keywords = Object.assign({}, a.keywords), c = a.keywords.$pattern, delete a.keywords.$pattern), c = c || /\w+/, a.keywords && (a.keywords = Eg(a.keywords, t.case_insensitive)), l.keywordPatternRe = e(c, !0), s && (a.begin || (a.begin = /\B|\b/), l.beginRe = e(l.begin), !a.end && !a.endsWithParent && (a.end = /\B|\b/), a.end && (l.endRe = e(l.end)), l.terminatorEnd = uo(l.end) || "", a.endsWithParent && s.terminatorEnd && (l.terminatorEnd += (a.end ? "|" : "") + s.terminatorEnd)), a.illegal && (l.illegalRe = e(
       /** @type {RegExp | string} */
       a.illegal
     )), a.contains || (a.contains = []), a.contains = [].concat(...a.contains.map(function(u) {
-      return gI(u === "self" ? a : u);
+      return EI(u === "self" ? a : u);
     })), a.contains.forEach(function(u) {
       o(
         /** @type Mode */
@@ -24678,18 +24697,18 @@ function hI(t) {
 function bg(t) {
   return t ? t.endsWithParent || bg(t.starts) : !1;
 }
-function gI(t) {
+function EI(t) {
   return t.variants && !t.cachedVariants && (t.cachedVariants = t.variants.map(function(e) {
     return Pn(t, { variants: null }, e);
   })), t.cachedVariants ? t.cachedVariants : bg(t) ? Pn(t, { starts: t.starts ? Pn(t.starts) : null }) : Object.isFrozen(t) ? Pn(t) : t;
 }
-var EI = "11.10.0";
-let SI = class extends Error {
+var SI = "11.10.0";
+let bI = class extends Error {
   constructor(e, n) {
     super(e), this.name = "HTMLInjectionError", this.html = n;
   }
 };
-const wl = ug, L_ = Pn, k_ = Symbol("nomatch"), bI = 7, Tg = function(t) {
+const wl = ug, L_ = Pn, k_ = Symbol("nomatch"), TI = 7, Tg = function(t) {
   const e = /* @__PURE__ */ Object.create(null), n = /* @__PURE__ */ Object.create(null), r = [];
   let i = !0;
   const o = "Could not find the language '{}', did you forget to load/include a language module?", a = { disableAutodetect: !0, name: "Plain text", contains: [] };
@@ -24703,7 +24722,7 @@ const wl = ug, L_ = Pn, k_ = Symbol("nomatch"), bI = 7, Tg = function(t) {
     languages: null,
     // beta configuration options, subject to change, welcome to discuss
     // https://github.com/highlightjs/highlight.js/issues/1086
-    __emitter: wA
+    __emitter: MA
   };
   function l(y) {
     return s.noHighlightRe.test(y);
@@ -24711,27 +24730,27 @@ const wl = ug, L_ = Pn, k_ = Symbol("nomatch"), bI = 7, Tg = function(t) {
   function c(y) {
     let R = y.className + " ";
     R += y.parentNode ? y.parentNode.className : "";
-    const w = s.languageDetectRe.exec(R);
-    if (w) {
-      const B = N(w[1]);
-      return B || (M_(o.replace("{}", w[1])), M_("Falling back to no-highlight mode for this block.", y)), B ? w[1] : "no-highlight";
+    const M = s.languageDetectRe.exec(R);
+    if (M) {
+      const B = N(M[1]);
+      return B || (M_(o.replace("{}", M[1])), M_("Falling back to no-highlight mode for this block.", y)), B ? M[1] : "no-highlight";
     }
     return R.split(/\s+/).find((B) => l(B) || N(B));
   }
-  function u(y, R, w) {
-    let B = "", V = "";
-    typeof R == "object" ? (B = y, w = R.ignoreIllegals, V = R.language) : (Mr("10.7.0", "highlight(lang, code, ...args) has been deprecated."), Mr("10.7.0", `Please use highlight(code, options) instead.
-https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === void 0 && (w = !0);
+  function u(y, R, M) {
+    let B = "", z = "";
+    typeof R == "object" ? (B = y, M = R.ignoreIllegals, z = R.language) : (Mr("10.7.0", "highlight(lang, code, ...args) has been deprecated."), Mr("10.7.0", `Please use highlight(code, options) instead.
+https://github.com/highlightjs/highlight.js/issues/2277`), z = y, B = R), M === void 0 && (M = !0);
     const X = {
       code: B,
-      language: V
+      language: z
     };
-    Y("before:highlight", X);
-    const de = X.result ? X.result : d(X.language, X.code, w);
-    return de.code = X.code, Y("after:highlight", de), de;
+    V("before:highlight", X);
+    const de = X.result ? X.result : d(X.language, X.code, M);
+    return de.code = X.code, V("after:highlight", de), de;
   }
-  function d(y, R, w, B) {
-    const V = /* @__PURE__ */ Object.create(null);
+  function d(y, R, M, B) {
+    const z = /* @__PURE__ */ Object.create(null);
     function X(A, k) {
       return A.keywords[k];
     }
@@ -24748,7 +24767,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
         const re = ae.case_insensitive ? k[0].toLowerCase() : k[0], Ce = X(J, re);
         if (Ce) {
           const [mt, Or] = Ce;
-          if (ee.addText(G), G = "", V[re] = (V[re] || 0) + 1, V[re] <= bI && (Fe += Or), mt.startsWith("_"))
+          if (ee.addText(G), G = "", z[re] = (z[re] || 0) + 1, z[re] <= TI && (Fe += Or), mt.startsWith("_"))
             G += k[0];
           else {
             const D = ae.classNameAliases[mt] || mt;
@@ -24796,7 +24815,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
       return A.scope && typeof A.scope == "string" && ee.openNode(ae.classNameAliases[A.scope] || A.scope), A.beginScope && (A.beginScope._wrap ? (ge(_e, ae.classNameAliases[A.beginScope._wrap] || A.beginScope._wrap), _e = "") : A.beginScope._multi && (We(A.beginScope, k), _e = "")), J = Object.create(A, { parent: { value: J } }), J;
     }
     function et(A, k, G) {
-      let re = PA(A.endRe, G);
+      let re = FA(A.endRe, G);
       if (re) {
         if (A["on:end"]) {
           const Ce = new I_(A);
@@ -24852,7 +24871,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
       }
       if (ct = k, k.type === "begin")
         return st(k);
-      if (k.type === "illegal" && !w) {
+      if (k.type === "illegal" && !M) {
         const re = new Error('Illegal lexeme "' + G + '" for mode "' + (J.scope || "<unnamed>") + '"');
         throw re.mode = J, re;
       } else if (k.type === "end") {
@@ -24869,7 +24888,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
     const ae = N(y);
     if (!ae)
       throw pr(o.replace("{}", y)), new Error('Unknown language: "' + y + '"');
-    const Qe = hI(ae);
+    const Qe = gI(ae);
     let Q = "", J = B || Qe;
     const Ee = {}, ee = new s.__emitter(s);
     lt();
@@ -24936,11 +24955,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
   }
   function _(y, R) {
     R = R || s.languages || Object.keys(e);
-    const w = p(y), B = R.filter(N).filter(P).map(
+    const M = p(y), B = R.filter(N).filter(P).map(
       (le) => d(le, y, !1)
     );
-    B.unshift(w);
-    const V = B.sort((le, ge) => {
+    B.unshift(M);
+    const z = B.sort((le, ge) => {
       if (le.relevance !== ge.relevance) return ge.relevance - le.relevance;
       if (le.language && ge.language) {
         if (N(le.language).supersetOf === ge.language)
@@ -24949,40 +24968,40 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
           return -1;
       }
       return 0;
-    }), [X, de] = V, pe = X;
+    }), [X, de] = z, pe = X;
     return pe.secondBest = de, pe;
   }
-  function m(y, R, w) {
-    const B = R && n[R] || w;
+  function m(y, R, M) {
+    const B = R && n[R] || M;
     y.classList.add("hljs"), y.classList.add(`language-${B}`);
   }
   function f(y) {
     let R = null;
-    const w = c(y);
-    if (l(w)) return;
-    if (Y(
+    const M = c(y);
+    if (l(M)) return;
+    if (V(
       "before:highlightElement",
-      { el: y, language: w }
+      { el: y, language: M }
     ), y.dataset.highlighted) {
       console.log("Element previously highlighted. To highlight again, first unset `dataset.highlighted`.", y);
       return;
     }
     if (y.children.length > 0 && (s.ignoreUnescapedHTML || (console.warn("One of your code blocks includes unescaped HTML. This is a potentially serious security risk."), console.warn("https://github.com/highlightjs/highlight.js/wiki/security"), console.warn("The element with unescaped HTML:"), console.warn(y)), s.throwUnescapedHTML))
-      throw new SI(
+      throw new bI(
         "One of your code blocks includes unescaped HTML.",
         y.innerHTML
       );
     R = y;
-    const B = R.textContent, V = w ? u(B, { language: w, ignoreIllegals: !0 }) : _(B);
-    y.innerHTML = V.value, y.dataset.highlighted = "yes", m(y, w, V.language), y.result = {
-      language: V.language,
+    const B = R.textContent, z = M ? u(B, { language: M, ignoreIllegals: !0 }) : _(B);
+    y.innerHTML = z.value, y.dataset.highlighted = "yes", m(y, M, z.language), y.result = {
+      language: z.language,
       // TODO: remove with version 11.0
-      re: V.relevance,
-      relevance: V.relevance
-    }, V.secondBest && (y.secondBest = {
-      language: V.secondBest.language,
-      relevance: V.secondBest.relevance
-    }), Y("after:highlightElement", { el: y, result: V, text: B });
+      re: z.relevance,
+      relevance: z.relevance
+    }, z.secondBest && (y.secondBest = {
+      language: z.secondBest.language,
+      relevance: z.secondBest.relevance
+    }), V("after:highlightElement", { el: y, result: z, text: B });
   }
   function h(y) {
     s = L_(s, y);
@@ -25006,17 +25025,17 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
   }
   typeof window < "u" && window.addEventListener && window.addEventListener("DOMContentLoaded", T, !1);
   function C(y, R) {
-    let w = null;
+    let M = null;
     try {
-      w = R(t);
+      M = R(t);
     } catch (B) {
       if (pr("Language definition for '{}' could not be registered.".replace("{}", y)), i)
         pr(B);
       else
         throw B;
-      w = a;
+      M = a;
     }
-    w.name || (w.name = y), e[y] = w, w.rawDefinition = R.bind(null, t), w.aliases && x(w.aliases, { languageName: y });
+    M.name || (M.name = y), e[y] = M, M.rawDefinition = R.bind(null, t), M.aliases && x(M.aliases, { languageName: y });
   }
   function v(y) {
     delete e[y];
@@ -25030,15 +25049,15 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
     return y = (y || "").toLowerCase(), e[y] || e[n[y]];
   }
   function x(y, { languageName: R }) {
-    typeof y == "string" && (y = [y]), y.forEach((w) => {
-      n[w.toLowerCase()] = R;
+    typeof y == "string" && (y = [y]), y.forEach((M) => {
+      n[M.toLowerCase()] = R;
     });
   }
   function P(y) {
     const R = N(y);
     return R && !R.disableAutodetect;
   }
-  function z(y) {
+  function Y(y) {
     y["before:highlightBlock"] && !y["before:highlightElement"] && (y["before:highlightElement"] = (R) => {
       y["before:highlightBlock"](
         Object.assign({ block: R.el }, R)
@@ -25050,16 +25069,16 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
     });
   }
   function Z(y) {
-    z(y), r.push(y);
+    Y(y), r.push(y);
   }
   function q(y) {
     const R = r.indexOf(y);
     R !== -1 && r.splice(R, 1);
   }
-  function Y(y, R) {
-    const w = y;
+  function V(y, R) {
+    const M = y;
     r.forEach(function(B) {
-      B[w] && B[w](R);
+      B[M] && B[M](R);
     });
   }
   function O(y) {
@@ -25088,22 +25107,22 @@ https://github.com/highlightjs/highlight.js/issues/2277`), V = y, B = R), w === 
     i = !1;
   }, t.safeMode = function() {
     i = !0;
-  }, t.versionString = EI, t.regex = {
+  }, t.versionString = SI, t.regex = {
     concat: yr,
     lookahead: pg,
     either: Lu,
-    optional: LA,
-    anyNumberOfTimes: MA
+    optional: kA,
+    anyNumberOfTimes: LA
   };
   for (const y in Xo)
     typeof Xo[y] == "object" && cg(Xo[y]);
   return Object.assign(t, Xo), t;
 }, ai = Tg({});
 ai.newInstance = () => Tg({});
-var TI = ai;
+var CI = ai;
 ai.HighlightJS = ai;
 ai.default = ai;
-var CI = /* @__PURE__ */ NA(TI);
+var yI = /* @__PURE__ */ AA(CI);
 function Cg(t, e = []) {
   return t.map((n) => {
     const r = [...e, ...n.properties ? n.properties.className : []];
@@ -25116,15 +25135,15 @@ function Cg(t, e = []) {
 function P_(t) {
   return t.value || t.children || [];
 }
-function yI(t) {
-  return !!CI.getLanguage(t);
+function vI(t) {
+  return !!yI.getLanguage(t);
 }
 function F_({ doc: t, name: e, lowlight: n, defaultLanguage: r }) {
   const i = [];
   return _c(t, (o) => o.type.name === e).forEach((o) => {
     var a;
     let s = o.pos + 1;
-    const l = o.node.attrs.language || r, c = n.listLanguages(), u = l && (c.includes(l) || yI(l) || !((a = n.registered) === null || a === void 0) && a.call(n, l)) ? P_(n.highlight(l, o.node.textContent)) : P_(n.highlightAuto(o.node.textContent));
+    const l = o.node.attrs.language || r, c = n.listLanguages(), u = l && (c.includes(l) || vI(l) || !((a = n.registered) === null || a === void 0) && a.call(n, l)) ? P_(n.highlight(l, o.node.textContent)) : P_(n.highlightAuto(o.node.textContent));
     Cg(u).forEach((d) => {
       const p = s + d.text.length;
       if (d.classes.length) {
@@ -25137,11 +25156,11 @@ function F_({ doc: t, name: e, lowlight: n, defaultLanguage: r }) {
     });
   }), ye.create(t, i);
 }
-function vI(t) {
+function RI(t) {
   return typeof t == "function";
 }
-function RI({ name: t, lowlight: e, defaultLanguage: n }) {
-  if (!["highlight", "highlightAuto", "listLanguages"].every((i) => vI(e[i])))
+function OI({ name: t, lowlight: e, defaultLanguage: n }) {
+  if (!["highlight", "highlightAuto", "listLanguages"].every((i) => RI(e[i])))
     throw Error("You should provide an instance of lowlight to use the code-block-lowlight extension");
   const r = new Te({
     key: new Oe("lowlight"),
@@ -25176,7 +25195,7 @@ function RI({ name: t, lowlight: e, defaultLanguage: n }) {
   });
   return r;
 }
-const OI = Fh.extend({
+const NI = Fh.extend({
   addOptions() {
     var t;
     return {
@@ -25193,7 +25212,7 @@ const OI = Fh.extend({
     var t;
     return [
       ...((t = this.parent) === null || t === void 0 ? void 0 : t.call(this)) || [],
-      RI({
+      OI({
         name: this.name,
         lowlight: this.options.lowlight,
         defaultLanguage: this.options.defaultLanguage
@@ -25359,7 +25378,7 @@ function V_(t, e) {
     end: p
   };
 }
-const NI = /^[`·]{3}([a-z]+)?[\s\n]$/, AI = /^[~～]{3}([a-z]+)?[\s\n]$/, II = OI.extend({
+const AI = /^[`·]{3}([a-z]+)?[\s\n]$/, II = /^[~～]{3}([a-z]+)?[\s\n]$/, xI = NI.extend({
   addOptions() {
     var t;
     return {
@@ -25493,7 +25512,7 @@ const NI = /^[`·]{3}([a-z]+)?[\s\n]$/, AI = /^[~～]{3}([a-z]+)?[\s\n]$/, II = 
   addInputRules() {
     return [
       H_({
-        find: NI,
+        find: AI,
         type: this.type,
         getAttributes: (t) => {
           var e;
@@ -25503,7 +25522,7 @@ const NI = /^[`·]{3}([a-z]+)?[\s\n]$/, AI = /^[~～]{3}([a-z]+)?[\s\n]$/, II = 
         }
       }),
       H_({
-        find: AI,
+        find: II,
         type: this.type,
         getAttributes: (t) => {
           var e;
@@ -25577,8 +25596,8 @@ const NI = /^[`·]{3}([a-z]+)?[\s\n]$/, AI = /^[~～]{3}([a-z]+)?[\s\n]$/, II = 
     };
   }
 });
-function xI(t) {
-  const e = "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", i = "далее " + "возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт ", s = "загрузитьизфайла " + "вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент ", p = "разделительстраниц разделительстрок символтабуляции " + "ansitooem oemtoansi ввестивидсубконто ввестиперечисление ввестипериод ввестиплансчетов выбранныйплансчетов датагод датамесяц датачисло заголовоксистемы значениевстроку значениеизстроки каталогиб каталогпользователя кодсимв конгода конецпериодаби конецрассчитанногопериодаби конецстандартногоинтервала конквартала конмесяца коннедели лог лог10 максимальноеколичествосубконто названиеинтерфейса названиенабораправ назначитьвид назначитьсчет найтиссылки началопериодаби началостандартногоинтервала начгода начквартала начмесяца начнедели номерднягода номерднянедели номернеделигода обработкаожидания основнойжурналрасчетов основнойплансчетов основнойязык очиститьокносообщений периодстр получитьвремята получитьдатута получитьдокументта получитьзначенияотбора получитьпозициюта получитьпустоезначение получитьта префиксавтонумерации пропись пустоезначение разм разобратьпозициюдокумента рассчитатьрегистрына рассчитатьрегистрыпо симв создатьобъект статусвозврата стрколичествострок сформироватьпозициюдокумента счетпокоду текущеевремя типзначения типзначениястр установитьтана установитьтапо фиксшаблон шаблон " + "acos asin atan base64значение base64строка cos exp log log10 pow sin sqrt tan xmlзначение xmlстрока xmlтип xmlтипзнч активноеокно безопасныйрежим безопасныйрежимразделенияданных булево ввестидату ввестизначение ввестистроку ввестичисло возможностьчтенияxml вопрос восстановитьзначение врег выгрузитьжурналрегистрации выполнитьобработкуоповещения выполнитьпроверкуправдоступа вычислить год данныеформывзначение дата день деньгода деньнедели добавитьмесяц заблокироватьданныедляредактирования заблокироватьработупользователя завершитьработусистемы загрузитьвнешнююкомпоненту закрытьсправку записатьjson записатьxml записатьдатуjson записьжурналарегистрации заполнитьзначениясвойств запроситьразрешениепользователя запуститьприложение запуститьсистему зафиксироватьтранзакцию значениевданныеформы значениевстрокувнутр значениевфайл значениезаполнено значениеизстрокивнутр значениеизфайла изxmlтипа импортмоделиxdto имякомпьютера имяпользователя инициализироватьпредопределенныеданные информацияобошибке каталогбиблиотекимобильногоустройства каталогвременныхфайлов каталогдокументов каталогпрограммы кодироватьстроку кодлокализацииинформационнойбазы кодсимвола командасистемы конецгода конецдня конецквартала конецмесяца конецминуты конецнедели конецчаса конфигурациябазыданныхизмененадинамически конфигурацияизменена копироватьданныеформы копироватьфайл краткоепредставлениеошибки лев макс местноевремя месяц мин минута монопольныйрежим найти найтинедопустимыесимволыxml найтиокнопонавигационнойссылке найтипомеченныенаудаление найтипоссылкам найтифайлы началогода началодня началоквартала началомесяца началоминуты началонедели началочаса начатьзапросразрешенияпользователя начатьзапускприложения начатькопированиефайла начатьперемещениефайла начатьподключениевнешнейкомпоненты начатьподключениерасширенияработыскриптографией начатьподключениерасширенияработысфайлами начатьпоискфайлов начатьполучениекаталогавременныхфайлов начатьполучениекаталогадокументов начатьполучениерабочегокаталогаданныхпользователя начатьполучениефайлов начатьпомещениефайла начатьпомещениефайлов начатьсозданиедвоичныхданныхизфайла начатьсозданиекаталога начатьтранзакцию начатьудалениефайлов начатьустановкувнешнейкомпоненты начатьустановкурасширенияработыскриптографией начатьустановкурасширенияработысфайлами неделягода необходимостьзавершениясоединения номерсеансаинформационнойбазы номерсоединенияинформационнойбазы нрег нстр обновитьинтерфейс обновитьнумерациюобъектов обновитьповторноиспользуемыезначения обработкапрерыванияпользователя объединитьфайлы окр описаниеошибки оповестить оповеститьобизменении отключитьобработчикзапросанастроекклиенталицензирования отключитьобработчикожидания отключитьобработчикоповещения открытьзначение открытьиндекссправки открытьсодержаниесправки открытьсправку открытьформу открытьформумодально отменитьтранзакцию очиститьжурналрегистрации очиститьнастройкипользователя очиститьсообщения параметрыдоступа перейтипонавигационнойссылке переместитьфайл подключитьвнешнююкомпоненту подключитьобработчикзапросанастроекклиенталицензирования подключитьобработчикожидания подключитьобработчикоповещения подключитьрасширениеработыскриптографией подключитьрасширениеработысфайлами подробноепредставлениеошибки показатьвводдаты показатьвводзначения показатьвводстроки показатьвводчисла показатьвопрос показатьзначение показатьинформациюобошибке показатьнакарте показатьоповещениепользователя показатьпредупреждение полноеимяпользователя получитьcomобъект получитьxmlтип получитьадреспоместоположению получитьблокировкусеансов получитьвремязавершенияспящегосеанса получитьвремязасыпанияпассивногосеанса получитьвремяожиданияблокировкиданных получитьданныевыбора получитьдополнительныйпараметрклиенталицензирования получитьдопустимыекодылокализации получитьдопустимыечасовыепояса получитьзаголовокклиентскогоприложения получитьзаголовоксистемы получитьзначенияотборажурналарегистрации получитьидентификаторконфигурации получитьизвременногохранилища получитьимявременногофайла получитьимяклиенталицензирования получитьинформациюэкрановклиента получитьиспользованиежурналарегистрации получитьиспользованиесобытияжурналарегистрации получитькраткийзаголовокприложения получитьмакетоформления получитьмаскувсефайлы получитьмаскувсефайлыклиента получитьмаскувсефайлысервера получитьместоположениепоадресу получитьминимальнуюдлинупаролейпользователей получитьнавигационнуюссылку получитьнавигационнуюссылкуинформационнойбазы получитьобновлениеконфигурациибазыданных получитьобновлениепредопределенныхданныхинформационнойбазы получитьобщиймакет получитьобщуюформу получитьокна получитьоперативнуюотметкувремени получитьотключениебезопасногорежима получитьпараметрыфункциональныхопцийинтерфейса получитьполноеимяпредопределенногозначения получитьпредставлениянавигационныхссылок получитьпроверкусложностипаролейпользователей получитьразделительпути получитьразделительпутиклиента получитьразделительпутисервера получитьсеансыинформационнойбазы получитьскоростьклиентскогосоединения получитьсоединенияинформационнойбазы получитьсообщенияпользователю получитьсоответствиеобъектаиформы получитьсоставстандартногоинтерфейсаodata получитьструктурухранениябазыданных получитьтекущийсеансинформационнойбазы получитьфайл получитьфайлы получитьформу получитьфункциональнуюопцию получитьфункциональнуюопциюинтерфейса получитьчасовойпоясинформационнойбазы пользователиос поместитьвовременноехранилище поместитьфайл поместитьфайлы прав праводоступа предопределенноезначение представлениекодалокализации представлениепериода представлениеправа представлениеприложения представлениесобытияжурналарегистрации представлениечасовогопояса предупреждение прекратитьработусистемы привилегированныйрежим продолжитьвызов прочитатьjson прочитатьxml прочитатьдатуjson пустаястрока рабочийкаталогданныхпользователя разблокироватьданныедляредактирования разделитьфайл разорватьсоединениесвнешнимисточникомданных раскодироватьстроку рольдоступна секунда сигнал символ скопироватьжурналрегистрации смещениелетнеговремени смещениестандартноговремени соединитьбуферыдвоичныхданных создатькаталог создатьфабрикуxdto сокрл сокрлп сокрп сообщить состояние сохранитьзначение сохранитьнастройкипользователя сред стрдлина стрзаканчиваетсяна стрзаменить стрнайти стрначинаетсяс строка строкасоединенияинформационнойбазы стрполучитьстроку стрразделить стрсоединить стрсравнить стрчисловхождений стрчислострок стршаблон текущаядата текущаядатасеанса текущаяуниверсальнаядата текущаяуниверсальнаядатавмиллисекундах текущийвариантинтерфейсаклиентскогоприложения текущийвариантосновногошрифтаклиентскогоприложения текущийкодлокализации текущийрежимзапуска текущийязык текущийязыксистемы тип типзнч транзакцияактивна трег удалитьданныеинформационнойбазы удалитьизвременногохранилища удалитьобъекты удалитьфайлы универсальноевремя установитьбезопасныйрежим установитьбезопасныйрежимразделенияданных установитьблокировкусеансов установитьвнешнююкомпоненту установитьвремязавершенияспящегосеанса установитьвремязасыпанияпассивногосеанса установитьвремяожиданияблокировкиданных установитьзаголовокклиентскогоприложения установитьзаголовоксистемы установитьиспользованиежурналарегистрации установитьиспользованиесобытияжурналарегистрации установитькраткийзаголовокприложения установитьминимальнуюдлинупаролейпользователей установитьмонопольныйрежим установитьнастройкиклиенталицензирования установитьобновлениепредопределенныхданныхинформационнойбазы установитьотключениебезопасногорежима установитьпараметрыфункциональныхопцийинтерфейса установитьпривилегированныйрежим установитьпроверкусложностипаролейпользователей установитьрасширениеработыскриптографией установитьрасширениеработысфайлами установитьсоединениесвнешнимисточникомданных установитьсоответствиеобъектаиформы установитьсоставстандартногоинтерфейсаodata установитьчасовойпоясинформационнойбазы установитьчасовойпояссеанса формат цел час часовойпояс часовойпояссеанса число числопрописью этоадресвременногохранилища " + "wsссылки библиотекакартинок библиотекамакетовоформлениякомпоновкиданных библиотекастилей бизнеспроцессы внешниеисточникиданных внешниеобработки внешниеотчеты встроенныепокупки главныйинтерфейс главныйстиль документы доставляемыеуведомления журналыдокументов задачи информацияобинтернетсоединении использованиерабочейдаты историяработыпользователя константы критерииотбора метаданные обработки отображениерекламы отправкадоставляемыхуведомлений отчеты панельзадачос параметрзапуска параметрысеанса перечисления планывидоврасчета планывидовхарактеристик планыобмена планысчетов полнотекстовыйпоиск пользователиинформационнойбазы последовательности проверкавстроенныхпокупок рабочаядата расширенияконфигурации регистрыбухгалтерии регистрынакопления регистрырасчета регистрысведений регламентныезадания сериализаторxdto справочники средствагеопозиционирования средствакриптографии средствамультимедиа средстваотображениярекламы средствапочты средствателефонии фабрикаxdto файловыепотоки фоновыезадания хранилищанастроек хранилищевариантовотчетов хранилищенастроекданныхформ хранилищеобщихнастроек хранилищепользовательскихнастроекдинамическихсписков хранилищепользовательскихнастроекотчетов хранилищесистемныхнастроек ", w = "webцвета windowsцвета windowsшрифты библиотекакартинок рамкистиля символы цветастиля шрифтыстиля " + "автоматическоесохранениеданныхформывнастройках автонумерациявформе автораздвижениесерий анимациядиаграммы вариантвыравниванияэлементовизаголовков вариантуправлениявысотойтаблицы вертикальнаяпрокруткаформы вертикальноеположение вертикальноеположениеэлемента видгруппыформы виддекорацииформы виддополненияэлементаформы видизмененияданных видкнопкиформы видпереключателя видподписейкдиаграмме видполяформы видфлажка влияниеразмеранапузырекдиаграммы горизонтальноеположение горизонтальноеположениеэлемента группировкаколонок группировкаподчиненныхэлементовформы группыиэлементы действиеперетаскивания дополнительныйрежимотображения допустимыедействияперетаскивания интервалмеждуэлементамиформы использованиевывода использованиеполосыпрокрутки используемоезначениеточкибиржевойдиаграммы историявыборапривводе источникзначенийоситочекдиаграммы источникзначенияразмерапузырькадиаграммы категориягруппыкоманд максимумсерий начальноеотображениедерева начальноеотображениесписка обновлениетекстаредактирования ориентациядендрограммы ориентациядиаграммы ориентацияметокдиаграммы ориентацияметоксводнойдиаграммы ориентацияэлементаформы отображениевдиаграмме отображениевлегендедиаграммы отображениегруппыкнопок отображениезаголовкашкалыдиаграммы отображениезначенийсводнойдиаграммы отображениезначенияизмерительнойдиаграммы отображениеинтерваладиаграммыганта отображениекнопки отображениекнопкивыбора отображениеобсужденийформы отображениеобычнойгруппы отображениеотрицательныхзначенийпузырьковойдиаграммы отображениепанелипоиска отображениеподсказки отображениепредупрежденияприредактировании отображениеразметкиполосырегулирования отображениестраницформы отображениетаблицы отображениетекстазначениядиаграммыганта отображениеуправленияобычнойгруппы отображениефигурыкнопки палитрацветовдиаграммы поведениеобычнойгруппы поддержкамасштабадендрограммы поддержкамасштабадиаграммыганта поддержкамасштабасводнойдиаграммы поисквтаблицепривводе положениезаголовкаэлементаформы положениекартинкикнопкиформы положениекартинкиэлементаграфическойсхемы положениекоманднойпанелиформы положениекоманднойпанелиэлементаформы положениеопорнойточкиотрисовки положениеподписейкдиаграмме положениеподписейшкалызначенийизмерительнойдиаграммы положениесостоянияпросмотра положениестрокипоиска положениетекстасоединительнойлинии положениеуправленияпоиском положениешкалывремени порядокотображенияточекгоризонтальнойгистограммы порядоксерийвлегендедиаграммы размеркартинки расположениезаголовкашкалыдиаграммы растягиваниеповертикалидиаграммыганта режимавтоотображениясостояния режимвводастроктаблицы режимвыборанезаполненного режимвыделениядаты режимвыделениястрокитаблицы режимвыделениятаблицы режимизмененияразмера режимизменениясвязанногозначения режимиспользованиядиалогапечати режимиспользованияпараметракоманды режиммасштабированияпросмотра режимосновногоокнаклиентскогоприложения режимоткрытияокнаформы режимотображениявыделения режимотображениягеографическойсхемы режимотображениязначенийсерии режимотрисовкисеткиграфическойсхемы режимполупрозрачностидиаграммы режимпробеловдиаграммы режимразмещениянастранице режимредактированияколонки режимсглаживаниядиаграммы режимсглаживанияиндикатора режимсписказадач сквозноевыравнивание сохранениеданныхформывнастройках способзаполнениятекстазаголовкашкалыдиаграммы способопределенияограничивающегозначениядиаграммы стандартнаягруппакоманд стандартноеоформление статусоповещенияпользователя стильстрелки типаппроксимациилиниитрендадиаграммы типдиаграммы типединицышкалывремени типимпортасерийслоягеографическойсхемы типлиниигеографическойсхемы типлиниидиаграммы типмаркерагеографическойсхемы типмаркерадиаграммы типобластиоформления типорганизацииисточникаданныхгеографическойсхемы типотображениясериислоягеографическойсхемы типотображенияточечногообъектагеографическойсхемы типотображенияшкалыэлементалегендыгеографическойсхемы типпоискаобъектовгеографическойсхемы типпроекциигеографическойсхемы типразмещенияизмерений типразмещенияреквизитовизмерений типрамкиэлементауправления типсводнойдиаграммы типсвязидиаграммыганта типсоединениязначенийпосериямдиаграммы типсоединенияточекдиаграммы типсоединительнойлинии типстороныэлементаграфическойсхемы типформыотчета типшкалырадарнойдиаграммы факторлиниитрендадиаграммы фигуракнопки фигурыграфическойсхемы фиксациявтаблице форматдняшкалывремени форматкартинки ширинаподчиненныхэлементовформы " + "виддвижениябухгалтерии виддвижениянакопления видпериодарегистрарасчета видсчета видточкимаршрутабизнеспроцесса использованиеагрегатарегистранакопления использованиегруппиэлементов использованиережимапроведения использованиесреза периодичностьагрегатарегистранакопления режимавтовремя режимзаписидокумента режимпроведениядокумента " + "авторегистрацияизменений допустимыйномерсообщения отправкаэлементаданных получениеэлементаданных " + "использованиерасшифровкитабличногодокумента ориентациястраницы положениеитоговколоноксводнойтаблицы положениеитоговстроксводнойтаблицы положениетекстаотносительнокартинки расположениезаголовкагруппировкитабличногодокумента способчтениязначенийтабличногодокумента типдвустороннейпечати типзаполненияобластитабличногодокумента типкурсоровтабличногодокумента типлиниирисункатабличногодокумента типлинииячейкитабличногодокумента типнаправленияпереходатабличногодокумента типотображениявыделениятабличногодокумента типотображениялинийсводнойтаблицы типразмещениятекстатабличногодокумента типрисункатабличногодокумента типсмещениятабличногодокумента типузоратабличногодокумента типфайлатабличногодокумента точностьпечати чередованиерасположениястраниц " + "отображениевремениэлементовпланировщика " + "типфайлаформатированногодокумента " + "обходрезультатазапроса типзаписизапроса " + "видзаполнениярасшифровкипостроителяотчета типдобавленияпредставлений типизмеренияпостроителяотчета типразмещенияитогов " + "доступкфайлу режимдиалогавыборафайла режимоткрытияфайла " + "типизмеренияпостроителязапроса " + "видданныханализа методкластеризации типединицыинтервалавременианализаданных типзаполнениятаблицырезультатаанализаданных типиспользованиячисловыхзначенийанализаданных типисточникаданныхпоискаассоциаций типколонкианализаданныхдереворешений типколонкианализаданныхкластеризация типколонкианализаданныхобщаястатистика типколонкианализаданныхпоискассоциаций типколонкианализаданныхпоискпоследовательностей типколонкимоделипрогноза типмерырасстоянияанализаданных типотсеченияправилассоциации типполяанализаданных типстандартизациианализаданных типупорядочиванияправилассоциациианализаданных типупорядочиванияшаблоновпоследовательностейанализаданных типупрощениядереварешений " + "wsнаправлениепараметра вариантxpathxs вариантзаписидатыjson вариантпростоготипаxs видгруппымоделиxs видфасетаxdto действиепостроителяdom завершенностьпростоготипаxs завершенностьсоставноготипаxs завершенностьсхемыxs запрещенныеподстановкиxs исключениягруппподстановкиxs категорияиспользованияатрибутаxs категорияограниченияидентичностиxs категорияограниченияпространствименxs методнаследованияxs модельсодержимогоxs назначениетипаxml недопустимыеподстановкиxs обработкапробельныхсимволовxs обработкасодержимогоxs ограничениезначенияxs параметрыотбораузловdom переносстрокjson позициявдокументеdom пробельныесимволыxml типатрибутаxml типзначенияjson типканоническогоxml типкомпонентыxs типпроверкиxml типрезультатаdomxpath типузлаdom типузлаxml формаxml формапредставленияxs форматдатыjson экранированиесимволовjson " + "видсравнениякомпоновкиданных действиеобработкирасшифровкикомпоновкиданных направлениесортировкикомпоновкиданных расположениевложенныхэлементоврезультатакомпоновкиданных расположениеитоговкомпоновкиданных расположениегруппировкикомпоновкиданных расположениеполейгруппировкикомпоновкиданных расположениеполякомпоновкиданных расположениереквизитовкомпоновкиданных расположениересурсовкомпоновкиданных типбухгалтерскогоостаткакомпоновкиданных типвыводатекстакомпоновкиданных типгруппировкикомпоновкиданных типгруппыэлементовотборакомпоновкиданных типдополненияпериодакомпоновкиданных типзаголовкаполейкомпоновкиданных типмакетагруппировкикомпоновкиданных типмакетаобластикомпоновкиданных типостаткакомпоновкиданных типпериодакомпоновкиданных типразмещениятекстакомпоновкиданных типсвязинаборовданныхкомпоновкиданных типэлементарезультатакомпоновкиданных расположениелегендыдиаграммыкомпоновкиданных типпримененияотборакомпоновкиданных режимотображенияэлементанастройкикомпоновкиданных режимотображениянастроеккомпоновкиданных состояниеэлементанастройкикомпоновкиданных способвосстановлениянастроеккомпоновкиданных режимкомпоновкирезультата использованиепараметракомпоновкиданных автопозицияресурсовкомпоновкиданных вариантиспользованиягруппировкикомпоновкиданных расположениересурсоввдиаграммекомпоновкиданных фиксациякомпоновкиданных использованиеусловногооформлениякомпоновкиданных " + "важностьинтернетпочтовогосообщения обработкатекстаинтернетпочтовогосообщения способкодированияинтернетпочтовоговложения способкодированиянеasciiсимволовинтернетпочтовогосообщения типтекстапочтовогосообщения протоколинтернетпочты статусразборапочтовогосообщения " + "режимтранзакциизаписижурналарегистрации статустранзакциизаписижурналарегистрации уровеньжурналарегистрации " + "расположениехранилищасертификатовкриптографии режимвключениясертификатовкриптографии режимпроверкисертификатакриптографии типхранилищасертификатовкриптографии " + "кодировкаименфайловвzipфайле методсжатияzip методшифрованияzip режимвосстановленияпутейфайловzip режимобработкиподкаталоговzip режимсохраненияпутейzip уровеньсжатияzip " + "звуковоеоповещение направлениепереходакстроке позициявпотоке порядокбайтов режимблокировкиданных режимуправленияблокировкойданных сервисвстроенныхпокупок состояниефоновогозадания типподписчикадоставляемыхуведомлений уровеньиспользованиязащищенногосоединенияftp " + "направлениепорядкасхемызапроса типдополненияпериодамисхемызапроса типконтрольнойточкисхемызапроса типобъединениясхемызапроса типпараметрадоступнойтаблицысхемызапроса типсоединениясхемызапроса " + "httpметод автоиспользованиеобщегореквизита автопрефиксномеразадачи вариантвстроенногоязыка видиерархии видрегистранакопления видтаблицывнешнегоисточникаданных записьдвиженийприпроведении заполнениепоследовательностей индексирование использованиебазыпланавидоврасчета использованиебыстроговыбора использованиеобщегореквизита использованиеподчинения использованиеполнотекстовогопоиска использованиеразделяемыхданныхобщегореквизита использованиереквизита назначениеиспользованияприложения назначениерасширенияконфигурации направлениепередачи обновлениепредопределенныхданных оперативноепроведение основноепредставлениевидарасчета основноепредставлениевидахарактеристики основноепредставлениезадачи основноепредставлениепланаобмена основноепредставлениесправочника основноепредставлениесчета перемещениеграницыприпроведении периодичностьномерабизнеспроцесса периодичностьномерадокумента периодичностьрегистрарасчета периодичностьрегистрасведений повторноеиспользованиевозвращаемыхзначений полнотекстовыйпоискпривводепостроке принадлежностьобъекта проведение разделениеаутентификацииобщегореквизита разделениеданныхобщегореквизита разделениерасширенийконфигурацииобщегореквизита режимавтонумерацииобъектов режимзаписирегистра режимиспользованиямодальности режимиспользованиясинхронныхвызововрасширенийплатформыивнешнихкомпонент режимповторногоиспользованиясеансов режимполученияданныхвыборапривводепостроке режимсовместимости режимсовместимостиинтерфейса режимуправленияблокировкойданныхпоумолчанию сериикодовпланавидовхарактеристик сериикодовпланасчетов сериикодовсправочника созданиепривводе способвыбора способпоискастрокипривводепостроке способредактирования типданныхтаблицывнешнегоисточникаданных типкодапланавидоврасчета типкодасправочника типмакета типномерабизнеспроцесса типномерадокумента типномеразадачи типформы удалениедвижений " + "важностьпроблемыприменениярасширенияконфигурации вариантинтерфейсаклиентскогоприложения вариантмасштабаформклиентскогоприложения вариантосновногошрифтаклиентскогоприложения вариантстандартногопериода вариантстандартнойдатыначала видграницы видкартинки видотображенияполнотекстовогопоиска видрамки видсравнения видцвета видчисловогозначения видшрифта допустимаядлина допустимыйзнак использованиеbyteordermark использованиеметаданныхполнотекстовогопоиска источникрасширенийконфигурации клавиша кодвозвратадиалога кодировкаxbase кодировкатекста направлениепоиска направлениесортировки обновлениепредопределенныхданных обновлениеприизмененииданных отображениепанелиразделов проверказаполнения режимдиалогавопрос режимзапускаклиентскогоприложения режимокругления режимоткрытияформприложения режимполнотекстовогопоиска скоростьклиентскогосоединения состояниевнешнегоисточникаданных состояниеобновленияконфигурациибазыданных способвыборасертификатаwindows способкодированиястроки статуссообщения типвнешнейкомпоненты типплатформы типповеденияклавишиenter типэлементаинформацииовыполненииобновленияконфигурациибазыданных уровеньизоляциитранзакций хешфункция частидаты", X = "comобъект ftpсоединение httpзапрос httpсервисответ httpсоединение wsопределения wsпрокси xbase анализданных аннотацияxs блокировкаданных буфердвоичныхданных включениеxs выражениекомпоновкиданных генераторслучайныхчисел географическаясхема географическиекоординаты графическаясхема группамоделиxs данныерасшифровкикомпоновкиданных двоичныеданные дендрограмма диаграмма диаграммаганта диалогвыборафайла диалогвыборацвета диалогвыборашрифта диалограсписаниярегламентногозадания диалогредактированиястандартногопериода диапазон документdom документhtml документацияxs доставляемоеуведомление записьdom записьfastinfoset записьhtml записьjson записьxml записьzipфайла записьданных записьтекста записьузловdom запрос защищенноесоединениеopenssl значенияполейрасшифровкикомпоновкиданных извлечениетекста импортxs интернетпочта интернетпочтовоесообщение интернетпочтовыйпрофиль интернетпрокси интернетсоединение информациядляприложенияxs использованиеатрибутаxs использованиесобытияжурналарегистрации источникдоступныхнастроеккомпоновкиданных итераторузловdom картинка квалификаторыдаты квалификаторыдвоичныхданных квалификаторыстроки квалификаторычисла компоновщикмакетакомпоновкиданных компоновщикнастроеккомпоновкиданных конструктормакетаоформлениякомпоновкиданных конструкторнастроеккомпоновкиданных конструкторформатнойстроки линия макеткомпоновкиданных макетобластикомпоновкиданных макетоформлениякомпоновкиданных маскаxs менеджеркриптографии наборсхемxml настройкикомпоновкиданных настройкисериализацииjson обработкакартинок обработкарасшифровкикомпоновкиданных обходдереваdom объявлениеатрибутаxs объявлениенотацииxs объявлениеэлементаxs описаниеиспользованиясобытиядоступжурналарегистрации описаниеиспользованиясобытияотказвдоступежурналарегистрации описаниеобработкирасшифровкикомпоновкиданных описаниепередаваемогофайла описаниетипов определениегруппыатрибутовxs определениегруппымоделиxs определениеограниченияидентичностиxs определениепростоготипаxs определениесоставноготипаxs определениетипадокументаdom определенияxpathxs отборкомпоновкиданных пакетотображаемыхдокументов параметрвыбора параметркомпоновкиданных параметрызаписиjson параметрызаписиxml параметрычтенияxml переопределениеxs планировщик полеанализаданных полекомпоновкиданных построительdom построительзапроса построительотчета построительотчетаанализаданных построительсхемxml поток потоквпамяти почта почтовоесообщение преобразованиеxsl преобразованиекканоническомуxml процессорвыводарезультатакомпоновкиданныхвколлекциюзначений процессорвыводарезультатакомпоновкиданныхвтабличныйдокумент процессоркомпоновкиданных разыменовательпространствименdom рамка расписаниерегламентногозадания расширенноеимяxml результатчтенияданных своднаядиаграмма связьпараметравыбора связьпотипу связьпотипукомпоновкиданных сериализаторxdto сертификатклиентаwindows сертификатклиентафайл сертификаткриптографии сертификатыудостоверяющихцентровwindows сертификатыудостоверяющихцентровфайл сжатиеданных системнаяинформация сообщениепользователю сочетаниеклавиш сравнениезначений стандартнаядатаначала стандартныйпериод схемаxml схемакомпоновкиданных табличныйдокумент текстовыйдокумент тестируемоеприложение типданныхxml уникальныйидентификатор фабрикаxdto файл файловыйпоток фасетдлиныxs фасетколичестваразрядовдробнойчастиxs фасетмаксимальноговключающегозначенияxs фасетмаксимальногоисключающегозначенияxs фасетмаксимальнойдлиныxs фасетминимальноговключающегозначенияxs фасетминимальногоисключающегозначенияxs фасетминимальнойдлиныxs фасетобразцаxs фасетобщегоколичестваразрядовxs фасетперечисленияxs фасетпробельныхсимволовxs фильтрузловdom форматированнаястрока форматированныйдокумент фрагментxs хешированиеданных хранилищезначения цвет чтениеfastinfoset чтениеhtml чтениеjson чтениеxml чтениеzipфайла чтениеданных чтениетекста чтениеузловdom шрифт элементрезультатакомпоновкиданных " + "comsafearray деревозначений массив соответствие списокзначений структура таблицазначений фиксированнаяструктура фиксированноесоответствие фиксированныймассив ", de = "null истина ложь неопределено", pe = t.inherit(t.NUMBER_MODE), le = {
+function DI(t) {
+  const e = "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", i = "далее " + "возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт ", s = "загрузитьизфайла " + "вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент ", p = "разделительстраниц разделительстрок символтабуляции " + "ansitooem oemtoansi ввестивидсубконто ввестиперечисление ввестипериод ввестиплансчетов выбранныйплансчетов датагод датамесяц датачисло заголовоксистемы значениевстроку значениеизстроки каталогиб каталогпользователя кодсимв конгода конецпериодаби конецрассчитанногопериодаби конецстандартногоинтервала конквартала конмесяца коннедели лог лог10 максимальноеколичествосубконто названиеинтерфейса названиенабораправ назначитьвид назначитьсчет найтиссылки началопериодаби началостандартногоинтервала начгода начквартала начмесяца начнедели номерднягода номерднянедели номернеделигода обработкаожидания основнойжурналрасчетов основнойплансчетов основнойязык очиститьокносообщений периодстр получитьвремята получитьдатута получитьдокументта получитьзначенияотбора получитьпозициюта получитьпустоезначение получитьта префиксавтонумерации пропись пустоезначение разм разобратьпозициюдокумента рассчитатьрегистрына рассчитатьрегистрыпо симв создатьобъект статусвозврата стрколичествострок сформироватьпозициюдокумента счетпокоду текущеевремя типзначения типзначениястр установитьтана установитьтапо фиксшаблон шаблон " + "acos asin atan base64значение base64строка cos exp log log10 pow sin sqrt tan xmlзначение xmlстрока xmlтип xmlтипзнч активноеокно безопасныйрежим безопасныйрежимразделенияданных булево ввестидату ввестизначение ввестистроку ввестичисло возможностьчтенияxml вопрос восстановитьзначение врег выгрузитьжурналрегистрации выполнитьобработкуоповещения выполнитьпроверкуправдоступа вычислить год данныеформывзначение дата день деньгода деньнедели добавитьмесяц заблокироватьданныедляредактирования заблокироватьработупользователя завершитьработусистемы загрузитьвнешнююкомпоненту закрытьсправку записатьjson записатьxml записатьдатуjson записьжурналарегистрации заполнитьзначениясвойств запроситьразрешениепользователя запуститьприложение запуститьсистему зафиксироватьтранзакцию значениевданныеформы значениевстрокувнутр значениевфайл значениезаполнено значениеизстрокивнутр значениеизфайла изxmlтипа импортмоделиxdto имякомпьютера имяпользователя инициализироватьпредопределенныеданные информацияобошибке каталогбиблиотекимобильногоустройства каталогвременныхфайлов каталогдокументов каталогпрограммы кодироватьстроку кодлокализацииинформационнойбазы кодсимвола командасистемы конецгода конецдня конецквартала конецмесяца конецминуты конецнедели конецчаса конфигурациябазыданныхизмененадинамически конфигурацияизменена копироватьданныеформы копироватьфайл краткоепредставлениеошибки лев макс местноевремя месяц мин минута монопольныйрежим найти найтинедопустимыесимволыxml найтиокнопонавигационнойссылке найтипомеченныенаудаление найтипоссылкам найтифайлы началогода началодня началоквартала началомесяца началоминуты началонедели началочаса начатьзапросразрешенияпользователя начатьзапускприложения начатькопированиефайла начатьперемещениефайла начатьподключениевнешнейкомпоненты начатьподключениерасширенияработыскриптографией начатьподключениерасширенияработысфайлами начатьпоискфайлов начатьполучениекаталогавременныхфайлов начатьполучениекаталогадокументов начатьполучениерабочегокаталогаданныхпользователя начатьполучениефайлов начатьпомещениефайла начатьпомещениефайлов начатьсозданиедвоичныхданныхизфайла начатьсозданиекаталога начатьтранзакцию начатьудалениефайлов начатьустановкувнешнейкомпоненты начатьустановкурасширенияработыскриптографией начатьустановкурасширенияработысфайлами неделягода необходимостьзавершениясоединения номерсеансаинформационнойбазы номерсоединенияинформационнойбазы нрег нстр обновитьинтерфейс обновитьнумерациюобъектов обновитьповторноиспользуемыезначения обработкапрерыванияпользователя объединитьфайлы окр описаниеошибки оповестить оповеститьобизменении отключитьобработчикзапросанастроекклиенталицензирования отключитьобработчикожидания отключитьобработчикоповещения открытьзначение открытьиндекссправки открытьсодержаниесправки открытьсправку открытьформу открытьформумодально отменитьтранзакцию очиститьжурналрегистрации очиститьнастройкипользователя очиститьсообщения параметрыдоступа перейтипонавигационнойссылке переместитьфайл подключитьвнешнююкомпоненту подключитьобработчикзапросанастроекклиенталицензирования подключитьобработчикожидания подключитьобработчикоповещения подключитьрасширениеработыскриптографией подключитьрасширениеработысфайлами подробноепредставлениеошибки показатьвводдаты показатьвводзначения показатьвводстроки показатьвводчисла показатьвопрос показатьзначение показатьинформациюобошибке показатьнакарте показатьоповещениепользователя показатьпредупреждение полноеимяпользователя получитьcomобъект получитьxmlтип получитьадреспоместоположению получитьблокировкусеансов получитьвремязавершенияспящегосеанса получитьвремязасыпанияпассивногосеанса получитьвремяожиданияблокировкиданных получитьданныевыбора получитьдополнительныйпараметрклиенталицензирования получитьдопустимыекодылокализации получитьдопустимыечасовыепояса получитьзаголовокклиентскогоприложения получитьзаголовоксистемы получитьзначенияотборажурналарегистрации получитьидентификаторконфигурации получитьизвременногохранилища получитьимявременногофайла получитьимяклиенталицензирования получитьинформациюэкрановклиента получитьиспользованиежурналарегистрации получитьиспользованиесобытияжурналарегистрации получитькраткийзаголовокприложения получитьмакетоформления получитьмаскувсефайлы получитьмаскувсефайлыклиента получитьмаскувсефайлысервера получитьместоположениепоадресу получитьминимальнуюдлинупаролейпользователей получитьнавигационнуюссылку получитьнавигационнуюссылкуинформационнойбазы получитьобновлениеконфигурациибазыданных получитьобновлениепредопределенныхданныхинформационнойбазы получитьобщиймакет получитьобщуюформу получитьокна получитьоперативнуюотметкувремени получитьотключениебезопасногорежима получитьпараметрыфункциональныхопцийинтерфейса получитьполноеимяпредопределенногозначения получитьпредставлениянавигационныхссылок получитьпроверкусложностипаролейпользователей получитьразделительпути получитьразделительпутиклиента получитьразделительпутисервера получитьсеансыинформационнойбазы получитьскоростьклиентскогосоединения получитьсоединенияинформационнойбазы получитьсообщенияпользователю получитьсоответствиеобъектаиформы получитьсоставстандартногоинтерфейсаodata получитьструктурухранениябазыданных получитьтекущийсеансинформационнойбазы получитьфайл получитьфайлы получитьформу получитьфункциональнуюопцию получитьфункциональнуюопциюинтерфейса получитьчасовойпоясинформационнойбазы пользователиос поместитьвовременноехранилище поместитьфайл поместитьфайлы прав праводоступа предопределенноезначение представлениекодалокализации представлениепериода представлениеправа представлениеприложения представлениесобытияжурналарегистрации представлениечасовогопояса предупреждение прекратитьработусистемы привилегированныйрежим продолжитьвызов прочитатьjson прочитатьxml прочитатьдатуjson пустаястрока рабочийкаталогданныхпользователя разблокироватьданныедляредактирования разделитьфайл разорватьсоединениесвнешнимисточникомданных раскодироватьстроку рольдоступна секунда сигнал символ скопироватьжурналрегистрации смещениелетнеговремени смещениестандартноговремени соединитьбуферыдвоичныхданных создатькаталог создатьфабрикуxdto сокрл сокрлп сокрп сообщить состояние сохранитьзначение сохранитьнастройкипользователя сред стрдлина стрзаканчиваетсяна стрзаменить стрнайти стрначинаетсяс строка строкасоединенияинформационнойбазы стрполучитьстроку стрразделить стрсоединить стрсравнить стрчисловхождений стрчислострок стршаблон текущаядата текущаядатасеанса текущаяуниверсальнаядата текущаяуниверсальнаядатавмиллисекундах текущийвариантинтерфейсаклиентскогоприложения текущийвариантосновногошрифтаклиентскогоприложения текущийкодлокализации текущийрежимзапуска текущийязык текущийязыксистемы тип типзнч транзакцияактивна трег удалитьданныеинформационнойбазы удалитьизвременногохранилища удалитьобъекты удалитьфайлы универсальноевремя установитьбезопасныйрежим установитьбезопасныйрежимразделенияданных установитьблокировкусеансов установитьвнешнююкомпоненту установитьвремязавершенияспящегосеанса установитьвремязасыпанияпассивногосеанса установитьвремяожиданияблокировкиданных установитьзаголовокклиентскогоприложения установитьзаголовоксистемы установитьиспользованиежурналарегистрации установитьиспользованиесобытияжурналарегистрации установитькраткийзаголовокприложения установитьминимальнуюдлинупаролейпользователей установитьмонопольныйрежим установитьнастройкиклиенталицензирования установитьобновлениепредопределенныхданныхинформационнойбазы установитьотключениебезопасногорежима установитьпараметрыфункциональныхопцийинтерфейса установитьпривилегированныйрежим установитьпроверкусложностипаролейпользователей установитьрасширениеработыскриптографией установитьрасширениеработысфайлами установитьсоединениесвнешнимисточникомданных установитьсоответствиеобъектаиформы установитьсоставстандартногоинтерфейсаodata установитьчасовойпоясинформационнойбазы установитьчасовойпояссеанса формат цел час часовойпояс часовойпояссеанса число числопрописью этоадресвременногохранилища " + "wsссылки библиотекакартинок библиотекамакетовоформлениякомпоновкиданных библиотекастилей бизнеспроцессы внешниеисточникиданных внешниеобработки внешниеотчеты встроенныепокупки главныйинтерфейс главныйстиль документы доставляемыеуведомления журналыдокументов задачи информацияобинтернетсоединении использованиерабочейдаты историяработыпользователя константы критерииотбора метаданные обработки отображениерекламы отправкадоставляемыхуведомлений отчеты панельзадачос параметрзапуска параметрысеанса перечисления планывидоврасчета планывидовхарактеристик планыобмена планысчетов полнотекстовыйпоиск пользователиинформационнойбазы последовательности проверкавстроенныхпокупок рабочаядата расширенияконфигурации регистрыбухгалтерии регистрынакопления регистрырасчета регистрысведений регламентныезадания сериализаторxdto справочники средствагеопозиционирования средствакриптографии средствамультимедиа средстваотображениярекламы средствапочты средствателефонии фабрикаxdto файловыепотоки фоновыезадания хранилищанастроек хранилищевариантовотчетов хранилищенастроекданныхформ хранилищеобщихнастроек хранилищепользовательскихнастроекдинамическихсписков хранилищепользовательскихнастроекотчетов хранилищесистемныхнастроек ", M = "webцвета windowsцвета windowsшрифты библиотекакартинок рамкистиля символы цветастиля шрифтыстиля " + "автоматическоесохранениеданныхформывнастройках автонумерациявформе автораздвижениесерий анимациядиаграммы вариантвыравниванияэлементовизаголовков вариантуправлениявысотойтаблицы вертикальнаяпрокруткаформы вертикальноеположение вертикальноеположениеэлемента видгруппыформы виддекорацииформы виддополненияэлементаформы видизмененияданных видкнопкиформы видпереключателя видподписейкдиаграмме видполяформы видфлажка влияниеразмеранапузырекдиаграммы горизонтальноеположение горизонтальноеположениеэлемента группировкаколонок группировкаподчиненныхэлементовформы группыиэлементы действиеперетаскивания дополнительныйрежимотображения допустимыедействияперетаскивания интервалмеждуэлементамиформы использованиевывода использованиеполосыпрокрутки используемоезначениеточкибиржевойдиаграммы историявыборапривводе источникзначенийоситочекдиаграммы источникзначенияразмерапузырькадиаграммы категориягруппыкоманд максимумсерий начальноеотображениедерева начальноеотображениесписка обновлениетекстаредактирования ориентациядендрограммы ориентациядиаграммы ориентацияметокдиаграммы ориентацияметоксводнойдиаграммы ориентацияэлементаформы отображениевдиаграмме отображениевлегендедиаграммы отображениегруппыкнопок отображениезаголовкашкалыдиаграммы отображениезначенийсводнойдиаграммы отображениезначенияизмерительнойдиаграммы отображениеинтерваладиаграммыганта отображениекнопки отображениекнопкивыбора отображениеобсужденийформы отображениеобычнойгруппы отображениеотрицательныхзначенийпузырьковойдиаграммы отображениепанелипоиска отображениеподсказки отображениепредупрежденияприредактировании отображениеразметкиполосырегулирования отображениестраницформы отображениетаблицы отображениетекстазначениядиаграммыганта отображениеуправленияобычнойгруппы отображениефигурыкнопки палитрацветовдиаграммы поведениеобычнойгруппы поддержкамасштабадендрограммы поддержкамасштабадиаграммыганта поддержкамасштабасводнойдиаграммы поисквтаблицепривводе положениезаголовкаэлементаформы положениекартинкикнопкиформы положениекартинкиэлементаграфическойсхемы положениекоманднойпанелиформы положениекоманднойпанелиэлементаформы положениеопорнойточкиотрисовки положениеподписейкдиаграмме положениеподписейшкалызначенийизмерительнойдиаграммы положениесостоянияпросмотра положениестрокипоиска положениетекстасоединительнойлинии положениеуправленияпоиском положениешкалывремени порядокотображенияточекгоризонтальнойгистограммы порядоксерийвлегендедиаграммы размеркартинки расположениезаголовкашкалыдиаграммы растягиваниеповертикалидиаграммыганта режимавтоотображениясостояния режимвводастроктаблицы режимвыборанезаполненного режимвыделениядаты режимвыделениястрокитаблицы режимвыделениятаблицы режимизмененияразмера режимизменениясвязанногозначения режимиспользованиядиалогапечати режимиспользованияпараметракоманды режиммасштабированияпросмотра режимосновногоокнаклиентскогоприложения режимоткрытияокнаформы режимотображениявыделения режимотображениягеографическойсхемы режимотображениязначенийсерии режимотрисовкисеткиграфическойсхемы режимполупрозрачностидиаграммы режимпробеловдиаграммы режимразмещениянастранице режимредактированияколонки режимсглаживаниядиаграммы режимсглаживанияиндикатора режимсписказадач сквозноевыравнивание сохранениеданныхформывнастройках способзаполнениятекстазаголовкашкалыдиаграммы способопределенияограничивающегозначениядиаграммы стандартнаягруппакоманд стандартноеоформление статусоповещенияпользователя стильстрелки типаппроксимациилиниитрендадиаграммы типдиаграммы типединицышкалывремени типимпортасерийслоягеографическойсхемы типлиниигеографическойсхемы типлиниидиаграммы типмаркерагеографическойсхемы типмаркерадиаграммы типобластиоформления типорганизацииисточникаданныхгеографическойсхемы типотображениясериислоягеографическойсхемы типотображенияточечногообъектагеографическойсхемы типотображенияшкалыэлементалегендыгеографическойсхемы типпоискаобъектовгеографическойсхемы типпроекциигеографическойсхемы типразмещенияизмерений типразмещенияреквизитовизмерений типрамкиэлементауправления типсводнойдиаграммы типсвязидиаграммыганта типсоединениязначенийпосериямдиаграммы типсоединенияточекдиаграммы типсоединительнойлинии типстороныэлементаграфическойсхемы типформыотчета типшкалырадарнойдиаграммы факторлиниитрендадиаграммы фигуракнопки фигурыграфическойсхемы фиксациявтаблице форматдняшкалывремени форматкартинки ширинаподчиненныхэлементовформы " + "виддвижениябухгалтерии виддвижениянакопления видпериодарегистрарасчета видсчета видточкимаршрутабизнеспроцесса использованиеагрегатарегистранакопления использованиегруппиэлементов использованиережимапроведения использованиесреза периодичностьагрегатарегистранакопления режимавтовремя режимзаписидокумента режимпроведениядокумента " + "авторегистрацияизменений допустимыйномерсообщения отправкаэлементаданных получениеэлементаданных " + "использованиерасшифровкитабличногодокумента ориентациястраницы положениеитоговколоноксводнойтаблицы положениеитоговстроксводнойтаблицы положениетекстаотносительнокартинки расположениезаголовкагруппировкитабличногодокумента способчтениязначенийтабличногодокумента типдвустороннейпечати типзаполненияобластитабличногодокумента типкурсоровтабличногодокумента типлиниирисункатабличногодокумента типлинииячейкитабличногодокумента типнаправленияпереходатабличногодокумента типотображениявыделениятабличногодокумента типотображениялинийсводнойтаблицы типразмещениятекстатабличногодокумента типрисункатабличногодокумента типсмещениятабличногодокумента типузоратабличногодокумента типфайлатабличногодокумента точностьпечати чередованиерасположениястраниц " + "отображениевремениэлементовпланировщика " + "типфайлаформатированногодокумента " + "обходрезультатазапроса типзаписизапроса " + "видзаполнениярасшифровкипостроителяотчета типдобавленияпредставлений типизмеренияпостроителяотчета типразмещенияитогов " + "доступкфайлу режимдиалогавыборафайла режимоткрытияфайла " + "типизмеренияпостроителязапроса " + "видданныханализа методкластеризации типединицыинтервалавременианализаданных типзаполнениятаблицырезультатаанализаданных типиспользованиячисловыхзначенийанализаданных типисточникаданныхпоискаассоциаций типколонкианализаданныхдереворешений типколонкианализаданныхкластеризация типколонкианализаданныхобщаястатистика типколонкианализаданныхпоискассоциаций типколонкианализаданныхпоискпоследовательностей типколонкимоделипрогноза типмерырасстоянияанализаданных типотсеченияправилассоциации типполяанализаданных типстандартизациианализаданных типупорядочиванияправилассоциациианализаданных типупорядочиванияшаблоновпоследовательностейанализаданных типупрощениядереварешений " + "wsнаправлениепараметра вариантxpathxs вариантзаписидатыjson вариантпростоготипаxs видгруппымоделиxs видфасетаxdto действиепостроителяdom завершенностьпростоготипаxs завершенностьсоставноготипаxs завершенностьсхемыxs запрещенныеподстановкиxs исключениягруппподстановкиxs категорияиспользованияатрибутаxs категорияограниченияидентичностиxs категорияограниченияпространствименxs методнаследованияxs модельсодержимогоxs назначениетипаxml недопустимыеподстановкиxs обработкапробельныхсимволовxs обработкасодержимогоxs ограничениезначенияxs параметрыотбораузловdom переносстрокjson позициявдокументеdom пробельныесимволыxml типатрибутаxml типзначенияjson типканоническогоxml типкомпонентыxs типпроверкиxml типрезультатаdomxpath типузлаdom типузлаxml формаxml формапредставленияxs форматдатыjson экранированиесимволовjson " + "видсравнениякомпоновкиданных действиеобработкирасшифровкикомпоновкиданных направлениесортировкикомпоновкиданных расположениевложенныхэлементоврезультатакомпоновкиданных расположениеитоговкомпоновкиданных расположениегруппировкикомпоновкиданных расположениеполейгруппировкикомпоновкиданных расположениеполякомпоновкиданных расположениереквизитовкомпоновкиданных расположениересурсовкомпоновкиданных типбухгалтерскогоостаткакомпоновкиданных типвыводатекстакомпоновкиданных типгруппировкикомпоновкиданных типгруппыэлементовотборакомпоновкиданных типдополненияпериодакомпоновкиданных типзаголовкаполейкомпоновкиданных типмакетагруппировкикомпоновкиданных типмакетаобластикомпоновкиданных типостаткакомпоновкиданных типпериодакомпоновкиданных типразмещениятекстакомпоновкиданных типсвязинаборовданныхкомпоновкиданных типэлементарезультатакомпоновкиданных расположениелегендыдиаграммыкомпоновкиданных типпримененияотборакомпоновкиданных режимотображенияэлементанастройкикомпоновкиданных режимотображениянастроеккомпоновкиданных состояниеэлементанастройкикомпоновкиданных способвосстановлениянастроеккомпоновкиданных режимкомпоновкирезультата использованиепараметракомпоновкиданных автопозицияресурсовкомпоновкиданных вариантиспользованиягруппировкикомпоновкиданных расположениересурсоввдиаграммекомпоновкиданных фиксациякомпоновкиданных использованиеусловногооформлениякомпоновкиданных " + "важностьинтернетпочтовогосообщения обработкатекстаинтернетпочтовогосообщения способкодированияинтернетпочтовоговложения способкодированиянеasciiсимволовинтернетпочтовогосообщения типтекстапочтовогосообщения протоколинтернетпочты статусразборапочтовогосообщения " + "режимтранзакциизаписижурналарегистрации статустранзакциизаписижурналарегистрации уровеньжурналарегистрации " + "расположениехранилищасертификатовкриптографии режимвключениясертификатовкриптографии режимпроверкисертификатакриптографии типхранилищасертификатовкриптографии " + "кодировкаименфайловвzipфайле методсжатияzip методшифрованияzip режимвосстановленияпутейфайловzip режимобработкиподкаталоговzip режимсохраненияпутейzip уровеньсжатияzip " + "звуковоеоповещение направлениепереходакстроке позициявпотоке порядокбайтов режимблокировкиданных режимуправленияблокировкойданных сервисвстроенныхпокупок состояниефоновогозадания типподписчикадоставляемыхуведомлений уровеньиспользованиязащищенногосоединенияftp " + "направлениепорядкасхемызапроса типдополненияпериодамисхемызапроса типконтрольнойточкисхемызапроса типобъединениясхемызапроса типпараметрадоступнойтаблицысхемызапроса типсоединениясхемызапроса " + "httpметод автоиспользованиеобщегореквизита автопрефиксномеразадачи вариантвстроенногоязыка видиерархии видрегистранакопления видтаблицывнешнегоисточникаданных записьдвиженийприпроведении заполнениепоследовательностей индексирование использованиебазыпланавидоврасчета использованиебыстроговыбора использованиеобщегореквизита использованиеподчинения использованиеполнотекстовогопоиска использованиеразделяемыхданныхобщегореквизита использованиереквизита назначениеиспользованияприложения назначениерасширенияконфигурации направлениепередачи обновлениепредопределенныхданных оперативноепроведение основноепредставлениевидарасчета основноепредставлениевидахарактеристики основноепредставлениезадачи основноепредставлениепланаобмена основноепредставлениесправочника основноепредставлениесчета перемещениеграницыприпроведении периодичностьномерабизнеспроцесса периодичностьномерадокумента периодичностьрегистрарасчета периодичностьрегистрасведений повторноеиспользованиевозвращаемыхзначений полнотекстовыйпоискпривводепостроке принадлежностьобъекта проведение разделениеаутентификацииобщегореквизита разделениеданныхобщегореквизита разделениерасширенийконфигурацииобщегореквизита режимавтонумерацииобъектов режимзаписирегистра режимиспользованиямодальности режимиспользованиясинхронныхвызововрасширенийплатформыивнешнихкомпонент режимповторногоиспользованиясеансов режимполученияданныхвыборапривводепостроке режимсовместимости режимсовместимостиинтерфейса режимуправленияблокировкойданныхпоумолчанию сериикодовпланавидовхарактеристик сериикодовпланасчетов сериикодовсправочника созданиепривводе способвыбора способпоискастрокипривводепостроке способредактирования типданныхтаблицывнешнегоисточникаданных типкодапланавидоврасчета типкодасправочника типмакета типномерабизнеспроцесса типномерадокумента типномеразадачи типформы удалениедвижений " + "важностьпроблемыприменениярасширенияконфигурации вариантинтерфейсаклиентскогоприложения вариантмасштабаформклиентскогоприложения вариантосновногошрифтаклиентскогоприложения вариантстандартногопериода вариантстандартнойдатыначала видграницы видкартинки видотображенияполнотекстовогопоиска видрамки видсравнения видцвета видчисловогозначения видшрифта допустимаядлина допустимыйзнак использованиеbyteordermark использованиеметаданныхполнотекстовогопоиска источникрасширенийконфигурации клавиша кодвозвратадиалога кодировкаxbase кодировкатекста направлениепоиска направлениесортировки обновлениепредопределенныхданных обновлениеприизмененииданных отображениепанелиразделов проверказаполнения режимдиалогавопрос режимзапускаклиентскогоприложения режимокругления режимоткрытияформприложения режимполнотекстовогопоиска скоростьклиентскогосоединения состояниевнешнегоисточникаданных состояниеобновленияконфигурациибазыданных способвыборасертификатаwindows способкодированиястроки статуссообщения типвнешнейкомпоненты типплатформы типповеденияклавишиenter типэлементаинформацииовыполненииобновленияконфигурациибазыданных уровеньизоляциитранзакций хешфункция частидаты", X = "comобъект ftpсоединение httpзапрос httpсервисответ httpсоединение wsопределения wsпрокси xbase анализданных аннотацияxs блокировкаданных буфердвоичныхданных включениеxs выражениекомпоновкиданных генераторслучайныхчисел географическаясхема географическиекоординаты графическаясхема группамоделиxs данныерасшифровкикомпоновкиданных двоичныеданные дендрограмма диаграмма диаграммаганта диалогвыборафайла диалогвыборацвета диалогвыборашрифта диалограсписаниярегламентногозадания диалогредактированиястандартногопериода диапазон документdom документhtml документацияxs доставляемоеуведомление записьdom записьfastinfoset записьhtml записьjson записьxml записьzipфайла записьданных записьтекста записьузловdom запрос защищенноесоединениеopenssl значенияполейрасшифровкикомпоновкиданных извлечениетекста импортxs интернетпочта интернетпочтовоесообщение интернетпочтовыйпрофиль интернетпрокси интернетсоединение информациядляприложенияxs использованиеатрибутаxs использованиесобытияжурналарегистрации источникдоступныхнастроеккомпоновкиданных итераторузловdom картинка квалификаторыдаты квалификаторыдвоичныхданных квалификаторыстроки квалификаторычисла компоновщикмакетакомпоновкиданных компоновщикнастроеккомпоновкиданных конструктормакетаоформлениякомпоновкиданных конструкторнастроеккомпоновкиданных конструкторформатнойстроки линия макеткомпоновкиданных макетобластикомпоновкиданных макетоформлениякомпоновкиданных маскаxs менеджеркриптографии наборсхемxml настройкикомпоновкиданных настройкисериализацииjson обработкакартинок обработкарасшифровкикомпоновкиданных обходдереваdom объявлениеатрибутаxs объявлениенотацииxs объявлениеэлементаxs описаниеиспользованиясобытиядоступжурналарегистрации описаниеиспользованиясобытияотказвдоступежурналарегистрации описаниеобработкирасшифровкикомпоновкиданных описаниепередаваемогофайла описаниетипов определениегруппыатрибутовxs определениегруппымоделиxs определениеограниченияидентичностиxs определениепростоготипаxs определениесоставноготипаxs определениетипадокументаdom определенияxpathxs отборкомпоновкиданных пакетотображаемыхдокументов параметрвыбора параметркомпоновкиданных параметрызаписиjson параметрызаписиxml параметрычтенияxml переопределениеxs планировщик полеанализаданных полекомпоновкиданных построительdom построительзапроса построительотчета построительотчетаанализаданных построительсхемxml поток потоквпамяти почта почтовоесообщение преобразованиеxsl преобразованиекканоническомуxml процессорвыводарезультатакомпоновкиданныхвколлекциюзначений процессорвыводарезультатакомпоновкиданныхвтабличныйдокумент процессоркомпоновкиданных разыменовательпространствименdom рамка расписаниерегламентногозадания расширенноеимяxml результатчтенияданных своднаядиаграмма связьпараметравыбора связьпотипу связьпотипукомпоновкиданных сериализаторxdto сертификатклиентаwindows сертификатклиентафайл сертификаткриптографии сертификатыудостоверяющихцентровwindows сертификатыудостоверяющихцентровфайл сжатиеданных системнаяинформация сообщениепользователю сочетаниеклавиш сравнениезначений стандартнаядатаначала стандартныйпериод схемаxml схемакомпоновкиданных табличныйдокумент текстовыйдокумент тестируемоеприложение типданныхxml уникальныйидентификатор фабрикаxdto файл файловыйпоток фасетдлиныxs фасетколичестваразрядовдробнойчастиxs фасетмаксимальноговключающегозначенияxs фасетмаксимальногоисключающегозначенияxs фасетмаксимальнойдлиныxs фасетминимальноговключающегозначенияxs фасетминимальногоисключающегозначенияxs фасетминимальнойдлиныxs фасетобразцаxs фасетобщегоколичестваразрядовxs фасетперечисленияxs фасетпробельныхсимволовxs фильтрузловdom форматированнаястрока форматированныйдокумент фрагментxs хешированиеданных хранилищезначения цвет чтениеfastinfoset чтениеhtml чтениеjson чтениеxml чтениеzipфайла чтениеданных чтениетекста чтениеузловdom шрифт элементрезультатакомпоновкиданных " + "comsafearray деревозначений массив соответствие списокзначений структура таблицазначений фиксированнаяструктура фиксированноесоответствие фиксированныймассив ", de = "null истина ложь неопределено", pe = t.inherit(t.NUMBER_MODE), le = {
     className: "string",
     begin: '"|\\|',
     end: '"|$',
@@ -25661,7 +25680,7 @@ function xI(t) {
       $pattern: e,
       keyword: i,
       built_in: p,
-      class: w,
+      class: M,
       type: X,
       literal: de
     },
@@ -25677,7 +25696,7 @@ function xI(t) {
     ]
   };
 }
-function DI(t) {
+function wI(t) {
   const e = t.regex, n = /^[a-zA-Z][a-zA-Z0-9-]*/, r = [
     "ALPHA",
     "BIT",
@@ -25731,7 +25750,7 @@ function DI(t) {
     ]
   };
 }
-function wI(t) {
+function MI(t) {
   const e = t.regex, n = [
     "GET",
     "POST",
@@ -25809,7 +25828,7 @@ function wI(t) {
     ]
   };
 }
-function MI(t) {
+function LI(t) {
   const e = t.regex, n = /[a-zA-Z_$][a-zA-Z0-9_$]*/, r = e.concat(
     n,
     e.concat("(\\.", n, ")*")
@@ -25943,7 +25962,7 @@ function MI(t) {
     illegal: /#/
   };
 }
-function LI(t) {
+function kI(t) {
   const e = "\\d(_|\\d)*", n = "[eE][-+]?" + e, r = e + "(\\." + e + ")?(" + n + ")?", i = "\\w+", a = "\\b(" + (e + "#" + i + "(\\." + i + ")?#(" + n + ")?") + "|" + r + ")", s = "[A-Za-z](_?[A-Za-z0-9.])*", l = `[]\\{\\}%#'"`, c = t.COMMENT("--", "$"), u = {
     // TODO: These spaces are not required by the Ada syntax
     // however, I have yet to see handwritten Ada code where
@@ -26153,7 +26172,7 @@ function LI(t) {
     ]
   };
 }
-function kI(t) {
+function PI(t) {
   const e = {
     className: "built_in",
     begin: "\\b(void|bool|int8|int16|int32|int64|int|uint8|uint16|uint32|uint64|uint|string|ref|array|double|float|auto|dictionary)"
@@ -26312,7 +26331,7 @@ function kI(t) {
     ]
   };
 }
-function PI(t) {
+function FI(t) {
   const e = {
     className: "number",
     begin: /[$%]\d+/
@@ -26401,7 +26420,7 @@ function PI(t) {
     illegal: /\S/
   };
 }
-function FI(t) {
+function BI(t) {
   const e = t.regex, n = t.inherit(
     t.QUOTE_STRING_MODE,
     { illegal: null }
@@ -26513,7 +26532,7 @@ function FI(t) {
     illegal: /\/\/|->|=>|\[\[/
   };
 }
-function BI(t) {
+function UI(t) {
   const e = t.regex, n = "[A-Za-z_][0-9A-Za-z_]*", r = {
     keyword: [
       "break",
@@ -26926,7 +26945,7 @@ function BI(t) {
     illegal: /#(?!!)/
   };
 }
-function UI(t) {
+function HI(t) {
   const e = { variants: [
     t.COMMENT("^[ \\t]*(?=#)", "$", {
       relevance: 0,
@@ -27012,7 +27031,7 @@ function UI(t) {
     ]
   };
 }
-function HI(t) {
+function GI(t) {
   const e = t.regex, n = {
     begin: "^'{3,}[ \\t]*$",
     relevance: 10
@@ -27252,7 +27271,7 @@ function HI(t) {
     ]
   };
 }
-function GI(t) {
+function VI(t) {
   const e = t.regex, n = [
     "false",
     "synchronized",
@@ -27468,7 +27487,7 @@ function GI(t) {
     ]
   };
 }
-function VI(t) {
+function YI(t) {
   const e = { begin: "`[\\s\\S]" };
   return {
     name: "AutoHotkey",
@@ -27533,7 +27552,7 @@ function VI(t) {
     ]
   };
 }
-function YI(t) {
+function zI(t) {
   const e = "ByRef Case Const ContinueCase ContinueLoop Dim Do Else ElseIf EndFunc EndIf EndSelect EndSwitch EndWith Enum Exit ExitLoop For Func Global If In Local Next ReDim Return Select Static Step Switch Then To Until Volatile WEnd While With", n = [
     "EndRegion",
     "forcedef",
@@ -27675,7 +27694,7 @@ function YI(t) {
     ]
   };
 }
-function zI(t) {
+function $I(t) {
   return {
     name: "AVR Assembly",
     case_insensitive: !0,
@@ -27731,7 +27750,7 @@ function zI(t) {
     ]
   };
 }
-function $I(t) {
+function qI(t) {
   const e = {
     className: "variable",
     variants: [
@@ -27786,7 +27805,7 @@ function $I(t) {
     ]
   };
 }
-function qI(t) {
+function WI(t) {
   const e = t.UNDERSCORE_IDENT_RE, o = {
     keyword: [
       "abstract",
@@ -27953,7 +27972,7 @@ function qI(t) {
     ]
   };
 }
-function WI(t) {
+function KI(t) {
   return {
     name: "BASIC",
     case_insensitive: !0,
@@ -28176,7 +28195,7 @@ function WI(t) {
     ]
   };
 }
-function KI(t) {
+function QI(t) {
   return {
     name: "Backus–Naur Form",
     contains: [
@@ -28205,7 +28224,7 @@ function KI(t) {
     ]
   };
 }
-function QI(t) {
+function ZI(t) {
   const e = {
     className: "literal",
     begin: /[+-]+/,
@@ -28250,7 +28269,7 @@ function QI(t) {
     ]
   };
 }
-function ZI(t) {
+function XI(t) {
   const e = t.regex, n = [
     "div",
     "mod",
@@ -28385,7 +28404,7 @@ function ZI(t) {
     ]
   };
 }
-function XI(t) {
+function jI(t) {
   const e = [
     "struct",
     "enum",
@@ -28470,7 +28489,7 @@ function XI(t) {
     ]
   };
 }
-function jI(t) {
+function JI(t) {
   const e = [
     "assembly",
     "module",
@@ -28591,7 +28610,7 @@ function jI(t) {
     ].concat(o)
   };
 }
-function JI(t) {
+function ex(t) {
   return {
     name: "Clean",
     aliases: [
@@ -28647,7 +28666,7 @@ function JI(t) {
     ]
   };
 }
-function ex(t) {
+function tx(t) {
   const e = "a-zA-Z_\\-!.?+*=<>&'", n = "[#]?[" + e + "][" + e + "0-9/;:$#]*", r = "def defonce defprotocol defstruct defmulti defmethod defn- defn defmacro deftype defrecord", i = {
     $pattern: n,
     built_in: (
@@ -28779,7 +28798,7 @@ function ex(t) {
     ]
   };
 }
-function tx(t) {
+function nx(t) {
   return {
     name: "Clojure REPL",
     contains: [
@@ -28794,7 +28813,7 @@ function tx(t) {
     ]
   };
 }
-function nx(t) {
+function rx(t) {
   return {
     name: "CMake",
     aliases: ["cmake.in"],
@@ -28816,7 +28835,7 @@ function nx(t) {
     ]
   };
 }
-const rx = [
+const ix = [
   "as",
   // for exports
   "in",
@@ -28861,14 +28880,14 @@ const rx = [
   "extends",
   // It's reached stage 3, which is "recommended for implementation":
   "using"
-], ix = [
+], ox = [
   "true",
   "false",
   "null",
   "undefined",
   "NaN",
   "Infinity"
-], ox = [
+], ax = [
   // Fundamental objects
   "Object",
   "Function",
@@ -28918,7 +28937,7 @@ const rx = [
   "Intl",
   // WebAssembly
   "WebAssembly"
-], ax = [
+], sx = [
   "Error",
   "EvalError",
   "InternalError",
@@ -28927,7 +28946,7 @@ const rx = [
   "SyntaxError",
   "TypeError",
   "URIError"
-], sx = [
+], lx = [
   "setInterval",
   "setTimeout",
   "clearInterval",
@@ -28945,12 +28964,12 @@ const rx = [
   "encodeURIComponent",
   "escape",
   "unescape"
-], lx = [].concat(
-  sx,
-  ox,
-  ax
+], cx = [].concat(
+  lx,
+  ax,
+  sx
 );
-function cx(t) {
+function ux(t) {
   const e = [
     "npm",
     "print"
@@ -28978,9 +28997,9 @@ function cx(t) {
     "function",
     "static"
   ], o = (m) => (f) => !m.includes(f), a = {
-    keyword: rx.concat(r).filter(o(i)),
-    literal: ix.concat(n),
-    built_in: lx.concat(e)
+    keyword: ix.concat(r).filter(o(i)),
+    literal: ox.concat(n),
+    built_in: cx.concat(e)
   }, s = "[A-Za-z$_][0-9A-Za-z$_]*", l = {
     className: "subst",
     begin: /#\{/,
@@ -29148,7 +29167,7 @@ function cx(t) {
     ]
   };
 }
-function ux(t) {
+function dx(t) {
   return {
     name: "Coq",
     keywords: {
@@ -29583,7 +29602,7 @@ function ux(t) {
     ]
   };
 }
-function dx(t) {
+function px(t) {
   return {
     name: "Caché Object Script",
     case_insensitive: !0,
@@ -29669,7 +29688,7 @@ function dx(t) {
     ]
   };
 }
-function px(t) {
+function _x(t) {
   const e = "primitive rsc_template", n = "group clone ms master location colocation order fencing_topology rsc_ticket acl_target acl_group user role tag xml";
   return {
     name: "crmsh",
@@ -29747,7 +29766,7 @@ function px(t) {
     ]
   };
 }
-function _x(t) {
+function mx(t) {
   const e = "(_?[ui](8|16|32|64|128))?", n = "(_?f(32|64))?", r = "[a-zA-Z_]\\w*[!?=]?", i = "[a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|[=!]~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~|]|//|//=|&[-+*]=?|&\\*\\*|\\[\\][=?]?", o = "[A-Za-z_]\\w*(::\\w+)*(\\?|!)?", a = {
     $pattern: r,
     keyword: "abstract alias annotation as as? asm begin break case class def do else elsif end ensure enum extend for fun if include instance_sizeof is_a? lib macro module next nil? of out pointerof private protected rescue responds_to? return require select self sizeof struct super then type typeof union uninitialized unless until verbatim when while with yield __DIR__ __END_LINE__ __FILE__ __LINE__",
@@ -30027,7 +30046,7 @@ function _x(t) {
     contains: h
   };
 }
-function mx(t) {
+function fx(t) {
   return {
     name: "CSP",
     case_insensitive: !1,
@@ -30071,7 +30090,7 @@ function mx(t) {
     ]
   };
 }
-function fx(t) {
+function hx(t) {
   const e = {
     $pattern: t.UNDERSCORE_IDENT_RE,
     keyword: "abstract alias align asm assert auto body break byte case cast catch class const continue debug default delete deprecated do else enum export extern final finally for foreach foreach_reverse|10 goto if immutable import in inout int interface invariant is lazy macro mixin module new nothrow out override package pragma private protected public pure ref return scope shared static struct super switch synchronized template this throw try typedef typeid typeof union unittest version void volatile while with __FILE__ __LINE__ __gshared|10 __thread __traits __DATE__ __EOF__ __TIME__ __TIMESTAMP__ __VENDOR__ __VERSION__",
@@ -30157,7 +30176,7 @@ function fx(t) {
     ]
   };
 }
-function hx(t) {
+function gx(t) {
   const e = {
     className: "subst",
     variants: [{ begin: "\\$[A-Za-z0-9_]+" }]
@@ -30403,7 +30422,7 @@ function hx(t) {
     ]
   };
 }
-function gx(t) {
+function Ex(t) {
   const e = [
     "exports",
     "register",
@@ -30639,7 +30658,7 @@ function gx(t) {
     ].concat(n)
   };
 }
-function Ex(t) {
+function Sx(t) {
   const e = {
     begin: /\|[A-Za-z]+:?/,
     keywords: { name: "truncatewords removetags linebreaksbr yesno get_digit timesince random striptags filesizeformat escape linebreaks length_is ljust rjust cut urlize fix_ampersands title floatformat capfirst pprint divisibleby add make_list unordered_list urlencode timeuntil urlizetrunc wordcount stringformat linenumbers slice date dictsort dictsortreversed default_if_none pluralize lower join center default truncatewords_html upper length phone2numeric wordwrap time addslashes slugify first escapejs force_escape iriencode last safe safeseq truncatechars localize unlocalize localtime utc timezone" },
@@ -30683,7 +30702,7 @@ function Ex(t) {
     ]
   };
 }
-function Sx(t) {
+function bx(t) {
   return {
     name: "DNS Zone",
     aliases: [
@@ -30750,7 +30769,7 @@ function Sx(t) {
     ]
   };
 }
-function bx(t) {
+function Tx(t) {
   return {
     name: "Dockerfile",
     aliases: ["docker"],
@@ -30781,7 +30800,7 @@ function bx(t) {
     illegal: "</"
   };
 }
-function Tx(t) {
+function Cx(t) {
   const e = t.COMMENT(
     /^\s*@?rem\b/,
     /$/,
@@ -30935,7 +30954,7 @@ function Tx(t) {
     ]
   };
 }
-function Cx(t) {
+function yx(t) {
   return {
     keywords: "dsconfig",
     contains: [
@@ -30986,7 +31005,7 @@ function Cx(t) {
     ]
   };
 }
-function yx(t) {
+function vx(t) {
   const e = {
     className: "string",
     variants: [
@@ -31108,7 +31127,7 @@ function yx(t) {
     ]
   };
 }
-function vx(t) {
+function Rx(t) {
   return {
     name: "Dust",
     aliases: ["dst"],
@@ -31142,7 +31161,7 @@ function vx(t) {
     ]
   };
 }
-function Rx(t) {
+function Ox(t) {
   const e = t.COMMENT(/\(\*/, /\*\)/), n = {
     className: "attribute",
     begin: /^[ ]*[a-zA-Z]+([\s_-]+[a-zA-Z]+)*/
@@ -31179,7 +31198,7 @@ function Rx(t) {
     ]
   };
 }
-function Ox(t) {
+function Nx(t) {
   const e = t.regex, n = "[a-zA-Z_][a-zA-Z0-9_.]*(!|\\?)?", r = "[a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?", a = {
     $pattern: n,
     keyword: [
@@ -31427,7 +31446,7 @@ function Ox(t) {
     contains: g
   };
 }
-function Nx(t) {
+function Ax(t) {
   const e = { variants: [
     t.COMMENT("--", "$"),
     t.COMMENT(
@@ -31548,7 +31567,7 @@ function Nx(t) {
     illegal: /;/
   };
 }
-function Ax(t) {
+function Ix(t) {
   return {
     name: "ERB",
     subLanguage: "xml",
@@ -31564,7 +31583,7 @@ function Ax(t) {
     ]
   };
 }
-function Ix(t) {
+function xx(t) {
   const e = "[a-z'][a-zA-Z0-9_']*", n = "(" + e + ":" + e + "|" + e + ")", r = {
     keyword: "after and andalso|10 band begin bnot bor bsl bzr bxor case catch cond div end fun if let not of orelse|10 query receive rem try when xor maybe else",
     literal: "false true"
@@ -31762,7 +31781,7 @@ function Ix(t) {
     ]
   };
 }
-function xx(t) {
+function Dx(t) {
   const e = t.regex;
   return {
     name: "Erlang REPL",
@@ -31805,7 +31824,7 @@ function xx(t) {
     ]
   };
 }
-function Dx(t) {
+function wx(t) {
   return {
     name: "Excel formulae",
     aliases: [
@@ -32376,7 +32395,7 @@ function Dx(t) {
     ]
   };
 }
-function wx(t) {
+function Mx(t) {
   return {
     name: "FIX",
     contains: [
@@ -32407,7 +32426,7 @@ function wx(t) {
     case_insensitive: !0
   };
 }
-function Mx(t) {
+function Lx(t) {
   const e = {
     className: "string",
     begin: /'(.|\\[xXuU][a-zA-Z0-9]+)'/
@@ -32469,7 +32488,7 @@ function Mx(t) {
     ]
   };
 }
-function Lx(t) {
+function kx(t) {
   const e = t.regex, n = {
     className: "params",
     begin: "\\(",
@@ -33017,7 +33036,7 @@ function Lx(t) {
     ]
   };
 }
-function kx(t) {
+function Px(t) {
   return new RegExp(t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "m");
 }
 function vg(t) {
@@ -33029,14 +33048,14 @@ function yi(t) {
 function Ht(...t) {
   return t.map((n) => vg(n)).join("");
 }
-function Px(t) {
+function Fx(t) {
   const e = t[t.length - 1];
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function Jn(...t) {
-  return "(" + (Px(t).capture ? "" : "?:") + t.map((r) => vg(r)).join("|") + ")";
+  return "(" + (Fx(t).capture ? "" : "?:") + t.map((r) => vg(r)).join("|") + ")";
 }
-function Fx(t) {
+function Bx(t) {
   const e = [
     "abstract",
     "and",
@@ -33242,12 +33261,12 @@ function Fx(t) {
     ],
     relevance: 0
   }, f = function({ includeEqual: R }) {
-    let w;
-    R ? w = "!%&*+-/<=>@^|~?" : w = "!%&*+-/<>@^|~?";
-    const B = Array.from(w), V = Ht("[", ...B.map(kx), "]"), X = Jn(V, /\./), de = Ht(X, yi(X)), pe = Jn(
+    let M;
+    R ? M = "!%&*+-/<=>@^|~?" : M = "!%&*+-/<>@^|~?";
+    const B = Array.from(M), z = Ht("[", ...B.map(Px), "]"), X = Jn(z, /\./), de = Ht(X, yi(X)), pe = Jn(
       Ht(de, X, "*"),
       // Matches at least 2 chars operators
-      Ht(V, "+")
+      Ht(z, "+")
       // Matches at least one char operators
     );
     return {
@@ -33269,7 +33288,7 @@ function Fx(t) {
       // A single $ can be used as an operator
       relevance: 0
     };
-  }, h = f({ includeEqual: !0 }), E = f({ includeEqual: !1 }), S = function(R, w) {
+  }, h = f({ includeEqual: !0 }), E = f({ includeEqual: !1 }), S = function(R, M) {
     return {
       begin: Ht(
         // a type annotation is a
@@ -33300,7 +33319,7 @@ function Fx(t) {
           )
         )
       ),
-      beginScope: w,
+      beginScope: M,
       // BUG: because ending with \n is necessary for some cases, multi-line type annotations are not properly supported.
       // Examples where \n is required at the end:
       // - abstract member definitions in classes: abstract Property : int * string
@@ -33393,7 +33412,7 @@ function Fx(t) {
     begin: /"""/,
     end: /"""/,
     relevance: 2
-  }, z = {
+  }, Y = {
     scope: "subst",
     begin: /\{/,
     end: /\}/,
@@ -33412,7 +33431,7 @@ function Fx(t) {
         // escaped }
       },
       t.BACKSLASH_ESCAPE,
-      z
+      Y
     ]
   }, q = {
     scope: "string",
@@ -33431,9 +33450,9 @@ function Fx(t) {
         match: /""/
       },
       t.BACKSLASH_ESCAPE,
-      z
+      Y
     ]
-  }, Y = {
+  }, V = {
     scope: "string",
     begin: /\$"""/,
     end: /"""/,
@@ -33446,7 +33465,7 @@ function Fx(t) {
         match: /\}\}/
         // escaped }
       },
-      z
+      Y
     ],
     relevance: 2
   }, O = {
@@ -33462,7 +33481,7 @@ function Fx(t) {
       /'/
     )
   };
-  return z.contains = [
+  return Y.contains = [
     q,
     Z,
     x,
@@ -33492,7 +33511,7 @@ function Fx(t) {
       n,
       {
         variants: [
-          Y,
+          V,
           q,
           Z,
           P,
@@ -33531,7 +33550,7 @@ function Fx(t) {
     ]
   };
 }
-function Bx(t) {
+function Ux(t) {
   const e = t.regex, n = {
     keyword: "abort acronym acronyms alias all and assign binary card diag display else eq file files for free ge gt if integer le loop lt maximizing minimizing model models ne negative no not option options or ord positive prod put putpage puttl repeat sameas semicont semiint smax smin solve sos1 sos2 sum system table then until using while xor yes",
     literal: "eps inf na",
@@ -33675,7 +33694,7 @@ function Bx(t) {
     ]
   };
 }
-function Ux(t) {
+function Hx(t) {
   const e = {
     keyword: "bool break call callexe checkinterrupt clear clearg closeall cls comlog compile continue create debug declare delete disable dlibrary dllcall do dos ed edit else elseif enable end endfor endif endp endo errorlog errorlogat expr external fn for format goto gosub graph if keyword let lib library line load loadarray loadexe loadf loadk loadm loadp loads loadx local locate loopnextindex lprint lpwidth lshow matrix msym ndpclex new open output outwidth plot plotsym pop prcsn print printdos proc push retp return rndcon rndmod rndmult rndseed run save saveall screen scroll setarray show sparse stop string struct system trace trap threadfor threadendfor threadbegin threadjoin threadstat threadend until use while winprint ne ge le gt lt and xor or not eq eqv",
     built_in: "abs acf aconcat aeye amax amean AmericanBinomCall AmericanBinomCall_Greeks AmericanBinomCall_ImpVol AmericanBinomPut AmericanBinomPut_Greeks AmericanBinomPut_ImpVol AmericanBSCall AmericanBSCall_Greeks AmericanBSCall_ImpVol AmericanBSPut AmericanBSPut_Greeks AmericanBSPut_ImpVol amin amult annotationGetDefaults annotationSetBkd annotationSetFont annotationSetLineColor annotationSetLineStyle annotationSetLineThickness annualTradingDays arccos arcsin areshape arrayalloc arrayindex arrayinit arraytomat asciiload asclabel astd astds asum atan atan2 atranspose axmargin balance band bandchol bandcholsol bandltsol bandrv bandsolpd bar base10 begwind besselj bessely beta box boxcox cdfBeta cdfBetaInv cdfBinomial cdfBinomialInv cdfBvn cdfBvn2 cdfBvn2e cdfCauchy cdfCauchyInv cdfChic cdfChii cdfChinc cdfChincInv cdfExp cdfExpInv cdfFc cdfFnc cdfFncInv cdfGam cdfGenPareto cdfHyperGeo cdfLaplace cdfLaplaceInv cdfLogistic cdfLogisticInv cdfmControlCreate cdfMvn cdfMvn2e cdfMvnce cdfMvne cdfMvt2e cdfMvtce cdfMvte cdfN cdfN2 cdfNc cdfNegBinomial cdfNegBinomialInv cdfNi cdfPoisson cdfPoissonInv cdfRayleigh cdfRayleighInv cdfTc cdfTci cdfTnc cdfTvn cdfWeibull cdfWeibullInv cdir ceil ChangeDir chdir chiBarSquare chol choldn cholsol cholup chrs close code cols colsf combinate combinated complex con cond conj cons ConScore contour conv convertsatostr convertstrtosa corrm corrms corrvc corrx corrxs cos cosh counts countwts crossprd crout croutp csrcol csrlin csvReadM csvReadSA cumprodc cumsumc curve cvtos datacreate datacreatecomplex datalist dataload dataloop dataopen datasave date datestr datestring datestrymd dayinyr dayofweek dbAddDatabase dbClose dbCommit dbCreateQuery dbExecQuery dbGetConnectOptions dbGetDatabaseName dbGetDriverName dbGetDrivers dbGetHostName dbGetLastErrorNum dbGetLastErrorText dbGetNumericalPrecPolicy dbGetPassword dbGetPort dbGetTableHeaders dbGetTables dbGetUserName dbHasFeature dbIsDriverAvailable dbIsOpen dbIsOpenError dbOpen dbQueryBindValue dbQueryClear dbQueryCols dbQueryExecPrepared dbQueryFetchAllM dbQueryFetchAllSA dbQueryFetchOneM dbQueryFetchOneSA dbQueryFinish dbQueryGetBoundValue dbQueryGetBoundValues dbQueryGetField dbQueryGetLastErrorNum dbQueryGetLastErrorText dbQueryGetLastInsertID dbQueryGetLastQuery dbQueryGetPosition dbQueryIsActive dbQueryIsForwardOnly dbQueryIsNull dbQueryIsSelect dbQueryIsValid dbQueryPrepare dbQueryRows dbQuerySeek dbQuerySeekFirst dbQuerySeekLast dbQuerySeekNext dbQuerySeekPrevious dbQuerySetForwardOnly dbRemoveDatabase dbRollback dbSetConnectOptions dbSetDatabaseName dbSetHostName dbSetNumericalPrecPolicy dbSetPort dbSetUserName dbTransaction DeleteFile delif delrows denseToSp denseToSpRE denToZero design det detl dfft dffti diag diagrv digamma doswin DOSWinCloseall DOSWinOpen dotfeq dotfeqmt dotfge dotfgemt dotfgt dotfgtmt dotfle dotflemt dotflt dotfltmt dotfne dotfnemt draw drop dsCreate dstat dstatmt dstatmtControlCreate dtdate dtday dttime dttodtv dttostr dttoutc dtvnormal dtvtodt dtvtoutc dummy dummybr dummydn eig eigh eighv eigv elapsedTradingDays endwind envget eof eqSolve eqSolvemt eqSolvemtControlCreate eqSolvemtOutCreate eqSolveset erf erfc erfccplx erfcplx error etdays ethsec etstr EuropeanBinomCall EuropeanBinomCall_Greeks EuropeanBinomCall_ImpVol EuropeanBinomPut EuropeanBinomPut_Greeks EuropeanBinomPut_ImpVol EuropeanBSCall EuropeanBSCall_Greeks EuropeanBSCall_ImpVol EuropeanBSPut EuropeanBSPut_Greeks EuropeanBSPut_ImpVol exctsmpl exec execbg exp extern eye fcheckerr fclearerr feq feqmt fflush fft ffti fftm fftmi fftn fge fgemt fgets fgetsa fgetsat fgetst fgt fgtmt fileinfo filesa fle flemt floor flt fltmt fmod fne fnemt fonts fopen formatcv formatnv fputs fputst fseek fstrerror ftell ftocv ftos ftostrC gamma gammacplx gammaii gausset gdaAppend gdaCreate gdaDStat gdaDStatMat gdaGetIndex gdaGetName gdaGetNames gdaGetOrders gdaGetType gdaGetTypes gdaGetVarInfo gdaIsCplx gdaLoad gdaPack gdaRead gdaReadByIndex gdaReadSome gdaReadSparse gdaReadStruct gdaReportVarInfo gdaSave gdaUpdate gdaUpdateAndPack gdaVars gdaWrite gdaWrite32 gdaWriteSome getarray getdims getf getGAUSShome getmatrix getmatrix4D getname getnamef getNextTradingDay getNextWeekDay getnr getorders getpath getPreviousTradingDay getPreviousWeekDay getRow getscalar3D getscalar4D getTrRow getwind glm gradcplx gradMT gradMTm gradMTT gradMTTm gradp graphprt graphset hasimag header headermt hess hessMT hessMTg hessMTgw hessMTm hessMTmw hessMTT hessMTTg hessMTTgw hessMTTm hessMTw hessp hist histf histp hsec imag indcv indexcat indices indices2 indicesf indicesfn indnv indsav integrate1d integrateControlCreate intgrat2 intgrat3 inthp1 inthp2 inthp3 inthp4 inthpControlCreate intquad1 intquad2 intquad3 intrleav intrleavsa intrsect intsimp inv invpd invswp iscplx iscplxf isden isinfnanmiss ismiss key keyav keyw lag lag1 lagn lapEighb lapEighi lapEighvb lapEighvi lapgEig lapgEigh lapgEighv lapgEigv lapgSchur lapgSvdcst lapgSvds lapgSvdst lapSvdcusv lapSvds lapSvdusv ldlp ldlsol linSolve listwise ln lncdfbvn lncdfbvn2 lncdfmvn lncdfn lncdfn2 lncdfnc lnfact lngammacplx lnpdfmvn lnpdfmvt lnpdfn lnpdft loadd loadstruct loadwind loess loessmt loessmtControlCreate log loglog logx logy lower lowmat lowmat1 ltrisol lu lusol machEpsilon make makevars makewind margin matalloc matinit mattoarray maxbytes maxc maxindc maxv maxvec mbesselei mbesselei0 mbesselei1 mbesseli mbesseli0 mbesseli1 meanc median mergeby mergevar minc minindc minv miss missex missrv moment momentd movingave movingaveExpwgt movingaveWgt nextindex nextn nextnevn nextwind ntos null null1 numCombinations ols olsmt olsmtControlCreate olsqr olsqr2 olsqrmt ones optn optnevn orth outtyp pacf packedToSp packr parse pause pdfCauchy pdfChi pdfExp pdfGenPareto pdfHyperGeo pdfLaplace pdfLogistic pdfn pdfPoisson pdfRayleigh pdfWeibull pi pinv pinvmt plotAddArrow plotAddBar plotAddBox plotAddHist plotAddHistF plotAddHistP plotAddPolar plotAddScatter plotAddShape plotAddTextbox plotAddTS plotAddXY plotArea plotBar plotBox plotClearLayout plotContour plotCustomLayout plotGetDefaults plotHist plotHistF plotHistP plotLayout plotLogLog plotLogX plotLogY plotOpenWindow plotPolar plotSave plotScatter plotSetAxesPen plotSetBar plotSetBarFill plotSetBarStacked plotSetBkdColor plotSetFill plotSetGrid plotSetLegend plotSetLineColor plotSetLineStyle plotSetLineSymbol plotSetLineThickness plotSetNewWindow plotSetTitle plotSetWhichYAxis plotSetXAxisShow plotSetXLabel plotSetXRange plotSetXTicInterval plotSetXTicLabel plotSetYAxisShow plotSetYLabel plotSetYRange plotSetZAxisShow plotSetZLabel plotSurface plotTS plotXY polar polychar polyeval polygamma polyint polymake polymat polymroot polymult polyroot pqgwin previousindex princomp printfm printfmt prodc psi putarray putf putvals pvCreate pvGetIndex pvGetParNames pvGetParVector pvLength pvList pvPack pvPacki pvPackm pvPackmi pvPacks pvPacksi pvPacksm pvPacksmi pvPutParVector pvTest pvUnpack QNewton QNewtonmt QNewtonmtControlCreate QNewtonmtOutCreate QNewtonSet QProg QProgmt QProgmtInCreate qqr qqre qqrep qr qre qrep qrsol qrtsol qtyr qtyre qtyrep quantile quantiled qyr qyre qyrep qz rank rankindx readr real reclassify reclassifyCuts recode recserar recsercp recserrc rerun rescale reshape rets rev rfft rffti rfftip rfftn rfftnp rfftp rndBernoulli rndBeta rndBinomial rndCauchy rndChiSquare rndCon rndCreateState rndExp rndGamma rndGeo rndGumbel rndHyperGeo rndi rndKMbeta rndKMgam rndKMi rndKMn rndKMnb rndKMp rndKMu rndKMvm rndLaplace rndLCbeta rndLCgam rndLCi rndLCn rndLCnb rndLCp rndLCu rndLCvm rndLogNorm rndMTu rndMVn rndMVt rndn rndnb rndNegBinomial rndp rndPoisson rndRayleigh rndStateSkip rndu rndvm rndWeibull rndWishart rotater round rows rowsf rref sampleData satostrC saved saveStruct savewind scale scale3d scalerr scalinfnanmiss scalmiss schtoc schur searchsourcepath seekr select selif seqa seqm setdif setdifsa setvars setvwrmode setwind shell shiftr sin singleindex sinh sleep solpd sortc sortcc sortd sorthc sorthcc sortind sortindc sortmc sortr sortrc spBiconjGradSol spChol spConjGradSol spCreate spDenseSubmat spDiagRvMat spEigv spEye spLDL spline spLU spNumNZE spOnes spreadSheetReadM spreadSheetReadSA spreadSheetWrite spScale spSubmat spToDense spTrTDense spTScalar spZeros sqpSolve sqpSolveMT sqpSolveMTControlCreate sqpSolveMTlagrangeCreate sqpSolveMToutCreate sqpSolveSet sqrt statements stdc stdsc stocv stof strcombine strindx strlen strput strrindx strsect strsplit strsplitPad strtodt strtof strtofcplx strtriml strtrimr strtrunc strtruncl strtruncpad strtruncr submat subscat substute subvec sumc sumr surface svd svd1 svd2 svdcusv svds svdusv sysstate tab tan tanh tempname time timedt timestr timeutc title tkf2eps tkf2ps tocart todaydt toeplitz token topolar trapchk trigamma trimr trunc type typecv typef union unionsa uniqindx uniqindxsa unique uniquesa upmat upmat1 upper utctodt utctodtv utrisol vals varCovMS varCovXS varget vargetl varmall varmares varput varputl vartypef vcm vcms vcx vcxs vec vech vecr vector vget view viewxyz vlist vnamecv volume vput vread vtypecv wait waitc walkindex where window writer xlabel xlsGetSheetCount xlsGetSheetSize xlsGetSheetTypes xlsMakeRange xlsReadM xlsReadSA xlsWrite xlsWriteM xlsWriteSA xpnd xtics xy xyz ylabel ytics zeros zeta zlabel ztics cdfEmpirical dot h5create h5open h5read h5readAttribute h5write h5writeAttribute ldl plotAddErrorBar plotAddSurface plotCDFEmpirical plotSetColormap plotSetContourLabels plotSetLegendFont plotSetTextInterpreter plotSetXTicCount plotSetYTicCount plotSetZLevels powerm strjoin sylvester strtrim",
@@ -33845,7 +33864,7 @@ function Ux(t) {
     ]
   };
 }
-function Hx(t) {
+function Gx(t) {
   const e = t.regex, n = {
     $pattern: /[A-Z]+|%/,
     keyword: [
@@ -33989,7 +34008,7 @@ function Hx(t) {
     contains: p
   };
 }
-function Gx(t) {
+function Vx(t) {
   return {
     name: "Gherkin",
     aliases: ["feature"],
@@ -34029,7 +34048,7 @@ function Gx(t) {
     ]
   };
 }
-function Vx(t) {
+function Yx(t) {
   return {
     name: "GLSL",
     keywords: {
@@ -34057,7 +34076,7 @@ function Vx(t) {
     ]
   };
 }
-function Yx(t) {
+function zx(t) {
   return {
     name: "GML",
     case_insensitive: !1,
@@ -37174,7 +37193,7 @@ function Yx(t) {
     ]
   };
 }
-function zx(t) {
+function $x(t) {
   return {
     name: "Golo",
     keywords: {
@@ -37243,7 +37262,7 @@ function zx(t) {
     ]
   };
 }
-function $x(t) {
+function qx(t) {
   return {
     name: "Gradle",
     case_insensitive: !0,
@@ -37424,7 +37443,7 @@ function $x(t) {
 function Ll(t, e = {}) {
   return e.variants = t, e;
 }
-function qx(t) {
+function Wx(t) {
   const e = t.regex, n = "[A-Za-z0-9_$]+", r = Ll([
     t.C_LINE_COMMENT_MODE,
     t.C_BLOCK_COMMENT_MODE,
@@ -37590,7 +37609,7 @@ function qx(t) {
     illegal: /#|<\//
   };
 }
-function Wx(t) {
+function Kx(t) {
   return {
     name: "HAML",
     case_insensitive: !0,
@@ -37692,7 +37711,7 @@ function Wx(t) {
     ]
   };
 }
-function Kx(t) {
+function Qx(t) {
   const e = t.regex, n = {
     $pattern: /[\w.\/]+/,
     built_in: [
@@ -37899,7 +37918,7 @@ function Kx(t) {
     ]
   };
 }
-function Qx(t) {
+function Zx(t) {
   const e = "([0-9]_*)+", n = "([0-9a-fA-F]_*)+", r = "([01]_*)+", i = "([0-7]_*)+", l = "([!#$%&*+.\\/<=>?@\\\\^~-]|(?!([(),;\\[\\]`|{}]|[_:\"']))(\\p{S}|\\p{P}))", c = { variants: [
     // Double dash forms a valid comment only if it's not part of legal lexeme.
     // See: Haskell 98 report: https://www.haskell.org/onlinereport/lexemes.html
@@ -38073,7 +38092,7 @@ function Qx(t) {
     ]
   };
 }
-function Zx(t) {
+function Xx(t) {
   const e = "[a-zA-Z_$][a-zA-Z0-9_$]*", n = /(-?)(\b0[xX][a-fA-F0-9_]+|(\b\d+(\.[\d_]*)?|\.[\d_]+)(([eE][-+]?\d+)|i32|u32|i64|f64)?)/;
   return {
     name: "Haxe",
@@ -38229,7 +38248,7 @@ function Zx(t) {
     illegal: /<\//
   };
 }
-function Xx(t) {
+function jx(t) {
   return {
     name: "HSP",
     case_insensitive: !0,
@@ -38274,7 +38293,7 @@ function Xx(t) {
     ]
   };
 }
-function jx(t) {
+function Jx(t) {
   const e = t.regex, n = "HTTP/([32]|1\\.[01])", r = /[A-Za-z][A-Za-z0-9-]*/, i = {
     className: "attribute",
     begin: e.concat("^", r, "(?=\\:\\s)"),
@@ -38356,7 +38375,7 @@ function jx(t) {
     ]
   };
 }
-function Jx(t) {
+function eD(t) {
   const e = "a-zA-Z_\\-!.?+*=<>&#'", n = "[" + e + "][" + e + "0-9/;:]*", r = {
     $pattern: n,
     built_in: (
@@ -38433,7 +38452,7 @@ function Jx(t) {
     ]
   };
 }
-function eD(t) {
+function tD(t) {
   const e = "\\[", n = "\\]";
   return {
     name: "Inform 7",
@@ -38487,7 +38506,7 @@ function eD(t) {
     ]
   };
 }
-function tD(t) {
+function nD(t) {
   const e = t.regex, n = {
     className: "params",
     begin: "\\(",
@@ -38534,7 +38553,7 @@ function tD(t) {
     ]
   };
 }
-function nD(t) {
+function rD(t) {
   const e = "[A-Za-zА-Яа-яёЁ_!][A-Za-zА-Яа-яёЁ_0-9]*", n = "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]*", r = "and и else иначе endexcept endfinally endforeach конецвсе endif конецесли endwhile конецпока except exitfor finally foreach все if если in в not не or или try while пока ", pe = "SYSRES_CONST_ACCES_RIGHT_TYPE_EDIT SYSRES_CONST_ACCES_RIGHT_TYPE_FULL SYSRES_CONST_ACCES_RIGHT_TYPE_VIEW SYSRES_CONST_ACCESS_MODE_REQUISITE_CODE SYSRES_CONST_ACCESS_NO_ACCESS_VIEW SYSRES_CONST_ACCESS_NO_ACCESS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_ADD_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_CHANGE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_DELETE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_EXECUTE_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_NO_ACCESS_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_RATIFY_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW SYSRES_CONST_ACCESS_RIGHTS_VIEW_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_CODE SYSRES_CONST_ACCESS_RIGHTS_VIEW_REQUISITE_YES_CODE SYSRES_CONST_ACCESS_TYPE_CHANGE SYSRES_CONST_ACCESS_TYPE_CHANGE_CODE SYSRES_CONST_ACCESS_TYPE_EXISTS SYSRES_CONST_ACCESS_TYPE_EXISTS_CODE SYSRES_CONST_ACCESS_TYPE_FULL SYSRES_CONST_ACCESS_TYPE_FULL_CODE SYSRES_CONST_ACCESS_TYPE_VIEW SYSRES_CONST_ACCESS_TYPE_VIEW_CODE SYSRES_CONST_ACTION_TYPE_ABORT SYSRES_CONST_ACTION_TYPE_ACCEPT SYSRES_CONST_ACTION_TYPE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ADD_ATTACHMENT SYSRES_CONST_ACTION_TYPE_CHANGE_CARD SYSRES_CONST_ACTION_TYPE_CHANGE_KIND SYSRES_CONST_ACTION_TYPE_CHANGE_STORAGE SYSRES_CONST_ACTION_TYPE_CONTINUE SYSRES_CONST_ACTION_TYPE_COPY SYSRES_CONST_ACTION_TYPE_CREATE SYSRES_CONST_ACTION_TYPE_CREATE_VERSION SYSRES_CONST_ACTION_TYPE_DELETE SYSRES_CONST_ACTION_TYPE_DELETE_ATTACHMENT SYSRES_CONST_ACTION_TYPE_DELETE_VERSION SYSRES_CONST_ACTION_TYPE_DISABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENABLE_DELEGATE_ACCESS_RIGHTS SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_CERTIFICATE_AND_PASSWORD SYSRES_CONST_ACTION_TYPE_ENCRYPTION_BY_PASSWORD SYSRES_CONST_ACTION_TYPE_EXPORT_WITH_LOCK SYSRES_CONST_ACTION_TYPE_EXPORT_WITHOUT_LOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITH_UNLOCK SYSRES_CONST_ACTION_TYPE_IMPORT_WITHOUT_UNLOCK SYSRES_CONST_ACTION_TYPE_LIFE_CYCLE_STAGE SYSRES_CONST_ACTION_TYPE_LOCK SYSRES_CONST_ACTION_TYPE_LOCK_FOR_SERVER SYSRES_CONST_ACTION_TYPE_LOCK_MODIFY SYSRES_CONST_ACTION_TYPE_MARK_AS_READED SYSRES_CONST_ACTION_TYPE_MARK_AS_UNREADED SYSRES_CONST_ACTION_TYPE_MODIFY SYSRES_CONST_ACTION_TYPE_MODIFY_CARD SYSRES_CONST_ACTION_TYPE_MOVE_TO_ARCHIVE SYSRES_CONST_ACTION_TYPE_OFF_ENCRYPTION SYSRES_CONST_ACTION_TYPE_PASSWORD_CHANGE SYSRES_CONST_ACTION_TYPE_PERFORM SYSRES_CONST_ACTION_TYPE_RECOVER_FROM_LOCAL_COPY SYSRES_CONST_ACTION_TYPE_RESTART SYSRES_CONST_ACTION_TYPE_RESTORE_FROM_ARCHIVE SYSRES_CONST_ACTION_TYPE_REVISION SYSRES_CONST_ACTION_TYPE_SEND_BY_MAIL SYSRES_CONST_ACTION_TYPE_SIGN SYSRES_CONST_ACTION_TYPE_START SYSRES_CONST_ACTION_TYPE_UNLOCK SYSRES_CONST_ACTION_TYPE_UNLOCK_FROM_SERVER SYSRES_CONST_ACTION_TYPE_VERSION_STATE SYSRES_CONST_ACTION_TYPE_VERSION_VISIBILITY SYSRES_CONST_ACTION_TYPE_VIEW SYSRES_CONST_ACTION_TYPE_VIEW_SHADOW_COPY SYSRES_CONST_ACTION_TYPE_WORKFLOW_DESCRIPTION_MODIFY SYSRES_CONST_ACTION_TYPE_WRITE_HISTORY SYSRES_CONST_ACTIVE_VERSION_STATE_PICK_VALUE SYSRES_CONST_ADD_REFERENCE_MODE_NAME SYSRES_CONST_ADDITION_REQUISITE_CODE SYSRES_CONST_ADDITIONAL_PARAMS_REQUISITE_CODE SYSRES_CONST_ADITIONAL_JOB_END_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_READ_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_START_DATE_REQUISITE_NAME SYSRES_CONST_ADITIONAL_JOB_STATE_REQUISITE_NAME SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_ADDING_USER_TO_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_CREATION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_DATABASE_USER_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_COMP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_DELETION_USER_FROM_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_GRANTING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_MAIN_SERVER_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_IS_PUBLIC_CHANGED_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_FILTERER_RESTRICTION_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_PRIVILEGE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_REMOVING_RIGHTS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_CREATION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION SYSRES_CONST_ADMINISTRATION_HISTORY_SERVER_LOGIN_DELETION_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_CATEGORY_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_COMP_TITLE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_FULL_NAME_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_PARENT_GROUP_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_AUTH_TYPE_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_LOGIN_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION SYSRES_CONST_ADMINISTRATION_HISTORY_UPDATING_USER_STATUS_ACTION_CODE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE SYSRES_CONST_ADMINISTRATION_HISTORY_USER_PASSWORD_CHANGE_ACTION SYSRES_CONST_ALL_ACCEPT_CONDITION_RUS SYSRES_CONST_ALL_USERS_GROUP SYSRES_CONST_ALL_USERS_GROUP_NAME SYSRES_CONST_ALL_USERS_SERVER_GROUP_NAME SYSRES_CONST_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_APP_VIEWER_TYPE_REQUISITE_CODE SYSRES_CONST_APPROVING_SIGNATURE_NAME SYSRES_CONST_APPROVING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE SYSRES_CONST_ASSISTANT_SUBSTITUE_TYPE_CODE SYSRES_CONST_ATTACH_TYPE_COMPONENT_TOKEN SYSRES_CONST_ATTACH_TYPE_DOC SYSRES_CONST_ATTACH_TYPE_EDOC SYSRES_CONST_ATTACH_TYPE_FOLDER SYSRES_CONST_ATTACH_TYPE_JOB SYSRES_CONST_ATTACH_TYPE_REFERENCE SYSRES_CONST_ATTACH_TYPE_TASK SYSRES_CONST_AUTH_ENCODED_PASSWORD SYSRES_CONST_AUTH_ENCODED_PASSWORD_CODE SYSRES_CONST_AUTH_NOVELL SYSRES_CONST_AUTH_PASSWORD SYSRES_CONST_AUTH_PASSWORD_CODE SYSRES_CONST_AUTH_WINDOWS SYSRES_CONST_AUTHENTICATING_SIGNATURE_NAME SYSRES_CONST_AUTHENTICATING_SIGNATURE_REQUISITE_CODE SYSRES_CONST_AUTO_ENUM_METHOD_FLAG SYSRES_CONST_AUTO_NUMERATION_CODE SYSRES_CONST_AUTO_STRONG_ENUM_METHOD_FLAG SYSRES_CONST_AUTOTEXT_NAME_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_TEXT_REQUISITE_CODE SYSRES_CONST_AUTOTEXT_USAGE_ALL SYSRES_CONST_AUTOTEXT_USAGE_ALL_CODE SYSRES_CONST_AUTOTEXT_USAGE_SIGN SYSRES_CONST_AUTOTEXT_USAGE_SIGN_CODE SYSRES_CONST_AUTOTEXT_USAGE_WORK SYSRES_CONST_AUTOTEXT_USAGE_WORK_CODE SYSRES_CONST_AUTOTEXT_USE_ANYWHERE_CODE SYSRES_CONST_AUTOTEXT_USE_ON_SIGNING_CODE SYSRES_CONST_AUTOTEXT_USE_ON_WORK_CODE SYSRES_CONST_BEGIN_DATE_REQUISITE_CODE SYSRES_CONST_BLACK_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BLUE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_BTN_PART SYSRES_CONST_CALCULATED_ROLE_TYPE_CODE SYSRES_CONST_CALL_TYPE_VARIABLE_BUTTON_VALUE SYSRES_CONST_CALL_TYPE_VARIABLE_PROGRAM_VALUE SYSRES_CONST_CANCEL_MESSAGE_FUNCTION_RESULT SYSRES_CONST_CARD_PART SYSRES_CONST_CARD_REFERENCE_MODE_NAME SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_AND_ENCRYPT_VALUE SYSRES_CONST_CERTIFICATE_TYPE_REQUISITE_SIGN_VALUE SYSRES_CONST_CHECK_PARAM_VALUE_DATE_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_FLOAT_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_INTEGER_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_PICK_PARAM_TYPE SYSRES_CONST_CHECK_PARAM_VALUE_REEFRENCE_PARAM_TYPE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_CLOSED_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_CODE_COMPONENT_TYPE_ADMIN SYSRES_CONST_CODE_COMPONENT_TYPE_DEVELOPER SYSRES_CONST_CODE_COMPONENT_TYPE_DOCS SYSRES_CONST_CODE_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_CODE_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_CODE_COMPONENT_TYPE_OTHER SYSRES_CONST_CODE_COMPONENT_TYPE_REFERENCE SYSRES_CONST_CODE_COMPONENT_TYPE_REPORT SYSRES_CONST_CODE_COMPONENT_TYPE_SCRIPT SYSRES_CONST_CODE_COMPONENT_TYPE_URL SYSRES_CONST_CODE_REQUISITE_ACCESS SYSRES_CONST_CODE_REQUISITE_CODE SYSRES_CONST_CODE_REQUISITE_COMPONENT SYSRES_CONST_CODE_REQUISITE_DESCRIPTION SYSRES_CONST_CODE_REQUISITE_EXCLUDE_COMPONENT SYSRES_CONST_CODE_REQUISITE_RECORD SYSRES_CONST_COMMENT_REQ_CODE SYSRES_CONST_COMMON_SETTINGS_REQUISITE_CODE SYSRES_CONST_COMP_CODE_GRD SYSRES_CONST_COMPONENT_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_COMPONENT_TYPE_ADMIN_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DEVELOPER_COMPONENTS SYSRES_CONST_COMPONENT_TYPE_DOCS SYSRES_CONST_COMPONENT_TYPE_EDOC_CARDS SYSRES_CONST_COMPONENT_TYPE_EDOCS SYSRES_CONST_COMPONENT_TYPE_EXTERNAL_EXECUTABLE SYSRES_CONST_COMPONENT_TYPE_OTHER SYSRES_CONST_COMPONENT_TYPE_REFERENCE_TYPES SYSRES_CONST_COMPONENT_TYPE_REFERENCES SYSRES_CONST_COMPONENT_TYPE_REPORTS SYSRES_CONST_COMPONENT_TYPE_SCRIPTS SYSRES_CONST_COMPONENT_TYPE_URL SYSRES_CONST_COMPONENTS_REMOTE_SERVERS_VIEW_CODE SYSRES_CONST_CONDITION_BLOCK_DESCRIPTION SYSRES_CONST_CONST_FIRM_STATUS_COMMON SYSRES_CONST_CONST_FIRM_STATUS_INDIVIDUAL SYSRES_CONST_CONST_NEGATIVE_VALUE SYSRES_CONST_CONST_POSITIVE_VALUE SYSRES_CONST_CONST_SERVER_STATUS_DONT_REPLICATE SYSRES_CONST_CONST_SERVER_STATUS_REPLICATE SYSRES_CONST_CONTENTS_REQUISITE_CODE SYSRES_CONST_DATA_TYPE_BOOLEAN SYSRES_CONST_DATA_TYPE_DATE SYSRES_CONST_DATA_TYPE_FLOAT SYSRES_CONST_DATA_TYPE_INTEGER SYSRES_CONST_DATA_TYPE_PICK SYSRES_CONST_DATA_TYPE_REFERENCE SYSRES_CONST_DATA_TYPE_STRING SYSRES_CONST_DATA_TYPE_TEXT SYSRES_CONST_DATA_TYPE_VARIANT SYSRES_CONST_DATE_CLOSE_REQ_CODE SYSRES_CONST_DATE_FORMAT_DATE_ONLY_CHAR SYSRES_CONST_DATE_OPEN_REQ_CODE SYSRES_CONST_DATE_REQUISITE SYSRES_CONST_DATE_REQUISITE_CODE SYSRES_CONST_DATE_REQUISITE_NAME SYSRES_CONST_DATE_REQUISITE_TYPE SYSRES_CONST_DATE_TYPE_CHAR SYSRES_CONST_DATETIME_FORMAT_VALUE SYSRES_CONST_DEA_ACCESS_RIGHTS_ACTION_CODE SYSRES_CONST_DESCRIPTION_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_DET1_PART SYSRES_CONST_DET2_PART SYSRES_CONST_DET3_PART SYSRES_CONST_DET4_PART SYSRES_CONST_DET5_PART SYSRES_CONST_DET6_PART SYSRES_CONST_DETAIL_DATASET_KEY_REQUISITE_CODE SYSRES_CONST_DETAIL_PICK_REQUISITE_CODE SYSRES_CONST_DETAIL_REQ_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ACCESS_TYPE_NAME SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_CODE SYSRES_CONST_DO_NOT_USE_ON_VIEW_ACCESS_TYPE_NAME SYSRES_CONST_DOCUMENT_STORAGES_CODE SYSRES_CONST_DOCUMENT_TEMPLATES_TYPE_NAME SYSRES_CONST_DOUBLE_REQUISITE_CODE SYSRES_CONST_EDITOR_CLOSE_FILE_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_CLOSE_PROCESS_OBSERV_TYPE_CODE SYSRES_CONST_EDITOR_TYPE_REQUISITE_CODE SYSRES_CONST_EDITORS_APPLICATION_NAME_REQUISITE_CODE SYSRES_CONST_EDITORS_CREATE_SEVERAL_PROCESSES_REQUISITE_CODE SYSRES_CONST_EDITORS_EXTENSION_REQUISITE_CODE SYSRES_CONST_EDITORS_OBSERVER_BY_PROCESS_TYPE SYSRES_CONST_EDITORS_REFERENCE_CODE SYSRES_CONST_EDITORS_REPLACE_SPEC_CHARS_REQUISITE_CODE SYSRES_CONST_EDITORS_USE_PLUGINS_REQUISITE_CODE SYSRES_CONST_EDITORS_VIEW_DOCUMENT_OPENED_TO_EDIT_CODE SYSRES_CONST_EDOC_CARD_TYPE_REQUISITE_CODE SYSRES_CONST_EDOC_CARD_TYPES_LINK_REQUISITE_CODE SYSRES_CONST_EDOC_CERTIFICATE_AND_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_CERTIFICATE_ENCODE_CODE SYSRES_CONST_EDOC_DATE_REQUISITE_CODE SYSRES_CONST_EDOC_KIND_REFERENCE_CODE SYSRES_CONST_EDOC_KINDS_BY_TEMPLATE_ACTION_CODE SYSRES_CONST_EDOC_MANAGE_ACCESS_CODE SYSRES_CONST_EDOC_NONE_ENCODE_CODE SYSRES_CONST_EDOC_NUMBER_REQUISITE_CODE SYSRES_CONST_EDOC_PASSWORD_ENCODE_CODE SYSRES_CONST_EDOC_READONLY_ACCESS_CODE SYSRES_CONST_EDOC_SHELL_LIFE_TYPE_VIEW_VALUE SYSRES_CONST_EDOC_SIZE_RESTRICTION_PRIORITY_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_CHECK_ACCESS_RIGHTS_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_COMPUTER_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_DATABASE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_EDIT_IN_STORAGE_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_LOCAL_PATH_REQUISITE_CODE SYSRES_CONST_EDOC_STORAGE_SHARED_SOURCE_NAME_REQUISITE_CODE SYSRES_CONST_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_EDOC_TYPES_REFERENCE_CODE SYSRES_CONST_EDOC_VERSION_ACTIVE_STAGE_CODE SYSRES_CONST_EDOC_VERSION_DESIGN_STAGE_CODE SYSRES_CONST_EDOC_VERSION_OBSOLETE_STAGE_CODE SYSRES_CONST_EDOC_WRITE_ACCES_CODE SYSRES_CONST_EDOCUMENT_CARD_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_END_DATE_REQUISITE_CODE SYSRES_CONST_ENUMERATION_TYPE_REQUISITE_CODE SYSRES_CONST_EXECUTE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_EXECUTIVE_FILE_STORAGE_TYPE SYSRES_CONST_EXIST_CONST SYSRES_CONST_EXIST_VALUE SYSRES_CONST_EXPORT_LOCK_TYPE_ASK SYSRES_CONST_EXPORT_LOCK_TYPE_WITH_LOCK SYSRES_CONST_EXPORT_LOCK_TYPE_WITHOUT_LOCK SYSRES_CONST_EXPORT_VERSION_TYPE_ASK SYSRES_CONST_EXPORT_VERSION_TYPE_LAST SYSRES_CONST_EXPORT_VERSION_TYPE_LAST_ACTIVE SYSRES_CONST_EXTENSION_REQUISITE_CODE SYSRES_CONST_FILTER_NAME_REQUISITE_CODE SYSRES_CONST_FILTER_REQUISITE_CODE SYSRES_CONST_FILTER_TYPE_COMMON_CODE SYSRES_CONST_FILTER_TYPE_COMMON_NAME SYSRES_CONST_FILTER_TYPE_USER_CODE SYSRES_CONST_FILTER_TYPE_USER_NAME SYSRES_CONST_FILTER_VALUE_REQUISITE_NAME SYSRES_CONST_FLOAT_NUMBER_FORMAT_CHAR SYSRES_CONST_FLOAT_REQUISITE_TYPE SYSRES_CONST_FOLDER_AUTHOR_VALUE SYSRES_CONST_FOLDER_KIND_ANY_OBJECTS SYSRES_CONST_FOLDER_KIND_COMPONENTS SYSRES_CONST_FOLDER_KIND_EDOCS SYSRES_CONST_FOLDER_KIND_JOBS SYSRES_CONST_FOLDER_KIND_TASKS SYSRES_CONST_FOLDER_TYPE_COMMON SYSRES_CONST_FOLDER_TYPE_COMPONENT SYSRES_CONST_FOLDER_TYPE_FAVORITES SYSRES_CONST_FOLDER_TYPE_INBOX SYSRES_CONST_FOLDER_TYPE_OUTBOX SYSRES_CONST_FOLDER_TYPE_QUICK_LAUNCH SYSRES_CONST_FOLDER_TYPE_SEARCH SYSRES_CONST_FOLDER_TYPE_SHORTCUTS SYSRES_CONST_FOLDER_TYPE_USER SYSRES_CONST_FROM_DICTIONARY_ENUM_METHOD_FLAG SYSRES_CONST_FULL_SUBSTITUTE_TYPE SYSRES_CONST_FULL_SUBSTITUTE_TYPE_CODE SYSRES_CONST_FUNCTION_CANCEL_RESULT SYSRES_CONST_FUNCTION_CATEGORY_SYSTEM SYSRES_CONST_FUNCTION_CATEGORY_USER SYSRES_CONST_FUNCTION_FAILURE_RESULT SYSRES_CONST_FUNCTION_SAVE_RESULT SYSRES_CONST_GENERATED_REQUISITE SYSRES_CONST_GREEN_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_GROUP_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_CODE SYSRES_CONST_GROUP_CATEGORY_NORMAL_NAME SYSRES_CONST_GROUP_CATEGORY_SERVICE_CODE SYSRES_CONST_GROUP_CATEGORY_SERVICE_NAME SYSRES_CONST_GROUP_COMMON_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_FULL_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_CODES_REQUISITE_CODE SYSRES_CONST_GROUP_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_GROUP_SERVICE_CATEGORY_FIELD_VALUE SYSRES_CONST_GROUP_USER_REQUISITE_CODE SYSRES_CONST_GROUPS_REFERENCE_CODE SYSRES_CONST_GROUPS_REQUISITE_CODE SYSRES_CONST_HIDDEN_MODE_NAME SYSRES_CONST_HIGH_LVL_REQUISITE_CODE SYSRES_CONST_HISTORY_ACTION_CREATE_CODE SYSRES_CONST_HISTORY_ACTION_DELETE_CODE SYSRES_CONST_HISTORY_ACTION_EDIT_CODE SYSRES_CONST_HOUR_CHAR SYSRES_CONST_ID_REQUISITE_CODE SYSRES_CONST_IDSPS_REQUISITE_CODE SYSRES_CONST_IMAGE_MODE_COLOR SYSRES_CONST_IMAGE_MODE_GREYSCALE SYSRES_CONST_IMAGE_MODE_MONOCHROME SYSRES_CONST_IMPORTANCE_HIGH SYSRES_CONST_IMPORTANCE_LOW SYSRES_CONST_IMPORTANCE_NORMAL SYSRES_CONST_IN_DESIGN_VERSION_STATE_PICK_VALUE SYSRES_CONST_INCOMING_WORK_RULE_TYPE_CODE SYSRES_CONST_INT_REQUISITE SYSRES_CONST_INT_REQUISITE_TYPE SYSRES_CONST_INTEGER_NUMBER_FORMAT_CHAR SYSRES_CONST_INTEGER_TYPE_CHAR SYSRES_CONST_IS_GENERATED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_PUBLIC_ROLE_REQUISITE_CODE SYSRES_CONST_IS_REMOTE_USER_NEGATIVE_VALUE SYSRES_CONST_IS_REMOTE_USER_POSITIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_NEGATIVE_VALUE SYSRES_CONST_IS_STORED_REQUISITE_STORED_VALUE SYSRES_CONST_ITALIC_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_JOB_BLOCK_DESCRIPTION SYSRES_CONST_JOB_KIND_CONTROL_JOB SYSRES_CONST_JOB_KIND_JOB SYSRES_CONST_JOB_KIND_NOTICE SYSRES_CONST_JOB_STATE_ABORTED SYSRES_CONST_JOB_STATE_COMPLETE SYSRES_CONST_JOB_STATE_WORKING SYSRES_CONST_KIND_REQUISITE_CODE SYSRES_CONST_KIND_REQUISITE_NAME SYSRES_CONST_KINDS_CREATE_SHADOW_COPIES_REQUISITE_CODE SYSRES_CONST_KINDS_DEFAULT_EDOC_LIFE_STAGE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALL_TEPLATES_ALLOWED_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_LIFE_CYCLE_STAGE_CHANGING_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_ALLOW_MULTIPLE_ACTIVE_VERSIONS_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_SHARE_ACCES_RIGHTS_BY_DEFAULT_CODE SYSRES_CONST_KINDS_EDOC_TEMPLATE_REQUISITE_CODE SYSRES_CONST_KINDS_EDOC_TYPE_REQUISITE_CODE SYSRES_CONST_KINDS_SIGNERS_REQUISITES_CODE SYSRES_CONST_KOD_INPUT_TYPE SYSRES_CONST_LAST_UPDATE_DATE_REQUISITE_CODE SYSRES_CONST_LIFE_CYCLE_START_STAGE_REQUISITE_CODE SYSRES_CONST_LILAC_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_LINK_OBJECT_KIND_COMPONENT SYSRES_CONST_LINK_OBJECT_KIND_DOCUMENT SYSRES_CONST_LINK_OBJECT_KIND_EDOC SYSRES_CONST_LINK_OBJECT_KIND_FOLDER SYSRES_CONST_LINK_OBJECT_KIND_JOB SYSRES_CONST_LINK_OBJECT_KIND_REFERENCE SYSRES_CONST_LINK_OBJECT_KIND_TASK SYSRES_CONST_LINK_REF_TYPE_REQUISITE_CODE SYSRES_CONST_LIST_REFERENCE_MODE_NAME SYSRES_CONST_LOCALIZATION_DICTIONARY_MAIN_VIEW_CODE SYSRES_CONST_MAIN_VIEW_CODE SYSRES_CONST_MANUAL_ENUM_METHOD_FLAG SYSRES_CONST_MASTER_COMP_TYPE_REQUISITE_CODE SYSRES_CONST_MASTER_TABLE_REC_ID_REQUISITE_CODE SYSRES_CONST_MAXIMIZED_MODE_NAME SYSRES_CONST_ME_VALUE SYSRES_CONST_MESSAGE_ATTENTION_CAPTION SYSRES_CONST_MESSAGE_CONFIRMATION_CAPTION SYSRES_CONST_MESSAGE_ERROR_CAPTION SYSRES_CONST_MESSAGE_INFORMATION_CAPTION SYSRES_CONST_MINIMIZED_MODE_NAME SYSRES_CONST_MINUTE_CHAR SYSRES_CONST_MODULE_REQUISITE_CODE SYSRES_CONST_MONITORING_BLOCK_DESCRIPTION SYSRES_CONST_MONTH_FORMAT_VALUE SYSRES_CONST_NAME_LOCALIZE_ID_REQUISITE_CODE SYSRES_CONST_NAME_REQUISITE_CODE SYSRES_CONST_NAME_SINGULAR_REQUISITE_CODE SYSRES_CONST_NAMEAN_INPUT_TYPE SYSRES_CONST_NEGATIVE_PICK_VALUE SYSRES_CONST_NEGATIVE_VALUE SYSRES_CONST_NO SYSRES_CONST_NO_PICK_VALUE SYSRES_CONST_NO_SIGNATURE_REQUISITE_CODE SYSRES_CONST_NO_VALUE SYSRES_CONST_NONE_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE SYSRES_CONST_NONOPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_NORMAL_ACCESS_RIGHTS_TYPE_CODE SYSRES_CONST_NORMAL_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_NORMAL_MODE_NAME SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_CODE SYSRES_CONST_NOT_ALLOWED_ACCESS_TYPE_NAME SYSRES_CONST_NOTE_REQUISITE_CODE SYSRES_CONST_NOTICE_BLOCK_DESCRIPTION SYSRES_CONST_NUM_REQUISITE SYSRES_CONST_NUM_STR_REQUISITE_CODE SYSRES_CONST_NUMERATION_AUTO_NOT_STRONG SYSRES_CONST_NUMERATION_AUTO_STRONG SYSRES_CONST_NUMERATION_FROM_DICTONARY SYSRES_CONST_NUMERATION_MANUAL SYSRES_CONST_NUMERIC_TYPE_CHAR SYSRES_CONST_NUMREQ_REQUISITE_CODE SYSRES_CONST_OBSOLETE_VERSION_STATE_PICK_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_FEMININE SYSRES_CONST_OPERATING_RECORD_FLAG_VALUE_MASCULINE SYSRES_CONST_OPTIONAL_FORM_COMP_REQCODE_PREFIX SYSRES_CONST_ORANGE_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_ORIGINALREF_REQUISITE_CODE SYSRES_CONST_OURFIRM_REF_CODE SYSRES_CONST_OURFIRM_REQUISITE_CODE SYSRES_CONST_OURFIRM_VAR SYSRES_CONST_OUTGOING_WORK_RULE_TYPE_CODE SYSRES_CONST_PICK_NEGATIVE_RESULT SYSRES_CONST_PICK_POSITIVE_RESULT SYSRES_CONST_PICK_REQUISITE SYSRES_CONST_PICK_REQUISITE_TYPE SYSRES_CONST_PICK_TYPE_CHAR SYSRES_CONST_PLAN_STATUS_REQUISITE_CODE SYSRES_CONST_PLATFORM_VERSION_COMMENT SYSRES_CONST_PLUGINS_SETTINGS_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_POSITIVE_PICK_VALUE SYSRES_CONST_POWER_TO_CREATE_ACTION_CODE SYSRES_CONST_POWER_TO_SIGN_ACTION_CODE SYSRES_CONST_PRIORITY_REQUISITE_CODE SYSRES_CONST_QUALIFIED_TASK_TYPE SYSRES_CONST_QUALIFIED_TASK_TYPE_CODE SYSRES_CONST_RECSTAT_REQUISITE_CODE SYSRES_CONST_RED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_REF_ID_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_REF_REQUISITE SYSRES_CONST_REF_REQUISITE_TYPE SYSRES_CONST_REF_REQUISITES_REFERENCE_CODE_SELECTED_REQUISITE SYSRES_CONST_REFERENCE_RECORD_HISTORY_CREATE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_DELETE_ACTION_CODE SYSRES_CONST_REFERENCE_RECORD_HISTORY_MODIFY_ACTION_CODE SYSRES_CONST_REFERENCE_TYPE_CHAR SYSRES_CONST_REFERENCE_TYPE_REQUISITE_NAME SYSRES_CONST_REFERENCES_ADD_PARAMS_REQUISITE_CODE SYSRES_CONST_REFERENCES_DISPLAY_REQUISITE_REQUISITE_CODE SYSRES_CONST_REMOTE_SERVER_STATUS_WORKING SYSRES_CONST_REMOTE_SERVER_TYPE_MAIN SYSRES_CONST_REMOTE_SERVER_TYPE_SECONDARY SYSRES_CONST_REMOTE_USER_FLAG_VALUE_CODE SYSRES_CONST_REPORT_APP_EDITOR_INTERNAL SYSRES_CONST_REPORT_BASE_REPORT_ID_REQUISITE_CODE SYSRES_CONST_REPORT_BASE_REPORT_REQUISITE_CODE SYSRES_CONST_REPORT_SCRIPT_REQUISITE_CODE SYSRES_CONST_REPORT_TEMPLATE_REQUISITE_CODE SYSRES_CONST_REPORT_VIEWER_CODE_REQUISITE_CODE SYSRES_CONST_REQ_ALLOW_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_RECORD_DEFAULT_VALUE SYSRES_CONST_REQ_ALLOW_SERVER_COMPONENT_DEFAULT_VALUE SYSRES_CONST_REQ_MODE_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_EDIT_CODE SYSRES_CONST_REQ_MODE_HIDDEN_CODE SYSRES_CONST_REQ_MODE_NOT_AVAILABLE_CODE SYSRES_CONST_REQ_MODE_VIEW_CODE SYSRES_CONST_REQ_NUMBER_REQUISITE_CODE SYSRES_CONST_REQ_SECTION_VALUE SYSRES_CONST_REQ_TYPE_VALUE SYSRES_CONST_REQUISITE_FORMAT_BY_UNIT SYSRES_CONST_REQUISITE_FORMAT_DATE_FULL SYSRES_CONST_REQUISITE_FORMAT_DATE_TIME SYSRES_CONST_REQUISITE_FORMAT_LEFT SYSRES_CONST_REQUISITE_FORMAT_RIGHT SYSRES_CONST_REQUISITE_FORMAT_WITHOUT_UNIT SYSRES_CONST_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_REQUISITE_SECTION_ACTIONS SYSRES_CONST_REQUISITE_SECTION_BUTTON SYSRES_CONST_REQUISITE_SECTION_BUTTONS SYSRES_CONST_REQUISITE_SECTION_CARD SYSRES_CONST_REQUISITE_SECTION_TABLE SYSRES_CONST_REQUISITE_SECTION_TABLE10 SYSRES_CONST_REQUISITE_SECTION_TABLE11 SYSRES_CONST_REQUISITE_SECTION_TABLE12 SYSRES_CONST_REQUISITE_SECTION_TABLE13 SYSRES_CONST_REQUISITE_SECTION_TABLE14 SYSRES_CONST_REQUISITE_SECTION_TABLE15 SYSRES_CONST_REQUISITE_SECTION_TABLE16 SYSRES_CONST_REQUISITE_SECTION_TABLE17 SYSRES_CONST_REQUISITE_SECTION_TABLE18 SYSRES_CONST_REQUISITE_SECTION_TABLE19 SYSRES_CONST_REQUISITE_SECTION_TABLE2 SYSRES_CONST_REQUISITE_SECTION_TABLE20 SYSRES_CONST_REQUISITE_SECTION_TABLE21 SYSRES_CONST_REQUISITE_SECTION_TABLE22 SYSRES_CONST_REQUISITE_SECTION_TABLE23 SYSRES_CONST_REQUISITE_SECTION_TABLE24 SYSRES_CONST_REQUISITE_SECTION_TABLE3 SYSRES_CONST_REQUISITE_SECTION_TABLE4 SYSRES_CONST_REQUISITE_SECTION_TABLE5 SYSRES_CONST_REQUISITE_SECTION_TABLE6 SYSRES_CONST_REQUISITE_SECTION_TABLE7 SYSRES_CONST_REQUISITE_SECTION_TABLE8 SYSRES_CONST_REQUISITE_SECTION_TABLE9 SYSRES_CONST_REQUISITES_PSEUDOREFERENCE_REQUISITE_NUMBER_REQUISITE_CODE SYSRES_CONST_RIGHT_ALIGNMENT_CODE SYSRES_CONST_ROLES_REFERENCE_CODE SYSRES_CONST_ROUTE_STEP_AFTER_RUS SYSRES_CONST_ROUTE_STEP_AND_CONDITION_RUS SYSRES_CONST_ROUTE_STEP_OR_CONDITION_RUS SYSRES_CONST_ROUTE_TYPE_COMPLEX SYSRES_CONST_ROUTE_TYPE_PARALLEL SYSRES_CONST_ROUTE_TYPE_SERIAL SYSRES_CONST_SBDATASETDESC_NEGATIVE_VALUE SYSRES_CONST_SBDATASETDESC_POSITIVE_VALUE SYSRES_CONST_SBVIEWSDESC_POSITIVE_VALUE SYSRES_CONST_SCRIPT_BLOCK_DESCRIPTION SYSRES_CONST_SEARCH_BY_TEXT_REQUISITE_CODE SYSRES_CONST_SEARCHES_COMPONENT_CONTENT SYSRES_CONST_SEARCHES_CRITERIA_ACTION_NAME SYSRES_CONST_SEARCHES_EDOC_CONTENT SYSRES_CONST_SEARCHES_FOLDER_CONTENT SYSRES_CONST_SEARCHES_JOB_CONTENT SYSRES_CONST_SEARCHES_REFERENCE_CODE SYSRES_CONST_SEARCHES_TASK_CONTENT SYSRES_CONST_SECOND_CHAR SYSRES_CONST_SECTION_REQUISITE_ACTIONS_VALUE SYSRES_CONST_SECTION_REQUISITE_CARD_VALUE SYSRES_CONST_SECTION_REQUISITE_CODE SYSRES_CONST_SECTION_REQUISITE_DETAIL_1_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_2_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_3_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_4_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_5_VALUE SYSRES_CONST_SECTION_REQUISITE_DETAIL_6_VALUE SYSRES_CONST_SELECT_REFERENCE_MODE_NAME SYSRES_CONST_SELECT_TYPE_SELECTABLE SYSRES_CONST_SELECT_TYPE_SELECTABLE_ONLY_CHILD SYSRES_CONST_SELECT_TYPE_SELECTABLE_WITH_CHILD SYSRES_CONST_SELECT_TYPE_UNSLECTABLE SYSRES_CONST_SERVER_TYPE_MAIN SYSRES_CONST_SERVICE_USER_CATEGORY_FIELD_VALUE SYSRES_CONST_SETTINGS_USER_REQUISITE_CODE SYSRES_CONST_SIGNATURE_AND_ENCODE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SIGNATURE_CERTIFICATE_TYPE_CODE SYSRES_CONST_SINGULAR_TITLE_REQUISITE_CODE SYSRES_CONST_SQL_SERVER_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_SQL_SERVER_ENCODE_AUTHENTIFICATION_FLAG_VALUE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_CODE SYSRES_CONST_STANDART_ROUTE_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_STANDART_ROUTES_GROUPS_REFERENCE_CODE SYSRES_CONST_STATE_REQ_NAME SYSRES_CONST_STATE_REQUISITE_ACTIVE_VALUE SYSRES_CONST_STATE_REQUISITE_CLOSED_VALUE SYSRES_CONST_STATE_REQUISITE_CODE SYSRES_CONST_STATIC_ROLE_TYPE_CODE SYSRES_CONST_STATUS_PLAN_DEFAULT_VALUE SYSRES_CONST_STATUS_VALUE_AUTOCLEANING SYSRES_CONST_STATUS_VALUE_BLUE_SQUARE SYSRES_CONST_STATUS_VALUE_COMPLETE SYSRES_CONST_STATUS_VALUE_GREEN_SQUARE SYSRES_CONST_STATUS_VALUE_ORANGE_SQUARE SYSRES_CONST_STATUS_VALUE_PURPLE_SQUARE SYSRES_CONST_STATUS_VALUE_RED_SQUARE SYSRES_CONST_STATUS_VALUE_SUSPEND SYSRES_CONST_STATUS_VALUE_YELLOW_SQUARE SYSRES_CONST_STDROUTE_SHOW_TO_USERS_REQUISITE_CODE SYSRES_CONST_STORAGE_TYPE_FILE SYSRES_CONST_STORAGE_TYPE_SQL_SERVER SYSRES_CONST_STR_REQUISITE SYSRES_CONST_STRIKEOUT_LIFE_CYCLE_STAGE_DRAW_STYLE SYSRES_CONST_STRING_FORMAT_LEFT_ALIGN_CHAR SYSRES_CONST_STRING_FORMAT_RIGHT_ALIGN_CHAR SYSRES_CONST_STRING_REQUISITE_CODE SYSRES_CONST_STRING_REQUISITE_TYPE SYSRES_CONST_STRING_TYPE_CHAR SYSRES_CONST_SUBSTITUTES_PSEUDOREFERENCE_CODE SYSRES_CONST_SUBTASK_BLOCK_DESCRIPTION SYSRES_CONST_SYSTEM_SETTING_CURRENT_USER_PARAM_VALUE SYSRES_CONST_SYSTEM_SETTING_EMPTY_VALUE_PARAM_VALUE SYSRES_CONST_SYSTEM_VERSION_COMMENT SYSRES_CONST_TASK_ACCESS_TYPE_ALL SYSRES_CONST_TASK_ACCESS_TYPE_ALL_MEMBERS SYSRES_CONST_TASK_ACCESS_TYPE_MANUAL SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION SYSRES_CONST_TASK_ENCODE_TYPE_CERTIFICATION_AND_PASSWORD SYSRES_CONST_TASK_ENCODE_TYPE_NONE SYSRES_CONST_TASK_ENCODE_TYPE_PASSWORD SYSRES_CONST_TASK_ROUTE_ALL_CONDITION SYSRES_CONST_TASK_ROUTE_AND_CONDITION SYSRES_CONST_TASK_ROUTE_OR_CONDITION SYSRES_CONST_TASK_STATE_ABORTED SYSRES_CONST_TASK_STATE_COMPLETE SYSRES_CONST_TASK_STATE_CONTINUED SYSRES_CONST_TASK_STATE_CONTROL SYSRES_CONST_TASK_STATE_INIT SYSRES_CONST_TASK_STATE_WORKING SYSRES_CONST_TASK_TITLE SYSRES_CONST_TASK_TYPES_GROUPS_REFERENCE_CODE SYSRES_CONST_TASK_TYPES_REFERENCE_CODE SYSRES_CONST_TEMPLATES_REFERENCE_CODE SYSRES_CONST_TEST_DATE_REQUISITE_NAME SYSRES_CONST_TEST_DEV_DATABASE_NAME SYSRES_CONST_TEST_DEV_SYSTEM_CODE SYSRES_CONST_TEST_EDMS_DATABASE_NAME SYSRES_CONST_TEST_EDMS_MAIN_CODE SYSRES_CONST_TEST_EDMS_MAIN_DB_NAME SYSRES_CONST_TEST_EDMS_SECOND_CODE SYSRES_CONST_TEST_EDMS_SECOND_DB_NAME SYSRES_CONST_TEST_EDMS_SYSTEM_CODE SYSRES_CONST_TEST_NUMERIC_REQUISITE_NAME SYSRES_CONST_TEXT_REQUISITE SYSRES_CONST_TEXT_REQUISITE_CODE SYSRES_CONST_TEXT_REQUISITE_TYPE SYSRES_CONST_TEXT_TYPE_CHAR SYSRES_CONST_TYPE_CODE_REQUISITE_CODE SYSRES_CONST_TYPE_REQUISITE_CODE SYSRES_CONST_UNDEFINED_LIFE_CYCLE_STAGE_FONT_COLOR SYSRES_CONST_UNITS_SECTION_ID_REQUISITE_CODE SYSRES_CONST_UNITS_SECTION_REQUISITE_CODE SYSRES_CONST_UNOPERATING_RECORD_FLAG_VALUE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_CODE SYSRES_CONST_UNSTORED_DATA_REQUISITE_NAME SYSRES_CONST_USE_ACCESS_TYPE_CODE SYSRES_CONST_USE_ACCESS_TYPE_NAME SYSRES_CONST_USER_ACCOUNT_TYPE_VALUE_CODE SYSRES_CONST_USER_ADDITIONAL_INFORMATION_REQUISITE_CODE SYSRES_CONST_USER_AND_GROUP_ID_FROM_PSEUDOREFERENCE_REQUISITE_CODE SYSRES_CONST_USER_CATEGORY_NORMAL SYSRES_CONST_USER_CERTIFICATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_STATE_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_SUBJECT_NAME_REQUISITE_CODE SYSRES_CONST_USER_CERTIFICATE_THUMBPRINT_REQUISITE_CODE SYSRES_CONST_USER_COMMON_CATEGORY SYSRES_CONST_USER_COMMON_CATEGORY_CODE SYSRES_CONST_USER_FULL_NAME_REQUISITE_CODE SYSRES_CONST_USER_GROUP_TYPE_REQUISITE_CODE SYSRES_CONST_USER_LOGIN_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USER_REMOTE_SYSTEM_REQUISITE_CODE SYSRES_CONST_USER_RIGHTS_T_REQUISITE_CODE SYSRES_CONST_USER_SERVER_NAME_REQUISITE_CODE SYSRES_CONST_USER_SERVICE_CATEGORY SYSRES_CONST_USER_SERVICE_CATEGORY_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_CODE SYSRES_CONST_USER_STATUS_ADMINISTRATOR_NAME SYSRES_CONST_USER_STATUS_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_DEVELOPER_NAME SYSRES_CONST_USER_STATUS_DISABLED_CODE SYSRES_CONST_USER_STATUS_DISABLED_NAME SYSRES_CONST_USER_STATUS_SYSTEM_DEVELOPER_CODE SYSRES_CONST_USER_STATUS_USER_CODE SYSRES_CONST_USER_STATUS_USER_NAME SYSRES_CONST_USER_STATUS_USER_NAME_DEPRECATED SYSRES_CONST_USER_TYPE_FIELD_VALUE_USER SYSRES_CONST_USER_TYPE_REQUISITE_CODE SYSRES_CONST_USERS_CONTROLLER_REQUISITE_CODE SYSRES_CONST_USERS_IS_MAIN_SERVER_REQUISITE_CODE SYSRES_CONST_USERS_REFERENCE_CODE SYSRES_CONST_USERS_REGISTRATION_CERTIFICATES_ACTION_NAME SYSRES_CONST_USERS_REQUISITE_CODE SYSRES_CONST_USERS_SYSTEM_REQUISITE_CODE SYSRES_CONST_USERS_USER_ACCESS_RIGHTS_TYPR_REQUISITE_CODE SYSRES_CONST_USERS_USER_AUTHENTICATION_REQUISITE_CODE SYSRES_CONST_USERS_USER_COMPONENT_REQUISITE_CODE SYSRES_CONST_USERS_USER_GROUP_REQUISITE_CODE SYSRES_CONST_USERS_VIEW_CERTIFICATES_ACTION_NAME SYSRES_CONST_VIEW_DEFAULT_CODE SYSRES_CONST_VIEW_DEFAULT_NAME SYSRES_CONST_VIEWER_REQUISITE_CODE SYSRES_CONST_WAITING_BLOCK_DESCRIPTION SYSRES_CONST_WIZARD_FORM_LABEL_TEST_STRING  SYSRES_CONST_WIZARD_QUERY_PARAM_HEIGHT_ETALON_STRING SYSRES_CONST_WIZARD_REFERENCE_COMMENT_REQUISITE_CODE SYSRES_CONST_WORK_RULES_DESCRIPTION_REQUISITE_CODE SYSRES_CONST_WORK_TIME_CALENDAR_REFERENCE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE SYSRES_CONST_WORK_WORKFLOW_HARD_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORK_WORKFLOW_SOFT_ROUTE_TYPE_VALUE_CODE_RUS SYSRES_CONST_WORKFLOW_ROUTE_TYPR_HARD SYSRES_CONST_WORKFLOW_ROUTE_TYPR_SOFT SYSRES_CONST_XML_ENCODING SYSRES_CONST_XREC_STAT_REQUISITE_CODE SYSRES_CONST_XRECID_FIELD_NAME SYSRES_CONST_YES SYSRES_CONST_YES_NO_2_REQUISITE_CODE SYSRES_CONST_YES_NO_REQUISITE_CODE SYSRES_CONST_YES_NO_T_REF_TYPE_REQUISITE_CODE SYSRES_CONST_YES_PICK_VALUE SYSRES_CONST_YES_VALUE " + "CR FALSE nil NO_VALUE NULL TAB TRUE YES_VALUE " + "ADMINISTRATORS_GROUP_NAME CUSTOMIZERS_GROUP_NAME DEVELOPERS_GROUP_NAME SERVICE_USERS_GROUP_NAME " + "DECISION_BLOCK_FIRST_OPERAND_PROPERTY DECISION_BLOCK_NAME_PROPERTY DECISION_BLOCK_OPERATION_PROPERTY DECISION_BLOCK_RESULT_TYPE_PROPERTY DECISION_BLOCK_SECOND_OPERAND_PROPERTY " + "ANY_FILE_EXTENTION COMPRESSED_DOCUMENT_EXTENSION EXTENDED_DOCUMENT_EXTENSION SHORT_COMPRESSED_DOCUMENT_EXTENSION SHORT_EXTENDED_DOCUMENT_EXTENSION " + "JOB_BLOCK_ABORT_DEADLINE_PROPERTY JOB_BLOCK_AFTER_FINISH_EVENT JOB_BLOCK_AFTER_QUERY_PARAMETERS_EVENT JOB_BLOCK_ATTACHMENT_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY JOB_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY JOB_BLOCK_BEFORE_QUERY_PARAMETERS_EVENT JOB_BLOCK_BEFORE_START_EVENT JOB_BLOCK_CREATED_JOBS_PROPERTY JOB_BLOCK_DEADLINE_PROPERTY JOB_BLOCK_EXECUTION_RESULTS_PROPERTY JOB_BLOCK_IS_PARALLEL_PROPERTY JOB_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY JOB_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY JOB_BLOCK_JOB_TEXT_PROPERTY JOB_BLOCK_NAME_PROPERTY JOB_BLOCK_NEED_SIGN_ON_PERFORM_PROPERTY JOB_BLOCK_PERFORMER_PROPERTY JOB_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY JOB_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY JOB_BLOCK_SUBJECT_PROPERTY " + "ENGLISH_LANGUAGE_CODE RUSSIAN_LANGUAGE_CODE " + "smHidden smMaximized smMinimized smNormal wmNo wmYes " + "COMPONENT_TOKEN_LINK_KIND DOCUMENT_LINK_KIND EDOCUMENT_LINK_KIND FOLDER_LINK_KIND JOB_LINK_KIND REFERENCE_LINK_KIND TASK_LINK_KIND " + "COMPONENT_TOKEN_LOCK_TYPE EDOCUMENT_VERSION_LOCK_TYPE " + "MONITOR_BLOCK_AFTER_FINISH_EVENT MONITOR_BLOCK_BEFORE_START_EVENT MONITOR_BLOCK_DEADLINE_PROPERTY MONITOR_BLOCK_INTERVAL_PROPERTY MONITOR_BLOCK_INTERVAL_TYPE_PROPERTY MONITOR_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY MONITOR_BLOCK_NAME_PROPERTY MONITOR_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY MONITOR_BLOCK_SEARCH_SCRIPT_PROPERTY " + "NOTICE_BLOCK_AFTER_FINISH_EVENT NOTICE_BLOCK_ATTACHMENT_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY NOTICE_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY NOTICE_BLOCK_BEFORE_START_EVENT NOTICE_BLOCK_CREATED_NOTICES_PROPERTY NOTICE_BLOCK_DEADLINE_PROPERTY NOTICE_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY NOTICE_BLOCK_NAME_PROPERTY NOTICE_BLOCK_NOTICE_TEXT_PROPERTY NOTICE_BLOCK_PERFORMER_PROPERTY NOTICE_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY NOTICE_BLOCK_SUBJECT_PROPERTY " + "dseAfterCancel dseAfterClose dseAfterDelete dseAfterDeleteOutOfTransaction dseAfterInsert dseAfterOpen dseAfterScroll dseAfterUpdate dseAfterUpdateOutOfTransaction dseBeforeCancel dseBeforeClose dseBeforeDelete dseBeforeDetailUpdate dseBeforeInsert dseBeforeOpen dseBeforeUpdate dseOnAnyRequisiteChange dseOnCloseRecord dseOnDeleteError dseOnOpenRecord dseOnPrepareUpdate dseOnUpdateError dseOnUpdateRatifiedRecord dseOnValidDelete dseOnValidUpdate reOnChange reOnChangeValues SELECTION_BEGIN_ROUTE_EVENT SELECTION_END_ROUTE_EVENT " + "CURRENT_PERIOD_IS_REQUIRED PREVIOUS_CARD_TYPE_NAME SHOW_RECORD_PROPERTIES_FORM " + "ACCESS_RIGHTS_SETTING_DIALOG_CODE ADMINISTRATOR_USER_CODE ANALYTIC_REPORT_TYPE asrtHideLocal asrtHideRemote CALCULATED_ROLE_TYPE_CODE COMPONENTS_REFERENCE_DEVELOPER_VIEW_CODE DCTS_TEST_PROTOCOLS_FOLDER_PATH E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED E_EDOC_VERSION_ALREADY_APPROVINGLY_SIGNED_BY_USER E_EDOC_VERSION_ALREDY_SIGNED E_EDOC_VERSION_ALREDY_SIGNED_BY_USER EDOC_TYPES_CODE_REQUISITE_FIELD_NAME EDOCUMENTS_ALIAS_NAME FILES_FOLDER_PATH FILTER_OPERANDS_DELIMITER FILTER_OPERATIONS_DELIMITER FORMCARD_NAME FORMLIST_NAME GET_EXTENDED_DOCUMENT_EXTENSION_CREATION_MODE GET_EXTENDED_DOCUMENT_EXTENSION_IMPORT_MODE INTEGRATED_REPORT_TYPE IS_BUILDER_APPLICATION_ROLE IS_BUILDER_APPLICATION_ROLE2 IS_BUILDER_USERS ISBSYSDEV LOG_FOLDER_PATH mbCancel mbNo mbNoToAll mbOK mbYes mbYesToAll MEMORY_DATASET_DESRIPTIONS_FILENAME mrNo mrNoToAll mrYes mrYesToAll MULTIPLE_SELECT_DIALOG_CODE NONOPERATING_RECORD_FLAG_FEMININE NONOPERATING_RECORD_FLAG_MASCULINE OPERATING_RECORD_FLAG_FEMININE OPERATING_RECORD_FLAG_MASCULINE PROFILING_SETTINGS_COMMON_SETTINGS_CODE_VALUE PROGRAM_INITIATED_LOOKUP_ACTION ratDelete ratEdit ratInsert REPORT_TYPE REQUIRED_PICK_VALUES_VARIABLE rmCard rmList SBRTE_PROGID_DEV SBRTE_PROGID_RELEASE STATIC_ROLE_TYPE_CODE SUPPRESS_EMPTY_TEMPLATE_CREATION SYSTEM_USER_CODE UPDATE_DIALOG_DATASET USED_IN_OBJECT_HINT_PARAM USER_INITIATED_LOOKUP_ACTION USER_NAME_FORMAT USER_SELECTION_RESTRICTIONS WORKFLOW_TEST_PROTOCOLS_FOLDER_PATH ELS_SUBTYPE_CONTROL_NAME ELS_FOLDER_KIND_CONTROL_NAME REPEAT_PROCESS_CURRENT_OBJECT_EXCEPTION_NAME " + "PRIVILEGE_COMPONENT_FULL_ACCESS PRIVILEGE_DEVELOPMENT_EXPORT PRIVILEGE_DEVELOPMENT_IMPORT PRIVILEGE_DOCUMENT_DELETE PRIVILEGE_ESD PRIVILEGE_FOLDER_DELETE PRIVILEGE_MANAGE_ACCESS_RIGHTS PRIVILEGE_MANAGE_REPLICATION PRIVILEGE_MANAGE_SESSION_SERVER PRIVILEGE_OBJECT_FULL_ACCESS PRIVILEGE_OBJECT_VIEW PRIVILEGE_RESERVE_LICENSE PRIVILEGE_SYSTEM_CUSTOMIZE PRIVILEGE_SYSTEM_DEVELOP PRIVILEGE_SYSTEM_INSTALL PRIVILEGE_TASK_DELETE PRIVILEGE_USER_PLUGIN_SETTINGS_CUSTOMIZE PRIVILEGES_PSEUDOREFERENCE_CODE " + "ACCESS_TYPES_PSEUDOREFERENCE_CODE ALL_AVAILABLE_COMPONENTS_PSEUDOREFERENCE_CODE ALL_AVAILABLE_PRIVILEGES_PSEUDOREFERENCE_CODE ALL_REPLICATE_COMPONENTS_PSEUDOREFERENCE_CODE AVAILABLE_DEVELOPERS_COMPONENTS_PSEUDOREFERENCE_CODE COMPONENTS_PSEUDOREFERENCE_CODE FILTRATER_SETTINGS_CONFLICTS_PSEUDOREFERENCE_CODE GROUPS_PSEUDOREFERENCE_CODE RECEIVE_PROTOCOL_PSEUDOREFERENCE_CODE REFERENCE_REQUISITE_PSEUDOREFERENCE_CODE REFERENCE_REQUISITES_PSEUDOREFERENCE_CODE REFTYPES_PSEUDOREFERENCE_CODE REPLICATION_SEANCES_DIARY_PSEUDOREFERENCE_CODE SEND_PROTOCOL_PSEUDOREFERENCE_CODE SUBSTITUTES_PSEUDOREFERENCE_CODE SYSTEM_SETTINGS_PSEUDOREFERENCE_CODE UNITS_PSEUDOREFERENCE_CODE USERS_PSEUDOREFERENCE_CODE VIEWERS_PSEUDOREFERENCE_CODE " + "CERTIFICATE_TYPE_ENCRYPT CERTIFICATE_TYPE_SIGN CERTIFICATE_TYPE_SIGN_AND_ENCRYPT " + "STORAGE_TYPE_FILE STORAGE_TYPE_NAS_CIFS STORAGE_TYPE_SAPERION STORAGE_TYPE_SQL_SERVER " + "COMPTYPE2_REQUISITE_DOCUMENTS_VALUE COMPTYPE2_REQUISITE_TASKS_VALUE COMPTYPE2_REQUISITE_FOLDERS_VALUE COMPTYPE2_REQUISITE_REFERENCES_VALUE " + "SYSREQ_CODE SYSREQ_COMPTYPE2 SYSREQ_CONST_AVAILABLE_FOR_WEB SYSREQ_CONST_COMMON_CODE SYSREQ_CONST_COMMON_VALUE SYSREQ_CONST_FIRM_CODE SYSREQ_CONST_FIRM_STATUS SYSREQ_CONST_FIRM_VALUE SYSREQ_CONST_SERVER_STATUS SYSREQ_CONTENTS SYSREQ_DATE_OPEN SYSREQ_DATE_CLOSE SYSREQ_DESCRIPTION SYSREQ_DESCRIPTION_LOCALIZE_ID SYSREQ_DOUBLE SYSREQ_EDOC_ACCESS_TYPE SYSREQ_EDOC_AUTHOR SYSREQ_EDOC_CREATED SYSREQ_EDOC_DELEGATE_RIGHTS_REQUISITE_CODE SYSREQ_EDOC_EDITOR SYSREQ_EDOC_ENCODE_TYPE SYSREQ_EDOC_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_EXPORT_DATE SYSREQ_EDOC_EXPORTER SYSREQ_EDOC_KIND SYSREQ_EDOC_LIFE_STAGE_NAME SYSREQ_EDOC_LOCKED_FOR_SERVER_CODE SYSREQ_EDOC_MODIFIED SYSREQ_EDOC_NAME SYSREQ_EDOC_NOTE SYSREQ_EDOC_QUALIFIED_ID SYSREQ_EDOC_SESSION_KEY SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_NAME SYSREQ_EDOC_SESSION_KEY_ENCRYPTION_PLUGIN_VERSION SYSREQ_EDOC_SIGNATURE_TYPE SYSREQ_EDOC_SIGNED SYSREQ_EDOC_STORAGE SYSREQ_EDOC_STORAGES_ARCHIVE_STORAGE SYSREQ_EDOC_STORAGES_CHECK_RIGHTS SYSREQ_EDOC_STORAGES_COMPUTER_NAME SYSREQ_EDOC_STORAGES_EDIT_IN_STORAGE SYSREQ_EDOC_STORAGES_EXECUTIVE_STORAGE SYSREQ_EDOC_STORAGES_FUNCTION SYSREQ_EDOC_STORAGES_INITIALIZED SYSREQ_EDOC_STORAGES_LOCAL_PATH SYSREQ_EDOC_STORAGES_SAPERION_DATABASE_NAME SYSREQ_EDOC_STORAGES_SEARCH_BY_TEXT SYSREQ_EDOC_STORAGES_SERVER_NAME SYSREQ_EDOC_STORAGES_SHARED_SOURCE_NAME SYSREQ_EDOC_STORAGES_TYPE SYSREQ_EDOC_TEXT_MODIFIED SYSREQ_EDOC_TYPE_ACT_CODE SYSREQ_EDOC_TYPE_ACT_DESCRIPTION SYSREQ_EDOC_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE SYSREQ_EDOC_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_EDOC_TYPE_ACT_SECTION SYSREQ_EDOC_TYPE_ADD_PARAMS SYSREQ_EDOC_TYPE_COMMENT SYSREQ_EDOC_TYPE_EVENT_TEXT SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR SYSREQ_EDOC_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_EDOC_TYPE_NAME_LOCALIZE_ID SYSREQ_EDOC_TYPE_NUMERATION_METHOD SYSREQ_EDOC_TYPE_PSEUDO_REQUISITE_CODE SYSREQ_EDOC_TYPE_REQ_CODE SYSREQ_EDOC_TYPE_REQ_DESCRIPTION SYSREQ_EDOC_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_EDOC_TYPE_REQ_IS_LEADING SYSREQ_EDOC_TYPE_REQ_IS_REQUIRED SYSREQ_EDOC_TYPE_REQ_NUMBER SYSREQ_EDOC_TYPE_REQ_ON_CHANGE SYSREQ_EDOC_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_EDOC_TYPE_REQ_ON_SELECT SYSREQ_EDOC_TYPE_REQ_ON_SELECT_KIND SYSREQ_EDOC_TYPE_REQ_SECTION SYSREQ_EDOC_TYPE_VIEW_CARD SYSREQ_EDOC_TYPE_VIEW_CODE SYSREQ_EDOC_TYPE_VIEW_COMMENT SYSREQ_EDOC_TYPE_VIEW_IS_MAIN SYSREQ_EDOC_TYPE_VIEW_NAME SYSREQ_EDOC_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_EDOC_VERSION_AUTHOR SYSREQ_EDOC_VERSION_CRC SYSREQ_EDOC_VERSION_DATA SYSREQ_EDOC_VERSION_EDITOR SYSREQ_EDOC_VERSION_EXPORT_DATE SYSREQ_EDOC_VERSION_EXPORTER SYSREQ_EDOC_VERSION_HIDDEN SYSREQ_EDOC_VERSION_LIFE_STAGE SYSREQ_EDOC_VERSION_MODIFIED SYSREQ_EDOC_VERSION_NOTE SYSREQ_EDOC_VERSION_SIGNATURE_TYPE SYSREQ_EDOC_VERSION_SIGNED SYSREQ_EDOC_VERSION_SIZE SYSREQ_EDOC_VERSION_SOURCE SYSREQ_EDOC_VERSION_TEXT_MODIFIED SYSREQ_EDOCKIND_DEFAULT_VERSION_STATE_CODE SYSREQ_FOLDER_KIND SYSREQ_FUNC_CATEGORY SYSREQ_FUNC_COMMENT SYSREQ_FUNC_GROUP SYSREQ_FUNC_GROUP_COMMENT SYSREQ_FUNC_GROUP_NUMBER SYSREQ_FUNC_HELP SYSREQ_FUNC_PARAM_DEF_VALUE SYSREQ_FUNC_PARAM_IDENT SYSREQ_FUNC_PARAM_NUMBER SYSREQ_FUNC_PARAM_TYPE SYSREQ_FUNC_TEXT SYSREQ_GROUP_CATEGORY SYSREQ_ID SYSREQ_LAST_UPDATE SYSREQ_LEADER_REFERENCE SYSREQ_LINE_NUMBER SYSREQ_MAIN_RECORD_ID SYSREQ_NAME SYSREQ_NAME_LOCALIZE_ID SYSREQ_NOTE SYSREQ_ORIGINAL_RECORD SYSREQ_OUR_FIRM SYSREQ_PROFILING_SETTINGS_BATCH_LOGING SYSREQ_PROFILING_SETTINGS_BATCH_SIZE SYSREQ_PROFILING_SETTINGS_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_SQL_PROFILING_ENABLED SYSREQ_PROFILING_SETTINGS_START_LOGGED SYSREQ_RECORD_STATUS SYSREQ_REF_REQ_FIELD_NAME SYSREQ_REF_REQ_FORMAT SYSREQ_REF_REQ_GENERATED SYSREQ_REF_REQ_LENGTH SYSREQ_REF_REQ_PRECISION SYSREQ_REF_REQ_REFERENCE SYSREQ_REF_REQ_SECTION SYSREQ_REF_REQ_STORED SYSREQ_REF_REQ_TOKENS SYSREQ_REF_REQ_TYPE SYSREQ_REF_REQ_VIEW SYSREQ_REF_TYPE_ACT_CODE SYSREQ_REF_TYPE_ACT_DESCRIPTION SYSREQ_REF_TYPE_ACT_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_ACT_ON_EXECUTE SYSREQ_REF_TYPE_ACT_ON_EXECUTE_EXISTS SYSREQ_REF_TYPE_ACT_SECTION SYSREQ_REF_TYPE_ADD_PARAMS SYSREQ_REF_TYPE_COMMENT SYSREQ_REF_TYPE_COMMON_SETTINGS SYSREQ_REF_TYPE_DISPLAY_REQUISITE_NAME SYSREQ_REF_TYPE_EVENT_TEXT SYSREQ_REF_TYPE_MAIN_LEADING_REF SYSREQ_REF_TYPE_NAME_IN_SINGULAR SYSREQ_REF_TYPE_NAME_IN_SINGULAR_LOCALIZE_ID SYSREQ_REF_TYPE_NAME_LOCALIZE_ID SYSREQ_REF_TYPE_NUMERATION_METHOD SYSREQ_REF_TYPE_REQ_CODE SYSREQ_REF_TYPE_REQ_DESCRIPTION SYSREQ_REF_TYPE_REQ_DESCRIPTION_LOCALIZE_ID SYSREQ_REF_TYPE_REQ_IS_CONTROL SYSREQ_REF_TYPE_REQ_IS_FILTER SYSREQ_REF_TYPE_REQ_IS_LEADING SYSREQ_REF_TYPE_REQ_IS_REQUIRED SYSREQ_REF_TYPE_REQ_NUMBER SYSREQ_REF_TYPE_REQ_ON_CHANGE SYSREQ_REF_TYPE_REQ_ON_CHANGE_EXISTS SYSREQ_REF_TYPE_REQ_ON_SELECT SYSREQ_REF_TYPE_REQ_ON_SELECT_KIND SYSREQ_REF_TYPE_REQ_SECTION SYSREQ_REF_TYPE_VIEW_CARD SYSREQ_REF_TYPE_VIEW_CODE SYSREQ_REF_TYPE_VIEW_COMMENT SYSREQ_REF_TYPE_VIEW_IS_MAIN SYSREQ_REF_TYPE_VIEW_NAME SYSREQ_REF_TYPE_VIEW_NAME_LOCALIZE_ID SYSREQ_REFERENCE_TYPE_ID SYSREQ_STATE SYSREQ_STATЕ SYSREQ_SYSTEM_SETTINGS_VALUE SYSREQ_TYPE SYSREQ_UNIT SYSREQ_UNIT_ID SYSREQ_USER_GROUPS_GROUP_FULL_NAME SYSREQ_USER_GROUPS_GROUP_NAME SYSREQ_USER_GROUPS_GROUP_SERVER_NAME SYSREQ_USERS_ACCESS_RIGHTS SYSREQ_USERS_AUTHENTICATION SYSREQ_USERS_CATEGORY SYSREQ_USERS_COMPONENT SYSREQ_USERS_COMPONENT_USER_IS_PUBLIC SYSREQ_USERS_DOMAIN SYSREQ_USERS_FULL_USER_NAME SYSREQ_USERS_GROUP SYSREQ_USERS_IS_MAIN_SERVER SYSREQ_USERS_LOGIN SYSREQ_USERS_REFERENCE_USER_IS_PUBLIC SYSREQ_USERS_STATUS SYSREQ_USERS_USER_CERTIFICATE SYSREQ_USERS_USER_CERTIFICATE_INFO SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_NAME SYSREQ_USERS_USER_CERTIFICATE_PLUGIN_VERSION SYSREQ_USERS_USER_CERTIFICATE_STATE SYSREQ_USERS_USER_CERTIFICATE_SUBJECT_NAME SYSREQ_USERS_USER_CERTIFICATE_THUMBPRINT SYSREQ_USERS_USER_DEFAULT_CERTIFICATE SYSREQ_USERS_USER_DESCRIPTION SYSREQ_USERS_USER_GLOBAL_NAME SYSREQ_USERS_USER_LOGIN SYSREQ_USERS_USER_MAIN_SERVER SYSREQ_USERS_USER_TYPE SYSREQ_WORK_RULES_FOLDER_ID " + "RESULT_VAR_NAME RESULT_VAR_NAME_ENG " + "AUTO_NUMERATION_RULE_ID CANT_CHANGE_ID_REQUISITE_RULE_ID CANT_CHANGE_OURFIRM_REQUISITE_RULE_ID CHECK_CHANGING_REFERENCE_RECORD_USE_RULE_ID CHECK_CODE_REQUISITE_RULE_ID CHECK_DELETING_REFERENCE_RECORD_USE_RULE_ID CHECK_FILTRATER_CHANGES_RULE_ID CHECK_RECORD_INTERVAL_RULE_ID CHECK_REFERENCE_INTERVAL_RULE_ID CHECK_REQUIRED_DATA_FULLNESS_RULE_ID CHECK_REQUIRED_REQUISITES_FULLNESS_RULE_ID MAKE_RECORD_UNRATIFIED_RULE_ID RESTORE_AUTO_NUMERATION_RULE_ID SET_FIRM_CONTEXT_FROM_RECORD_RULE_ID SET_FIRST_RECORD_IN_LIST_FORM_RULE_ID SET_IDSPS_VALUE_RULE_ID SET_NEXT_CODE_VALUE_RULE_ID SET_OURFIRM_BOUNDS_RULE_ID SET_OURFIRM_REQUISITE_RULE_ID " + "SCRIPT_BLOCK_AFTER_FINISH_EVENT SCRIPT_BLOCK_BEFORE_START_EVENT SCRIPT_BLOCK_EXECUTION_RESULTS_PROPERTY SCRIPT_BLOCK_NAME_PROPERTY SCRIPT_BLOCK_SCRIPT_PROPERTY " + "SUBTASK_BLOCK_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_AFTER_FINISH_EVENT SUBTASK_BLOCK_ASSIGN_PARAMS_EVENT SUBTASK_BLOCK_ATTACHMENTS_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_GROUP_PROPERTY SUBTASK_BLOCK_ATTACHMENTS_RIGHTS_TYPE_PROPERTY SUBTASK_BLOCK_BEFORE_START_EVENT SUBTASK_BLOCK_CREATED_TASK_PROPERTY SUBTASK_BLOCK_CREATION_EVENT SUBTASK_BLOCK_DEADLINE_PROPERTY SUBTASK_BLOCK_IMPORTANCE_PROPERTY SUBTASK_BLOCK_INITIATOR_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_ABORT_DEADLINE_PROPERTY SUBTASK_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY SUBTASK_BLOCK_JOBS_TYPE_PROPERTY SUBTASK_BLOCK_NAME_PROPERTY SUBTASK_BLOCK_PARALLEL_ROUTE_PROPERTY SUBTASK_BLOCK_PERFORMERS_PROPERTY SUBTASK_BLOCK_RELATIVE_ABORT_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY SUBTASK_BLOCK_REQUIRE_SIGN_PROPERTY SUBTASK_BLOCK_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_START_EVENT SUBTASK_BLOCK_STEP_CONTROL_PROPERTY SUBTASK_BLOCK_SUBJECT_PROPERTY SUBTASK_BLOCK_TASK_CONTROL_PROPERTY SUBTASK_BLOCK_TEXT_PROPERTY SUBTASK_BLOCK_UNLOCK_ATTACHMENTS_ON_STOP_PROPERTY SUBTASK_BLOCK_USE_STANDARD_ROUTE_PROPERTY SUBTASK_BLOCK_WAIT_FOR_TASK_COMPLETE_PROPERTY " + "SYSCOMP_CONTROL_JOBS SYSCOMP_FOLDERS SYSCOMP_JOBS SYSCOMP_NOTICES SYSCOMP_TASKS " + "SYSDLG_CREATE_EDOCUMENT SYSDLG_CREATE_EDOCUMENT_VERSION SYSDLG_CURRENT_PERIOD SYSDLG_EDIT_FUNCTION_HELP SYSDLG_EDOCUMENT_KINDS_FOR_TEMPLATE SYSDLG_EXPORT_MULTIPLE_EDOCUMENTS SYSDLG_EXPORT_SINGLE_EDOCUMENT SYSDLG_IMPORT_EDOCUMENT SYSDLG_MULTIPLE_SELECT SYSDLG_SETUP_ACCESS_RIGHTS SYSDLG_SETUP_DEFAULT_RIGHTS SYSDLG_SETUP_FILTER_CONDITION SYSDLG_SETUP_SIGN_RIGHTS SYSDLG_SETUP_TASK_OBSERVERS SYSDLG_SETUP_TASK_ROUTE SYSDLG_SETUP_USERS_LIST SYSDLG_SIGN_EDOCUMENT SYSDLG_SIGN_MULTIPLE_EDOCUMENTS " + "SYSREF_ACCESS_RIGHTS_TYPES SYSREF_ADMINISTRATION_HISTORY SYSREF_ALL_AVAILABLE_COMPONENTS SYSREF_ALL_AVAILABLE_PRIVILEGES SYSREF_ALL_REPLICATING_COMPONENTS SYSREF_AVAILABLE_DEVELOPERS_COMPONENTS SYSREF_CALENDAR_EVENTS SYSREF_COMPONENT_TOKEN_HISTORY SYSREF_COMPONENT_TOKENS SYSREF_COMPONENTS SYSREF_CONSTANTS SYSREF_DATA_RECEIVE_PROTOCOL SYSREF_DATA_SEND_PROTOCOL SYSREF_DIALOGS SYSREF_DIALOGS_REQUISITES SYSREF_EDITORS SYSREF_EDOC_CARDS SYSREF_EDOC_TYPES SYSREF_EDOCUMENT_CARD_REQUISITES SYSREF_EDOCUMENT_CARD_TYPES SYSREF_EDOCUMENT_CARD_TYPES_REFERENCE SYSREF_EDOCUMENT_CARDS SYSREF_EDOCUMENT_HISTORY SYSREF_EDOCUMENT_KINDS SYSREF_EDOCUMENT_REQUISITES SYSREF_EDOCUMENT_SIGNATURES SYSREF_EDOCUMENT_TEMPLATES SYSREF_EDOCUMENT_TEXT_STORAGES SYSREF_EDOCUMENT_VIEWS SYSREF_FILTERER_SETUP_CONFLICTS SYSREF_FILTRATER_SETTING_CONFLICTS SYSREF_FOLDER_HISTORY SYSREF_FOLDERS SYSREF_FUNCTION_GROUPS SYSREF_FUNCTION_PARAMS SYSREF_FUNCTIONS SYSREF_JOB_HISTORY SYSREF_LINKS SYSREF_LOCALIZATION_DICTIONARY SYSREF_LOCALIZATION_LANGUAGES SYSREF_MODULES SYSREF_PRIVILEGES SYSREF_RECORD_HISTORY SYSREF_REFERENCE_REQUISITES SYSREF_REFERENCE_TYPE_VIEWS SYSREF_REFERENCE_TYPES SYSREF_REFERENCES SYSREF_REFERENCES_REQUISITES SYSREF_REMOTE_SERVERS SYSREF_REPLICATION_SESSIONS_LOG SYSREF_REPLICATION_SESSIONS_PROTOCOL SYSREF_REPORTS SYSREF_ROLES SYSREF_ROUTE_BLOCK_GROUPS SYSREF_ROUTE_BLOCKS SYSREF_SCRIPTS SYSREF_SEARCHES SYSREF_SERVER_EVENTS SYSREF_SERVER_EVENTS_HISTORY SYSREF_STANDARD_ROUTE_GROUPS SYSREF_STANDARD_ROUTES SYSREF_STATUSES SYSREF_SYSTEM_SETTINGS SYSREF_TASK_HISTORY SYSREF_TASK_KIND_GROUPS SYSREF_TASK_KINDS SYSREF_TASK_RIGHTS SYSREF_TASK_SIGNATURES SYSREF_TASKS SYSREF_UNITS SYSREF_USER_GROUPS SYSREF_USER_GROUPS_REFERENCE SYSREF_USER_SUBSTITUTION SYSREF_USERS SYSREF_USERS_REFERENCE SYSREF_VIEWERS SYSREF_WORKING_TIME_CALENDARS " + "ACCESS_RIGHTS_TABLE_NAME EDMS_ACCESS_TABLE_NAME EDOC_TYPES_TABLE_NAME " + "TEST_DEV_DB_NAME TEST_DEV_SYSTEM_CODE TEST_EDMS_DB_NAME TEST_EDMS_MAIN_CODE TEST_EDMS_MAIN_DB_NAME TEST_EDMS_SECOND_CODE TEST_EDMS_SECOND_DB_NAME TEST_EDMS_SYSTEM_CODE TEST_ISB5_MAIN_CODE TEST_ISB5_SECOND_CODE TEST_SQL_SERVER_2005_NAME TEST_SQL_SERVER_NAME " + "ATTENTION_CAPTION cbsCommandLinks cbsDefault CONFIRMATION_CAPTION ERROR_CAPTION INFORMATION_CAPTION mrCancel mrOk " + "EDOC_VERSION_ACTIVE_STAGE_CODE EDOC_VERSION_DESIGN_STAGE_CODE EDOC_VERSION_OBSOLETE_STAGE_CODE " + "cpDataEnciphermentEnabled cpDigitalSignatureEnabled cpID cpIssuer cpPluginVersion cpSerial cpSubjectName cpSubjSimpleName cpValidFromDate cpValidToDate " + "ISBL_SYNTAX NO_SYNTAX XML_SYNTAX " + "WAIT_BLOCK_AFTER_FINISH_EVENT WAIT_BLOCK_BEFORE_START_EVENT WAIT_BLOCK_DEADLINE_PROPERTY WAIT_BLOCK_IS_RELATIVE_DEADLINE_PROPERTY WAIT_BLOCK_NAME_PROPERTY WAIT_BLOCK_RELATIVE_DEADLINE_TYPE_PROPERTY " + "SYSRES_COMMON SYSRES_CONST SYSRES_MBFUNC SYSRES_SBDATA SYSRES_SBGUI SYSRES_SBINTF SYSRES_SBREFDSC SYSRES_SQLERRORS SYSRES_SYSCOMP ", VE = "atUser atGroup atRole " + "aemEnabledAlways aemDisabledAlways aemEnabledOnBrowse aemEnabledOnEdit aemDisabledOnBrowseEmpty " + "apBegin apEnd " + "alLeft alRight " + "asmNever asmNoButCustomize asmAsLastTime asmYesButCustomize asmAlways " + "cirCommon cirRevoked " + "ctSignature ctEncode ctSignatureEncode " + "clbUnchecked clbChecked clbGrayed " + "ceISB ceAlways ceNever " + "ctDocument ctReference ctScript ctUnknown ctReport ctDialog ctFunction ctFolder ctEDocument ctTask ctJob ctNotice ctControlJob " + "cfInternal cfDisplay " + "ciUnspecified ciWrite ciRead " + "ckFolder ckEDocument ckTask ckJob ckComponentToken ckAny ckReference ckScript ckReport ckDialog " + "ctISBLEditor ctBevel ctButton ctCheckListBox ctComboBox ctComboEdit ctGrid ctDBCheckBox ctDBComboBox ctDBEdit ctDBEllipsis ctDBMemo ctDBNavigator ctDBRadioGroup ctDBStatusLabel ctEdit ctGroupBox ctInplaceHint ctMemo ctPanel ctListBox ctRadioButton ctRichEdit ctTabSheet ctWebBrowser ctImage ctHyperLink ctLabel ctDBMultiEllipsis ctRibbon ctRichView ctInnerPanel ctPanelGroup ctBitButton " + "cctDate cctInteger cctNumeric cctPick cctReference cctString cctText " + "cltInternal cltPrimary cltGUI " + "dseBeforeOpen dseAfterOpen dseBeforeClose dseAfterClose dseOnValidDelete dseBeforeDelete dseAfterDelete dseAfterDeleteOutOfTransaction dseOnDeleteError dseBeforeInsert dseAfterInsert dseOnValidUpdate dseBeforeUpdate dseOnUpdateRatifiedRecord dseAfterUpdate dseAfterUpdateOutOfTransaction dseOnUpdateError dseAfterScroll dseOnOpenRecord dseOnCloseRecord dseBeforeCancel dseAfterCancel dseOnUpdateDeadlockError dseBeforeDetailUpdate dseOnPrepareUpdate dseOnAnyRequisiteChange " + "dssEdit dssInsert dssBrowse dssInActive " + "dftDate dftShortDate dftDateTime dftTimeStamp " + "dotDays dotHours dotMinutes dotSeconds " + "dtkndLocal dtkndUTC " + "arNone arView arEdit arFull " + "ddaView ddaEdit " + "emLock emEdit emSign emExportWithLock emImportWithUnlock emChangeVersionNote emOpenForModify emChangeLifeStage emDelete emCreateVersion emImport emUnlockExportedWithLock emStart emAbort emReInit emMarkAsReaded emMarkAsUnreaded emPerform emAccept emResume emChangeRights emEditRoute emEditObserver emRecoveryFromLocalCopy emChangeWorkAccessType emChangeEncodeTypeToCertificate emChangeEncodeTypeToPassword emChangeEncodeTypeToNone emChangeEncodeTypeToCertificatePassword emChangeStandardRoute emGetText emOpenForView emMoveToStorage emCreateObject emChangeVersionHidden emDeleteVersion emChangeLifeCycleStage emApprovingSign emExport emContinue emLockFromEdit emUnLockForEdit emLockForServer emUnlockFromServer emDelegateAccessRights emReEncode " + "ecotFile ecotProcess " + "eaGet eaCopy eaCreate eaCreateStandardRoute " + "edltAll edltNothing edltQuery " + "essmText essmCard " + "esvtLast esvtLastActive esvtSpecified " + "edsfExecutive edsfArchive " + "edstSQLServer edstFile " + "edvstNone edvstEDocumentVersionCopy edvstFile edvstTemplate edvstScannedFile " + "vsDefault vsDesign vsActive vsObsolete " + "etNone etCertificate etPassword etCertificatePassword " + "ecException ecWarning ecInformation " + "estAll estApprovingOnly " + "evtLast evtLastActive evtQuery " + "fdtString fdtNumeric fdtInteger fdtDate fdtText fdtUnknown fdtWideString fdtLargeInteger " + "ftInbox ftOutbox ftFavorites ftCommonFolder ftUserFolder ftComponents ftQuickLaunch ftShortcuts ftSearch " + "grhAuto grhX1 grhX2 grhX3 " + "hltText hltRTF hltHTML " + "iffBMP iffJPEG iffMultiPageTIFF iffSinglePageTIFF iffTIFF iffPNG " + "im8bGrayscale im24bRGB im1bMonochrome " + "itBMP itJPEG itWMF itPNG " + "ikhInformation ikhWarning ikhError ikhNoIcon " + "icUnknown icScript icFunction icIntegratedReport icAnalyticReport icDataSetEventHandler icActionHandler icFormEventHandler icLookUpEventHandler icRequisiteChangeEventHandler icBeforeSearchEventHandler icRoleCalculation icSelectRouteEventHandler icBlockPropertyCalculation icBlockQueryParamsEventHandler icChangeSearchResultEventHandler icBlockEventHandler icSubTaskInitEventHandler icEDocDataSetEventHandler icEDocLookUpEventHandler icEDocActionHandler icEDocFormEventHandler icEDocRequisiteChangeEventHandler icStructuredConversionRule icStructuredConversionEventBefore icStructuredConversionEventAfter icWizardEventHandler icWizardFinishEventHandler icWizardStepEventHandler icWizardStepFinishEventHandler icWizardActionEnableEventHandler icWizardActionExecuteEventHandler icCreateJobsHandler icCreateNoticesHandler icBeforeLookUpEventHandler icAfterLookUpEventHandler icTaskAbortEventHandler icWorkflowBlockActionHandler icDialogDataSetEventHandler icDialogActionHandler icDialogLookUpEventHandler icDialogRequisiteChangeEventHandler icDialogFormEventHandler icDialogValidCloseEventHandler icBlockFormEventHandler icTaskFormEventHandler icReferenceMethod icEDocMethod icDialogMethod icProcessMessageHandler " + "isShow isHide isByUserSettings " + "jkJob jkNotice jkControlJob " + "jtInner jtLeft jtRight jtFull jtCross " + "lbpAbove lbpBelow lbpLeft lbpRight " + "eltPerConnection eltPerUser " + "sfcUndefined sfcBlack sfcGreen sfcRed sfcBlue sfcOrange sfcLilac " + "sfsItalic sfsStrikeout sfsNormal " + "ldctStandardRoute ldctWizard ldctScript ldctFunction ldctRouteBlock ldctIntegratedReport ldctAnalyticReport ldctReferenceType ldctEDocumentType ldctDialog ldctServerEvents " + "mrcrtNone mrcrtUser mrcrtMaximal mrcrtCustom " + "vtEqual vtGreaterOrEqual vtLessOrEqual vtRange " + "rdYesterday rdToday rdTomorrow rdThisWeek rdThisMonth rdThisYear rdNextMonth rdNextWeek rdLastWeek rdLastMonth " + "rdWindow rdFile rdPrinter " + "rdtString rdtNumeric rdtInteger rdtDate rdtReference rdtAccount rdtText rdtPick rdtUnknown rdtLargeInteger rdtDocument " + "reOnChange reOnChangeValues " + "ttGlobal ttLocal ttUser ttSystem " + "ssmBrowse ssmSelect ssmMultiSelect ssmBrowseModal " + "smSelect smLike smCard " + "stNone stAuthenticating stApproving " + "sctString sctStream " + "sstAnsiSort sstNaturalSort " + "svtEqual svtContain " + "soatString soatNumeric soatInteger soatDatetime soatReferenceRecord soatText soatPick soatBoolean soatEDocument soatAccount soatIntegerCollection soatNumericCollection soatStringCollection soatPickCollection soatDatetimeCollection soatBooleanCollection soatReferenceRecordCollection soatEDocumentCollection soatAccountCollection soatContents soatUnknown " + "tarAbortByUser tarAbortByWorkflowException " + "tvtAllWords tvtExactPhrase tvtAnyWord " + "usNone usCompleted usRedSquare usBlueSquare usYellowSquare usGreenSquare usOrangeSquare usPurpleSquare usFollowUp " + "utUnknown utUser utDeveloper utAdministrator utSystemDeveloper utDisconnected " + "btAnd btDetailAnd btOr btNotOr btOnly " + "vmView vmSelect vmNavigation " + "vsmSingle vsmMultiple vsmMultipleCheck vsmNoSelection " + "wfatPrevious wfatNext wfatCancel wfatFinish " + "wfepUndefined wfepText3 wfepText6 wfepText9 wfepSpinEdit wfepDropDown wfepRadioGroup wfepFlag wfepText12 wfepText15 wfepText18 wfepText21 wfepText24 wfepText27 wfepText30 wfepRadioGroupColumn1 wfepRadioGroupColumn2 wfepRadioGroupColumn3 " + "wfetQueryParameter wfetText wfetDelimiter wfetLabel " + "wptString wptInteger wptNumeric wptBoolean wptDateTime wptPick wptText wptUser wptUserList wptEDocumentInfo wptEDocumentInfoList wptReferenceRecordInfo wptReferenceRecordInfoList wptFolderInfo wptTaskInfo wptContents wptFileName wptDate " + "wsrComplete wsrGoNext wsrGoPrevious wsrCustom wsrCancel wsrGoFinal " + "wstForm wstEDocument wstTaskCard wstReferenceRecordCard wstFinal " + "waAll waPerformers waManual " + "wsbStart wsbFinish wsbNotice wsbStep wsbDecision wsbWait wsbMonitor wsbScript wsbConnector wsbSubTask wsbLifeCycleStage wsbPause " + "wdtInteger wdtFloat wdtString wdtPick wdtDateTime wdtBoolean wdtTask wdtJob wdtFolder wdtEDocument wdtReferenceRecord wdtUser wdtGroup wdtRole wdtIntegerCollection wdtFloatCollection wdtStringCollection wdtPickCollection wdtDateTimeCollection wdtBooleanCollection wdtTaskCollection wdtJobCollection wdtFolderCollection wdtEDocumentCollection wdtReferenceRecordCollection wdtUserCollection wdtGroupCollection wdtRoleCollection wdtContents wdtUserList wdtSearchDescription wdtDeadLine wdtPickSet wdtAccountCollection " + "wiLow wiNormal wiHigh " + "wrtSoft wrtHard " + "wsInit wsRunning wsDone wsControlled wsAborted wsContinued " + "wtmFull wtmFromCurrent wtmOnlyCurrent ", YE = "AddSubString AdjustLineBreaks AmountInWords Analysis ArrayDimCount ArrayHighBound ArrayLowBound ArrayOf ArrayReDim Assert Assigned BeginOfMonth BeginOfPeriod BuildProfilingOperationAnalysis CallProcedure CanReadFile CArrayElement CDataSetRequisite ChangeDate ChangeReferenceDataset Char CharPos CheckParam CheckParamValue CompareStrings ConstantExists ControlState ConvertDateStr Copy CopyFile CreateArray CreateCachedReference CreateConnection CreateDialog CreateDualListDialog CreateEditor CreateException CreateFile CreateFolderDialog CreateInputDialog CreateLinkFile CreateList CreateLock CreateMemoryDataSet CreateObject CreateOpenDialog CreateProgress CreateQuery CreateReference CreateReport CreateSaveDialog CreateScript CreateSQLPivotFunction CreateStringList CreateTreeListSelectDialog CSelectSQL CSQL CSubString CurrentUserID CurrentUserName CurrentVersion DataSetLocateEx DateDiff DateTimeDiff DateToStr DayOfWeek DeleteFile DirectoryExists DisableCheckAccessRights DisableCheckFullShowingRestriction DisableMassTaskSendingRestrictions DropTable DupeString EditText EnableCheckAccessRights EnableCheckFullShowingRestriction EnableMassTaskSendingRestrictions EndOfMonth EndOfPeriod ExceptionExists ExceptionsOff ExceptionsOn Execute ExecuteProcess Exit ExpandEnvironmentVariables ExtractFileDrive ExtractFileExt ExtractFileName ExtractFilePath ExtractParams FileExists FileSize FindFile FindSubString FirmContext ForceDirectories Format FormatDate FormatNumeric FormatSQLDate FormatString FreeException GetComponent GetComponentLaunchParam GetConstant GetLastException GetReferenceRecord GetRefTypeByRefID GetTableID GetTempFolder IfThen In IndexOf InputDialog InputDialogEx InteractiveMode IsFileLocked IsGraphicFile IsNumeric Length LoadString LoadStringFmt LocalTimeToUTC LowerCase Max MessageBox MessageBoxEx MimeDecodeBinary MimeDecodeString MimeEncodeBinary MimeEncodeString Min MoneyInWords MoveFile NewID Now OpenFile Ord Precision Raise ReadCertificateFromFile ReadFile ReferenceCodeByID ReferenceNumber ReferenceRequisiteMode ReferenceRequisiteValue RegionDateSettings RegionNumberSettings RegionTimeSettings RegRead RegWrite RenameFile Replace Round SelectServerCode SelectSQL ServerDateTime SetConstant SetManagedFolderFieldsState ShowConstantsInputDialog ShowMessage Sleep Split SQL SQL2XLSTAB SQLProfilingSendReport StrToDate SubString SubStringCount SystemSetting Time TimeDiff Today Transliterate Trim UpperCase UserStatus UTCToLocalTime ValidateXML VarIsClear VarIsEmpty VarIsNull WorkTimeDiff WriteFile WriteFileEx WriteObjectHistory Анализ БазаДанных БлокЕсть БлокЕстьРасш БлокИнфо БлокСнять БлокСнятьРасш БлокУстановить Ввод ВводМеню ВедС ВедСпр ВерхняяГраницаМассива ВнешПрогр Восст ВременнаяПапка Время ВыборSQL ВыбратьЗапись ВыделитьСтр Вызвать Выполнить ВыпПрогр ГрафическийФайл ГруппаДополнительно ДатаВремяСерв ДеньНедели ДиалогДаНет ДлинаСтр ДобПодстр ЕПусто ЕслиТо ЕЧисло ЗамПодстр ЗаписьСправочника ЗначПоляСпр ИДТипСпр ИзвлечьДиск ИзвлечьИмяФайла ИзвлечьПуть ИзвлечьРасширение ИзмДат ИзменитьРазмерМассива ИзмеренийМассива ИмяОрг ИмяПоляСпр Индекс ИндикаторЗакрыть ИндикаторОткрыть ИндикаторШаг ИнтерактивныйРежим ИтогТблСпр КодВидВедСпр КодВидСпрПоИД КодПоAnalit КодСимвола КодСпр КолПодстр КолПроп КонМес Конст КонстЕсть КонстЗнач КонТран КопироватьФайл КопияСтр КПериод КСтрТблСпр Макс МаксСтрТблСпр Массив Меню МенюРасш Мин НаборДанныхНайтиРасш НаимВидСпр НаимПоAnalit НаимСпр НастроитьПереводыСтрок НачМес НачТран НижняяГраницаМассива НомерСпр НПериод Окно Окр Окружение ОтлИнфДобавить ОтлИнфУдалить Отчет ОтчетАнал ОтчетИнт ПапкаСуществует Пауза ПВыборSQL ПереименоватьФайл Переменные ПереместитьФайл Подстр ПоискПодстр ПоискСтр ПолучитьИДТаблицы ПользовательДополнительно ПользовательИД ПользовательИмя ПользовательСтатус Прервать ПроверитьПараметр ПроверитьПараметрЗнач ПроверитьУсловие РазбСтр РазнВремя РазнДат РазнДатаВремя РазнРабВремя РегУстВрем РегУстДат РегУстЧсл РедТекст РеестрЗапись РеестрСписокИменПарам РеестрЧтение РеквСпр РеквСпрПр Сегодня Сейчас Сервер СерверПроцессИД СертификатФайлСчитать СжПроб Символ СистемаДиректумКод СистемаИнформация СистемаКод Содержит СоединениеЗакрыть СоединениеОткрыть СоздатьДиалог СоздатьДиалогВыбораИзДвухСписков СоздатьДиалогВыбораПапки СоздатьДиалогОткрытияФайла СоздатьДиалогСохраненияФайла СоздатьЗапрос СоздатьИндикатор СоздатьИсключение СоздатьКэшированныйСправочник СоздатьМассив СоздатьНаборДанных СоздатьОбъект СоздатьОтчет СоздатьПапку СоздатьРедактор СоздатьСоединение СоздатьСписок СоздатьСписокСтрок СоздатьСправочник СоздатьСценарий СоздСпр СостСпр Сохр СохрСпр СписокСистем Спр Справочник СпрБлокЕсть СпрБлокСнять СпрБлокСнятьРасш СпрБлокУстановить СпрИзмНабДан СпрКод СпрНомер СпрОбновить СпрОткрыть СпрОтменить СпрПарам СпрПолеЗнач СпрПолеИмя СпрРекв СпрРеквВведЗн СпрРеквНовые СпрРеквПр СпрРеквПредЗн СпрРеквРежим СпрРеквТипТекст СпрСоздать СпрСост СпрСохранить СпрТблИтог СпрТблСтр СпрТблСтрКол СпрТблСтрМакс СпрТблСтрМин СпрТблСтрПред СпрТблСтрСлед СпрТблСтрСозд СпрТблСтрУд СпрТекПредст СпрУдалить СравнитьСтр СтрВерхРегистр СтрНижнРегистр СтрТблСпр СумПроп Сценарий СценарийПарам ТекВерсия ТекОрг Точн Тран Транслитерация УдалитьТаблицу УдалитьФайл УдСпр УдСтрТблСпр Уст УстановкиКонстант ФайлАтрибутСчитать ФайлАтрибутУстановить ФайлВремя ФайлВремяУстановить ФайлВыбрать ФайлЗанят ФайлЗаписать ФайлИскать ФайлКопировать ФайлМожноЧитать ФайлОткрыть ФайлПереименовать ФайлПерекодировать ФайлПереместить ФайлПросмотреть ФайлРазмер ФайлСоздать ФайлСсылкаСоздать ФайлСуществует ФайлСчитать ФайлУдалить ФмтSQLДат ФмтДат ФмтСтр ФмтЧсл Формат ЦМассивЭлемент ЦНаборДанныхРеквизит ЦПодстр ", zE = "AltState Application CallType ComponentTokens CreatedJobs CreatedNotices ControlState DialogResult Dialogs EDocuments EDocumentVersionSource Folders GlobalIDs Job Jobs InputValue LookUpReference LookUpRequisiteNames LookUpSearch Object ParentComponent Processes References Requisite ReportName Reports Result Scripts Searches SelectedAttachments SelectedItems SelectMode Sender ServerEvents ServiceFactory ShiftState SubTask SystemDialogs Tasks Wizard Wizards Work ВызовСпособ ИмяОтчета РеквЗнач ", $E = "IApplication IAccessRights IAccountRepository IAccountSelectionRestrictions IAction IActionList IAdministrationHistoryDescription IAnchors IApplication IArchiveInfo IAttachment IAttachmentList ICheckListBox ICheckPointedList IColumn IComponent IComponentDescription IComponentToken IComponentTokenFactory IComponentTokenInfo ICompRecordInfo IConnection IContents IControl IControlJob IControlJobInfo IControlList ICrypto ICrypto2 ICustomJob ICustomJobInfo ICustomListBox ICustomObjectWizardStep ICustomWork ICustomWorkInfo IDataSet IDataSetAccessInfo IDataSigner IDateCriterion IDateRequisite IDateRequisiteDescription IDateValue IDeaAccessRights IDeaObjectInfo IDevelopmentComponentLock IDialog IDialogFactory IDialogPickRequisiteItems IDialogsFactory IDICSFactory IDocRequisite IDocumentInfo IDualListDialog IECertificate IECertificateInfo IECertificates IEditControl IEditorForm IEdmsExplorer IEdmsObject IEdmsObjectDescription IEdmsObjectFactory IEdmsObjectInfo IEDocument IEDocumentAccessRights IEDocumentDescription IEDocumentEditor IEDocumentFactory IEDocumentInfo IEDocumentStorage IEDocumentVersion IEDocumentVersionListDialog IEDocumentVersionSource IEDocumentWizardStep IEDocVerSignature IEDocVersionState IEnabledMode IEncodeProvider IEncrypter IEvent IEventList IException IExternalEvents IExternalHandler IFactory IField IFileDialog IFolder IFolderDescription IFolderDialog IFolderFactory IFolderInfo IForEach IForm IFormTitle IFormWizardStep IGlobalIDFactory IGlobalIDInfo IGrid IHasher IHistoryDescription IHyperLinkControl IImageButton IImageControl IInnerPanel IInplaceHint IIntegerCriterion IIntegerList IIntegerRequisite IIntegerValue IISBLEditorForm IJob IJobDescription IJobFactory IJobForm IJobInfo ILabelControl ILargeIntegerCriterion ILargeIntegerRequisite ILargeIntegerValue ILicenseInfo ILifeCycleStage IList IListBox ILocalIDInfo ILocalization ILock IMemoryDataSet IMessagingFactory IMetadataRepository INotice INoticeInfo INumericCriterion INumericRequisite INumericValue IObject IObjectDescription IObjectImporter IObjectInfo IObserver IPanelGroup IPickCriterion IPickProperty IPickRequisite IPickRequisiteDescription IPickRequisiteItem IPickRequisiteItems IPickValue IPrivilege IPrivilegeList IProcess IProcessFactory IProcessMessage IProgress IProperty IPropertyChangeEvent IQuery IReference IReferenceCriterion IReferenceEnabledMode IReferenceFactory IReferenceHistoryDescription IReferenceInfo IReferenceRecordCardWizardStep IReferenceRequisiteDescription IReferencesFactory IReferenceValue IRefRequisite IReport IReportFactory IRequisite IRequisiteDescription IRequisiteDescriptionList IRequisiteFactory IRichEdit IRouteStep IRule IRuleList ISchemeBlock IScript IScriptFactory ISearchCriteria ISearchCriterion ISearchDescription ISearchFactory ISearchFolderInfo ISearchForObjectDescription ISearchResultRestrictions ISecuredContext ISelectDialog IServerEvent IServerEventFactory IServiceDialog IServiceFactory ISignature ISignProvider ISignProvider2 ISignProvider3 ISimpleCriterion IStringCriterion IStringList IStringRequisite IStringRequisiteDescription IStringValue ISystemDialogsFactory ISystemInfo ITabSheet ITask ITaskAbortReasonInfo ITaskCardWizardStep ITaskDescription ITaskFactory ITaskInfo ITaskRoute ITextCriterion ITextRequisite ITextValue ITreeListSelectDialog IUser IUserList IValue IView IWebBrowserControl IWizard IWizardAction IWizardFactory IWizardFormElement IWizardParam IWizardPickParam IWizardReferenceParam IWizardStep IWorkAccessRights IWorkDescription IWorkflowAskableParam IWorkflowAskableParams IWorkflowBlock IWorkflowBlockResult IWorkflowEnabledMode IWorkflowParam IWorkflowPickParam IWorkflowReferenceParam IWorkState IWorkTreeCustomNode IWorkTreeJobNode IWorkTreeTaskNode IXMLEditorForm SBCrypto ", qE = pe + VE, WE = zE, KE = "null true false nil ", rd = {
     className: "number",
     begin: t.NUMBER_RE,
@@ -38642,7 +38661,7 @@ function nD(t) {
     ]
   };
 }
-function rD(t) {
+function iD(t) {
   const n = {
     className: "params",
     begin: /\(/,
@@ -38689,7 +38708,7 @@ function rD(t) {
     ]
   };
 }
-function iD(t) {
+function oD(t) {
   const e = "[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*", o = {
     $pattern: e,
     keyword: [
@@ -39040,7 +39059,7 @@ function iD(t) {
     // relevance booster
   ], c.contains = a.contains, a;
 }
-function oD(t) {
+function aD(t) {
   return {
     name: "Julia REPL",
     contains: [
@@ -39064,7 +39083,7 @@ function oD(t) {
     aliases: ["jldoctest"]
   };
 }
-function aD(t) {
+function sD(t) {
   const e = "[a-zA-Z_][\\w.]*", n = "<\\?(lasso(script)?|=)", r = "\\]|\\?>", i = {
     $pattern: e + "|&[lg]t;",
     literal: "true false none minimal full all void and or not bw nbw ew new cn ncn lt lte gt gte eq neq rx nrx ft",
@@ -39199,7 +39218,7 @@ function aD(t) {
     ].concat(c)
   };
 }
-function sD(t) {
+function lD(t) {
   const n = t.regex.either(...[
     "(?:NeedsTeXFormat|RequirePackage|GetIdInfo)",
     "Provides(?:Expl)?(?:Package|Class|File)",
@@ -39440,7 +39459,7 @@ function sD(t) {
     ]
   };
 }
-function lD(t) {
+function cD(t) {
   return {
     name: "LDIF",
     contains: [
@@ -39461,7 +39480,7 @@ function lD(t) {
     ]
   };
 }
-function cD(t) {
+function uD(t) {
   const e = /([A-Za-z_][A-Za-z_0-9]*)?/, r = {
     scope: "params",
     begin: /\(/,
@@ -39545,7 +39564,7 @@ function cD(t) {
     ]
   };
 }
-function uD(t) {
+function dD(t) {
   const e = "[a-zA-Z_\\-+\\*\\/<=>&#][a-zA-Z0-9_\\-+*\\/<=>&#!]*", n = "\\|[^]*?\\|", r = "(-|\\+)?\\d+(\\.\\d+|\\/\\d+)?((d|e|f|l|s|D|E|F|L|S)(\\+|-)?\\d+)?", i = {
     className: "literal",
     begin: "\\b(t{1}|nil)\\b"
@@ -39658,7 +39677,7 @@ function uD(t) {
     ]
   };
 }
-function dD(t) {
+function pD(t) {
   const e = {
     className: "variable",
     variants: [
@@ -39747,7 +39766,7 @@ function dD(t) {
     illegal: ";$|^\\[|^=|&|\\{"
   };
 }
-const pD = [
+const _D = [
   "as",
   // for exports
   "in",
@@ -39792,14 +39811,14 @@ const pD = [
   "extends",
   // It's reached stage 3, which is "recommended for implementation":
   "using"
-], _D = [
+], mD = [
   "true",
   "false",
   "null",
   "undefined",
   "NaN",
   "Infinity"
-], mD = [
+], fD = [
   // Fundamental objects
   "Object",
   "Function",
@@ -39849,7 +39868,7 @@ const pD = [
   "Intl",
   // WebAssembly
   "WebAssembly"
-], fD = [
+], hD = [
   "Error",
   "EvalError",
   "InternalError",
@@ -39858,7 +39877,7 @@ const pD = [
   "SyntaxError",
   "TypeError",
   "URIError"
-], hD = [
+], gD = [
   "setInterval",
   "setTimeout",
   "clearInterval",
@@ -39876,12 +39895,12 @@ const pD = [
   "encodeURIComponent",
   "escape",
   "unescape"
-], gD = [].concat(
-  hD,
-  mD,
-  fD
+], ED = [].concat(
+  gD,
+  fD,
+  hD
 );
-function ED(t) {
+function SD(t) {
   const e = [
     "npm",
     "print"
@@ -39924,9 +39943,9 @@ function ED(t) {
     "__bind",
     "__indexOf"
   ], i = {
-    keyword: pD.concat(r),
-    literal: _D.concat(n),
-    built_in: gD.concat(e)
+    keyword: _D.concat(r),
+    literal: mD.concat(n),
+    built_in: ED.concat(e)
   }, o = "[A-Za-z$_](?:-[0-9A-Za-z$_]|[0-9A-Za-z$_])*", a = t.inherit(t.TITLE_MODE, { begin: o }), s = {
     className: "subst",
     begin: /#\{/,
@@ -40091,7 +40110,7 @@ function ED(t) {
     ])
   };
 }
-function SD(t) {
+function bD(t) {
   const e = t.regex, n = /([-a-zA-Z$._][\w$.-]*)/, r = {
     className: "type",
     begin: /\bi\d+(?=\s|\b)/
@@ -40170,7 +40189,7 @@ function SD(t) {
     ]
   };
 }
-function bD(t) {
+function TD(t) {
   const n = {
     className: "string",
     begin: '"',
@@ -40227,7 +40246,7 @@ function bD(t) {
     ]
   };
 }
-const TD = [
+const CD = [
   "AASTriangle",
   "AbelianGroup",
   "Abort",
@@ -47462,7 +47481,7 @@ const TD = [
   "$WolframID",
   "$WolframUUID"
 ];
-function CD(t) {
+function yD(t) {
   const e = t.regex, n = /([2-9]|[1-2]\d|[3][0-5])\^\^/, r = /(\w*\.\w+|\w+\.\w*|\w+)/, i = /(\d*\.\d+|\d+\.\d*|\d+)/, o = e.either(e.concat(n, r), i), a = /``[+-]?(\d*\.\d+|\d+\.\d*|\d+)/, s = /`([+-]?(\d*\.\d+|\d+\.\d*|\d+))?/, l = e.either(a, s), c = /\*\^[+-]?\d+/, d = {
     className: "number",
     relevance: 0,
@@ -47471,7 +47490,7 @@ function CD(t) {
       e.optional(l),
       e.optional(c)
     )
-  }, p = /[a-zA-Z$][a-zA-Z0-9$]*/, _ = new Set(TD), m = { variants: [
+  }, p = /[a-zA-Z$][a-zA-Z0-9$]*/, _ = new Set(CD), m = { variants: [
     {
       className: "builtin-symbol",
       begin: p,
@@ -47538,7 +47557,7 @@ function CD(t) {
     ]
   };
 }
-function yD(t) {
+function vD(t) {
   const e = "('|\\.')+", n = {
     relevance: 0,
     contains: [{ begin: e }]
@@ -47611,7 +47630,7 @@ function yD(t) {
     ]
   };
 }
-function vD(t) {
+function RD(t) {
   return {
     name: "Maxima",
     keywords: {
@@ -47659,7 +47678,7 @@ function vD(t) {
     illegal: /@/
   };
 }
-function RD(t) {
+function OD(t) {
   return {
     name: "MEL",
     keywords: "int float string vector matrix if else switch case default while do for in break continue global proc return about abs addAttr addAttributeEditorNodeHelp addDynamic addNewShelfTab addPP addPanelCategory addPrefixToName advanceToNextDrivenKey affectedNet affects aimConstraint air alias aliasAttr align alignCtx alignCurve alignSurface allViewFit ambientLight angle angleBetween animCone animCurveEditor animDisplay animView annotate appendStringArray applicationName applyAttrPreset applyTake arcLenDimContext arcLengthDimension arclen arrayMapper art3dPaintCtx artAttrCtx artAttrPaintVertexCtx artAttrSkinPaintCtx artAttrTool artBuildPaintMenu artFluidAttrCtx artPuttyCtx artSelectCtx artSetPaintCtx artUserPaintCtx assignCommand assignInputDevice assignViewportFactories attachCurve attachDeviceAttr attachSurface attrColorSliderGrp attrCompatibility attrControlGrp attrEnumOptionMenu attrEnumOptionMenuGrp attrFieldGrp attrFieldSliderGrp attrNavigationControlGrp attrPresetEditWin attributeExists attributeInfo attributeMenu attributeQuery autoKeyframe autoPlace bakeClip bakeFluidShading bakePartialHistory bakeResults bakeSimulation basename basenameEx batchRender bessel bevel bevelPlus binMembership bindSkin blend2 blendShape blendShapeEditor blendShapePanel blendTwoAttr blindDataType boneLattice boundary boxDollyCtx boxZoomCtx bufferCurve buildBookmarkMenu buildKeyframeMenu button buttonManip CBG cacheFile cacheFileCombine cacheFileMerge cacheFileTrack camera cameraView canCreateManip canvas capitalizeString catch catchQuiet ceil changeSubdivComponentDisplayLevel changeSubdivRegion channelBox character characterMap characterOutlineEditor characterize chdir checkBox checkBoxGrp checkDefaultRenderGlobals choice circle circularFillet clamp clear clearCache clip clipEditor clipEditorCurrentTimeCtx clipSchedule clipSchedulerOutliner clipTrimBefore closeCurve closeSurface cluster cmdFileOutput cmdScrollFieldExecuter cmdScrollFieldReporter cmdShell coarsenSubdivSelectionList collision color colorAtPoint colorEditor colorIndex colorIndexSliderGrp colorSliderButtonGrp colorSliderGrp columnLayout commandEcho commandLine commandPort compactHairSystem componentEditor compositingInterop computePolysetVolume condition cone confirmDialog connectAttr connectControl connectDynamic connectJoint connectionInfo constrain constrainValue constructionHistory container containsMultibyte contextInfo control convertFromOldLayers convertIffToPsd convertLightmap convertSolidTx convertTessellation convertUnit copyArray copyFlexor copyKey copySkinWeights cos cpButton cpCache cpClothSet cpCollision cpConstraint cpConvClothToMesh cpForces cpGetSolverAttr cpPanel cpProperty cpRigidCollisionFilter cpSeam cpSetEdit cpSetSolverAttr cpSolver cpSolverTypes cpTool cpUpdateClothUVs createDisplayLayer createDrawCtx createEditor createLayeredPsdFile createMotionField createNewShelf createNode createRenderLayer createSubdivRegion cross crossProduct ctxAbort ctxCompletion ctxEditMode ctxTraverse currentCtx currentTime currentTimeCtx currentUnit curve curveAddPtCtx curveCVCtx curveEPCtx curveEditorCtx curveIntersect curveMoveEPCtx curveOnSurface curveSketchCtx cutKey cycleCheck cylinder dagPose date defaultLightListCheckBox defaultNavigation defineDataServer defineVirtualDevice deformer deg_to_rad delete deleteAttr deleteShadingGroupsAndMaterials deleteShelfTab deleteUI deleteUnusedBrushes delrandstr detachCurve detachDeviceAttr detachSurface deviceEditor devicePanel dgInfo dgdirty dgeval dgtimer dimWhen directKeyCtx directionalLight dirmap dirname disable disconnectAttr disconnectJoint diskCache displacementToPoly displayAffected displayColor displayCull displayLevelOfDetail displayPref displayRGBColor displaySmoothness displayStats displayString displaySurface distanceDimContext distanceDimension doBlur dolly dollyCtx dopeSheetEditor dot dotProduct doubleProfileBirailSurface drag dragAttrContext draggerContext dropoffLocator duplicate duplicateCurve duplicateSurface dynCache dynControl dynExport dynExpression dynGlobals dynPaintEditor dynParticleCtx dynPref dynRelEdPanel dynRelEditor dynamicLoad editAttrLimits editDisplayLayerGlobals editDisplayLayerMembers editRenderLayerAdjustment editRenderLayerGlobals editRenderLayerMembers editor editorTemplate effector emit emitter enableDevice encodeString endString endsWith env equivalent equivalentTol erf error eval evalDeferred evalEcho event exactWorldBoundingBox exclusiveLightCheckBox exec executeForEachObject exists exp expression expressionEditorListen extendCurve extendSurface extrude fcheck fclose feof fflush fgetline fgetword file fileBrowserDialog fileDialog fileExtension fileInfo filetest filletCurve filter filterCurve filterExpand filterStudioImport findAllIntersections findAnimCurves findKeyframe findMenuItem findRelatedSkinCluster finder firstParentOf fitBspline flexor floatEq floatField floatFieldGrp floatScrollBar floatSlider floatSlider2 floatSliderButtonGrp floatSliderGrp floor flow fluidCacheInfo fluidEmitter fluidVoxelInfo flushUndo fmod fontDialog fopen formLayout format fprint frameLayout fread freeFormFillet frewind fromNativePath fwrite gamma gauss geometryConstraint getApplicationVersionAsFloat getAttr getClassification getDefaultBrush getFileList getFluidAttr getInputDeviceRange getMayaPanelTypes getModifiers getPanel getParticleAttr getPluginResource getenv getpid glRender glRenderEditor globalStitch gmatch goal gotoBindPose grabColor gradientControl gradientControlNoAttr graphDollyCtx graphSelectContext graphTrackCtx gravity grid gridLayout group groupObjectsByName HfAddAttractorToAS HfAssignAS HfBuildEqualMap HfBuildFurFiles HfBuildFurImages HfCancelAFR HfConnectASToHF HfCreateAttractor HfDeleteAS HfEditAS HfPerformCreateAS HfRemoveAttractorFromAS HfSelectAttached HfSelectAttractors HfUnAssignAS hardenPointCurve hardware hardwareRenderPanel headsUpDisplay headsUpMessage help helpLine hermite hide hilite hitTest hotBox hotkey hotkeyCheck hsv_to_rgb hudButton hudSlider hudSliderButton hwReflectionMap hwRender hwRenderLoad hyperGraph hyperPanel hyperShade hypot iconTextButton iconTextCheckBox iconTextRadioButton iconTextRadioCollection iconTextScrollList iconTextStaticLabel ikHandle ikHandleCtx ikHandleDisplayScale ikSolver ikSplineHandleCtx ikSystem ikSystemInfo ikfkDisplayMethod illustratorCurves image imfPlugins inheritTransform insertJoint insertJointCtx insertKeyCtx insertKnotCurve insertKnotSurface instance instanceable instancer intField intFieldGrp intScrollBar intSlider intSliderGrp interToUI internalVar intersect iprEngine isAnimCurve isConnected isDirty isParentOf isSameObject isTrue isValidObjectName isValidString isValidUiName isolateSelect itemFilter itemFilterAttr itemFilterRender itemFilterType joint jointCluster jointCtx jointDisplayScale jointLattice keyTangent keyframe keyframeOutliner keyframeRegionCurrentTimeCtx keyframeRegionDirectKeyCtx keyframeRegionDollyCtx keyframeRegionInsertKeyCtx keyframeRegionMoveKeyCtx keyframeRegionScaleKeyCtx keyframeRegionSelectKeyCtx keyframeRegionSetKeyCtx keyframeRegionTrackCtx keyframeStats lassoContext lattice latticeDeformKeyCtx launch launchImageEditor layerButton layeredShaderPort layeredTexturePort layout layoutDialog lightList lightListEditor lightListPanel lightlink lineIntersection linearPrecision linstep listAnimatable listAttr listCameras listConnections listDeviceAttachments listHistory listInputDeviceAxes listInputDeviceButtons listInputDevices listMenuAnnotation listNodeTypes listPanelCategories listRelatives listSets listTransforms listUnselected listerEditor loadFluid loadNewShelf loadPlugin loadPluginLanguageResources loadPrefObjects localizedPanelLabel lockNode loft log longNameOf lookThru ls lsThroughFilter lsType lsUI Mayatomr mag makeIdentity makeLive makePaintable makeRoll makeSingleSurface makeTubeOn makebot manipMoveContext manipMoveLimitsCtx manipOptions manipRotateContext manipRotateLimitsCtx manipScaleContext manipScaleLimitsCtx marker match max memory menu menuBarLayout menuEditor menuItem menuItemToShelf menuSet menuSetPref messageLine min minimizeApp mirrorJoint modelCurrentTimeCtx modelEditor modelPanel mouse movIn movOut move moveIKtoFK moveKeyCtx moveVertexAlongDirection multiProfileBirailSurface mute nParticle nameCommand nameField namespace namespaceInfo newPanelItems newton nodeCast nodeIconButton nodeOutliner nodePreset nodeType noise nonLinear normalConstraint normalize nurbsBoolean nurbsCopyUVSet nurbsCube nurbsEditUV nurbsPlane nurbsSelect nurbsSquare nurbsToPoly nurbsToPolygonsPref nurbsToSubdiv nurbsToSubdivPref nurbsUVSet nurbsViewDirectionVector objExists objectCenter objectLayer objectType objectTypeUI obsoleteProc oceanNurbsPreviewPlane offsetCurve offsetCurveOnSurface offsetSurface openGLExtension openMayaPref optionMenu optionMenuGrp optionVar orbit orbitCtx orientConstraint outlinerEditor outlinerPanel overrideModifier paintEffectsDisplay pairBlend palettePort paneLayout panel panelConfiguration panelHistory paramDimContext paramDimension paramLocator parent parentConstraint particle particleExists particleInstancer particleRenderInfo partition pasteKey pathAnimation pause pclose percent performanceOptions pfxstrokes pickWalk picture pixelMove planarSrf plane play playbackOptions playblast plugAttr plugNode pluginInfo pluginResourceUtil pointConstraint pointCurveConstraint pointLight pointMatrixMult pointOnCurve pointOnSurface pointPosition poleVectorConstraint polyAppend polyAppendFacetCtx polyAppendVertex polyAutoProjection polyAverageNormal polyAverageVertex polyBevel polyBlendColor polyBlindData polyBoolOp polyBridgeEdge polyCacheMonitor polyCheck polyChipOff polyClipboard polyCloseBorder polyCollapseEdge polyCollapseFacet polyColorBlindData polyColorDel polyColorPerVertex polyColorSet polyCompare polyCone polyCopyUV polyCrease polyCreaseCtx polyCreateFacet polyCreateFacetCtx polyCube polyCut polyCutCtx polyCylinder polyCylindricalProjection polyDelEdge polyDelFacet polyDelVertex polyDuplicateAndConnect polyDuplicateEdge polyEditUV polyEditUVShell polyEvaluate polyExtrudeEdge polyExtrudeFacet polyExtrudeVertex polyFlipEdge polyFlipUV polyForceUV polyGeoSampler polyHelix polyInfo polyInstallAction polyLayoutUV polyListComponentConversion polyMapCut polyMapDel polyMapSew polyMapSewMove polyMergeEdge polyMergeEdgeCtx polyMergeFacet polyMergeFacetCtx polyMergeUV polyMergeVertex polyMirrorFace polyMoveEdge polyMoveFacet polyMoveFacetUV polyMoveUV polyMoveVertex polyNormal polyNormalPerVertex polyNormalizeUV polyOptUvs polyOptions polyOutput polyPipe polyPlanarProjection polyPlane polyPlatonicSolid polyPoke polyPrimitive polyPrism polyProjection polyPyramid polyQuad polyQueryBlindData polyReduce polySelect polySelectConstraint polySelectConstraintMonitor polySelectCtx polySelectEditCtx polySeparate polySetToFaceNormal polySewEdge polyShortestPathCtx polySmooth polySoftEdge polySphere polySphericalProjection polySplit polySplitCtx polySplitEdge polySplitRing polySplitVertex polyStraightenUVBorder polySubdivideEdge polySubdivideFacet polyToSubdiv polyTorus polyTransfer polyTriangulate polyUVSet polyUnite polyWedgeFace popen popupMenu pose pow preloadRefEd print progressBar progressWindow projFileViewer projectCurve projectTangent projectionContext projectionManip promptDialog propModCtx propMove psdChannelOutliner psdEditTextureFile psdExport psdTextureFile putenv pwd python querySubdiv quit rad_to_deg radial radioButton radioButtonGrp radioCollection radioMenuItemCollection rampColorPort rand randomizeFollicles randstate rangeControl readTake rebuildCurve rebuildSurface recordAttr recordDevice redo reference referenceEdit referenceQuery refineSubdivSelectionList refresh refreshAE registerPluginResource rehash reloadImage removeJoint removeMultiInstance removePanelCategory rename renameAttr renameSelectionList renameUI render renderGlobalsNode renderInfo renderLayerButton renderLayerParent renderLayerPostProcess renderLayerUnparent renderManip renderPartition renderQualityNode renderSettings renderThumbnailUpdate renderWindowEditor renderWindowSelectContext renderer reorder reorderDeformers requires reroot resampleFluid resetAE resetPfxToPolyCamera resetTool resolutionNode retarget reverseCurve reverseSurface revolve rgb_to_hsv rigidBody rigidSolver roll rollCtx rootOf rot rotate rotationInterpolation roundConstantRadius rowColumnLayout rowLayout runTimeCommand runup sampleImage saveAllShelves saveAttrPreset saveFluid saveImage saveInitialState saveMenu savePrefObjects savePrefs saveShelf saveToolSettings scale scaleBrushBrightness scaleComponents scaleConstraint scaleKey scaleKeyCtx sceneEditor sceneUIReplacement scmh scriptCtx scriptEditorInfo scriptJob scriptNode scriptTable scriptToShelf scriptedPanel scriptedPanelType scrollField scrollLayout sculpt searchPathArray seed selLoadSettings select selectContext selectCurveCV selectKey selectKeyCtx selectKeyframeRegionCtx selectMode selectPref selectPriority selectType selectedNodes selectionConnection separator setAttr setAttrEnumResource setAttrMapping setAttrNiceNameResource setConstraintRestPosition setDefaultShadingGroup setDrivenKeyframe setDynamic setEditCtx setEditor setFluidAttr setFocus setInfinity setInputDeviceMapping setKeyCtx setKeyPath setKeyframe setKeyframeBlendshapeTargetWts setMenuMode setNodeNiceNameResource setNodeTypeFlag setParent setParticleAttr setPfxToPolyCamera setPluginResource setProject setStampDensity setStartupMessage setState setToolTo setUITemplate setXformManip sets shadingConnection shadingGeometryRelCtx shadingLightRelCtx shadingNetworkCompare shadingNode shapeCompare shelfButton shelfLayout shelfTabLayout shellField shortNameOf showHelp showHidden showManipCtx showSelectionInTitle showShadingGroupAttrEditor showWindow sign simplify sin singleProfileBirailSurface size sizeBytes skinCluster skinPercent smoothCurve smoothTangentSurface smoothstep snap2to2 snapKey snapMode snapTogetherCtx snapshot soft softMod softModCtx sort sound soundControl source spaceLocator sphere sphrand spotLight spotLightPreviewPort spreadSheetEditor spring sqrt squareSurface srtContext stackTrace startString startsWith stitchAndExplodeShell stitchSurface stitchSurfacePoints strcmp stringArrayCatenate stringArrayContains stringArrayCount stringArrayInsertAtIndex stringArrayIntersector stringArrayRemove stringArrayRemoveAtIndex stringArrayRemoveDuplicates stringArrayRemoveExact stringArrayToString stringToStringArray strip stripPrefixFromName stroke subdAutoProjection subdCleanTopology subdCollapse subdDuplicateAndConnect subdEditUV subdListComponentConversion subdMapCut subdMapSewMove subdMatchTopology subdMirror subdToBlind subdToPoly subdTransferUVsToCache subdiv subdivCrease subdivDisplaySmoothness substitute substituteAllString substituteGeometry substring surface surfaceSampler surfaceShaderList swatchDisplayPort switchTable symbolButton symbolCheckBox sysFile system tabLayout tan tangentConstraint texLatticeDeformContext texManipContext texMoveContext texMoveUVShellContext texRotateContext texScaleContext texSelectContext texSelectShortestPathCtx texSmudgeUVContext texWinToolCtx text textCurves textField textFieldButtonGrp textFieldGrp textManip textScrollList textToShelf textureDisplacePlane textureHairColor texturePlacementContext textureWindow threadCount threePointArcCtx timeControl timePort timerX toNativePath toggle toggleAxis toggleWindowVisibility tokenize tokenizeList tolerance tolower toolButton toolCollection toolDropped toolHasOptions toolPropertyWindow torus toupper trace track trackCtx transferAttributes transformCompare transformLimits translator trim trunc truncateFluidCache truncateHairCache tumble tumbleCtx turbulence twoPointArcCtx uiRes uiTemplate unassignInputDevice undo undoInfo ungroup uniform unit unloadPlugin untangleUV untitledFileName untrim upAxis updateAE userCtx uvLink uvSnapshot validateShelfName vectorize view2dToolCtx viewCamera viewClipPlane viewFit viewHeadOn viewLookAt viewManip viewPlace viewSet visor volumeAxis vortex waitCursor warning webBrowser webBrowserPrefs whatIs window windowPref wire wireContext workspace wrinkle wrinkleContext writeTake xbmLangPathList xform",
@@ -47683,7 +47702,7 @@ function RD(t) {
     ]
   };
 }
-function OD(t) {
+function ND(t) {
   const e = {
     keyword: "module use_module import_module include_module end_module initialise mutable initialize finalize finalise interface implementation pred mode func type inst solver any_pred any_func is semidet det nondet multi erroneous failure cc_nondet cc_multi typeclass instance where pragma promise external trace atomic or_else require_complete_switch require_det require_semidet require_multi require_nondet require_cc_multi require_cc_nondet require_erroneous require_failure",
     meta: (
@@ -47750,7 +47769,7 @@ function OD(t) {
     ]
   };
 }
-function ND(t) {
+function AD(t) {
   return {
     name: "MIPS Assembly",
     case_insensitive: !0,
@@ -47824,14 +47843,14 @@ function ND(t) {
     illegal: /\//
   };
 }
-function AD(t) {
+function ID(t) {
   return {
     name: "Mizar",
     keywords: "environ vocabularies notations constructors definitions registrations theorems schemes requirements begin end definition registration cluster existence pred func defpred deffunc theorem proof let take assume then thus hence ex for st holds consider reconsider such that and in provided of as from be being by means equals implies iff redefine define now not or attr is mode suppose per cases set thesis contradiction scheme reserve struct correctness compatibility coherence symmetry assymetry reflexivity irreflexivity connectedness uniqueness commutativity idempotence involutiveness projectivity",
     contains: [t.COMMENT("::", "$")]
   };
 }
-function ID(t) {
+function xD(t) {
   return {
     name: "Mojolicious",
     subLanguage: "xml",
@@ -47857,7 +47876,7 @@ function ID(t) {
     ]
   };
 }
-function xD(t) {
+function DD(t) {
   const e = {
     className: "number",
     relevance: 0,
@@ -48025,7 +48044,7 @@ function xD(t) {
     ]
   };
 }
-function DD(t) {
+function wD(t) {
   const e = {
     keyword: (
       // Moonscript keywords
@@ -48153,7 +48172,7 @@ function DD(t) {
     ])
   };
 }
-function wD(t) {
+function MD(t) {
   return {
     name: "N1QL",
     case_insensitive: !0,
@@ -48499,7 +48518,7 @@ function wD(t) {
     ]
   };
 }
-function MD(t) {
+function LD(t) {
   const e = {
     match: [
       /^\s*(?=\S)/,
@@ -48570,7 +48589,7 @@ function MD(t) {
     ]
   };
 }
-function LD(t) {
+function kD(t) {
   const e = t.regex, n = {
     className: "variable",
     variants: [
@@ -48708,7 +48727,7 @@ function LD(t) {
     illegal: "[^\\s\\}\\{]"
   };
 }
-function kD(t) {
+function PD(t) {
   return {
     name: "Nim",
     keywords: {
@@ -48883,7 +48902,7 @@ function kD(t) {
     ]
   };
 }
-function PD(t) {
+function FD(t) {
   const e = t.regex, n = {
     keyword: [
       "assert",
@@ -49189,7 +49208,7 @@ function PD(t) {
     contains: g.concat(T)
   };
 }
-function FD(t) {
+function BD(t) {
   return {
     name: "Node REPL",
     contains: [
@@ -49212,7 +49231,7 @@ function FD(t) {
     ]
   };
 }
-function BD(t) {
+function UD(t) {
   const e = t.regex, n = [
     "ADMINTOOLS",
     "APPDATA",
@@ -49723,7 +49742,7 @@ function BD(t) {
     ]
   };
 }
-function UD(t) {
+function HD(t) {
   return {
     name: "OCaml",
     aliases: ["ml"],
@@ -49787,7 +49806,7 @@ function UD(t) {
     ]
   };
 }
-function HD(t) {
+function GD(t) {
   const e = {
     className: "keyword",
     begin: "\\$(f[asn]|t|vp[rtd]|children)"
@@ -49847,7 +49866,7 @@ function HD(t) {
     ]
   };
 }
-function GD(t) {
+function VD(t) {
   const e = {
     $pattern: /\.?\w+/,
     keyword: "abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false final finalize finalizer finally flags for forward from function future global group has if implementation implements implies in index inherited inline interface into invariants is iterator join locked locking loop matching method mod module namespace nested new nil not notify nullable of old on operator or order out override parallel params partial pinned private procedure property protected public queryable raise read readonly record reintroduce remove repeat require result reverse sealed select self sequence set shl shr skip static step soft take then to true try tuple type union unit unsafe until uses using var virtual raises volatile where while with write xor yield await mapped deprecated stdcall cdecl pascal register safecall overload library platform reference packed strict published autoreleasepool selector strong weak unretained"
@@ -49908,7 +49927,7 @@ function GD(t) {
     ]
   };
 }
-function VD(t) {
+function YD(t) {
   const e = t.COMMENT(
     /\{/,
     /\}/,
@@ -49953,7 +49972,7 @@ function VD(t) {
     ]
   };
 }
-function YD(t) {
+function zD(t) {
   const e = {
     className: "variable",
     begin: /\$[\w\d#@][\w\d_]*/,
@@ -49986,7 +50005,7 @@ function YD(t) {
     ]
   };
 }
-function zD(t) {
+function $D(t) {
   const e = t.COMMENT("--", "$"), n = "[a-zA-Z_][a-zA-Z_0-9$]*", r = "\\$([a-zA-Z_]?|[a-zA-Z_][a-zA-Z_0-9]*)\\$", i = "<<\\s*" + n + "\\s*>>", o = (
     // https://www.postgresql.org/docs/11/static/sql-keywords-appendix.html
     // https://www.postgresql.org/docs/11/static/sql-commands.html
@@ -50248,7 +50267,7 @@ function zD(t) {
     ]
   };
 }
-function $D(t) {
+function qD(t) {
   const e = {
     keyword: "actor addressof and as be break class compile_error compile_intrinsic consume continue delegate digestof do else elseif embed end error for fun if ifdef in interface is isnt lambda let match new not object or primitive recover repeat return struct then trait try type until use var where while with xor",
     meta: "iso val tag trn box ref",
@@ -50296,7 +50315,7 @@ function $D(t) {
     ]
   };
 }
-function qD(t) {
+function WD(t) {
   const e = [
     "string",
     "char",
@@ -50529,7 +50548,7 @@ function qD(t) {
     )
   };
 }
-function WD(t) {
+function KD(t) {
   const e = t.regex, n = [
     "displayHeight",
     "displayWidth",
@@ -50944,7 +50963,7 @@ function WD(t) {
     ]
   };
 }
-function KD(t) {
+function QD(t) {
   return {
     name: "Python profiler",
     contains: [
@@ -50979,7 +50998,7 @@ function KD(t) {
     ]
   };
 }
-function QD(t) {
+function ZD(t) {
   const e = {
     begin: /[a-z][A-Za-z0-9_]*/,
     relevance: 0
@@ -51043,7 +51062,7 @@ function QD(t) {
     ])
   };
 }
-function ZD(t) {
+function XD(t) {
   const e = "[ \\t\\f]*", n = "[ \\t\\f]+", r = e + "[:=]" + e, i = n, o = "(" + r + "|" + i + ")", a = "([^\\\\:= \\t\\f\\n]|\\\\.)+", s = {
     // skip DELIM
     end: o,
@@ -51091,7 +51110,7 @@ function ZD(t) {
     ]
   };
 }
-function XD(t) {
+function jD(t) {
   const e = [
     "package",
     "import",
@@ -51159,7 +51178,7 @@ function XD(t) {
     ]
   };
 }
-function jD(t) {
+function JD(t) {
   const e = {
     keyword: (
       /* language keywords */
@@ -51263,7 +51282,7 @@ function jD(t) {
     ]
   };
 }
-function JD(t) {
+function ew(t) {
   const e = {
     // PB IDE color: #0080FF (Azure Radiance)
     className: "string",
@@ -51319,7 +51338,7 @@ function JD(t) {
     ]
   };
 }
-function ew(t) {
+function tw(t) {
   return {
     name: "Q",
     aliases: [
@@ -51340,7 +51359,7 @@ function ew(t) {
     ]
   };
 }
-function tw(t) {
+function nw(t) {
   const e = t.regex, n = {
     keyword: "in of on if for while finally var new function do return void else break catch instanceof with throw case default try this switch continue typeof delete let yield const export super debugger as async await import",
     literal: "true false null undefined NaN Infinity",
@@ -51479,7 +51498,7 @@ function tw(t) {
     illegal: /#/
   };
 }
-function nw(t) {
+function rw(t) {
   return {
     name: "ReasonML",
     aliases: ["re"],
@@ -51615,7 +51634,7 @@ function nw(t) {
     ]
   };
 }
-function rw(t) {
+function iw(t) {
   return {
     name: "RenderMan RIB",
     keywords: "ArchiveRecord AreaLightSource Atmosphere Attribute AttributeBegin AttributeEnd Basis Begin Blobby Bound Clipping ClippingPlane Color ColorSamples ConcatTransform Cone CoordinateSystem CoordSysTransform CropWindow Curves Cylinder DepthOfField Detail DetailRange Disk Displacement Display End ErrorHandler Exposure Exterior Format FrameAspectRatio FrameBegin FrameEnd GeneralPolygon GeometricApproximation Geometry Hider Hyperboloid Identity Illuminate Imager Interior LightSource MakeCubeFaceEnvironment MakeLatLongEnvironment MakeShadow MakeTexture Matte MotionBegin MotionEnd NuPatch ObjectBegin ObjectEnd ObjectInstance Opacity Option Orientation Paraboloid Patch PatchMesh Perspective PixelFilter PixelSamples PixelVariance Points PointsGeneralPolygons PointsPolygons Polygon Procedural Projection Quantize ReadArchive RelativeDetail ReverseOrientation Rotate Scale ScreenWindow ShadingInterpolation ShadingRate Shutter Sides Skew SolidBegin SolidEnd Sphere SubdivisionMesh Surface TextureCoordinates Torus Transform TransformBegin TransformEnd TransformPoints Translate TrimCurve WorldBegin WorldEnd",
@@ -51628,7 +51647,7 @@ function rw(t) {
     ]
   };
 }
-function iw(t) {
+function ow(t) {
   const e = "[a-zA-Z-_][^\\n{]+\\{", n = {
     className: "attribute",
     begin: /[a-zA-Z-_]+/,
@@ -51694,7 +51713,7 @@ function iw(t) {
     ]
   };
 }
-function ow(t) {
+function aw(t) {
   const e = "foreach do while for if from to step else on-error and or not in", n = "global local beep delay put len typeof pick log time set find environment terminal error execute parse resolve toarray tobool toid toip toip6 tonum tostr totime", r = "add remove enable disable set get print export edit find run debug error info warning", i = "true false yes no nothing nil null", o = "traffic-flow traffic-generator firewall scheduler aaa accounting address-list address align area bandwidth-server bfd bgp bridge client clock community config connection console customer default dhcp-client dhcp-server discovery dns e-mail ethernet filter firmware gps graphing group hardware health hotspot identity igmp-proxy incoming instance interface ip ipsec ipv6 irq l2tp-server lcd ldp logging mac-server mac-winbox mangle manual mirror mme mpls nat nd neighbor network note ntp ospf ospf-v3 ovpn-server page peer pim ping policy pool port ppp pppoe-client pptp-server prefix profile proposal proxy queue radius resource rip ripng route routing screen script security-profiles server service service-port settings shares smb sms sniffer snmp snooper socks sstp-server system tool tracking type upgrade upnp user-manager users user vlan secret vrrp watchdog web-access wireless pptp pppoe lan wan layer7-protocol lease simple raw", a = {
     className: "variable",
     variants: [
@@ -51831,7 +51850,7 @@ function ow(t) {
     ]
   };
 }
-function aw(t) {
+function sw(t) {
   const e = [
     "abs",
     "acos",
@@ -51963,7 +51982,7 @@ function aw(t) {
     ]
   };
 }
-function sw(t) {
+function lw(t) {
   return {
     name: "Oracle Rules Language",
     keywords: {
@@ -51990,7 +52009,7 @@ function sw(t) {
     ]
   };
 }
-function lw(t) {
+function cw(t) {
   const e = t.regex, n = [
     "do",
     "if",
@@ -52527,7 +52546,7 @@ function lw(t) {
     ]
   };
 }
-function cw(t) {
+function uw(t) {
   const e = t.regex, n = {
     className: "meta",
     begin: "@[A-Za-z]+"
@@ -52703,7 +52722,7 @@ function cw(t) {
     ]
   };
 }
-function uw(t) {
+function dw(t) {
   const e = "[^\\(\\)\\[\\]\\{\\}\",'`;#|\\\\\\s]+", n = "(-|\\+)?\\d+([./]\\d+)?", r = n + "[+\\-]" + n + "i", i = {
     $pattern: e,
     built_in: "case-lambda call/cc class define-class exit-handler field import inherit init-field interface let*-values let-values let/ec mixin opt-lambda override protect provide public rename require require-for-syntax syntax syntax-case syntax-error unit/sig unless when with-syntax and begin call-with-current-continuation call-with-input-file call-with-output-file case cond define define-syntax delay do dynamic-wind else for-each if lambda let let* let-syntax letrec letrec-syntax map or syntax-rules ' * + , ,@ - ... / ; < <= = => > >= ` abs acos angle append apply asin assoc assq assv atan boolean? caar cadr call-with-input-file call-with-output-file call-with-values car cdddar cddddr cdr ceiling char->integer char-alphabetic? char-ci<=? char-ci<? char-ci=? char-ci>=? char-ci>? char-downcase char-lower-case? char-numeric? char-ready? char-upcase char-upper-case? char-whitespace? char<=? char<? char=? char>=? char>? char? close-input-port close-output-port complex? cons cos current-input-port current-output-port denominator display eof-object? eq? equal? eqv? eval even? exact->inexact exact? exp expt floor force gcd imag-part inexact->exact inexact? input-port? integer->char integer? interaction-environment lcm length list list->string list->vector list-ref list-tail list? load log magnitude make-polar make-rectangular make-string make-vector max member memq memv min modulo negative? newline not null-environment null? number->string number? numerator odd? open-input-file open-output-file output-port? pair? peek-char port? positive? procedure? quasiquote quote quotient rational? rationalize read read-char real-part real? remainder reverse round scheme-report-environment set! set-car! set-cdr! sin sqrt string string->list string->number string->symbol string-append string-ci<=? string-ci<? string-ci=? string-ci>=? string-ci>? string-copy string-fill! string-length string-ref string-set! string<=? string<? string=? string>=? string>? string? substring symbol->string symbol? tan transcript-off transcript-on truncate values vector vector->list vector-fill! vector-length vector-ref vector-set! with-input-from-file with-output-to-file write write-char zero?"
@@ -52825,7 +52844,7 @@ function uw(t) {
     ].concat(l)
   };
 }
-function dw(t) {
+function pw(t) {
   const e = [
     t.C_NUMBER_MODE,
     {
@@ -52881,7 +52900,7 @@ function dw(t) {
     ].concat(e)
   };
 }
-function pw(t) {
+function _w(t) {
   const e = [
     "add",
     "and",
@@ -52996,7 +53015,7 @@ function pw(t) {
     ]
   };
 }
-function _w(t) {
+function mw(t) {
   const e = "[a-z][a-zA-Z0-9_]*", n = {
     className: "string",
     begin: "\\$.{1}"
@@ -53053,7 +53072,7 @@ function _w(t) {
     ]
   };
 }
-function mw(t) {
+function fw(t) {
   return {
     name: "SML (Standard ML)",
     aliases: ["ml"],
@@ -53119,7 +53138,7 @@ function mw(t) {
     ]
   };
 }
-function fw(t) {
+function hw(t) {
   const e = {
     className: "variable",
     begin: /\b_+[a-zA-Z]\w*/
@@ -55721,7 +55740,7 @@ function fw(t) {
     ]
   };
 }
-function hw(t) {
+function gw(t) {
   const e = t.regex, n = [
     "functions",
     "model",
@@ -56206,7 +56225,7 @@ function hw(t) {
     ]
   };
 }
-function gw(t) {
+function Ew(t) {
   return {
     name: "Stata",
     aliases: [
@@ -56244,7 +56263,7 @@ function gw(t) {
     ]
   };
 }
-function Ew(t) {
+function Sw(t) {
   return {
     name: "STEP Part 21",
     aliases: [
@@ -56297,7 +56316,7 @@ function Ew(t) {
     ]
   };
 }
-const Sw = (t) => ({
+const bw = (t) => ({
   IMPORTANT: {
     scope: "meta",
     begin: "!important"
@@ -56330,7 +56349,7 @@ const Sw = (t) => ({
     className: "attr",
     begin: /--[A-Za-z_][A-Za-z0-9_-]*/
   }
-}), bw = [
+}), Tw = [
   "a",
   "abbr",
   "address",
@@ -56408,7 +56427,7 @@ const Sw = (t) => ({
   "ul",
   "var",
   "video"
-], Tw = [
+], Cw = [
   "defs",
   "g",
   "marker",
@@ -56450,10 +56469,10 @@ const Sw = (t) => ({
   "tspan",
   "foreignObject",
   "clipPath"
-], Cw = [
-  ...bw,
-  ...Tw
 ], yw = [
+  ...Tw,
+  ...Cw
+], vw = [
   "any-hover",
   "any-pointer",
   "aspect-ratio",
@@ -56488,7 +56507,7 @@ const Sw = (t) => ({
   "max-width",
   "min-height",
   "max-height"
-].sort().reverse(), vw = [
+].sort().reverse(), Rw = [
   "active",
   "any-link",
   "blank",
@@ -56562,7 +56581,7 @@ const Sw = (t) => ({
   "visited",
   "where"
   // where()
-].sort().reverse(), Rw = [
+].sort().reverse(), Ow = [
   "after",
   "backdrop",
   "before",
@@ -56577,7 +56596,7 @@ const Sw = (t) => ({
   "selection",
   "slotted",
   "spelling-error"
-].sort().reverse(), Ow = [
+].sort().reverse(), Nw = [
   "accent-color",
   "align-content",
   "align-items",
@@ -57094,8 +57113,8 @@ const Sw = (t) => ({
   "z-index",
   "zoom"
 ].sort().reverse();
-function Nw(t) {
-  const e = Sw(t), n = "and or not only", r = {
+function Aw(t) {
+  const e = bw(t), n = "and or not only", r = {
     className: "variable",
     begin: "\\$" + t.IDENT_RE
   }, i = [
@@ -57162,17 +57181,17 @@ function Nw(t) {
       },
       // tags
       {
-        begin: "\\b(" + Cw.join("|") + ")" + o,
+        begin: "\\b(" + yw.join("|") + ")" + o,
         className: "selector-tag"
       },
       // psuedo selectors
       {
         className: "selector-pseudo",
-        begin: "&?:(" + vw.join("|") + ")" + o
+        begin: "&?:(" + Rw.join("|") + ")" + o
       },
       {
         className: "selector-pseudo",
-        begin: "&?:(:)?(" + Rw.join("|") + ")" + o
+        begin: "&?:(:)?(" + Ow.join("|") + ")" + o
       },
       e.ATTRIBUTE_SELECTOR_MODE,
       {
@@ -57183,7 +57202,7 @@ function Nw(t) {
           keywords: {
             $pattern: /[a-z-]+/,
             keyword: n,
-            attribute: yw.join(" ")
+            attribute: vw.join(" ")
           },
           contains: [e.CSS_NUMBER_MODE]
         }
@@ -57230,7 +57249,7 @@ function Nw(t) {
       //  - must have whitespace after it
       {
         className: "attribute",
-        begin: "\\b(" + Ow.join("|") + ")\\b",
+        begin: "\\b(" + Nw.join("|") + ")\\b",
         starts: {
           // value container
           end: /;|$/,
@@ -57252,7 +57271,7 @@ function Nw(t) {
     ]
   };
 }
-function Aw(t) {
+function Iw(t) {
   return {
     name: "SubUnit",
     case_insensitive: !0,
@@ -57285,7 +57304,7 @@ function Aw(t) {
     ]
   };
 }
-function Iw(t) {
+function xw(t) {
   return {
     name: "Tagger Script",
     contains: [
@@ -57325,7 +57344,7 @@ function Iw(t) {
     ]
   };
 }
-function xw(t) {
+function Dw(t) {
   return {
     name: "Test Anything Protocol",
     case_insensitive: !0,
@@ -57362,7 +57381,7 @@ function xw(t) {
     ]
   };
 }
-function Dw(t) {
+function ww(t) {
   const e = t.regex, n = /[a-zA-Z_][a-zA-Z0-9_]*/, r = {
     className: "number",
     variants: [
@@ -57537,7 +57556,7 @@ function Dw(t) {
     ]
   };
 }
-function ww(t) {
+function Mw(t) {
   const e = [
     "bool",
     "byte",
@@ -57604,7 +57623,7 @@ function ww(t) {
     ]
   };
 }
-function Mw(t) {
+function Lw(t) {
   const e = {
     className: "number",
     begin: "[1-9][0-9]*",
@@ -57761,7 +57780,7 @@ function Mw(t) {
     ]
   };
 }
-function Lw(t) {
+function kw(t) {
   const e = t.regex, n = [
     "absolute_url",
     "asset|0",
@@ -57986,7 +58005,7 @@ function Lw(t) {
     ]
   };
 }
-function kw(t) {
+function Pw(t) {
   return {
     name: "Vala",
     keywords: {
@@ -58025,7 +58044,7 @@ function kw(t) {
     ]
   };
 }
-function Pw(t) {
+function Fw(t) {
   const e = t.regex, n = [
     "lcase",
     "month",
@@ -58224,7 +58243,7 @@ function Pw(t) {
     ]
   };
 }
-function Fw(t) {
+function Bw(t) {
   return {
     name: "VBScript in HTML",
     subLanguage: "xml",
@@ -58237,7 +58256,7 @@ function Fw(t) {
     ]
   };
 }
-function Bw(t) {
+function Uw(t) {
   const e = t.regex, n = {
     $pattern: /\$?[\w]+(\$[\w]+)*/,
     keyword: [
@@ -58773,7 +58792,7 @@ function Bw(t) {
     ]
   };
 }
-function Uw(t) {
+function Hw(t) {
   const e = "\\d(_|\\d)*", n = "[eE][-+]?" + e, r = e + "(\\." + e + ")?(" + n + ")?", i = "\\w+", a = "\\b(" + (e + "#" + i + "(\\." + i + ")?#(" + n + ")?") + "|" + r + ")";
   return {
     name: "VHDL",
@@ -58964,7 +58983,7 @@ function Uw(t) {
     ]
   };
 }
-function Hw(t) {
+function Gw(t) {
   return {
     name: "Vim Script",
     keywords: {
@@ -59033,7 +59052,7 @@ function Hw(t) {
     ]
   };
 }
-function Gw(t) {
+function Vw(t) {
   const e = t.regex, n = /[a-zA-Z]\w*/, r = [
     "as",
     "break",
@@ -59289,7 +59308,7 @@ function Gw(t) {
     ]
   };
 }
-function Vw(t) {
+function Yw(t) {
   return {
     name: "Intel x86 Assembly",
     case_insensitive: !0,
@@ -59374,7 +59393,7 @@ function Vw(t) {
     ]
   };
 }
-function Yw(t) {
+function zw(t) {
   const e = [
     "if",
     "then",
@@ -59559,7 +59578,7 @@ function Yw(t) {
     ]
   };
 }
-function zw(t) {
+function $w(t) {
   return {
     name: "XQuery",
     aliases: [
@@ -59871,7 +59890,7 @@ function zw(t) {
     ]
   };
 }
-function $w(t) {
+function qw(t) {
   const e = {
     className: "string",
     contains: [t.BACKSLASH_ESCAPE],
@@ -59965,7 +59984,7 @@ function $w(t) {
     ]
   };
 }
-function qw(t) {
+function Ww(t) {
   const e = t.regex, n = t.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), r = "decltype\\(auto\\)", i = "[a-zA-Z_]\\w*::", a = "(?!struct)(" + r + "|" + e.optional(i) + "[a-zA-Z_]\\w*" + e.optional("<[^<>]+>") + ")", s = {
     className: "type",
     begin: "\\b[a-z\\d_]*_t\\b"
@@ -60483,7 +60502,7 @@ function qw(t) {
     )
   };
 }
-function Ww(t) {
+function Kw(t) {
   const e = {
     type: [
       "boolean",
@@ -60849,7 +60868,7 @@ function Ww(t) {
       "HIGH",
       "LOW"
     ]
-  }, n = qw(t), r = (
+  }, n = Ww(t), r = (
     /** @type {Record<string,any>} */
     n.keywords
   );
@@ -60864,7 +60883,7 @@ function Ww(t) {
     ...e.built_in
   ], r._hints = e._hints, n.name = "Arduino", n.aliases = ["ino"], n.supersetOf = "cpp", n;
 }
-function Kw(t) {
+function Qw(t) {
   const e = t.regex, n = {}, r = {
     begin: /\$\{/,
     end: /\}/,
@@ -61238,7 +61257,7 @@ function Kw(t) {
     ]
   };
 }
-function Qw(t) {
+function Zw(t) {
   const e = t.regex, n = t.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), r = "decltype\\(auto\\)", i = "[a-zA-Z_]\\w*::", a = "(" + r + "|" + e.optional(i) + "[a-zA-Z_]\\w*" + e.optional("<[^<>]+>") + ")", s = {
     className: "type",
     variants: [
@@ -61512,7 +61531,7 @@ function Qw(t) {
     }
   };
 }
-function Zw(t) {
+function Xw(t) {
   const e = t.regex, n = t.COMMENT("//", "$", { contains: [{ begin: /\\\n/ }] }), r = "decltype\\(auto\\)", i = "[a-zA-Z_]\\w*::", a = "(?!struct)(" + r + "|" + e.optional(i) + "[a-zA-Z_]\\w*" + e.optional("<[^<>]+>") + ")", s = {
     className: "type",
     begin: "\\b[a-z\\d_]*_t\\b"
@@ -62030,7 +62049,7 @@ function Zw(t) {
     )
   };
 }
-function Xw(t) {
+function jw(t) {
   const e = [
     "bool",
     "byte",
@@ -62409,7 +62428,7 @@ function Xw(t) {
     ]
   };
 }
-const jw = (t) => ({
+const Jw = (t) => ({
   IMPORTANT: {
     scope: "meta",
     begin: "!important"
@@ -62442,7 +62461,7 @@ const jw = (t) => ({
     className: "attr",
     begin: /--[A-Za-z_][A-Za-z0-9_-]*/
   }
-}), Jw = [
+}), eM = [
   "a",
   "abbr",
   "address",
@@ -62520,7 +62539,7 @@ const jw = (t) => ({
   "ul",
   "var",
   "video"
-], eM = [
+], tM = [
   "defs",
   "g",
   "marker",
@@ -62562,10 +62581,10 @@ const jw = (t) => ({
   "tspan",
   "foreignObject",
   "clipPath"
-], tM = [
-  ...Jw,
-  ...eM
 ], nM = [
+  ...eM,
+  ...tM
+], rM = [
   "any-hover",
   "any-pointer",
   "aspect-ratio",
@@ -62600,7 +62619,7 @@ const jw = (t) => ({
   "max-width",
   "min-height",
   "max-height"
-].sort().reverse(), rM = [
+].sort().reverse(), iM = [
   "active",
   "any-link",
   "blank",
@@ -62674,7 +62693,7 @@ const jw = (t) => ({
   "visited",
   "where"
   // where()
-].sort().reverse(), iM = [
+].sort().reverse(), oM = [
   "after",
   "backdrop",
   "before",
@@ -62689,7 +62708,7 @@ const jw = (t) => ({
   "selection",
   "slotted",
   "spelling-error"
-].sort().reverse(), oM = [
+].sort().reverse(), aM = [
   "accent-color",
   "align-content",
   "align-items",
@@ -63206,8 +63225,8 @@ const jw = (t) => ({
   "z-index",
   "zoom"
 ].sort().reverse();
-function aM(t) {
-  const e = t.regex, n = jw(t), r = { begin: /-(webkit|moz|ms|o)-(?=[a-z])/ }, i = "and or not only", o = /@-?\w[\w]*(-\w+)*/, a = "[a-zA-Z-][a-zA-Z0-9_-]*", s = [
+function sM(t) {
+  const e = t.regex, n = Jw(t), r = { begin: /-(webkit|moz|ms|o)-(?=[a-z])/ }, i = "and or not only", o = /@-?\w[\w]*(-\w+)*/, a = "[a-zA-Z-][a-zA-Z0-9_-]*", s = [
     t.APOS_STRING_MODE,
     t.QUOTE_STRING_MODE
   ];
@@ -63241,8 +63260,8 @@ function aM(t) {
       {
         className: "selector-pseudo",
         variants: [
-          { begin: ":(" + rM.join("|") + ")" },
-          { begin: ":(:)?(" + iM.join("|") + ")" }
+          { begin: ":(" + iM.join("|") + ")" },
+          { begin: ":(:)?(" + oM.join("|") + ")" }
         ]
       },
       // we may actually need this (12/2020)
@@ -63254,7 +63273,7 @@ function aM(t) {
       n.CSS_VARIABLE,
       {
         className: "attribute",
-        begin: "\\b(" + oM.join("|") + ")\\b"
+        begin: "\\b(" + aM.join("|") + ")\\b"
       },
       // attribute values
       {
@@ -63309,7 +63328,7 @@ function aM(t) {
             keywords: {
               $pattern: /[a-z-]+/,
               keyword: i,
-              attribute: nM.join(" ")
+              attribute: rM.join(" ")
             },
             contains: [
               {
@@ -63324,12 +63343,12 @@ function aM(t) {
       },
       {
         className: "selector-tag",
-        begin: "\\b(" + tM.join("|") + ")\\b"
+        begin: "\\b(" + nM.join("|") + ")\\b"
       }
     ]
   };
 }
-function sM(t) {
+function lM(t) {
   const e = t.regex;
   return {
     name: "Diff",
@@ -63380,7 +63399,7 @@ function sM(t) {
     ]
   };
 }
-function lM(t) {
+function cM(t) {
   const o = {
     keyword: [
       "break",
@@ -63528,7 +63547,7 @@ function lM(t) {
     ]
   };
 }
-function cM(t) {
+function uM(t) {
   const e = t.regex, n = /[_A-Za-z][_0-9A-Za-z]*/;
   return {
     name: "GraphQL",
@@ -63595,7 +63614,7 @@ function cM(t) {
     ]
   };
 }
-function uM(t) {
+function dM(t) {
   const e = t.regex, n = {
     className: "number",
     relevance: 0,
@@ -63725,7 +63744,7 @@ var Hr = "[0-9](_*[0-9])*", jo = `\\.(${Hr})`, Jo = "[0-9a-fA-F](_*[0-9a-fA-F])*
 function Rg(t, e, n) {
   return n === -1 ? "" : t.replace(e, (r) => Rg(t, e, n - 1));
 }
-function dM(t) {
+function pM(t) {
   const e = t.regex, n = "[À-ʸa-zA-Z_$][À-ʸa-zA-Z_$0-9]*", r = n + Rg("(?:<" + n + "~~~(?:\\s*,\\s*" + n + "~~~)*>)?", /~~~/g, 2), l = {
     keyword: [
       "synchronized",
@@ -63936,7 +63955,7 @@ function dM(t) {
     ]
   };
 }
-const z_ = "[A-Za-z$_][0-9A-Za-z$_]*", pM = [
+const z_ = "[A-Za-z$_][0-9A-Za-z$_]*", _M = [
   "as",
   // for exports
   "in",
@@ -63981,7 +64000,7 @@ const z_ = "[A-Za-z$_][0-9A-Za-z$_]*", pM = [
   "extends",
   // It's reached stage 3, which is "recommended for implementation":
   "using"
-], _M = [
+], mM = [
   "true",
   "false",
   "null",
@@ -64065,7 +64084,7 @@ const z_ = "[A-Za-z$_][0-9A-Za-z$_]*", pM = [
   "encodeURIComponent",
   "escape",
   "unescape"
-], mM = [
+], fM = [
   "arguments",
   "this",
   "super",
@@ -64077,15 +64096,15 @@ const z_ = "[A-Za-z$_][0-9A-Za-z$_]*", pM = [
   "module",
   "global"
   // Node.js
-], fM = [].concat(
+], hM = [].concat(
   Ag,
   Og,
   Ng
 );
-function hM(t) {
-  const e = t.regex, n = (R, { after: w }) => {
+function gM(t) {
+  const e = t.regex, n = (R, { after: M }) => {
     const B = "</" + R[0].slice(1);
-    return R.input.indexOf(B, w) !== -1;
+    return R.input.indexOf(B, M) !== -1;
   }, r = z_, i = {
     begin: "<>",
     end: "</>"
@@ -64096,37 +64115,37 @@ function hM(t) {
      * @param {RegExpMatchArray} match
      * @param {CallbackResponse} response
      */
-    isTrulyOpeningTag: (R, w) => {
-      const B = R[0].length + R.index, V = R.input[B];
+    isTrulyOpeningTag: (R, M) => {
+      const B = R[0].length + R.index, z = R.input[B];
       if (
         // HTML should not include another raw `<` inside a tag
         // nested type?
         // `<Array<Array<number>>`, etc.
-        V === "<" || // the , gives away that this is not HTML
+        z === "<" || // the , gives away that this is not HTML
         // `<T, A extends keyof T, V>`
-        V === ","
+        z === ","
       ) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
-      V === ">" && (n(R, { after: B }) || w.ignoreMatch());
+      z === ">" && (n(R, { after: B }) || M.ignoreMatch());
       let X;
       const de = R.input.substring(B);
       if (X = de.match(/^\s*=/)) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
       if ((X = de.match(/^\s+extends\s+/)) && X.index === 0) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
     }
   }, s = {
     $pattern: z_,
-    keyword: pM,
-    literal: _M,
-    built_in: fM,
-    "variable.language": mM
+    keyword: _M,
+    literal: mM,
+    built_in: hM,
+    "variable.language": fM
   }, l = "[0-9](_?[0-9])*", c = `\\.(${l})`, u = "0|[1-9](_?[0-9])*|0[0-7]*[89][0-9]*", d = {
     className: "number",
     variants: [
@@ -64374,13 +64393,13 @@ function hM(t) {
     match: /\b[A-Z][A-Z_0-9]+\b/,
     className: "variable.constant"
   };
-  function z(R) {
+  function Y(R) {
     return e.concat("(?!", R.join("|"), ")");
   }
   const Z = {
     match: e.concat(
       /\b/,
-      z([
+      Y([
         ...Ag,
         "super",
         "import"
@@ -64399,7 +64418,7 @@ function hM(t) {
     keywords: "prototype",
     className: "property",
     relevance: 0
-  }, Y = {
+  }, V = {
     match: [
       /get|set/,
       /\s+/,
@@ -64583,7 +64602,7 @@ function hM(t) {
       Z,
       P,
       v,
-      Y,
+      V,
       {
         match: /\$[(.]/
         // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
@@ -64591,7 +64610,7 @@ function hM(t) {
     ]
   };
 }
-function gM(t) {
+function EM(t) {
   const e = {
     className: "attr",
     begin: /"(\\.|[^\\"\r\n])*"(?=\s*:)/,
@@ -64626,7 +64645,7 @@ function gM(t) {
     illegal: "\\S"
   };
 }
-var Gr = "[0-9](_*[0-9])*", ea = `\\.(${Gr})`, ta = "[0-9a-fA-F](_*[0-9a-fA-F])*", EM = {
+var Gr = "[0-9](_*[0-9])*", ea = `\\.(${Gr})`, ta = "[0-9a-fA-F](_*[0-9a-fA-F])*", SM = {
   className: "number",
   variants: [
     // DecimalFloatingPointLiteral
@@ -64649,7 +64668,7 @@ var Gr = "[0-9](_*[0-9])*", ea = `\\.(${Gr})`, ta = "[0-9a-fA-F](_*[0-9a-fA-F])*
   ],
   relevance: 0
 };
-function SM(t) {
+function bM(t) {
   const e = {
     keyword: "abstract as val var vararg get set class object open private protected public noinline crossinline dynamic final enum if else do while for when throw try catch finally import package is in fun override companion reified inline lateinit init interface annotation data sealed internal infix operator out by constructor super tailrec where const inner suspend typealias external expect actual",
     built_in: "Byte Short Char Int Long Boolean Float Double Void Unit Nothing",
@@ -64723,7 +64742,7 @@ function SM(t) {
         ]
       }
     ]
-  }, c = EM, u = t.COMMENT(
+  }, c = SM, u = t.COMMENT(
     "/\\*",
     "\\*/",
     { contains: [t.C_BLOCK_COMMENT_MODE] }
@@ -64865,7 +64884,7 @@ function SM(t) {
     ]
   };
 }
-const bM = (t) => ({
+const TM = (t) => ({
   IMPORTANT: {
     scope: "meta",
     begin: "!important"
@@ -64898,7 +64917,7 @@ const bM = (t) => ({
     className: "attr",
     begin: /--[A-Za-z_][A-Za-z0-9_-]*/
   }
-}), TM = [
+}), CM = [
   "a",
   "abbr",
   "address",
@@ -64976,7 +64995,7 @@ const bM = (t) => ({
   "ul",
   "var",
   "video"
-], CM = [
+], yM = [
   "defs",
   "g",
   "marker",
@@ -65018,10 +65037,10 @@ const bM = (t) => ({
   "tspan",
   "foreignObject",
   "clipPath"
-], yM = [
-  ...TM,
-  ...CM
 ], vM = [
+  ...CM,
+  ...yM
+], RM = [
   "any-hover",
   "any-pointer",
   "aspect-ratio",
@@ -65145,7 +65164,7 @@ const bM = (t) => ({
   "selection",
   "slotted",
   "spelling-error"
-].sort().reverse(), RM = [
+].sort().reverse(), OM = [
   "accent-color",
   "align-content",
   "align-items",
@@ -65661,9 +65680,9 @@ const bM = (t) => ({
   "y",
   "z-index",
   "zoom"
-].sort().reverse(), OM = Ig.concat(xg).sort().reverse();
-function NM(t) {
-  const e = bM(t), n = OM, r = "and or not only", i = "[\\w-]+", o = "(" + i + "|@\\{" + i + "\\})", a = [], s = [], l = function(b) {
+].sort().reverse(), NM = Ig.concat(xg).sort().reverse();
+function AM(t) {
+  const e = TM(t), n = NM, r = "and or not only", i = "[\\w-]+", o = "(" + i + "|@\\{" + i + "\\})", a = [], s = [], l = function(b) {
     return {
       // Less strings are not multiline (also include '~' for more consistent coloring of "escaped" strings)
       className: "string",
@@ -65678,7 +65697,7 @@ function NM(t) {
   }, u = {
     $pattern: /[a-z-]+/,
     keyword: r,
-    attribute: vM.join(" ")
+    attribute: RM.join(" ")
   }, d = {
     // used only to properly balance nested parens inside mixin call, def. arg list
     begin: "\\(",
@@ -65739,7 +65758,7 @@ function NM(t) {
       e.CSS_VARIABLE,
       {
         className: "attribute",
-        begin: "\\b(" + RM.join("|") + ")\\b",
+        begin: "\\b(" + OM.join("|") + ")\\b",
         end: /(?=:)/,
         starts: {
           endsWithParent: !0,
@@ -65804,7 +65823,7 @@ function NM(t) {
       c("variable", "@\\{" + i + "\\}"),
       // otherwise it’s identified as tag
       {
-        begin: "\\b(" + yM.join("|") + ")\\b",
+        begin: "\\b(" + vM.join("|") + ")\\b",
         className: "selector-tag"
       },
       e.CSS_NUMBER_MODE,
@@ -65854,7 +65873,7 @@ function NM(t) {
     contains: a
   };
 }
-function AM(t) {
+function IM(t) {
   const e = "\\[=*\\[", n = "\\]=*\\]", r = {
     begin: e,
     end: n,
@@ -65910,7 +65929,7 @@ function AM(t) {
     ])
   };
 }
-function IM(t) {
+function xM(t) {
   const e = {
     className: "variable",
     variants: [
@@ -65974,7 +65993,7 @@ function IM(t) {
     ]
   };
 }
-function xM(t) {
+function DM(t) {
   const e = t.regex, n = {
     begin: /<\/?[A-Za-z_]/,
     end: ">",
@@ -66187,7 +66206,7 @@ function xM(t) {
     ]
   };
 }
-function DM(t) {
+function wM(t) {
   const e = {
     className: "built_in",
     begin: "\\b(AV|CA|CF|CG|CI|CL|CM|CN|CT|MK|MP|MTK|MTL|NS|SCN|SK|UI|WK|XC)\\w+"
@@ -66421,7 +66440,7 @@ function DM(t) {
     ]
   };
 }
-function wM(t) {
+function MM(t) {
   const e = t.regex, n = [
     "abs",
     "accept",
@@ -66887,7 +66906,7 @@ function wM(t) {
     contains: m
   };
 }
-function MM(t) {
+function LM(t) {
   const e = t.regex, n = /(?![A-Za-z0-9])(?![$])/, r = e.concat(
     /[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/,
     n
@@ -66927,11 +66946,11 @@ function MM(t) {
     begin: /<<<[ \t]*(?:(\w+)|"(\w+)")\n/,
     end: /[ \t]*(\w+)\b/,
     contains: t.QUOTE_STRING_MODE.contains.concat(l),
-    "on:begin": (q, Y) => {
-      Y.data._beginMatch = q[1] || q[2];
+    "on:begin": (q, V) => {
+      V.data._beginMatch = q[1] || q[2];
     },
-    "on:end": (q, Y) => {
-      Y.data._beginMatch !== q[1] && Y.ignoreMatch();
+    "on:end": (q, V) => {
+      V.data._beginMatch !== q[1] && V.ignoreMatch();
     }
   }, p = t.END_SAME_AS_BEGIN({
     begin: /<<<[ \t]*'(\w+)'\n/,
@@ -67160,13 +67179,13 @@ function MM(t) {
   ], g = {
     keyword: E,
     literal: ((q) => {
-      const Y = [];
+      const V = [];
       return q.forEach((O) => {
-        Y.push(O), O.toLowerCase() === O ? Y.push(O.toUpperCase()) : Y.push(O.toLowerCase());
-      }), Y;
+        V.push(O), O.toLowerCase() === O ? V.push(O.toUpperCase()) : V.push(O.toLowerCase());
+      }), V;
     })(h),
     built_in: S
-  }, T = (q) => q.map((Y) => Y.replace(/\|\d+$/, "")), C = { variants: [
+  }, T = (q) => q.map((V) => V.replace(/\|\d+$/, "")), C = { variants: [
     {
       match: [
         /new/,
@@ -67264,7 +67283,7 @@ function MM(t) {
     contains: [x]
   };
   x.contains.push(P);
-  const z = [
+  const Y = [
     N,
     I,
     t.C_BLOCK_COMMENT_MODE,
@@ -67302,10 +67321,10 @@ function MM(t) {
         },
         contains: [
           "self",
-          ...z
+          ...Y
         ]
       },
-      ...z,
+      ...Y,
       {
         scope: "meta",
         variants: [
@@ -67450,7 +67469,7 @@ function MM(t) {
     ]
   };
 }
-function LM(t) {
+function kM(t) {
   return {
     name: "PHP template",
     subLanguage: "xml",
@@ -67494,7 +67513,7 @@ function LM(t) {
     ]
   };
 }
-function kM(t) {
+function PM(t) {
   return {
     name: "Plain text",
     aliases: [
@@ -67504,7 +67523,7 @@ function kM(t) {
     disableAutodetect: !0
   };
 }
-function PM(t) {
+function FM(t) {
   const e = t.regex, n = new RegExp("[\\p{XID_Start}_]\\p{XID_Continue}*", "u"), r = [
     "and",
     "as",
@@ -67900,7 +67919,7 @@ function PM(t) {
     ]
   };
 }
-function FM(t) {
+function BM(t) {
   return {
     aliases: ["pycon"],
     contains: [
@@ -67923,7 +67942,7 @@ function FM(t) {
     ]
   };
 }
-function BM(t) {
+function UM(t) {
   const e = t.regex, n = /(?:(?:[a-zA-Z]|\.[._a-zA-Z])[._a-zA-Z0-9]*)|\.(?!\d)/, r = e.either(
     // Special case: only hexadecimal binary powers can contain fractions
     /0[xX][0-9a-fA-F]+\.[0-9a-fA-F]*[pP][+-]?\d+i?/,
@@ -68127,7 +68146,7 @@ function BM(t) {
     ]
   };
 }
-function UM(t) {
+function HM(t) {
   const e = t.regex, n = "([a-zA-Z_]\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?)", r = e.either(
     /\b([A-Z]+[a-z0-9]+)+/,
     // ends in caps
@@ -68512,7 +68531,7 @@ function UM(t) {
     contains: [t.SHEBANG({ binary: "ruby" })].concat(x).concat(c).concat(C)
   };
 }
-function HM(t) {
+function GM(t) {
   const e = t.regex, n = /(r#)?/, r = e.concat(n, t.UNDERSCORE_IDENT_RE), i = e.concat(n, t.IDENT_RE), o = {
     className: "title.function.invoke",
     relevance: 0,
@@ -68814,7 +68833,7 @@ function HM(t) {
     ]
   };
 }
-const GM = (t) => ({
+const VM = (t) => ({
   IMPORTANT: {
     scope: "meta",
     begin: "!important"
@@ -68847,7 +68866,7 @@ const GM = (t) => ({
     className: "attr",
     begin: /--[A-Za-z_][A-Za-z0-9_-]*/
   }
-}), VM = [
+}), YM = [
   "a",
   "abbr",
   "address",
@@ -68925,7 +68944,7 @@ const GM = (t) => ({
   "ul",
   "var",
   "video"
-], YM = [
+], zM = [
   "defs",
   "g",
   "marker",
@@ -68967,10 +68986,10 @@ const GM = (t) => ({
   "tspan",
   "foreignObject",
   "clipPath"
-], zM = [
-  ...VM,
-  ...YM
 ], $M = [
+  ...YM,
+  ...zM
+], qM = [
   "any-hover",
   "any-pointer",
   "aspect-ratio",
@@ -69005,7 +69024,7 @@ const GM = (t) => ({
   "max-width",
   "min-height",
   "max-height"
-].sort().reverse(), qM = [
+].sort().reverse(), WM = [
   "active",
   "any-link",
   "blank",
@@ -69079,7 +69098,7 @@ const GM = (t) => ({
   "visited",
   "where"
   // where()
-].sort().reverse(), WM = [
+].sort().reverse(), KM = [
   "after",
   "backdrop",
   "before",
@@ -69094,7 +69113,7 @@ const GM = (t) => ({
   "selection",
   "slotted",
   "spelling-error"
-].sort().reverse(), KM = [
+].sort().reverse(), QM = [
   "accent-color",
   "align-content",
   "align-items",
@@ -69611,8 +69630,8 @@ const GM = (t) => ({
   "z-index",
   "zoom"
 ].sort().reverse();
-function QM(t) {
-  const e = GM(t), n = WM, r = qM, i = "@[a-z-]+", o = "and or not only", s = {
+function ZM(t) {
+  const e = VM(t), n = KM, r = WM, i = "@[a-z-]+", o = "and or not only", s = {
     className: "variable",
     begin: "(\\$" + "[a-zA-Z-][a-zA-Z0-9_-]*" + ")\\b",
     relevance: 0
@@ -69640,7 +69659,7 @@ function QM(t) {
       e.ATTRIBUTE_SELECTOR_MODE,
       {
         className: "selector-tag",
-        begin: "\\b(" + zM.join("|") + ")\\b",
+        begin: "\\b(" + $M.join("|") + ")\\b",
         // was there, before, but why?
         relevance: 0
       },
@@ -69662,7 +69681,7 @@ function QM(t) {
       e.CSS_VARIABLE,
       {
         className: "attribute",
-        begin: "\\b(" + KM.join("|") + ")\\b"
+        begin: "\\b(" + QM.join("|") + ")\\b"
       },
       { begin: "\\b(whitespace|wait|w-resize|visible|vertical-text|vertical-ideographic|uppercase|upper-roman|upper-alpha|underline|transparent|top|thin|thick|text|text-top|text-bottom|tb-rl|table-header-group|table-footer-group|sw-resize|super|strict|static|square|solid|small-caps|separate|se-resize|scroll|s-resize|rtl|row-resize|ridge|right|repeat|repeat-y|repeat-x|relative|progress|pointer|overline|outside|outset|oblique|nowrap|not-allowed|normal|none|nw-resize|no-repeat|no-drop|newspaper|ne-resize|n-resize|move|middle|medium|ltr|lr-tb|lowercase|lower-roman|lower-alpha|loose|list-item|line|line-through|line-edge|lighter|left|keep-all|justify|italic|inter-word|inter-ideograph|inside|inset|inline|inline-block|inherit|inactive|ideograph-space|ideograph-parenthesis|ideograph-numeric|ideograph-alpha|horizontal|hidden|help|hand|groove|fixed|ellipsis|e-resize|double|dotted|distribute|distribute-space|distribute-letter|distribute-all-lines|disc|disabled|default|decimal|dashed|crosshair|collapse|col-resize|circle|char|center|capitalize|break-word|break-all|bottom|both|bolder|bold|block|bidi-override|below|baseline|auto|always|all-scroll|absolute|table|table-cell)\\b" },
       {
@@ -69697,7 +69716,7 @@ function QM(t) {
         keywords: {
           $pattern: /[a-z-]+/,
           keyword: o,
-          attribute: $M.join(" ")
+          attribute: qM.join(" ")
         },
         contains: [
           {
@@ -69719,7 +69738,7 @@ function QM(t) {
     ]
   };
 }
-function ZM(t) {
+function XM(t) {
   return {
     name: "Shell Session",
     aliases: [
@@ -69741,7 +69760,7 @@ function ZM(t) {
     ]
   };
 }
-function XM(t) {
+function jM(t) {
   const e = t.regex, n = t.COMMENT("--", "$"), r = {
     scope: "string",
     variants: [
@@ -70362,18 +70381,18 @@ function vi(t) {
 function Re(...t) {
   return t.map((n) => Dg(n)).join("");
 }
-function jM(t) {
+function JM(t) {
   const e = t[t.length - 1];
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function ut(...t) {
-  return "(" + (jM(t).capture ? "" : "?:") + t.map((r) => Dg(r)).join("|") + ")";
+  return "(" + (JM(t).capture ? "" : "?:") + t.map((r) => Dg(r)).join("|") + ")";
 }
 const Fu = (t) => Re(
   /\b/,
   t,
   /\w$/.test(t) ? /\b/ : /\B/
-), JM = [
+), e2 = [
   "Protocol",
   // contextual
   "Type"
@@ -70381,7 +70400,7 @@ const Fu = (t) => Re(
 ].map(Fu), $_ = [
   "init",
   "self"
-].map(Fu), e2 = [
+].map(Fu), t2 = [
   "Any",
   "Self"
 ], kl = [
@@ -70524,7 +70543,7 @@ const Fu = (t) => Re(
   "false",
   "nil",
   "true"
-], t2 = [
+], n2 = [
   "assignment",
   "associativity",
   "higherThan",
@@ -70532,7 +70551,7 @@ const Fu = (t) => Re(
   "lowerThan",
   "none",
   "right"
-], n2 = [
+], r2 = [
   "#colorLiteral",
   "#column",
   "#dsohandle",
@@ -70637,7 +70656,7 @@ const Fu = (t) => Re(
   Lg,
   /\d/,
   /[\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F]/
-), $t = Re(Lg, ss, "*"), na = Re(/[A-Z]/, ss, "*"), r2 = [
+), $t = Re(Lg, ss, "*"), na = Re(/[A-Z]/, ss, "*"), i2 = [
   "attached",
   "autoclosure",
   Re(/convention\(/, ut("swift", "block", "c"), /\)/),
@@ -70672,7 +70691,7 @@ const Fu = (t) => Re(
   "unknown",
   "usableFromInline",
   "warn_unqualified_access"
-], i2 = [
+], o2 = [
   "iOS",
   "iOSApplicationExtension",
   "macOS",
@@ -70685,7 +70704,7 @@ const Fu = (t) => Re(
   "tvOSApplicationExtension",
   "swift"
 ];
-function o2(t) {
+function a2(t) {
   const e = {
     match: /\s+/,
     relevance: 0
@@ -70699,14 +70718,14 @@ function o2(t) {
   ], i = {
     match: [
       /\./,
-      ut(...JM, ...$_)
+      ut(...e2, ...$_)
     ],
     className: { 2: "keyword" }
   }, o = {
     // Consume .keyword to prevent highlighting properties and methods as keywords.
     match: Re(/\./, ut(...kl)),
     relevance: 0
-  }, a = kl.filter((ae) => typeof ae == "string").concat(["_|0"]), s = kl.filter((ae) => typeof ae != "string").concat(e2).map(Fu), l = { variants: [
+  }, a = kl.filter((ae) => typeof ae == "string").concat(["_|0"]), s = kl.filter((ae) => typeof ae != "string").concat(t2).map(Fu), l = { variants: [
     {
       className: "keyword",
       match: ut(...s, ...$_)
@@ -70718,7 +70737,7 @@ function o2(t) {
       /#\w+/
       // number keywords
     ),
-    keyword: a.concat(n2),
+    keyword: a.concat(r2),
     literal: q_
   }, u = [
     i,
@@ -70819,7 +70838,7 @@ function o2(t) {
     begin: /\/[^\s](?=[^/\n]*\/)/,
     end: /\//,
     contains: x
-  }, z = (ae) => {
+  }, Y = (ae) => {
     const Qe = Re(ae, /\//), Q = Re(/\//, ae);
     return {
       begin: Qe,
@@ -70836,12 +70855,12 @@ function o2(t) {
   }, Z = {
     scope: "regexp",
     variants: [
-      z("###"),
-      z("##"),
-      z("#"),
+      Y("###"),
+      Y("##"),
+      Y("#"),
       P
     ]
-  }, q = { match: Re(/`/, $t, /`/) }, Y = {
+  }, q = { match: Re(/`/, $t, /`/) }, V = {
     className: "variable",
     match: /\$\d+/
   }, O = {
@@ -70849,7 +70868,7 @@ function o2(t) {
     match: `\\$${ss}+`
   }, y = [
     q,
-    Y,
+    V,
     O
   ], R = {
     match: /(@|#(un)?)available/,
@@ -70858,7 +70877,7 @@ function o2(t) {
       {
         begin: /\(/,
         end: /\)/,
-        keywords: i2,
+        keywords: o2,
         contains: [
           ...h,
           b,
@@ -70866,15 +70885,15 @@ function o2(t) {
         ]
       }
     ] }
-  }, w = {
+  }, M = {
     scope: "keyword",
-    match: Re(/@/, ut(...r2), vi(ut(/\(/, /\s+/)))
+    match: Re(/@/, ut(...i2), vi(ut(/\(/, /\s+/)))
   }, B = {
     scope: "meta",
     match: Re(/@/, $t)
-  }, V = [
+  }, z = [
     R,
-    w,
+    M,
     B
   ], X = {
     match: vi(/\b[A-Z]/),
@@ -70914,7 +70933,7 @@ function o2(t) {
     contains: [
       ...r,
       ...u,
-      ...V,
+      ...z,
       m,
       X
     ]
@@ -70940,7 +70959,7 @@ function o2(t) {
       b,
       N,
       ...y,
-      ...V,
+      ...z,
       X
     ]
   }, ge = {
@@ -70979,7 +70998,7 @@ function o2(t) {
       ...h,
       b,
       N,
-      ...V,
+      ...z,
       X,
       le
     ],
@@ -71038,7 +71057,7 @@ function o2(t) {
     },
     contains: [X],
     keywords: [
-      ...t2,
+      ...n2,
       ...q_
     ],
     end: /}/
@@ -71143,7 +71162,7 @@ function o2(t) {
       b,
       N,
       ...y,
-      ...V,
+      ...z,
       X,
       le
     ]
@@ -71295,10 +71314,10 @@ const ls = "[A-Za-z$_][0-9A-Za-z$_]*", kg = [
   Fg,
   Bg
 );
-function a2(t) {
-  const e = t.regex, n = (R, { after: w }) => {
+function s2(t) {
+  const e = t.regex, n = (R, { after: M }) => {
     const B = "</" + R[0].slice(1);
-    return R.input.indexOf(B, w) !== -1;
+    return R.input.indexOf(B, M) !== -1;
   }, r = ls, i = {
     begin: "<>",
     end: "</>"
@@ -71309,28 +71328,28 @@ function a2(t) {
      * @param {RegExpMatchArray} match
      * @param {CallbackResponse} response
      */
-    isTrulyOpeningTag: (R, w) => {
-      const B = R[0].length + R.index, V = R.input[B];
+    isTrulyOpeningTag: (R, M) => {
+      const B = R[0].length + R.index, z = R.input[B];
       if (
         // HTML should not include another raw `<` inside a tag
         // nested type?
         // `<Array<Array<number>>`, etc.
-        V === "<" || // the , gives away that this is not HTML
+        z === "<" || // the , gives away that this is not HTML
         // `<T, A extends keyof T, V>`
-        V === ","
+        z === ","
       ) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
-      V === ">" && (n(R, { after: B }) || w.ignoreMatch());
+      z === ">" && (n(R, { after: B }) || M.ignoreMatch());
       let X;
       const de = R.input.substring(B);
       if (X = de.match(/^\s*=/)) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
       if ((X = de.match(/^\s+extends\s+/)) && X.index === 0) {
-        w.ignoreMatch();
+        M.ignoreMatch();
         return;
       }
     }
@@ -71587,13 +71606,13 @@ function a2(t) {
     match: /\b[A-Z][A-Z_0-9]+\b/,
     className: "variable.constant"
   };
-  function z(R) {
+  function Y(R) {
     return e.concat("(?!", R.join("|"), ")");
   }
   const Z = {
     match: e.concat(
       /\b/,
-      z([
+      Y([
         ...Ug,
         "super",
         "import"
@@ -71612,7 +71631,7 @@ function a2(t) {
     keywords: "prototype",
     className: "property",
     relevance: 0
-  }, Y = {
+  }, V = {
     match: [
       /get|set/,
       /\s+/,
@@ -71796,7 +71815,7 @@ function a2(t) {
       Z,
       P,
       v,
-      Y,
+      V,
       {
         match: /\$[(.]/
         // relevance booster for a pattern common to JS libs: `$(something)` and `$.something`
@@ -71804,8 +71823,8 @@ function a2(t) {
     ]
   };
 }
-function s2(t) {
-  const e = t.regex, n = a2(t), r = ls, i = [
+function l2(t) {
+  const e = t.regex, n = s2(t), r = ls, i = [
     "any",
     "void",
     "number",
@@ -71899,7 +71918,7 @@ function s2(t) {
     ]
   }), n;
 }
-function l2(t) {
+function c2(t) {
   const e = t.regex, n = {
     className: "string",
     begin: /"(""|[^/n])"C\b/
@@ -72018,7 +72037,7 @@ function l2(t) {
     ]
   };
 }
-function c2(t) {
+function u2(t) {
   t.regex;
   const e = t.COMMENT(/\(;/, /;\)/);
   e.contains.push("self");
@@ -72129,7 +72148,7 @@ function c2(t) {
     ]
   };
 }
-function u2(t) {
+function d2(t) {
   const e = t.regex, n = e.concat(/[\p{L}_]/u, e.optional(/[\p{L}0-9_.-]*:/u), /[\p{L}0-9_.-]*/u), r = /[\p{L}0-9._:-]+/u, i = {
     className: "symbol",
     begin: /&[a-z]+;|&#[0-9]+;|&#x[a-f0-9]+;/
@@ -72345,7 +72364,7 @@ function u2(t) {
     ]
   };
 }
-function d2(t) {
+function p2(t) {
   const e = "true false yes no null", n = "[\\w#;/?:@&=+$,.~*'()[\\]]+", r = {
     className: "attr",
     variants: [
@@ -72525,201 +72544,201 @@ function d2(t) {
     contains: h
   };
 }
-const p2 = {
-  arduino: Ww,
-  bash: Kw,
-  c: Qw,
-  cpp: Zw,
-  csharp: Xw,
-  css: aM,
-  diff: sM,
-  go: lM,
-  graphql: cM,
-  ini: uM,
-  java: dM,
-  javascript: hM,
-  json: gM,
-  kotlin: SM,
-  less: NM,
-  lua: AM,
-  makefile: IM,
-  markdown: xM,
-  objectivec: DM,
-  perl: wM,
-  php: MM,
-  "php-template": LM,
-  plaintext: kM,
-  python: PM,
-  "python-repl": FM,
-  r: BM,
-  ruby: UM,
-  rust: HM,
-  scss: QM,
-  shell: ZM,
-  sql: XM,
-  swift: o2,
-  typescript: s2,
-  vbnet: l2,
-  wasm: c2,
-  xml: u2,
-  yaml: d2
-}, _2 = {
-  ...p2,
-  "1c": xI,
-  abnf: DI,
-  accesslog: wI,
-  actionscript: MI,
-  ada: LI,
-  angelscript: kI,
-  apache: PI,
-  applescript: FI,
-  arcade: BI,
-  armasm: UI,
-  asciidoc: HI,
-  aspectj: GI,
-  autohotkey: VI,
-  autoit: YI,
-  avrasm: zI,
-  awk: $I,
-  axapta: qI,
-  basic: WI,
-  bnf: KI,
-  brainfuck: QI,
-  cal: ZI,
-  capnproto: XI,
-  ceylon: jI,
-  clean: JI,
-  clojure: ex,
-  "clojure-repl": tx,
-  cmake: nx,
-  coffeescript: cx,
-  coq: ux,
-  cos: dx,
-  crmsh: px,
-  crystal: _x,
-  csp: mx,
-  d: fx,
-  dart: hx,
-  delphi: gx,
-  django: Ex,
-  dns: Sx,
-  dockerfile: bx,
-  dos: Tx,
-  dsconfig: Cx,
-  dts: yx,
-  dust: vx,
-  ebnf: Rx,
-  elixir: Ox,
-  elm: Nx,
-  erb: Ax,
-  erlang: Ix,
-  "erlang-repl": xx,
-  excel: Dx,
-  fix: wx,
-  flix: Mx,
-  fortran: Lx,
-  fsharp: Fx,
-  gams: Bx,
-  gauss: Ux,
-  gcode: Hx,
-  gherkin: Gx,
-  glsl: Vx,
-  gml: Yx,
-  golo: zx,
-  gradle: $x,
-  groovy: qx,
-  haml: Wx,
-  handlebars: Kx,
-  haskell: Qx,
-  haxe: Zx,
-  hsp: Xx,
-  http: jx,
-  hy: Jx,
-  inform7: eD,
-  irpf90: tD,
-  isbl: nD,
-  "jboss-cli": rD,
-  julia: iD,
-  "julia-repl": oD,
-  lasso: aD,
-  latex: sD,
-  ldif: lD,
-  leaf: cD,
-  lisp: uD,
-  livecodeserver: dD,
-  livescript: ED,
-  llvm: SD,
-  lsl: bD,
-  mathematica: CD,
-  matlab: yD,
-  maxima: vD,
-  mel: RD,
-  mercury: OD,
-  mipsasm: ND,
-  mizar: AD,
-  mojolicious: ID,
-  monkey: xD,
-  moonscript: DD,
-  n1ql: wD,
-  nestedtext: MD,
-  nginx: LD,
-  nim: kD,
-  nix: PD,
-  "node-repl": FD,
-  nsis: BD,
-  ocaml: UD,
-  openscad: HD,
-  oxygene: GD,
-  parser3: VD,
-  pf: YD,
-  pgsql: zD,
-  pony: $D,
-  powershell: qD,
-  processing: WD,
-  profile: KD,
-  prolog: QD,
-  properties: ZD,
-  protobuf: XD,
-  puppet: jD,
-  purebasic: JD,
-  q: ew,
-  qml: tw,
-  reasonml: nw,
-  rib: rw,
-  roboconf: iw,
-  routeros: ow,
-  rsl: aw,
-  ruleslanguage: sw,
-  sas: lw,
-  scala: cw,
-  scheme: uw,
-  scilab: dw,
-  smali: pw,
-  smalltalk: _w,
-  sml: mw,
-  sqf: fw,
-  stan: hw,
-  stata: gw,
-  step21: Ew,
-  stylus: Nw,
-  subunit: Aw,
-  taggerscript: Iw,
-  tap: xw,
-  tcl: Dw,
-  thrift: ww,
-  tp: Mw,
-  twig: Lw,
-  vala: kw,
-  vbscript: Pw,
-  "vbscript-html": Fw,
-  verilog: Bw,
-  vhdl: Uw,
-  vim: Hw,
-  wren: Gw,
-  x86asm: Vw,
-  xl: Yw,
-  xquery: zw,
-  zephir: $w
+const _2 = {
+  arduino: Kw,
+  bash: Qw,
+  c: Zw,
+  cpp: Xw,
+  csharp: jw,
+  css: sM,
+  diff: lM,
+  go: cM,
+  graphql: uM,
+  ini: dM,
+  java: pM,
+  javascript: gM,
+  json: EM,
+  kotlin: bM,
+  less: AM,
+  lua: IM,
+  makefile: xM,
+  markdown: DM,
+  objectivec: wM,
+  perl: MM,
+  php: LM,
+  "php-template": kM,
+  plaintext: PM,
+  python: FM,
+  "python-repl": BM,
+  r: UM,
+  ruby: HM,
+  rust: GM,
+  scss: ZM,
+  shell: XM,
+  sql: jM,
+  swift: a2,
+  typescript: l2,
+  vbnet: c2,
+  wasm: u2,
+  xml: d2,
+  yaml: p2
+}, m2 = {
+  ..._2,
+  "1c": DI,
+  abnf: wI,
+  accesslog: MI,
+  actionscript: LI,
+  ada: kI,
+  angelscript: PI,
+  apache: FI,
+  applescript: BI,
+  arcade: UI,
+  armasm: HI,
+  asciidoc: GI,
+  aspectj: VI,
+  autohotkey: YI,
+  autoit: zI,
+  avrasm: $I,
+  awk: qI,
+  axapta: WI,
+  basic: KI,
+  bnf: QI,
+  brainfuck: ZI,
+  cal: XI,
+  capnproto: jI,
+  ceylon: JI,
+  clean: ex,
+  clojure: tx,
+  "clojure-repl": nx,
+  cmake: rx,
+  coffeescript: ux,
+  coq: dx,
+  cos: px,
+  crmsh: _x,
+  crystal: mx,
+  csp: fx,
+  d: hx,
+  dart: gx,
+  delphi: Ex,
+  django: Sx,
+  dns: bx,
+  dockerfile: Tx,
+  dos: Cx,
+  dsconfig: yx,
+  dts: vx,
+  dust: Rx,
+  ebnf: Ox,
+  elixir: Nx,
+  elm: Ax,
+  erb: Ix,
+  erlang: xx,
+  "erlang-repl": Dx,
+  excel: wx,
+  fix: Mx,
+  flix: Lx,
+  fortran: kx,
+  fsharp: Bx,
+  gams: Ux,
+  gauss: Hx,
+  gcode: Gx,
+  gherkin: Vx,
+  glsl: Yx,
+  gml: zx,
+  golo: $x,
+  gradle: qx,
+  groovy: Wx,
+  haml: Kx,
+  handlebars: Qx,
+  haskell: Zx,
+  haxe: Xx,
+  hsp: jx,
+  http: Jx,
+  hy: eD,
+  inform7: tD,
+  irpf90: nD,
+  isbl: rD,
+  "jboss-cli": iD,
+  julia: oD,
+  "julia-repl": aD,
+  lasso: sD,
+  latex: lD,
+  ldif: cD,
+  leaf: uD,
+  lisp: dD,
+  livecodeserver: pD,
+  livescript: SD,
+  llvm: bD,
+  lsl: TD,
+  mathematica: yD,
+  matlab: vD,
+  maxima: RD,
+  mel: OD,
+  mercury: ND,
+  mipsasm: AD,
+  mizar: ID,
+  mojolicious: xD,
+  monkey: DD,
+  moonscript: wD,
+  n1ql: MD,
+  nestedtext: LD,
+  nginx: kD,
+  nim: PD,
+  nix: FD,
+  "node-repl": BD,
+  nsis: UD,
+  ocaml: HD,
+  openscad: GD,
+  oxygene: VD,
+  parser3: YD,
+  pf: zD,
+  pgsql: $D,
+  pony: qD,
+  powershell: WD,
+  processing: KD,
+  profile: QD,
+  prolog: ZD,
+  properties: XD,
+  protobuf: jD,
+  puppet: JD,
+  purebasic: ew,
+  q: tw,
+  qml: nw,
+  reasonml: rw,
+  rib: iw,
+  roboconf: ow,
+  routeros: aw,
+  rsl: sw,
+  ruleslanguage: lw,
+  sas: cw,
+  scala: uw,
+  scheme: dw,
+  scilab: pw,
+  smali: _w,
+  smalltalk: mw,
+  sml: fw,
+  sqf: hw,
+  stan: gw,
+  stata: Ew,
+  step21: Sw,
+  stylus: Aw,
+  subunit: Iw,
+  taggerscript: xw,
+  tap: Dw,
+  tcl: ww,
+  thrift: Mw,
+  tp: Lw,
+  twig: kw,
+  vala: Pw,
+  vbscript: Fw,
+  "vbscript-html": Bw,
+  verilog: Uw,
+  vhdl: Hw,
+  vim: Gw,
+  wren: Vw,
+  x86asm: Yw,
+  xl: zw,
+  xquery: $w,
+  zephir: qw
 };
 function Vg(t) {
   return t instanceof Map ? t.clear = t.delete = t.set = function() {
@@ -72755,7 +72774,7 @@ function Fn(t, ...e) {
   }), /** @type {T} */
   n;
 }
-const m2 = "</span>", Q_ = (t) => !!t.scope, f2 = (t, { prefix: e }) => {
+const f2 = "</span>", Q_ = (t) => !!t.scope, h2 = (t, { prefix: e }) => {
   if (t.startsWith("language:"))
     return t.replace("language:", "language-");
   if (t.includes(".")) {
@@ -72767,7 +72786,7 @@ const m2 = "</span>", Q_ = (t) => !!t.scope, f2 = (t, { prefix: e }) => {
   }
   return `${e}${t}`;
 };
-class h2 {
+class g2 {
   /**
    * Creates a new HTMLRenderer
    *
@@ -72790,7 +72809,7 @@ class h2 {
    * @param {Node} node */
   openNode(e) {
     if (!Q_(e)) return;
-    const n = f2(
+    const n = h2(
       e.scope,
       { prefix: this.classPrefix }
     );
@@ -72801,7 +72820,7 @@ class h2 {
    *
    * @param {Node} node */
   closeNode(e) {
-    Q_(e) && (this.buffer += m2);
+    Q_(e) && (this.buffer += f2);
   }
   /**
    * returns the accumulated buffer
@@ -72874,7 +72893,7 @@ class Bu {
     }));
   }
 }
-class g2 extends Bu {
+class E2 extends Bu {
   /**
    * @param {*} options
    */
@@ -72903,7 +72922,7 @@ class g2 extends Bu {
     n && (r.scope = `language:${n}`), this.add(r);
   }
   toHTML() {
-    return new h2(this, this.options).value();
+    return new g2(this, this.options).value();
   }
   finalize() {
     return this.closeAllNodes(), !0;
@@ -72915,30 +72934,30 @@ function _o(t) {
 function zg(t) {
   return vr("(?=", t, ")");
 }
-function E2(t) {
+function S2(t) {
   return vr("(?:", t, ")*");
 }
-function S2(t) {
+function b2(t) {
   return vr("(?:", t, ")?");
 }
 function vr(...t) {
   return t.map((n) => _o(n)).join("");
 }
-function b2(t) {
+function T2(t) {
   const e = t[t.length - 1];
   return typeof e == "object" && e.constructor === Object ? (t.splice(t.length - 1, 1), e) : {};
 }
 function Uu(...t) {
-  return "(" + (b2(t).capture ? "" : "?:") + t.map((r) => _o(r)).join("|") + ")";
+  return "(" + (T2(t).capture ? "" : "?:") + t.map((r) => _o(r)).join("|") + ")";
 }
 function $g(t) {
   return new RegExp(t.toString() + "|").exec("").length - 1;
 }
-function T2(t, e) {
+function C2(t, e) {
   const n = t && t.exec(e);
   return n && n.index === 0;
 }
-const C2 = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
+const y2 = /\[(?:[^\\\]]|\\.)*\]|\(\??|\\([1-9][0-9]*)|\\./;
 function Hu(t, { joinWith: e }) {
   let n = 0;
   return t.map((r) => {
@@ -72946,7 +72965,7 @@ function Hu(t, { joinWith: e }) {
     const i = n;
     let o = _o(r), a = "";
     for (; o.length > 0; ) {
-      const s = C2.exec(o);
+      const s = y2.exec(o);
       if (!s) {
         a += o;
         break;
@@ -72956,7 +72975,7 @@ function Hu(t, { joinWith: e }) {
     return a;
   }).map((r) => `(${r})`).join(e);
 }
-const y2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\\d+)?", Kg = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", Qg = "\\b(0b[01]+)", v2 = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", R2 = (t = {}) => {
+const v2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\\d+)?", Kg = "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", Qg = "\\b(0b[01]+)", R2 = "!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~", O2 = (t = {}) => {
   const e = /^#![ ]*\//;
   return t.binary && (t.begin = vr(
     e,
@@ -72976,19 +72995,19 @@ const y2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\
 }, mo = {
   begin: "\\\\[\\s\\S]",
   relevance: 0
-}, O2 = {
+}, N2 = {
   scope: "string",
   begin: "'",
   end: "'",
   illegal: "\\n",
   contains: [mo]
-}, N2 = {
+}, A2 = {
   scope: "string",
   begin: '"',
   end: '"',
   illegal: "\\n",
   contains: [mo]
-}, A2 = {
+}, I2 = {
   begin: /\b(a|an|the|are|I'm|isn't|don't|doesn't|won't|but|just|should|pretty|simply|enough|gonna|going|wtf|so|such|will|you|your|they|like|more)\b/
 }, Hs = function(t, e, n = {}) {
   const r = Fn(
@@ -73056,19 +73075,19 @@ const y2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\
       // look for 3 words in a row
     }
   ), r;
-}, I2 = Hs("//", "$"), x2 = Hs("/\\*", "\\*/"), D2 = Hs("#", "$"), w2 = {
+}, x2 = Hs("//", "$"), D2 = Hs("/\\*", "\\*/"), w2 = Hs("#", "$"), M2 = {
   scope: "number",
   begin: Wg,
   relevance: 0
-}, M2 = {
+}, L2 = {
   scope: "number",
   begin: Kg,
   relevance: 0
-}, L2 = {
+}, k2 = {
   scope: "number",
   begin: Qg,
   relevance: 0
-}, k2 = {
+}, P2 = {
   scope: "regexp",
   begin: /\/(?=[^/\n]*\/)/,
   end: /\/[gimuy]*/,
@@ -73081,19 +73100,19 @@ const y2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\
       contains: [mo]
     }
   ]
-}, P2 = {
+}, F2 = {
   scope: "title",
   begin: qg,
   relevance: 0
-}, F2 = {
+}, B2 = {
   scope: "title",
   begin: Gu,
   relevance: 0
-}, B2 = {
+}, U2 = {
   // excludes method names from keyword processing
   begin: "\\.\\s*" + Gu,
   relevance: 0
-}, U2 = function(t) {
+}, H2 = function(t) {
   return Object.assign(
     t,
     {
@@ -73110,53 +73129,53 @@ const y2 = /\b\B/, qg = "[a-zA-Z]\\w*", Gu = "[a-zA-Z_]\\w*", Wg = "\\b\\d+(\\.\
 };
 var ra = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  APOS_STRING_MODE: O2,
+  APOS_STRING_MODE: N2,
   BACKSLASH_ESCAPE: mo,
-  BINARY_NUMBER_MODE: L2,
+  BINARY_NUMBER_MODE: k2,
   BINARY_NUMBER_RE: Qg,
   COMMENT: Hs,
-  C_BLOCK_COMMENT_MODE: x2,
-  C_LINE_COMMENT_MODE: I2,
-  C_NUMBER_MODE: M2,
+  C_BLOCK_COMMENT_MODE: D2,
+  C_LINE_COMMENT_MODE: x2,
+  C_NUMBER_MODE: L2,
   C_NUMBER_RE: Kg,
-  END_SAME_AS_BEGIN: U2,
-  HASH_COMMENT_MODE: D2,
+  END_SAME_AS_BEGIN: H2,
+  HASH_COMMENT_MODE: w2,
   IDENT_RE: qg,
-  MATCH_NOTHING_RE: y2,
-  METHOD_GUARD: B2,
-  NUMBER_MODE: w2,
+  MATCH_NOTHING_RE: v2,
+  METHOD_GUARD: U2,
+  NUMBER_MODE: M2,
   NUMBER_RE: Wg,
-  PHRASAL_WORDS_MODE: A2,
-  QUOTE_STRING_MODE: N2,
-  REGEXP_MODE: k2,
-  RE_STARTERS_RE: v2,
-  SHEBANG: R2,
-  TITLE_MODE: P2,
+  PHRASAL_WORDS_MODE: I2,
+  QUOTE_STRING_MODE: A2,
+  REGEXP_MODE: P2,
+  RE_STARTERS_RE: R2,
+  SHEBANG: O2,
+  TITLE_MODE: F2,
   UNDERSCORE_IDENT_RE: Gu,
-  UNDERSCORE_TITLE_MODE: F2
+  UNDERSCORE_TITLE_MODE: B2
 });
-function H2(t, e) {
+function G2(t, e) {
   t.input[t.index - 1] === "." && e.ignoreMatch();
 }
-function G2(t, e) {
+function V2(t, e) {
   t.className !== void 0 && (t.scope = t.className, delete t.className);
 }
-function V2(t, e) {
-  e && t.beginKeywords && (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = H2, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
-}
 function Y2(t, e) {
-  Array.isArray(t.illegal) && (t.illegal = Uu(...t.illegal));
+  e && t.beginKeywords && (t.begin = "\\b(" + t.beginKeywords.split(" ").join("|") + ")(?!\\.)(?=\\b|\\s)", t.__beforeBegin = G2, t.keywords = t.keywords || t.beginKeywords, delete t.beginKeywords, t.relevance === void 0 && (t.relevance = 0));
 }
 function z2(t, e) {
+  Array.isArray(t.illegal) && (t.illegal = Uu(...t.illegal));
+}
+function $2(t, e) {
   if (t.match) {
     if (t.begin || t.end) throw new Error("begin & end are not supported with match");
     t.begin = t.match, delete t.match;
   }
 }
-function $2(t, e) {
+function q2(t, e) {
   t.relevance === void 0 && (t.relevance = 1);
 }
-const q2 = (t, e) => {
+const W2 = (t, e) => {
   if (!t.beforeMatch) return;
   if (t.starts) throw new Error("beforeMatch cannot be used with starts");
   const n = Object.assign({}, t);
@@ -73168,7 +73187,7 @@ const q2 = (t, e) => {
       Object.assign(n, { endsParent: !0 })
     ]
   }, t.relevance = 0, delete n.beforeMatch;
-}, W2 = [
+}, K2 = [
   "of",
   "and",
   "for",
@@ -73183,8 +73202,8 @@ const q2 = (t, e) => {
   // common variable name
   "value"
   // common variable name
-], K2 = "keyword";
-function Zg(t, e, n = K2) {
+], Q2 = "keyword";
+function Zg(t, e, n = Q2) {
   const r = /* @__PURE__ */ Object.create(null);
   return typeof t == "string" ? i(n, t.split(" ")) : Array.isArray(t) ? i(n, t) : Object.keys(t).forEach(function(o) {
     Object.assign(
@@ -73195,15 +73214,15 @@ function Zg(t, e, n = K2) {
   function i(o, a) {
     e && (a = a.map((s) => s.toLowerCase())), a.forEach(function(s) {
       const l = s.split("|");
-      r[l[0]] = [o, Q2(l[0], l[1])];
+      r[l[0]] = [o, Z2(l[0], l[1])];
     });
   }
 }
-function Q2(t, e) {
-  return e ? Number(e) : Z2(t) ? 0 : 1;
+function Z2(t, e) {
+  return e ? Number(e) : X2(t) ? 0 : 1;
 }
-function Z2(t) {
-  return W2.includes(t.toLowerCase());
+function X2(t) {
+  return K2.includes(t.toLowerCase());
 }
 const X_ = {}, _r = (t) => {
   console.error(t);
@@ -73219,7 +73238,7 @@ function Xg(t, e, { key: n }) {
     a[s + r] = i[s], o[s + r] = !0, r += $g(e[s - 1]);
   t[n] = a, t[n]._emit = o, t[n]._multi = !0;
 }
-function X2(t) {
+function j2(t) {
   if (Array.isArray(t.begin)) {
     if (t.skip || t.excludeBegin || t.returnBegin)
       throw _r("skip, excludeBegin, returnBegin not compatible with beginScope: {}"), cs;
@@ -73228,7 +73247,7 @@ function X2(t) {
     Xg(t, t.begin, { key: "beginScope" }), t.begin = Hu(t.begin, { joinWith: "" });
   }
 }
-function j2(t) {
+function J2(t) {
   if (Array.isArray(t.end)) {
     if (t.skip || t.excludeEnd || t.returnEnd)
       throw _r("skip, excludeEnd, returnEnd not compatible with endScope: {}"), cs;
@@ -73237,13 +73256,13 @@ function j2(t) {
     Xg(t, t.end, { key: "endScope" }), t.end = Hu(t.end, { joinWith: "" });
   }
 }
-function J2(t) {
+function eL(t) {
   t.scope && typeof t.scope == "object" && t.scope !== null && (t.beginScope = t.scope, delete t.scope);
 }
-function eL(t) {
-  J2(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), X2(t), j2(t);
-}
 function tL(t) {
+  eL(t), typeof t.beginScope == "string" && (t.beginScope = { _wrap: t.beginScope }), typeof t.endScope == "string" && (t.endScope = { _wrap: t.endScope }), j2(t), J2(t);
+}
+function nL(t) {
   function e(a, s) {
     return new RegExp(
       _o(a),
@@ -73316,26 +73335,26 @@ function tL(t) {
     );
     if (a.isCompiled) return l;
     [
-      G2,
+      V2,
       // do this early so compiler extensions generally don't have to worry about
       // the distinction between match/begin
-      z2,
-      eL,
-      q2
+      $2,
+      tL,
+      W2
     ].forEach((u) => u(a, s)), t.compilerExtensions.forEach((u) => u(a, s)), a.__beforeBegin = null, [
-      V2,
+      Y2,
       // do this later so compiler extensions that come earlier have access to the
       // raw array if they wanted to perhaps manipulate it, etc.
-      Y2,
+      z2,
       // default to 1 relevance if not specified
-      $2
+      q2
     ].forEach((u) => u(a, s)), a.isCompiled = !0;
     let c = null;
     return typeof a.keywords == "object" && a.keywords.$pattern && (a.keywords = Object.assign({}, a.keywords), c = a.keywords.$pattern, delete a.keywords.$pattern), c = c || /\w+/, a.keywords && (a.keywords = Zg(a.keywords, t.case_insensitive)), l.keywordPatternRe = e(c, !0), s && (a.begin || (a.begin = /\B|\b/), l.beginRe = e(l.begin), !a.end && !a.endsWithParent && (a.end = /\B|\b/), a.end && (l.endRe = e(l.end)), l.terminatorEnd = _o(l.end) || "", a.endsWithParent && s.terminatorEnd && (l.terminatorEnd += (a.end ? "|" : "") + s.terminatorEnd)), a.illegal && (l.illegalRe = e(
       /** @type {RegExp | string} */
       a.illegal
     )), a.contains || (a.contains = []), a.contains = [].concat(...a.contains.map(function(u) {
-      return nL(u === "self" ? a : u);
+      return rL(u === "self" ? a : u);
     })), a.contains.forEach(function(u) {
       o(
         /** @type Mode */
@@ -73354,18 +73373,18 @@ function tL(t) {
 function jg(t) {
   return t ? t.endsWithParent || jg(t.starts) : !1;
 }
-function nL(t) {
+function rL(t) {
   return t.variants && !t.cachedVariants && (t.cachedVariants = t.variants.map(function(e) {
     return Fn(t, { variants: null }, e);
   })), t.cachedVariants ? t.cachedVariants : jg(t) ? Fn(t, { starts: t.starts ? Fn(t.starts) : null }) : Object.isFrozen(t) ? Fn(t) : t;
 }
-var rL = "11.11.1";
-class iL extends Error {
+var iL = "11.11.1";
+class oL extends Error {
   constructor(e, n) {
     super(e), this.name = "HTMLInjectionError", this.html = n;
   }
 }
-const Fl = Yg, J_ = Fn, em = Symbol("nomatch"), oL = 7, Jg = function(t) {
+const Fl = Yg, J_ = Fn, em = Symbol("nomatch"), aL = 7, Jg = function(t) {
   const e = /* @__PURE__ */ Object.create(null), n = /* @__PURE__ */ Object.create(null), r = [];
   let i = !0;
   const o = "Could not find the language '{}', did you forget to load/include a language module?", a = { disableAutodetect: !0, name: "Plain text", contains: [] };
@@ -73379,7 +73398,7 @@ const Fl = Yg, J_ = Fn, em = Symbol("nomatch"), oL = 7, Jg = function(t) {
     languages: null,
     // beta configuration options, subject to change, welcome to discuss
     // https://github.com/highlightjs/highlight.js/issues/1086
-    __emitter: g2
+    __emitter: E2
   };
   function l(O) {
     return s.noHighlightRe.test(O);
@@ -73389,26 +73408,26 @@ const Fl = Yg, J_ = Fn, em = Symbol("nomatch"), oL = 7, Jg = function(t) {
     y += O.parentNode ? O.parentNode.className : "";
     const R = s.languageDetectRe.exec(y);
     if (R) {
-      const w = I(R[1]);
-      return w || (j_(o.replace("{}", R[1])), j_("Falling back to no-highlight mode for this block.", O)), w ? R[1] : "no-highlight";
+      const M = I(R[1]);
+      return M || (j_(o.replace("{}", R[1])), j_("Falling back to no-highlight mode for this block.", O)), M ? R[1] : "no-highlight";
     }
-    return y.split(/\s+/).find((w) => l(w) || I(w));
+    return y.split(/\s+/).find((M) => l(M) || I(M));
   }
   function u(O, y, R) {
-    let w = "", B = "";
-    typeof y == "object" ? (w = O, R = y.ignoreIllegals, B = y.language) : (Lr("10.7.0", "highlight(lang, code, ...args) has been deprecated."), Lr("10.7.0", `Please use highlight(code, options) instead.
-https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === void 0 && (R = !0);
-    const V = {
-      code: w,
+    let M = "", B = "";
+    typeof y == "object" ? (M = O, R = y.ignoreIllegals, B = y.language) : (Lr("10.7.0", "highlight(lang, code, ...args) has been deprecated."), Lr("10.7.0", `Please use highlight(code, options) instead.
+https://github.com/highlightjs/highlight.js/issues/2277`), B = O, M = y), R === void 0 && (R = !0);
+    const z = {
+      code: M,
       language: B
     };
-    q("before:highlight", V);
-    const X = V.result ? V.result : d(V.language, V.code, R);
-    return X.code = V.code, q("after:highlight", X), X;
+    q("before:highlight", z);
+    const X = z.result ? z.result : d(z.language, z.code, R);
+    return X.code = z.code, q("after:highlight", X), X;
   }
-  function d(O, y, R, w) {
+  function d(O, y, R, M) {
     const B = /* @__PURE__ */ Object.create(null);
-    function V(U, A) {
+    function z(U, A) {
       return U.keywords[A];
     }
     function X() {
@@ -73421,10 +73440,10 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
       let A = Q.keywordPatternRe.exec(ee), k = "";
       for (; A; ) {
         k += ee.substring(U, A.index);
-        const G = Pe.case_insensitive ? A[0].toLowerCase() : A[0], re = V(Q, G);
+        const G = Pe.case_insensitive ? A[0].toLowerCase() : A[0], re = z(Q, G);
         if (re) {
           const [Ce, mt] = re;
-          if (Ee.addText(k), k = "", B[G] = (B[G] || 0) + 1, B[G] <= oL && (_e += mt), Ce.startsWith("_"))
+          if (Ee.addText(k), k = "", B[G] = (B[G] || 0) + 1, B[G] <= aL && (_e += mt), Ce.startsWith("_"))
             k += A[0];
           else {
             const Or = Pe.classNameAliases[Ce] || Ce;
@@ -73472,7 +73491,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
       return U.scope && typeof U.scope == "string" && Ee.openNode(Pe.classNameAliases[U.scope] || U.scope), U.beginScope && (U.beginScope._wrap ? (le(ee, Pe.classNameAliases[U.beginScope._wrap] || U.beginScope._wrap), ee = "") : U.beginScope._multi && (ge(U.beginScope, A), ee = "")), Q = Object.create(U, { parent: { value: Q } }), Q;
     }
     function we(U, A, k) {
-      let G = T2(U.endRe, k);
+      let G = C2(U.endRe, k);
       if (G) {
         if (U["on:end"]) {
           const re = new K_(U);
@@ -73546,8 +73565,8 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
     const Pe = I(O);
     if (!Pe)
       throw _r(o.replace("{}", O)), new Error('Unknown language: "' + O + '"');
-    const ae = tL(Pe);
-    let Qe = "", Q = w || ae;
+    const ae = nL(Pe);
+    let Qe = "", Q = M || ae;
     const J = {}, Ee = new s.__emitter(s);
     Ut();
     let ee = "", _e = 0, Fe = 0, Ge = 0, Tt = !1;
@@ -73613,11 +73632,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
   }
   function _(O, y) {
     y = y || s.languages || Object.keys(e);
-    const R = p(O), w = y.filter(I).filter(x).map(
+    const R = p(O), M = y.filter(I).filter(x).map(
       (pe) => d(pe, O, !1)
     );
-    w.unshift(R);
-    const B = w.sort((pe, le) => {
+    M.unshift(R);
+    const B = M.sort((pe, le) => {
       if (pe.relevance !== le.relevance) return le.relevance - pe.relevance;
       if (pe.language && le.language) {
         if (I(pe.language).supersetOf === le.language)
@@ -73626,12 +73645,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
           return -1;
       }
       return 0;
-    }), [V, X] = B, de = V;
+    }), [z, X] = B, de = z;
     return de.secondBest = X, de;
   }
   function m(O, y, R) {
-    const w = y && n[y] || R;
-    O.classList.add("hljs"), O.classList.add(`language-${w}`);
+    const M = y && n[y] || R;
+    O.classList.add("hljs"), O.classList.add(`language-${M}`);
   }
   function f(O) {
     let y = null;
@@ -73645,12 +73664,12 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
       return;
     }
     if (O.children.length > 0 && (s.ignoreUnescapedHTML || (console.warn("One of your code blocks includes unescaped HTML. This is a potentially serious security risk."), console.warn("https://github.com/highlightjs/highlight.js/wiki/security"), console.warn("The element with unescaped HTML:"), console.warn(O)), s.throwUnescapedHTML))
-      throw new iL(
+      throw new oL(
         "One of your code blocks includes unescaped HTML.",
         O.innerHTML
       );
     y = O;
-    const w = y.textContent, B = R ? u(w, { language: R, ignoreIllegals: !0 }) : _(w);
+    const M = y.textContent, B = R ? u(M, { language: R, ignoreIllegals: !0 }) : _(M);
     O.innerHTML = B.value, O.dataset.highlighted = "yes", m(O, R, B.language), O.result = {
       language: B.language,
       // TODO: remove with version 11.0
@@ -73659,7 +73678,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
     }, B.secondBest && (O.secondBest = {
       language: B.secondBest.language,
       relevance: B.secondBest.relevance
-    }), q("after:highlightElement", { el: O, result: B, text: w });
+    }), q("after:highlightElement", { el: O, result: B, text: M });
   }
   function h(O) {
     s = J_(s, O);
@@ -73685,11 +73704,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
     let R = null;
     try {
       R = y(t);
-    } catch (w) {
+    } catch (M) {
       if (_r("Language definition for '{}' could not be registered.".replace("{}", O)), i)
-        _r(w);
+        _r(M);
       else
-        throw w;
+        throw M;
       R = a;
     }
     R.name || (R.name = O), e[O] = R, R.rawDefinition = y.bind(null, t), R.aliases && N(R.aliases, { languageName: O });
@@ -73725,7 +73744,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
       );
     });
   }
-  function z(O) {
+  function Y(O) {
     P(O), r.push(O);
   }
   function Z(O) {
@@ -73734,11 +73753,11 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
   }
   function q(O, y) {
     const R = O;
-    r.forEach(function(w) {
-      w[R] && w[R](y);
+    r.forEach(function(M) {
+      M[R] && M[R](y);
     });
   }
-  function Y(O) {
+  function V(O) {
     return Lr("10.7.0", "highlightBlock will be removed entirely in v12.0"), Lr("10.7.0", "Please use highlightElement now."), f(O);
   }
   Object.assign(t, {
@@ -73747,7 +73766,7 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
     highlightAll: g,
     highlightElement: f,
     // TODO: Remove with v12 API
-    highlightBlock: Y,
+    highlightBlock: V,
     configure: h,
     initHighlighting: E,
     initHighlightingOnLoad: S,
@@ -73758,30 +73777,30 @@ https://github.com/highlightjs/highlight.js/issues/2277`), B = O, w = y), R === 
     registerAliases: N,
     autoDetection: x,
     inherit: J_,
-    addPlugin: z,
+    addPlugin: Y,
     removePlugin: Z
   }), t.debugMode = function() {
     i = !1;
   }, t.safeMode = function() {
     i = !0;
-  }, t.versionString = rL, t.regex = {
+  }, t.versionString = iL, t.regex = {
     concat: vr,
     lookahead: zg,
     either: Uu,
-    optional: S2,
-    anyNumberOfTimes: E2
+    optional: b2,
+    anyNumberOfTimes: S2
   };
   for (const O in ra)
     typeof ra[O] == "object" && Vg(ra[O]);
   return Object.assign(t, ra), t;
 }, si = Jg({});
 si.newInstance = () => Jg({});
-var aL = si;
+var sL = si;
 si.HighlightJS = si;
 si.default = si;
-const sL = /* @__PURE__ */ Ls(aL), tm = {}, lL = "hljs-";
-function cL(t) {
-  const e = sL.newInstance();
+const lL = /* @__PURE__ */ Ls(sL), tm = {}, cL = "hljs-";
+function uL(t) {
+  const e = lL.newInstance();
   return t && o(t), {
     highlight: n,
     highlightAuto: r,
@@ -73791,10 +73810,10 @@ function cL(t) {
     registered: s
   };
   function n(l, c, u) {
-    const d = u || tm, p = typeof d.prefix == "string" ? d.prefix : lL;
+    const d = u || tm, p = typeof d.prefix == "string" ? d.prefix : cL;
     if (!e.getLanguage(l))
       throw new Error("Unknown language: `" + l + "` is not registered");
-    e.configure({ __emitter: uL, classPrefix: p });
+    e.configure({ __emitter: dL, classPrefix: p });
     const _ = (
       /** @type {HighlightResult & {_emitter: HastEmitter}} */
       e.highlight(c, { ignoreIllegals: !0, language: l })
@@ -73860,7 +73879,7 @@ function cL(t) {
     return !!e.getLanguage(l);
   }
 }
-class uL {
+class dL {
   /**
    * @param {Readonly<HljsOptions>} options
    *   Configuration.
@@ -73961,7 +73980,7 @@ class uL {
     return "";
   }
 }
-const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-video-plugin"), Ri = "video_action", pL = De.create({
+const pL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-video-plugin"), Ri = "video_action", _L = De.create({
   name: "video",
   group: "block",
   addAttributes() {
@@ -74053,8 +74072,8 @@ const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-vid
             typeof u == "object" && (l = u);
           }
           if (l.errorCode === 0 && l.data && l.data.src) {
-            let d = nm.getState(this.editor.state).find(void 0, void 0, (p) => p.id == n);
-            i.dispatch(i.state.tr.insert(d[0].from, o.nodes.video.create({
+            let d = nm.getState(this.editor.state).find(void 0, void 0, (m) => m.id == n), p = d[0].from;
+            this.editor.state.doc.resolve(d[0].from).nodeBefore || (p -= 1), i.dispatch(i.state.tr.insert(p, o.nodes.video.create({
               src: l.data.src,
               poster: l.data.poster,
               width: l.data.width || 350,
@@ -74106,7 +74125,12 @@ const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-vid
                           <source src="${e}">
                       </video>
                   </div>
-                `, zh(d, this.editor.view.dom, (p) => this.editor.commands.updateAttributes("video", p)), {
+                `, zh(
+        this.editor,
+        t.node,
+        d,
+        (p) => this.editor.commands.updateAttributes("video", p)
+      ), {
         dom: d
       };
     };
@@ -74114,7 +74138,7 @@ const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-vid
   addInputRules() {
     return [
       du({
-        find: dL,
+        find: pL,
         type: this.type,
         getAttributes: (t) => {
           const [, , e] = t;
@@ -74159,7 +74183,7 @@ const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-vid
       })
     ];
   }
-}), _L = De.create({
+}), mL = De.create({
   name: "iframe",
   group: "block",
   atom: !0,
@@ -74205,7 +74229,7 @@ const dL = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/, nm = new Oe("aie-vid
     };
   }
 });
-class mL {
+class fL {
   constructor({
     editor: e,
     element: n,
@@ -74215,16 +74239,16 @@ class mL {
     updateAtMouseUp: a = !1,
     shouldShow: s
   }) {
-    M(this, "editor");
-    M(this, "element");
-    M(this, "view");
-    M(this, "preventHide", !1);
-    M(this, "tippy");
-    M(this, "tippyOptions");
-    M(this, "updateDelay");
-    M(this, "updateDebounceTimer");
-    M(this, "updateInMouseUp", !1);
-    M(this, "shouldShow", ({
+    w(this, "editor");
+    w(this, "element");
+    w(this, "view");
+    w(this, "preventHide", !1);
+    w(this, "tippy");
+    w(this, "tippyOptions");
+    w(this, "updateDelay");
+    w(this, "updateDebounceTimer");
+    w(this, "updateInMouseUp", !1);
+    w(this, "shouldShow", ({
       view: e,
       state: n,
       from: r,
@@ -74233,10 +74257,10 @@ class mL {
       const { doc: o, selection: a } = n, { empty: s } = a, l = !o.textBetween(r, i).length && lu(n.selection), c = this.element.contains(document.activeElement);
       return !(!(e.hasFocus() || c) || s || l || !this.editor.isEditable);
     });
-    M(this, "mousedownHandler", () => {
+    w(this, "mousedownHandler", () => {
       this.preventHide = !0;
     });
-    M(this, "mouseupHandler", () => {
+    w(this, "mouseupHandler", () => {
       setTimeout(() => {
         const { view: e } = this.editor, { state: n } = e, r = n.selection.from !== n.selection.to;
         if (this.updateDelay > 0 && r) {
@@ -74246,13 +74270,13 @@ class mL {
         this.updateHandler(e, !0, !0);
       });
     });
-    M(this, "dragstartHandler", () => {
+    w(this, "dragstartHandler", () => {
       this.hide();
     });
-    M(this, "focusHandler", () => {
+    w(this, "focusHandler", () => {
       setTimeout(() => this.update(this.editor.view));
     });
-    M(this, "blurHandler", ({ event: e }) => {
+    w(this, "blurHandler", ({ event: e }) => {
       var n;
       if (this.preventHide) {
         this.preventHide = !1;
@@ -74260,16 +74284,16 @@ class mL {
       }
       e != null && e.relatedTarget && ((n = this.element.parentNode) != null && n.contains(e.relatedTarget)) || this.hide();
     });
-    M(this, "tippyBlurHandler", (e) => {
+    w(this, "tippyBlurHandler", (e) => {
       this.blurHandler({ event: e });
     });
-    M(this, "handleDebouncedUpdate", (e, n) => {
+    w(this, "handleDebouncedUpdate", (e, n) => {
       const r = !(n != null && n.selection.eq(e.state.selection)), i = !(n != null && n.doc.eq(e.state.doc));
       !r && !i || (this.updateDebounceTimer && clearTimeout(this.updateDebounceTimer), this.updateDebounceTimer = window.setTimeout(() => {
         this.updateHandler(e, r, i, n);
       }, this.updateDelay));
     });
-    M(this, "updateHandler", (e, n, r, i) => {
+    w(this, "updateHandler", (e, n, r, i) => {
       var _, m, f;
       const { state: o, composing: a } = e, { selection: s } = o;
       if (a || !n && !r)
@@ -74353,17 +74377,17 @@ class mL {
     ), (n = this.tippy) == null || n.destroy(), this.element.removeEventListener("mousedown", this.mousedownHandler, { capture: !0 }), this.updateInMouseUp && this.view.dom.removeEventListener("mouseup", this.mouseupHandler), this.view.dom.removeEventListener("dragstart", this.dragstartHandler), this.editor.off("focus", this.focusHandler), this.editor.off("blur", this.blurHandler);
   }
 }
-const fL = (t) => new Te({
+const hL = (t) => new Te({
   key: typeof t.pluginKey == "string" ? new Oe(t.pluginKey) : t.pluginKey,
-  view: (e) => new mL({ view: e, ...t })
+  view: (e) => new fL({ view: e, ...t })
 });
 class Gs extends HTMLElement {
   constructor() {
     super();
-    M(this, "editor");
-    M(this, "items", []);
-    M(this, "tippyInstance");
-    M(this, "activeOnClick", !0);
+    w(this, "editor");
+    w(this, "items", []);
+    w(this, "tippyInstance");
+    w(this, "activeOnClick", !0);
   }
   isActive(n) {
     var r;
@@ -74390,8 +74414,9 @@ class Gs extends HTMLElement {
         o && (this.onItemClick(i), this.activeOnClick && (o.classList.contains("active") ? o.classList.remove("active") : o.classList.add("active")));
       });
     }), this.querySelectorAll(".aie-bubble-menu-item").forEach((r, i) => {
+      var a;
       const o = this.items[i].title;
-      o && xe(r, {
+      o && ((a = this.editor) == null ? void 0 : a.options).toolbarTipEnable !== !1 && xe(r, {
         appendTo: this.closest(".aie-container"),
         content: te(o),
         theme: "aietip",
@@ -74426,7 +74451,7 @@ class Gs extends HTMLElement {
   onEditableChange(n) {
   }
 }
-const hL = {
+const gL = {
   id: "edit",
   title: "edit-link",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.41421 15.89L16.5563 5.74786L15.1421 4.33365L5 14.4758V15.89H6.41421ZM7.24264 17.89H3V13.6474L14.435 2.21233C14.8256 1.8218 15.4587 1.8218 15.8492 2.21233L18.6777 5.04075C19.0682 5.43128 19.0682 6.06444 18.6777 6.45497L7.24264 17.89ZM3 19.89H21V21.89H3V19.89Z"></path></svg>',
@@ -74462,14 +74487,14 @@ const hL = {
       o && o.href && (i.popper.querySelector("#href").value = o.href), o && o.target && (i.popper.querySelector("#target").value = o.target);
     }), r.setTrigger(n.querySelector("#edit"), "right");
   }
-}, gL = {
+}, EL = {
   id: "unlink",
   title: "unlink",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 17H22V19H19V22H17V17ZM7 7H2V5H5V2H7V7ZM18.364 15.5355L16.9497 14.1213L18.364 12.7071C20.3166 10.7545 20.3166 7.58866 18.364 5.63604C16.4113 3.68342 13.2455 3.68342 11.2929 5.63604L9.87868 7.05025L8.46447 5.63604L9.87868 4.22183C12.6123 1.48816 17.0445 1.48816 19.7782 4.22183C22.5118 6.9555 22.5118 11.3877 19.7782 14.1213L18.364 15.5355ZM15.5355 18.364L14.1213 19.7782C11.3877 22.5118 6.9555 22.5118 4.22183 19.7782C1.48816 17.0445 1.48816 12.6123 4.22183 9.87868L5.63604 8.46447L7.05025 9.87868L5.63604 11.2929C3.68342 13.2455 3.68342 16.4113 5.63604 18.364C7.58866 20.3166 10.7545 20.3166 12.7071 18.364L14.1213 16.9497L15.5355 18.364ZM14.8284 7.75736L16.2426 9.17157L9.17157 16.2426L7.75736 14.8284L14.8284 7.75736Z"></path></svg>',
   onClick: (t) => {
     t.innerEditor.chain().focus().unsetLink().run();
   }
-}, EL = {
+}, SL = {
   id: "visit",
   title: "visit-link",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z"></path></svg>',
@@ -74479,7 +74504,7 @@ const hL = {
 };
 class Vu {
   constructor(e) {
-    M(this, "record", {});
+    w(this, "record", {});
     for (let n of e)
       this.push(n);
   }
@@ -74493,19 +74518,19 @@ class Vu {
     return Object.values(this.record);
   }
 }
-const SL = new Vu(
-  [hL, gL, EL]
+const bL = new Vu(
+  [gL, EL, SL]
 );
-class bL extends Gs {
+class TL extends Gs {
   constructor() {
     super();
   }
   onCreate(e, n) {
     var r;
-    super.onCreate(e, n), this.initItemsByOptions(SL, (r = n == null ? void 0 : n.link) == null ? void 0 : r.bubbleMenuItems), this.activeOnClick = !1;
+    super.onCreate(e, n), this.initItemsByOptions(bL, (r = n == null ? void 0 : n.link) == null ? void 0 : r.bubbleMenuItems), this.activeOnClick = !1;
   }
 }
-const TL = {
+const CL = {
   id: "AlignLeft",
   title: "align-left",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM3 19H17V21H3V19ZM3 14H21V16H3V14ZM3 9H17V11H3V9Z"></path></svg>',
@@ -74513,7 +74538,7 @@ const TL = {
     const e = t.innerEditor.getAttributes("image");
     e.align = "left", t.innerEditor.chain().setImage(e).run();
   }
-}, CL = {
+}, yL = {
   id: "AlignCenter",
   title: "align-center",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM5 19H19V21H5V19ZM3 14H21V16H3V14ZM5 9H19V11H5V9Z"></path></svg>',
@@ -74521,7 +74546,7 @@ const TL = {
     const e = t.getAttributes("image");
     e.align = "center", t.chain().setImage(e).run();
   }
-}, yL = {
+}, vL = {
   id: "AlignRight",
   title: "align-right",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4H21V6H3V4ZM7 19H21V21H7V19ZM3 14H21V16H3V14ZM7 9H21V11H7V9Z"></path></svg>',
@@ -74529,14 +74554,14 @@ const TL = {
     const e = t.getAttributes("image");
     e.align = "right", t.chain().setImage(e).run();
   }
-}, vL = {
+}, RL = {
   id: "delete",
   title: "delete",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 4V2H17V4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7ZM6 6V20H18V6H6ZM9 9H11V17H9V9ZM13 9H15V17H13V9Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.commands.deleteSelection();
   }
-}, RL = {
+}, OL = {
   id: "imageLink",
   title: "link",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.6572 14.8282L16.2429 13.414L17.6572 11.9998C19.2193 10.4377 19.2193 7.90506 17.6572 6.34296C16.0951 4.78086 13.5624 4.78086 12.0003 6.34296L10.5861 7.75717L9.17188 6.34296L10.5861 4.92875C12.9292 2.5856 16.7282 2.5856 19.0714 4.92875C21.4145 7.27189 21.4145 11.0709 19.0714 13.414L17.6572 14.8282ZM14.8287 17.6567L13.4145 19.0709C11.0714 21.414 7.27238 21.414 4.92923 19.0709C2.58609 16.7277 2.58609 12.9287 4.92923 10.5856L6.34345 9.17139L7.75766 10.5856L6.34345 11.9998C4.78135 13.5619 4.78135 16.0946 6.34345 17.6567C7.90555 19.2188 10.4382 19.2188 12.0003 17.6567L13.4145 16.2425L14.8287 17.6567ZM14.8287 7.75717L16.2429 9.17139L9.17188 16.2425L7.75766 14.8282L14.8287 7.75717Z"></path></svg>',
@@ -74583,7 +74608,7 @@ ${te("unlink")}`, r.onCancelClick(() => {
       o && o.href ? i.popper.querySelector("#href").value = o.href : i.popper.querySelector("#href").value = "", o && o.target ? i.popper.querySelector("#target").value = o.target : i.popper.querySelector("#target").value = "";
     }), r.setTrigger(n.querySelector("#imageLink"), "bottom");
   }
-}, OL = {
+}, NL = {
   id: "imageProperty",
   title: "image-property",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3C20.5523 3 21 3.44772 21 4V5.757L19 7.757V5H5V13.1L9 9.1005L13.328 13.429L11.9132 14.8422L9 11.9289L5 15.928V19H15.533L16.2414 19.0012L17.57 17.671L18.8995 19H19V16.242L21 14.242V20C21 20.5523 20.5523 21 20 21H4C3.45 21 3 20.55 3 20V4C3 3.44772 3.44772 3 4 3H20ZM21.7782 7.80761L23.1924 9.22183L15.4142 17L13.9979 16.9979L14 15.5858L21.7782 7.80761ZM15.5 7C16.3284 7 17 7.67157 17 8.5C17 9.32843 16.3284 10 15.5 10C14.6716 10 14 9.32843 14 8.5C14 7.67157 14.6716 7 15.5 7Z"></path></svg>',
@@ -74626,16 +74651,16 @@ ${te("unlink")}`, r.onCancelClick(() => {
       o && (i.popper.querySelector("#alt").value = o.alt || "", i.popper.querySelector("#title").value = o.title || "");
     }), r.setTrigger(n.querySelector("#imageProperty"), "bottom");
   }
-}, NL = new Vu(
-  [TL, CL, yL, RL, OL, vL]
+}, AL = new Vu(
+  [CL, yL, vL, OL, NL, RL]
 );
-class AL extends Gs {
+class IL extends Gs {
   constructor() {
     super();
   }
   onCreate(e, n) {
     var r;
-    super.onCreate(e, n), this.initItemsByOptions(NL, (r = n == null ? void 0 : n.image) == null ? void 0 : r.bubbleMenuItems), this.activeOnClick = !1;
+    super.onCreate(e, n), this.initItemsByOptions(AL, (r = n == null ? void 0 : n.image) == null ? void 0 : r.bubbleMenuItems), this.activeOnClick = !1;
   }
   onTransaction(e) {
     e.editor.isActive("image") && this.refreshActive();
@@ -74644,9 +74669,9 @@ class AL extends Gs {
 const qi = class qi {
   constructor() {
     // 移除实例属性，只保留静态属性
-    M(this, "historyColors", []);
-    M(this, "editor");
-    M(this, "onClose");
+    w(this, "historyColors", []);
+    w(this, "editor");
+    w(this, "onClose");
     const e = localStorage.getItem(qi.historyColorsKey);
     e && (this.historyColors = JSON.parse(e));
   }
@@ -74707,9 +74732,9 @@ const qi = class qi {
   }
 };
 // 只保留静态属性
-M(qi, "historyColorsKey", "cellBackgroundHistoryColors");
+w(qi, "historyColorsKey", "cellBackgroundHistoryColors");
 let $i = qi;
-class IL extends Gs {
+class xL extends Gs {
   constructor() {
     super(), this.items = [
       {
@@ -74957,11 +74982,11 @@ const us = {
 };
 class eE {
   constructor(e, n) {
-    M(this, "delay");
-    M(this, "appending", !1);
-    M(this, "isFinished", !1);
-    M(this, "textarea");
-    M(this, "textQueue", []);
+    w(this, "delay");
+    w(this, "appending", !1);
+    w(this, "isFinished", !1);
+    w(this, "textarea");
+    w(this, "textQueue", []);
     this.delay = e, this.textarea = n;
   }
   appendText(e) {
@@ -75010,7 +75035,7 @@ const tE = (t) => {
       height: a.height - 10
     };
   }
-}, xL = [
+}, DL = [
   {
     prompt: `<content>{content}</content>
 请帮我优化一下这段内容，并直接返回优化后的结果。
@@ -75077,7 +75102,7 @@ const tE = (t) => {
     } else
       console.error('AI model name config error. can not get AI model by name: "' + ((i = c.ai) == null ? void 0 : i.bubblePanelModel) + '", please check config "options.ai.bubblePanelModel"');
   }
-}, DL = (t, e) => {
+}, wL = (t, e) => {
   const n = document.createElement("div");
   return n.classList.add("aie-ai-panel"), n.innerHTML = `
         <div class="aie-ai-panel-body">
@@ -75131,7 +75156,7 @@ const tE = (t) => {
     var i, o;
     r.target === n && ((i = t.aiPanelInstance) == null || i.hide(), (o = t.tippyInstance) == null || o.show());
   }), n;
-}, wL = {
+}, ML = {
   id: "ai",
   title: "ai",
   icon: `<div style="display: flex;height: 20px">
@@ -75145,9 +75170,9 @@ const tE = (t) => {
                 `,
   onInit: ({ innerEditor: t }, e, n) => {
     var o;
-    const r = { editor: t, tippyInstance: e }, i = ((o = t.aiEditor.options.ai) == null ? void 0 : o.bubblePanelMenus) || xL;
+    const r = { editor: t, tippyInstance: e }, i = ((o = t.aiEditor.options.ai) == null ? void 0 : o.bubblePanelMenus) || DL;
     return r.aiPanelInstance = xe(n.querySelector("#ai"), {
-      content: DL(r, i),
+      content: wL(r, i),
       appendTo: t.view.dom.closest(".aie-container"),
       trigger: "click",
       interactive: !0,
@@ -75166,42 +75191,42 @@ const tE = (t) => {
     var i;
     (i = r.tippyInstance) == null || i.hide();
   }
-}, ML = {
+}, LL = {
   id: "bold",
   title: "bold",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 11H12.5C13.8807 11 15 9.88071 15 8.5C15 7.11929 13.8807 6 12.5 6H8V11ZM18 15.5C18 17.9853 15.9853 20 13.5 20H6V4H12.5C14.9853 4 17 6.01472 17 8.5C17 9.70431 16.5269 10.7981 15.7564 11.6058C17.0979 12.3847 18 13.837 18 15.5ZM8 13V18H13.5C14.8807 18 16 16.8807 16 15.5C16 14.1193 14.8807 13 13.5 13H8Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.chain().toggleBold().run();
   }
-}, LL = {
+}, kL = {
   id: "underline",
   title: "underline",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3V12C8 14.2091 9.79086 16 12 16C14.2091 16 16 14.2091 16 12V3H18V12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12V3H8ZM4 20H20V22H4V20Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.chain().toggleUnderline().run();
   }
-}, kL = {
+}, PL = {
   id: "code",
   title: "code",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 11.9998L15.9289 19.0708L14.5147 17.6566L20.1716 11.9998L14.5147 6.34292L15.9289 4.92871L23 11.9998ZM3.82843 11.9998L9.48528 17.6566L8.07107 19.0708L1 11.9998L8.07107 4.92871L9.48528 6.34292L3.82843 11.9998Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.chain().toggleCode().run();
   }
-}, PL = {
+}, FL = {
   id: "strike",
   title: "strike",
   icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.1538 14C17.3846 14.5161 17.5 15.0893 17.5 15.7196C17.5 17.0625 16.9762 18.1116 15.9286 18.867C14.8809 19.6223 13.4335 20 11.5862 20C9.94674 20 8.32335 19.6185 6.71592 18.8555V16.6009C8.23538 17.4783 9.7908 17.917 11.3822 17.917C13.9333 17.917 15.2128 17.1846 15.2208 15.7196C15.2208 15.0939 15.0049 14.5598 14.5731 14.1173C14.5339 14.0772 14.4939 14.0381 14.4531 14H3V12H21V14H17.1538ZM13.076 11H7.62908C7.4566 10.8433 7.29616 10.6692 7.14776 10.4778C6.71592 9.92084 6.5 9.24559 6.5 8.45207C6.5 7.21602 6.96583 6.165 7.89749 5.299C8.82916 4.43299 10.2706 4 12.2219 4C13.6934 4 15.1009 4.32808 16.4444 4.98426V7.13591C15.2448 6.44921 13.9293 6.10587 12.4978 6.10587C10.0187 6.10587 8.77917 6.88793 8.77917 8.45207C8.77917 8.87172 8.99709 9.23796 9.43293 9.55079C9.86878 9.86362 10.4066 10.1135 11.0463 10.3004C11.6665 10.4816 12.3431 10.7148 13.076 11H13.076Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.chain().toggleStrike().run();
   }
-}, FL = {
+}, BL = {
   id: "italic",
   title: "italic",
   icon: ' <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20H7V18H9.92661L12.0425 6H9V4H17V6H14.0734L11.9575 18H15V20Z"></path></svg>',
   onClick: ({ innerEditor: t }) => {
     t.chain().toggleItalic().run();
   }
-}, BL = [
+}, UL = [
   { title: "英语" },
   { title: "中文" },
   { title: "日语" },
@@ -75209,7 +75234,7 @@ const tE = (t) => {
   { title: "德语" },
   { title: "葡萄牙语" },
   { title: "西班牙语" }
-], UL = (t, e, n) => {
+], HL = (t, e, n) => {
   var r, i, o, a;
   if (t.aiClient)
     t.aiClient.stop();
@@ -75234,7 +75259,7 @@ const tE = (t) => {
     } else
       console.error("AI model name config error.");
   }
-}, HL = (t) => {
+}, GL = (t) => {
   const e = document.createElement("div");
   return e.classList.add("aie-translate-result-panel"), e.innerHTML = `
     <textarea rows="5" readonly></textarea>
@@ -75258,7 +75283,7 @@ ${te("ai-append")}</button>
     var n, r;
     (n = t.translateResultInstance) == null || n.hide(), (r = t.editor) == null || r.insertMarkdown(e.querySelector("textarea").value);
   }), e;
-}, GL = (t, e) => {
+}, VL = (t, e) => {
   const n = document.createElement("div");
   n.classList.add("aie-translate-panel"), n.innerHTML = `
       <div class="aie-translate-panel-body">
@@ -75267,7 +75292,7 @@ ${te("ai-append")}</button>
         `;
   const r = t.editor.view.dom.closest(".aie-container");
   return t.translateResultInstance = xe(n, {
-    content: HL(t),
+    content: GL(t),
     appendTo: r,
     placement: "bottom",
     interactive: !0,
@@ -75285,13 +75310,13 @@ ${te("ai-append")}</button>
         return;
       }
       const s = i.popper.querySelector("textarea");
-      s.value = "", (l = t.translatePanelInstance) == null || l.hide(), UL(t, a, s);
+      s.value = "", (l = t.translatePanelInstance) == null || l.hide(), HL(t, a, s);
     },
     onUntrigger: (i) => {
       i.enable();
     }
   }), n;
-}, VL = {
+}, YL = {
   id: "translate",
   title: "translate",
   icon: `<div style="display: flex;height: 20px">
@@ -75305,9 +75330,9 @@ ${te("ai-append")}</button>
                 `,
   onInit: ({ innerEditor: t }, e, n) => {
     var o, a;
-    const r = { editor: t, tippyInstance: e }, i = ((a = (o = t.aiEditor.options.ai) == null ? void 0 : o.translate) == null ? void 0 : a.translateMenuItems) || BL;
+    const r = { editor: t, tippyInstance: e }, i = ((a = (o = t.aiEditor.options.ai) == null ? void 0 : o.translate) == null ? void 0 : a.translateMenuItems) || UL;
     return r.translatePanelInstance = xe(n.querySelector("#translate"), {
-      content: GL(r, i),
+      content: VL(r, i),
       appendTo: t.view.dom.closest(".aie-container"),
       placement: "bottom",
       trigger: "click",
@@ -75315,9 +75340,9 @@ ${te("ai-append")}</button>
       arrow: !1
     }), r;
   }
-}, YL = new Vu(
-  [wL, ML, FL, LL, PL, VL, kL]
-), zL = (t, e) => {
+}, zL = new Vu(
+  [ML, LL, BL, kL, FL, YL, PL]
+), $L = (t, e) => {
   if (!t || t.length === 0)
     return t;
   let n = 0;
@@ -75325,14 +75350,14 @@ ${te("ai-append")}</button>
     e(t[n], n, t) ? t.splice(n, 1) : ++n;
   return t;
 };
-class $L extends Gs {
+class qL extends Gs {
   constructor() {
     super();
   }
   onCreate(e, n) {
     var r, i, o, a;
-    if (super.onCreate(e, n), this.initItemsByOptions(YL, (r = n == null ? void 0 : n.textSelectionBubbleMenu) == null ? void 0 : r.items), ((i = n.ai) == null ? void 0 : i.bubblePanelEnable) === !1)
-      zL(this.items, (s) => s.id === "ai");
+    if (super.onCreate(e, n), this.initItemsByOptions(zL, (r = n == null ? void 0 : n.textSelectionBubbleMenu) == null ? void 0 : r.items), ((i = n.ai) == null ? void 0 : i.bubblePanelEnable) === !1)
+      $L(this.items, (s) => s.id === "ai");
     else if ((o = n.ai) != null && o.bubblePanelIcon) {
       for (let s of this.items)
         if (s.id === "ai") {
@@ -75342,10 +75367,10 @@ class $L extends Gs {
     }
   }
 }
-oe("aie-bubble-link", bL);
-oe("aie-bubble-image", AL);
-oe("aie-bubble-table", IL);
-oe("aie-bubble-text", $L);
+oe("aie-bubble-link", TL);
+oe("aie-bubble-image", IL);
+oe("aie-bubble-table", xL);
+oe("aie-bubble-text", qL);
 function Vs(t, e) {
   return Se.create({
     name: t,
@@ -75356,7 +75381,7 @@ function Vs(t, e) {
     },
     addProseMirrorPlugins() {
       return this.options.element ? [
-        fL({
+        hL({
           pluginKey: this.options.pluginKey,
           editor: this.editor,
           element: this.options.element,
@@ -75369,7 +75394,7 @@ function Vs(t, e) {
     }
   });
 }
-const qL = (t) => {
+const WL = (t) => {
   var r;
   const e = ((r = t.options.textSelectionBubbleMenu) == null ? void 0 : r.elementTagName) || "aie-bubble-text", n = document.createElement(e);
   return t.eventComponents.push(n), Vs("textSelectionBubble", {
@@ -75396,7 +75421,7 @@ const qL = (t) => {
       }).trim().length > 0 && !i.isActive("link") && !i.isActive("image") && !i.isActive("codeBlock") && !(o instanceof ve);
     }
   });
-}, WL = (t) => {
+}, KL = (t) => {
   const e = document.createElement("aie-bubble-link");
   return t.eventComponents.push(e), Vs("linkBubble", {
     pluginKey: "linkBubble",
@@ -75411,7 +75436,7 @@ const qL = (t) => {
     },
     shouldShow: ({ editor: n }) => n.isEditable && n.isActive("link")
   });
-}, KL = (t) => {
+}, QL = (t) => {
   const e = document.createElement("aie-bubble-image");
   return t.eventComponents.push(e), Vs("imageBubble", {
     pluginKey: "imageBubble",
@@ -75433,7 +75458,7 @@ const qL = (t) => {
     },
     shouldShow: ({ editor: n }) => n.isEditable && n.isActive("image")
   });
-}, QL = (t) => {
+}, ZL = (t) => {
   const e = document.createElement("aie-bubble-table");
   return t.eventComponents.push(e), Vs("tableBubble", {
     pluginKey: "tableBubble",
@@ -75455,11 +75480,11 @@ const qL = (t) => {
       return n.isEditable && n.isActive("table") && r instanceof ve;
     }
   });
-}, ZL = (t) => {
+}, XL = (t) => {
   var i, o;
   const e = [];
-  return t.options.editable === !1 || (((i = t == null ? void 0 : t.options.textSelectionBubbleMenu) == null ? void 0 : i.enable) !== !1 && e.push(qL(t)), e.push(WL(t)), ((o = t.options.image) == null ? void 0 : o.bubbleMenuEnable) !== !1 && e.push(KL(t)), e.push(QL(t))), e;
-}, XL = Se.create({
+  return t.options.editable === !1 || (((i = t == null ? void 0 : t.options.textSelectionBubbleMenu) == null ? void 0 : i.enable) !== !1 && e.push(WL(t)), e.push(KL(t)), ((o = t.options.image) == null ? void 0 : o.bubbleMenuEnable) !== !1 && e.push(QL(t)), e.push(ZL(t))), e;
+}, jL = Se.create({
   name: "placeholder",
   addOptions() {
     return {
@@ -75505,7 +75530,7 @@ const qL = (t) => {
     ];
   }
 });
-function jL(t) {
+function JL(t) {
   var e;
   const { char: n, allowSpaces: r, allowToIncludeChar: i, allowedPrefixes: o, startOfLine: a, $position: s } = t, l = r && !i, c = jC(n), u = new RegExp(`\\s${c}$`), d = a ? "^" : "", p = i ? "" : c, _ = l ? new RegExp(`${d}${c}.*?(?=\\s${p}|$)`, "gm") : new RegExp(`${d}(?:^)?${c}[^\\s${p}]*`, "gm"), m = ((e = s.nodeBefore) === null || e === void 0 ? void 0 : e.isText) && s.nodeBefore.text;
   if (!m)
@@ -75527,8 +75552,8 @@ function jL(t) {
     text: h[0]
   } : null;
 }
-const JL = new Oe("suggestion");
-function nE({ pluginKey: t = JL, editor: e, char: n = "@", allowSpaces: r = !1, allowToIncludeChar: i = !1, allowedPrefixes: o = [" "], startOfLine: a = !1, decorationTag: s = "span", decorationClass: l = "suggestion", command: c = () => null, items: u = () => [], render: d = () => ({}), allow: p = () => !0, findSuggestionMatch: _ = jL }) {
+const ek = new Oe("suggestion");
+function nE({ pluginKey: t = ek, editor: e, char: n = "@", allowSpaces: r = !1, allowToIncludeChar: i = !1, allowedPrefixes: o = [" "], startOfLine: a = !1, decorationTag: s = "span", decorationClass: l = "suggestion", command: c = () => null, items: u = () => [], render: d = () => ({}), allow: p = () => !0, findSuggestionMatch: _ = JL }) {
   let m;
   const f = d == null ? void 0 : d(), h = new Te({
     key: t,
@@ -75536,32 +75561,32 @@ function nE({ pluginKey: t = JL, editor: e, char: n = "@", allowSpaces: r = !1, 
       return {
         update: async (E, S) => {
           var b, g, T, C, v, I, N;
-          const x = (b = this.key) === null || b === void 0 ? void 0 : b.getState(S), P = (g = this.key) === null || g === void 0 ? void 0 : g.getState(E.state), z = x.active && P.active && x.range.from !== P.range.from, Z = !x.active && P.active, q = x.active && !P.active, Y = !Z && !q && x.query !== P.query, O = Z || z && Y, y = Y || z, R = q || z && Y;
+          const x = (b = this.key) === null || b === void 0 ? void 0 : b.getState(S), P = (g = this.key) === null || g === void 0 ? void 0 : g.getState(E.state), Y = x.active && P.active && x.range.from !== P.range.from, Z = !x.active && P.active, q = x.active && !P.active, V = !Z && !q && x.query !== P.query, O = Z || Y && V, y = V || Y, R = q || Y && V;
           if (!O && !y && !R)
             return;
-          const w = R && !O ? x : P, B = E.dom.querySelector(`[data-decoration-id="${w.decorationId}"]`);
+          const M = R && !O ? x : P, B = E.dom.querySelector(`[data-decoration-id="${M.decorationId}"]`);
           m = {
             editor: e,
-            range: w.range,
-            query: w.query,
-            text: w.text,
+            range: M.range,
+            query: M.query,
+            text: M.text,
             items: [],
-            command: (V) => c({
+            command: (z) => c({
               editor: e,
-              range: w.range,
-              props: V
+              range: M.range,
+              props: z
             }),
             decorationNode: B,
             // virtual node for popper.js or tippy.js
             // this can be used for building popups without a DOM node
             clientRect: B ? () => {
-              var V;
-              const { decorationId: X } = (V = this.key) === null || V === void 0 ? void 0 : V.getState(e.state), de = E.dom.querySelector(`[data-decoration-id="${X}"]`);
+              var z;
+              const { decorationId: X } = (z = this.key) === null || z === void 0 ? void 0 : z.getState(e.state), de = E.dom.querySelector(`[data-decoration-id="${X}"]`);
               return (de == null ? void 0 : de.getBoundingClientRect()) || null;
             } : null
           }, O && ((T = f == null ? void 0 : f.onBeforeStart) === null || T === void 0 || T.call(f, m)), y && ((C = f == null ? void 0 : f.onBeforeUpdate) === null || C === void 0 || C.call(f, m)), (y || O) && (m.items = await u({
             editor: e,
-            query: w.query
+            query: M.query
           })), R && ((v = f == null ? void 0 : f.onExit) === null || v === void 0 || v.call(f, m)), y && ((I = f == null ? void 0 : f.onUpdate) === null || I === void 0 || I.call(f, m)), O && ((N = f == null ? void 0 : f.onStart) === null || N === void 0 || N.call(f, m));
         },
         destroy: () => {
@@ -75596,13 +75621,13 @@ function nE({ pluginKey: t = JL, editor: e, char: n = "@", allowSpaces: r = !1, 
             allowedPrefixes: o,
             startOfLine: a,
             $position: v.$from
-          }), z = `id_${Math.floor(Math.random() * 4294967295)}`;
+          }), Y = `id_${Math.floor(Math.random() * 4294967295)}`;
           P && p({
             editor: e,
             state: g,
             range: P.range,
             isActive: S.active
-          }) ? (x.active = !0, x.decorationId = S.decorationId ? S.decorationId : z, x.range = P.range, x.query = P.query, x.text = P.text) : x.active = !1;
+          }) ? (x.active = !0, x.decorationId = S.decorationId ? S.decorationId : Y, x.range = P.range, x.query = P.query, x.text = P.text) : x.active = !1;
         } else
           x.active = !1;
         return x.active || (x.decorationId = null, x.range = { from: 0, to: 0 }, x.query = null, x.text = null), x;
@@ -75630,7 +75655,7 @@ function nE({ pluginKey: t = JL, editor: e, char: n = "@", allowSpaces: r = !1, 
   });
   return h;
 }
-const ek = new Oe("mention"), tk = De.create({
+const tk = new Oe("mention"), nk = De.create({
   name: "mention",
   priority: 101,
   addOptions() {
@@ -75651,7 +75676,7 @@ const ek = new Oe("mention"), tk = De.create({
       },
       suggestion: {
         char: "@",
-        pluginKey: ek,
+        pluginKey: tk,
         command: ({ editor: t, range: e, props: n }) => {
           var r, i, o;
           const a = t.view.state.selection.$to.nodeAfter;
@@ -75753,7 +75778,7 @@ const ek = new Oe("mention"), tk = De.create({
       })
     ];
   }
-}), nk = (t) => tk.configure({
+}), rk = (t) => nk.configure({
   HTMLAttributes: {
     class: "mention"
   },
@@ -75812,7 +75837,24 @@ const ek = new Oe("mention"), tk = De.create({
       };
     }
   }
-}), rk = [
+});
+function ik(t) {
+  const { state: e } = t, { selection: n, doc: r } = e, { $from: i } = n, o = i.parent, a = i.start();
+  if (o.type.name !== "paragraph")
+    return null;
+  const s = i.parentOffset, l = o.textContent.slice(0, s);
+  if (l.trim())
+    return l;
+  let c = a - 2;
+  for (; c > 0; ) {
+    const u = r.nodeAt(c);
+    if (u && u.type.name === "paragraph" && u.textContent.trim())
+      return u.textContent;
+    c -= 1;
+  }
+  return null;
+}
+const ok = [
   {
     icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 19V21H19V19H21ZM17 19V21H15V19H17ZM13 19V21H11V19H13ZM9 19V21H7V19H9ZM5 19V21H3V19H5ZM21 15V17H19V15H21ZM5 15V17H3V15H5ZM5 11V13H3V11H5ZM16 3C18.6874 3 20.8817 5.12366 20.9954 7.78322L21 8V13H19V8C19 6.40893 17.7447 5.09681 16.1756 5.00512L16 5H11V3H16ZM5 7V9H3V7H5ZM5 3V5H3V3H5ZM9 3V5H7V3H9Z" fill="currentColor"></path></svg>',
     name: "AI 续写",
@@ -75837,7 +75879,7 @@ const ek = new Oe("mention"), tk = De.create({
     prompt: "请根据以上的内容，生成一张图片，并把图片返回给我",
     model: "auto"
   }
-], ik = Se.create({
+], ak = Se.create({
   name: "aiCommand",
   // @ts-ignore
   addOptions() {
@@ -75924,7 +75966,7 @@ const ek = new Oe("mention"), tk = De.create({
             if (a.onClick)
               a.onClick(o.event, r.aiEditor);
             else {
-              const s = r.state.selection.$head.parent.textContent, l = a.model, c = $n.get(a.model);
+              const s = ik(r) || "", l = a.model, c = $n.get(a.model);
               c ? c == null || c.chat(s, a.prompt, new Da(r)) : console.error("Ai model config error. can not find the type:" + l + " at command menu");
             }
           } else
@@ -75995,7 +76037,7 @@ const ek = new Oe("mention"), tk = De.create({
       })
     ];
   }
-}), ok = Se.create({
+}), sk = Se.create({
   addProseMirrorPlugins() {
     const t = this.editor;
     return [
@@ -76015,7 +76057,7 @@ const ek = new Oe("mention"), tk = De.create({
       })
     ];
   }
-}), rE = ["info", "warning", "danger"], ak = /^:::([a-z]+)?[\s\n]$/, sk = De.create({
+}), rE = ["info", "warning", "danger"], lk = /^:::([a-z]+)?[\s\n]$/, ck = De.create({
   name: "container",
   group: "block",
   content: "block+",
@@ -76064,7 +76106,7 @@ const ek = new Oe("mention"), tk = De.create({
   addInputRules() {
     return [
       Sr({
-        find: ak,
+        find: lk,
         type: this.type,
         getAttributes: (t) => ({
           containerClass: t[1]
@@ -76117,7 +76159,7 @@ const ek = new Oe("mention"), tk = De.create({
       };
     };
   }
-}), lk = Bh.extend({
+}), uk = Bh.extend({
   addAttributes() {
     var t;
     return {
@@ -76127,14 +76169,14 @@ const ek = new Oe("mention"), tk = De.create({
       }
     };
   }
-}), ck = Se.create({
+}), dk = Se.create({
   name: "saveExt",
   addKeyboardShortcuts() {
     return {
       "Mod-s": ({ editor: t }) => this.options.onSave ? this.options.onSave(t.aiEditor) : !1
     };
   }
-}), uk = De.create({
+}), pk = De.create({
   name: "figure",
   content: "block+",
   group: "block",
@@ -76154,7 +76196,7 @@ const ek = new Oe("mention"), tk = De.create({
   renderHTML({ HTMLAttributes: t }) {
     return ["figure", me(this.options.HTMLAttributes, t), 0];
   }
-}), dk = De.create({
+}), _k = De.create({
   name: "figcaption",
   content: "inline*",
   group: "block",
@@ -76172,7 +76214,7 @@ const ek = new Oe("mention"), tk = De.create({
   renderHTML({ HTMLAttributes: t }) {
     return ["figcaption", me(this.options.HTMLAttributes, t), 0];
   }
-}), pk = Se.create({
+}), mk = Se.create({
   name: "pasteExt",
   priority: 1e3,
   addProseMirrorPlugins() {
@@ -76199,7 +76241,7 @@ const ek = new Oe("mention"), tk = De.create({
               const { options: i } = this.editor.aiEditor;
               if (i.htmlPasteConfig) {
                 if (i.htmlPasteConfig.pasteAsText)
-                  r = Nv(r, ["p", "br"]), r = wv(r);
+                  r = Nv(r, ["p", "br"]), r = Mv(r);
                 else if (i.htmlPasteConfig.pasteClean) {
                   r = Ov(r, ["a", "span", "strong", "b", "em", "i", "u"]);
                   const s = new DOMParser().parseFromString(r, "text/html").documentElement.querySelector("body");
@@ -76212,7 +76254,7 @@ const ek = new Oe("mention"), tk = De.create({
               } else if (n && r) {
                 const a = new DOMParser().parseFromString(r, "text/html"), s = a.querySelector("table");
                 if (s && Av(a)) {
-                  const l = Mv(s.outerHTML);
+                  const l = Lv(s.outerHTML);
                   return this.editor.commands.insertContent(l), !0;
                 }
               }
@@ -76222,7 +76264,7 @@ const ek = new Oe("mention"), tk = De.create({
       })
     ];
   }
-}), _k = Se.create({
+}), fk = Se.create({
   name: "className",
   addOptions() {
     return {
@@ -76278,37 +76320,37 @@ const ek = new Oe("mention"), tk = De.create({
       }
     });
   }
-}), mk = (t, e) => {
-  var r, i, o, a, s, l, c, u, d, p, _, m, f, h, E, S, b, g, T, C, v, I, N, x, P, z, Z, q, Y, O, y, R;
-  const n = [CO.configure({
+}), hk = (t, e) => {
+  var r, i, o, a, s, l, c, u, d, p, _, m, f, h, E, S, b, g, T, C, v, I, N, x, P, Y, Z, q, V, O, y;
+  const n = [yO.configure({
     codeBlock: !1,
     heading: !1
   })];
   return n.push(
-    yO,
-    RO,
+    vO,
     OO,
-    lk,
-    xO.configure({
+    NO,
+    uk,
+    DO.configure({
       uploadUrl: (r = e.attachment) == null ? void 0 : r.uploadUrl,
       uploadHeaders: (i = e.attachment) == null ? void 0 : i.uploadHeaders,
       uploadFormName: (o = e.attachment) == null ? void 0 : o.uploadFormName,
       uploader: ((a = e.attachment) == null ? void 0 : a.uploader) || e.uploader,
       uploaderEvent: (s = e.attachment) == null ? void 0 : s.uploaderEvent
     }),
-    DO,
-    ok,
-    LO.configure({
+    wO,
+    sk,
+    kO.configure({
       multicolor: !0
     }),
-    kO,
     PO,
     FO,
-    BO.configure({
+    BO,
+    UO.configure({
       types: ["heading", "paragraph"]
     }),
-    UO,
-    YO.configure({
+    HO,
+    zO.configure({
       allowBase64: typeof ((l = e.image) == null ? void 0 : l.allowBase64) > "u" ? !0 : (c = e.image) == null ? void 0 : c.allowBase64,
       defaultSize: ((u = e.image) == null ? void 0 : u.defaultSize) || 350,
       uploadUrl: (d = e.image) == null ? void 0 : d.uploadUrl,
@@ -76317,76 +76359,76 @@ const ek = new Oe("mention"), tk = De.create({
       uploader: ((m = e.image) == null ? void 0 : m.uploader) || e.uploader,
       uploaderEvent: (f = e.image) == null ? void 0 : f.uploaderEvent
     }),
-    qN.configure({
+    WN.configure({
       resizable: !0,
       lastColumnResizable: !0,
       allowTableNodeSelection: !0
     }),
-    WN,
-    XN,
-    QN,
-    jN.configure({
-      textCounter: typeof (e == null ? void 0 : e.textCounter) == "function" ? e.textCounter : (w) => w.length
+    KN,
+    jN,
+    ZN,
+    JN.configure({
+      textCounter: typeof (e == null ? void 0 : e.textCounter) == "function" ? e.textCounter : (R) => R.length
     }),
-    TA.configure({
+    CA.configure({
       openOnClick: !1,
-      autolink: typeof ((h = e.link) == null ? void 0 : h.autolink) > "u" ? !0 : (E = e.link) == null ? void 0 : E.autolink,
+      autolink: ((h = e.link) == null ? void 0 : h.autolink) !== !1,
       HTMLAttributes: {
-        ref: (S = e == null ? void 0 : e.link) == null ? void 0 : S.rel,
-        class: (b = e == null ? void 0 : e.link) == null ? void 0 : b.class
+        ref: (E = e == null ? void 0 : e.link) == null ? void 0 : E.rel,
+        class: (S = e == null ? void 0 : e.link) == null ? void 0 : S.class
       }
     }),
-    CA,
     yA,
     vA,
-    OA.configure({
+    RA,
+    NA.configure({
       nested: !0
     }),
-    II.configure({
-      lowlight: cL(_2),
+    xI.configure({
+      lowlight: uL(m2),
       defaultLanguage: "auto",
       languageClassPrefix: "language-",
-      languages: ((g = e.codeBlock) == null ? void 0 : g.languages) || yg,
-      codeExplainAi: ((C = (T = e.ai) == null ? void 0 : T.codeBlock) == null ? void 0 : C.codeExplain) || {
+      languages: ((b = e.codeBlock) == null ? void 0 : b.languages) || yg,
+      codeExplainAi: ((T = (g = e.ai) == null ? void 0 : g.codeBlock) == null ? void 0 : T.codeExplain) || {
         model: "auto",
-        prompt: ((v = e.codeBlock) == null ? void 0 : v.codeExplainPrompt) || "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释"
+        prompt: ((C = e.codeBlock) == null ? void 0 : C.codeExplainPrompt) || "帮我对这个代码进行解释，返回代码的解释内容，注意，不需要对代码的注释进行解释"
       },
-      codeCommentsAi: ((N = (I = e.ai) == null ? void 0 : I.codeBlock) == null ? void 0 : N.codeComments) || {
+      codeCommentsAi: ((I = (v = e.ai) == null ? void 0 : v.codeBlock) == null ? void 0 : I.codeComments) || {
         model: "auto",
-        prompt: ((x = e.codeBlock) == null ? void 0 : x.codeCommentsPrompt) || "帮我对这个代码添加代码注释，并返回添加注释的代码，注意只需要返回代码。"
+        prompt: ((N = e.codeBlock) == null ? void 0 : N.codeCommentsPrompt) || "帮我对这个代码添加代码注释，并返回添加注释的代码，注意只需要返回代码。"
       }
     }),
-    pL.configure({
-      uploadUrl: (P = e.video) == null ? void 0 : P.uploadUrl,
-      uploadHeaders: (z = e.video) == null ? void 0 : z.uploadHeaders,
-      uploadFormName: (Z = e.video) == null ? void 0 : Z.uploadFormName,
-      uploader: ((q = e.video) == null ? void 0 : q.uploader) || e.uploader,
-      uploaderEvent: (Y = e.video) == null ? void 0 : Y.uploaderEvent
+    _L.configure({
+      uploadUrl: (x = e.video) == null ? void 0 : x.uploadUrl,
+      uploadHeaders: (P = e.video) == null ? void 0 : P.uploadHeaders,
+      uploadFormName: (Y = e.video) == null ? void 0 : Y.uploadFormName,
+      uploader: ((Z = e.video) == null ? void 0 : Z.uploader) || e.uploader,
+      uploaderEvent: (q = e.video) == null ? void 0 : q.uploaderEvent
     }),
-    _L,
-    uk,
-    dk,
-    ck.configure({
-      onSave: e.onSave
-    }),
+    mL,
     pk,
     _k,
-    sk.configure({
-      defaultType: ((O = e.container) == null ? void 0 : O.defaultType) || "warning",
-      typeItems: ((y = e.container) == null ? void 0 : y.typeItems) || rE
+    dk.configure({
+      onSave: e.onSave
     }),
-    ...ZL(t)
-  ), e.placeholder && n.push(XL.configure({
+    mk,
+    fk,
+    ck.configure({
+      defaultType: ((V = e.container) == null ? void 0 : V.defaultType) || "warning",
+      typeItems: ((O = e.container) == null ? void 0 : O.typeItems) || rE
+    }),
+    ...XL(t)
+  ), e.placeholder && n.push(jL.configure({
     placeholder: e.placeholder
-  })), ((R = e.ai) == null ? void 0 : R.commandsEnable) !== !1 && n.push(ik.configure({
+  })), ((y = e.ai) == null ? void 0 : y.commandsEnable) !== !1 && n.push(ak.configure({
     suggestion: {
-      items: (w) => {
-        var V;
-        return ((V = e.ai) == null ? void 0 : V.commands) || rk;
+      items: (R) => {
+        var B;
+        return ((B = e.ai) == null ? void 0 : B.commands) || ok;
       }
     }
-  })), e.onMentionQuery && n.push(nk(e.onMentionQuery)), n;
-}, fk = {
+  })), e.onMentionQuery && n.push(rk(e.onMentionQuery)), n;
+}, gk = {
   ////commons
   default: "默认",
   delete: "删除",
@@ -76502,7 +76544,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI 优化",
   "ai-proofreading": "AI 校对",
   "ai-translation": "AI 翻译"
-}, hk = {
+}, Ek = {
   ////commons
   default: "Default",
   delete: "Delete",
@@ -76618,7 +76660,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "Optimization",
   "ai-proofreading": "Proofreading",
   "ai-translation": "Translation"
-}, gk = {
+}, Sk = {
   //// commons
   default: "Standard",
   delete: "Löschen",
@@ -76733,7 +76775,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "Optimierung",
   "ai-proofreading": "Korrekturlesen",
   "ai-translation": "Übersetzung"
-}, Ek = {
+}, bk = {
   //// commons
   default: "Padrão",
   delete: "Excluir",
@@ -76843,7 +76885,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "Otimização",
   "ai-proofreading": "Revisão",
   "ai-translation": "Tradução"
-}, Sk = {
+}, Tk = {
   ////commons
   default: "Predeterminado",
   delete: "Eliminar",
@@ -76953,7 +76995,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "Optimización con IA",
   "ai-proofreading": "Corrección con IA",
   "ai-translation": "Traducción con IA"
-}, bk = {
+}, Ck = {
   ////commons
   default: "डिफ़ॉल्ट",
   delete: "हटाएं",
@@ -77063,7 +77105,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI अनुकूलन",
   "ai-proofreading": "AI प्रूफरीडिंग",
   "ai-translation": "AI अनुवाद"
-}, Tk = {
+}, yk = {
   ////commons
   default: "Default",
   delete: "Hapus",
@@ -77173,7 +77215,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI Optimasi",
   "ai-proofreading": "AI Koreksi",
   "ai-translation": "AI Terjemahan"
-}, Ck = {
+}, vk = {
   ////commons
   default: "デフォルト",
   delete: "削除",
@@ -77283,7 +77325,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI最適化",
   "ai-proofreading": "AI校正",
   "ai-translation": "AI翻訳"
-}, yk = {
+}, Rk = {
   ////commons
   default: "기본값",
   delete: "삭제",
@@ -77393,7 +77435,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI 최적화",
   "ai-proofreading": "AI 교정",
   "ai-translation": "AI 번역"
-}, vk = {
+}, Ok = {
   ////commons
   default: "ค่าเริ่มต้น",
   delete: "ลบ",
@@ -77503,7 +77545,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-optimization": "AI ปรับแต่ง",
   "ai-proofreading": "AI พิสูจน์อักษร",
   "ai-translation": "AI แปล"
-}, Rk = {
+}, Nk = {
   ////commons
   default: "Mặc định",
   delete: "Xóa",
@@ -77614,7 +77656,7 @@ const ek = new Oe("mention"), tk = De.create({
   "ai-proofreading": "AI Hiệu đính",
   "ai-translation": "AI Dịch"
 }, im = {};
-function Ok(t) {
+function Ak(t) {
   let e = im[t];
   if (e)
     return e;
@@ -77631,7 +77673,7 @@ function Ok(t) {
 }
 function li(t, e) {
   typeof e != "string" && (e = li.defaultChars);
-  const n = Ok(e);
+  const n = Ak(e);
   return t.replace(/(%[a-f0-9]{2})+/gi, function(r) {
     let i = "";
     for (let o = 0, a = r.length; o < a; o += 3) {
@@ -77672,7 +77714,7 @@ function li(t, e) {
 li.defaultChars = ";/?:@&=+$,#";
 li.componentChars = "";
 const om = {};
-function Nk(t) {
+function Ik(t) {
   let e = om[t];
   if (e)
     return e;
@@ -77687,7 +77729,7 @@ function Nk(t) {
 }
 function No(t, e, n) {
   typeof e != "string" && (n = e, e = No.defaultChars), typeof n > "u" && (n = !0);
-  const r = Nk(e);
+  const r = Ik(e);
   let i = "";
   for (let o = 0, a = t.length; o < a; o++) {
     const s = t.charCodeAt(o);
@@ -77723,8 +77765,8 @@ function Yu(t) {
 function ds() {
   this.protocol = null, this.slashes = null, this.auth = null, this.port = null, this.hostname = null, this.hash = null, this.search = null, this.pathname = null;
 }
-const Ak = /^([a-z0-9.+-]+:)/i, Ik = /:[0-9]*$/, xk = /^(\/\/?(?!\/)[^\?\s]*)(\?[^\s]*)?$/, Dk = ["<", ">", '"', "`", " ", "\r", `
-`, "	"], wk = ["{", "}", "|", "\\", "^", "`"].concat(Dk), Mk = ["'"].concat(wk), am = ["%", "/", "?", ";", "#"].concat(Mk), sm = ["/", "?", "#"], Lk = 255, lm = /^[+a-z0-9A-Z_-]{0,63}$/, kk = /^([+a-z0-9A-Z_-]{0,63})(.*)$/, cm = {
+const xk = /^([a-z0-9.+-]+:)/i, Dk = /:[0-9]*$/, wk = /^(\/\/?(?!\/)[^\?\s]*)(\?[^\s]*)?$/, Mk = ["<", ">", '"', "`", " ", "\r", `
+`, "	"], Lk = ["{", "}", "|", "\\", "^", "`"].concat(Mk), kk = ["'"].concat(Lk), am = ["%", "/", "?", ";", "#"].concat(kk), sm = ["/", "?", "#"], Pk = 255, lm = /^[+a-z0-9A-Z_-]{0,63}$/, Fk = /^([+a-z0-9A-Z_-]{0,63})(.*)$/, cm = {
   javascript: !0,
   "javascript:": !0
 }, um = {
@@ -77747,11 +77789,11 @@ function zu(t, e) {
 ds.prototype.parse = function(t, e) {
   let n, r, i, o = t;
   if (o = o.trim(), !e && t.split("#").length === 1) {
-    const c = xk.exec(o);
+    const c = wk.exec(o);
     if (c)
       return this.pathname = c[1], c[2] && (this.search = c[2]), this;
   }
-  let a = Ak.exec(o);
+  let a = xk.exec(o);
   if (a && (a = a[0], n = a.toLowerCase(), this.protocol = a, o = o.substr(a.length)), (e || a || o.match(/^\/\/[^@\/]+@[^@\/]+/)) && (i = o.substr(0, 2) === "//", i && !(a && cm[a]) && (o = o.substr(2), this.slashes = !0)), !cm[a] && (i || a && !um[a])) {
     let c = -1;
     for (let m = 0; m < sm.length; m++)
@@ -77773,14 +77815,14 @@ ds.prototype.parse = function(t, e) {
           for (let b = 0, g = E.length; b < g; b++)
             E.charCodeAt(b) > 127 ? S += "x" : S += E[b];
           if (!S.match(lm)) {
-            const b = m.slice(0, f), g = m.slice(f + 1), T = E.match(kk);
+            const b = m.slice(0, f), g = m.slice(f + 1), T = E.match(Fk);
             T && (b.push(T[1]), g.unshift(T[2])), g.length && (o = g.join(".") + o), this.hostname = b.join(".");
             break;
           }
         }
       }
     }
-    this.hostname.length > Lk && (this.hostname = ""), _ && (this.hostname = this.hostname.substr(1, this.hostname.length - 2));
+    this.hostname.length > Pk && (this.hostname = ""), _ && (this.hostname = this.hostname.substr(1, this.hostname.length - 2));
   }
   const s = o.indexOf("#");
   s !== -1 && (this.hash = o.substr(s), o = o.slice(0, s));
@@ -77788,32 +77830,32 @@ ds.prototype.parse = function(t, e) {
   return l !== -1 && (this.search = o.substr(l), o = o.slice(0, l)), o && (this.pathname = o), um[n] && this.hostname && !this.pathname && (this.pathname = ""), this;
 };
 ds.prototype.parseHost = function(t) {
-  let e = Ik.exec(t);
+  let e = Dk.exec(t);
   e && (e = e[0], e !== ":" && (this.port = e.substr(1)), t = t.substr(0, t.length - e.length)), t && (this.hostname = t);
 };
-const Pk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Bk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   decode: li,
   encode: No,
   format: Yu,
   parse: zu
-}, Symbol.toStringTag, { value: "Module" })), iE = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/, oE = /[\0-\x1F\x7F-\x9F]/, Fk = /[\xAD\u0600-\u0605\u061C\u06DD\u070F\u0890\u0891\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804[\uDCBD\uDCCD]|\uD80D[\uDC30-\uDC3F]|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/, $u = /[!-#%-\*,-\/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061D-\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1B7D\u1B7E\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52-\u2E5D\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD803[\uDEAD\uDF55-\uDF59\uDF86-\uDF89]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC8\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5A\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDEB9\uDF3C-\uDF3E]|\uD806[\uDC3B\uDD44-\uDD46\uDDE2\uDE3F-\uDE46\uDE9A-\uDE9C\uDE9E-\uDEA2\uDF00-\uDF09]|\uD807[\uDC41-\uDC45\uDC70\uDC71\uDEF7\uDEF8\uDF43-\uDF4F\uDFFF]|\uD809[\uDC70-\uDC74]|\uD80B[\uDFF1\uDFF2]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD81B[\uDE97-\uDE9A\uDFE2]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/, aE = /[\$\+<->\^`\|~\xA2-\xA6\xA8\xA9\xAC\xAE-\xB1\xB4\xB8\xD7\xF7\u02C2-\u02C5\u02D2-\u02DF\u02E5-\u02EB\u02ED\u02EF-\u02FF\u0375\u0384\u0385\u03F6\u0482\u058D-\u058F\u0606-\u0608\u060B\u060E\u060F\u06DE\u06E9\u06FD\u06FE\u07F6\u07FE\u07FF\u0888\u09F2\u09F3\u09FA\u09FB\u0AF1\u0B70\u0BF3-\u0BFA\u0C7F\u0D4F\u0D79\u0E3F\u0F01-\u0F03\u0F13\u0F15-\u0F17\u0F1A-\u0F1F\u0F34\u0F36\u0F38\u0FBE-\u0FC5\u0FC7-\u0FCC\u0FCE\u0FCF\u0FD5-\u0FD8\u109E\u109F\u1390-\u1399\u166D\u17DB\u1940\u19DE-\u19FF\u1B61-\u1B6A\u1B74-\u1B7C\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2044\u2052\u207A-\u207C\u208A-\u208C\u20A0-\u20C0\u2100\u2101\u2103-\u2106\u2108\u2109\u2114\u2116-\u2118\u211E-\u2123\u2125\u2127\u2129\u212E\u213A\u213B\u2140-\u2144\u214A-\u214D\u214F\u218A\u218B\u2190-\u2307\u230C-\u2328\u232B-\u2426\u2440-\u244A\u249C-\u24E9\u2500-\u2767\u2794-\u27C4\u27C7-\u27E5\u27F0-\u2982\u2999-\u29D7\u29DC-\u29FB\u29FE-\u2B73\u2B76-\u2B95\u2B97-\u2BFF\u2CE5-\u2CEA\u2E50\u2E51\u2E80-\u2E99\u2E9B-\u2EF3\u2F00-\u2FD5\u2FF0-\u2FFF\u3004\u3012\u3013\u3020\u3036\u3037\u303E\u303F\u309B\u309C\u3190\u3191\u3196-\u319F\u31C0-\u31E3\u31EF\u3200-\u321E\u322A-\u3247\u3250\u3260-\u327F\u328A-\u32B0\u32C0-\u33FF\u4DC0-\u4DFF\uA490-\uA4C6\uA700-\uA716\uA720\uA721\uA789\uA78A\uA828-\uA82B\uA836-\uA839\uAA77-\uAA79\uAB5B\uAB6A\uAB6B\uFB29\uFBB2-\uFBC2\uFD40-\uFD4F\uFDCF\uFDFC-\uFDFF\uFE62\uFE64-\uFE66\uFE69\uFF04\uFF0B\uFF1C-\uFF1E\uFF3E\uFF40\uFF5C\uFF5E\uFFE0-\uFFE6\uFFE8-\uFFEE\uFFFC\uFFFD]|\uD800[\uDD37-\uDD3F\uDD79-\uDD89\uDD8C-\uDD8E\uDD90-\uDD9C\uDDA0\uDDD0-\uDDFC]|\uD802[\uDC77\uDC78\uDEC8]|\uD805\uDF3F|\uD807[\uDFD5-\uDFF1]|\uD81A[\uDF3C-\uDF3F\uDF45]|\uD82F\uDC9C|\uD833[\uDF50-\uDFC3]|\uD834[\uDC00-\uDCF5\uDD00-\uDD26\uDD29-\uDD64\uDD6A-\uDD6C\uDD83\uDD84\uDD8C-\uDDA9\uDDAE-\uDDEA\uDE00-\uDE41\uDE45\uDF00-\uDF56]|\uD835[\uDEC1\uDEDB\uDEFB\uDF15\uDF35\uDF4F\uDF6F\uDF89\uDFA9\uDFC3]|\uD836[\uDC00-\uDDFF\uDE37-\uDE3A\uDE6D-\uDE74\uDE76-\uDE83\uDE85\uDE86]|\uD838[\uDD4F\uDEFF]|\uD83B[\uDCAC\uDCB0\uDD2E\uDEF0\uDEF1]|\uD83C[\uDC00-\uDC2B\uDC30-\uDC93\uDCA0-\uDCAE\uDCB1-\uDCBF\uDCC1-\uDCCF\uDCD1-\uDCF5\uDD0D-\uDDAD\uDDE6-\uDE02\uDE10-\uDE3B\uDE40-\uDE48\uDE50\uDE51\uDE60-\uDE65\uDF00-\uDFFF]|\uD83D[\uDC00-\uDED7\uDEDC-\uDEEC\uDEF0-\uDEFC\uDF00-\uDF76\uDF7B-\uDFD9\uDFE0-\uDFEB\uDFF0]|\uD83E[\uDC00-\uDC0B\uDC10-\uDC47\uDC50-\uDC59\uDC60-\uDC87\uDC90-\uDCAD\uDCB0\uDCB1\uDD00-\uDE53\uDE60-\uDE6D\uDE70-\uDE7C\uDE80-\uDE88\uDE90-\uDEBD\uDEBF-\uDEC5\uDECE-\uDEDB\uDEE0-\uDEE8\uDEF0-\uDEF8\uDF00-\uDF92\uDF94-\uDFCA]/, sE = /[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/, Bk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Symbol.toStringTag, { value: "Module" })), iE = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/, oE = /[\0-\x1F\x7F-\x9F]/, Uk = /[\xAD\u0600-\u0605\u061C\u06DD\u070F\u0890\u0891\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804[\uDCBD\uDCCD]|\uD80D[\uDC30-\uDC3F]|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/, $u = /[!-#%-\*,-\/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061D-\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1B7D\u1B7E\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52-\u2E5D\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD803[\uDEAD\uDF55-\uDF59\uDF86-\uDF89]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC8\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5A\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDEB9\uDF3C-\uDF3E]|\uD806[\uDC3B\uDD44-\uDD46\uDDE2\uDE3F-\uDE46\uDE9A-\uDE9C\uDE9E-\uDEA2\uDF00-\uDF09]|\uD807[\uDC41-\uDC45\uDC70\uDC71\uDEF7\uDEF8\uDF43-\uDF4F\uDFFF]|\uD809[\uDC70-\uDC74]|\uD80B[\uDFF1\uDFF2]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD81B[\uDE97-\uDE9A\uDFE2]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/, aE = /[\$\+<->\^`\|~\xA2-\xA6\xA8\xA9\xAC\xAE-\xB1\xB4\xB8\xD7\xF7\u02C2-\u02C5\u02D2-\u02DF\u02E5-\u02EB\u02ED\u02EF-\u02FF\u0375\u0384\u0385\u03F6\u0482\u058D-\u058F\u0606-\u0608\u060B\u060E\u060F\u06DE\u06E9\u06FD\u06FE\u07F6\u07FE\u07FF\u0888\u09F2\u09F3\u09FA\u09FB\u0AF1\u0B70\u0BF3-\u0BFA\u0C7F\u0D4F\u0D79\u0E3F\u0F01-\u0F03\u0F13\u0F15-\u0F17\u0F1A-\u0F1F\u0F34\u0F36\u0F38\u0FBE-\u0FC5\u0FC7-\u0FCC\u0FCE\u0FCF\u0FD5-\u0FD8\u109E\u109F\u1390-\u1399\u166D\u17DB\u1940\u19DE-\u19FF\u1B61-\u1B6A\u1B74-\u1B7C\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2044\u2052\u207A-\u207C\u208A-\u208C\u20A0-\u20C0\u2100\u2101\u2103-\u2106\u2108\u2109\u2114\u2116-\u2118\u211E-\u2123\u2125\u2127\u2129\u212E\u213A\u213B\u2140-\u2144\u214A-\u214D\u214F\u218A\u218B\u2190-\u2307\u230C-\u2328\u232B-\u2426\u2440-\u244A\u249C-\u24E9\u2500-\u2767\u2794-\u27C4\u27C7-\u27E5\u27F0-\u2982\u2999-\u29D7\u29DC-\u29FB\u29FE-\u2B73\u2B76-\u2B95\u2B97-\u2BFF\u2CE5-\u2CEA\u2E50\u2E51\u2E80-\u2E99\u2E9B-\u2EF3\u2F00-\u2FD5\u2FF0-\u2FFF\u3004\u3012\u3013\u3020\u3036\u3037\u303E\u303F\u309B\u309C\u3190\u3191\u3196-\u319F\u31C0-\u31E3\u31EF\u3200-\u321E\u322A-\u3247\u3250\u3260-\u327F\u328A-\u32B0\u32C0-\u33FF\u4DC0-\u4DFF\uA490-\uA4C6\uA700-\uA716\uA720\uA721\uA789\uA78A\uA828-\uA82B\uA836-\uA839\uAA77-\uAA79\uAB5B\uAB6A\uAB6B\uFB29\uFBB2-\uFBC2\uFD40-\uFD4F\uFDCF\uFDFC-\uFDFF\uFE62\uFE64-\uFE66\uFE69\uFF04\uFF0B\uFF1C-\uFF1E\uFF3E\uFF40\uFF5C\uFF5E\uFFE0-\uFFE6\uFFE8-\uFFEE\uFFFC\uFFFD]|\uD800[\uDD37-\uDD3F\uDD79-\uDD89\uDD8C-\uDD8E\uDD90-\uDD9C\uDDA0\uDDD0-\uDDFC]|\uD802[\uDC77\uDC78\uDEC8]|\uD805\uDF3F|\uD807[\uDFD5-\uDFF1]|\uD81A[\uDF3C-\uDF3F\uDF45]|\uD82F\uDC9C|\uD833[\uDF50-\uDFC3]|\uD834[\uDC00-\uDCF5\uDD00-\uDD26\uDD29-\uDD64\uDD6A-\uDD6C\uDD83\uDD84\uDD8C-\uDDA9\uDDAE-\uDDEA\uDE00-\uDE41\uDE45\uDF00-\uDF56]|\uD835[\uDEC1\uDEDB\uDEFB\uDF15\uDF35\uDF4F\uDF6F\uDF89\uDFA9\uDFC3]|\uD836[\uDC00-\uDDFF\uDE37-\uDE3A\uDE6D-\uDE74\uDE76-\uDE83\uDE85\uDE86]|\uD838[\uDD4F\uDEFF]|\uD83B[\uDCAC\uDCB0\uDD2E\uDEF0\uDEF1]|\uD83C[\uDC00-\uDC2B\uDC30-\uDC93\uDCA0-\uDCAE\uDCB1-\uDCBF\uDCC1-\uDCCF\uDCD1-\uDCF5\uDD0D-\uDDAD\uDDE6-\uDE02\uDE10-\uDE3B\uDE40-\uDE48\uDE50\uDE51\uDE60-\uDE65\uDF00-\uDFFF]|\uD83D[\uDC00-\uDED7\uDEDC-\uDEEC\uDEF0-\uDEFC\uDF00-\uDF76\uDF7B-\uDFD9\uDFE0-\uDFEB\uDFF0]|\uD83E[\uDC00-\uDC0B\uDC10-\uDC47\uDC50-\uDC59\uDC60-\uDC87\uDC90-\uDCAD\uDCB0\uDCB1\uDD00-\uDE53\uDE60-\uDE6D\uDE70-\uDE7C\uDE80-\uDE88\uDE90-\uDEBD\uDEBF-\uDEC5\uDECE-\uDEDB\uDEE0-\uDEE8\uDEF0-\uDEF8\uDF00-\uDF92\uDF94-\uDFCA]/, sE = /[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/, Hk = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Any: iE,
   Cc: oE,
-  Cf: Fk,
+  Cf: Uk,
   P: $u,
   S: aE,
   Z: sE
-}, Symbol.toStringTag, { value: "Module" })), Uk = new Uint16Array(
+}, Symbol.toStringTag, { value: "Module" })), Gk = new Uint16Array(
   // prettier-ignore
   'ᵁ<Õıʊҝջאٵ۞ޢߖࠏ੊ઑඡ๭༉༦჊ረዡᐕᒝᓃᓟᔥ\0\0\0\0\0\0ᕫᛍᦍᰒᷝ὾⁠↰⊍⏀⏻⑂⠤⤒ⴈ⹈⿎〖㊺㘹㞬㣾㨨㩱㫠㬮ࠀEMabcfglmnoprstu\\bfms¦³¹ÈÏlig耻Æ䃆P耻&䀦cute耻Á䃁reve;䄂Āiyx}rc耻Â䃂;䐐r;쀀𝔄rave耻À䃀pha;䎑acr;䄀d;橓Āgp¡on;䄄f;쀀𝔸plyFunction;恡ing耻Å䃅Ācs¾Ãr;쀀𝒜ign;扔ilde耻Ã䃃ml耻Ä䃄ЀaceforsuåûþėĜĢħĪĀcrêòkslash;或Ŷöø;櫧ed;挆y;䐑ƀcrtąċĔause;戵noullis;愬a;䎒r;쀀𝔅pf;쀀𝔹eve;䋘còēmpeq;扎܀HOacdefhilorsuōőŖƀƞƢƵƷƺǜȕɳɸɾcy;䐧PY耻©䂩ƀcpyŝŢźute;䄆Ā;iŧŨ拒talDifferentialD;慅leys;愭ȀaeioƉƎƔƘron;䄌dil耻Ç䃇rc;䄈nint;戰ot;䄊ĀdnƧƭilla;䂸terDot;䂷òſi;䎧rcleȀDMPTǇǋǑǖot;抙inus;抖lus;投imes;抗oĀcsǢǸkwiseContourIntegral;戲eCurlyĀDQȃȏoubleQuote;思uote;怙ȀlnpuȞȨɇɕonĀ;eȥȦ户;橴ƀgitȯȶȺruent;扡nt;戯ourIntegral;戮ĀfrɌɎ;愂oduct;成nterClockwiseContourIntegral;戳oss;樯cr;쀀𝒞pĀ;Cʄʅ拓ap;才րDJSZacefiosʠʬʰʴʸˋ˗ˡ˦̳ҍĀ;oŹʥtrahd;椑cy;䐂cy;䐅cy;䐏ƀgrsʿ˄ˇger;怡r;憡hv;櫤Āayː˕ron;䄎;䐔lĀ;t˝˞戇a;䎔r;쀀𝔇Āaf˫̧Ācm˰̢riticalȀADGT̖̜̀̆cute;䂴oŴ̋̍;䋙bleAcute;䋝rave;䁠ilde;䋜ond;拄ferentialD;慆Ѱ̽\0\0\0͔͂\0Ѕf;쀀𝔻ƀ;DE͈͉͍䂨ot;惜qual;扐blèCDLRUVͣͲ΂ϏϢϸontourIntegraìȹoɴ͹\0\0ͻ»͉nArrow;懓Āeo·ΤftƀARTΐΖΡrrow;懐ightArrow;懔eåˊngĀLRΫτeftĀARγιrrow;柸ightArrow;柺ightArrow;柹ightĀATϘϞrrow;懒ee;抨pɁϩ\0\0ϯrrow;懑ownArrow;懕erticalBar;戥ǹABLRTaВЪаўѿͼrrowƀ;BUНОТ憓ar;椓pArrow;懵reve;䌑eft˒к\0ц\0ѐightVector;楐eeVector;楞ectorĀ;Bљњ憽ar;楖ightǔѧ\0ѱeeVector;楟ectorĀ;BѺѻ懁ar;楗eeĀ;A҆҇护rrow;憧ĀctҒҗr;쀀𝒟rok;䄐ࠀNTacdfglmopqstuxҽӀӄӋӞӢӧӮӵԡԯԶՒ՝ՠեG;䅊H耻Ð䃐cute耻É䃉ƀaiyӒӗӜron;䄚rc耻Ê䃊;䐭ot;䄖r;쀀𝔈rave耻È䃈ement;戈ĀapӺӾcr;䄒tyɓԆ\0\0ԒmallSquare;旻erySmallSquare;斫ĀgpԦԪon;䄘f;쀀𝔼silon;䎕uĀaiԼՉlĀ;TՂՃ橵ilde;扂librium;懌Āci՗՚r;愰m;橳a;䎗ml耻Ë䃋Āipժկsts;戃onentialE;慇ʀcfiosօֈ֍ֲ׌y;䐤r;쀀𝔉lledɓ֗\0\0֣mallSquare;旼erySmallSquare;斪Ͱֺ\0ֿ\0\0ׄf;쀀𝔽All;戀riertrf;愱cò׋؀JTabcdfgorstר׬ׯ׺؀ؒؖ؛؝أ٬ٲcy;䐃耻>䀾mmaĀ;d׷׸䎓;䏜reve;䄞ƀeiy؇،ؐdil;䄢rc;䄜;䐓ot;䄠r;쀀𝔊;拙pf;쀀𝔾eater̀EFGLSTصلَٖٛ٦qualĀ;Lؾؿ扥ess;招ullEqual;执reater;檢ess;扷lantEqual;橾ilde;扳cr;쀀𝒢;扫ЀAacfiosuڅڋږڛڞڪھۊRDcy;䐪Āctڐڔek;䋇;䁞irc;䄤r;愌lbertSpace;愋ǰگ\0ڲf;愍izontalLine;攀Āctۃۅòکrok;䄦mpńېۘownHumðįqual;扏܀EJOacdfgmnostuۺ۾܃܇܎ܚܞܡܨ݄ݸދޏޕcy;䐕lig;䄲cy;䐁cute耻Í䃍Āiyܓܘrc耻Î䃎;䐘ot;䄰r;愑rave耻Ì䃌ƀ;apܠܯܿĀcgܴܷr;䄪inaryI;慈lieóϝǴ݉\0ݢĀ;eݍݎ戬Āgrݓݘral;戫section;拂isibleĀCTݬݲomma;恣imes;恢ƀgptݿރވon;䄮f;쀀𝕀a;䎙cr;愐ilde;䄨ǫޚ\0ޞcy;䐆l耻Ï䃏ʀcfosuެ޷޼߂ߐĀiyޱ޵rc;䄴;䐙r;쀀𝔍pf;쀀𝕁ǣ߇\0ߌr;쀀𝒥rcy;䐈kcy;䐄΀HJacfosߤߨ߽߬߱ࠂࠈcy;䐥cy;䐌ppa;䎚Āey߶߻dil;䄶;䐚r;쀀𝔎pf;쀀𝕂cr;쀀𝒦րJTaceflmostࠥࠩࠬࡐࡣ঳সে্਷ੇcy;䐉耻<䀼ʀcmnpr࠷࠼ࡁࡄࡍute;䄹bda;䎛g;柪lacetrf;愒r;憞ƀaeyࡗ࡜ࡡron;䄽dil;䄻;䐛Āfsࡨ॰tԀACDFRTUVarࡾࢩࢱࣦ࣠ࣼयज़ΐ४Ānrࢃ࢏gleBracket;柨rowƀ;BR࢙࢚࢞憐ar;懤ightArrow;懆eiling;挈oǵࢷ\0ࣃbleBracket;柦nǔࣈ\0࣒eeVector;楡ectorĀ;Bࣛࣜ懃ar;楙loor;挊ightĀAV࣯ࣵrrow;憔ector;楎Āerँगeƀ;AVउऊऐ抣rrow;憤ector;楚iangleƀ;BEतथऩ抲ar;槏qual;抴pƀDTVषूौownVector;楑eeVector;楠ectorĀ;Bॖॗ憿ar;楘ectorĀ;B॥०憼ar;楒ightáΜs̀EFGLSTॾঋকঝঢভqualGreater;拚ullEqual;扦reater;扶ess;檡lantEqual;橽ilde;扲r;쀀𝔏Ā;eঽা拘ftarrow;懚idot;䄿ƀnpw৔ਖਛgȀLRlr৞৷ਂਐeftĀAR০৬rrow;柵ightArrow;柷ightArrow;柶eftĀarγਊightáοightáϊf;쀀𝕃erĀLRਢਬeftArrow;憙ightArrow;憘ƀchtਾੀੂòࡌ;憰rok;䅁;扪Ѐacefiosuਗ਼੝੠੷੼અઋ઎p;椅y;䐜Ādl੥੯iumSpace;恟lintrf;愳r;쀀𝔐nusPlus;戓pf;쀀𝕄cò੶;䎜ҀJacefostuણધભીଔଙඑ඗ඞcy;䐊cute;䅃ƀaey઴હાron;䅇dil;䅅;䐝ƀgswે૰଎ativeƀMTV૓૟૨ediumSpace;怋hiĀcn૦૘ë૙eryThiî૙tedĀGL૸ଆreaterGreateòٳessLesóੈLine;䀊r;쀀𝔑ȀBnptଢନଷ଺reak;恠BreakingSpace;䂠f;愕ڀ;CDEGHLNPRSTV୕ୖ୪୼஡௫ఄ౞಄ದ೘ൡඅ櫬Āou୛୤ngruent;扢pCap;扭oubleVerticalBar;戦ƀlqxஃஊ஛ement;戉ualĀ;Tஒஓ扠ilde;쀀≂̸ists;戄reater΀;EFGLSTஶஷ஽௉௓௘௥扯qual;扱ullEqual;쀀≧̸reater;쀀≫̸ess;批lantEqual;쀀⩾̸ilde;扵umpń௲௽ownHump;쀀≎̸qual;쀀≏̸eĀfsఊధtTriangleƀ;BEచఛడ拪ar;쀀⧏̸qual;括s̀;EGLSTవశ఼ౄోౘ扮qual;扰reater;扸ess;쀀≪̸lantEqual;쀀⩽̸ilde;扴estedĀGL౨౹reaterGreater;쀀⪢̸essLess;쀀⪡̸recedesƀ;ESಒಓಛ技qual;쀀⪯̸lantEqual;拠ĀeiಫಹverseElement;戌ghtTriangleƀ;BEೋೌ೒拫ar;쀀⧐̸qual;拭ĀquೝഌuareSuĀbp೨೹setĀ;E೰ೳ쀀⊏̸qual;拢ersetĀ;Eഃആ쀀⊐̸qual;拣ƀbcpഓതൎsetĀ;Eഛഞ쀀⊂⃒qual;抈ceedsȀ;ESTലള഻െ抁qual;쀀⪰̸lantEqual;拡ilde;쀀≿̸ersetĀ;E൘൛쀀⊃⃒qual;抉ildeȀ;EFT൮൯൵ൿ扁qual;扄ullEqual;扇ilde;扉erticalBar;戤cr;쀀𝒩ilde耻Ñ䃑;䎝܀Eacdfgmoprstuvලෂ෉෕ෛ෠෧෼ขภยา฿ไlig;䅒cute耻Ó䃓Āiy෎ීrc耻Ô䃔;䐞blac;䅐r;쀀𝔒rave耻Ò䃒ƀaei෮ෲ෶cr;䅌ga;䎩cron;䎟pf;쀀𝕆enCurlyĀDQฎบoubleQuote;怜uote;怘;橔Āclวฬr;쀀𝒪ash耻Ø䃘iŬื฼de耻Õ䃕es;樷ml耻Ö䃖erĀBP๋๠Āar๐๓r;怾acĀek๚๜;揞et;掴arenthesis;揜Ҁacfhilors๿ງຊຏຒດຝະ໼rtialD;戂y;䐟r;쀀𝔓i;䎦;䎠usMinus;䂱Āipຢອncareplanåڝf;愙Ȁ;eio຺ູ໠໤檻cedesȀ;EST່້໏໚扺qual;檯lantEqual;扼ilde;找me;怳Ādp໩໮uct;戏ortionĀ;aȥ໹l;戝Āci༁༆r;쀀𝒫;䎨ȀUfos༑༖༛༟OT耻"䀢r;쀀𝔔pf;愚cr;쀀𝒬؀BEacefhiorsu༾གྷཇའཱིྦྷྪྭ႖ႩႴႾarr;椐G耻®䂮ƀcnrཎནབute;䅔g;柫rĀ;tཛྷཝ憠l;椖ƀaeyཧཬཱron;䅘dil;䅖;䐠Ā;vླྀཹ愜erseĀEUྂྙĀlq྇ྎement;戋uilibrium;懋pEquilibrium;楯r»ཹo;䎡ghtЀACDFTUVa࿁࿫࿳ဢဨၛႇϘĀnr࿆࿒gleBracket;柩rowƀ;BL࿜࿝࿡憒ar;懥eftArrow;懄eiling;按oǵ࿹\0စbleBracket;柧nǔည\0နeeVector;楝ectorĀ;Bဝသ懂ar;楕loor;挋Āerိ၃eƀ;AVဵံြ抢rrow;憦ector;楛iangleƀ;BEၐၑၕ抳ar;槐qual;抵pƀDTVၣၮၸownVector;楏eeVector;楜ectorĀ;Bႂႃ憾ar;楔ectorĀ;B႑႒懀ar;楓Āpuႛ႞f;愝ndImplies;楰ightarrow;懛ĀchႹႼr;愛;憱leDelayed;槴ڀHOacfhimoqstuფჱჷჽᄙᄞᅑᅖᅡᅧᆵᆻᆿĀCcჩხHcy;䐩y;䐨FTcy;䐬cute;䅚ʀ;aeiyᄈᄉᄎᄓᄗ檼ron;䅠dil;䅞rc;䅜;䐡r;쀀𝔖ortȀDLRUᄪᄴᄾᅉownArrow»ОeftArrow»࢚ightArrow»࿝pArrow;憑gma;䎣allCircle;战pf;쀀𝕊ɲᅭ\0\0ᅰt;戚areȀ;ISUᅻᅼᆉᆯ斡ntersection;抓uĀbpᆏᆞsetĀ;Eᆗᆘ抏qual;抑ersetĀ;Eᆨᆩ抐qual;抒nion;抔cr;쀀𝒮ar;拆ȀbcmpᇈᇛሉላĀ;sᇍᇎ拐etĀ;Eᇍᇕqual;抆ĀchᇠህeedsȀ;ESTᇭᇮᇴᇿ扻qual;檰lantEqual;扽ilde;承Tháྌ;我ƀ;esሒሓሣ拑rsetĀ;Eሜም抃qual;抇et»ሓրHRSacfhiorsሾቄ቉ቕ቞ቱቶኟዂወዑORN耻Þ䃞ADE;愢ĀHc቎ቒcy;䐋y;䐦Ābuቚቜ;䀉;䎤ƀaeyብቪቯron;䅤dil;䅢;䐢r;쀀𝔗Āeiቻ኉ǲኀ\0ኇefore;戴a;䎘Ācn኎ኘkSpace;쀀  Space;怉ldeȀ;EFTካኬኲኼ戼qual;扃ullEqual;扅ilde;扈pf;쀀𝕋ipleDot;惛Āctዖዛr;쀀𝒯rok;䅦ૡዷጎጚጦ\0ጬጱ\0\0\0\0\0ጸጽ፷ᎅ\0᏿ᐄᐊᐐĀcrዻጁute耻Ú䃚rĀ;oጇገ憟cir;楉rǣጓ\0጖y;䐎ve;䅬Āiyጞጣrc耻Û䃛;䐣blac;䅰r;쀀𝔘rave耻Ù䃙acr;䅪Ādiፁ፩erĀBPፈ፝Āarፍፐr;䁟acĀekፗፙ;揟et;掵arenthesis;揝onĀ;P፰፱拃lus;抎Āgp፻፿on;䅲f;쀀𝕌ЀADETadps᎕ᎮᎸᏄϨᏒᏗᏳrrowƀ;BDᅐᎠᎤar;椒ownArrow;懅ownArrow;憕quilibrium;楮eeĀ;AᏋᏌ报rrow;憥ownáϳerĀLRᏞᏨeftArrow;憖ightArrow;憗iĀ;lᏹᏺ䏒on;䎥ing;䅮cr;쀀𝒰ilde;䅨ml耻Ü䃜ҀDbcdefosvᐧᐬᐰᐳᐾᒅᒊᒐᒖash;披ar;櫫y;䐒ashĀ;lᐻᐼ抩;櫦Āerᑃᑅ;拁ƀbtyᑌᑐᑺar;怖Ā;iᑏᑕcalȀBLSTᑡᑥᑪᑴar;戣ine;䁼eparator;杘ilde;所ThinSpace;怊r;쀀𝔙pf;쀀𝕍cr;쀀𝒱dash;抪ʀcefosᒧᒬᒱᒶᒼirc;䅴dge;拀r;쀀𝔚pf;쀀𝕎cr;쀀𝒲Ȁfiosᓋᓐᓒᓘr;쀀𝔛;䎞pf;쀀𝕏cr;쀀𝒳ҀAIUacfosuᓱᓵᓹᓽᔄᔏᔔᔚᔠcy;䐯cy;䐇cy;䐮cute耻Ý䃝Āiyᔉᔍrc;䅶;䐫r;쀀𝔜pf;쀀𝕐cr;쀀𝒴ml;䅸ЀHacdefosᔵᔹᔿᕋᕏᕝᕠᕤcy;䐖cute;䅹Āayᕄᕉron;䅽;䐗ot;䅻ǲᕔ\0ᕛoWidtè૙a;䎖r;愨pf;愤cr;쀀𝒵௡ᖃᖊᖐ\0ᖰᖶᖿ\0\0\0\0ᗆᗛᗫᙟ᙭\0ᚕ᚛ᚲᚹ\0ᚾcute耻á䃡reve;䄃̀;Ediuyᖜᖝᖡᖣᖨᖭ戾;쀀∾̳;房rc耻â䃢te肻´̆;䐰lig耻æ䃦Ā;r²ᖺ;쀀𝔞rave耻à䃠ĀepᗊᗖĀfpᗏᗔsym;愵èᗓha;䎱ĀapᗟcĀclᗤᗧr;䄁g;樿ɤᗰ\0\0ᘊʀ;adsvᗺᗻᗿᘁᘇ戧nd;橕;橜lope;橘;橚΀;elmrszᘘᘙᘛᘞᘿᙏᙙ戠;榤e»ᘙsdĀ;aᘥᘦ戡ѡᘰᘲᘴᘶᘸᘺᘼᘾ;榨;榩;榪;榫;榬;榭;榮;榯tĀ;vᙅᙆ戟bĀ;dᙌᙍ抾;榝Āptᙔᙗh;戢»¹arr;捼Āgpᙣᙧon;䄅f;쀀𝕒΀;Eaeiop዁ᙻᙽᚂᚄᚇᚊ;橰cir;橯;扊d;手s;䀧roxĀ;e዁ᚒñᚃing耻å䃥ƀctyᚡᚦᚨr;쀀𝒶;䀪mpĀ;e዁ᚯñʈilde耻ã䃣ml耻ä䃤Āciᛂᛈoninôɲnt;樑ࠀNabcdefiklnoprsu᛭ᛱᜰ᜼ᝃᝈ᝸᝽០៦ᠹᡐᜍ᤽᥈ᥰot;櫭Ācrᛶ᜞kȀcepsᜀᜅᜍᜓong;扌psilon;䏶rime;怵imĀ;e᜚᜛戽q;拍Ŷᜢᜦee;抽edĀ;gᜬᜭ挅e»ᜭrkĀ;t፜᜷brk;掶Āoyᜁᝁ;䐱quo;怞ʀcmprtᝓ᝛ᝡᝤᝨausĀ;eĊĉptyv;榰séᜌnoõēƀahwᝯ᝱ᝳ;䎲;愶een;扬r;쀀𝔟g΀costuvwឍឝឳេ៕៛៞ƀaiuបពរðݠrc;旯p»፱ƀdptឤឨឭot;樀lus;樁imes;樂ɱឹ\0\0ើcup;樆ar;昅riangleĀdu៍្own;施p;斳plus;樄eåᑄåᒭarow;植ƀako៭ᠦᠵĀcn៲ᠣkƀlst៺֫᠂ozenge;槫riangleȀ;dlr᠒᠓᠘᠝斴own;斾eft;旂ight;斸k;搣Ʊᠫ\0ᠳƲᠯ\0ᠱ;斒;斑4;斓ck;斈ĀeoᠾᡍĀ;qᡃᡆ쀀=⃥uiv;쀀≡⃥t;挐Ȁptwxᡙᡞᡧᡬf;쀀𝕓Ā;tᏋᡣom»Ꮜtie;拈؀DHUVbdhmptuvᢅᢖᢪᢻᣗᣛᣬ᣿ᤅᤊᤐᤡȀLRlrᢎᢐᢒᢔ;敗;敔;敖;敓ʀ;DUduᢡᢢᢤᢦᢨ敐;敦;敩;敤;敧ȀLRlrᢳᢵᢷᢹ;敝;敚;敜;教΀;HLRhlrᣊᣋᣍᣏᣑᣓᣕ救;敬;散;敠;敫;敢;敟ox;槉ȀLRlrᣤᣦᣨᣪ;敕;敒;攐;攌ʀ;DUduڽ᣷᣹᣻᣽;敥;敨;攬;攴inus;抟lus;択imes;抠ȀLRlrᤙᤛᤝ᤟;敛;敘;攘;攔΀;HLRhlrᤰᤱᤳᤵᤷ᤻᤹攂;敪;敡;敞;攼;攤;攜Āevģ᥂bar耻¦䂦Ȁceioᥑᥖᥚᥠr;쀀𝒷mi;恏mĀ;e᜚᜜lƀ;bhᥨᥩᥫ䁜;槅sub;柈Ŭᥴ᥾lĀ;e᥹᥺怢t»᥺pƀ;Eeįᦅᦇ;檮Ā;qۜۛೡᦧ\0᧨ᨑᨕᨲ\0ᨷᩐ\0\0᪴\0\0᫁\0\0ᬡᬮ᭍᭒\0᯽\0ᰌƀcpr᦭ᦲ᧝ute;䄇̀;abcdsᦿᧀᧄ᧊᧕᧙戩nd;橄rcup;橉Āau᧏᧒p;橋p;橇ot;橀;쀀∩︀Āeo᧢᧥t;恁îړȀaeiu᧰᧻ᨁᨅǰ᧵\0᧸s;橍on;䄍dil耻ç䃧rc;䄉psĀ;sᨌᨍ橌m;橐ot;䄋ƀdmnᨛᨠᨦil肻¸ƭptyv;榲t脀¢;eᨭᨮ䂢räƲr;쀀𝔠ƀceiᨽᩀᩍy;䑇ckĀ;mᩇᩈ朓ark»ᩈ;䏇r΀;Ecefms᩟᩠ᩢᩫ᪤᪪᪮旋;槃ƀ;elᩩᩪᩭ䋆q;扗eɡᩴ\0\0᪈rrowĀlr᩼᪁eft;憺ight;憻ʀRSacd᪒᪔᪖᪚᪟»ཇ;擈st;抛irc;抚ash;抝nint;樐id;櫯cir;槂ubsĀ;u᪻᪼晣it»᪼ˬ᫇᫔᫺\0ᬊonĀ;eᫍᫎ䀺Ā;qÇÆɭ᫙\0\0᫢aĀ;t᫞᫟䀬;䁀ƀ;fl᫨᫩᫫戁îᅠeĀmx᫱᫶ent»᫩eóɍǧ᫾\0ᬇĀ;dኻᬂot;橭nôɆƀfryᬐᬔᬗ;쀀𝕔oäɔ脀©;sŕᬝr;愗Āaoᬥᬩrr;憵ss;朗Ācuᬲᬷr;쀀𝒸Ābpᬼ᭄Ā;eᭁᭂ櫏;櫑Ā;eᭉᭊ櫐;櫒dot;拯΀delprvw᭠᭬᭷ᮂᮬᯔ᯹arrĀlr᭨᭪;椸;椵ɰ᭲\0\0᭵r;拞c;拟arrĀ;p᭿ᮀ憶;椽̀;bcdosᮏᮐᮖᮡᮥᮨ截rcap;橈Āauᮛᮞp;橆p;橊ot;抍r;橅;쀀∪︀Ȁalrv᮵ᮿᯞᯣrrĀ;mᮼᮽ憷;椼yƀevwᯇᯔᯘqɰᯎ\0\0ᯒreã᭳uã᭵ee;拎edge;拏en耻¤䂤earrowĀlrᯮ᯳eft»ᮀight»ᮽeäᯝĀciᰁᰇoninôǷnt;戱lcty;挭ঀAHabcdefhijlorstuwz᰸᰻᰿ᱝᱩᱵᲊᲞᲬᲷ᳻᳿ᴍᵻᶑᶫᶻ᷆᷍rò΁ar;楥Ȁglrs᱈ᱍ᱒᱔ger;怠eth;愸òᄳhĀ;vᱚᱛ怐»ऊūᱡᱧarow;椏aã̕Āayᱮᱳron;䄏;䐴ƀ;ao̲ᱼᲄĀgrʿᲁr;懊tseq;橷ƀglmᲑᲔᲘ耻°䂰ta;䎴ptyv;榱ĀirᲣᲨsht;楿;쀀𝔡arĀlrᲳᲵ»ࣜ»သʀaegsv᳂͸᳖᳜᳠mƀ;oș᳊᳔ndĀ;ș᳑uit;晦amma;䏝in;拲ƀ;io᳧᳨᳸䃷de脀÷;o᳧ᳰntimes;拇nø᳷cy;䑒cɯᴆ\0\0ᴊrn;挞op;挍ʀlptuwᴘᴝᴢᵉᵕlar;䀤f;쀀𝕕ʀ;emps̋ᴭᴷᴽᵂqĀ;d͒ᴳot;扑inus;戸lus;戔quare;抡blebarwedgåúnƀadhᄮᵝᵧownarrowóᲃarpoonĀlrᵲᵶefôᲴighôᲶŢᵿᶅkaro÷གɯᶊ\0\0ᶎrn;挟op;挌ƀcotᶘᶣᶦĀryᶝᶡ;쀀𝒹;䑕l;槶rok;䄑Ādrᶰᶴot;拱iĀ;fᶺ᠖斿Āah᷀᷃ròЩaòྦangle;榦Āci᷒ᷕy;䑟grarr;柿ऀDacdefglmnopqrstuxḁḉḙḸոḼṉṡṾấắẽỡἪἷὄ὎὚ĀDoḆᴴoôᲉĀcsḎḔute耻é䃩ter;橮ȀaioyḢḧḱḶron;䄛rĀ;cḭḮ扖耻ê䃪lon;払;䑍ot;䄗ĀDrṁṅot;扒;쀀𝔢ƀ;rsṐṑṗ檚ave耻è䃨Ā;dṜṝ檖ot;檘Ȁ;ilsṪṫṲṴ檙nters;揧;愓Ā;dṹṺ檕ot;檗ƀapsẅẉẗcr;䄓tyƀ;svẒẓẕ戅et»ẓpĀ1;ẝẤĳạả;怄;怅怃ĀgsẪẬ;䅋p;怂ĀgpẴẸon;䄙f;쀀𝕖ƀalsỄỎỒrĀ;sỊị拕l;槣us;橱iƀ;lvỚớở䎵on»ớ;䏵ȀcsuvỪỳἋἣĀioữḱrc»Ḯɩỹ\0\0ỻíՈantĀglἂἆtr»ṝess»Ṻƀaeiἒ἖Ἒls;䀽st;扟vĀ;DȵἠD;橸parsl;槥ĀDaἯἳot;打rr;楱ƀcdiἾὁỸr;愯oô͒ĀahὉὋ;䎷耻ð䃰Āmrὓὗl耻ë䃫o;悬ƀcipὡὤὧl;䀡sôծĀeoὬὴctatioîՙnentialåչৡᾒ\0ᾞ\0ᾡᾧ\0\0ῆῌ\0ΐ\0ῦῪ \0 ⁚llingdotseñṄy;䑄male;晀ƀilrᾭᾳ῁lig;耀ﬃɩᾹ\0\0᾽g;耀ﬀig;耀ﬄ;쀀𝔣lig;耀ﬁlig;쀀fjƀaltῙ῜ῡt;晭ig;耀ﬂns;斱of;䆒ǰ΅\0ῳf;쀀𝕗ĀakֿῷĀ;vῼ´拔;櫙artint;樍Āao‌⁕Ācs‑⁒α‚‰‸⁅⁈\0⁐β•‥‧‪‬\0‮耻½䂽;慓耻¼䂼;慕;慙;慛Ƴ‴\0‶;慔;慖ʴ‾⁁\0\0⁃耻¾䂾;慗;慜5;慘ƶ⁌\0⁎;慚;慝8;慞l;恄wn;挢cr;쀀𝒻ࢀEabcdefgijlnorstv₂₉₟₥₰₴⃰⃵⃺⃿℃ℒℸ̗ℾ⅒↞Ā;lٍ₇;檌ƀcmpₐₕ₝ute;䇵maĀ;dₜ᳚䎳;檆reve;䄟Āiy₪₮rc;䄝;䐳ot;䄡Ȁ;lqsؾق₽⃉ƀ;qsؾٌ⃄lanô٥Ȁ;cdl٥⃒⃥⃕c;檩otĀ;o⃜⃝檀Ā;l⃢⃣檂;檄Ā;e⃪⃭쀀⋛︀s;檔r;쀀𝔤Ā;gٳ؛mel;愷cy;䑓Ȁ;Eajٚℌℎℐ;檒;檥;檤ȀEaesℛℝ℩ℴ;扩pĀ;p℣ℤ檊rox»ℤĀ;q℮ℯ檈Ā;q℮ℛim;拧pf;쀀𝕘Āci⅃ⅆr;愊mƀ;el٫ⅎ⅐;檎;檐茀>;cdlqr׮ⅠⅪⅮⅳⅹĀciⅥⅧ;檧r;橺ot;拗Par;榕uest;橼ʀadelsↄⅪ←ٖ↛ǰ↉\0↎proø₞r;楸qĀlqؿ↖lesó₈ií٫Āen↣↭rtneqq;쀀≩︀Å↪ԀAabcefkosy⇄⇇⇱⇵⇺∘∝∯≨≽ròΠȀilmr⇐⇔⇗⇛rsðᒄf»․ilôکĀdr⇠⇤cy;䑊ƀ;cwࣴ⇫⇯ir;楈;憭ar;意irc;䄥ƀalr∁∎∓rtsĀ;u∉∊晥it»∊lip;怦con;抹r;쀀𝔥sĀew∣∩arow;椥arow;椦ʀamopr∺∾≃≞≣rr;懿tht;戻kĀlr≉≓eftarrow;憩ightarrow;憪f;쀀𝕙bar;怕ƀclt≯≴≸r;쀀𝒽asè⇴rok;䄧Ābp⊂⊇ull;恃hen»ᱛૡ⊣\0⊪\0⊸⋅⋎\0⋕⋳\0\0⋸⌢⍧⍢⍿\0⎆⎪⎴cute耻í䃭ƀ;iyݱ⊰⊵rc耻î䃮;䐸Ācx⊼⊿y;䐵cl耻¡䂡ĀfrΟ⋉;쀀𝔦rave耻ì䃬Ȁ;inoܾ⋝⋩⋮Āin⋢⋦nt;樌t;戭fin;槜ta;愩lig;䄳ƀaop⋾⌚⌝ƀcgt⌅⌈⌗r;䄫ƀelpܟ⌏⌓inåގarôܠh;䄱f;抷ed;䆵ʀ;cfotӴ⌬⌱⌽⍁are;愅inĀ;t⌸⌹戞ie;槝doô⌙ʀ;celpݗ⍌⍐⍛⍡al;抺Āgr⍕⍙eróᕣã⍍arhk;樗rod;樼Ȁcgpt⍯⍲⍶⍻y;䑑on;䄯f;쀀𝕚a;䎹uest耻¿䂿Āci⎊⎏r;쀀𝒾nʀ;EdsvӴ⎛⎝⎡ӳ;拹ot;拵Ā;v⎦⎧拴;拳Ā;iݷ⎮lde;䄩ǫ⎸\0⎼cy;䑖l耻ï䃯̀cfmosu⏌⏗⏜⏡⏧⏵Āiy⏑⏕rc;䄵;䐹r;쀀𝔧ath;䈷pf;쀀𝕛ǣ⏬\0⏱r;쀀𝒿rcy;䑘kcy;䑔Ѐacfghjos␋␖␢␧␭␱␵␻ppaĀ;v␓␔䎺;䏰Āey␛␠dil;䄷;䐺r;쀀𝔨reen;䄸cy;䑅cy;䑜pf;쀀𝕜cr;쀀𝓀஀ABEHabcdefghjlmnoprstuv⑰⒁⒆⒍⒑┎┽╚▀♎♞♥♹♽⚚⚲⛘❝❨➋⟀⠁⠒ƀart⑷⑺⑼rò৆òΕail;椛arr;椎Ā;gঔ⒋;檋ar;楢ॣ⒥\0⒪\0⒱\0\0\0\0\0⒵Ⓔ\0ⓆⓈⓍ\0⓹ute;䄺mptyv;榴raîࡌbda;䎻gƀ;dlࢎⓁⓃ;榑åࢎ;檅uo耻«䂫rЀ;bfhlpst࢙ⓞⓦⓩ⓫⓮⓱⓵Ā;f࢝ⓣs;椟s;椝ë≒p;憫l;椹im;楳l;憢ƀ;ae⓿─┄檫il;椙Ā;s┉┊檭;쀀⪭︀ƀabr┕┙┝rr;椌rk;杲Āak┢┬cĀek┨┪;䁻;䁛Āes┱┳;榋lĀdu┹┻;榏;榍Ȁaeuy╆╋╖╘ron;䄾Ādi═╔il;䄼ìࢰâ┩;䐻Ȁcqrs╣╦╭╽a;椶uoĀ;rนᝆĀdu╲╷har;楧shar;楋h;憲ʀ;fgqs▋▌উ◳◿扤tʀahlrt▘▤▷◂◨rrowĀ;t࢙□aé⓶arpoonĀdu▯▴own»њp»०eftarrows;懇ightƀahs◍◖◞rrowĀ;sࣴࢧarpoonó྘quigarro÷⇰hreetimes;拋ƀ;qs▋ও◺lanôবʀ;cdgsব☊☍☝☨c;檨otĀ;o☔☕橿Ā;r☚☛檁;檃Ā;e☢☥쀀⋚︀s;檓ʀadegs☳☹☽♉♋pproøⓆot;拖qĀgq♃♅ôউgtò⒌ôছiíলƀilr♕࣡♚sht;楼;쀀𝔩Ā;Eজ♣;檑š♩♶rĀdu▲♮Ā;l॥♳;楪lk;斄cy;䑙ʀ;achtੈ⚈⚋⚑⚖rò◁orneòᴈard;楫ri;旺Āio⚟⚤dot;䅀ustĀ;a⚬⚭掰che»⚭ȀEaes⚻⚽⛉⛔;扨pĀ;p⛃⛄檉rox»⛄Ā;q⛎⛏檇Ā;q⛎⚻im;拦Ѐabnoptwz⛩⛴⛷✚✯❁❇❐Ānr⛮⛱g;柬r;懽rëࣁgƀlmr⛿✍✔eftĀar০✇ightá৲apsto;柼ightá৽parrowĀlr✥✩efô⓭ight;憬ƀafl✶✹✽r;榅;쀀𝕝us;樭imes;樴š❋❏st;戗áፎƀ;ef❗❘᠀旊nge»❘arĀ;l❤❥䀨t;榓ʀachmt❳❶❼➅➇ròࢨorneòᶌarĀ;d྘➃;業;怎ri;抿̀achiqt➘➝ੀ➢➮➻quo;怹r;쀀𝓁mƀ;egল➪➬;檍;檏Ābu┪➳oĀ;rฟ➹;怚rok;䅂萀<;cdhilqrࠫ⟒☹⟜⟠⟥⟪⟰Āci⟗⟙;檦r;橹reå◲mes;拉arr;楶uest;橻ĀPi⟵⟹ar;榖ƀ;ef⠀भ᠛旃rĀdu⠇⠍shar;楊har;楦Āen⠗⠡rtneqq;쀀≨︀Å⠞܀Dacdefhilnopsu⡀⡅⢂⢎⢓⢠⢥⢨⣚⣢⣤ઃ⣳⤂Dot;戺Ȁclpr⡎⡒⡣⡽r耻¯䂯Āet⡗⡙;時Ā;e⡞⡟朠se»⡟Ā;sျ⡨toȀ;dluျ⡳⡷⡻owîҌefôएðᏑker;斮Āoy⢇⢌mma;権;䐼ash;怔asuredangle»ᘦr;쀀𝔪o;愧ƀcdn⢯⢴⣉ro耻µ䂵Ȁ;acdᑤ⢽⣀⣄sôᚧir;櫰ot肻·Ƶusƀ;bd⣒ᤃ⣓戒Ā;uᴼ⣘;横ţ⣞⣡p;櫛ò−ðઁĀdp⣩⣮els;抧f;쀀𝕞Āct⣸⣽r;쀀𝓂pos»ᖝƀ;lm⤉⤊⤍䎼timap;抸ఀGLRVabcdefghijlmoprstuvw⥂⥓⥾⦉⦘⧚⧩⨕⨚⩘⩝⪃⪕⪤⪨⬄⬇⭄⭿⮮ⰴⱧⱼ⳩Āgt⥇⥋;쀀⋙̸Ā;v⥐௏쀀≫⃒ƀelt⥚⥲⥶ftĀar⥡⥧rrow;懍ightarrow;懎;쀀⋘̸Ā;v⥻ే쀀≪⃒ightarrow;懏ĀDd⦎⦓ash;抯ash;抮ʀbcnpt⦣⦧⦬⦱⧌la»˞ute;䅄g;쀀∠⃒ʀ;Eiop඄⦼⧀⧅⧈;쀀⩰̸d;쀀≋̸s;䅉roø඄urĀ;a⧓⧔普lĀ;s⧓ସǳ⧟\0⧣p肻 ଷmpĀ;e௹ఀʀaeouy⧴⧾⨃⨐⨓ǰ⧹\0⧻;橃on;䅈dil;䅆ngĀ;dൾ⨊ot;쀀⩭̸p;橂;䐽ash;怓΀;Aadqsxஒ⨩⨭⨻⩁⩅⩐rr;懗rĀhr⨳⨶k;椤Ā;oᏲᏰot;쀀≐̸uiöୣĀei⩊⩎ar;椨í஘istĀ;s஠டr;쀀𝔫ȀEest௅⩦⩹⩼ƀ;qs஼⩭௡ƀ;qs஼௅⩴lanô௢ií௪Ā;rஶ⪁»ஷƀAap⪊⪍⪑rò⥱rr;憮ar;櫲ƀ;svྍ⪜ྌĀ;d⪡⪢拼;拺cy;䑚΀AEadest⪷⪺⪾⫂⫅⫶⫹rò⥦;쀀≦̸rr;憚r;急Ȁ;fqs఻⫎⫣⫯tĀar⫔⫙rro÷⫁ightarro÷⪐ƀ;qs఻⪺⫪lanôౕĀ;sౕ⫴»శiíౝĀ;rవ⫾iĀ;eచథiäඐĀpt⬌⬑f;쀀𝕟膀¬;in⬙⬚⬶䂬nȀ;Edvஉ⬤⬨⬮;쀀⋹̸ot;쀀⋵̸ǡஉ⬳⬵;拷;拶iĀ;vಸ⬼ǡಸ⭁⭃;拾;拽ƀaor⭋⭣⭩rȀ;ast୻⭕⭚⭟lleì୻l;쀀⫽⃥;쀀∂̸lint;樔ƀ;ceಒ⭰⭳uåಥĀ;cಘ⭸Ā;eಒ⭽ñಘȀAait⮈⮋⮝⮧rò⦈rrƀ;cw⮔⮕⮙憛;쀀⤳̸;쀀↝̸ghtarrow»⮕riĀ;eೋೖ΀chimpqu⮽⯍⯙⬄୸⯤⯯Ȁ;cerല⯆ഷ⯉uå൅;쀀𝓃ortɭ⬅\0\0⯖ará⭖mĀ;e൮⯟Ā;q൴൳suĀbp⯫⯭å೸åഋƀbcp⯶ⰑⰙȀ;Ees⯿ⰀഢⰄ抄;쀀⫅̸etĀ;eഛⰋqĀ;qണⰀcĀ;eലⰗñസȀ;EesⰢⰣൟⰧ抅;쀀⫆̸etĀ;e൘ⰮqĀ;qൠⰣȀgilrⰽⰿⱅⱇìௗlde耻ñ䃱çృiangleĀlrⱒⱜeftĀ;eచⱚñదightĀ;eೋⱥñ೗Ā;mⱬⱭ䎽ƀ;esⱴⱵⱹ䀣ro;愖p;怇ҀDHadgilrsⲏⲔⲙⲞⲣⲰⲶⳓⳣash;抭arr;椄p;쀀≍⃒ash;抬ĀetⲨⲬ;쀀≥⃒;쀀>⃒nfin;槞ƀAetⲽⳁⳅrr;椂;쀀≤⃒Ā;rⳊⳍ쀀<⃒ie;쀀⊴⃒ĀAtⳘⳜrr;椃rie;쀀⊵⃒im;쀀∼⃒ƀAan⳰⳴ⴂrr;懖rĀhr⳺⳽k;椣Ā;oᏧᏥear;椧ቓ᪕\0\0\0\0\0\0\0\0\0\0\0\0\0ⴭ\0ⴸⵈⵠⵥ⵲ⶄᬇ\0\0ⶍⶫ\0ⷈⷎ\0ⷜ⸙⸫⸾⹃Ācsⴱ᪗ute耻ó䃳ĀiyⴼⵅrĀ;c᪞ⵂ耻ô䃴;䐾ʀabios᪠ⵒⵗǈⵚlac;䅑v;樸old;榼lig;䅓Ācr⵩⵭ir;榿;쀀𝔬ͯ⵹\0\0⵼\0ⶂn;䋛ave耻ò䃲;槁Ābmⶈ෴ar;榵Ȁacitⶕ⶘ⶥⶨrò᪀Āir⶝ⶠr;榾oss;榻nå๒;槀ƀaeiⶱⶵⶹcr;䅍ga;䏉ƀcdnⷀⷅǍron;䎿;榶pf;쀀𝕠ƀaelⷔ⷗ǒr;榷rp;榹΀;adiosvⷪⷫⷮ⸈⸍⸐⸖戨rò᪆Ȁ;efmⷷⷸ⸂⸅橝rĀ;oⷾⷿ愴f»ⷿ耻ª䂪耻º䂺gof;抶r;橖lope;橗;橛ƀclo⸟⸡⸧ò⸁ash耻ø䃸l;折iŬⸯ⸴de耻õ䃵esĀ;aǛ⸺s;樶ml耻ö䃶bar;挽ૡ⹞\0⹽\0⺀⺝\0⺢⺹\0\0⻋ຜ\0⼓\0\0⼫⾼\0⿈rȀ;astЃ⹧⹲຅脀¶;l⹭⹮䂶leìЃɩ⹸\0\0⹻m;櫳;櫽y;䐿rʀcimpt⺋⺏⺓ᡥ⺗nt;䀥od;䀮il;怰enk;怱r;쀀𝔭ƀimo⺨⺰⺴Ā;v⺭⺮䏆;䏕maô੶ne;明ƀ;tv⺿⻀⻈䏀chfork»´;䏖Āau⻏⻟nĀck⻕⻝kĀ;h⇴⻛;愎ö⇴sҀ;abcdemst⻳⻴ᤈ⻹⻽⼄⼆⼊⼎䀫cir;樣ir;樢Āouᵀ⼂;樥;橲n肻±ຝim;樦wo;樧ƀipu⼙⼠⼥ntint;樕f;쀀𝕡nd耻£䂣Ԁ;Eaceinosu່⼿⽁⽄⽇⾁⾉⾒⽾⾶;檳p;檷uå໙Ā;c໎⽌̀;acens່⽙⽟⽦⽨⽾pproø⽃urlyeñ໙ñ໎ƀaes⽯⽶⽺pprox;檹qq;檵im;拨iíໟmeĀ;s⾈ຮ怲ƀEas⽸⾐⽺ð⽵ƀdfp໬⾙⾯ƀals⾠⾥⾪lar;挮ine;挒urf;挓Ā;t໻⾴ï໻rel;抰Āci⿀⿅r;쀀𝓅;䏈ncsp;怈̀fiopsu⿚⋢⿟⿥⿫⿱r;쀀𝔮pf;쀀𝕢rime;恗cr;쀀𝓆ƀaeo⿸〉〓tĀei⿾々rnionóڰnt;樖stĀ;e【】䀿ñἙô༔઀ABHabcdefhilmnoprstux぀けさすムㄎㄫㅇㅢㅲㆎ㈆㈕㈤㈩㉘㉮㉲㊐㊰㊷ƀartぇおがròႳòϝail;検aròᱥar;楤΀cdenqrtとふへみわゔヌĀeuねぱ;쀀∽̱te;䅕iãᅮmptyv;榳gȀ;del࿑らるろ;榒;榥å࿑uo耻»䂻rր;abcfhlpstw࿜ガクシスゼゾダッデナp;極Ā;f࿠ゴs;椠;椳s;椞ë≝ð✮l;楅im;楴l;憣;憝Āaiパフil;椚oĀ;nホボ戶aló༞ƀabrョリヮrò៥rk;杳ĀakンヽcĀekヹ・;䁽;䁝Āes㄂㄄;榌lĀduㄊㄌ;榎;榐Ȁaeuyㄗㄜㄧㄩron;䅙Ādiㄡㄥil;䅗ì࿲âヺ;䑀Ȁclqsㄴㄷㄽㅄa;椷dhar;楩uoĀ;rȎȍh;憳ƀacgㅎㅟངlȀ;ipsླྀㅘㅛႜnåႻarôྩt;断ƀilrㅩဣㅮsht;楽;쀀𝔯ĀaoㅷㆆrĀduㅽㅿ»ѻĀ;l႑ㆄ;楬Ā;vㆋㆌ䏁;䏱ƀgns㆕ㇹㇼht̀ahlrstㆤㆰ㇂㇘㇤㇮rrowĀ;t࿜ㆭaéトarpoonĀduㆻㆿowîㅾp»႒eftĀah㇊㇐rrowó࿪arpoonóՑightarrows;應quigarro÷ニhreetimes;拌g;䋚ingdotseñἲƀahm㈍㈐㈓rò࿪aòՑ;怏oustĀ;a㈞㈟掱che»㈟mid;櫮Ȁabpt㈲㈽㉀㉒Ānr㈷㈺g;柭r;懾rëဃƀafl㉇㉊㉎r;榆;쀀𝕣us;樮imes;樵Āap㉝㉧rĀ;g㉣㉤䀩t;榔olint;樒arò㇣Ȁachq㉻㊀Ⴜ㊅quo;怺r;쀀𝓇Ābu・㊊oĀ;rȔȓƀhir㊗㊛㊠reåㇸmes;拊iȀ;efl㊪ၙᠡ㊫方tri;槎luhar;楨;愞ൡ㋕㋛㋟㌬㌸㍱\0㍺㎤\0\0㏬㏰\0㐨㑈㑚㒭㒱㓊㓱\0㘖\0\0㘳cute;䅛quï➺Ԁ;Eaceinpsyᇭ㋳㋵㋿㌂㌋㌏㌟㌦㌩;檴ǰ㋺\0㋼;檸on;䅡uåᇾĀ;dᇳ㌇il;䅟rc;䅝ƀEas㌖㌘㌛;檶p;檺im;择olint;樓iíሄ;䑁otƀ;be㌴ᵇ㌵担;橦΀Aacmstx㍆㍊㍗㍛㍞㍣㍭rr;懘rĀhr㍐㍒ë∨Ā;oਸ਼਴t耻§䂧i;䀻war;椩mĀin㍩ðnuóñt;朶rĀ;o㍶⁕쀀𝔰Ȁacoy㎂㎆㎑㎠rp;景Āhy㎋㎏cy;䑉;䑈rtɭ㎙\0\0㎜iäᑤaraì⹯耻­䂭Āgm㎨㎴maƀ;fv㎱㎲㎲䏃;䏂Ѐ;deglnprካ㏅㏉㏎㏖㏞㏡㏦ot;橪Ā;q኱ኰĀ;E㏓㏔檞;檠Ā;E㏛㏜檝;檟e;扆lus;樤arr;楲aròᄽȀaeit㏸㐈㐏㐗Āls㏽㐄lsetmé㍪hp;樳parsl;槤Ādlᑣ㐔e;挣Ā;e㐜㐝檪Ā;s㐢㐣檬;쀀⪬︀ƀflp㐮㐳㑂tcy;䑌Ā;b㐸㐹䀯Ā;a㐾㐿槄r;挿f;쀀𝕤aĀdr㑍ЂesĀ;u㑔㑕晠it»㑕ƀcsu㑠㑹㒟Āau㑥㑯pĀ;sᆈ㑫;쀀⊓︀pĀ;sᆴ㑵;쀀⊔︀uĀbp㑿㒏ƀ;esᆗᆜ㒆etĀ;eᆗ㒍ñᆝƀ;esᆨᆭ㒖etĀ;eᆨ㒝ñᆮƀ;afᅻ㒦ְrť㒫ֱ»ᅼaròᅈȀcemt㒹㒾㓂㓅r;쀀𝓈tmîñiì㐕aræᆾĀar㓎㓕rĀ;f㓔ឿ昆Āan㓚㓭ightĀep㓣㓪psiloîỠhé⺯s»⡒ʀbcmnp㓻㕞ሉ㖋㖎Ҁ;Edemnprs㔎㔏㔑㔕㔞㔣㔬㔱㔶抂;櫅ot;檽Ā;dᇚ㔚ot;櫃ult;櫁ĀEe㔨㔪;櫋;把lus;檿arr;楹ƀeiu㔽㕒㕕tƀ;en㔎㕅㕋qĀ;qᇚ㔏eqĀ;q㔫㔨m;櫇Ābp㕚㕜;櫕;櫓c̀;acensᇭ㕬㕲㕹㕻㌦pproø㋺urlyeñᇾñᇳƀaes㖂㖈㌛pproø㌚qñ㌗g;晪ڀ123;Edehlmnps㖩㖬㖯ሜ㖲㖴㗀㗉㗕㗚㗟㗨㗭耻¹䂹耻²䂲耻³䂳;櫆Āos㖹㖼t;檾ub;櫘Ā;dሢ㗅ot;櫄sĀou㗏㗒l;柉b;櫗arr;楻ult;櫂ĀEe㗤㗦;櫌;抋lus;櫀ƀeiu㗴㘉㘌tƀ;enሜ㗼㘂qĀ;qሢ㖲eqĀ;q㗧㗤m;櫈Ābp㘑㘓;櫔;櫖ƀAan㘜㘠㘭rr;懙rĀhr㘦㘨ë∮Ā;oਫ਩war;椪lig耻ß䃟௡㙑㙝㙠ዎ㙳㙹\0㙾㛂\0\0\0\0\0㛛㜃\0㜉㝬\0\0\0㞇ɲ㙖\0\0㙛get;挖;䏄rë๟ƀaey㙦㙫㙰ron;䅥dil;䅣;䑂lrec;挕r;쀀𝔱Ȁeiko㚆㚝㚵㚼ǲ㚋\0㚑eĀ4fኄኁaƀ;sv㚘㚙㚛䎸ym;䏑Ācn㚢㚲kĀas㚨㚮pproø዁im»ኬsðኞĀas㚺㚮ð዁rn耻þ䃾Ǭ̟㛆⋧es膀×;bd㛏㛐㛘䃗Ā;aᤏ㛕r;樱;樰ƀeps㛡㛣㜀á⩍Ȁ;bcf҆㛬㛰㛴ot;挶ir;櫱Ā;o㛹㛼쀀𝕥rk;櫚á㍢rime;怴ƀaip㜏㜒㝤dåቈ΀adempst㜡㝍㝀㝑㝗㝜㝟ngleʀ;dlqr㜰㜱㜶㝀㝂斵own»ᶻeftĀ;e⠀㜾ñम;扜ightĀ;e㊪㝋ñၚot;旬inus;樺lus;樹b;槍ime;樻ezium;揢ƀcht㝲㝽㞁Āry㝷㝻;쀀𝓉;䑆cy;䑛rok;䅧Āio㞋㞎xô᝷headĀlr㞗㞠eftarro÷ࡏightarrow»ཝऀAHabcdfghlmoprstuw㟐㟓㟗㟤㟰㟼㠎㠜㠣㠴㡑㡝㡫㢩㣌㣒㣪㣶ròϭar;楣Ācr㟜㟢ute耻ú䃺òᅐrǣ㟪\0㟭y;䑞ve;䅭Āiy㟵㟺rc耻û䃻;䑃ƀabh㠃㠆㠋ròᎭlac;䅱aòᏃĀir㠓㠘sht;楾;쀀𝔲rave耻ù䃹š㠧㠱rĀlr㠬㠮»ॗ»ႃlk;斀Āct㠹㡍ɯ㠿\0\0㡊rnĀ;e㡅㡆挜r»㡆op;挏ri;旸Āal㡖㡚cr;䅫肻¨͉Āgp㡢㡦on;䅳f;쀀𝕦̀adhlsuᅋ㡸㡽፲㢑㢠ownáᎳarpoonĀlr㢈㢌efô㠭ighô㠯iƀ;hl㢙㢚㢜䏅»ᏺon»㢚parrows;懈ƀcit㢰㣄㣈ɯ㢶\0\0㣁rnĀ;e㢼㢽挝r»㢽op;挎ng;䅯ri;旹cr;쀀𝓊ƀdir㣙㣝㣢ot;拰lde;䅩iĀ;f㜰㣨»᠓Āam㣯㣲rò㢨l耻ü䃼angle;榧ހABDacdeflnoprsz㤜㤟㤩㤭㦵㦸㦽㧟㧤㧨㧳㧹㧽㨁㨠ròϷarĀ;v㤦㤧櫨;櫩asèϡĀnr㤲㤷grt;榜΀eknprst㓣㥆㥋㥒㥝㥤㦖appá␕othinçẖƀhir㓫⻈㥙opô⾵Ā;hᎷ㥢ïㆍĀiu㥩㥭gmá㎳Ābp㥲㦄setneqĀ;q㥽㦀쀀⊊︀;쀀⫋︀setneqĀ;q㦏㦒쀀⊋︀;쀀⫌︀Āhr㦛㦟etá㚜iangleĀlr㦪㦯eft»थight»ၑy;䐲ash»ံƀelr㧄㧒㧗ƀ;beⷪ㧋㧏ar;抻q;扚lip;拮Ābt㧜ᑨaòᑩr;쀀𝔳tré㦮suĀbp㧯㧱»ജ»൙pf;쀀𝕧roð໻tré㦴Ācu㨆㨋r;쀀𝓋Ābp㨐㨘nĀEe㦀㨖»㥾nĀEe㦒㨞»㦐igzag;榚΀cefoprs㨶㨻㩖㩛㩔㩡㩪irc;䅵Ādi㩀㩑Ābg㩅㩉ar;機eĀ;qᗺ㩏;扙erp;愘r;쀀𝔴pf;쀀𝕨Ā;eᑹ㩦atèᑹcr;쀀𝓌ૣណ㪇\0㪋\0㪐㪛\0\0㪝㪨㪫㪯\0\0㫃㫎\0㫘ៜ៟tré៑r;쀀𝔵ĀAa㪔㪗ròσrò৶;䎾ĀAa㪡㪤ròθrò৫að✓is;拻ƀdptឤ㪵㪾Āfl㪺ឩ;쀀𝕩imåឲĀAa㫇㫊ròώròਁĀcq㫒ីr;쀀𝓍Āpt៖㫜ré។Ѐacefiosu㫰㫽㬈㬌㬑㬕㬛㬡cĀuy㫶㫻te耻ý䃽;䑏Āiy㬂㬆rc;䅷;䑋n耻¥䂥r;쀀𝔶cy;䑗pf;쀀𝕪cr;쀀𝓎Ācm㬦㬩y;䑎l耻ÿ䃿Ԁacdefhiosw㭂㭈㭔㭘㭤㭩㭭㭴㭺㮀cute;䅺Āay㭍㭒ron;䅾;䐷ot;䅼Āet㭝㭡træᕟa;䎶r;쀀𝔷cy;䐶grarr;懝pf;쀀𝕫cr;쀀𝓏Ājn㮅㮇;怍j;怌'.split("").map((t) => t.charCodeAt(0))
-), Hk = new Uint16Array(
+), Vk = new Uint16Array(
   // prettier-ignore
   "Ȁaglq	\x1Bɭ\0\0p;䀦os;䀧t;䀾t;䀼uot;䀢".split("").map((t) => t.charCodeAt(0))
 );
 var Bl;
-const Gk = /* @__PURE__ */ new Map([
+const Yk = /* @__PURE__ */ new Map([
   [0, 65533],
   // C1 Unicode control character reference replacements
   [128, 8364],
@@ -77843,22 +77885,22 @@ const Gk = /* @__PURE__ */ new Map([
   [156, 339],
   [158, 382],
   [159, 376]
-]), Vk = (
+]), zk = (
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, node/no-unsupported-features/es-builtins
   (Bl = String.fromCodePoint) !== null && Bl !== void 0 ? Bl : function(t) {
     let e = "";
     return t > 65535 && (t -= 65536, e += String.fromCharCode(t >>> 10 & 1023 | 55296), t = 56320 | t & 1023), e += String.fromCharCode(t), e;
   }
 );
-function Yk(t) {
+function $k(t) {
   var e;
-  return t >= 55296 && t <= 57343 || t > 1114111 ? 65533 : (e = Gk.get(t)) !== null && e !== void 0 ? e : t;
+  return t >= 55296 && t <= 57343 || t > 1114111 ? 65533 : (e = Yk.get(t)) !== null && e !== void 0 ? e : t;
 }
 var Ye;
 (function(t) {
   t[t.NUM = 35] = "NUM", t[t.SEMI = 59] = "SEMI", t[t.EQUALS = 61] = "EQUALS", t[t.ZERO = 48] = "ZERO", t[t.NINE = 57] = "NINE", t[t.LOWER_A = 97] = "LOWER_A", t[t.LOWER_F = 102] = "LOWER_F", t[t.LOWER_X = 120] = "LOWER_X", t[t.LOWER_Z = 122] = "LOWER_Z", t[t.UPPER_A = 65] = "UPPER_A", t[t.UPPER_F = 70] = "UPPER_F", t[t.UPPER_Z = 90] = "UPPER_Z";
 })(Ye || (Ye = {}));
-const zk = 32;
+const qk = 32;
 var Bn;
 (function(t) {
   t[t.VALUE_LENGTH = 49152] = "VALUE_LENGTH", t[t.BRANCH_LENGTH = 16256] = "BRANCH_LENGTH", t[t.JUMP_TABLE = 127] = "JUMP_TABLE";
@@ -77866,14 +77908,14 @@ var Bn;
 function Fc(t) {
   return t >= Ye.ZERO && t <= Ye.NINE;
 }
-function $k(t) {
+function Wk(t) {
   return t >= Ye.UPPER_A && t <= Ye.UPPER_F || t >= Ye.LOWER_A && t <= Ye.LOWER_F;
 }
-function qk(t) {
+function Kk(t) {
   return t >= Ye.UPPER_A && t <= Ye.UPPER_Z || t >= Ye.LOWER_A && t <= Ye.LOWER_Z || Fc(t);
 }
-function Wk(t) {
-  return t === Ye.EQUALS || qk(t);
+function Qk(t) {
+  return t === Ye.EQUALS || Kk(t);
 }
 var Ve;
 (function(t) {
@@ -77883,7 +77925,7 @@ var Dn;
 (function(t) {
   t[t.Legacy = 0] = "Legacy", t[t.Strict = 1] = "Strict", t[t.Attribute = 2] = "Attribute";
 })(Dn || (Dn = {}));
-class Kk {
+class Zk {
   constructor(e, n, r) {
     this.decodeTree = e, this.emitCodePoint = n, this.errors = r, this.state = Ve.EntityStart, this.consumed = 1, this.result = 0, this.treeIndex = 0, this.excess = 1, this.decodeMode = Dn.Strict;
   }
@@ -77926,7 +77968,7 @@ class Kk {
    * @returns The number of characters that were consumed, or -1 if the entity is incomplete.
    */
   stateNumericStart(e, n) {
-    return n >= e.length ? -1 : (e.charCodeAt(n) | zk) === Ye.LOWER_X ? (this.state = Ve.NumericHex, this.consumed += 1, this.stateNumericHex(e, n + 1)) : (this.state = Ve.NumericDecimal, this.stateNumericDecimal(e, n));
+    return n >= e.length ? -1 : (e.charCodeAt(n) | qk) === Ye.LOWER_X ? (this.state = Ve.NumericHex, this.consumed += 1, this.stateNumericHex(e, n + 1)) : (this.state = Ve.NumericDecimal, this.stateNumericDecimal(e, n));
   }
   addToNumericResult(e, n, r, i) {
     if (n !== r) {
@@ -77947,7 +77989,7 @@ class Kk {
     const r = n;
     for (; n < e.length; ) {
       const i = e.charCodeAt(n);
-      if (Fc(i) || $k(i))
+      if (Fc(i) || Wk(i))
         n += 1;
       else
         return this.addToNumericResult(e, r, n, 16), this.emitNumericEntity(i, 3);
@@ -77995,7 +78037,7 @@ class Kk {
       this.consumed += 1;
     else if (this.decodeMode === Dn.Strict)
       return 0;
-    return this.emitCodePoint(Yk(this.result), this.consumed), this.errors && (e !== Ye.SEMI && this.errors.missingSemicolonAfterCharacterReference(), this.errors.validateNumericCharacterReference(this.result)), this.consumed;
+    return this.emitCodePoint($k(this.result), this.consumed), this.errors && (e !== Ye.SEMI && this.errors.missingSemicolonAfterCharacterReference(), this.errors.validateNumericCharacterReference(this.result)), this.consumed;
   }
   /**
    * Parses a named entity.
@@ -78011,11 +78053,11 @@ class Kk {
     let i = r[this.treeIndex], o = (i & Bn.VALUE_LENGTH) >> 14;
     for (; n < e.length; n++, this.excess++) {
       const a = e.charCodeAt(n);
-      if (this.treeIndex = Qk(r, i, this.treeIndex + Math.max(1, o), a), this.treeIndex < 0)
+      if (this.treeIndex = Xk(r, i, this.treeIndex + Math.max(1, o), a), this.treeIndex < 0)
         return this.result === 0 || // If we are parsing an attribute
         this.decodeMode === Dn.Attribute && // We shouldn't have consumed any characters after the entity,
         (o === 0 || // And there should be no invalid characters.
-        Wk(a)) ? 0 : this.emitNotTerminatedNamedEntity();
+        Qk(a)) ? 0 : this.emitNotTerminatedNamedEntity();
       if (i = r[this.treeIndex], o = (i & Bn.VALUE_LENGTH) >> 14, o !== 0) {
         if (a === Ye.SEMI)
           return this.emitNamedEntityData(this.treeIndex, o, this.consumed + this.excess);
@@ -78072,7 +78114,7 @@ class Kk {
 }
 function lE(t) {
   let e = "";
-  const n = new Kk(t, (r) => e += Vk(r));
+  const n = new Zk(t, (r) => e += zk(r));
   return function(i, o) {
     let a = 0, s = 0;
     for (; (s = i.indexOf("&", s)) >= 0; ) {
@@ -78092,7 +78134,7 @@ function lE(t) {
     return e = "", l;
   };
 }
-function Qk(t, e, n, r) {
+function Xk(t, e, n, r) {
   const i = (e & Bn.BRANCH_LENGTH) >> 7, o = e & Bn.JUMP_TABLE;
   if (i === 0)
     return o !== 0 && r === o ? n : -1;
@@ -78112,20 +78154,20 @@ function Qk(t, e, n, r) {
   }
   return -1;
 }
-const Zk = lE(Uk);
-lE(Hk);
+const jk = lE(Gk);
+lE(Vk);
 function cE(t, e = Dn.Legacy) {
-  return Zk(t, e);
+  return jk(t, e);
 }
-function Xk(t) {
+function Jk(t) {
   return Object.prototype.toString.call(t);
 }
 function qu(t) {
-  return Xk(t) === "[object String]";
+  return Jk(t) === "[object String]";
 }
-const jk = Object.prototype.hasOwnProperty;
-function Jk(t, e) {
-  return jk.call(t, e);
+const eP = Object.prototype.hasOwnProperty;
+function tP(t, e) {
+  return eP.call(t, e);
 }
 function Ys(t) {
   return Array.prototype.slice.call(arguments, 1).forEach(function(n) {
@@ -78152,38 +78194,38 @@ function ps(t) {
   }
   return String.fromCharCode(t);
 }
-const dE = /\\([!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~])/g, eP = /&([a-z#][a-z0-9]{1,31});/gi, tP = new RegExp(dE.source + "|" + eP.source, "gi"), nP = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;
-function rP(t, e) {
-  if (e.charCodeAt(0) === 35 && nP.test(e)) {
+const dE = /\\([!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~])/g, nP = /&([a-z#][a-z0-9]{1,31});/gi, rP = new RegExp(dE.source + "|" + nP.source, "gi"), iP = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;
+function oP(t, e) {
+  if (e.charCodeAt(0) === 35 && iP.test(e)) {
     const r = e[1].toLowerCase() === "x" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10);
     return Wu(r) ? ps(r) : t;
   }
   const n = cE(t);
   return n !== t ? n : t;
 }
-function iP(t) {
+function aP(t) {
   return t.indexOf("\\") < 0 ? t : t.replace(dE, "$1");
 }
 function ci(t) {
-  return t.indexOf("\\") < 0 && t.indexOf("&") < 0 ? t : t.replace(tP, function(e, n, r) {
-    return n || rP(e, r);
+  return t.indexOf("\\") < 0 && t.indexOf("&") < 0 ? t : t.replace(rP, function(e, n, r) {
+    return n || oP(e, r);
   });
 }
-const oP = /[&<>"]/, aP = /[&<>"]/g, sP = {
+const sP = /[&<>"]/, lP = /[&<>"]/g, cP = {
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
   '"': "&quot;"
 };
-function lP(t) {
-  return sP[t];
+function uP(t) {
+  return cP[t];
 }
 function qn(t) {
-  return oP.test(t) ? t.replace(aP, lP) : t;
+  return sP.test(t) ? t.replace(lP, uP) : t;
 }
-const cP = /[.?*+^$[\]\\(){}|-]/g;
-function uP(t) {
-  return t.replace(cP, "\\$&");
+const dP = /[.?*+^$[\]\\(){}|-]/g;
+function pP(t) {
+  return t.replace(dP, "\\$&");
 }
 function Ae(t) {
   switch (t) {
@@ -78257,26 +78299,26 @@ function go(t) {
 function zs(t) {
   return t = t.trim().replace(/\s+/g, " "), "ẞ".toLowerCase() === "Ṿ" && (t = t.replace(/ẞ/g, "ß")), t.toLowerCase().toUpperCase();
 }
-const dP = { mdurl: Pk, ucmicro: Bk }, pP = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const _P = { mdurl: Bk, ucmicro: Hk }, mP = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   arrayReplaceAt: uE,
   assign: Ys,
   escapeHtml: qn,
-  escapeRE: uP,
+  escapeRE: pP,
   fromCodePoint: ps,
-  has: Jk,
+  has: tP,
   isMdAsciiPunct: go,
   isPunctChar: ho,
   isSpace: Ae,
   isString: qu,
   isValidEntityCode: Wu,
   isWhiteSpace: fo,
-  lib: dP,
+  lib: _P,
   normalizeReference: zs,
   unescapeAll: ci,
-  unescapeMd: iP
+  unescapeMd: aP
 }, Symbol.toStringTag, { value: "Module" }));
-function _P(t, e, n) {
+function fP(t, e, n) {
   let r, i, o, a;
   const s = t.posMax, l = t.pos;
   for (t.pos = e + 1, r = 1; t.pos < s; ) {
@@ -78294,7 +78336,7 @@ function _P(t, e, n) {
   let c = -1;
   return i && (c = t.pos), t.pos = l, c;
 }
-function mP(t, e, n) {
+function hP(t, e, n) {
   let r, i = e;
   const o = {
     ok: !1,
@@ -78334,7 +78376,7 @@ function mP(t, e, n) {
   }
   return e === i || a !== 0 || (o.str = ci(t.slice(e, i)), o.pos = i, o.ok = !0), o;
 }
-function fP(t, e, n, r) {
+function gP(t, e, n, r) {
   let i, o = e;
   const a = {
     // if `true`, this is a valid link title
@@ -78367,11 +78409,11 @@ function fP(t, e, n, r) {
   }
   return a.can_continue = !0, a.str += ci(t.slice(e, o)), a;
 }
-const hP = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const EP = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  parseLinkDestination: mP,
-  parseLinkLabel: _P,
-  parseLinkTitle: fP
+  parseLinkDestination: hP,
+  parseLinkLabel: fP,
+  parseLinkTitle: gP
 }, Symbol.toStringTag, { value: "Module" })), an = {};
 an.code_inline = function(t, e, n, r, i) {
   const o = t[e];
@@ -78619,30 +78661,30 @@ function pE(t, e, n) {
   this.src = t, this.env = n, this.tokens = [], this.inlineMode = !1, this.md = e;
 }
 pE.prototype.Token = zt;
-const gP = /\r\n?|\n/g, EP = /\0/g;
-function SP(t) {
+const SP = /\r\n?|\n/g, bP = /\0/g;
+function TP(t) {
   let e;
-  e = t.src.replace(gP, `
-`), e = e.replace(EP, "�"), t.src = e;
+  e = t.src.replace(SP, `
+`), e = e.replace(bP, "�"), t.src = e;
 }
-function bP(t) {
+function CP(t) {
   let e;
   t.inlineMode ? (e = new t.Token("inline", "", 0), e.content = t.src, e.map = [0, 1], e.children = [], t.tokens.push(e)) : t.md.block.parse(t.src, t.md, t.env, t.tokens);
 }
-function TP(t) {
+function yP(t) {
   const e = t.tokens;
   for (let n = 0, r = e.length; n < r; n++) {
     const i = e[n];
     i.type === "inline" && t.md.inline.parse(i.content, t.md, t.env, i.children);
   }
 }
-function CP(t) {
+function vP(t) {
   return /^<a[>\s]/i.test(t);
 }
-function yP(t) {
+function RP(t) {
   return /^<\/a\s*>/i.test(t);
 }
-function vP(t) {
+function OP(t) {
   const e = t.tokens;
   if (t.md.options.linkify)
     for (let n = 0, r = e.length; n < r; n++) {
@@ -78656,7 +78698,7 @@ function vP(t) {
             a--;
           continue;
         }
-        if (s.type === "html_inline" && (CP(s.content) && o > 0 && o--, yP(s.content) && o++), !(o > 0) && s.type === "text" && t.md.linkify.test(s.content)) {
+        if (s.type === "html_inline" && (vP(s.content) && o > 0 && o--, RP(s.content) && o++), !(o > 0) && s.type === "text" && t.md.linkify.test(s.content)) {
           const l = s.content;
           let c = t.md.linkify.match(l);
           const u = [];
@@ -78689,39 +78731,39 @@ function vP(t) {
       }
     }
 }
-const _E = /\+-|\.\.|\?\?\?\?|!!!!|,,|--/, RP = /\((c|tm|r)\)/i, OP = /\((c|tm|r)\)/ig, NP = {
+const _E = /\+-|\.\.|\?\?\?\?|!!!!|,,|--/, NP = /\((c|tm|r)\)/i, AP = /\((c|tm|r)\)/ig, IP = {
   c: "©",
   r: "®",
   tm: "™"
 };
-function AP(t, e) {
-  return NP[e.toLowerCase()];
+function xP(t, e) {
+  return IP[e.toLowerCase()];
 }
-function IP(t) {
+function DP(t) {
   let e = 0;
   for (let n = t.length - 1; n >= 0; n--) {
     const r = t[n];
-    r.type === "text" && !e && (r.content = r.content.replace(OP, AP)), r.type === "link_open" && r.info === "auto" && e--, r.type === "link_close" && r.info === "auto" && e++;
+    r.type === "text" && !e && (r.content = r.content.replace(AP, xP)), r.type === "link_open" && r.info === "auto" && e--, r.type === "link_close" && r.info === "auto" && e++;
   }
 }
-function xP(t) {
+function wP(t) {
   let e = 0;
   for (let n = t.length - 1; n >= 0; n--) {
     const r = t[n];
     r.type === "text" && !e && _E.test(r.content) && (r.content = r.content.replace(/\+-/g, "±").replace(/\.{2,}/g, "…").replace(/([?!])…/g, "$1..").replace(/([?!]){4,}/g, "$1$1$1").replace(/,{2,}/g, ",").replace(/(^|[^-])---(?=[^-]|$)/mg, "$1—").replace(/(^|\s)--(?=\s|$)/mg, "$1–").replace(/(^|[^-\s])--(?=[^-\s]|$)/mg, "$1–")), r.type === "link_open" && r.info === "auto" && e--, r.type === "link_close" && r.info === "auto" && e++;
   }
 }
-function DP(t) {
+function MP(t) {
   let e;
   if (t.md.options.typographer)
     for (e = t.tokens.length - 1; e >= 0; e--)
-      t.tokens[e].type === "inline" && (RP.test(t.tokens[e].content) && IP(t.tokens[e].children), _E.test(t.tokens[e].content) && xP(t.tokens[e].children));
+      t.tokens[e].type === "inline" && (NP.test(t.tokens[e].content) && DP(t.tokens[e].children), _E.test(t.tokens[e].content) && wP(t.tokens[e].children));
 }
-const wP = /['"]/, dm = /['"]/g, pm = "’";
+const LP = /['"]/, dm = /['"]/g, pm = "’";
 function ia(t, e, n) {
   return t.slice(0, e) + n + t.slice(e + 1);
 }
-function MP(t, e) {
+function kP(t, e) {
   let n;
   const r = [];
   for (let i = 0; i < t.length; i++) {
@@ -78788,12 +78830,12 @@ function MP(t, e) {
       }
   }
 }
-function LP(t) {
+function PP(t) {
   if (t.md.options.typographer)
     for (let e = t.tokens.length - 1; e >= 0; e--)
-      t.tokens[e].type !== "inline" || !wP.test(t.tokens[e].content) || MP(t.tokens[e].children, t);
+      t.tokens[e].type !== "inline" || !LP.test(t.tokens[e].content) || kP(t.tokens[e].children, t);
 }
-function kP(t) {
+function FP(t) {
   let e, n;
   const r = t.tokens, i = r.length;
   for (let o = 0; o < i; o++) {
@@ -78807,15 +78849,15 @@ function kP(t) {
   }
 }
 const Ul = [
-  ["normalize", SP],
-  ["block", bP],
-  ["inline", TP],
-  ["linkify", vP],
-  ["replacements", DP],
-  ["smartquotes", LP],
+  ["normalize", TP],
+  ["block", CP],
+  ["inline", yP],
+  ["linkify", OP],
+  ["replacements", MP],
+  ["smartquotes", PP],
   // `text_join` finds `text_special` tokens (for escape sequences)
   // and joins them with the rest of the text
-  ["text_join", kP]
+  ["text_join", FP]
 ];
 function Ku() {
   this.ruler = new bt();
@@ -78907,7 +78949,7 @@ sn.prototype.getLines = function(e, n, r, i) {
   return o.join("");
 };
 sn.prototype.Token = zt;
-const PP = 65536;
+const BP = 65536;
 function Hl(t, e) {
   const n = t.bMarks[e] + t.tShift[e], r = t.eMarks[e];
   return t.src.slice(n, r);
@@ -78919,7 +78961,7 @@ function _m(t) {
     i === 124 && (o ? (s += t.substring(a, r - 1), a = r) : (e.push(s + t.substring(a, r)), s = "", a = r + 1)), o = i === 92, r++, i = t.charCodeAt(r);
   return e.push(s + t.substring(a)), e;
 }
-function FP(t, e, n, r) {
+function UP(t, e, n, r) {
   if (e + 2 > n)
     return !1;
   let i = e + 1;
@@ -78984,7 +79026,7 @@ function FP(t, e, n, r) {
         g = !0;
         break;
       }
-    if (g || (l = Hl(t, i).trim(), !l) || t.sCount[i] - t.blkIndent >= 4 || (c = _m(l), c.length && c[0] === "" && c.shift(), c.length && c[c.length - 1] === "" && c.pop(), b += d - c.length, b > PP))
+    if (g || (l = Hl(t, i).trim(), !l) || t.sCount[i] - t.blkIndent >= 4 || (c = _m(l), c.length && c[0] === "" && c.shift(), c.length && c[c.length - 1] === "" && c.pop(), b += d - c.length, b > BP))
       break;
     if (i === e + 2) {
       const C = t.push("tbody_open", "tbody", 1);
@@ -79002,7 +79044,7 @@ function FP(t, e, n, r) {
   }
   return S && (t.push("tbody_close", "tbody", -1), S[1] = i), t.push("table_close", "table", -1), f[1] = i, t.parentType = p, t.line = i, !0;
 }
-function BP(t, e, n) {
+function HP(t, e, n) {
   if (t.sCount[e] - t.blkIndent < 4)
     return !1;
   let r = e + 1, i = r;
@@ -79022,7 +79064,7 @@ function BP(t, e, n) {
   return o.content = t.getLines(e, i, 4 + t.blkIndent, !1) + `
 `, o.map = [e, t.line], !0;
 }
-function UP(t, e, n, r) {
+function GP(t, e, n, r) {
   let i = t.bMarks[e] + t.tShift[e], o = t.eMarks[e];
   if (t.sCount[e] - t.blkIndent >= 4 || i + 3 > o)
     return !1;
@@ -79049,7 +79091,7 @@ function UP(t, e, n, r) {
   const _ = t.push("fence", "code", 0);
   return _.info = u, _.content = t.getLines(e + 1, d, l, !0), _.markup = c, _.map = [e, t.line], !0;
 }
-function HP(t, e, n, r) {
+function VP(t, e, n, r) {
   let i = t.bMarks[e] + t.tShift[e], o = t.eMarks[e];
   const a = t.lineMax;
   if (t.sCount[e] - t.blkIndent >= 4 || t.src.charCodeAt(i) !== 62)
@@ -79104,7 +79146,7 @@ function HP(t, e, n, r) {
     t.bMarks[b + e] = s[b], t.tShift[b + e] = u[b], t.sCount[b + e] = c[b], t.bsCount[b + e] = l[b];
   return t.blkIndent = f, !0;
 }
-function GP(t, e, n, r) {
+function YP(t, e, n, r) {
   const i = t.eMarks[e];
   if (t.sCount[e] - t.blkIndent >= 4)
     return !1;
@@ -79162,12 +79204,12 @@ function fm(t, e) {
   }
   return i < r && (o = t.src.charCodeAt(i), !Ae(o)) ? -1 : i;
 }
-function VP(t, e) {
+function zP(t, e) {
   const n = t.level + 2;
   for (let r = e + 2, i = t.tokens.length - 2; r < i; r++)
     t.tokens[r].level === n && t.tokens[r].type === "paragraph_open" && (t.tokens[r + 2].hidden = !0, t.tokens[r].hidden = !0, r += 2);
 }
-function YP(t, e, n, r) {
+function $P(t, e, n, r) {
   let i, o, a, s, l = e, c = !0;
   if (t.sCount[l] - t.blkIndent >= 4 || t.listIndent >= 0 && t.sCount[l] - t.listIndent >= 4 && t.sCount[l] < t.blkIndent)
     return !1;
@@ -79195,10 +79237,10 @@ function YP(t, e, n, r) {
     const g = t.sCount[l] + _ - (t.bMarks[l] + t.tShift[l]);
     let T = g;
     for (; o < i; ) {
-      const Y = t.src.charCodeAt(o);
-      if (Y === 9)
+      const V = t.src.charCodeAt(o);
+      if (V === 9)
         T += 4 - (T + t.bsCount[l]) % 4;
-      else if (Y === 32)
+      else if (V === 32)
         T++;
       else
         break;
@@ -79211,12 +79253,12 @@ function YP(t, e, n, r) {
     s = t.push("list_item_open", "li", 1), s.markup = String.fromCharCode(m);
     const N = [l, 0];
     s.map = N, d && (s.info = t.src.slice(a, _ - 1));
-    const x = t.tight, P = t.tShift[l], z = t.sCount[l], Z = t.listIndent;
-    if (t.listIndent = t.blkIndent, t.blkIndent = I, t.tight = !0, t.tShift[l] = C - t.bMarks[l], t.sCount[l] = T, C >= i && t.isEmpty(l + 1) ? t.line = Math.min(t.line + 2, n) : t.md.block.tokenize(t, l, n, !0), (!t.tight || E) && (c = !1), E = t.line - l > 1 && t.isEmpty(t.line - 1), t.blkIndent = t.listIndent, t.listIndent = Z, t.tShift[l] = P, t.sCount[l] = z, t.tight = x, s = t.push("list_item_close", "li", -1), s.markup = String.fromCharCode(m), l = t.line, N[1] = l, l >= n || t.sCount[l] < t.blkIndent || t.sCount[l] - t.blkIndent >= 4)
+    const x = t.tight, P = t.tShift[l], Y = t.sCount[l], Z = t.listIndent;
+    if (t.listIndent = t.blkIndent, t.blkIndent = I, t.tight = !0, t.tShift[l] = C - t.bMarks[l], t.sCount[l] = T, C >= i && t.isEmpty(l + 1) ? t.line = Math.min(t.line + 2, n) : t.md.block.tokenize(t, l, n, !0), (!t.tight || E) && (c = !1), E = t.line - l > 1 && t.isEmpty(t.line - 1), t.blkIndent = t.listIndent, t.listIndent = Z, t.tShift[l] = P, t.sCount[l] = Y, t.tight = x, s = t.push("list_item_close", "li", -1), s.markup = String.fromCharCode(m), l = t.line, N[1] = l, l >= n || t.sCount[l] < t.blkIndent || t.sCount[l] - t.blkIndent >= 4)
       break;
     let q = !1;
-    for (let Y = 0, O = S.length; Y < O; Y++)
-      if (S[Y](t, l, n, !0)) {
+    for (let V = 0, O = S.length; V < O; V++)
+      if (S[V](t, l, n, !0)) {
         q = !0;
         break;
       }
@@ -79231,9 +79273,9 @@ function YP(t, e, n, r) {
     if (m !== t.src.charCodeAt(_ - 1))
       break;
   }
-  return d ? s = t.push("ordered_list_close", "ol", -1) : s = t.push("bullet_list_close", "ul", -1), s.markup = String.fromCharCode(m), h[1] = l, t.line = l, t.parentType = b, c && VP(t, f), !0;
+  return d ? s = t.push("ordered_list_close", "ol", -1) : s = t.push("bullet_list_close", "ul", -1), s.markup = String.fromCharCode(m), h[1] = l, t.line = l, t.parentType = b, c && zP(t, f), !0;
 }
-function zP(t, e, n, r) {
+function qP(t, e, n, r) {
   let i = t.bMarks[e] + t.tShift[e], o = t.eMarks[e], a = e + 1;
   if (t.sCount[e] - t.blkIndent >= 4 || t.src.charCodeAt(i) !== 91)
     return !1;
@@ -79324,7 +79366,7 @@ function zP(t, e, n, r) {
   const E = zs(l.slice(1, c));
   return E ? (r || (typeof t.env.references > "u" && (t.env.references = {}), typeof t.env.references[E] > "u" && (t.env.references[E] = { title: h, href: d }), t.line = a), !0) : !1;
 }
-const $P = [
+const WP = [
   "address",
   "article",
   "aside",
@@ -79387,16 +79429,16 @@ const $P = [
   "tr",
   "track",
   "ul"
-], qP = "[a-zA-Z_:][a-zA-Z0-9:._-]*", WP = "[^\"'=<>`\\x00-\\x20]+", KP = "'[^']*'", QP = '"[^"]*"', ZP = "(?:" + WP + "|" + KP + "|" + QP + ")", XP = "(?:\\s+" + qP + "(?:\\s*=\\s*" + ZP + ")?)", mE = "<[A-Za-z][A-Za-z0-9\\-]*" + XP + "*\\s*\\/?>", fE = "<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>", jP = "<!---?>|<!--(?:[^-]|-[^-]|--[^>])*-->", JP = "<[?][\\s\\S]*?[?]>", e3 = "<![A-Za-z][^>]*>", t3 = "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>", n3 = new RegExp("^(?:" + mE + "|" + fE + "|" + jP + "|" + JP + "|" + e3 + "|" + t3 + ")"), r3 = new RegExp("^(?:" + mE + "|" + fE + ")"), kr = [
+], KP = "[a-zA-Z_:][a-zA-Z0-9:._-]*", QP = "[^\"'=<>`\\x00-\\x20]+", ZP = "'[^']*'", XP = '"[^"]*"', jP = "(?:" + QP + "|" + ZP + "|" + XP + ")", JP = "(?:\\s+" + KP + "(?:\\s*=\\s*" + jP + ")?)", mE = "<[A-Za-z][A-Za-z0-9\\-]*" + JP + "*\\s*\\/?>", fE = "<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>", e3 = "<!---?>|<!--(?:[^-]|-[^-]|--[^>])*-->", t3 = "<[?][\\s\\S]*?[?]>", n3 = "<![A-Za-z][^>]*>", r3 = "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>", i3 = new RegExp("^(?:" + mE + "|" + fE + "|" + e3 + "|" + t3 + "|" + n3 + "|" + r3 + ")"), o3 = new RegExp("^(?:" + mE + "|" + fE + ")"), kr = [
   [/^<(script|pre|style|textarea)(?=(\s|>|$))/i, /<\/(script|pre|style|textarea)>/i, !0],
   [/^<!--/, /-->/, !0],
   [/^<\?/, /\?>/, !0],
   [/^<![A-Z]/, />/, !0],
   [/^<!\[CDATA\[/, /\]\]>/, !0],
-  [new RegExp("^</?(" + $P.join("|") + ")(?=(\\s|/?>|$))", "i"), /^$/, !0],
-  [new RegExp(r3.source + "\\s*$"), /^$/, !1]
+  [new RegExp("^</?(" + WP.join("|") + ")(?=(\\s|/?>|$))", "i"), /^$/, !0],
+  [new RegExp(o3.source + "\\s*$"), /^$/, !1]
 ];
-function i3(t, e, n, r) {
+function a3(t, e, n, r) {
   let i = t.bMarks[e] + t.tShift[e], o = t.eMarks[e];
   if (t.sCount[e] - t.blkIndent >= 4 || !t.md.options.html || t.src.charCodeAt(i) !== 60)
     return !1;
@@ -79419,7 +79461,7 @@ function i3(t, e, n, r) {
   const c = t.push("html_block", "", 0);
   return c.map = [e, l], c.content = t.getLines(e, l, t.blkIndent, !0), !0;
 }
-function o3(t, e, n, r) {
+function s3(t, e, n, r) {
   let i = t.bMarks[e] + t.tShift[e], o = t.eMarks[e];
   if (t.sCount[e] - t.blkIndent >= 4)
     return !1;
@@ -79443,7 +79485,7 @@ function o3(t, e, n, r) {
   const d = t.push("heading_close", "h" + String(s), -1);
   return d.markup = "########".slice(0, s), !0;
 }
-function a3(t, e, n) {
+function l3(t, e, n) {
   const r = t.md.block.ruler.getRules("paragraph");
   if (t.sCount[e] - t.blkIndent >= 4)
     return !1;
@@ -79483,7 +79525,7 @@ function a3(t, e, n) {
   const d = t.push("heading_close", "h" + String(o), -1);
   return d.markup = String.fromCharCode(a), t.parentType = i, !0;
 }
-function s3(t, e, n) {
+function c3(t, e, n) {
   const r = t.md.block.ruler.getRules("paragraph"), i = t.parentType;
   let o = e + 1;
   for (t.parentType = "paragraph"; o < n && !t.isEmpty(o); o++) {
@@ -79508,17 +79550,17 @@ function s3(t, e, n) {
 const oa = [
   // First 2 params - rule name & source. Secondary array - list of rules,
   // which can be terminated by this one.
-  ["table", FP, ["paragraph", "reference"]],
-  ["code", BP],
-  ["fence", UP, ["paragraph", "reference", "blockquote", "list"]],
-  ["blockquote", HP, ["paragraph", "reference", "blockquote", "list"]],
-  ["hr", GP, ["paragraph", "reference", "blockquote", "list"]],
-  ["list", YP, ["paragraph", "reference", "blockquote"]],
-  ["reference", zP],
-  ["html_block", i3, ["paragraph", "reference", "blockquote"]],
-  ["heading", o3, ["paragraph", "reference", "blockquote"]],
-  ["lheading", a3],
-  ["paragraph", s3]
+  ["table", UP, ["paragraph", "reference"]],
+  ["code", HP],
+  ["fence", GP, ["paragraph", "reference", "blockquote", "list"]],
+  ["blockquote", VP, ["paragraph", "reference", "blockquote", "list"]],
+  ["hr", YP, ["paragraph", "reference", "blockquote", "list"]],
+  ["list", $P, ["paragraph", "reference", "blockquote"]],
+  ["reference", qP],
+  ["html_block", a3, ["paragraph", "reference", "blockquote"]],
+  ["heading", s3, ["paragraph", "reference", "blockquote"]],
+  ["lheading", l3],
+  ["paragraph", c3]
 ];
 function $s() {
   this.ruler = new bt();
@@ -79574,7 +79616,7 @@ Ao.prototype.scanDelims = function(t, e) {
   return { can_open: p && (e || !_ || l), can_close: _ && (e || !p || c), length: a };
 };
 Ao.prototype.Token = zt;
-function l3(t) {
+function u3(t) {
   switch (t) {
     case 10:
     case 33:
@@ -79604,18 +79646,18 @@ function l3(t) {
       return !1;
   }
 }
-function c3(t, e) {
+function d3(t, e) {
   let n = t.pos;
-  for (; n < t.posMax && !l3(t.src.charCodeAt(n)); )
+  for (; n < t.posMax && !u3(t.src.charCodeAt(n)); )
     n++;
   return n === t.pos ? !1 : (e || (t.pending += t.src.slice(t.pos, n)), t.pos = n, !0);
 }
-const u3 = /(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;
-function d3(t, e) {
+const p3 = /(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;
+function _3(t, e) {
   if (!t.md.options.linkify || t.linkLevel > 0) return !1;
   const n = t.pos, r = t.posMax;
   if (n + 3 > r || t.src.charCodeAt(n) !== 58 || t.src.charCodeAt(n + 1) !== 47 || t.src.charCodeAt(n + 2) !== 47) return !1;
-  const i = t.pending.match(u3);
+  const i = t.pending.match(p3);
   if (!i) return !1;
   const o = i[1], a = t.md.linkify.matchAtStart(t.src.slice(n - o.length));
   if (!a) return !1;
@@ -79635,7 +79677,7 @@ function d3(t, e) {
   }
   return t.pos += s.length - o.length, !0;
 }
-function p3(t, e) {
+function m3(t, e) {
   let n = t.pos;
   if (t.src.charCodeAt(n) !== 10)
     return !1;
@@ -79660,7 +79702,7 @@ for (let t = 0; t < 256; t++)
 "\\!\"#$%&'()*+,./:;<=>?@[]^_`{|}~-".split("").forEach(function(t) {
   Qu[t.charCodeAt(0)] = 1;
 });
-function _3(t, e) {
+function f3(t, e) {
   let n = t.pos;
   const r = t.posMax;
   if (t.src.charCodeAt(n) !== 92 || (n++, n >= r)) return !1;
@@ -79682,7 +79724,7 @@ function _3(t, e) {
   }
   return t.pos = n + 1, !0;
 }
-function m3(t, e) {
+function h3(t, e) {
   let n = t.pos;
   if (t.src.charCodeAt(n) !== 96)
     return !1;
@@ -79710,7 +79752,7 @@ function m3(t, e) {
   }
   return t.backticksScanned = !0, e || (t.pending += a), t.pos += s, !0;
 }
-function f3(t, e) {
+function g3(t, e) {
   const n = t.pos, r = t.src.charCodeAt(n);
   if (e || r !== 126)
     return !1;
@@ -79751,17 +79793,17 @@ function hm(t, e) {
     a--, o !== a && (n = t.tokens[a], t.tokens[a] = t.tokens[o], t.tokens[o] = n);
   }
 }
-function h3(t) {
+function E3(t) {
   const e = t.tokens_meta, n = t.tokens_meta.length;
   hm(t, t.delimiters);
   for (let r = 0; r < n; r++)
     e[r] && e[r].delimiters && hm(t, e[r].delimiters);
 }
 const hE = {
-  tokenize: f3,
-  postProcess: h3
+  tokenize: g3,
+  postProcess: E3
 };
-function g3(t, e) {
+function S3(t, e) {
   const n = t.pos, r = t.src.charCodeAt(n);
   if (e || r !== 95 && r !== 42)
     return !1;
@@ -79805,17 +79847,17 @@ function gm(t, e) {
     c.type = a ? "strong_close" : "em_close", c.tag = a ? "strong" : "em", c.nesting = -1, c.markup = a ? s + s : s, c.content = "", a && (t.tokens[e[r - 1].token].content = "", t.tokens[e[i.end + 1].token].content = "", r--);
   }
 }
-function E3(t) {
+function b3(t) {
   const e = t.tokens_meta, n = t.tokens_meta.length;
   gm(t, t.delimiters);
   for (let r = 0; r < n; r++)
     e[r] && e[r].delimiters && gm(t, e[r].delimiters);
 }
 const gE = {
-  tokenize: g3,
-  postProcess: E3
+  tokenize: S3,
+  postProcess: b3
 };
-function S3(t, e) {
+function T3(t, e) {
   let n, r, i, o, a = "", s = "", l = t.pos, c = !0;
   if (t.src.charCodeAt(t.pos) !== 91)
     return !1;
@@ -79851,7 +79893,7 @@ function S3(t, e) {
   }
   return t.pos = m, t.posMax = d, !0;
 }
-function b3(t, e) {
+function C3(t, e) {
   let n, r, i, o, a, s, l, c, u = "";
   const d = t.pos, p = t.posMax;
   if (t.src.charCodeAt(t.pos) !== 33 || t.src.charCodeAt(t.pos + 1) !== 91)
@@ -79895,8 +79937,8 @@ function b3(t, e) {
   }
   return t.pos = o, t.posMax = p, !0;
 }
-const T3 = /^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)$/, C3 = /^([a-zA-Z][a-zA-Z0-9+.-]{1,31}):([^<>\x00-\x20]*)$/;
-function y3(t, e) {
+const y3 = /^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)$/, v3 = /^([a-zA-Z][a-zA-Z0-9+.-]{1,31}):([^<>\x00-\x20]*)$/;
+function R3(t, e) {
   let n = t.pos;
   if (t.src.charCodeAt(n) !== 60)
     return !1;
@@ -79908,7 +79950,7 @@ function y3(t, e) {
     if (a === 62) break;
   }
   const o = t.src.slice(r + 1, n);
-  if (C3.test(o)) {
+  if (v3.test(o)) {
     const a = t.md.normalizeLink(o);
     if (!t.md.validateLink(a))
       return !1;
@@ -79922,7 +79964,7 @@ function y3(t, e) {
     }
     return t.pos += o.length + 2, !0;
   }
-  if (T3.test(o)) {
+  if (y3.test(o)) {
     const a = t.md.normalizeLink("mailto:" + o);
     if (!t.md.validateLink(a))
       return !1;
@@ -79938,40 +79980,40 @@ function y3(t, e) {
   }
   return !1;
 }
-function v3(t) {
+function O3(t) {
   return /^<a[>\s]/i.test(t);
 }
-function R3(t) {
+function N3(t) {
   return /^<\/a\s*>/i.test(t);
 }
-function O3(t) {
+function A3(t) {
   const e = t | 32;
   return e >= 97 && e <= 122;
 }
-function N3(t, e) {
+function I3(t, e) {
   if (!t.md.options.html)
     return !1;
   const n = t.posMax, r = t.pos;
   if (t.src.charCodeAt(r) !== 60 || r + 2 >= n)
     return !1;
   const i = t.src.charCodeAt(r + 1);
-  if (i !== 33 && i !== 63 && i !== 47 && !O3(i))
+  if (i !== 33 && i !== 63 && i !== 47 && !A3(i))
     return !1;
-  const o = t.src.slice(r).match(n3);
+  const o = t.src.slice(r).match(i3);
   if (!o)
     return !1;
   if (!e) {
     const a = t.push("html_inline", "", 0);
-    a.content = o[0], v3(a.content) && t.linkLevel++, R3(a.content) && t.linkLevel--;
+    a.content = o[0], O3(a.content) && t.linkLevel++, N3(a.content) && t.linkLevel--;
   }
   return t.pos += o[0].length, !0;
 }
-const A3 = /^&#((?:x[a-f0-9]{1,6}|[0-9]{1,7}));/i, I3 = /^&([a-z][a-z0-9]{1,31});/i;
-function x3(t, e) {
+const x3 = /^&#((?:x[a-f0-9]{1,6}|[0-9]{1,7}));/i, D3 = /^&([a-z][a-z0-9]{1,31});/i;
+function w3(t, e) {
   const n = t.pos, r = t.posMax;
   if (t.src.charCodeAt(n) !== 38 || n + 1 >= r) return !1;
   if (t.src.charCodeAt(n + 1) === 35) {
-    const o = t.src.slice(n).match(A3);
+    const o = t.src.slice(n).match(x3);
     if (o) {
       if (!e) {
         const a = o[1][0].toLowerCase() === "x" ? parseInt(o[1].slice(1), 16) : parseInt(o[1], 10), s = t.push("text_special", "", 0);
@@ -79980,7 +80022,7 @@ function x3(t, e) {
       return t.pos += o[0].length, !0;
     }
   } else {
-    const o = t.src.slice(n).match(I3);
+    const o = t.src.slice(n).match(D3);
     if (o) {
       const a = cE(o[0]);
       if (a !== o[0]) {
@@ -80019,13 +80061,13 @@ function Em(t) {
     u !== -1 && (e[s.marker][(s.open ? 3 : 0) + (s.length || 0) % 3] = u);
   }
 }
-function D3(t) {
+function M3(t) {
   const e = t.tokens_meta, n = t.tokens_meta.length;
   Em(t.delimiters);
   for (let r = 0; r < n; r++)
     e[r] && e[r].delimiters && Em(e[r].delimiters);
 }
-function w3(t) {
+function L3(t) {
   let e, n, r = 0;
   const i = t.tokens, o = t.tokens.length;
   for (e = n = 0; e < o; e++)
@@ -80033,25 +80075,25 @@ function w3(t) {
   e !== n && (i.length = n);
 }
 const Gl = [
-  ["text", c3],
-  ["linkify", d3],
-  ["newline", p3],
-  ["escape", _3],
-  ["backticks", m3],
+  ["text", d3],
+  ["linkify", _3],
+  ["newline", m3],
+  ["escape", f3],
+  ["backticks", h3],
   ["strikethrough", hE.tokenize],
   ["emphasis", gE.tokenize],
-  ["link", S3],
-  ["image", b3],
-  ["autolink", y3],
-  ["html_inline", N3],
-  ["entity", x3]
+  ["link", T3],
+  ["image", C3],
+  ["autolink", R3],
+  ["html_inline", I3],
+  ["entity", w3]
 ], Vl = [
-  ["balance_pairs", D3],
+  ["balance_pairs", M3],
   ["strikethrough", hE.postProcess],
   ["emphasis", gE.postProcess],
   // rules for pairs separate '**' into its own text tokens, which may be left unused,
   // rule below merges unused segments back with the rest of the text
-  ["fragments_join", w3]
+  ["fragments_join", L3]
 ];
 function Io() {
   this.ruler = new bt();
@@ -80109,7 +80151,7 @@ Io.prototype.parse = function(t, e, n, r) {
     o[s](i);
 };
 Io.prototype.State = Ao;
-function M3(t) {
+function k3(t) {
   const e = {};
   t = t || {}, e.src_Any = iE.source, e.src_Cc = oE.source, e.src_Z = sE.source, e.src_P = $u.source, e.src_ZPCc = [e.src_Z, e.src_P, e.src_Cc].join("|"), e.src_ZCc = [e.src_Z, e.src_Cc].join("|");
   const n = "[><｜]";
@@ -80131,19 +80173,19 @@ function Bc(t) {
 function qs(t) {
   return Object.prototype.toString.call(t);
 }
-function L3(t) {
+function P3(t) {
   return qs(t) === "[object String]";
 }
-function k3(t) {
+function F3(t) {
   return qs(t) === "[object Object]";
 }
-function P3(t) {
+function B3(t) {
   return qs(t) === "[object RegExp]";
 }
 function Sm(t) {
   return qs(t) === "[object Function]";
 }
-function F3(t) {
+function U3(t) {
   return t.replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
 }
 const EE = {
@@ -80151,12 +80193,12 @@ const EE = {
   fuzzyEmail: !0,
   fuzzyIP: !1
 };
-function B3(t) {
+function H3(t) {
   return Object.keys(t || {}).reduce(function(e, n) {
     return e || EE.hasOwnProperty(n);
   }, !1);
 }
-const U3 = {
+const G3 = {
   "http:": {
     validate: function(t, e, n) {
       const r = t.slice(e);
@@ -80188,11 +80230,11 @@ const U3 = {
       )), n.re.mailto.test(r) ? r.match(n.re.mailto)[0].length : 0;
     }
   }
-}, H3 = "a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvwxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvxyz]|t[cdfghjklmnortvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]", G3 = "biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф".split("|");
-function V3(t) {
+}, V3 = "a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvwxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvxyz]|t[cdfghjklmnortvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]", Y3 = "biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф".split("|");
+function z3(t) {
   t.__index__ = -1, t.__text_cache__ = "";
 }
-function Y3(t) {
+function $3(t) {
   return function(e, n) {
     const r = e.slice(n);
     return t.test(r) ? r.match(t)[0].length : 0;
@@ -80204,8 +80246,8 @@ function bm() {
   };
 }
 function _s(t) {
-  const e = t.re = M3(t.__opts__), n = t.__tlds__.slice();
-  t.onCompile(), t.__tlds_replaced__ || n.push(H3), n.push(e.src_xn), e.src_tlds = n.join("|");
+  const e = t.re = k3(t.__opts__), n = t.__tlds__.slice();
+  t.onCompile(), t.__tlds_replaced__ || n.push(V3), n.push(e.src_xn), e.src_tlds = n.join("|");
   function r(s) {
     return s.replace("%TLDS%", e.src_tlds);
   }
@@ -80220,11 +80262,11 @@ function _s(t) {
     if (l === null)
       return;
     const c = { validate: null, link: null };
-    if (t.__compiled__[s] = c, k3(l)) {
-      P3(l.validate) ? c.validate = Y3(l.validate) : Sm(l.validate) ? c.validate = l.validate : o(s, l), Sm(l.normalize) ? c.normalize = l.normalize : l.normalize ? o(s, l) : c.normalize = bm();
+    if (t.__compiled__[s] = c, F3(l)) {
+      B3(l.validate) ? c.validate = $3(l.validate) : Sm(l.validate) ? c.validate = l.validate : o(s, l), Sm(l.normalize) ? c.normalize = l.normalize : l.normalize ? o(s, l) : c.normalize = bm();
       return;
     }
-    if (L3(l)) {
+    if (P3(l)) {
       i.push(s);
       return;
     }
@@ -80234,24 +80276,24 @@ function _s(t) {
   }), t.__compiled__[""] = { validate: null, normalize: bm() };
   const a = Object.keys(t.__compiled__).filter(function(s) {
     return s.length > 0 && t.__compiled__[s];
-  }).map(F3).join("|");
+  }).map(U3).join("|");
   t.re.schema_test = RegExp("(^|(?!_)(?:[><｜]|" + e.src_ZPCc + "))(" + a + ")", "i"), t.re.schema_search = RegExp("(^|(?!_)(?:[><｜]|" + e.src_ZPCc + "))(" + a + ")", "ig"), t.re.schema_at_start = RegExp("^" + t.re.schema_search.source, "i"), t.re.pretest = RegExp(
     "(" + t.re.schema_test.source + ")|(" + t.re.host_fuzzy_test.source + ")|@",
     "i"
-  ), V3(t);
+  ), z3(t);
 }
-function z3(t, e) {
+function q3(t, e) {
   const n = t.__index__, r = t.__last_index__, i = t.__text_cache__.slice(n, r);
   this.schema = t.__schema__.toLowerCase(), this.index = n + e, this.lastIndex = r + e, this.raw = i, this.text = i, this.url = i;
 }
 function Uc(t, e) {
-  const n = new z3(t, e);
+  const n = new q3(t, e);
   return t.__compiled__[n.schema].normalize(n, t), n;
 }
 function At(t, e) {
   if (!(this instanceof At))
     return new At(t, e);
-  e || B3(t) && (e = t, t = {}), this.__opts__ = Bc({}, EE, e), this.__index__ = -1, this.__last_index__ = -1, this.__schema__ = "", this.__text_cache__ = "", this.__schemas__ = Bc({}, U3, t), this.__compiled__ = {}, this.__tlds__ = G3, this.__tlds_replaced__ = !1, this.re = {}, _s(this);
+  e || H3(t) && (e = t, t = {}), this.__opts__ = Bc({}, EE, e), this.__index__ = -1, this.__last_index__ = -1, this.__schema__ = "", this.__text_cache__ = "", this.__schemas__ = Bc({}, G3, t), this.__compiled__ = {}, this.__tlds__ = Y3, this.__tlds_replaced__ = !1, this.re = {}, _s(this);
 }
 At.prototype.add = function(e, n) {
   return this.__schemas__[e] = n, _s(this), this;
@@ -80304,15 +80346,15 @@ At.prototype.normalize = function(e) {
 };
 At.prototype.onCompile = function() {
 };
-const Qr = 2147483647, jt = 36, Zu = 1, Eo = 26, $3 = 38, q3 = 700, SE = 72, bE = 128, TE = "-", W3 = /^xn--/, K3 = /[^\0-\x7F]/, Q3 = /[\x2E\u3002\uFF0E\uFF61]/g, Z3 = {
+const Qr = 2147483647, jt = 36, Zu = 1, Eo = 26, W3 = 38, K3 = 700, SE = 72, bE = 128, TE = "-", Q3 = /^xn--/, Z3 = /[^\0-\x7F]/, X3 = /[\x2E\u3002\uFF0E\uFF61]/g, j3 = {
   overflow: "Overflow: input needs wider integers to process",
   "not-basic": "Illegal input >= 0x80 (not a basic code point)",
   "invalid-input": "Invalid input"
 }, Yl = jt - Zu, Jt = Math.floor, zl = String.fromCharCode;
 function Nn(t) {
-  throw new RangeError(Z3[t]);
+  throw new RangeError(j3[t]);
 }
-function X3(t, e) {
+function J3(t, e) {
   const n = [];
   let r = t.length;
   for (; r--; )
@@ -80322,8 +80364,8 @@ function X3(t, e) {
 function CE(t, e) {
   const n = t.split("@");
   let r = "";
-  n.length > 1 && (r = n[0] + "@", t = n[1]), t = t.replace(Q3, ".");
-  const i = t.split("."), o = X3(i, e).join(".");
+  n.length > 1 && (r = n[0] + "@", t = n[1]), t = t.replace(X3, ".");
+  const i = t.split("."), o = J3(i, e).join(".");
   return r + o;
 }
 function yE(t) {
@@ -80340,15 +80382,15 @@ function yE(t) {
   }
   return e;
 }
-const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
+const e4 = (t) => String.fromCodePoint(...t), t4 = function(t) {
   return t >= 48 && t < 58 ? 26 + (t - 48) : t >= 65 && t < 91 ? t - 65 : t >= 97 && t < 123 ? t - 97 : jt;
 }, Tm = function(t, e) {
   return t + 22 + 75 * (t < 26) - ((e != 0) << 5);
 }, vE = function(t, e, n) {
   let r = 0;
-  for (t = n ? Jt(t / q3) : t >> 1, t += Jt(t / e); t > Yl * Eo >> 1; r += jt)
+  for (t = n ? Jt(t / K3) : t >> 1, t += Jt(t / e); t > Yl * Eo >> 1; r += jt)
     t = Jt(t / Yl);
-  return Jt(r + (Yl + 1) * t / (t + $3));
+  return Jt(r + (Yl + 1) * t / (t + W3));
 }, RE = function(t) {
   const e = [], n = t.length;
   let r = 0, i = bE, o = SE, a = t.lastIndexOf(TE);
@@ -80359,7 +80401,7 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
     const l = r;
     for (let u = 1, d = jt; ; d += jt) {
       s >= n && Nn("invalid-input");
-      const p = J3(t.charCodeAt(s++));
+      const p = t4(t.charCodeAt(s++));
       p >= jt && Nn("invalid-input"), p > Jt((Qr - r) / u) && Nn("overflow"), r += p * u;
       const _ = d <= o ? Zu : d >= o + Eo ? Eo : d - o;
       if (p < _)
@@ -80403,13 +80445,13 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
     ++i, ++r;
   }
   return e.join("");
-}, e4 = function(t) {
+}, n4 = function(t) {
   return CE(t, function(e) {
-    return W3.test(e) ? RE(e.slice(4).toLowerCase()) : e;
+    return Q3.test(e) ? RE(e.slice(4).toLowerCase()) : e;
   });
-}, t4 = function(t) {
+}, r4 = function(t) {
   return CE(t, function(e) {
-    return K3.test(e) ? "xn--" + OE(e) : e;
+    return Z3.test(e) ? "xn--" + OE(e) : e;
   });
 }, NE = {
   /**
@@ -80427,13 +80469,13 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
    */
   ucs2: {
     decode: yE,
-    encode: j3
+    encode: e4
   },
   decode: RE,
   encode: OE,
-  toASCII: t4,
-  toUnicode: e4
-}, n4 = {
+  toASCII: r4,
+  toUnicode: n4
+}, i4 = {
   options: {
     // Enable HTML tags in source
     html: !1,
@@ -80469,7 +80511,7 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
     block: {},
     inline: {}
   }
-}, r4 = {
+}, o4 = {
   options: {
     // Enable HTML tags in source
     html: !1,
@@ -80524,7 +80566,7 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
       ]
     }
   }
-}, i4 = {
+}, a4 = {
   options: {
     // Enable HTML tags in source
     html: !0,
@@ -80598,17 +80640,17 @@ const j3 = (t) => String.fromCodePoint(...t), J3 = function(t) {
       ]
     }
   }
-}, o4 = {
-  default: n4,
-  zero: r4,
-  commonmark: i4
-}, a4 = /^(vbscript|javascript|file|data):/, s4 = /^data:image\/(gif|png|jpeg|webp);/;
-function l4(t) {
+}, s4 = {
+  default: i4,
+  zero: o4,
+  commonmark: a4
+}, l4 = /^(vbscript|javascript|file|data):/, c4 = /^data:image\/(gif|png|jpeg|webp);/;
+function u4(t) {
   const e = t.trim().toLowerCase();
-  return a4.test(e) ? s4.test(e) : !0;
+  return l4.test(e) ? c4.test(e) : !0;
 }
 const AE = ["http:", "https:", "mailto:"];
-function c4(t) {
+function d4(t) {
   const e = zu(t, !0);
   if (e.hostname && (!e.protocol || AE.indexOf(e.protocol) >= 0))
     try {
@@ -80617,7 +80659,7 @@ function c4(t) {
     }
   return No(Yu(e));
 }
-function u4(t) {
+function p4(t) {
   const e = zu(t, !0);
   if (e.hostname && (!e.protocol || AE.indexOf(e.protocol) >= 0))
     try {
@@ -80629,7 +80671,7 @@ function u4(t) {
 function Bt(t, e) {
   if (!(this instanceof Bt))
     return new Bt(t, e);
-  e || qu(t) || (e = t || {}, t = "default"), this.inline = new Io(), this.block = new $s(), this.core = new Ku(), this.renderer = new mi(), this.linkify = new At(), this.validateLink = l4, this.normalizeLink = c4, this.normalizeLinkText = u4, this.utils = pP, this.helpers = Ys({}, hP), this.options = {}, this.configure(t), e && this.set(e);
+  e || qu(t) || (e = t || {}, t = "default"), this.inline = new Io(), this.block = new $s(), this.core = new Ku(), this.renderer = new mi(), this.linkify = new At(), this.validateLink = u4, this.normalizeLink = d4, this.normalizeLinkText = p4, this.utils = mP, this.helpers = Ys({}, EP), this.options = {}, this.configure(t), e && this.set(e);
 }
 Bt.prototype.set = function(t) {
   return Ys(this.options, t), this;
@@ -80638,7 +80680,7 @@ Bt.prototype.configure = function(t) {
   const e = this;
   if (qu(t)) {
     const n = t;
-    if (t = o4[n], !t)
+    if (t = s4[n], !t)
       throw new Error('Wrong `markdown-it` preset "' + n + '", check name');
   }
   if (!t)
@@ -80691,7 +80733,7 @@ Bt.prototype.parseInline = function(t, e) {
 Bt.prototype.renderInline = function(t, e) {
   return e = e || {}, this.renderer.render(this.parseInline(t, e), this.options, e);
 };
-function d4(t, e, n) {
+function _4(t, e, n) {
   function r(p) {
     return p.trim().split(" ", 2)[0] === e;
   }
@@ -80736,64 +80778,64 @@ function d4(t, e, n) {
     alt: ["paragraph", "reference", "blockquote", "list"]
   }), t.renderer.rules["container_" + e + "_open"] = u, t.renderer.rules["container_" + e + "_close"] = u;
 }
-var Hc = !0, IE = !1, xE = !1, p4 = function(t, e) {
+var Hc = !0, IE = !1, xE = !1, m4 = function(t, e) {
   e && (Hc = !e.enabled, IE = !!e.label, xE = !!e.labelAfter), t.core.ruler.after("inline", "github-task-lists", function(n) {
     for (var r = n.tokens, i = 2; i < r.length; i++)
-      m4(r, i) && (f4(r[i], n.Token), Cm(r[i - 2], "class", "task-list-item" + (Hc ? "" : " enabled")), Cm(r[_4(r, i - 2)], "class", "contains-task-list"));
+      h4(r, i) && (g4(r[i], n.Token), Cm(r[i - 2], "class", "task-list-item" + (Hc ? "" : " enabled")), Cm(r[f4(r, i - 2)], "class", "contains-task-list"));
   });
 };
 function Cm(t, e, n) {
   var r = t.attrIndex(e), i = [e, n];
   r < 0 ? t.attrPush(i) : t.attrs[r] = i;
 }
-function _4(t, e) {
+function f4(t, e) {
   for (var n = t[e].level - 1, r = e - 1; r >= 0; r--)
     if (t[r].level === n)
       return r;
   return -1;
 }
-function m4(t, e) {
-  return b4(t[e]) && T4(t[e - 1]) && C4(t[e - 2]) && y4(t[e]);
+function h4(t, e) {
+  return C4(t[e]) && y4(t[e - 1]) && v4(t[e - 2]) && R4(t[e]);
 }
-function f4(t, e) {
-  if (t.children.unshift(h4(t, e)), t.children[1].content = t.children[1].content.slice(3), t.content = t.content.slice(3), IE)
+function g4(t, e) {
+  if (t.children.unshift(E4(t, e)), t.children[1].content = t.children[1].content.slice(3), t.content = t.content.slice(3), IE)
     if (xE) {
       t.children.pop();
       var n = "task-item-" + Math.ceil(Math.random() * (1e4 * 1e3) - 1e3);
-      t.children[0].content = t.children[0].content.slice(0, -1) + ' id="' + n + '">', t.children.push(S4(t.content, n, e));
+      t.children[0].content = t.children[0].content.slice(0, -1) + ' id="' + n + '">', t.children.push(T4(t.content, n, e));
     } else
-      t.children.unshift(g4(e)), t.children.push(E4(e));
+      t.children.unshift(S4(e)), t.children.push(b4(e));
 }
-function h4(t, e) {
+function E4(t, e) {
   var n = new e("html_inline", "", 0), r = Hc ? ' disabled="" ' : "";
   return t.content.indexOf("[ ] ") === 0 ? n.content = '<input class="task-list-item-checkbox"' + r + 'type="checkbox">' : (t.content.indexOf("[x] ") === 0 || t.content.indexOf("[X] ") === 0) && (n.content = '<input class="task-list-item-checkbox" checked=""' + r + 'type="checkbox">'), n;
 }
-function g4(t) {
+function S4(t) {
   var e = new t("html_inline", "", 0);
   return e.content = "<label>", e;
 }
-function E4(t) {
+function b4(t) {
   var e = new t("html_inline", "", 0);
   return e.content = "</label>", e;
 }
-function S4(t, e, n) {
+function T4(t, e, n) {
   var r = new n("html_inline", "", 0);
   return r.content = '<label class="task-list-item-label" for="' + e + '">' + t + "</label>", r.attrs = [{ for: e }], r;
 }
-function b4(t) {
+function C4(t) {
   return t.type === "inline";
 }
-function T4(t) {
+function y4(t) {
   return t.type === "paragraph_open";
 }
-function C4(t) {
+function v4(t) {
   return t.type === "list_item_open";
 }
-function y4(t) {
+function R4(t) {
   return t.content.indexOf("[ ] ") === 0 || t.content.indexOf("[x] ") === 0 || t.content.indexOf("[X] ") === 0;
 }
-const v4 = /* @__PURE__ */ Ls(p4);
-function R4(t) {
+const O4 = /* @__PURE__ */ Ls(m4);
+function N4(t) {
   for (var e = 1; e < arguments.length; e++) {
     var n = arguments[e];
     for (var r in n)
@@ -80804,15 +80846,15 @@ function R4(t) {
 function Gc(t, e) {
   return Array(e + 1).join(t);
 }
-function O4(t) {
+function A4(t) {
   return t.replace(/^\n*/, "");
 }
-function N4(t) {
+function I4(t) {
   for (var e = t.length; e > 0 && t[e - 1] === `
 `; ) e--;
   return t.substring(0, e);
 }
-var A4 = [
+var x4 = [
   "ADDRESS",
   "ARTICLE",
   "ASIDE",
@@ -80864,7 +80906,7 @@ var A4 = [
   "UL"
 ];
 function Xu(t) {
-  return ju(t, A4);
+  return ju(t, x4);
 }
 var DE = [
   "AREA",
@@ -80887,7 +80929,7 @@ var DE = [
 function wE(t) {
   return ju(t, DE);
 }
-function I4(t) {
+function D4(t) {
   return LE(t, DE);
 }
 var ME = [
@@ -80903,10 +80945,10 @@ var ME = [
   "AUDIO",
   "VIDEO"
 ];
-function x4(t) {
+function w4(t) {
   return ju(t, ME);
 }
-function D4(t) {
+function M4(t) {
   return LE(t, ME);
 }
 function ju(t, e) {
@@ -81148,10 +81190,10 @@ kE.prototype = {
 function $l(t, e, n) {
   for (var r = 0; r < t.length; r++) {
     var i = t[r];
-    if (w4(i, e, n)) return i;
+    if (L4(i, e, n)) return i;
   }
 }
-function w4(t, e, n) {
+function L4(t, e, n) {
   var r = t.filter;
   if (typeof r == "string") {
     if (r === e.nodeName.toLowerCase()) return !0;
@@ -81162,7 +81204,7 @@ function w4(t, e, n) {
   } else
     throw new TypeError("`filter` needs to be a string, array, or function");
 }
-function M4(t) {
+function k4(t) {
   var e = t.element, n = t.isBlock, r = t.isVoid, i = t.isPre || function(d) {
     return d.nodeName === "PRE";
   };
@@ -81195,7 +81237,7 @@ function ym(t, e, n) {
   return t && t.parentNode === e || n(e) ? e.nextSibling || e.parentNode : e.firstChild || e.nextSibling || e.parentNode;
 }
 var Ju = typeof window < "u" ? window : {};
-function L4() {
+function P4() {
   var t = Ju.DOMParser, e = !1;
   try {
     new t().parseFromString("", "text/html") && (e = !0);
@@ -81203,10 +81245,10 @@ function L4() {
   }
   return e;
 }
-function k4() {
+function F4() {
   var t = function() {
   };
-  return P4() ? t.prototype.parseFromString = function(e) {
+  return B4() ? t.prototype.parseFromString = function(e) {
     var n = new window.ActiveXObject("htmlfile");
     return n.designMode = "on", n.open(), n.write(e), n.close(), n;
   } : t.prototype.parseFromString = function(e) {
@@ -81214,7 +81256,7 @@ function k4() {
     return n.open(), n.write(e), n.close(), n;
   }, t;
 }
-function P4() {
+function B4() {
   var t = !1;
   try {
     document.implementation.createHTMLDocument("").open();
@@ -81223,11 +81265,11 @@ function P4() {
   }
   return t;
 }
-var F4 = L4() ? Ju.DOMParser : k4();
-function B4(t, e) {
+var U4 = P4() ? Ju.DOMParser : F4();
+function H4(t, e) {
   var n;
   if (typeof t == "string") {
-    var r = U4().parseFromString(
+    var r = G4().parseFromString(
       // DOM parsers arrange elements in the <head> and <body>.
       // Wrapping in a custom element ensures elements are reliably arranged in
       // a single element.
@@ -81237,33 +81279,33 @@ function B4(t, e) {
     n = r.getElementById("turndown-root");
   } else
     n = t.cloneNode(!0);
-  return M4({
+  return k4({
     element: n,
     isBlock: Xu,
     isVoid: wE,
-    isPre: e.preformattedCode ? H4 : null
+    isPre: e.preformattedCode ? V4 : null
   }), n;
 }
 var Wl;
-function U4() {
-  return Wl = Wl || new F4(), Wl;
-}
-function H4(t) {
-  return t.nodeName === "PRE" || t.nodeName === "CODE";
-}
-function G4(t, e) {
-  return t.isBlock = Xu(t), t.isCode = t.nodeName === "CODE" || t.parentNode.isCode, t.isBlank = V4(t), t.flankingWhitespace = Y4(t, e), t;
+function G4() {
+  return Wl = Wl || new U4(), Wl;
 }
 function V4(t) {
-  return !wE(t) && !x4(t) && /^\s*$/i.test(t.textContent) && !I4(t) && !D4(t);
+  return t.nodeName === "PRE" || t.nodeName === "CODE";
 }
 function Y4(t, e) {
-  if (t.isBlock || e.preformattedCode && t.isCode)
-    return { leading: "", trailing: "" };
-  var n = z4(t.textContent);
-  return n.leadingAscii && vm("left", t, e) && (n.leading = n.leadingNonAscii), n.trailingAscii && vm("right", t, e) && (n.trailing = n.trailingNonAscii), { leading: n.leading, trailing: n.trailing };
+  return t.isBlock = Xu(t), t.isCode = t.nodeName === "CODE" || t.parentNode.isCode, t.isBlank = z4(t), t.flankingWhitespace = $4(t, e), t;
 }
 function z4(t) {
+  return !wE(t) && !w4(t) && /^\s*$/i.test(t.textContent) && !D4(t) && !M4(t);
+}
+function $4(t, e) {
+  if (t.isBlock || e.preformattedCode && t.isCode)
+    return { leading: "", trailing: "" };
+  var n = q4(t.textContent);
+  return n.leadingAscii && vm("left", t, e) && (n.leading = n.leadingNonAscii), n.trailingAscii && vm("right", t, e) && (n.trailing = n.trailingNonAscii), { leading: n.leading, trailing: n.trailing };
+}
+function q4(t) {
   var e = t.match(/^(([ \t\r\n]*)(\s*))(?:(?=\S)[\s\S]*\S)?((\s*?)([ \t\r\n]*))$/);
   return {
     leading: e[1],
@@ -81280,7 +81322,7 @@ function vm(t, e, n) {
   var r, i, o;
   return t === "left" ? (r = e.previousSibling, i = / $/) : (r = e.nextSibling, i = /^ /), r && (r.nodeType === 3 ? o = i.test(r.nodeValue) : n.preformattedCode && r.nodeName === "CODE" ? o = !1 : r.nodeType === 1 && !Xu(r) && (o = i.test(r.textContent))), o;
 }
-var $4 = Array.prototype.reduce, q4 = [
+var W4 = Array.prototype.reduce, K4 = [
   [/\\/g, "\\\\"],
   [/\*/g, "\\*"],
   [/^-/g, "\\-"],
@@ -81330,7 +81372,7 @@ function fs(t) {
 ` : n;
     }
   };
-  this.options = R4({}, e, t), this.rules = new kE(this.options);
+  this.options = N4({}, e, t), this.rules = new kE(this.options);
 }
 fs.prototype = {
   /**
@@ -81341,13 +81383,13 @@ fs.prototype = {
    * @type String
    */
   turndown: function(t) {
-    if (!Q4(t))
+    if (!X4(t))
       throw new TypeError(
         t + " is not a string, or an element/document/fragment node."
       );
     if (t === "") return "";
-    var e = PE.call(this, new B4(t, this.options));
-    return W4.call(this, e);
+    var e = PE.call(this, new H4(t, this.options));
+    return Q4.call(this, e);
   },
   /**
    * Add one or more plugins
@@ -81404,40 +81446,40 @@ fs.prototype = {
    * @type String
    */
   escape: function(t) {
-    return q4.reduce(function(e, n) {
+    return K4.reduce(function(e, n) {
       return e.replace(n[0], n[1]);
     }, t);
   }
 };
 function PE(t) {
   var e = this;
-  return $4.call(t.childNodes, function(n, r) {
-    r = new G4(r, e.options);
+  return W4.call(t.childNodes, function(n, r) {
+    r = new Y4(r, e.options);
     var i = "";
-    return r.nodeType === 3 ? i = r.isCode ? r.nodeValue : e.escape(r.nodeValue) : r.nodeType === 1 && (i = K4.call(e, r)), FE(n, i);
+    return r.nodeType === 3 ? i = r.isCode ? r.nodeValue : e.escape(r.nodeValue) : r.nodeType === 1 && (i = Z4.call(e, r)), FE(n, i);
   }, "");
 }
-function W4(t) {
+function Q4(t) {
   var e = this;
   return this.rules.forEach(function(n) {
     typeof n.append == "function" && (t = FE(t, n.append(e.options)));
   }), t.replace(/^[\t\r\n]+/, "").replace(/[\t\r\n\s]+$/, "");
 }
-function K4(t) {
+function Z4(t) {
   var e = this.rules.forNode(t), n = PE.call(this, t), r = t.flankingWhitespace;
   return (r.leading || r.trailing) && (n = n.trim()), r.leading + e.replacement(n, t, this.options) + r.trailing;
 }
 function FE(t, e) {
-  var n = N4(t), r = O4(e), i = Math.max(t.length - n.length, e.length - r.length), o = `
+  var n = I4(t), r = A4(e), i = Math.max(t.length - n.length, e.length - r.length), o = `
 
 `.substring(0, i);
   return n + o + r;
 }
-function Q4(t) {
+function X4(t) {
   return t != null && (typeof t == "string" || t.nodeType && (t.nodeType === 1 || t.nodeType === 9 || t.nodeType === 11));
 }
 var Rm = /highlight-(?:text|source)-([a-z0-9]+)/;
-function Z4(t) {
+function j4(t) {
   t.addRule("highlightedCodeBlock", {
     filter: function(e) {
       var n = e.firstChild;
@@ -81455,7 +81497,7 @@ function Z4(t) {
     }
   });
 }
-function X4(t) {
+function J4(t) {
   t.addRule("strikethrough", {
     filter: ["del", "s", "strike"],
     replacement: function(e) {
@@ -81463,7 +81505,7 @@ function X4(t) {
     }
   });
 }
-var j4 = Array.prototype.indexOf, J4 = Array.prototype.every, ui = {};
+var eF = Array.prototype.indexOf, tF = Array.prototype.every, ui = {};
 ui.tableCell = {
   filter: ["th", "td"],
   replacement: function(t, e) {
@@ -81476,7 +81518,7 @@ ui.tableRow = {
     const n = UE(e);
     if (ed(n)) return t;
     var r = "", i = { left: ":--", right: "--:", center: ":-:" };
-    if (eF(e)) {
+    if (nF(e)) {
       const l = HE(n);
       for (var o = 0; o < l; o++) {
         const c = l >= e.childNodes.length ? null : e.childNodes[o];
@@ -81517,23 +81559,23 @@ ui.tableSection = {
     return t;
   }
 };
-function eF(t) {
+function nF(t) {
   var e = t.parentNode;
-  return e.nodeName === "THEAD" || e.firstChild === t && (e.nodeName === "TABLE" || tF(e)) && J4.call(t.childNodes, function(n) {
+  return e.nodeName === "THEAD" || e.firstChild === t && (e.nodeName === "TABLE" || rF(e)) && tF.call(t.childNodes, function(n) {
     return n.nodeName === "TH";
   });
 }
-function tF(t) {
+function rF(t) {
   var e = t.previousSibling;
   return t.nodeName === "TBODY" && (!e || e.nodeName === "THEAD" && /^\s*$/i.test(e.textContent));
 }
 function Vc(t, e = null, n = null) {
-  n === null && (n = j4.call(e.parentNode.childNodes, e));
+  n === null && (n = eF.call(e.parentNode.childNodes, e));
   var r = " ";
   n === 0 && (r = "| ");
   let i = t.trim().replace(/\n\r/g, "<br>").replace(/\n/g, "<br>");
   for (i = i.replace(/\|+/g, "\\|"); i.length < 3; ) i += " ";
-  return e && (i = nF(i, e, " ")), r + i + " |";
+  return e && (i = iF(i, e, " ")), r + i + " |";
 }
 function BE(t) {
   if (!t.childNodes) return !1;
@@ -81552,7 +81594,7 @@ function UE(t) {
     if (e = e.parentNode, !e) return null;
   return e;
 }
-function nF(t, e, n) {
+function iF(t, e, n) {
   const r = e.getAttribute("colspan") || 1;
   for (let i = 1; i < r; i++)
     t += " | " + n.repeat(3);
@@ -81572,7 +81614,7 @@ function GE(t) {
   });
   for (var e in ui) t.addRule(e, ui[e]);
 }
-function rF(t) {
+function oF(t) {
   t.addRule("taskListItems", {
     filter: function(e) {
       return e.type === "checkbox" && e.parentNode.nodeName === "LI";
@@ -81582,12 +81624,12 @@ function rF(t) {
     }
   });
 }
-function iF(t) {
+function aF(t) {
   t.use([
-    Z4,
-    X4,
+    j4,
+    J4,
     GE,
-    rF
+    oF
   ]);
 }
 const td = Bt({
@@ -81595,7 +81637,7 @@ const td = Bt({
   linkify: !0,
   typographer: !0
 });
-td.use(d4, "container-wrapper", {
+td.use(_4, "container-wrapper", {
   validate: function(t) {
     return !0;
   },
@@ -81603,7 +81645,7 @@ td.use(d4, "container-wrapper", {
     return t[e].nesting === 1 ? `<div class="container-wrapper ${t[e].info.trim().split(" ")[0]}">` : "</div>";
   }
 });
-td.use(v4, {
+td.use(O4, {
   enabled: !0,
   label: !0
 });
@@ -81619,7 +81661,7 @@ const Rr = new fs({
   linkReferenceStyle: "full",
   preformattedCode: !1
 });
-Rr.use(iF);
+Rr.use(aF);
 Rr.use(GE);
 Rr.addRule("strikethrough", {
   filter: ["del", "s", "strike"],
@@ -81662,7 +81704,7 @@ const hs = (t) => {
   if (!t) return t;
   const e = td.render(t).trim();
   return e ? Bi(e.includes("<pre") ? e : e.replace(/\n/g, "")) : t;
-}, oF = (t) => {
+}, sF = (t) => {
   if (!t) return t;
   const n = new DOMParser().parseFromString(t, "text/html");
   n.querySelectorAll("colgroup").forEach((a) => a.remove()), n.querySelectorAll("li").forEach((a) => {
@@ -81681,7 +81723,7 @@ const hs = (t) => {
 };
 oe("aie-header", kh);
 oe("aie-footer", Ph);
-const aF = {
+const lF = {
   theme: "light",
   lang: "zh",
   contentRetentionKey: "ai-editor-content",
@@ -81690,10 +81732,10 @@ const aF = {
   placeholder: "",
   toolbarSize: "small"
 };
-class sF extends ZC {
+class cF extends ZC {
   constructor(n, r = {}) {
     super(r);
-    M(this, "aiEditor");
+    w(this, "aiEditor");
     this.aiEditor = n;
   }
   parseHtml(n) {
@@ -81710,31 +81752,31 @@ class sF extends ZC {
     this.commands.insertContent(hs(n));
   }
 }
-class CB {
+class vB {
   constructor(e) {
-    M(this, "customLayout", !1);
-    M(this, "innerEditor");
-    M(this, "container");
-    M(this, "header");
-    M(this, "mainEl");
-    M(this, "footer");
-    M(this, "options");
-    M(this, "eventComponents", []);
-    this.options = { ...aF, ...e }, this.initI18nAndInnerEditor();
+    w(this, "customLayout", !1);
+    w(this, "innerEditor");
+    w(this, "container");
+    w(this, "header");
+    w(this, "mainEl");
+    w(this, "footer");
+    w(this, "options");
+    w(this, "eventComponents", []);
+    this.options = { ...lF, ...e }, this.initI18nAndInnerEditor();
   }
   initI18nAndInnerEditor() {
     const e = this.options.i18n || {}, n = {
-      de: { translation: { ...gk, ...e.de } },
-      en: { translation: { ...hk, ...e.en } },
-      pt: { translation: { ...Ek, ...e.pt } },
-      zh: { translation: { ...fk, ...e.zh } },
-      es: { translation: { ...Sk, ...e.es } },
-      hi: { translation: { ...bk, ...e.hi } },
-      id: { translation: { ...Tk, ...e.id } },
-      ja: { translation: { ...Ck, ...e.ja } },
-      ko: { translation: { ...yk, ...e.ko } },
-      th: { translation: { ...vk, ...e.th } },
-      vi: { translation: { ...Rk, ...e.vi } }
+      de: { translation: { ...Sk, ...e.de } },
+      en: { translation: { ...Ek, ...e.en } },
+      pt: { translation: { ...bk, ...e.pt } },
+      zh: { translation: { ...gk, ...e.zh } },
+      es: { translation: { ...Tk, ...e.es } },
+      hi: { translation: { ...Ck, ...e.hi } },
+      id: { translation: { ...yk, ...e.id } },
+      ja: { translation: { ...vk, ...e.ja } },
+      ko: { translation: { ...Rk, ...e.ko } },
+      th: { translation: { ...Ok, ...e.th } },
+      vi: { translation: { ...Nk, ...e.vi } }
     };
     for (let r of Object.keys(e))
       r != "de" && r != "en" && r != "pt" && r != "zh" && (n[r] = {
@@ -81760,7 +81802,7 @@ class CB {
           console.error(i, "Can not parse the cache content from localStorage.");
         }
     }
-    this.innerEditor = new sF(this, {
+    this.innerEditor = new cF(this, {
       ...this.options,
       element: this.mainEl,
       content: n,
@@ -81788,7 +81830,7 @@ class CB {
     });
   }
   getExtensions() {
-    let e = mk(this, this.options);
+    let e = hk(this, this.options);
     if (this.options.onCreateBefore) {
       const n = this.options.onCreateBefore(this, e);
       n && (e = n);
@@ -81828,7 +81870,7 @@ class CB {
     return e.empty ? "" : As(this.innerEditor.state.doc, { from: e.from, to: e.to });
   }
   getMarkdown() {
-    return oF(this.getHtml());
+    return sF(this.getHtml());
   }
   getOptions() {
     return this.options;
@@ -81902,8 +81944,8 @@ class CB {
       n.onEditableChange(e);
     }), this;
   }
-  setContent(e) {
-    return typeof e == "string" && (e = Bi(e)), this.focus().clear().insert(e), this;
+  setContent(e, n) {
+    return typeof e == "string" && (e = Bi(e)), n === !1 ? this.clear().insert(e) : this.focus().clear().insert(e), this;
   }
   setMarkdownContent(e) {
     const n = hs(e);
@@ -81934,11 +81976,11 @@ class CB {
   }
 }
 export {
-  CB as AiEditor,
+  vB as AiEditor,
   $n as AiModelManager,
-  fR as CustomAiModel,
-  sF as InnerEditor,
-  hR as OpenaiAiModel,
-  cR as SparkAiModel,
-  uR as WenXinAiModel
+  hR as CustomAiModel,
+  cF as InnerEditor,
+  gR as OpenaiAiModel,
+  uR as SparkAiModel,
+  dR as WenXinAiModel
 };

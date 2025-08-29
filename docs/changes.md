@@ -1,5 +1,27 @@
 # AiEditor ChangeLog
 
+## v1.4.1 20250829:
+- feat: add toolbarTipEnable config support 
+- feat: optimize setContent() method, add focus param 
+- feat: optimize image styles in table
+- fix: dragging an image beyond the editor should not cancel the dragging event 
+- fix: fixed ai command can not get text in new line 
+- fix: video insert position is error 
+- fix: fix image use data-src to replace src, and fixed image insert position is error
+- fix: insertMarkdown can not show image some cases
+- fix: Fix the issue where dragging the image does not trigger onChange in some cases 
+---
+- 新增：添加 toolbarTipEnable 配置的支持
+- 新增：优化 setContent() 方法，添加 focus 参数
+- 优化：优化表格中的图片样式问题，优化图片在表格中的大小拖动
+- 修复：优化图片拖动超出编辑器范围时取消拖动事件的问题
+- 修复：修复 AI 命令在有新行时获取不到文本的问题
+- 修复：修复视频插入位置错误问题
+- 修复：修复图片在表格中的大小拖动时使用 data-src 替换 src 的问题
+- 修复：修复插入 markdown 时图片显示不全的问题
+- 修复：图片图片有时不触发 onChange 的问题
+
+
 
 ## v1.4.0 20250625:
 - feat: Added video attributes autoplay, loop, muted, preload

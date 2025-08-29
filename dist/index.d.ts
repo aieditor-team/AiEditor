@@ -78,7 +78,7 @@ export declare class AiEditor {
     insert(content: any): this;
     insertMarkdown(content: string): this;
     setEditable(editable: boolean): this;
-    setContent(content: string): this;
+    setContent(content: string, focus?: boolean): this;
     setMarkdownContent(content: string): this;
     clear(): this;
     isEmpty(): boolean;
@@ -126,6 +126,7 @@ export declare type AiEditorOptions = {
     alwaysEnabledToolbarKeys?: string[];
     toolbarExcludeKeys?: DefaultToolbarKey[];
     toolbarSize?: 'small' | 'medium' | 'large';
+    toolbarTipEnable?: boolean;
     draggable?: boolean;
     htmlPasteConfig?: HtmlPasteConfig;
     codeBlock?: {
