@@ -203,9 +203,14 @@ export const ImageExt = Image.extend<ImageOptions>({
 
                             if (json.errorCode === 0 && json.data && json.data.src) {
                                 const decorations = key.getState(this.editor.state) as DecorationSet;
-                                let found = decorations.find(void 0, void 0, spec => spec.id == id)
+                                let foundDecorations = decorations.find(void 0, void 0, spec => spec.id == id)
+
+                                let insertPos = foundDecorations[0].from;
+                                const $pos = this.editor.state.doc.resolve(foundDecorations[0].from);
+                                if (!$pos.nodeBefore) insertPos -= 1;
+
                                 view.dispatch(view.state.tr
-                                    .insert(found[0].from - 1, schema.nodes.image.create({
+                                    .insert(insertPos, schema.nodes.image.create({
                                         src: json.data.src,
                                         alt: json.data.alt,
                                         align: json.data.align || "left",
@@ -248,7 +253,7 @@ export const ImageExt = Image.extend<ImageOptions>({
 
                 if (!this.editor.isEditable) {
                     container.innerHTML = `<div class="aie-resize-wrapper" ${wrapperStyle}>
-<img alt="${alt}" src="${props.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
+<img alt="${alt}" src="${src || props.node.attrs['data-src']}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
 </div>`
                     return {
                         dom: container,
@@ -263,7 +268,7 @@ export const ImageExt = Image.extend<ImageOptions>({
                         <div class="aie-resize-btn-bottom-left" data-position="left" draggable="true"></div>
                         <div class="aie-resize-btn-bottom-right" data-position="right" draggable="true"></div>
                     </div>
-                    <img alt="${alt}" src="${props.node.attrs['data-src'] || src}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
+                    <img alt="${alt}" src="${src || props.node.attrs['data-src']}" style="width: ${calcImgWidth}; height: ${height || 'auto'}" class="align-${align} resize-obj">
                 </div>
                 `
                 resize(this.editor,
