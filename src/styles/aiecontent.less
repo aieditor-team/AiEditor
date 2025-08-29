@@ -129,6 +129,11 @@
     table-layout: fixed;
     width: 100%;
 
+    img {
+      // 让表格里的图片拖动超出范围时依然可以拖动
+      z-index: 1;
+    }
+
     td,
     th {
       border: 2px solid var(--aie-content-table-border-color);
