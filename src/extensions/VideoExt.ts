@@ -157,9 +157,14 @@ export const VideoExt = Node.create<VideoOptions>({
 
                         if (json.errorCode === 0 && json.data && json.data.src) {
                             const decorations = key.getState(this.editor.state) as DecorationSet;
-                            let found = decorations.find(void 0, void 0, spec => spec.id == id)
+                            let foundDecorations = decorations.find(void 0, void 0, spec => spec.id == id)
+
+                            let insertPos = foundDecorations[0].from;
+                            const $pos = this.editor.state.doc.resolve(foundDecorations[0].from);
+                            if (!$pos.nodeBefore) insertPos -= 1;
+
                             view.dispatch(view.state.tr
-                                .insert(found[0].from, schema.nodes.video.create({
+                                .insert(insertPos, schema.nodes.video.create({
                                     src: json.data.src,
                                     poster: json.data.poster,
                                     width: json.data.width || 350,
