@@ -1,5 +1,57 @@
 # AiEditor ChangeLog
 
+## v1.3.8 20250829（AIEditor Pro 商业版）:
+- feat: Supports coexistence of code and other marks (compatible with FeiShu format)
+- feat: Supports content recognition of highlighted blocks in Tencent Docs (when pasting...)
+- feat: Optimize TaskItemExt and TaskListExt code
+- feat: Support adding images and other content in li
+- feat: Optimize setContent and add support for focus parameter
+- feat: Advanced Search and Replace Added 'clearSearchFor' Method
+- feat: "Link" function adds the ability to modify link content
+- feat: Change the 'default' in the link opening method to 'current window'
+- feat: Add the function of configuring "defaultTarget" for links
+- feat: Support task list pasting in FeiShu
+- feat: Container supports pasting content from FeiShu
+- feat: Optimize the logic for determining the insertion position of videos
+- feat: When optimizing CSS image display (such as URL not being accessible), there is no issue of high visibility of images
+- feat: Optimize the issue of not supporting Block elements in ol and ul
+- feat: Add support for copied background colors
+- feat: Allow images in the table to still be dragged beyond the specified range
+- feat: Optimize the insertion position of images
+- feat: After dragging images beyond the editor, the drag event should not be canceled
+- fix: Fixed the issue where data src takes precedence over src when pasting images in Feishu
+- fix: Added LinkExt to fix the issue of unlinking in Chinese after configuring Autolink
+- fix: Fixed the issue where images cannot be displayed when inserting certain special markdowns
+- fix: Dragging image size does not trigger nChange in some cases
+- fix: Fixed the issue where some floating menus still display prompt content even after configuring toolbarTipEnable to false
+---
+- 新增: 支持 code 和 其他 mark 共存（兼容飞书格式）
+- 新增: 支持【腾讯文档】高亮块的内容识别（粘贴时...）
+- 新增: 优化 TaskItemExt 和  TaskListExt 代码
+- 新增: 支持在 li 中添加图片等内容
+- 新增: 优化 setContent，添加 focus 参数的支持
+- 新增: 高级搜索和替换新增 'clearSearchFor' 方法
+- 新增: ”链接“ 功能新增修改链接内容的功能
+- 新增: 修改链接打开方式中的 ”默认“ 为 ”当前窗口“
+- 新增: 为 link 添加 "defaultTarget" 配置的功能
+- 新增: 支持飞书的 task 列表粘贴
+- 新增: Container 支持飞书的内容粘贴
+- 优化: 优化视频的插入位置判断逻辑
+- 优化: 优化 css 图片展示时（比如 URL 不能访问）图片没有高度看不见的问题
+- 优化: 优化 ol 和 ul 下不支持 Block 元素的问题
+- 优化: 添加复制过来的背景颜色支持
+- 优化: 让表格里的图片拖动超出范围时依然可以拖动
+- 优化: 优化图片的插入位置
+- 优化: 优化拖动图片超出编辑器后，不应该取消拖动事件
+- 修复: 修复飞书粘贴图片时， data-src 优先于 src 的问题
+- 修复: 新增 LinkExt 用于修复配置 autolink 后输入中文取消链接的问题
+- 修复: 修复在插入某些特殊的 markdown 时无法显示图片的问题
+- 修复: 拖动图片大小在某些情况下不触发 onChange 的问题
+- 修复: 修复 toolbarTipEnable 配置 false 后，某些浮动菜单依然弹出提示内容的问题
+
+
+
+
 ## v1.4.1 20250829:
 - feat: add toolbarTipEnable config support 
 - feat: optimize setContent() method, add focus param 
