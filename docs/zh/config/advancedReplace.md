@@ -4,7 +4,8 @@
 
 ![advanced-replace.png](../../assets/image/advanced-replace.png)
 
-> PS：此功能【右侧】为产品方自定义开发，当前文档 API 在 Pro 版本才有，开源版没有当前功能。 Pro 版预览地址：http://pro.aieditor.com.cn
+> PS：此功能【右侧】为产品方自定义开发，当前文档 API 在 Pro 版本才有，开源版没有当前功能。 Pro
+> 版预览地址：http://pro.aieditor.com.cn
 
 
 **支持特性**
@@ -149,6 +150,7 @@ editor.commands().clearSearch();
 | `previousSearchResultFor(k)` | `string`           | 上一个指定关键词    |
 | `replaceAllForKey(k)`        | `string`           | 替换所有某关键词    |
 | `clearSearch()`              | —                  | 清除所有搜索状态    |
+| `clearSearchFor(k)`          | `string`           | 清除指定关键词     |
 | `scrollToSearchResult()`     | —                  | 滚动到当前匹配     |
 
 ## 🎨 样式建议
