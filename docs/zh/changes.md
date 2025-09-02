@@ -74,6 +74,21 @@
 - 修复：图片图片有时不触发 onChange 的问题
 
 
+## v1.3.7 20250820（AIEditor Pro 商业版）
+- feat: Added search and replace functionality
+- feat: Added support for more parameter configurations for SearchAndReplaceExt
+- feat: Added support for "end" syntax
+- feat: Added support for indent units
+- fix: Fixed an issue where the AI command failed to obtain context when placed on a new line
+- fix: SearchAndReplaceExt did not perform replacements when replace was not configured
+---
+- 新增: 添加搜素和替换的功能
+- 新增: SearchAndReplaceExt 新增更多参数配置的支持
+- 新增: 添加对 "end" 对其方式的支持
+- 新增: 缩进添加对 in 单位的支持
+- 修复: 修复 AI 命令在新行的时候，获取不到上下文内容的问题
+- 修复: SearchAndReplaceExt 未配置 replace 的时候，不进行替换
+
 
 ## v1.4.0 20250625:
 - feat: Added video attributes autoplay, loop, muted, preload
@@ -93,6 +108,21 @@
 
 
 
+## v1.3.6 20250625（AIEditor Pro 商业版）
+- fix: Upgrade related dependencies to the latest version
+- fix: The problem of no borders on the table when exporting
+- fix: When inserting a video, it does not display in some cases
+- fix: Fix the problem of not pasting html into the code block
+- fix: Fix the problem that when there is an image in the table, the table disappears when the content is reset again
+---
+- 优化：升级相关依赖到最新版本
+- 修复：导出时 table 没有边框的问题
+- 修复：插入视频时，在某些情况下不显示的问题
+- 修复：修复粘贴 html 到代码块时粘贴不进去的问题
+- 修复：修复当 table 中有图片，再次充重置内容是 table 消失的问题
+
+
+
 ## v1.3.9 20250603:
 - fix: fixed paste in new line if pasteAsText options enable 
 - fix: fix: fixed Uncaught RangeError: Invalid content for node tableCell: `<>` 
@@ -107,6 +137,23 @@
 - 修复: 粘贴表格出现 RangeError: Invalid content for node tableCell: `<>` 错误的问题
 - 修复：粘贴时在某些情况下会粘贴在新行的问题
 - 文档: 修改基础配置 示例代码中的 pasteAsText 的层级。AiEditorOptions 类型下没有 pasteAsText
+
+
+## v1.3.5 20250525（AIEditor Pro 商业版）
+- feat: Added imagesEndpoint configuration for users to automatically add prefixes to images when exporting
+- fix: Optimized the style of the translation panel
+- fix: Fixed the problem of automatic line breaks when pasting when pasteAsText is turned on
+- fix: Fixed the problem that the table style was not brought in when pasting a table
+- fix: Fixed the problem that an error occurs when the table has blank content when pasting a table
+- fix: Fixed the problem that the P tag format of the first row will be removed
+
+---
+- 新增: 添加 imagesEndpoint 配置用户用于在导出时自动为图片添加前缀
+- 优化: 优化翻译面板的样式问题
+- 修复: 修复当开启 pasteAsText 时，粘贴自动换行的问题
+- 修复: 修复粘贴表格时，表格样式没有带进来的问题
+- 修复: 修复粘贴表格时，表格有空白内容时出错的问题
+- 修复：修复首行 P 标签格式会被移除的问题
 
 
 

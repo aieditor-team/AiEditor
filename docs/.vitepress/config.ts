@@ -244,37 +244,37 @@ export default defineConfig({
 
     head: [
         ['link', {rel: 'icon', href: '/assets/image/logo.png'}],
-        ["script",
-            {"async": "", "src": "https://www.googletagmanager.com/gtag/js?id=G-C6VPTJNB4Y"},],
-
-        ["script", {},
-            `window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-C6VPTJNB4Y');`
-        ],
-
-        ["script", {},
-            `window.addEventListener('load', function (event) {
-document.querySelectorAll('a[href*="discord"]').forEach(function (e) {
-e.addEventListener("click", function () {
-gtag('event', 'conversion', { 'send_to': 'AW-16676526364/NmBKCIicyeAZEJyy_o8-' });})})})`
-        ],
-
-        ["script", {},
-            `window.addEventListener('load', function (event) {
-document.querySelectorAll('a[href*="mailto:"]').forEach(function (e) {
-e.addEventListener("click", function () {
-gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });})})})`
-        ],
-
-        ["script", {},
-            `var selection = document.getSelection();
-document.addEventListener('copy', function (e) {
-var selectedText = selection.toString();
-if (selectedText.includes('@')) {
-gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });}})`
-        ],
+//         ["script",
+//             {"async": "", "src": "https://www.googletagmanager.com/gtag/js?id=G-C6VPTJNB4Y"},],
+//
+//         ["script", {},
+//             `window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
+//   gtag('config', 'G-C6VPTJNB4Y');`
+//         ],
+//
+//         ["script", {},
+//             `window.addEventListener('load', function (event) {
+// document.querySelectorAll('a[href*="discord"]').forEach(function (e) {
+// e.addEventListener("click", function () {
+// gtag('event', 'conversion', { 'send_to': 'AW-16676526364/NmBKCIicyeAZEJyy_o8-' });})})})`
+//         ],
+//
+//         ["script", {},
+//             `window.addEventListener('load', function (event) {
+// document.querySelectorAll('a[href*="mailto:"]').forEach(function (e) {
+// e.addEventListener("click", function () {
+// gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });})})})`
+//         ],
+//
+//         ["script", {},
+//             `var selection = document.getSelection();
+// document.addEventListener('copy', function (e) {
+// var selectedText = selection.toString();
+// if (selectedText.includes('@')) {
+// gtag('event', 'conversion', { 'send_to': 'AW-16676526364/zc3rCIucyeAZEJyy_o8-' });}})`
+//         ],
 
 
         ["script",
@@ -302,7 +302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?5fb9d3f8ef572a950d35d5a595d85494";
+  hm.src = "https://hm.baidu.com/hm.js?5462d2c79a0bffe105a080ddf6c7512d";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();`
