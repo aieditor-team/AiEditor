@@ -13,7 +13,11 @@ export class IndentDecrease extends AbstractMenuButton {
 
     // @ts-ignore
     onClick(commands) {
-        commands.outdent();
+        if (this.editor?.isActive('bulletList') || this.editor?.isActive('orderedList')) {
+            commands.liftListItem(this.editor?.schema.nodes.listItem!);
+        } else {
+            commands.outdent();
+        }
     }
 
 }
