@@ -189,45 +189,58 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
 
     checkSelectionAndShow(editor: Editor) {
         const {state: {selection}, view} = editor;
+        let menuItemIds = [
+            "insert-column-left", "insert-column-right", "delete-column",
+            "insert-row-top", "insert-row-bottom", "delete-row",
+            "cell-background-color" // 新增背景色按钮
+        ];
         if (selection instanceof CellSelection) {
+
+            // 如果选择了整1行或者多行，无法删除列
+            if (selection.isRowSelection()) {
+                menuItemIds = menuItemIds.filter(item => item !== "delete-column");
+            }
+
+            // 如果选择了整1列或者多列，无法删除行
+            if (selection.isColSelection()) {
+                menuItemIds = menuItemIds.filter(item => item !== "delete-row");
+            }
+
             if (this.isAllTableSelected(selection)) {
-                this.showItems(["delete"])
-            } else if (this.isOneCellSelected(selection)) {
-                const showIds = [
-                    "insert-column-left", "insert-column-right", "delete-column",
-                    "insert-row-top", "insert-row-bottom", "delete-row",
-                    "cell-background-color" // 新增背景色按钮
-                ];
+                menuItemIds.push("delete");
+                this.showItems(menuItemIds)
+            } else {
+                let notColumnSelected = false;
+                if (this.isColumnSelected(selection, view) && selection.ranges.length >= 2) {
+                    menuItemIds.push("merge-cells-vertical")
+                    notColumnSelected = true;
+                }
+
+                let notRowSelected = false;
+                if (this.isRowSelected(selection, view) && selection.ranges.length >= 2) {
+                    menuItemIds.push("merge-cells-horizontal")
+                    notRowSelected = true;
+                }
+
+                //选择多行和多累
+                if (!notColumnSelected && !notRowSelected && selection.ranges.length >= 2) {
+                    menuItemIds.push("merge-cells-horizontal")
+                }
+
                 if (editor.can().splitCell()) {
                     const nodeDOM = view.nodeDOM(selection.$anchorCell.pos) as HTMLTableRowElement;
                     const colspan = nodeDOM.getAttribute("colspan");
                     const rowspan = nodeDOM.getAttribute("rowspan");
                     if (colspan && Number(colspan) > 1) {
-                        showIds.push("split-cells-horizontal")
+                        menuItemIds.push("split-cells-horizontal")
                     } else if (rowspan && Number(rowspan) > 1) {
-                        showIds.push("split-cells-vertical")
+                        menuItemIds.push("split-cells-vertical")
                     }
                 }
-                this.showItems(showIds)
-            } else if (this.isColumnSelected(selection, view)) {
-                this.showItems([
-                    "insert-column-left", "insert-column-right", "delete-column",
-                    "merge-cells-vertical", "cell-background-color" // 新增
-                ])
-            } else if (this.isRowSelected(selection, view)) {
-                this.showItems([
-                    "insert-row-top", "insert-row-bottom", "delete-row",
-                    "merge-cells-horizontal", "cell-background-color" // 新增
-                ])
-            } else {
-                this.showItems(["merge-cells-horizontal", "cell-background-color"]) // 新增
+                this.showItems(menuItemIds)
             }
         } else {
-            this.showItems([
-                "insert-column-left", "insert-column-right", "delete-column",
-                "insert-row-top", "insert-row-bottom", "delete-row",
-                "cell-background-color" // 新增
-            ])
+            this.showItems(menuItemIds)
         }
     }
 
@@ -281,7 +294,6 @@ export class TableBubbleMenu extends AbstractBubbleMenu {
         }
         return true;
     }
-
 }
 
 
