@@ -535,7 +535,7 @@
       background: var(--aie-popover-bg-color);
 
       .item {
-        display: block;
+        display: flex;
         height: 20px;
         width: 150px;
         margin: 0;
@@ -545,6 +545,14 @@
         text-align: left;
         padding: 10px 20px;
         cursor: pointer;
+        align-items: center;
+        gap: 5px;
+
+        img {
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+        }
       }
 
       .item-selected {
@@ -729,6 +737,7 @@
     }
 
     /** table-color-background-color */
+
     .color-panel-default-button,
     .color-item,
     .history-color-item {

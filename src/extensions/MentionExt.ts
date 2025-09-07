@@ -4,10 +4,26 @@ import {SuggestionProps} from "@tiptap/suggestion";
 
 export const createMention = (onMentionLoad: (query: string) => any[] | Promise<any[]>) => {
     return Mention.configure({
+        deleteTriggerWithBackspace: true,
         HTMLAttributes: {
             class: 'mention',
         },
         suggestion: {
+            char: '@',
+            allowedPrefixes: null, // 必须配置为 null 才会一直触发 allow 的配置
+            allow: ({state, range}) => {
+                const $pos = state.doc.resolve(range.from - 1)
+                const text = $pos.parent.textContent
+                const offsetInParent = $pos.parentOffset
+
+                // 只要前一个字符是英文/数字，就不触发，避免邮箱的情况
+                if (offsetInParent > 0 && text.length >= offsetInParent) {
+                    const beforeChar = text.charAt(offsetInParent)
+                    return !/^[a-zA-Z0-9]$/.test(beforeChar)
+                }
+                return true // 行首等情况允许
+            },
+
             items: ({query}) => {
                 return onMentionLoad(query)
             },
@@ -21,8 +37,8 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                     element.innerHTML = `
                             <div class="items">
                              ${suggestionProps.items.map((item: any, index) => {
-                                return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}"> @${item.label || item}</button>`
-                            }).join("")}
+                        return `<button type="button" class="item ${index === selectIndex ? 'item-selected' : ''}" data-index="${index}">${item.avatar ? `<img alt="${item.label}" src="${item.avatar}" />` : ''} ${item.label || item}</button>`
+                    }).join("")}
                             </div>
                             `
                     element.addEventListener("click", (e) => {
@@ -95,7 +111,10 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
                             return true;
                         } else if (props.event.key === "Enter") {
                             const item = suggestionProps.items[selectIndex];
-                            if (item && item.id) {
+                            //未选中的情况，比如没有数据的场景
+                            if (!item) return true;
+
+                            if (item.id) {
                                 suggestionProps.command(item)
                             } else {
                                 suggestionProps.command({id: item})
