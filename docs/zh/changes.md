@@ -1,5 +1,40 @@
 # AiEditor ChangeLog
 
+## v1.3.9 20250917 （AIEditor Pro 商业版）:
+- feat: Added a new LaTeX plugin and supports pasting common LaTeX content, such as Feishu.
+- feat: Added support for adding user avatars to Mention.
+- feat: Optimized Markdown parsing logic when pasting plain text.
+- feat: Added htmlPasteConfig?.pasteProcessor to listen for plain text content pasted.
+- feat: Optimized the popup window for "@某" as long as it's not preceded by a letter or number, and doesn't need to be preceded by a required space.
+- feat: Optimized LaTeX matching to avoid regular expression negative lookahead issues and support for iOS < 13.
+- feat: Added LaTeX compatibility with the span[data-latex] content format.
+- feat: Optimized indentation and unindentation. In lists, the indentation is now the list indentation, not the content indentation.
+- feat: Optimized the Link plugin to inherit from Link.extend.
+- feat: Optimized the table action menu to prevent adding new rows or columns when selecting multiple rows or columns.
+- feat: Optimized the table pop-up menu to support adding new rows or columns in the top, bottom, left, or right directions even when multiple rows and columns are selected.
+- feat: Fixed typos.
+- feat: Upgraded related dependencies to the latest versions.
+- fix: Fixed an issue where the "Applying a mismatched transaction" error occurred in some cases.
+- fix: Fixed a problem where pressing the Enter key when @Something was unselected would result in @null being displayed (e.g., when there was no data).
+---
+- 新增: 添加全新的 Latex 插件，以及支持常见的 latex 内容粘贴，比如飞书
+- 新增: Mention 添加用户头像的配置支持
+- 优化: 优化粘贴纯文本时 markdown 的解析逻辑
+- 优化: 添加 htmlPasteConfig?.pasteProcessor 对纯文本内容粘贴的监听处理
+- 优化: 优化 @某某 前面只要不是英文和数字，都会触发弹出，不必是必须空格后才会触发
+- 优化: 优化 latex 匹配，避免正则表达式负向前瞻，不支持 iOS < 13 的问题
+- 优化: latex 兼容 span[data-latex] 内容格式
+- 优化: 优化缩进和取消缩进，在列表中是列表缩进，而非内容缩进
+- 优化: 优化 Link 插件修改为  Link.extend 继承的方式
+- 优化: 优化表格的操作菜单，选择多行多列时不能添加新行或列的问题
+- 优化: 优化表格的弹出菜单，在选择多行多列的情况下依然支持在上下左右添加新行或列
+- 优化: 修改错别字
+- 优化: 升级相关依赖到最新版本
+- 修复: 修复在某些情况下出现 Applying a mismatched transaction 错误
+- 修复: 修复 @某某 未选中时，按 enter 键时，出现 @null 的情况（比如没有数据的场景）
+
+
+
 ## v1.3.8 20250829（AIEditor Pro 商业版）:
 - feat: Supports coexistence of code and other marks (compatible with FeiShu format)
 - feat: Supports content recognition of highlighted blocks in Tencent Docs (when pasting...)
@@ -84,8 +119,8 @@
 ---
 - 新增: 添加搜素和替换的功能
 - 新增: SearchAndReplaceExt 新增更多参数配置的支持
-- 新增: 添加对 "end" 对其方式的支持
-- 新增: 缩进添加对 in 单位的支持
+- 新增: 添加对 "end" 对其方式的支持，方便导入 word 的时候居右对齐的适配
+- 新增: 缩进添加对 in 单位的支持，方便 word 复制粘贴时识别，word 缩进的大小单位可能是 “in”
 - 修复: 修复 AI 命令在新行的时候，获取不到上下文内容的问题
 - 修复: SearchAndReplaceExt 未配置 replace 的时候，不进行替换
 
