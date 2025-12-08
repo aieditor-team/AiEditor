@@ -206,6 +206,18 @@ window.aiEditor = new AiEditor({
                     {
                         id: 5,
                         label: 'Jerry Hall'
+                    },
+                    {
+                        id: 6,
+                        label: '张三'
+                    },
+                    {
+                        id: 7,
+                        label: '李四'
+                    },
+                    {
+                        id: 8,
+                        label: '王五'
                     }
                 ].filter(item => item.label.toLowerCase().startsWith(query.toLowerCase())).slice(0, 5)
                 resolve(data)

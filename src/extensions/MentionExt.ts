@@ -18,7 +18,12 @@ export const createMention = (onMentionLoad: (query: string) => any[] | Promise<
 
                 // 只要前一个字符是英文/数字，就不触发，避免邮箱的情况
                 if (offsetInParent > 0 && text.length >= offsetInParent) {
-                    const beforeChar = text.charAt(offsetInParent)
+                    // 如果字符中包含@则直接拿@前一个字符判断
+                    const firstAtIndex = text.indexOf('@')
+                    let beforeChar = text.charAt(offsetInParent)
+                    if (firstAtIndex !== -1) {
+                        beforeChar = text.charAt(firstAtIndex - 1)
+                    }
                     return !/^[a-zA-Z0-9]$/.test(beforeChar)
                 }
                 return true // 行首等情况允许
