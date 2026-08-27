@@ -78,7 +78,7 @@
     "@microsoft/api-extractor": "^7.59.0",
     "@types/node": "^22.20.1",
     "@vitest/coverage-v8": "^4.1.11",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "publint": "^0.3.24",
     "typescript": "~5.9.3",
     "unplugin-dts": "^1.0.3",
