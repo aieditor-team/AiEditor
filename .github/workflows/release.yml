@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 20
     environment: npm
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
