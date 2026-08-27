@@ -1,3 +1,5 @@
+![](./assets/image/aieditor.png)
+
 # AiEditor
 
 ## AI 驱动的下一代开源富文本编辑器
