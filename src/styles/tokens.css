@@ -1,0 +1,172 @@
+/* 主题令牌作用于编辑器本体及挂载到 body 的 Portal，保证多实例主题彼此隔离。 */
+:where(
+  .aieditor,
+  .aieditor__dropdown-panel,
+  .aieditor__toolbar-menu-group-panel,
+  .aieditor__horizontal-rule-panel,
+  .aieditor__horizontal-rule-submenu,
+  .aieditor__color-panel,
+  .aieditor__emoji-panel,
+  .aieditor__highlight-block-panel,
+  .aieditor__highlight-block-floating-menu,
+  .aieditor__menu-tooltip,
+  .aieditor__letter-spacing-panel,
+  .aieditor__custom-color-picker,
+  .aieditor__table-picker,
+  .aieditor__image-floating-menu,
+  .aieditor__media-floating-menu,
+  .aieditor__table-floating-menu,
+  .aieditor__bubble-menu,
+  .aieditor__ai-menu,
+  .aieditor__ai-chat,
+  .aieditor__mention-list,
+  .aieditor__paste-notice,
+  .aieditor__dialog
+) {
+  --aieditor-ink: #252522;
+  --aieditor-muted: #74746e;
+  --aieditor-line: #deded8;
+  --aieditor-paper: #fff;
+  --aieditor-surface: #f8f8f5;
+  --aieditor-accent: #d65f3a;
+  --aieditor-accent-soft: #f8e9e3;
+  --aieditor-hover: #f1f1ed;
+  --aieditor-hover-strong: #ecece7;
+  --aieditor-control-line: #c9c9c2;
+  --aieditor-content-ink: #33332f;
+  --aieditor-heading-ink: #1e1e1b;
+  --aieditor-word-heading-ink: #0f4761;
+  --aieditor-word-link: #0563c1;
+  --aieditor-word-rule: #a6a6a6;
+  --aieditor-word-table-line: #bfbfbf;
+  --aieditor-subtle-ink: #5d5d56;
+  --aieditor-placeholder: #aaa9a2;
+  --aieditor-danger: #a84024;
+  --aieditor-danger-soft: #fff8f6;
+  --aieditor-danger-line: #e2b1a3;
+  --aieditor-success: #287552;
+  --aieditor-toolbar-classic: #f1f2f3;
+  --aieditor-toolbar-compact: #fafaf8;
+  --aieditor-highlight-block-line: #c8d7ef;
+  --aieditor-highlight-block-accent: #2972f4;
+  --aieditor-highlight-block-bg: #f4f7fc;
+  --aieditor-highlight-block-ink: #29364a;
+  --aieditor-info-line: #c9dff9;
+  --aieditor-info-bg: #eaf3ff;
+  --aieditor-preview-line: #b7cfee;
+  --aieditor-preview-bg: #f5f8fc;
+  --aieditor-code-bg: #f6f8fa;
+  --aieditor-code-ink: #24292f;
+  --aieditor-code-line: #d0d7de;
+  --aieditor-code-control-bg: #fff;
+  --aieditor-code-control-hover: #eaeef2;
+  --aieditor-code-control-ink: #57606a;
+  --aieditor-code-focus: #0969da;
+  --aieditor-code-menu-selected-bg: #ddf4ff;
+  --aieditor-code-menu-selected-ink: #0969da;
+  --aieditor-code-addition-bg: #dafbe1;
+  --aieditor-code-addition-ink: #116329;
+  --aieditor-code-deletion-bg: #ffebe9;
+  --aieditor-code-deletion-ink: #82071e;
+  --aieditor-code-keyword: #cf222e;
+  --aieditor-code-title: #8250df;
+  --aieditor-code-constant: #0550ae;
+  --aieditor-code-string: #0a3069;
+  --aieditor-code-built-in: #953800;
+  --aieditor-code-comment: #6e7781;
+  --aieditor-code-tag: #116329;
+  --aieditor-on-ink: #fff;
+  --aieditor-control-height: 36px;
+  --aieditor-control-height-compact: 32px;
+  --aieditor-control-radius: 4px;
+  --aieditor-control-padding-inline: 10px;
+  --aieditor-control-font-size: 13px;
+  --aieditor-focus-ring: color-mix(in srgb, var(--aieditor-accent) 22%, transparent);
+  --aieditor-overlay-radius: 6px;
+  --aieditor-overlay-shadow: 0 14px 38px rgba(37,37,34,.18);
+  color: var(--aieditor-ink);
+  color-scheme: light;
+  font-family: inherit;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+:where(
+  .aieditor,
+  .aieditor__dropdown-panel,
+  .aieditor__toolbar-menu-group-panel,
+  .aieditor__horizontal-rule-panel,
+  .aieditor__horizontal-rule-submenu,
+  .aieditor__color-panel,
+  .aieditor__emoji-panel,
+  .aieditor__highlight-block-panel,
+  .aieditor__highlight-block-floating-menu,
+  .aieditor__menu-tooltip,
+  .aieditor__letter-spacing-panel,
+  .aieditor__custom-color-picker,
+  .aieditor__table-picker,
+  .aieditor__image-floating-menu,
+  .aieditor__media-floating-menu,
+  .aieditor__table-floating-menu,
+  .aieditor__bubble-menu,
+  .aieditor__ai-menu,
+  .aieditor__ai-chat,
+  .aieditor__mention-list,
+  .aieditor__paste-notice,
+  .aieditor__dialog
+)[data-theme="dark"] {
+  --aieditor-ink: #ebece7;
+  --aieditor-muted: #a7aaa2;
+  --aieditor-line: #454841;
+  --aieditor-paper: #20211f;
+  --aieditor-surface: #292b28;
+  --aieditor-accent: #f18763;
+  --aieditor-accent-soft: #4a3028;
+  --aieditor-hover: #333631;
+  --aieditor-hover-strong: #383b36;
+  --aieditor-control-line: #565a52;
+  --aieditor-content-ink: #dedfd9;
+  --aieditor-heading-ink: #fafaf6;
+  --aieditor-word-heading-ink: #8fc9e0;
+  --aieditor-word-link: #75a7e8;
+  --aieditor-word-rule: #747870;
+  --aieditor-word-table-line: #666a63;
+  --aieditor-subtle-ink: #b8bbb3;
+  --aieditor-placeholder: #858980;
+  --aieditor-danger: #ff9b81;
+  --aieditor-danger-soft: #3b2724;
+  --aieditor-danger-line: #704238;
+  --aieditor-success: #72c69a;
+  --aieditor-toolbar-classic: #272a27;
+  --aieditor-toolbar-compact: #242623;
+  --aieditor-highlight-block-line: #516780;
+  --aieditor-highlight-block-accent: #6fa3ff;
+  --aieditor-highlight-block-bg: #24303f;
+  --aieditor-highlight-block-ink: #d9e6f7;
+  --aieditor-info-line: #496482;
+  --aieditor-info-bg: #26394d;
+  --aieditor-preview-line: #55769d;
+  --aieditor-preview-bg: #253548;
+  --aieditor-code-bg: #0d1117;
+  --aieditor-code-ink: #c9d1d9;
+  --aieditor-code-line: #30363d;
+  --aieditor-code-control-bg: #161b22;
+  --aieditor-code-control-hover: #21262d;
+  --aieditor-code-control-ink: #8b949e;
+  --aieditor-code-focus: #58a6ff;
+  --aieditor-code-menu-selected-bg: rgba(56,139,253,.16);
+  --aieditor-code-menu-selected-ink: #58a6ff;
+  --aieditor-code-addition-bg: #033a16;
+  --aieditor-code-addition-ink: #aff5b4;
+  --aieditor-code-deletion-bg: #67060c;
+  --aieditor-code-deletion-ink: #ffdcd7;
+  --aieditor-code-keyword: #ff7b72;
+  --aieditor-code-title: #d2a8ff;
+  --aieditor-code-constant: #79c0ff;
+  --aieditor-code-string: #a5d6ff;
+  --aieditor-code-built-in: #ffa657;
+  --aieditor-code-comment: #8b949e;
+  --aieditor-code-tag: #7ee787;
+  --aieditor-on-ink: #20211f;
+  color-scheme: dark;
+}

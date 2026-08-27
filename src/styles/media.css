@@ -1,0 +1,99 @@
+/* 上传状态、附件、图片、音视频及媒体缩放交互。 */
+
+.aieditor__drop-upload { --aieditor-upload-accent: var(--aieditor-accent); position: relative; width: min(460px, calc(100vw - 48px)); min-height: 62px; margin: 8px 0; padding: 10px; border: 1px solid var(--aieditor-line); border-radius: 6px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 10px; overflow: hidden; vertical-align: middle; background: var(--aieditor-surface); color: var(--aieditor-ink); box-shadow: 0 3px 12px rgba(37,37,34,.08); font-family: inherit; }
+.aieditor__drop-upload[data-upload-state="error"] { border-color: var(--aieditor-danger-line); background: var(--aieditor-danger-soft); }
+.aieditor__drop-upload-visual { position: relative; width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; overflow: hidden; }
+.aieditor__drop-upload-icon { width: 34px; height: 34px; flex: 0 0 auto; border: 1px solid var(--aieditor-line); border-radius: 4px; display: grid; place-items: center; background: var(--aieditor-paper); color: var(--aieditor-muted); }
+.aieditor__drop-upload-icon svg { width: 17px; height: 17px; stroke-width: 1.8; }
+.aieditor__drop-upload-preview { width: 100%; height: 100%; display: block; object-fit: contain; }
+.aieditor__drop-upload-body { min-width: 0; flex: 1; display: grid; gap: 6px; }
+.aieditor__drop-upload-heading { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; line-height: 16px; }
+.aieditor__drop-upload-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.aieditor__drop-upload-status { flex: 0 0 auto; color: var(--aieditor-muted); font-variant-numeric: tabular-nums; }
+.aieditor__drop-upload-track { height: 4px; overflow: hidden; border-radius: 2px; display: block; background: var(--aieditor-line); }
+.aieditor__drop-upload-track[hidden] { display: none; }
+.aieditor__drop-upload-bar { width: 0; height: 100%; border-radius: inherit; display: block; background: var(--aieditor-upload-accent); transition: width 100ms linear; }
+.aieditor__drop-upload-message { color: var(--aieditor-danger); font-size: 11px; line-height: 15px; overflow-wrap: anywhere; }
+.aieditor__drop-upload-message[hidden] { display: none; }
+.aieditor__drop-upload-action { width: 28px; height: 28px; padding: 0; border: 0; border-radius: 4px; flex: 0 0 auto; display: grid; place-items: center; background: transparent; color: var(--aieditor-muted); cursor: pointer; }
+.aieditor__drop-upload-action:hover, .aieditor__drop-upload-action:focus-visible { background: var(--aieditor-hover-strong); color: var(--aieditor-ink); }
+.aieditor__drop-upload-action:focus-visible { outline: 2px solid var(--aieditor-accent); outline-offset: 1px; }
+.aieditor__drop-upload-action svg { width: 15px; height: 15px; stroke-width: 2; }
+.aieditor__drop-upload[data-upload-type="image"] { --aieditor-upload-accent: #287552; width: min(340px, calc(100vw - 48px)); min-height: 226px; padding: 0; display: inline-grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; gap: 0; background: var(--aieditor-paper); }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-visual { width: 100%; height: 164px; background: var(--aieditor-surface); }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-icon { position: absolute; width: 38px; height: 38px; border-color: transparent; border-radius: 50%; background: rgba(37,37,34,.72); color: #fff; backdrop-filter: blur(4px); }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-preview + .aieditor__drop-upload-icon { opacity: .78; }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-body { padding: 10px 12px 12px; }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-action { position: absolute; top: 8px; right: 8px; background: rgba(37,37,34,.72); color: #fff; backdrop-filter: blur(4px); }
+.aieditor__drop-upload[data-upload-type="image"] .aieditor__drop-upload-action:hover { background: rgba(37,37,34,.88); color: #fff; }
+.aieditor__drop-upload[data-upload-type="video"] { --aieditor-upload-accent: #2972f4; min-height: 96px; padding: 11px; background: var(--aieditor-paper); }
+.aieditor__drop-upload[data-upload-type="video"] .aieditor__drop-upload-visual { width: 124px; height: 72px; border-radius: 4px; background: #202326; }
+.aieditor__drop-upload[data-upload-type="video"] .aieditor__drop-upload-preview { object-fit: cover; opacity: .62; }
+.aieditor__drop-upload[data-upload-type="video"] .aieditor__drop-upload-icon { position: absolute; width: 34px; height: 34px; border-color: rgba(255,255,255,.28); border-radius: 50%; background: rgba(20,22,24,.62); color: #fff; }
+.aieditor__drop-upload[data-upload-type="audio"] { --aieditor-upload-accent: #8b5fbf; min-height: 72px; border-left: 3px solid var(--aieditor-upload-accent); border-radius: 4px; box-shadow: none; background: var(--aieditor-paper); }
+.aieditor__drop-upload[data-upload-type="audio"] .aieditor__drop-upload-visual { width: 88px; height: 48px; display: flex; align-items: center; gap: 8px; overflow: visible; }
+.aieditor__drop-upload[data-upload-type="audio"] .aieditor__drop-upload-icon { width: 34px; height: 34px; border: 0; border-radius: 50%; background: color-mix(in srgb, var(--aieditor-upload-accent) 14%, var(--aieditor-paper)); color: var(--aieditor-upload-accent); }
+.aieditor__drop-upload-waveform { height: 28px; display: flex; align-items: center; gap: 2px; color: var(--aieditor-upload-accent); }
+.aieditor__drop-upload-waveform i { width: 2px; height: 35%; border-radius: 1px; display: block; background: currentColor; opacity: .72; animation: aieditor-upload-wave 900ms ease-in-out infinite alternate; }
+.aieditor__drop-upload-waveform i:nth-child(3n + 1) { height: 80%; animation-delay: -600ms; }
+.aieditor__drop-upload-waveform i:nth-child(3n + 2) { height: 50%; animation-delay: -300ms; }
+.aieditor__drop-upload[data-upload-state="queued"] .aieditor__drop-upload-waveform,
+.aieditor__drop-upload[data-upload-state="error"] .aieditor__drop-upload-waveform { opacity: .45; }
+.aieditor__drop-upload[data-upload-state="queued"] .aieditor__drop-upload-waveform i,
+.aieditor__drop-upload[data-upload-state="error"] .aieditor__drop-upload-waveform i { animation: none; }
+.aieditor__drop-upload[data-upload-type="attachment"] { padding-left: 12px; }
+@keyframes aieditor-upload-wave { from { transform: scaleY(.55); } to { transform: scaleY(1); } }
+.aieditor__prose .aieditor__attachment-wrapper { position: relative; width: min(520px, 100%); margin-top: var(--aieditor-document-media-block-margin-top, 28px); margin-bottom: var(--aieditor-document-media-block-margin-bottom, 28px); border-radius: var(--aieditor-document-media-block-border-radius, 6px); }
+.aieditor__prose .aieditor__attachment-wrapper[data-alignment="left"] { margin-right: auto; margin-left: 0; }
+.aieditor__prose .aieditor__attachment-wrapper[data-alignment="center"] { margin-right: auto; margin-left: auto; }
+.aieditor__prose .aieditor__attachment-wrapper[data-alignment="right"] { margin-right: 0; margin-left: auto; }
+.aieditor__prose .aieditor__attachment, .aieditor__prose a[data-type="attachment"] { width: min(520px, 100%); min-height: 62px; margin: 18px 0; padding: 10px 12px; border: 1px solid var(--aieditor-line); border-radius: 6px; display: flex; align-items: center; gap: 11px; box-sizing: border-box; background: var(--aieditor-surface); color: var(--aieditor-ink); text-decoration: none; }
+.aieditor__prose .aieditor__attachment-wrapper .aieditor__attachment { width: 100%; margin: 0; }
+.aieditor__prose .aieditor__attachment:hover, .aieditor__prose a[data-type="attachment"]:hover { border-color: var(--aieditor-control-line); background: var(--aieditor-hover); }
+.aieditor__prose .aieditor__attachment.ProseMirror-selectednode, .aieditor__prose .aieditor__attachment-wrapper.ProseMirror-selectednode { outline: 3px solid var(--aieditor-accent); outline-offset: 2px; }
+.aieditor__attachment-icon { width: 36px; height: 36px; border: 1px solid var(--aieditor-line); border-radius: 4px; display: grid; flex: 0 0 auto; place-items: center; background: var(--aieditor-paper); color: var(--aieditor-muted); }
+.aieditor__attachment-icon svg, .aieditor__attachment-download svg { width: 17px; height: 17px; stroke-width: 1.8; }
+.aieditor__attachment-body { min-width: 0; display: grid; flex: 1; gap: 2px; }
+.aieditor__attachment-name { overflow: hidden; font-size: 13px; line-height: 18px; text-overflow: ellipsis; white-space: nowrap; }
+.aieditor__attachment-meta { overflow: hidden; color: var(--aieditor-muted); font-size: 11px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.aieditor__attachment-download { width: 30px; height: 30px; display: grid; flex: 0 0 auto; place-items: center; color: var(--aieditor-muted); }
+
+.aieditor__prose div[data-youtube-video], .aieditor__prose div[data-twitch-video] { width: min(640px, 100%); margin-top: var(--aieditor-document-media-block-margin-top, 28px); margin-bottom: var(--aieditor-document-media-block-margin-bottom, 28px); aspect-ratio: 16 / 9; }
+.aieditor__prose div[data-youtube-video]:has(iframe[data-alignment="left"]), .aieditor__prose div[data-twitch-video]:has(iframe[data-alignment="left"]) { margin-right: auto; margin-left: 0; }
+.aieditor__prose div[data-youtube-video]:has(iframe[data-alignment="center"]), .aieditor__prose div[data-twitch-video]:has(iframe[data-alignment="center"]) { margin-right: auto; margin-left: auto; }
+.aieditor__prose div[data-youtube-video]:has(iframe[data-alignment="right"]), .aieditor__prose div[data-twitch-video]:has(iframe[data-alignment="right"]) { margin-right: 0; margin-left: auto; }
+.aieditor__prose div[data-youtube-video] iframe, .aieditor__prose div[data-twitch-video] iframe { width: 100%; height: 100%; border: 0; border-radius: var(--aieditor-document-media-block-border-radius, 5px); background: #181816; }
+.aieditor[data-editable="true"] .aieditor__prose div[data-youtube-video] iframe, .aieditor[data-editable="true"] .aieditor__prose div[data-twitch-video] iframe { pointer-events: none; }
+
+.aieditor .resize-cursor { cursor: col-resize; }
+.aieditor__prose img[data-image-type="block"] { display: block; width: auto; max-width: 100%; height: auto; margin-top: var(--aieditor-document-media-block-margin-top, 28px); margin-bottom: var(--aieditor-document-media-block-margin-bottom, 28px); border-radius: var(--aieditor-document-media-block-border-radius, 5px); }
+.aieditor__prose img[data-image-type="block"][data-alignment="left"] { margin-right: auto; margin-left: 0; }
+.aieditor__prose img[data-image-type="block"][data-alignment="center"] { margin-right: auto; margin-left: auto; }
+.aieditor__prose img[data-image-type="block"][data-alignment="right"] { margin-right: 0; margin-left: auto; }
+.aieditor__prose img[data-image-type="inline"] { display: inline-block; max-width: 100%; height: auto; margin: 0 4px; border-radius: var(--aieditor-document-media-inline-border-radius, 3px); vertical-align: middle; }
+.aieditor__prose img[data-image-type="inline"].ProseMirror-selectednode { outline: 3px solid var(--aieditor-accent); outline-offset: 2px; }
+.aieditor__prose .ProseMirror-inner-resizer { position: relative; width: fit-content; max-width: 100%; margin-top: var(--aieditor-document-media-block-margin-top, 28px); margin-bottom: var(--aieditor-document-media-block-margin-bottom, 28px); border-radius: var(--aieditor-document-media-block-border-radius, 5px); }
+.aieditor__prose .ProseMirror-inner-resizer[data-alignment="left"] { margin-right: auto; margin-left: 0; }
+.aieditor__prose .ProseMirror-inner-resizer[data-alignment="center"] { margin-right: auto; margin-left: auto; }
+.aieditor__prose .ProseMirror-inner-resizer[data-alignment="right"] { margin-right: 0; margin-left: auto; }
+.aieditor__prose > audio[data-alignment], .aieditor__prose > video[data-alignment] { display: block; max-width: 100%; margin-top: var(--aieditor-document-media-block-margin-top, 28px); margin-bottom: var(--aieditor-document-media-block-margin-bottom, 28px); }
+.aieditor__prose > audio[data-alignment="left"], .aieditor__prose > video[data-alignment="left"], .aieditor__prose a[data-type="attachment"][data-alignment="left"] { margin-right: auto; margin-left: 0; }
+.aieditor__prose > audio[data-alignment="center"], .aieditor__prose > video[data-alignment="center"], .aieditor__prose a[data-type="attachment"][data-alignment="center"] { margin-right: auto; margin-left: auto; }
+.aieditor__prose > audio[data-alignment="right"], .aieditor__prose > video[data-alignment="right"], .aieditor__prose a[data-type="attachment"][data-alignment="right"] { margin-right: 0; margin-left: auto; }
+
+.aieditor__prose .ProseMirror-inner-resizer img { width: auto; max-width: 100%; margin: 0; user-select: none; }
+.aieditor__prose .aieditor__image-content, .aieditor__prose .aieditor__image-content > a { display: block; width: 100%; }
+.aieditor__prose .ProseMirror-inner-resizer[data-resized="true"] img { width: 100%; }
+.aieditor__prose .ProseMirror-inner-resizer audio, .aieditor__prose .ProseMirror-inner-resizer video { display: block; width: 100%; max-width: 100%; margin: 0; }
+.aieditor__prose .ProseMirror-inner-resizer video { height: auto; background: #181816; }
+.aieditor__print-media-placeholder { display: none; }
+.aieditor__prose .ProseMirror-inner-resizer.ProseMirror-selectednode { outline: 3px solid var(--aieditor-accent); outline-offset: 3px; }
+
+.aieditor__upload-field { min-height: 38px; margin: 0 0 14px; display: flex; align-items: center; gap: 10px; }
+.aieditor__dialog .aieditor__upload-button { width: max-content; margin: 0; display: inline-flex; align-items: center; gap: 7px; color: var(--aieditor-ink); }
+.aieditor__dialog .aieditor__upload-button.is-disabled { opacity: .45; cursor: not-allowed; }
+.aieditor__upload-button svg { width: 15px; height: 15px; }
+.aieditor__dialog .aieditor__upload-input { position: absolute; width: 1px; height: 1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.aieditor__upload-status { min-width: 0; color: var(--aieditor-muted); font-size: 12px; overflow-wrap: anywhere; }
+.aieditor__upload-status.is-success { color: var(--aieditor-success); }
+.aieditor__upload-status.is-error { color: var(--aieditor-danger); }

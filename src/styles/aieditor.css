@@ -1,0 +1,8 @@
+/* AiEditor 公共样式入口。分文件仅用于内部维护，使用方只需引入此文件。 */
+@import "katex/dist/katex.min.css";
+@import "./tokens.css";
+@import "./editor.css";
+@import "./menu.css";
+@import "./media.css";
+@import "./table.css";
+@import "./ai-chat.css";

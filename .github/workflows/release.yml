@@ -1,0 +1,52 @@
+name: Publish npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: npm
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Use an npm CLI with trusted publishing support
+        run: npm install --global npm@11.6.4
+      - run: npm ci
+      - name: Verify release version
+        shell: bash
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor HEAD origin/main
+          package_version=$(node --print "require('./package.json').version")
+          test "$GITHUB_REF_NAME" = "v$package_version"
+      - run: npm run ci
+      - name: Select npm distribution tag
+        id: dist-tag
+        shell: bash
+        run: |
+          package_version=$(node --print "require('./package.json').version")
+          if [[ "$package_version" == *-* ]]; then
+            echo "name=next" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=latest" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish package
+        run: npm publish --ignore-scripts --provenance --access public --tag "${{ steps.dist-tag.outputs.name }}"

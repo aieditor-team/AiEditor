@@ -1,0 +1,63 @@
+/* 表格选择器、单元格选区、行列缩放与表格浮动菜单。 */
+
+.aieditor__table-picker { position: fixed; z-index: 1000; width: max-content; max-width: calc(100vw - 16px); padding: 10px; border: 1px solid var(--aieditor-line); border-radius: var(--aieditor-overlay-radius); background: var(--aieditor-paper); box-shadow: var(--aieditor-overlay-shadow); }
+.aieditor__table-picker[hidden] { display: none; }
+.aieditor__table-picker-header { margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--aieditor-ink); font-size: 12px; font-weight: 500; }
+.aieditor__table-picker-status { color: var(--aieditor-muted); font-variant-numeric: tabular-nums; }
+.aieditor__table-picker-grid { display: grid; grid-template-columns: repeat(var(--table-picker-columns), 22px); gap: 3px; }
+.aieditor__table-picker-cell { width: 22px; height: 22px; padding: 0; border: 1px solid var(--aieditor-control-line); border-radius: 1px; background: var(--aieditor-paper); cursor: pointer; transition: border-color 120ms ease, background-color 120ms ease; }
+.aieditor__table-picker-cell.is-selected { border-color: #d98970; background: var(--aieditor-accent-soft); }
+.aieditor__table-picker-cell:focus-visible { position: relative; outline: 2px solid var(--aieditor-accent); outline-offset: 1px; z-index: 1; }
+.aieditor__table-picker-custom-trigger { width: 100%; height: 34px; margin-top: 8px; padding: 0 7px; border: 0; border-top: 1px solid var(--aieditor-line); border-radius: 0 0 var(--aieditor-control-radius) var(--aieditor-control-radius); display: grid; grid-template-columns: 18px minmax(0, 1fr) 16px; align-items: center; gap: 8px; background: transparent; color: var(--aieditor-ink); font: inherit; font-size: 12px; text-align: left; cursor: pointer; }
+.aieditor__table-picker-custom-trigger:hover, .aieditor__table-picker-custom-trigger:focus-visible { background: var(--aieditor-hover); }
+.aieditor__table-picker-custom-trigger svg { width: 15px; height: 15px; color: var(--aieditor-muted); stroke-width: 1.8; }
+.aieditor__table-picker-custom-trigger svg:last-child { width: 13px; height: 13px; justify-self: end; }
+.aieditor__table-picker-custom-trigger:focus-visible, .aieditor__table-picker-back:focus-visible { outline: 2px solid var(--aieditor-accent); outline-offset: 1px; }
+.aieditor__table-picker-custom { width: 250px; }
+.aieditor__table-picker-custom-header { display: grid; grid-template-columns: 28px 1fr 28px; align-items: center; margin-bottom: 12px; }
+.aieditor__table-picker-back { width: 28px; height: 28px; padding: 5px; border: 0; border-radius: 4px; display: grid; place-items: center; background: transparent; color: var(--aieditor-muted); cursor: pointer; }
+.aieditor__table-picker-back:hover { background: var(--aieditor-hover-strong); color: var(--aieditor-ink); }
+.aieditor__table-picker-back svg { width: 16px; height: 16px; }
+.aieditor__table-picker-custom-title { grid-column: 2; color: var(--aieditor-ink); font-size: 12px; font-weight: 600; text-align: center; }
+.aieditor__table-picker-form { display: grid; gap: 12px; }
+.aieditor__table-picker-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.aieditor__table-picker-field { display: grid; gap: 5px; color: var(--aieditor-muted); font-size: 12px; }
+.aieditor__table-picker-input { width: 100%; min-width: 0; height: var(--aieditor-control-height); padding: 0 var(--aieditor-control-padding-inline); border: 1px solid var(--aieditor-control-line); border-radius: var(--aieditor-control-radius); outline: 0; background: var(--aieditor-paper); color: var(--aieditor-ink); font: inherit; font-size: var(--aieditor-control-font-size); font-variant-numeric: tabular-nums; transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease; }
+.aieditor__table-picker-input:focus-visible { border-color: var(--aieditor-accent); box-shadow: 0 0 0 3px var(--aieditor-focus-ring); }
+.aieditor__table-picker-input:invalid { border-color: var(--aieditor-danger); }
+.aieditor__table-picker-submit { width: 100%; justify-content: center; }
+
+.aieditor__prose .tableWrapper { margin: var(--aieditor-document-table-wrapper-margin, 28px 0 28px -16px); padding: var(--aieditor-document-table-wrapper-padding, 16px 0 16px 16px); overflow-x: auto; overflow-y: hidden; }
+.aieditor__prose table { width: 100%; margin: var(--aieditor-document-table-margin, 28px 0); border-collapse: collapse; table-layout: fixed; overflow: visible; font-family: var(--aieditor-document-table-font-family, 'DM Sans', system-ui, sans-serif); font-size: var(--aieditor-document-table-font-size, 14px); line-height: var(--aieditor-document-table-line-height, 1.5); }
+.aieditor__prose .tableWrapper table { margin: 0; }
+.aieditor__prose th, .aieditor__prose td { position: relative; min-width: 80px; padding: var(--aieditor-document-table-cell-padding, 10px 12px); border: 1px solid var(--aieditor-document-table-border-color, var(--aieditor-control-line)); vertical-align: top; }
+.aieditor__prose .aieditor-table-row-resize-handle { position: absolute; right: 7px; bottom: -5px; left: 7px; height: 9px; cursor: row-resize; touch-action: none; z-index: 4; }
+.aieditor__prose .aieditor-table-row-resize-handle::after { position: absolute; inset: 4px -7px auto; height: 1px; background: var(--aieditor-accent); content: ''; opacity: 0; transform: scaleY(.5); transition: height 100ms ease, opacity 100ms ease, transform 100ms ease; }
+.aieditor__prose tr:has(.aieditor-table-row-resize-handle:hover) .aieditor-table-row-resize-handle::after, .aieditor__prose .aieditor-table-row-resize-handle:focus-visible::after, .aieditor__prose .aieditor-table-row-resize-handle.is-resizing::after { height: 3px; opacity: 1; transform: translateY(-1px) scaleY(1); }
+.aieditor__prose .aieditor-table-row-resize-handle:focus-visible { outline: 2px solid var(--aieditor-accent); outline-offset: 1px; }
+.aieditor[data-editable="false"] .aieditor-table-row-resize-handle { display: none; }
+.aieditor__prose.aieditor-table-row-resizing, .aieditor__prose.aieditor-table-row-resizing * { cursor: row-resize !important; user-select: none; }
+.aieditor__prose th { background: var(--aieditor-document-table-header-background, var(--aieditor-surface)); color: var(--aieditor-document-table-header-color, var(--aieditor-ink)); font-weight: var(--aieditor-document-table-header-font-weight, 600); text-align: left; }
+.aieditor__prose th p, .aieditor__prose td p { margin: 0; text-align: var(--aieditor-document-table-cell-paragraph-text-align, left); text-indent: 0; }
+.aieditor__prose .selectedCell::after { position: absolute; inset: 0; background: rgba(214,95,58,.12); content: ''; pointer-events: none; }
+.aieditor__prose .column-resize-handle { position: absolute; top: 0; right: -2px; bottom: -2px; width: 4px; background: var(--aieditor-accent); pointer-events: none; z-index: 2; }
+.aieditor__prose .aieditor-table-grip { position: absolute; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: auto; cursor: pointer; transition: opacity 100ms ease; z-index: 3; }
+.aieditor__prose .tableWrapper:hover .aieditor-table-grip, .aieditor__prose .aieditor-table-grip:hover, .aieditor__prose .aieditor-table-grip:focus-visible { opacity: 1; }
+.aieditor__prose .aieditor-table-grip:focus-visible { outline: 2px solid var(--aieditor-accent); outline-offset: 2px; }
+.aieditor__prose .aieditor-table-grip-drag { display: flex; align-items: center; justify-content: center; box-sizing: border-box; border: 1px solid var(--aieditor-control-line); border-radius: 2px; background: var(--aieditor-hover-strong); color: var(--aieditor-muted); transition: width 120ms ease, height 120ms ease, border-color 120ms ease, background-color 120ms ease, color 120ms ease; }
+.aieditor__prose .aieditor-table-grip-drag svg { width: 12px; height: 12px; opacity: 0; transition: opacity 120ms ease; }
+.aieditor__prose .aieditor-table-grip:hover .aieditor-table-grip-drag, .aieditor__prose .aieditor-table-grip.is-selected .aieditor-table-grip-drag { border-color: var(--aieditor-accent); background: var(--aieditor-accent); color: #fff; }
+.aieditor__prose .aieditor-table-grip:hover .aieditor-table-grip-drag svg, .aieditor__prose .aieditor-table-grip.is-selected .aieditor-table-grip-drag svg { opacity: 1; }
+.aieditor__prose .aieditor-table-grip-column { top: -16px; left: calc(var(--table-grip-left, 0%) - 1px); width: calc(var(--table-grip-width, 100%) + 2px); height: 16px; }
+.aieditor__prose .aieditor-table-grip-column .aieditor-table-grip-drag { width: 100%; height: 8px; }
+.aieditor__prose .aieditor-table-grip-column:hover .aieditor-table-grip-drag, .aieditor__prose .aieditor-table-grip-column.is-selected .aieditor-table-grip-drag { height: 14px; }
+.aieditor__prose .aieditor-table-grip-row { top: calc(var(--table-grip-top, 0%) - 1px); left: -16px; width: 16px; height: calc(var(--table-grip-height, 100%) + 2px); }
+.aieditor__prose .aieditor-table-grip-row .aieditor-table-grip-drag { width: 8px; height: 100%; }
+.aieditor__prose .aieditor-table-grip-row:hover .aieditor-table-grip-drag, .aieditor__prose .aieditor-table-grip-row.is-selected .aieditor-table-grip-drag { width: 14px; }
+.aieditor__prose .aieditor-table-grip-table { top: -16px; left: -16px; width: 16px; height: 16px; }
+.aieditor__prose .aieditor-table-grip-table .aieditor-table-grip-drag { width: 10px; height: 10px; }
+.aieditor__prose .aieditor-table-grip-table:hover .aieditor-table-grip-drag, .aieditor__prose .aieditor-table-grip-table.is-selected .aieditor-table-grip-drag { width: 14px; height: 14px; }
+
+.aieditor__table-floating-menu { max-width: calc(100vw - 16px); flex-wrap: wrap; justify-content: center; }
+.aieditor__table-floating-menu .aieditor__tool--danger:not(:disabled) { color: var(--aieditor-danger); }
+.aieditor__table-floating-menu .aieditor__tool--danger:hover:not(:disabled) { background: var(--aieditor-accent-soft); }
