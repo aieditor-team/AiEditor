@@ -80,7 +80,7 @@
     "@vitest/coverage-v8": "^4.1.11",
     "jsdom": "^30.0.1",
     "publint": "^0.3.24",
-    "typescript": "~5.9.3",
+    "typescript": "~7.0.2",
     "unplugin-dts": "^1.0.3",
     "vite": "^8.2.2",
     "vitest": "^4.1.11"
