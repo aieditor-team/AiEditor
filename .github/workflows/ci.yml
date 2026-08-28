@@ -24,7 +24,7 @@ jobs:
         node-version: [22.12.0, 22.14.0]
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
