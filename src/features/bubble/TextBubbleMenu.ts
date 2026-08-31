@@ -52,6 +52,9 @@ export class TextBubbleMenu {
     this.extension = BubbleMenu.configure({
       element: this.element,
       pluginKey: 'aieditorTextBubbleMenu',
+      // Bubble Menu 使用 fixed 视口坐标；挂到可滚动的编辑区会被 overflow 裁剪，
+      // 批注表单展开后尤其明显，因此统一挂到当前文档 body 作为顶层浮层。
+      appendTo: () => this.element.ownerDocument.body,
       updateDelay: options.updateDelay ?? 100,
       options: {
         placement: 'top',
