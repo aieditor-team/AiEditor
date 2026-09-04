@@ -35,6 +35,7 @@ try {
     'LICENSE',
     'MIGRATION.md',
     'README.md',
+    'assets/image/aieditor.png',
     'dist/index.cjs',
     'dist/index.d.cts',
     'dist/index.d.ts',
