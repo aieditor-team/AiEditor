@@ -36,6 +36,8 @@
 .aieditor__ai-chat[hidden] { display: none; }
 .aieditor__ai-chat--sidebar { position: absolute !important; z-index: auto; inset: 0 !important; width: 100% !important; height: 100% !important; max-height: none !important; border: 0; border-radius: 0; box-shadow: none; grid-template-rows: 44px minmax(0, 1fr) auto; }
 .aieditor__ai-chat--sidebar .aieditor__ai-chat-icon[hidden] { display: none !important; }
+.aieditor__ai-chat--sidebar .aieditor__ai-chat-messages-shell { min-height: 0; max-height: none; display: flex; flex-direction: column; }
+.aieditor__ai-chat--sidebar .aieditor__ai-chat-messages { height: auto; min-height: 0; max-height: none; flex: 1 1 auto; }
 .aieditor__ai-chat-header { padding: 0 8px 0 14px; border-bottom: 1px solid var(--aieditor-line); display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--aieditor-paper); }
 .aieditor__ai-chat-header strong { font-size: 13px; font-weight: 600; }
 .aieditor__ai-chat-tools { display: flex; align-items: center; gap: 1px; cursor: default; }

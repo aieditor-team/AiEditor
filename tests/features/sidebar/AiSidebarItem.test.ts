@@ -3,6 +3,7 @@ import type {AiGenerateRequest} from '../../../src/ai'
 import type {AiEditorProductContext} from '../../../src/editor/AiEditorProduct'
 import {registerEditorTheme} from '../../../src/editor/AiEditorTheme'
 import {AiSidebarItem} from '../../../src/features/sidebar'
+import '../../../src/extensions/text-align/TextAlign'
 
 interface EditorFixture {
     context: AiEditorProductContext
@@ -41,7 +42,10 @@ function createFixture(selectedText = ''): EditorFixture {
     }
 }
 
-function createItem(generate = vi.fn(async () => ({text: 'Done'})), configured = true): AiSidebarItem {
+function createItem(
+    generate: (request: AiGenerateRequest) => Promise<{text: string}> = async () => ({text: 'Done'}),
+    configured = true,
+): AiSidebarItem {
     return new AiSidebarItem({
         generate,
         isConfigured: () => configured,
@@ -85,7 +89,7 @@ describe('AiSidebarItem TinyUI view', () => {
     })
 
     it('updates composer availability and sends on Enter but not Shift+Enter', async () => {
-        const generate = vi.fn(async () => ({text: 'TinyUI response'}))
+        const generate = vi.fn(async (_request: AiGenerateRequest) => ({text: 'TinyUI response'}))
         const {context} = createFixture()
         const host = document.createElement('div')
         const item = createItem(generate)
