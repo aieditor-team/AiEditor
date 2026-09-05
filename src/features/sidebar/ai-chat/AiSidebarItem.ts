@@ -25,6 +25,7 @@ import type {
     AiGenerateResult
 } from '../../../ai'
 import type {AiEditorProductContext} from '../../../editor/AiEditorProduct'
+import {applyEditorTheme} from '../../../editor/AiEditorTheme'
 import {html, type LucideIconNode, type TinyUIView} from '../../../tinyui'
 import type {SidebarItem} from '../SidebarSurface'
 
@@ -225,6 +226,8 @@ export class AiSidebarItem implements SidebarItem {
         this.scopeSelect = view.refs.scope as HTMLSelectElement
         this.scrollToLatestButton = view.refs.latest as HTMLButtonElement
         view.mount(host)
+        // Sidebar 面板自身声明了浅色令牌；标记实例主题后才能正确响应 setTheme()。
+        applyEditorTheme(this.panel, context.editor)
         this.refreshScopeOptions()
         this.renderMessages()
         this.renderAvailability()

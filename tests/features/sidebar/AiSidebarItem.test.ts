@@ -1,6 +1,7 @@
 import {describe, expect, it, vi} from 'vitest'
 import type {AiGenerateRequest} from '../../../src/ai'
 import type {AiEditorProductContext} from '../../../src/editor/AiEditorProduct'
+import {registerEditorTheme} from '../../../src/editor/AiEditorTheme'
 import {AiSidebarItem} from '../../../src/features/sidebar'
 
 interface EditorFixture {
@@ -67,6 +68,20 @@ describe('AiSidebarItem TinyUI view', () => {
         expect(panel.querySelector('.aieditor__ai-chat-scope svg')).not.toBeNull()
         expect(panel.querySelector<HTMLButtonElement>('[aria-label="Scroll to latest message"]')?.hidden).toBe(true)
         expect(panel.querySelector<HTMLButtonElement>('[aria-label="Send message"]')?.disabled).toBe(true)
+    })
+
+    it('marks the panel with the editor theme so dark tokens override local defaults', () => {
+        const {context} = createFixture()
+        const host = document.createElement('div')
+        const item = createItem()
+        registerEditorTheme(context.editor, context.root, 'dark')
+
+        item.mountContent(context, host)
+
+        const panel = host.querySelector<HTMLElement>('.aieditor__ai-chat')!
+        expect(panel.dataset.theme).toBe('dark')
+        expect(panel.dataset.aieditorOwner).toMatch(/^aieditor-/)
+        item.destroy()
     })
 
     it('updates composer availability and sends on Enter but not Shift+Enter', async () => {

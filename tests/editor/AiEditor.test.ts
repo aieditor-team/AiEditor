@@ -285,6 +285,7 @@ describe('AiEditor', () => {
         editor.setEditable(false)
         editor.setLocale('en-US')
         editor.setTheme('dark')
+        expect(document.querySelector('.aieditor__ai-chat')?.getAttribute('data-theme')).toBe('dark')
         editor.setToolbarStyle('classic')
         editor.setToolbarSize('large')
         editor.setToolbarOverflow('scroll')

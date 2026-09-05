@@ -44,6 +44,8 @@
 .aieditor__ai-chat-icon svg { width: 15px; height: 15px; }
 .aieditor__ai-chat-messages-shell { position: relative; min-height: 180px; max-height: min(420px, calc(100dvh - 150px)); overflow: hidden; }
 .aieditor__ai-chat-messages { height: 100%; min-height: 180px; max-height: inherit; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+/* 消息较少时贴近底部，内容超出可视区域后仍保持正常的顶部滚动范围。 */
+.aieditor__ai-chat-messages > :first-child { margin-top: auto; }
 .aieditor__ai-chat-latest { position: absolute; right: 14px; bottom: 10px; width: 32px; height: 32px; border: 1px solid var(--aieditor-line); border-radius: 50%; background: var(--aieditor-paper); color: var(--aieditor-ink); box-shadow: 0 4px 12px rgba(24,24,22,.16); }
 .aieditor__ai-chat-latest[hidden] { display: none; }
 .aieditor__ai-chat-message { max-width: 86%; margin: 0; padding: 9px 12px; border: 1px solid var(--aieditor-info-line); border-radius: 7px; background: var(--aieditor-info-bg); color: var(--aieditor-content-ink); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
