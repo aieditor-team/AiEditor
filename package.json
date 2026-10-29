@@ -86,7 +86,7 @@
     "@arethetypeswrong/cli": "^0.18.5",
     "@microsoft/api-extractor": "^7.59.0",
     "@types/node": "^26.4.0",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
     "es-module-lexer": "^2.3.2",
     "jsdom": "^30.0.1",
     "layui": "^2.13.9",
