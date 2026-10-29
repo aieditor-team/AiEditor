@@ -112,10 +112,12 @@
 }
 .aieditor { border: 1px solid var(--aieditor-line); border-radius: 8px; background: var(--aieditor-paper); box-shadow: 0 18px 45px rgba(37,37,34,.07); overflow: hidden; }
 .aieditor[data-aieditor-template="default"] { --aieditor-sidebar-width: 380px; min-height: 560px; max-height: calc(100dvh - 24px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, var(--aieditor-sidebar-width)); grid-template-rows: auto minmax(0, 1fr) auto; overflow: hidden; }
+.aieditor[data-aieditor-template="default"].is-sidebar-unavailable { grid-template-columns: minmax(0, 1fr); }
 .aieditor[data-aieditor-template="default"] .aieditor__toolbar { grid-column: 1 / -1; }
 .aieditor[data-aieditor-template="default"] .aieditor__content { grid-column: 1; grid-row: 2; min-width: 0; min-height: 0; overflow: auto; }
 .aieditor[data-aieditor-template="default"] .aieditor__sidebar { position: relative; grid-column: 2; grid-row: 2; min-width: 0; min-height: 0; border-left: 1px solid var(--aieditor-line); background: var(--aieditor-surface); overflow: hidden; }
 .aieditor__sidebar { position: relative; min-height: 240px; display: grid; grid-template-columns: minmax(0, 1fr) 42px; background: var(--aieditor-surface); }
+.aieditor__sidebar[hidden] { display: none; }
 .aieditor__sidebar-rail { grid-column: 2; grid-row: 1; padding: 8px 5px; border-left: 1px solid var(--aieditor-line); display: flex; flex-direction: column; align-items: center; gap: 5px; background: var(--aieditor-paper); }
 .aieditor__sidebar-rail-button { width: 32px; height: 32px; padding: 0; border: 0; border-radius: 5px; display: grid; place-items: center; background: transparent; color: var(--aieditor-muted); cursor: pointer; }
 .aieditor__sidebar-rail-button:hover, .aieditor__sidebar-rail-button.is-active { background: var(--aieditor-accent-soft); color: var(--aieditor-ink); }

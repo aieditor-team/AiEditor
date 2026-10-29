@@ -210,6 +210,15 @@ describe('AiEditor', () => {
         expect(document.querySelector('[data-count]')?.textContent).toContain('字符')
     })
 
+    it('没有 Sidebar 条目时隐藏默认侧栏并使用单列布局', () => {
+        const editor = create({aiChat: false})
+        const sidebar = editor.root.querySelector<HTMLElement>('.aieditor__sidebar')
+
+        expect(editor.root.classList.contains('is-sidebar-unavailable')).toBe(true)
+        expect(sidebar?.hidden).toBe(true)
+        expect(sidebar?.children).toHaveLength(0)
+    })
+
     it('默认启用并透传 TableOfContents 配置，目录 API 使用插件的稳定 ID 和状态', async () => {
         const onUpdate = vi.fn()
         const editor = create({

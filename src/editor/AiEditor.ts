@@ -180,6 +180,12 @@ export class AiEditor {
             ...(sidebar ? [sidebar] : []),
             ...(options.productSurfaces ?? []),
         ]
+        // 默认模板始终提供 sidebar slot，但没有任何 Surface 使用它时必须收起第二列，
+        // 否则关闭全部 Sidebar 能力后仍会留下一个 380px 的空面板。自定义 Surface
+        // 可能自行使用 sidebar slot，因此存在产品 Surface 时保留该区域。
+        const hasSidebarSurface = Boolean(sidebar) || Boolean(options.productSurfaces?.length)
+        this.root.classList.toggle('is-sidebar-unavailable', !hasSidebarSurface)
+        if (template.sidebar) template.sidebar.hidden = !hasSidebarSurface
         const tableOfContentsOnUpdate = options.tableOfContents === false
             ? undefined
             : options.tableOfContents?.onUpdate
@@ -300,23 +306,23 @@ export class AiEditor {
 
         const createToolbarDefaults = (): MenuItem[] => [
             ...createDefaultToolbarItems(
-            options.fontFamilies,
-            options.fontSizes,
-            options.letterSpacings,
-            options.lineHeights,
-            options.textAlignments,
-            options.fontColors,
-            options.backgroundColors,
-            options.highlightColors,
-            options.indentation !== false,
-            options.highlightBlock,
-            this.uploader,
-            options.link,
-            options.emoji,
-            {
-                isFullscreen: () => this.isFullscreen(),
-                toggleFullscreen: () => this.toggleFullscreen(),
-            },
+                options.fontFamilies,
+                options.fontSizes,
+                options.letterSpacings,
+                options.lineHeights,
+                options.textAlignments,
+                options.fontColors,
+                options.backgroundColors,
+                options.highlightColors,
+                options.indentation !== false,
+                options.highlightBlock,
+                this.uploader,
+                options.link,
+                options.emoji,
+                {
+                    isFullscreen: () => this.isFullscreen(),
+                    toggleFullscreen: () => this.toggleFullscreen(),
+                },
                 {print: () => this.print()},
             ),
             ...(options.productToolbarItems ?? []),
