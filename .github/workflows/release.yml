@@ -27,6 +27,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+          registry-url: https://registry.npmjs.org/
       - name: Use an npm CLI with trusted publishing support
         run: npm install --global npm@11.6.4
       - run: npm ci
@@ -51,3 +52,5 @@ jobs:
           fi
       - name: Publish package
         run: npm publish --ignore-scripts --provenance --access public --tag "${{ steps.dist-tag.outputs.name }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
