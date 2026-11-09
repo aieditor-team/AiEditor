@@ -1,6 +1,6 @@
 {
   "name": "aieditor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A modular, extensible rich text editor with AI-assisted editing.",
   "author": "yangfuhai",
   "license": "LGPL-2.1-only",

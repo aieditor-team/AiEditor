@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AiEditor 2 Browser ESM 与 RequireJS 共存示例</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@2.9.21/dist/css/layui.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aieditor@2.0.0/dist/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aieditor@2.0.1/dist/style.css">
   <style>
     body { padding: 24px; background: #f5f7fa; }
     main { max-width: 960px; margin: 0 auto; }
@@ -43,7 +43,7 @@
 
     async function initialize(legacyPage) {
       try {
-        const {AiEditor} = await import('https://esm.sh/aieditor@2.0.0')
+        const {AiEditor} = await import('https://esm.sh/aieditor@2.0.1')
         const readButton = document.querySelector('#read-content')
         const destroyButton = document.querySelector('#destroy-editor')
         const createButton = document.querySelector('#create-editor')
