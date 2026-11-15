@@ -88,7 +88,7 @@
     "@types/node": "^26.4.0",
     "@vitest/coverage-v8": "^5.0.0",
     "es-module-lexer": "^2.3.2",
-    "jsdom": "^30.0.1",
+    "jsdom": "^31.0.0",
     "layui": "^2.13.9",
     "playwright": "^1.63.0",
     "publint": "^0.3.24",
